@@ -76,6 +76,9 @@ return new class extends Migration {
             $table->boolean('conferma')->default(0);
             $table->boolean('pagamento')->default(0);
 
+            $table->nullableTimestamps();
+            $table->nullableOwnerships();
+
         });
     }
 

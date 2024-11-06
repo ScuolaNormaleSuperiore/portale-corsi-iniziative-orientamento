@@ -112,7 +112,6 @@ export default {
         fields: [
 			'anno',
 			'titolo',
-			'descrizione',
 			'modalita_candidatura',
 			'data_apertura',
 			'data_chiusura',
@@ -121,6 +120,7 @@ export default {
             'posti_onere',
             'note',
 			'attivo',
+			'descrizione',
 
             'attachments',
             'fotos'
@@ -135,8 +135,11 @@ export default {
                 type : "w-input",
 			}, 
 			'descrizione' : { 
-                type : "textarea",
+                type : "w-texthtml",
                 htmlAttributes: {},
+                layout: {
+                    colClass : "col-12"
+                }
 			}, 
 			'data_apertura' : { 
                 type : "w-input",
@@ -149,10 +152,16 @@ export default {
 			'posti' : {
                 type : "w-input",
                 inputType : "number",
+                layout: {
+                    colClass : "col-12 md:col-3"
+                }
 			},
             'posti_onere' : {
                 type : "w-input",
                 inputType : "number",
+                layout: {
+                    colClass : "col-12 md:col-3"
+                }
             },
             'modalita_candidatura' : {
                 type : "w-select",

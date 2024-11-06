@@ -204,6 +204,9 @@ return [
         ],
 
         'fields' => [
+            'id' => [
+
+            ],
             "nome" => [
 
             ],
@@ -221,6 +224,13 @@ return [
             "iniziativa" => [
                 "fields" => [
                     "titolo" => [],
+                ]
+            ],
+            "scuola" => [
+                "fields" => [
+                    "denominazione" => [],
+                    "comune" => [],
+                    "provincia_sigla" => [],
                 ]
             ],
             "user" => [
@@ -244,12 +254,17 @@ return [
                             'denominazione',
                             'denominazione_istituto_riferimento',
                             'codice',
+                            'comune',
+                            'provincia|sigla'
                         ]
                     ],
                 ]
             ],
         ],
         'fields' => [
+            'id' => [
+
+            ],
             'iniziativa_id' => [
                 'options' => 'relation:iniziativa',
             ],
@@ -293,7 +308,7 @@ return [
 
             ],
             "scuola_id" => [
-
+                'referred_data' => 'method:model',
             ],
             "classe" => [
 

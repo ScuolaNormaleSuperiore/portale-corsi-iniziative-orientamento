@@ -18,7 +18,7 @@ class Init extends \Gecche\Cupparis\App\Console\Commands\Init
                 }
 
                 $postStorageCmdArray = [
-                    ['seed' => [env('PHP_PATH','php'),'artisan','db:seed','--class=DumpDemoSeeder']],
+//                    ['seed' => [env('PHP_PATH','php'),'artisan','db:seed','--class=DumpDemoSeeder']],
 //                    ['mig' => [env('PHP_PATH','php'),'artisan','migrate:reset']],
 //                    ['mig' => [env('PHP_PATH','php'),'artisan','migrate']],
 //                    ['seed' => [env('PHP_PATH','php'),'artisan','db:seed','--class=RegioniProvinceTableSeeder']],

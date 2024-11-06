@@ -1,0 +1,1 @@
+import{_ as e,o,c as t,a}from"./index-3d0ee9c8.js";const d={data(){return{}}},r={class:"grid layout-dashboard"};function c(_,s,n,l,p,i){return o(),t("div",r,s[0]||(s[0]=[a("div",{class:"col-12"},[a("div",{class:"card card-w-title live-support"},[a("h5",null,"Dashboard SNS Backend")])],-1)]))}const v=e(d,[["render",c],["__scopeId","data-v-57915925"]]);export{v as default};

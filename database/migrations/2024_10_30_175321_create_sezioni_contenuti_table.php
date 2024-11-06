@@ -15,7 +15,7 @@ return new class extends Migration {
     {
         Schema::create('sezioni_contenuti', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_it');
+            $table->string('nome_it')->nullable();
             $table->text('contenuto_it')->nullable();
             $table->string('slug_it')->nullable();
             $table->integer('ordine')->unsigned();

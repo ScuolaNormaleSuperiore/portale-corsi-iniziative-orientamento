@@ -22,7 +22,7 @@ class Scuola extends Breeze
     public $ownerships = true;
 
     public $appends = [
-
+        "provincia_sigla",
     ];
 
 
@@ -79,4 +79,10 @@ class Scuola extends Breeze
     }
 
 
+    public function getProvinciaSiglaAttribute() {
+        if (!$this->provincia_id) {
+            return null;
+        }
+        return $this->provincia->sigla;
+    }
 }

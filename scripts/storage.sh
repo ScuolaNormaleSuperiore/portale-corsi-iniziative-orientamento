@@ -1,5 +1,6 @@
 mkdir bootstrap/cache
 
+mkdir storage;
 mkdir storage/app;
 mkdir storage/files;
 mkdir storage/files/allegati;
@@ -14,4 +15,4 @@ mkdir storage/framework/testing;
 mkdir storage/framework/views;
 mkdir storage/logs;
 
-ln -s storage/files storage/app/files
+#ln -s storage/files storage/app/files
