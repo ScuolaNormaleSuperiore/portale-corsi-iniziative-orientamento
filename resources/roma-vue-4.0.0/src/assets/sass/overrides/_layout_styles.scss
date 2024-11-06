@@ -1,0 +1,46 @@
+/* Add your customizations of layout here */
+.layout-wrapper {
+  &.layout-topbar-cupparis {
+    .layout-topbar {
+      background-color: #005A74;
+
+      .layout-topbar-icon {
+        color: #ffffff;
+
+        &:hover {
+          background-color: #004059;
+        }
+      }
+
+      .layout-topbar-search {
+        background-color: #005A74;
+
+        input {
+          background-color: #005A74;
+          color: #ffffff;
+          @include input-placeholder(#E0FFFB);
+        }
+
+        i {
+          color: #E0FFFB;
+        }
+      }
+
+      .user-profile {
+        .layout-profile-name, .layout-profile-role, .layout-profile-icon {
+          color: #E0FFFB;
+        }
+
+        a:hover {
+          .layout-profile-name, .layout-profile-role, .layout-profile-icon {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.layout-footer img {
+  height: 45px;
+}

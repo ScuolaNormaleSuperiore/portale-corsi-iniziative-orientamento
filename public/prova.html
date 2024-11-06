@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>svg{width:100%;height:500px;margin:0px auto;}</style>
+<body>
+<script src="https://unpkg.com/d3@4"></script>
+<script src="https://unpkg.com/topojson-client@3"></script>
+
+<script>
+    var svg = d3.select("body").append("svg");
+    var path = d3.geoPath().projection(d3.geoMercator());
+    var codes = {};
+    d3.json("/countries-codes.json",function (error,jsonCodes) {
+        console.debug('codes',jsonCodes);
+        for (let country of jsonCodes) {
+            codes[country['country-code']] = country.name;
+        }
+    })
+    var tooltip = d3.select("body")
+        .append("div")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .style("background", "#000")
+        .text("a simple tooltip");
+
+    d3.json("https://unpkg.com/world-atlas@1/world/50m.json", function(error, world) {
+        if (error) throw error;
+        let data = topojson.feature(world,world.objects.countries).features;
+        svg.selectAll("path")
+            .data(data)
+            .enter().append("path")
+            .attr("d", path);
+        console.debug(svg.selectAll("path"))
+        // svg.selectAll("path").append("svg:text").text("ciao")
+        // svg.selectAll("path").on('mouseover',function (d) {
+        //     console.debug('d',d);
+        // })
+
+        d3.select("body")
+            .selectAll("path")
+            .data(data)
+            .enter().append("div")
+            .style("width", function(d) { return x(d) + "px"; })
+            .text(function(d) { return d; })
+            .on("mouseover", function(d){
+                tooltip.text(d); return tooltip.style("visibility", "visible");
+                console.debug('mouseover',d)
+            })
+            .on("mousemove", function(){
+                return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+            })
+            .on("mouseout", function(){
+                return tooltip.style("visibility", "hidden");
+            });
+    });
+</script>

@@ -1,0 +1,15 @@
+.idea
+.env
+.env.*
+storage
+tests
+resources/documenti
+cgi-bin
+.ftpquota
+.git
+bootstrap/cache/*.php
+public/js/builds
+public/cup_site/media
+node_modules
+scripts
+public/storage

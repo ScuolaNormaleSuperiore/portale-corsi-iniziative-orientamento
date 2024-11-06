@@ -1,0 +1,1 @@
+import{_ as s,o as t,c as n,a as o}from"./index-f4d81587.js";const a={},r={class:"stepsdemo-content"};function c(p,e,l,i,d,_){return t(),n("div",r,e[0]||(e[0]=[o("i",{class:"pi pi-fw pi-user"},null,-1),o("p",null,"Personal Component Content via Child Route",-1)]))}const f=s(a,[["render",c]]);export{f as default};

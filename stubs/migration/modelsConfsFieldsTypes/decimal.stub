@@ -1,0 +1,5 @@
+                type : "decimal",
+                digits : 2,
+                symbol : null,
+                symbol_position : "left",
+                htmlAttributes: {},

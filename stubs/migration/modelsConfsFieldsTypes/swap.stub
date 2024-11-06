@@ -1,0 +1,4 @@
+                type : "w-swap",
+                modelName : '{{$modelName}}',
+                //switchClass: 'form-switch-danger banned',
+                //dataSwitched : true,

@@ -1,0 +1,156 @@
+<template id="v-edit-anagrafica-template">
+    <c-loading v-if="loading" :error-msg="errorMsg">
+        <span>Attendere prego...</span>
+    </c-loading>
+    <div v-else>
+        <div v-html="beforeForm"></div>
+        <form enctype="multipart/form-data">
+            <!-- campi nascosti -->
+            <template v-for="(widget, key) in widgets" v-if="isHiddenField(key)">
+                <v-widget :c-widget="widget" :key="key"></v-widget>
+            </template>
+            <div class="row">
+                <v-widget :c-widget="widgets.fisicagiuridica"></v-widget>
+                <v-widget :c-widget="widgets.attivo"></v-widget>
+            </div>
+
+            <div class="card shadow-md shadow-lg-hover transition-all-ease-250 transition-hover-top
+                        h-100 border-success bl-0 br-0 bb-0 bw--2 p-0">
+
+                <div class="card-header text-green-700">
+                    Dati principali
+                </div>
+                <div class="card-body">
+
+                    <div v-show="fisicaGiuridicaValue === 'F'">
+
+
+                        <div class="row">
+                            <v-widget v-for="(widget, key) in getFisicaGiuridicaWidgets('F')" :v-key="key"
+                                      :c-widget="widget"></v-widget>
+                        </div>
+                    </div>
+                    <div class="row" v-show="fisicaGiuridicaValue === 'G'">
+                        <v-widget v-for="(widget, key) in getFisicaGiuridicaWidgets('G')" :v-key="key"
+                                  :c-widget="widget"></v-widget>
+                    </div>
+
+
+                    <div v-show="fisicaGiuridicaValue === 'F'">
+                        <div class="row separatorHr">Dati di nascita</div>
+                    </div>
+                    <div v-show="fisicaGiuridicaValue === 'G'">
+                        <div class="row separatorHr">Dati di costituzione</div>
+                    </div>
+
+                    <div class="row">
+                        <v-widget :c-widget="widgets.datanascita"></v-widget>
+                        <v-widget :c-widget="widgets.comunenascita_id"></v-widget>
+                    </div>
+
+                    <div class="row separatorHr">C.F. / P.IVA</div>
+
+                    <div class="row">
+                        <v-widget :c-widget="widgets.codicefiscale"></v-widget>
+                        <v-widget :c-widget="widgets.partitaiva"></v-widget>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-md shadow-lg-hover transition-all-ease-250 transition-hover-top
+                        h-100 border-success bl-0 br-0 bb-0 bw--2 p-0 mt--12">
+
+                <div class="card-header text-green-700">
+                    Indirizzi
+                </div>
+                <div class="card-body">
+
+                    <div class="row separatorHr">Indirizzo fiscale/principale</div>
+                    <div class="row">
+                        <v-widget :c-widget="widgets.indirizzo"></v-widget>
+                        <v-widget :c-widget="widgets.numero_civico"></v-widget>
+                        <v-widget :c-widget="widgets.localita"></v-widget>
+                        <v-widget :c-widget="widgets.comuneresidenza_id"></v-widget>
+                    </div>
+
+                    <div class="row separatorHr">Altri indirizzi</div>
+
+                    <div class="row">
+                        <!--                        <v-list-edit :c-conf="contattiList"></v-list-edit>-->
+                        <!--                        <v-list :c-model="'cup_anag_contatto'"></v-list>-->
+                        <v-widget :c-widget="widgets.indirizzi"></v-widget>
+                    </div>
+                    <!--                    <div class="row">-->
+                    <!--                        <v-widget :c-widget="widgets.codicefiscale"></v-widget>-->
+                    <!--                        <v-widget :c-widget="widgets.partitaiva"></v-widget>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+
+            <div class="card shadow-md shadow-lg-hover transition-all-ease-250 transition-hover-top
+                        h-100 border-success bl-0 br-0 bb-0 bw--2 p-0 mt--12">
+
+                <div class="card-header text-green-700">
+                    Contatti
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+                        <v-widget :c-widget="widgets.email"></v-widget>
+                        <v-widget :c-widget="widgets.cell"></v-widget>
+                        <v-widget :c-widget="widgets.tel"></v-widget>
+                        <v-widget :c-widget="widgets.fax"></v-widget>
+                        <v-widget :c-widget="widgets.pec"></v-widget>
+                        <v-widget :c-widget="widgets.url"></v-widget>
+                    </div>
+
+                    <div class="row separatorHr">Altri contatti</div>
+
+                    <div class="row">
+                        <!--                        <v-list-edit :c-conf="contattiList"></v-list-edit>-->
+                        <!--                        <v-list :c-model="'cup_anag_contatto'"></v-list>-->
+                        <v-widget :c-widget="widgets.contatti"></v-widget>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-md shadow-lg-hover transition-all-ease-250 transition-hover-top
+                        h-100 border-success bl-0 br-0 bb-0 bw--2 p-0 mt--12">
+
+                <div class="card-header text-green-700">
+                    Altre informazioni
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+                        <v-widget :c-widget="widgets.iban"></v-widget>
+                        <v-widget :c-widget="widgets.note"></v-widget>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card shadow-md shadow-lg-hover transition-all-ease-250 transition-hover-top
+                        h-100 border-success bl-0 br-0 bb-0 bw--2 p-0 mt--12">
+
+                <div class="card-header text-green-700">
+                    Raggruppamenti
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+                        <v-widget :c-widget="widgets['raggruppamenti']"></v-widget>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+        <div v-html="beforeActions"></div>
+        <div class="p-3" v-show="actions.length">
+            <template v-for="(action,name) in actionsConf">
+                <v-action :c-action="action"></v-action>
+            </template>
+        </div>
+    </div>
+</template>

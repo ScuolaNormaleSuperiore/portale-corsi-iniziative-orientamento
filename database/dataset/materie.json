@@ -1,0 +1,285 @@
+{
+  "data":
+  [
+    {
+      "materia": "Italiano",
+      "mul": 1
+    },
+    {
+      "materia": "Inglese",
+      "mul": 1
+    },
+    {
+      "materia": "Francese",
+      "mul": 1
+    },
+    {
+      "materia": "Tedesco",
+      "mul": 1
+    },
+    {
+      "materia": "Condotta",
+      "mul": 0
+    },
+    {
+      "materia": "Religione",
+      "mul": 0
+    },
+    {
+      "materia": "Educazione Artistica",
+      "mul": 1
+    },
+    {
+      "materia": "Spagnolo",
+      "mul": 1
+    },
+    {
+      "materia": "Informatica",
+      "mul": 1
+    },
+    {
+      "materia": "Storia dell'Arte",
+      "mul": 1
+    },
+    {
+      "materia": "Biologia",
+      "mul": 1
+    },
+    {
+      "materia": "Calcolo probabilità e Statistica",
+      "mul": 1
+    },
+    {
+      "materia": "Chimica",
+      "mul": 1
+    },
+    {
+      "materia": "Chimica agraria con esercizi e tecniche agroalimentari",
+      "mul": 1
+    },
+    {
+      "materia": "Chimica e Biologia",
+      "mul": 1
+    },
+    {
+      "materia": "Chimica e Laboratorio",
+      "mul": 1
+    },
+    {
+      "materia": "Chimica, Fisica e Laboratorio",
+      "mul": 1
+    },
+    {
+      "materia": "Contabilità",
+      "mul": 1
+    },
+    {
+      "materia": "Costruzioni",
+      "mul": 1
+    },
+    {
+      "materia": "Disegno e Storia dell'Arte",
+      "mul": 1
+    },
+    {
+      "materia": "Diritto ed Economia",
+      "mul": 1
+    },
+    {
+      "materia": "Latino",
+      "mul": 1
+    },
+    {
+      "materia": "Disegno tecnico",
+      "mul": 1
+    },
+    {
+      "materia": "Economia Aziendale",
+      "mul": 1
+    },
+    {
+      "materia": "Economia Politica",
+      "mul": 1
+    },
+    {
+      "materia": "Economia",
+      "mul": 1
+    },
+    {
+      "materia": "Educazione Fisica",
+      "mul": 0
+    },
+    {
+      "materia": "Elettronica",
+      "mul": 1
+    },
+    {
+      "materia": "Elettronica e Telecomunicazioni",
+      "mul": 1
+    },
+    {
+      "materia": "Elettrotecnica",
+      "mul": 1
+    },
+    {
+      "materia": "Filosofia",
+      "mul": 1
+    },
+    {
+      "materia": "Fisica",
+      "mul": 1
+    },
+    {
+      "materia": "Fisica e Laboratorio",
+      "mul": 1
+    },
+    {
+      "materia": "Geografia",
+      "mul": 1
+    },
+    {
+      "materia": "Geografia e Scienze",
+      "mul": 1
+    },
+    {
+      "materia": "Greco",
+      "mul": 1
+    },
+    {
+      "materia": "Informatica e sistemi",
+      "mul": 1
+    },
+    {
+      "materia": "Laboratorio di Fisica e Chimica",
+      "mul": 1
+    },
+    {
+      "materia": "Lettere Latine",
+      "mul": 1
+    },
+    {
+      "materia": "Lettere Italiane",
+      "mul": 1
+    },
+    {
+      "materia": "Matematica",
+      "mul": 1
+    },
+    {
+      "materia": "Matematica ed Informatica",
+      "mul": 1
+    },
+    {
+      "materia": "Musica",
+      "mul": 1
+    },
+    {
+      "materia": "Psicologia",
+      "mul": 1
+    },
+    {
+      "materia": "Scienze naturali",
+      "mul": 1
+    },
+    {
+      "materia": "Scienze naturali, Chimica e Geografia",
+      "mul": 1
+    },
+    {
+      "materia": "Sistemi",
+      "mul": 1
+    },
+    {
+      "materia": "Storia",
+      "mul": 1
+    },
+    {
+      "materia": "Storia ed Educazione Civica",
+      "mul": 1
+    },
+    {
+      "materia": "Tecnologia e Disegno",
+      "mul": 1
+    },
+    {
+      "materia": "Topografia",
+      "mul": 1
+    },
+    {
+      "materia": "Trattamento Testi e Dati",
+      "mul": 1
+    },
+    {
+      "materia": "Arte",
+      "mul": 1
+    },
+    {
+      "materia": "Diritto",
+      "mul": 1
+    },
+    {
+      "materia": "Disegno",
+      "mul": 1
+    },
+    {
+      "materia": "Geografia Economica",
+      "mul": 1
+    },
+    {
+      "materia": "Geopedologia",
+      "mul": 1
+    },
+    {
+      "materia": "Impianti",
+      "mul": 1
+    },
+    {
+      "materia": "Lingua e Letteratura Inglese",
+      "mul": 1
+    },
+    {
+      "materia": "Lingua e Letteratura Italiana",
+      "mul": 1
+    },
+    {
+      "materia": "Lingua e Letteratura Latina",
+      "mul": 1
+    },
+    {
+      "materia": "Lingua e Letteratura Greca",
+      "mul": 1
+    },
+    {
+      "materia": "Lingua e Letteratura Francese",
+      "mul": 1
+    },
+    {
+      "materia": "Lingua e Letteratura Tedesca",
+      "mul": 1
+    },
+    {
+      "materia": "Meccanica e Macchine",
+      "mul": 1
+    },
+    {
+      "materia": "Pedagogia",
+      "mul": 1
+    },
+    {
+      "materia": "Ragioneria",
+      "mul": 1
+    },
+    {
+      "materia": "Topografia e Fotogrammetria",
+      "mul": 1
+    },
+    {
+      "materia": "Religione Cattolica",
+      "mul": 0
+    },
+    {
+      "materia": "Scienze motorie",
+      "mul": 0
+    }
+  ]
+}

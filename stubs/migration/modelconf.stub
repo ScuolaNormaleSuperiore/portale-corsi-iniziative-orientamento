@@ -1,0 +1,59 @@
+
+export default {
+    modelName : '{{$snakeModelName}}',
+    search: {
+        type: 'v-search',
+        modelName : '{{$snakeModelName}}',
+        fields: [
+{{$searchFields}}
+        ],
+        fieldsConfig: {
+{{$searchFieldsType}}
+        },
+        // groups: {
+        //     'g0': {
+        //         fields: [
+        //
+        //         ],
+        //     },
+        //     'g1': {
+        //         fields: [
+        //
+        //         ],
+        //     }
+        // },
+
+    },
+    list: {
+        type: 'v-list',
+        modelName : '{{$snakeModelName}}',
+        actions : [
+            'action-insert',
+            'action-edit',
+            'action-delete',
+            'action-delete-selected',
+        ],
+        fields: [
+{{$listFields}}
+        ],
+        fieldsConfig: {
+{{$listFieldsType}}
+        },
+        orderFields : {
+{{$listOrderFields}}
+        }
+
+    },
+    edit: {
+        type: 'v-edit',
+        modelName : '{{$snakeModelName}}',
+        actions : ['action-save','action-back'],
+        fields: [
+{{$editFields}}
+        ],
+        fieldsConfig: {
+{{$editFieldsType}}
+        }
+
+    },
+}

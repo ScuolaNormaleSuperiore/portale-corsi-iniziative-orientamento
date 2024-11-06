@@ -1,0 +1,1 @@
+import{_ as e,r as n,o as r,z as t}from"./index-38aff7a1.js";document.location.href="/logout";const s={};function c(a,p,_,f,i,u){const o=n("ProgressSpinner");return r(),t(o)}const m=e(s,[["render",c]]);export{m as default};

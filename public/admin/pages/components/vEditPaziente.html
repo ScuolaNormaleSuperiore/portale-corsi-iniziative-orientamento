@@ -1,0 +1,182 @@
+<div>
+    <template v-if="loaded">
+        <v-edit inline-template :c-conf="editPaziente">
+
+            <c-loading v-if="loading" :error-msg="errorMsg">
+                <span>Attendere prego...</span>
+            </c-loading>
+            <div v-else>
+                <div v-html="beforeForm"></div>
+                <form enctype="multipart/form-data">
+
+                    <template v-for="(widget, key) in widgets" v-if="isHiddenField(key)">
+                        <v-widget :c-widget="widget" :key="key"></v-widget>
+                    </template>
+                    <div class="row">
+                        <v-widget :c-widget="widgets.fisicagiuridica"></v-widget>
+                    </div>
+
+                    <div class="card shadow-md shadow-lg-hover transition-all-ease-250 transition-hover-top
+                        h-100 border-success bl-0 br-0 bb-0 bw--2 p-0">
+
+                        <div class="card-header text-green-700">
+                            Dati principali
+                        </div>
+                        <div class="card-body">
+
+                            <div v-show="fisicaGiuridicaValue === 'F'">
+
+
+                                <div class="row">
+                                    <v-widget v-for="(widget, key) in getFisicaGiuridicaWidgets('F')" :v-key="key"
+                                              :c-widget="widget"></v-widget>
+                                </div>
+                            </div>
+                            <div class="row" v-show="fisicaGiuridicaValue === 'G'">
+                                <v-widget v-for="(widget, key) in getFisicaGiuridicaWidgets('G')" :v-key="key"
+                                          :c-widget="widget"></v-widget>
+                            </div>
+
+
+                            <div v-show="fisicaGiuridicaValue === 'F'">
+                                <div class="row separatorHr">Dati di nascita</div>
+                            </div>
+                            <!--                    <div v-show="fisicaGiuridicaValue === 'G'">-->
+                            <!--                        <div class="row separatorHr">Dati di costituzione</div>-->
+                            <!--                    </div>-->
+
+                            <div v-show="fisicaGiuridicaValue === 'F'" class="row">
+                                <v-widget :c-widget="widgets.datanascita"></v-widget>
+                                <v-widget :c-widget="widgets.comunenascita_id"></v-widget>
+                            </div>
+
+                            <div class="row separatorHr">C.F. / P.IVA</div>
+
+                            <div class="row">
+                                <v-widget :c-widget="widgets.codicefiscale"></v-widget>
+                                <v-widget :c-widget="widgets.partitaiva"></v-widget>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-md shadow-lg-hover transition-all-ease-250 transition-hover-top
+                        h-100 border-danger bl-0 br-0 bb-0 bw--2 p-0 mt--12">
+
+                        <div class="card-header text-red-700">
+                            Info per compilazione rapida ricevuta
+                        </div>
+                        <div class="card-body">
+
+                            <div class="row">
+                                <v-widget :c-widget="widgets.formapagamento_id"></v-widget>
+                            </div>
+                            <div class="row">
+                                <v-widget :c-widget="widgets.tipoprestazione_id"></v-widget>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+                <div v-html="beforeActions"></div>
+                <div class="p-3" v-show="actions.length">
+                    <template v-for="(action,name) in actionsConf">
+                        <v-action :c-action="action"></v-action>
+                    </template>
+                </div>
+            </div>
+        </v-edit>
+    </template>
+</div>
+
+<script>
+    var vEditPaziente = {
+
+        mounted() {
+            this.editPaziente = this.mergeConfView(ModelPaziente.edit, this.editPaziente);
+            this.editPaziente.pk = this.pk;
+            this.loaded = true;
+
+            console.log("THISSS:: ",this);
+            var thisManage = this.getComponent('managePazienteRef');
+            this.editPaziente.actionsConfig['action-back'] = {
+                execute: function () {
+                    thisManage.showList();
+                    thisManage.listComp.reload();
+                }
+            }
+        },
+
+        loaded: false,
+        editPaziente: {
+
+            fisicaGiuridicaValue: 'F',
+            modelName: 'cup_anag_anagrafica',
+
+            methods: {
+                getFisicaGiuridicaFields: function (type) {
+                    var that = this;
+                    switch (type) {
+                        case 'F':
+                            return [
+                                'cognome',
+                                'nome',
+                                'sesso',
+                                // 'professione_id',
+                                // 'stato_civile_id',
+                            ]
+                        case 'G':
+                            return [
+                                'denominazione',
+                            ];
+                        default :
+                            return [];
+                    }
+                },
+                getFisicaGiuridicaWidgets: function (type) {
+                    var that = this;
+                    switch (type) {
+                        case 'F':
+                        case 'G':
+                            var widgets = {};
+                            var fields = that.getFisicaGiuridicaFields(type);
+                            for (var i in that.widgets) {
+                                if (fields.indexOf(i) >= 0) {
+                                    widgets[i] = that.widgets[i];
+                                }
+                            }
+                            console.log('WIDGETS:::', widgets);
+                            return widgets;
+                        default :
+                            return {};
+                    }
+                },
+                completed: function () {
+                    var that = this;
+                    //console.log('telefonata insert',this._uid);
+                    that.fisicaGiuridicaValue = that.value.fisicagiuridica;
+
+                    // that.$crud.cRefs.contattilist.value = that.value.contatti;
+                    // that.$crud.cRefs.contattilist.reload();
+
+                }
+                // getFisicaGiuridicaValue : function () {
+                //     var that = this;
+                //
+                //     if (!that.getWidget) {
+                //         return 'F';
+                //     }
+                //     var widget = that.getWidget('fisicagiuridica');
+                //
+                //     console.log('PROVA1',that.getWidget('fisicagiuridica'));
+                //     if (!widget)
+                //         return 'F';
+                //
+                //     console.log('PROVA',widget);
+                //     return widget.getValue();
+                // }
+
+            }
+        }
+    }
+</script>

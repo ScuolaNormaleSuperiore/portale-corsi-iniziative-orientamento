@@ -1,0 +1,72 @@
+{
+  "data": [
+    {
+      "nome": "Storia dell'Arte",
+      "classe": "Lettere e Filosofia"
+    },
+    {
+      "nome": "Italianistica - Letteratura",
+      "classe": "Lettere e Filosofia"
+    },
+    {
+      "nome": "Italianistica - Filologia",
+      "classe": "Lettere e Filosofia"
+    },
+    {
+      "nome": "Italianistica - Storia della lingua",
+      "classe": "Lettere e Filosofia"
+    },
+    {
+      "nome": "Italianistica - Linguistica",
+      "classe": "Lettere e Filosofia"
+    },
+    {
+      "nome": "Storia",
+      "classe": "Lettere e Filosofia"
+    },
+    {
+      "nome": "Antichistica - Latino",
+      "classe": "Lettere e Filosofia"
+    },
+    {
+      "nome": "Antichistica - Greco",
+      "classe": "Lettere e Filosofia"
+    },
+    {
+      "nome": "Antichistica - Storia antica",
+      "classe": "Lettere e Filosofia"
+    },
+    {
+      "nome": "Antichistica - Archeologia",
+      "classe": "Lettere e Filosofia"
+    },
+    {
+      "nome": "Antichistica - Paleografia",
+      "classe": "Lettere e Filosofia"
+    },
+    {
+      "nome": "Filosofia",
+      "classe": "Lettere e Filosofia"
+    },
+    {
+      "nome": "Chimica e Geologia",
+      "classe": "Scienze"
+    },
+    {
+      "nome": "Fisica",
+      "classe": "Scienze"
+    },
+    {
+      "nome": "Matematica e Informatica",
+      "classe": "Scienze"
+    },
+    {
+      "nome": "Scienze biologiche",
+      "classe": "Scienze"
+    },
+    {
+      "nome": "Scienze politico-sociali",
+      "classe": "Scienze politico-sociali"
+    }
+  ]
+}

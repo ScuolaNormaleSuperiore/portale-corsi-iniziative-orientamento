@@ -1,0 +1,252 @@
+import CrudHelpers from "cupparis-primevue/src/lib/CrudHelpers";
+
+export default {
+    modelName : 'iniziativa',
+    search: {
+        type: 'v-search',
+        modelName : 'iniziativa',
+        fields: [
+			'titolo',
+
+        ],
+        fieldsConfig: {
+			'titolo' : { 
+                type : "w-input",
+			}, 
+
+        },
+        searchType: 'basic',
+        searchLabel: false,
+        // groups: {
+        //     'g0': {
+        //         fields: [
+        //
+        //         ],
+        //     },
+        //     'g1': {
+        //         fields: [
+        //
+        //         ],
+        //     }
+        // },
+
+    },
+    list: {
+        type: 'v-list',
+        modelName : 'iniziativa',
+        actions : [
+            'action-insert',
+            'action-edit',
+            'action-delete',
+            'action-delete-selected',
+        ],
+        fields: [
+            'picture',
+			'anno',
+			'titolo',
+			'descrizione',
+			'data_apertura',
+			'data_chiusura',
+			'modalita_candidatura',
+			'attivo',
+
+        ],
+        fieldsConfig: {
+            'picture' : {
+                type : "w-custom",
+                ready() {
+                    var that = this;
+                    var urlPrefix = import.meta.env.VITE_APP_TARGET || '';
+                    var url = urlPrefix + '' + CrudHelpers.addBearerTokenToUrl(that.modelData.picture);
+
+                    var style = "background-image: url(\"" + url + "\") !important;";
+                    //+ "background-color: red;";
+
+                    //[style]="'background-image:url('+getImage(element.id)+')'"
+                    that.value = "<div class='w-5rem h-4rem m-auto bg-contain bg-no-repeat' " +
+                        // ":style=\"{ 'background-image': url('" + url + "') }\" " +
+                        //":style=\"{ 'background-image': url('" + url + "') }\" " +
+                        "style='" + style + "' >&nbsp;" +
+                        // "<img class='w-full' src='/api" + CrudHelpers.addBearerTokenToUrl(url) + "'/>" +
+                        "</div>";
+                },
+            },
+            'anno' : {
+                type : "w-text",
+			}, 
+			'titolo' : { 
+                type : "w-text",
+			}, 
+			'data_apertura' : { 
+                type : "w-text",
+			}, 
+			'data_chiusura' : { 
+                type : "w-text",
+			}, 
+			'modalita_candidatura' : { 
+                type : "w-text",
+			}, 
+			'attivo' : { 
+                type : "w-swap",
+                modelName : 'iniziativa',
+                //switchClass: 'form-switch-danger banned',
+                //dataSwitched : true,
+			}, 
+
+        },
+        orderFields : {
+			'anno' : 'anno',
+			'titolo' : 'titolo',
+			'data_apertura' : 'data_apertura',
+			'data_chiusura' : 'data_chiusura',
+			'modalita_candidatura' : 'modalita_candidatura',
+			'attivo' : 'attivo',
+
+        }
+
+    },
+    edit: {
+        type: 'v-edit',
+        modelName : 'iniziativa',
+        actions : ['action-save','action-back'],
+        fields: [
+			'anno',
+			'titolo',
+			'descrizione',
+			'modalita_candidatura',
+			'data_apertura',
+			'data_chiusura',
+
+            'posti',
+            'posti_onere',
+            'note',
+			'attivo',
+
+            'attachments',
+            'fotos'
+
+        ],
+        fieldsConfig: {
+			'anno' : { 
+                type : "w-select",
+
+			},
+			'titolo' : { 
+                type : "w-input",
+			}, 
+			'descrizione' : { 
+                type : "textarea",
+                htmlAttributes: {},
+			}, 
+			'data_apertura' : { 
+                type : "w-input",
+                inputType : "date",
+			},
+			'data_chiusura' : {
+                type : "w-input",
+                inputType : "date",
+			}, 
+			'posti' : {
+                type : "w-input",
+                inputType : "number",
+			},
+            'posti_onere' : {
+                type : "w-input",
+                inputType : "number",
+            },
+            'modalita_candidatura' : {
+                type : "w-select",
+            },
+
+            'note' : {
+                type: 'w-textarea',
+            },
+
+
+            'attivo' : {
+                type : "w-select",
+                //domainValues : [],
+                //domainValuesOrder : [],
+			},
+            attachments : {
+                type :'w-hasmany',
+                langContext : 'attachments.fields',
+
+                hasmanyConf : {
+                    fields : [
+                        'id','nome','resource','status'
+                    ],
+                    fieldsConfig : {
+                        resource : {
+                            type : 'w-upload-ajax',
+                            extensions : ['pdf','doc','docx'],
+                            //extensions : ['csv','xls'],
+                            maxFileSize : '2M',
+                            ajaxFields : {
+                                field : 'attachments|resource',
+                                resource_type : 'attachment'
+                            },
+                            modelName : 'iniziativa',
+                            previewConf:{
+                                iconSize:'fa-3x'
+                            },
+                            label: 'File',
+                        },
+                        status : 'w-hidden',
+                        id : 'w-hidden',
+                    }
+                }
+            },
+            fotos : {
+                type :'w-hasmany',
+                hasmanyConf : {
+                    langContext : 'fotos.fields',
+                    fields : [
+                        'id','nome','resource','status'
+                    ],
+                    fieldsConfig : {
+                        resource : {
+                            type : 'w-upload-ajax',
+                            extensions : ['jpg','png'],
+                            //extensions : ['csv','xls'],
+                            maxFileSize : '2M',
+                            ajaxFields : {
+                                field : 'fotos|resource',
+                                resource_type : 'foto'
+                            },
+                            modelName : 'iniziativa',
+                            previewConf:{
+                                iconSize:'fa-3x'
+                            },
+                            label: 'File',
+                        },
+                        status : 'w-hidden',
+                        id : 'w-hidden',
+                        nome : 'w-hidden',
+                    }
+                }
+            },
+
+        }
+
+    },
+}
+
+//
+// type: "w-custom",
+//     ready() {
+//     var that = this;
+//     var urlPrefix = import.meta.env.VITE_APP_TARGET || '';
+//     var url = urlPrefix + '' + CrudHelpers.addBearerTokenToUrl(that.modelData.picture_icon);
+//
+//     var style = "background-image: url(\"" + url + "\") !important;";
+//     //+ "background-color: red;";
+//
+//     //[style]="'background-image:url('+getImage(element.id)+')'"
+//     that.value = "<div class='w-5rem h-4rem m-auto bg-cover-img' " +
+//         // ":style=\"{ 'background-image': url('" + url + "') }\" " +
+//         //":style=\"{ 'background-image': url('" + url + "') }\" " +
+//         "style='" + style + "' >&nbsp;" +
+//         // "<img class='w-full' src='/api" + CrudHelpers.addBearerTokenToUrl(url) + "'/>" +
+//         "</div>";
+// },

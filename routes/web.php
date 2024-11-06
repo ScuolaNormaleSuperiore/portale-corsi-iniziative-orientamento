@@ -1,0 +1,77 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MiscController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\JsonController;
+use App\Http\Controllers\FEController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('json/dynamic-conf', [JsonController::class,'postDynamicConf'])->name('json-dynamic-conf');
+Route::post('json/user-info', [JsonController::class,'getUserInfo'])->name('json-user-info');
+
+Route::get('/', [FEController::class,'index'])->name('fe-index')->middleware([]);
+Route::get('/pagina-orientamento/{pagina}', [FEController::class,'paginaOrientamento'])->name('pagina-orientamento')->middleware([]);
+
+Route::get('/bladepuro', function () {
+    return view('bladepuro');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth','role:Superutente'])->name('dashboard');
+
+Route::get('/vue-sfc', function () {
+    return view('vue-sfc');
+})->middleware(['auth'])->name('vue-sfc');
+
+Route::get('/va', function () {
+    return view('vueapp');
+})->middleware(['auth'])->name('vueapp');
+
+Route::get('/sakai', function () {
+    return view('sakai');
+})->middleware(['auth'])->name('sakai');
+
+
+Route::group(["middleware" => "auth"], function() {
+    Route::get("profile", [UserController::class, 'getProfile'])->name('user.profile');
+    Route::post("profile", [UserController::class, 'postProfile'])->name('user.profile-update');
+});
+
+Route::group(['prefix' => 'crud', 'as' => 'crud'], function () {
+    Route::get('page/{page}', [MiscController::class,'crudPage'])->name('crud.page');
+});
+
+Route::group([
+    'middleware' => []
+], function () {
+
+// route to access template applied image file
+    Route::get('imagecache/{template}/{filename}', [\Intervention\Image\ImageCacheController::class, 'getResponse'])
+        ->where(['filename' => '[ \w\\.\\/\\-\\@\(\)]+'])
+        ->name('imagecache');
+
+    Route::get('viewmediable/{model}/{pk}/{template?}', [\App\Http\Controllers\Api\DownloadController::class, 'viewMediableFile']);
+//    Route::get('viewmediable/{model}/{pk}/{template?}', function ($model, $pk, $template = null) {
+//        return $model;
+//    });
+
+
+});
+
+//Route::get('logout', 'Auth\LoginController@logout')->name('get-logout');
+
+require __DIR__.'/auth.php';
+
+require __DIR__.'/foorm.php';

@@ -1,0 +1,6 @@
+                type : "image",
+                imageTemplate : null,
+                mode : "view",
+                templateClass : "default",
+                value : "/core-admin/images/default.png",
+                htmlAttributes: {},

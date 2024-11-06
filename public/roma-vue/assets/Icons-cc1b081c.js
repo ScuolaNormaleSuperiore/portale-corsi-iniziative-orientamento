@@ -1,0 +1,17 @@
+import{_ as y,r as h,x as b,o as n,c as i,y as r,b as u,a as e,F as g,m as I,d as k,n as x,t as S,p as C,f as z,e as p}from"./index-785c95e7.js";const B={data(){return{icons:null,filter:null}},mounted(){fetch("demo/data/icons.json",{headers:{"Cache-Control":"no-cache"}}).then(t=>t.json()).then(t=>{let _=t.icons.filter(o=>o.icon.tags.indexOf("deprecate")===-1);_.sort((o,c)=>o.properties.name<c.properties.name?-1:o.properties.name>c.properties.name?1:0),this.icons=_})},computed:{filteredIcons(){return this.filter?this.icons.filter(t=>t.properties.name.indexOf(this.filter.toLowerCase())>-1):this.icons}}},s=t=>(C("data-v-8b80c309"),t=t(),z(),t),V={class:"card icons-demo"},w=k("<h4 data-v-8b80c309>Icons</h4><p data-v-8b80c309>Roma uses PrimeIcons v6, PrimeTek&#39;s new modern icon library.</p><h5 data-v-8b80c309>Getting Started</h5><p data-v-8b80c309>PrimeIcons use the <strong data-v-8b80c309>pi pi-{icon}</strong> syntax such as <strong data-v-8b80c309>pi pi-check</strong>. A standalone icon can be displayed using an element like <i data-v-8b80c309>i</i> or <i data-v-8b80c309>span</i>.</p>",4),P=s(()=>e("code",null,`
+<i class="pi pi-check"></i>
+<i class="pi pi-times"></i>
+
+`,-1)),N=[P],T=s(()=>e("i",{class:"pi pi-check",style:{"margin-right":"0.5rem"}},null,-1)),D=s(()=>e("i",{class:"pi pi-times"},null,-1)),L=s(()=>e("h5",null,"Component Icons",-1)),j=s(()=>e("p",null,[p("Components that have icon properties accept PrimeIcons with the "),e("strong",null,"pi pi-{icon}"),p(" syntax.")],-1)),A=s(()=>e("code",null,`
+<Button label="Confirm" icon="pi pi-check"></Button>
+
+`,-1)),F=[A],O=s(()=>e("h5",null,"Size",-1)),q=s(()=>e("p",null,"Size of the icons can easily be changed using font-size property.",-1)),E=s(()=>e("code",null,`
+<i class="pi pi-check"></i>
+
+`,-1)),G=[E],H=s(()=>e("i",{class:"pi pi-check"},null,-1)),R=s(()=>e("code",null,`
+<i class="pi pi-check" style="font-size: 2rem"></i>
+
+`,-1)),U=[R],Y=s(()=>e("i",{class:"pi pi-check",style:{"font-size":"2rem"}},null,-1)),$=s(()=>e("h5",null,"Spinning Animation",-1)),J=s(()=>e("p",null,"Special pi-spin class applies continuous rotation to an icon.",-1)),K=s(()=>e("code",null,`
+<i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+
+`,-1)),M=[K],Q=s(()=>e("i",{class:"pi pi-spin pi-spinner",style:{"font-size":"2rem"}},null,-1)),W=s(()=>e("h5",null,"List of Icons",-1)),X=s(()=>e("p",null,[p("Here is the current list of PrimeIcons, more icons are added periodically. You may also "),e("a",{href:"https://github.com/primefaces/primeicons/issues"},"request new icons"),p(" at the issue tracker.")],-1)),Z={class:"grid icons-list"};function ee(t,d,_,o,c,m){const f=h("Button"),v=h("InputText"),l=b("code");return n(),i("div",V,[w,r((n(),i("pre",null,N)),[[l]]),T,D,L,j,r((n(),i("pre",null,F)),[[l]]),u(f,{label:"Confirm",icon:"pi pi-check"}),O,q,r((n(),i("pre",null,G)),[[l]]),H,r((n(),i("pre",null,U)),[[l]]),Y,$,J,r((n(),i("pre",null,M)),[[l]]),Q,W,X,e("div",null,[u(v,{modelValue:c.filter,"onUpdate:modelValue":d[0]||(d[0]=a=>c.filter=a),type:"text",class:"icon-filter",placeholder:"Search an icon"},null,8,["modelValue"])]),e("div",Z,[(n(!0),i(g,null,I(m.filteredIcons,a=>(n(),i("div",{class:"col-12 md:col-2 icon",key:a.properties.name},[e("i",{class:x("pi pi-"+a.properties.name)},null,2),e("div",null,"pi-"+S(a.properties.name),1)]))),128))])])}const te=y(B,[["render",ee],["__scopeId","data-v-8b80c309"]]);export{te as default};

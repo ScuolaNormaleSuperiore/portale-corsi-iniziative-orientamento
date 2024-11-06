@@ -1,0 +1,11 @@
+build
+dist
+node_modules
+.DS_Store
+sassdoc
+.sass-cache
+
+/idea
+/.idea
+
+package-lock.json

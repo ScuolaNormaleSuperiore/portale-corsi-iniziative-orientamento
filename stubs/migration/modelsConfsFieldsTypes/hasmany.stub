@@ -1,0 +1,9 @@
+                type : "hasmany",
+                metadata : {
+                    modelRelativeName : null,
+                    relationName : null,
+                },
+                limit : null,
+                separator : null,
+                fields : [],
+                htmlAttributes: {},

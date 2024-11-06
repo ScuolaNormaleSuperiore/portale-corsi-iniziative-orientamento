@@ -1,0 +1,51 @@
+/**** SUPERPUSH E SUPERPULL*****/
+
+sh scripts/git/superpush.sh
+e
+sh scripts/git/superpull.sh
+
+lavorano solo sul ramo corrente e non fanno più il merge sul master
+
+/**** FEATURE BRANCHES *****/
+
+Per creare un nuovo branch feature:
+
+sh scripts/git/createbranch-feature.sh "prova"
+
+crea automaticamente un ramo "feature/<DATACORRENTE>_prova" derivato da develop
+
+quando si sono finite le modifiche, restando sul ramo feature/<DATACORRENTE>_prova, , fare il superpush e poi
+
+sh scripts/git/mergedevelop-feature.sh
+
+per fare il merge successivo con il develop, risolvere eventuali conflitti e poi chiudere il ramo di feature con
+
+sh scripts/git/finishbranch-feature.sh (con l'argomento d si cancella il ramo in locale)
+
+fa automaticamente il merge col develop una volta finito il ramo (col parametro opzionale d, cancella il ramo)
+
+!!! ATTENZIONE: PUO' FARE CASINO IN CASO DI CONFLITTI
+
+/**** RELEASE BRANCHES *****/
+
+Per creare un nuovo branch release:
+
+sh scripts/git/createbranch-release.sh "1.0.2"
+
+crea automaticamente un ramo "release/1.0.2" derivato da develop
+
+quando si sono finite le modifiche, restando sul ramo release/1.0.2, fare il superpush e poi
+
+sh scripts/git/tagging.sh
+
+fa automaticamente il merge col master e crea un tag.
+
+Poi fare:
+
+sh scripts/git/mergedevelop-release.sh
+
+per fare il merge successivo con il develop, risolvere eventuali conflitti e poi chiudere il ramo di release con
+
+sh scripts/git/finishbranch-release.sh (con l'argomento d si cancella il ramo in locale)
+
+e si ritorna su develop aggiornato

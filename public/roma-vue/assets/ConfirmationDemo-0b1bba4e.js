@@ -1,0 +1,1 @@
+import{_ as t,o as n,c as s,a as e}from"./index-693ad83b.js";const a={},c={class:"stepsdemo-content"};function i(r,o,p,l,d,f){return n(),s("div",c,o[0]||(o[0]=[e("i",{class:"pi pi-fw pi-check"},null,-1),e("p",null,"Confirmation Component Content via Child Route",-1)]))}const _=t(a,[["render",i]]);export{_ as default};

@@ -1,0 +1,1 @@
+import{_ as e,o,c as s,a as t}from"./index-785c95e7.js";const n={},c={class:"stepsdemo-content"},a=t("i",{class:"pi pi-fw pi-ticket"},null,-1),_=t("p",null,"Seat Component Content via Child Route",-1),i=[a,_];function p(r,d,l,f,m,u){return o(),s("div",c,i)}const $=e(n,[["render",p]]);export{$ as default};

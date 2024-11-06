@@ -1,0 +1,29 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production",
+        "install-crud-vue-smarty3": "cd packages/cupparis-crud/crud-vue-smarty3 && npm install",
+        "build-crud-vue-smarty3": "cd packages/cupparis-crud/crud-vue-smarty3 && npm run build",
+        "install-crud-vue-tailwind": "cd packages/cupparis-crud/crud-vue-tailwind && npm install",
+        "build-crud-vue-tailwind": "cd packages/cupparis-crud/crud-vue-tailwind && npm run build"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.4.0",
+        "alpinejs": "^3.4.2",
+        "autoprefixer": "^10.1.0",
+        "axios": "^0.25",
+        "crud-vue-smarty3": "file:./packages/cupparis-crud/crud-vue-smarty3",
+        "crud-vue-tailwind": "file:./packages/cupparis-crud/crud-vue-tailwind",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.2.1",
+        "postcss-import": "^14.0.1",
+        "tailwindcss": "^3.0.0"
+    }
+}

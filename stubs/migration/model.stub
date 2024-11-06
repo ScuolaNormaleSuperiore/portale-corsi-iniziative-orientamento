@@ -1,0 +1,56 @@
+<?php
+
+namespace App\Models;
+
+use Gecche\Cupparis\App\Breeze\Breeze;
+
+/**
+ * Breeze (Eloquent) model for {{$migrationTable}} table.
+ */
+class {{$modelClass}} extends Breeze
+{
+
+    {{$traits}}
+//    use ModelWithUploadsTrait;
+
+    protected $table = '{{$migrationTable}}';
+
+    //protected $fillable = [];
+
+    public $timestamps = {{$timestamps}};
+    public $ownerships = {{$ownerships}};
+
+    public $appends = [
+
+    ];
+
+
+    public static $relationsData = [
+
+{{$relationsData}}
+
+//        'belongsto' => array(self::BELONGS_TO, {{$modelClass}}::class, 'foreignKey' => '<FOREIGNKEYNAME>'),
+//        'belongstomany' => array(self::BELONGS_TO_MANY, {{$modelClass}}::class, 'table' => '<TABLEPIVOTNAME>','pivotKeys' => [],'foreignKey' => '<FOREIGNKEYNAME>','otherKey' => '<OTHERKEYNAME>') ,
+//        'hasmany' => array(self::HAS_MANY, {{$modelClass}}::class, 'table' => '<TABLENAME>','foreignKey' => '<FOREIGNKEYNAME>'),
+    ];
+
+    public static $rules = [
+//        'username' => 'required|between:4,255|unique:users,username',
+    ];
+
+    public $columnsForSelectList = [{{$columnsForSelectList}}];
+     //['id','descrizione'];
+
+    public $defaultOrderColumns = [{{$defaultOrderColumns}}];
+     //['cognome' => 'ASC','nome' => 'ASC'];
+
+    public $columnsSearchAutoComplete = [{{$columnsSearchAutoComplete}}];
+     //['cognome','denominazione','codicefiscale','partitaiva'];
+
+    public $nItemsAutoComplete = 20;
+    public $nItemsForSelectList = 100;
+    public $itemNoneForSelectList = false;
+    public $fieldsSeparator = ' - ';
+
+
+}

@@ -1,0 +1,5 @@
+{
+    "name": "admin",
+    "extends": "crud-vue-smarty3",
+    "asset-path": "admin"
+}

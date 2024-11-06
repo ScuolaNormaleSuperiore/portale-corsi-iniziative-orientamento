@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "nome": "Licenza elementare"
+    },
+    {
+      "nome": "Licenza media"
+    },
+    {
+      "nome": "Diploma di scuola secondaria di secondo grado"
+    },
+    {
+      "nome": "Laurea"
+    },
+    {
+      "nome": "Laurea di I livello"
+    },
+    {
+      "nome": "Laurea di II livello o a ciclo unico"
+    },
+    {
+      "nome": "Master di I livello"
+    },
+    {
+      "nome": "Master di II livello"
+    },
+    {
+      "nome": "Dottorato di ricerca"
+    },
+    {
+      "nome": "Scuola di specializzazione"
+    }
+  ]
+}
