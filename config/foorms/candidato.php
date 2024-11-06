@@ -302,7 +302,7 @@ return [
 
             ],
             "provincia_id" => [
-
+                'options' => 'relation:provincia',
             ],
             "telefono" => [
 

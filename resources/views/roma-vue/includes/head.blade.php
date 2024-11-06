@@ -10,7 +10,7 @@
 
 	<link id="theme-css" rel="stylesheet" type="text/css" href="/roma-vue/theme/theme-blue.css">
 	<link id="layout-css" rel="stylesheet" type="text/css" href="/roma-vue/layout/css/layout-blue.css">
-  <script type="module" crossorigin src="/roma-vue/assets/index-3d0ee9c8.js"></script>
+  <script type="module" crossorigin src="/roma-vue/assets/index-06824495.js"></script>
   <link rel="stylesheet" href="/roma-vue/assets/index-10b01146.css">
 </head>
 </head>

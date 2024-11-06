@@ -74,7 +74,7 @@ export default {
             'nome',
             'cognome',
             'media',
-            'tipo',
+            // 'tipo',
             'scuola',
 
         ],
@@ -241,7 +241,7 @@ export default {
             },
             'data_nascita': {
                 type: "w-input",
-                inputType: "data",
+                inputType: "date",
             },
             'indirizzo': {
                 type: "w-input",
