@@ -201,9 +201,37 @@
             </div>
         </section>
 
+
+        {{-- Newsletter --}}
+
+        <section class="pt-5" style="background: #B8D9E2;">
+            <div class="container text-center">
+                <h2 class="">Vuoi rimanere aggiornato sulle nostre attività?</h2>
+                <p>Iscriviti per ricevere la nostra newsletter</p>
+
+                <div class="row pt-4">
+                    <div class="col-12 col-lg-6 m-auto">
+                        <div class="form-group">
+                            <label class="active" for="exampleInputTime">Email</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control"
+                                       placeholder="Inserisci la tua email"
+                                       aria-label="Inserisci la tua email" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button" id="button-3">Iscriviti</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
         {{--        Eventi--}}
 
-        <section class="pt-5">
+        <section class="pt-5" style="background-color:#F4FAFB">
             <div class="container">
                 <h2 class="pb-5">Eventi</h2>
 

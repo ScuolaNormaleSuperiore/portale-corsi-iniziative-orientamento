@@ -76,8 +76,27 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="">
+                            <h4><a href="#" title="Iscriviti alla newsletter">Newsletter</a></h4>
+
+                            <div class="row pt-4">
+                                <div class="m-auto">
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control"
+                                                   placeholder="Inserisci la tua email"
+                                                   aria-label="Inserisci la tua email" aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button" id="button-3">Iscriviti</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </section>
         </div>
     </div>
