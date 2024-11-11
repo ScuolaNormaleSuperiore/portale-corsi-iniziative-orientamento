@@ -1,0 +1,11 @@
+{
+  "data":
+  [
+    {
+      "codice": "sportello-studenti-intro",
+      "nome": "Sportello studenti (descrizione)",
+      "tipo": "w-texthtml",
+      "testo_it" : "<p>Se stai frequentando le scuole superiori e hai iniziato a <strong>pensare al tuo futuro universitario</strong>, potresti avere tante domande. Vuoi fare chiarezza? Sei già orientato ma desideri esplorare tutte le opportunità? La Scuola Normale Superiore ti offre la possibilità di parlare con chi è già passato da dove sei tu adesso e oggi sta vivendo l’esperienza di studiare alla Normale.</p><p><strong>Partecipa ai nostri incontri di orientamento</strong> e scopri direttamente dagli studenti cosa significa essere parte della nostra comunità accademica. Avrai l'occasione di porre domande, ricevere consigli e ottenere una visione autentica della vita alla Normale.</p><p>Scegli <strong>l’ambito disciplinare</strong> che ti interessa, <strong>seleziona uno studente</strong> disponibile e <strong>prenota il tuo appuntamento</strong>.</p>"
+    }
+  ]
+}

@@ -95,7 +95,7 @@ return array (
   'data' => 'data',
   'evidenza' => 'evidenza',
   'orario' => 'orario',
-    'resource' => 'File',
-
-    'scuola' => 'Scuola',
+  'resource' => 'File',
+  'scuola' => 'Scuola',
+  'testo_it' => 'testo it',
 );

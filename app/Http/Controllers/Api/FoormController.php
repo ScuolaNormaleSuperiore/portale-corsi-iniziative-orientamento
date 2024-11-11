@@ -67,6 +67,9 @@ class FoormController extends Controller
                     [
                         "label" => 'Sportello studenti', "icon" => 'fa fa-users-line', "to" => '/manage/ModelStudenteOrientamento'
                     ],
+                    [
+                        "label" => 'Testi statici', "icon" => 'fa fa-font', "to" => '/manage/ModelSezioneLayout'
+                    ],
                 ],
             ],
             [

@@ -83,6 +83,7 @@ return [
         'studente_orientamento',
         'news',
         'evento',
+        'sezione_layout',
 //        'foto',
 //        'attachment',
     ],

@@ -92,7 +92,7 @@
                     <div class="card-wrapper card-teaser-wrapper card-teaser-block-3">
                         <!--start card-->
                         @foreach($pagine as $pagina)
-                            <div class="card card-teaser" style="border-radius: 4px;border-top: 3px solid #005A74;">
+                            <div class="card card-bg  card-teaser" style="border-radius: 4px;border-top: 3px solid #005A74;">
                                 <div class="card-body">
                                     <h5 class="card-title h5 text-primary">{{$pagina->titolo_it}}</h5>
                                     <p class="card-text font-serif">

@@ -28,4 +28,5 @@ return array (
   'studente_orientamento' => 'studente orientamento|studenti orientamento',
   'news' => 'news|news',
   'evento' => 'evento|eventi',
+  'sezione_layout' => 'testo statico|testi statici',
 );

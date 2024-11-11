@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('sezioni_layout', function (Blueprint $table) {
+            $table->id();
+            $table->string('codice')->unique();
+            $table->string('nome')->nullable();
+            $table->string('tipo')->nullable();
+            $table->longText('testo_it')->nullable();
+            $table->nullableTimestamps();
+            $table->nullableOwnerships();
+
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('sezioni_layout');
+    }
+
+};

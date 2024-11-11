@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="it-header-slim-wrapper-content">
-                        <a class="d-lg-block navbar-brand" href="#">Scuola Normale Superiore</a>
+                        <a class="d-lg-block navbar-brand" href="/">Scuola Normale Superiore</a>
                         <div class="it-header-slim-right-zone">
                             <div class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -58,7 +58,7 @@
                     <div class="col-12">
                         <div class="it-header-center-content-wrapper">
                             <div class="it-brand-wrapper">
-                                <a href="#">
+                                <a href="/">
 
                                     <svg class="icon" aria-hidden="true">
                                         <use href="{{Theme::url('svg/logo.svg')}}"></use>
@@ -179,7 +179,7 @@
                                                 <a class="nav-link" href="#">Parla con noi</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Sportello da Studente a Studente</a>
+                                                <a class="nav-link" href="/sportello-studenti">Sportello da Studente a Studente</a>
                                             </li>
                                         </ul>
                                     </nav>
