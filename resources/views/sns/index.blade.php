@@ -62,8 +62,8 @@
                         <div class="card-wrapper px-0">
                             <div class="card card-img">
                                 <div class="card-body" style="height:120px;">
-                                    <h3 class="card-title h5 text-primary">Sportello d astudente a studente</h3>
-                                    <p class="card-text font-serif">incontra online i nostri studenti tutor</p>
+                                    <h3 class="card-title h5 text-primary">Sportello da Studente a Studente</h3>
+                                    <p class="card-text font-serif">incontra online i nostri studenti Tutor</p>
                                 </div>
                                 <div class="img-responsive-wrapper">
                                     <div class="img-responsive img-responsive-panoramic">
@@ -191,12 +191,14 @@
                 </div>
 
                 <div class="d-flex justify-content-end pb-5">
-                    <button type="button" class="btn btn-outline-primary">
-                        Tutte le notizie
-                        <svg class="icon icon-primary">
-                            <use href="{{Theme::url('svg/sprites.svg')}}#it-arrow-right"></use>
-                        </svg>
-                    </button>
+                    <a href="/archivio-news">
+                        <button type="button" class="btn btn-outline-primary">
+                            Tutte le notizie
+                            <svg class="icon icon-primary">
+                                <use href="{{Theme::url('svg/sprites.svg')}}#it-arrow-right"></use>
+                            </svg>
+                        </button>
+                    </a>
                 </div>
             </div>
         </section>

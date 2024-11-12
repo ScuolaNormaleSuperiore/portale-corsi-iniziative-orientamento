@@ -10,6 +10,8 @@ use App\Models\SezioneLayout;
 use App\Models\StudenteOrientamento;
 use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Config;
 
 class FEController extends Controller
 {
@@ -93,6 +95,38 @@ class FEController extends Controller
             'Tutor ' . $classe->nome_it => '/sportello-studenti/' . $classe->id,
         ];
         return view('sportello-studenti-classe', compact('studenti', 'breadcrumbs'));
+    }
+
+    public function archivioNews(Request $request) {
+
+        $filter = $request->get('filter');
+
+        $items = News::where('attivo', 1)
+            ->orderBy('data','DESC');
+
+        if ($filter) {
+            $items->where(function ($q) use ($filter) {
+               return $q->where('titolo_it','LIKE', '%' . $filter . '%')
+                ->orWhere('sottotitolo_it','LIKE', '%' . $filter . '%');
+            });
+        }
+        $items = $items->paginate(Config::get('sns.per-page'))->withQueryString();
+
+        $breadcrumbs = [
+            'Home' => '/',
+            'Notizie' => '#',
+        ];
+        return view('archivio-news', compact('items', 'filter','breadcrumbs'));
+    }
+
+    public function dettaglioNews(Request $request, News $notizia) {
+
+        $breadcrumbs = [
+            'Home' => '/',
+            'Notizie' => '/archivio-news',
+            $notizia->titolo_it => '#',
+        ];
+        return view('archivio-news', compact('notizia', 'breadcrumbs'));
     }
 
 }

@@ -17,7 +17,7 @@ return [
 
     'driver' => 'gd',
 
-    'default_path' => public_path('images/default_image.png'),
+    'default_path' => public_path('images/placeholder2.jpg'),
 
 
 ];

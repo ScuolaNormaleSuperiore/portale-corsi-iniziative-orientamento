@@ -24,6 +24,8 @@ Route::get('/', [FEController::class,'index'])->name('fe-index')->middleware([])
 Route::get('/pagina-orientamento/{pagina}', [FEController::class,'paginaOrientamento'])->name('pagina-orientamento')->middleware([]);
 Route::get('/sportello-studenti', [FEController::class,'sportelloStudenti'])->name('sportello-studenti')->middleware([]);
 Route::get('/sportello-studenti/{classe}', [FEController::class,'sportelloStudentiClasse'])->name('sportello-studenti-classe')->middleware([]);
+Route::get('/archivio-news', [FEController::class,'archivioNews'])->name('archivio-news')->middleware([]);
+Route::get('/dettaglio-news/{news}', [FEController::class,'dettaglioNews'])->name('dettaglio-news')->middleware([]);
 
 Route::get('/bladepuro', function () {
     return view('bladepuro');
