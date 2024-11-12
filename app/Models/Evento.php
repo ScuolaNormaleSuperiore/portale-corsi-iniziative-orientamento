@@ -89,6 +89,6 @@ class Evento extends Breeze
         if ($foto) {
             return $foto->getUrl('orig');
         }
-        return null;
+        return '/imagecache/orig/0';
     }
 }

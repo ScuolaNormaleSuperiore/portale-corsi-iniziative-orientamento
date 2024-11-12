@@ -41,6 +41,7 @@ class FEController extends Controller
         $news = News::where('attivo', 1)
             ->whereNotNull('evidenza')
             ->orderBy('evidenza', 'ASC')
+            ->limit(4)
             ->get();
 
         $newsAlta = $news->where('evidenza', 1)->first();
@@ -97,20 +98,28 @@ class FEController extends Controller
         return view('sportello-studenti-classe', compact('studenti', 'breadcrumbs'));
     }
 
-    public function archivioNews(Request $request) {
 
-        $filter = $request->get('filter');
+    protected function getArchivioItems(Request $request,$filter,$className) {
 
-        $items = News::where('attivo', 1)
+        $items = $className::where('attivo', 1)
             ->orderBy('data','DESC');
 
         if ($filter) {
             $items->where(function ($q) use ($filter) {
-               return $q->where('titolo_it','LIKE', '%' . $filter . '%')
-                ->orWhere('sottotitolo_it','LIKE', '%' . $filter . '%');
+                return $q->where('titolo_it','LIKE', '%' . $filter . '%')
+                    ->orWhere('sottotitolo_it','LIKE', '%' . $filter . '%');
             });
         }
         $items = $items->paginate(Config::get('sns.per-page'))->withQueryString();
+
+        return $items;
+    }
+
+    public function archivioNews(Request $request) {
+
+        $filter = $request->get('filter');
+
+        $items = $this->getArchivioItems($request,$filter,News::class);
 
         $breadcrumbs = [
             'Home' => '/',
@@ -119,14 +128,39 @@ class FEController extends Controller
         return view('archivio-news', compact('items', 'filter','breadcrumbs'));
     }
 
+    public function archivioEventi(Request $request) {
+
+        $filter = $request->get('filter');
+
+        $items = $this->getArchivioItems($request,$filter,Evento::class);
+
+        $breadcrumbs = [
+            'Home' => '/',
+            'Eventi' => '#',
+        ];
+        return view('archivio-eventi', compact('items', 'filter','breadcrumbs'));
+    }
+
     public function dettaglioNews(Request $request, News $notizia) {
 
+        $navleft = ['sezioni' => $notizia->sezioni];
         $breadcrumbs = [
             'Home' => '/',
             'Notizie' => '/archivio-news',
             $notizia->titolo_it => '#',
         ];
-        return view('archivio-news', compact('notizia', 'breadcrumbs'));
+        return view('dettaglio-news', compact('notizia', 'navleft', 'breadcrumbs'));
+    }
+
+    public function dettaglioEvento(Request $request, Evento $evento) {
+
+        $navleft = ['sezioni' => $evento->sezioni];
+        $breadcrumbs = [
+            'Home' => '/',
+            'Notizie' => '/archivio-eventi',
+            $evento->titolo_it => '#',
+        ];
+        return view('dettaglio-evento', compact('evento', 'navleft', 'breadcrumbs'));
     }
 
 }

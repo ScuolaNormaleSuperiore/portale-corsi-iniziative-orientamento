@@ -161,12 +161,12 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#" data-element="news">
+                                                <a class="nav-link" href="/archivio-news" data-element="news">
                                                     <span>Notizie</span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#"
+                                                <a class="nav-link" href="/archivio-eventi"
                                                    data-element="all-services">
                                                     <span>Eventi</span>
                                                 </a>

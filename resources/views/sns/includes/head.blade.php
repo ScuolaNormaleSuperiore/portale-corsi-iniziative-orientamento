@@ -13,4 +13,11 @@
     <!-- favicon -->
     <link rel="shortcut icon" href="{!! \Igaster\LaravelTheme\Facades\Theme::url('favicon.ico') !!}">
 
+    <style>
+        .card-body.card-orientamento,
+        .card.card-orientamento,
+        .card-orientamento {
+            background: url('{!! \Igaster\LaravelTheme\Facades\Theme::url('images/card-1x.png') !!}') no-repeat right bottom;
+        }
+    </style>
 </head>
