@@ -28,9 +28,9 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column w-50">
-                        <h4 class="h4">Per gli studenti stranieri</h4>
+                        <h4 class="h4 pb-3">Per gli studenti stranieri</h4>
                         <div class="btn-example">
-                            <a href="/login-studenti">
+                            <a href="/login-classic">
                                 <button type="button" class="btn btn-primary">
                                     Accedi
                                 </button>

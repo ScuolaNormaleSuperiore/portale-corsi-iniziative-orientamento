@@ -24,9 +24,14 @@ Route::get('/login', [AuthenticatedSessionController::class, 'meta'])
 Route::get('/login-studenti', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
                 ->name('login');
+Route::get('/login-classic', [AuthenticatedSessionController::class, 'create'])
+    ->middleware('guest')
+    ->name('login');
 
 Route::post('/login-studenti', [AuthenticatedSessionController::class, 'store'])
                 ->middleware('guest');
+Route::post('/login-classic', [AuthenticatedSessionController::class, 'store'])
+    ->middleware('guest');
 
 Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->middleware('guest')
