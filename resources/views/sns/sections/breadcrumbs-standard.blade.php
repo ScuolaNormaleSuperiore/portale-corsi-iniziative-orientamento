@@ -1,4 +1,4 @@
-<section class="pb-5 mb-5 px-2" style="background-color:#F4FAFB">
+<section class="pb-5 mb-5 px-2 ps-4" style="background-color:#F4FAFB">
     <nav class="breadcrumb-container" aria-label="Percorso di navigazione">
         <ol class="breadcrumb">
             @foreach ($breadcrumbs as $bTitle => $bLink)

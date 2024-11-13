@@ -15,7 +15,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 @if($loop->last) pb-4 @else pb-0 @endif">
                                 <div class="link-list-wrapper">
                                     <ul class="footer-list link-list clearfix mb-0">
-                                        <li><a class="list-item" href="#"
+                                        <li><a class="list-item" href="/pagina-orientamento/{{$orientamentoFooterElement->id}}"
                                                title="{{$orientamentoFooterElement->titolo_it}}">{{$orientamentoFooterElement->titolo_it}}</a>
                                         </li>
                                     </ul>
@@ -42,9 +42,9 @@
                                 <li>
                                        +39 050509111
                                 </li>
-                                <li>
-                                    Staff dei corsi id orientamento
-                                </li>
+{{--                                <li>--}}
+{{--                                    Staff dei corsi id orientamento--}}
+{{--                                </li>--}}
                             </ul>
                         </div>
                     </div>

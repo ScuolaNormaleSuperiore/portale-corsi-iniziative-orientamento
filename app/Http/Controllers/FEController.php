@@ -80,6 +80,18 @@ class FEController extends Controller
         return view('sportello-studenti', compact('descrizione', 'classi', 'breadcrumbs'));
     }
 
+    public function orientamento(Request $request)
+    {
+
+        $descrizione = SezioneLayout::where('codice', 'orientamento-intro')->firstOrNew();
+        $pagine = Pagina::where('attivo',1)->orderBy('ordine','ASC')->orderBy('titolo_it','ASC')->get();
+        $breadcrumbs = [
+            'Home' => '/',
+            'Orientamento' => '#',
+        ];
+        return view('orientamento', compact('descrizione', 'pagine', 'breadcrumbs'));
+    }
+
     public function sportelloStudentiClasse(Request $request, Classe $classe)
     {
 

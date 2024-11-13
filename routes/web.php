@@ -21,11 +21,12 @@ Route::get('json/dynamic-conf', [JsonController::class,'postDynamicConf'])->name
 Route::post('json/user-info', [JsonController::class,'getUserInfo'])->name('json-user-info');
 
 Route::get('/', [FEController::class,'index'])->name('fe-index')->middleware([]);
+Route::get('/orientamento', [FEController::class,'orientamento'])->name('orientamento')->middleware([]);
 Route::get('/pagina-orientamento/{pagina}', [FEController::class,'paginaOrientamento'])->name('pagina-orientamento')->middleware([]);
 Route::get('/sportello-studenti', [FEController::class,'sportelloStudenti'])->name('sportello-studenti')->middleware([]);
 Route::get('/sportello-studenti/{classe}', [FEController::class,'sportelloStudentiClasse'])->name('sportello-studenti-classe')->middleware([]);
 Route::get('/archivio-news', [FEController::class,'archivioNews'])->name('archivio-news')->middleware([]);
-Route::get('/dettaglio-news/{news}', [FEController::class,'dettaglioNews'])->name('dettaglio-news')->middleware([]);
+Route::get('/dettaglio-news/{notizia}', [FEController::class,'dettaglioNews'])->name('dettaglio-news')->middleware([]);
 Route::get('/archivio-eventi', [FEController::class,'archivioEventi'])->name('archivio-eventi')->middleware([]);
 Route::get('/dettaglio-evento/{evento}', [FEController::class,'dettaglioEvento'])->name('dettaglio-evento')->middleware([]);
 

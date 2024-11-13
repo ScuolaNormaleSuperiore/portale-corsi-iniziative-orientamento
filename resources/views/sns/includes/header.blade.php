@@ -152,7 +152,7 @@
                                     <nav aria-label="Principale">
                                         <ul class="navbar-nav navbar-secondary" data-element="main-navigation">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#"
+                                                <a class="nav-link" href="/orientamento"
                                                    data-element="management">
                                                     Orientamento
                                                 </a>
