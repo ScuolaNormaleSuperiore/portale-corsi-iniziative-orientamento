@@ -18,6 +18,7 @@
         .card.card-orientamento,
         .card-orientamento {
             background: url('{!! \Igaster\LaravelTheme\Facades\Theme::url('images/card-1x.png') !!}') no-repeat right bottom;
+            height: 128px;
         }
     </style>
 </head>

@@ -10,29 +10,29 @@
                         <a class="d-lg-block navbar-brand" href="/">Scuola Normale Superiore</a>
                         <div class="it-header-slim-right-zone">
                             <div class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    <span class="visually-hidden">Selezione lingua: lingua selezionata</span>
-                                    <span>ITA</span>
-                                    <svg class="icon d-none d-lg-block">
-                                        <use href="{{Theme::url('svg/sprites.svg')}}#it-expand"></use>
-                                    </svg>
-                                </a>
-                                <div class="dropdown-menu">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="link-list-wrapper">
-                                                <ul class="link-list">
-                                                    <li><a class="dropdown-item list-item" href="#"><span>ITA <span
-                                                                        class="visually-hidden">selezionata</span></span></a>
-                                                    </li>
-                                                    <li><a class="dropdown-item list-item" href="#"><span>ENG</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"--}}
+{{--                                   aria-expanded="false">--}}
+{{--                                    <span class="visually-hidden">Selezione lingua: lingua selezionata</span>--}}
+{{--                                    <span>ITA</span>--}}
+{{--                                    <svg class="icon d-none d-lg-block">--}}
+{{--                                        <use href="{{Theme::url('svg/sprites.svg')}}#it-expand"></use>--}}
+{{--                                    </svg>--}}
+{{--                                </a>--}}
+{{--                                <div class="dropdown-menu">--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-12">--}}
+{{--                                            <div class="link-list-wrapper">--}}
+{{--                                                <ul class="link-list">--}}
+{{--                                                    <li><a class="dropdown-item list-item" href="#"><span>ITA <span--}}
+{{--                                                                        class="visually-hidden">selezionata</span></span></a>--}}
+{{--                                                    </li>--}}
+{{--                                                    <li><a class="dropdown-item list-item" href="#"><span>ENG</span></a>--}}
+{{--                                                    </li>--}}
+{{--                                                </ul>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                             <a href="/login" class="btn btn-primary btn-icon btn-full">
               <span class="rounded-icon">
@@ -52,7 +52,7 @@
     <div class="it-nav-wrapper">
 
         <!-- HEADER CENTRALE -->
-        <div class="it-header-center-wrapper">
+        <div class="it-header-center-wrapper theme-light">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -60,10 +60,7 @@
                             <div class="it-brand-wrapper">
                                 <a href="/">
 
-                                    <svg class="icon" aria-hidden="true">
-                                        <use href="{{Theme::url('svg/logo.svg')}}"></use>
-                                    </svg>
-
+                                    <img class="icon" src="{{Theme::url('svg/logo-primary.svg')}}" alt="SNS orientamenti"/>
 
                                     {{--                                <svg class="icon" aria-hidden="true">--}}
                                     {{--                                    --}}
@@ -104,14 +101,14 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="it-search-wrapper">
-                                    <span class="d-none d-md-block">Cerca</span>
-                                    <a class="search-link rounded-icon" aria-label="Cerca nel sito" href="#">
-                                        <svg class="icon">
-                                            <use href="{{Theme::url('svg/sprites.svg')}}#it-search"></use>
-                                        </svg>
-                                    </a>
-                                </div>
+{{--                                <div class="it-search-wrapper">--}}
+{{--                                    <span class="d-none d-md-block">Cerca</span>--}}
+{{--                                    <a class="search-link rounded-icon" aria-label="Cerca nel sito" href="#">--}}
+{{--                                        <svg class="icon">--}}
+{{--                                            <use href="{{Theme::url('svg/sprites.svg')}}#it-search"></use>--}}
+{{--                                        </svg>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -120,12 +117,12 @@
         </div>
 
         <!-- MENU -->
-        <div class="it-header-navbar-wrapper" id="header-nav-wrapper">
+        <div class="it-header-navbar-wrapper theme-light-desk" id="header-nav-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <!--start nav-->
-                        <div class="navbar navbar-expand-lg has-megamenu">
+                        <div class="navbar navbar-expand-lg has-megamenu bg-none">
                             <button class="custom-navbar-toggler" type="button" aria-controls="nav4"
                                     aria-expanded="false" aria-label="Mostra/Nascondi la navigazione"
                                     data-bs-target="#nav4" data-bs-toggle="navbarcollapsible">

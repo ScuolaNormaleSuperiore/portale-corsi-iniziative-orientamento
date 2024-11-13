@@ -16,7 +16,7 @@
                     <div class="col-12">
                         <div class="it-hero-text-wrapper bg-dark">
                             {{--							<span class="it-Categoria">Categoria</span>--}}
-                            <h3 class="fw-bold">Scopri il tuo futuro, costruisci l'eccellenza: entra alla Normale.</h3>
+                            <h2 class="fw-bold">Scopri il tuo futuro, costruisci l'eccellenza: entra alla Normale.</h2>
                             {{--							<p class="d-none d-lg-block">Candidati per i corsi di orientamento</p>--}}
                             <div class="it-btn-container"><a class="btn btn-sm btn-secondary" href="#">Candidati per i
                                     corsi di orientamento</a></div>
@@ -33,48 +33,23 @@
             >
                 <div class="container" style="">
                     <div class="row">
-                        <h2 class="text-center text-primary">Per saperne di più</h2>
+                        <h2 class="text-center">Per saperne di più</h2>
                     </div>
                 </div>
             </div>
             <div class="container" style="background-color: transparent">
                 <div class="row">
                     <div class="col-12 col-lg-6">
-                        <div class="card-wrapper px-0">
-                            <div class="card card-img">
-                                <div class="card-body" style="height:120px;">
-                                    <h3 class="card-title h5 text-primary">Parla con noi</h3>
-                                    <p class="card-text font-serif">chiedi al nostro chatbot o consulta le nostre
-                                        FAQ</p>
-                                </div>
-                                <div class="img-responsive-wrapper">
-                                    <div class="img-responsive img-responsive-panoramic">
-                                        <figure class="img-wrapper">
-                                            <img src="{!! Theme::url('/assets/img1.png') !!}"
-                                                 title="titolo immagine" alt="descrizione immagine">
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @include('components/card-img-bottom',['title' => "Parla con noi",
+                                'subtitle' =>  "chiedi al nostro chatbot o consulta le nostre FAQ",
+                                'img' =>  Theme::url('/assets/img1.png')
+                                ])
                     </div>
                     <div class="col-12 col-lg-6">
-                        <div class="card-wrapper px-0">
-                            <div class="card card-img">
-                                <div class="card-body" style="height:120px;">
-                                    <h3 class="card-title h5 text-primary">Sportello da Studente a Studente</h3>
-                                    <p class="card-text font-serif">incontra online i nostri studenti Tutor</p>
-                                </div>
-                                <div class="img-responsive-wrapper">
-                                    <div class="img-responsive img-responsive-panoramic">
-                                        <figure class="img-wrapper">
-                                            <img src="{!! Theme::url('/assets/img2.png') !!}"
-                                                 title="titolo immagine" alt="descrizione immagine">
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @include('components/card-img-bottom',['title' => "Sportello da Studente a Studente",
+                                'subtitle' =>  "incontra online i nostri studenti Tutor",
+                                'img' =>  Theme::url('/assets/img2.png')
+                                ])
                     </div>
                 </div>
             </div>
@@ -96,10 +71,10 @@
                                  style="border-top: 3px solid #005A74;">
                                 <div class="card-body">
                                     <h5 class="card-title h5 text-primary">{{$pagina->titolo_it}}</h5>
-                                    <p class="card-text font-serif">
-                                        <a href="/pagina-orientamento/{{$pagina->id}}">
+                                    <p class="card-text font-sans-serif">
+                                        <a href="/pagina-orientamento/{{$pagina->id}}" class="fw-semibold">
                                             Scopri di più
-                                            <svg class="icon icon-primary">
+                                            <svg class="icon icon-primary icon-sm">
                                                 <use href="{{Theme::url('svg/sprites.svg')}}#it-arrow-right"></use>
                                             </svg>
                                         </a>
@@ -132,7 +107,7 @@
                 <div class="row">
 
                     @if($newsAlta)
-                        <div class="col-12 pb-5">
+                        <div class="col-12 pb-5 d-lg-block d-none d-sm-none d-md-none">
                             <!--start card-->
                             <div class="card-wrapper">
                                 <div class="card card-bg card-img no-after">
@@ -146,10 +121,49 @@
                                                 </figure>
                                             </div>
                                         </div>
-                                        <div class="d-flex flex-column justify-content-center w-50 align-items-center">
-                                            <h3 class="card-title h5 ">{{$newsAlta->titolo_it}}</h3>
-                                            <p class="card-text font-serif">{{$newsAlta->sottotitolo_it}}</p>
+                                        <div class="d-flex flex-column justify-content-center w-50 align-items-start p-4">
+                                            <h3 class="card-title h5 ">
+                                                <a href="/dettaglio-news/{{$newsAlta->id}}">
+                                                    {{$newsAlta->titolo_it}}
+                                                </a>
+                                            </h3>
+
+                                            <p class="card-text font-serif text-left">
+                                                <a href="/dettaglio-news/{{$newsAlta->id}}">
+                                                    {{$newsAlta->sottotitolo_it}}
+                                                </a>
+                                            </p>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end card-->
+                        </div>
+
+                        <div class="col-12 col-lg-4 d-lg-none d-xs-block">
+                            <!--start card-->
+                            <div class="card-wrapper">
+                                <div class="card card-bg  card-img no-after">
+                                    <div class="img-responsive-wrapper">
+                                        <div class="img-responsive img-responsive-panoramic">
+                                            <figure class="img-wrapper">
+                                                <img src="{{$newsAlta->picture}}"
+                                                     title="{{$newsAlta->titolo_it}}" alt="{{$newsAlta->titolo_it}}">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3 class="card-title h5 ">
+                                            <a href="/dettaglio-news/{{$newsAlta->id}}">
+                                                {{$newsAlta->titolo_it}}
+                                            </a>
+                                        </h3>
+
+                                        <p class="card-text font-serif text-left">
+                                            <a href="/dettaglio-news/{{$newsAlta->id}}">
+                                                {{$newsAlta->sottotitolo_it}}
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +187,12 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title h5 ">{{$newsBassa->titolo_it}}</h3>
+                                        <h3 class="card-title h5 ">
+                                            <a href="/dettaglio-news/{{$newsBassa->id}}">
+                                                {{$newsBassa->titolo_it}}
+                                            </a>
+                                        </h3>
+
                                         {{--                                        <p class="card-text font-serif"></p>--}}
                                         {{--                                        <a class="read-more" href="#">--}}
                                         {{--                                            <span class="text">Leggi di più</span>--}}
@@ -264,7 +283,11 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title h5 ">{{$evento->titolo_it}}</h3>
+                                        <h3 class="card-title h5 ">
+                                            <a href="/dettaglio-evento/{{$evento->id}}">
+                                                {{$evento->titolo_it}}
+                                            </a>
+                                        </h3>
                                         {{--                                        <p class="card-text font-serif"></p>--}}
                                         {{--                                        <a class="read-more" href="#">--}}
                                         {{--                                            <span class="text">Leggi di più</span>--}}
