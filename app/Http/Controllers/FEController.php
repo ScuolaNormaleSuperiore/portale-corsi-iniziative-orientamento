@@ -59,7 +59,10 @@ class FEController extends Controller
     public function paginaOrientamento(Request $request, Pagina $pagina)
     {
 
-        $navleft = ['sezioni' => $pagina->sezioni];
+        $navleft = [
+            'sezioni' => $pagina->sezioni->whereNotNull('nome_it')->all(),
+            'allegati' => $pagina->attachments,
+        ];
         $breadcrumbs = [
             'Home' => '/',
             'Orientamento' => '/',
@@ -155,7 +158,11 @@ class FEController extends Controller
 
     public function dettaglioNews(Request $request, News $notizia) {
 
-        $navleft = ['sezioni' => $notizia->sezioni];
+        $navleft = [
+            'sezioni' => $notizia->sezioni->whereNotNull('nome_it')->all(),
+            'data_news' => $notizia->data,
+            'allegati' => $notizia->attachments,
+        ];
         $breadcrumbs = [
             'Home' => '/',
             'Notizie' => '/archivio-news',
@@ -166,7 +173,14 @@ class FEController extends Controller
 
     public function dettaglioEvento(Request $request, Evento $evento) {
 
-        $navleft = ['sezioni' => $evento->sezioni];
+        $navleft = [
+            'sezioni' => $evento->sezioni->whereNotNull('nome_it')->all(),
+            'luogo_evento' => $evento->luogo,
+            'data_evento' => $evento->data,
+            'orario_evento' => $evento->orario,
+            'data_fine_evento' => $evento->data_fine,
+            'allegati' => $evento->attachments,
+        ];
         $breadcrumbs = [
             'Home' => '/',
             'Notizie' => '/archivio-eventi',

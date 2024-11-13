@@ -22,7 +22,7 @@
                     </div>
                     @endif
                         @foreach ($evento->sezioni as $section)
-                            <div class="pt-4">
+                            <div class="pt-4" id="sezione_{{$loop->index}}">
                                 <h3 class="h3">{{$section->nome_it}}</h3>
                                 <p>{!! $section->contenuto_it !!}</p>
                             </div>
