@@ -224,8 +224,8 @@
                     <div class="col-12 col-lg-6 m-auto">
                         <div class="form-group">
                             <label class="active" for="exampleInputTime">Email</label>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control"
+                            <div class="input-group mb-3 newsletter-form">
+                                <input type="email" required class="form-control"
                                        placeholder="Inserisci la tua email"
                                        aria-label="Inserisci la tua email" aria-describedby="basic-addon2">
                                 <div class="input-group-append">

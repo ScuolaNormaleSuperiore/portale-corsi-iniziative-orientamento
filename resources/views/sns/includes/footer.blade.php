@@ -82,8 +82,8 @@
                             <div class="row pt-4">
                                 <div class="m-auto">
                                     <div class="form-group">
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control"
+                                        <div class="input-group mb-3 newsletter-form">
+                                            <input type="email" required class="form-control"
                                                    placeholder="Inserisci la tua email"
                                                    aria-label="Inserisci la tua email" aria-describedby="basic-addon2">
                                             <div class="input-group-append">

@@ -75,6 +75,7 @@
         "gecche/laravel-cupparis-appvars": "^10.0",
         "gecche/laravel-cupparis-model-skeleton": "v10.x-dev",
         "guzzlehttp/guzzle": "^7.2",
+        "hofmannsven/laravel-brevo": "^1.2",
         "joshbrw/laravel-module-installer": "^2.0",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",

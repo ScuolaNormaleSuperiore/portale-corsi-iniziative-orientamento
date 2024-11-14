@@ -7,7 +7,10 @@
     @include('includes.header')
     @yield('content-body')
     @include('includes.footer')
+    @include('includes.notifications')
+
+    @include('includes.scripts')
 </body>
-{!!  Theme::js('js/bootstrap-italia.bundle.min.js') !!}
+
 
 </html>

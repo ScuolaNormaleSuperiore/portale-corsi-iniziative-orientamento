@@ -20,6 +20,8 @@ use App\Http\Controllers\FEController;
 Route::get('json/dynamic-conf', [JsonController::class,'postDynamicConf'])->name('json-dynamic-conf');
 Route::post('json/user-info', [JsonController::class,'getUserInfo'])->name('json-user-info');
 
+Route::get('test', [\App\Http\Controllers\TestController::class,'test'])->name('test');
+
 Route::get('/', [FEController::class,'index'])->name('fe-index')->middleware([]);
 Route::get('/orientamento', [FEController::class,'orientamento'])->name('orientamento')->middleware([]);
 Route::get('/pagina-orientamento/{pagina}', [FEController::class,'paginaOrientamento'])->name('pagina-orientamento')->middleware([]);
