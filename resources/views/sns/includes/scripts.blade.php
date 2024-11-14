@@ -14,11 +14,12 @@
                     if (valid) {
                         newsletterIn(input.value);
                     } else {
-                        triggerNotification('not-newsletter-error','Inserisci un indirizzo e-mail valido');
+                        triggerNotificationMsg('Inserisci un indirizzo e-mail valido','not-newsletter-error');
                     };
                 })
             })
     })
+
 
     function newsletterIn(email) {
 
@@ -26,26 +27,33 @@
             email: email,
         })
             .then(function (response) {
+                // console.log("RESPONSE" ,response);
+                // var data = response.data;
                 triggerNotification('not-newsletter-success');
             })
             .catch(function (error) {
-                triggerNotification('not-newsletter-error');
+                var data = error.response.data;
+                // console.log(error.response.data);
+                var msg = "Ci sono stati dei problemi con l'inserimento della tua email";
+                if (data && data.msg) {
+                   msg = data.msg;
+                }
+                triggerNotificationMsg(msg,'not-newsletter-error');
                 // console.log(error);
             });
 
     }
 
-    function triggerNotification(notificationId,msg,timeout) {
-        if (!timeout) {
-            timeout = 3000;
-        }
-        if (!msg) {
-            msg = "Ci sono stati dei problemi con l'inserimento della tua email";
-        }
+
+    function triggerNotificationMsg(msg,notificationId,timeout) {
         var notificationDOM = document.querySelector('#'+notificationId);
         notificationDOM.querySelector('p').innerText = msg;
+        triggerNotification(notificationId,timeout);
+    }
+    function triggerNotification(notificationId,timeout) {
         const myNotification = new bootstrap.Notification(document.getElementById(notificationId), {
-            timeout: 3000
+            timeout: (timeout ? timeout : 3000),
+
         })
         myNotification.show();
     }

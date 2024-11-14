@@ -18,6 +18,6 @@
             </svg>
             Inserimento newsletter
         </h2>
-        <p></p>
+        <p>Ci sono stati dei problemi con l'inserimento della tua email</p>
     </div>
 </div>

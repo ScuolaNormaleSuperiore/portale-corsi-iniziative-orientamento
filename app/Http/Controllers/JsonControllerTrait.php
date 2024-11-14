@@ -12,7 +12,7 @@ trait JsonControllerTrait
     ];
 
 
-    protected function _error($msg,$additionalData = [],$exit = false)
+    protected function _error($msg,$additionalData = [],$status = 200,$exit = false)
     {
         $this->json['error'] = 1;
         $this->json['msg'] = $msg;
@@ -20,26 +20,26 @@ trait JsonControllerTrait
             $this->json[$field] = $value;
         }
         if ($exit) {
-            return $this->_json();
+            return $this->_json(false,$status);
         }
     }
 
-    protected function _errorAndExit($msg)
+    protected function _errorAndExit($msg,$status = 200)
     {
-        return $this->_error($msg,[],true);
+        return $this->_error($msg,[],$status,true);
     }
 
-    protected function _errorWithResult($msg,$result,$exit = false)
+    protected function _errorWithResult($msg,$result,$status = 200,$exit = false)
     {
-        return $this->_error($msg,['result' => $result],$exit);
+        return $this->_error($msg,['result' => $result],$status,$exit);
     }
 
-    protected function _json($msg = false)
+    protected function _json($msg = false, $status = 200)
     {
         if ($msg !== false) {
             $this->json['msg'] = $msg;
         }
-        return Response::json($this->json);
+        return Response::json($this->json,$status);
     }
 
     protected function _result($result,$msg = null,$exit = true) {
