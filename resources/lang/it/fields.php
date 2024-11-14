@@ -98,4 +98,6 @@ return array (
   'resource' => 'File',
   'scuola' => 'Scuola',
   'testo_it' => 'testo it',
+  'video_id' => 'video id',
+  'categoria_id' => 'categoria id',
 );

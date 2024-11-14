@@ -85,6 +85,7 @@ return [
         'evento',
         'sezione_layout',
         'categoria_video',
+        'video',
 //        'foto',
 //        'attachment',
     ],

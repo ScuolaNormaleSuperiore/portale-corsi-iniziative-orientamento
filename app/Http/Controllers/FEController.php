@@ -8,6 +8,7 @@ use App\Models\News;
 use App\Models\Pagina;
 use App\Models\SezioneLayout;
 use App\Models\StudenteOrientamento;
+use App\Models\Video;
 use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -161,11 +162,19 @@ class FEController extends Controller
 
         $filter = $request->get('filter');
 
-        $items = $this->getArchivioItems($request,$filter,News::class);
+        $items = Video::where('attivo', 1)
+            ->orderBy('ordine','ASC');
+
+        if ($filter) {
+            $items->where('titolo_it','LIKE', '%' . $filter . '%');
+        }
+        $items = $items->paginate(Config::get('sns.per-page'))->withQueryString();
+
+//        $items = $this->getArchivioItems($request,$filter,Video::class);
 
         $breadcrumbs = [
             'Home' => '/',
-            'Notizie' => '#',
+            'Video' => '#',
         ];
         return view('archivio-video', compact('items', 'filter','breadcrumbs'));
     }

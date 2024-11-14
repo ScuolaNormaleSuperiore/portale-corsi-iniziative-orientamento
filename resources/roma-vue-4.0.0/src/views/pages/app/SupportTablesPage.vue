@@ -26,6 +26,7 @@ import ModelTitoloStudio from "../../../data/modelsConfs/app/ModelTitoloStudio";
 import ModelLivelloLinguistico from "../../../data/modelsConfs/app/ModelLivelloLinguistico";
 import ModelFiltroSelezione from "../../../data/modelsConfs/app/ModelFiltroSelezione";
 import ModelMateriaOrientamento from "../../../data/modelsConfs/app/ModelMateriaOrientamento";
+import ModelCategoriaVideo from "../../../data/modelsConfs/app/ModelCategoriaVideo";
 
 export default {
   data() {
@@ -89,6 +90,12 @@ export default {
         label: 'Materie orientamento', icon: 'fa fa-gears',
         command() {
           that.setConf(ModelMateriaOrientamento);
+        }
+      },
+      {
+        label: 'Categorie video', icon: 'fa fa-brands fa-youtube',
+        command() {
+          that.setConf(ModelCategoriaVideo);
         }
       },
 

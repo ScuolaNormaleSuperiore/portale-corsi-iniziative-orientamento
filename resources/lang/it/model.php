@@ -30,4 +30,5 @@ return array (
   'evento' => 'evento|eventi',
   'sezione_layout' => 'testo statico|testi statici',
   'categoria_video' => 'categoria video|categorie video',
+  'video' => 'video|video',
 );
