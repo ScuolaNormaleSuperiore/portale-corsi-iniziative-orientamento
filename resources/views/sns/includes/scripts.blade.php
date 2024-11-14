@@ -18,6 +18,13 @@
                     };
                 })
             })
+
+        // const myToastEl = document.querySelector('#not-newsletter-error')
+        // console.log("NOT:::",myToastEl);
+        // myToastEl.addEventListener('hidden.bs.notification', () => {
+        //     alert('herenot');
+        //     // do something...
+        // })
     })
 
 

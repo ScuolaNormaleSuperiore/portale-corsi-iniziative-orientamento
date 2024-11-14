@@ -156,6 +156,19 @@ class FEController extends Controller
         return view('archivio-eventi', compact('items', 'filter','breadcrumbs'));
     }
 
+
+    public function archivioVideo(Request $request) {
+
+        $filter = $request->get('filter');
+
+        $items = $this->getArchivioItems($request,$filter,News::class);
+
+        $breadcrumbs = [
+            'Home' => '/',
+            'Notizie' => '#',
+        ];
+        return view('archivio-video', compact('items', 'filter','breadcrumbs'));
+    }
     public function dettaglioNews(Request $request, News $notizia) {
 
         $navleft = [

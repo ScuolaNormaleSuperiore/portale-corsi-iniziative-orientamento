@@ -32,6 +32,8 @@ Route::get('/dettaglio-news/{notizia}', [FEController::class,'dettaglioNews'])->
 Route::get('/archivio-eventi', [FEController::class,'archivioEventi'])->name('archivio-eventi')->middleware([]);
 Route::get('/dettaglio-evento/{evento}', [FEController::class,'dettaglioEvento'])->name('dettaglio-evento')->middleware([]);
 
+Route::get('/archivio-video', [FEController::class,'archivioVideo'])->name('archivio-video')->middleware([]);
+
 Route::get('/bladepuro', function () {
     return view('bladepuro');
 });

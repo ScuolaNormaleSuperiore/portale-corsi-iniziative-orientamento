@@ -29,4 +29,5 @@ return array (
   'news' => 'news|news',
   'evento' => 'evento|eventi',
   'sezione_layout' => 'testo statico|testi statici',
+  'categoria_video' => 'categoria video|categorie video',
 );
