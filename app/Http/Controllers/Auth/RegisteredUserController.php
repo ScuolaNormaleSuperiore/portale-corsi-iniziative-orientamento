@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,11 @@ use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
+    public function __construct()
+    {
+        Theme::set('sns');
+    }
+
     /**
      * Display the registration view.
      *

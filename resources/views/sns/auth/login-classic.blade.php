@@ -1,92 +1,100 @@
 @extends('layouts.app')
 @section('content-body')
 
-    <div class="container">
+    <div class="container-fluid">
 
-        <div class="row pt-5">
-            <div class="col-md-6 mb-4">
-                <h2 class="text-center title pb-4">
-                    Accesso studenti stranieri
-                </h2>
-                <form style="max-width: 400px;margin: 0 auto;" class="validate-form" method="post"
-                      action="{{ route('login') }}"
-                      name="loginform">
-                    @csrf
+        <nav class="breadcrumb-container" aria-label="Percorso di navigazione">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a><span class="separator">/</span></li>
+                <li class="breadcrumb-item"><a href="/login">Accesso</a><span class="separator">/</span></li>
+                <li class="breadcrumb-item active">Accesso per studenti stranieri</li>
+            </ol>
+        </nav>
 
-                    <div class="form-group">
+        <section>
+            <h2 class="pb-5">Accesso per studenti stranieri</h2>
+            <hr/>
 
-                        <input type="text" autofocus="" autocomplete="off" name="email"
-                               placeholder="Indirizzo email" class="form-control"
-                               data-rule-required="true"
-                               value="">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" data-bs-input class="form-control input-password" id="password" name="password">
-                        <button type="button" class="password-icon btn" role="switch" aria-checked="false">
-                            <span class="visually-hidden">Mostra/Nascondi Password</span>
-                            <svg class="password-icon-visible icon icon-sm" aria-hidden="true"><use href="{{Theme::url('svg/sprites.svg')}}#it-password-visible"></use></svg>
-                            <svg class="password-icon-invisible icon icon-sm d-none" aria-hidden="true"><use href="{{Theme::url('svg/sprites.svg')}}#it-password-invisible"></use></svg>
-                        </button>
-                    </div>
+        </section>
+        <section class="container pt-4 pb-4">
+                    <h3 class="pb-5">I tuoi dati di accesso</h3>
+            <form  class="validate-form" method="post"
+                  action="{{ route('login') }}"
+                  >
+                @csrf
 
-{{--                    <div class="form-group">--}}
-{{--                        <label for="exampleInputPassword3">Scegli password</label>--}}
-{{--                        <input type="password" data-bs-input class="form-control input-password" id="exampleInputPassword3" aria-describedby="strengthMeterInfo3 infoPassword3">--}}
-{{--                        <button type="button" class="password-icon btn" role="switch" aria-checked="false">--}}
-{{--                            <span class="visually-hidden">Mostra/Nascondi Password</span>--}}
-{{--                            <svg class="password-icon-visible icon icon-sm" aria-hidden="true"><use href="{{Theme::url('svg/sprites.svg')}}#it-password-visible"></use></svg>--}}
-{{--                            <svg class="password-icon-invisible icon icon-sm d-none" aria-hidden="true"><use href="{{Theme::url('svg/sprites.svg')}}#it-password-invisible"></use></svg>--}}
-{{--                        </button>--}}
-{{--                        <p id="infoPassword3" class="form-text text-muted d-block small pb-0">Inserisci almeno 8 caratteri, combinando maiuscole, numeri e caratteri speciali.</p>--}}
-{{--                        <div class="password-strength-meter">--}}
-{{--                            <p id="strengthMeterInfo3" class="strength-meter-info small form-text text-muted pt-0" aria-live="polite"--}}
-{{--                               data-bs-short-pass="Password troppo breve."--}}
-{{--                               data-bs-bad-pas="Password debole."--}}
-{{--                               data-bs-good-pass="Password abbastanza sicura."--}}
-{{--                               data-bs-strong-pass="Password sicura."--}}
-{{--                            ></p>--}}
-{{--                            <div class="password-meter progress rounded-0 position-absolute">--}}
-{{--                                <div class="row position-absolute w-100 m-0">--}}
-{{--                                    <div class="col-3 border-start border-end border-white"></div>--}}
-{{--                                    <div class="col-3 border-start border-end border-white"></div>--}}
-{{--                                    <div class="col-3 border-start border-end border-white"></div>--}}
-{{--                                    <div class="col-3 border-start border-end border-white"></div>--}}
-{{--                                </div>--}}
-{{--                                <div class="progress-bar bg-muted" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-                    {{--                    <div class="form-group form-check"><input id="remember_me" class="form-check-input" type="checkbox"--}}
-                    {{--                                                              tabindex="1" name="Cookie"> <label--}}
-                    {{--                                class="form-check-label"--}}
-                    {{--                                for="remember_me">Ricordami</label>--}}
-                    {{--                    </div>--}}
-                    <button class="btn btn-lg btn-primary d-block mx-auto" name="LoginButton"> Accedi
+
+                <div class="form-group">
+                    <label for="email">Indirizzo e-mail</label>
+                    <input type="text" autofocus="" autocomplete="off" id="email" name="email"
+{{--                           placeholder="Indirizzo email" --}}
+                           class="form-control"
+                           data-rule-required="true"
+                           >
+
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" data-bs-input class="form-control input-password" id="password" name="password">
+                    <button type="button" class="password-icon btn" role="switch" aria-checked="false">
+                        <span class="visually-hidden">Mostra/Nascondi Password</span>
+                        <svg class="password-icon-visible icon icon-sm" aria-hidden="true"><use href="{{Theme::url('svg/sprites.svg')}}#it-password-visible"></use></svg>
+                        <svg class="password-icon-invisible icon icon-sm d-none" aria-hidden="true"><use href="{{Theme::url('svg/sprites.svg')}}#it-password-invisible"></use></svg>
                     </button>
-                </form>
-                <hr>
-                <div class="text-center mb-5"><a href="{{ route('password.request') }}">Hai dimenticato la password?</a>
-                </div>
-                {{--                <script type="text/javascript">--}}
-                {{--                    jQuery(document).ready(function () {--}}
-                {{--                        jQuery('[name="password"]').password({--}}
-                {{--                            strengthMeter: false,--}}
-                {{--                            message: "Mostra/nascondi password",--}}
-                {{--                        });--}}
-                {{--                    });</script>--}}
-                {{--            </div>--}}
 
-                <div class="col-md-6 mb-4"><h1 class="text-center title">Sei un'organizzazione?</h1>
-                    <p class="text-center mb-5"></p>
-                    <p>Registra la tua organizzazione per inserire opportunità ed eventi dedicati ai giovani</p>
+                </div>
+
+
+
+
+{{--                <div class="form-check">--}}
+{{--                    <input id="id_remember" name="remember" type="checkbox">--}}
+{{--                    <label for="id_remember">Ricordami</label>--}}
+{{--                </div>--}}
+
+
+
+
+                <div class="py-4 login_buttons">
+                    <button class="btn btn-primary" type="submit">Log in</button>
+{{--                    <span class="px-3 my-3 my-md-0">oppure</span>--}}
+
+
+
+
+
+
+
+
+{{--                    <a class="btn btn-icon btn-outline-primary github" href="/accounts/github/login/?process=login" title="GitHub">--}}
+{{--                        <svg class="icon icon-sm icon-primary">--}}
+{{--                            <use xlink:href="https://docs.italia.it/media/static/vendor/bootstrap-italia/svg/sprite.svg#it-github"></use>--}}
+{{--                        </svg>--}}
+{{--                        <span>--}}
+{{--        Autenticati con GitHub--}}
+{{--      </span>--}}
+{{--                    </a>--}}
+
+
+
+
+
+
+
+
+
+
                     <p></p>
-                    <div class="text-center"><a href="/join/as/private_organization" class="btn btn-lg btn-primary">Registrati </a>
-                    </div>
                 </div>
+                <p>Se non hai ancora creato un account, <a href="{{ route('register') }}">registrati</a> adesso.</p>
+                <p>Se invece hai dimenticato la password, puoi <a href="{{ route('password.request') }}">reimpostarla</a>.</p>
+            </form>
+        </section>
 
-            </div>
-        </div>
     </div>
 
 @endsection
