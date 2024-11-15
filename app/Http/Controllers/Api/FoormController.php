@@ -56,7 +56,10 @@ class FoormController extends Controller
                 'icon' => 'fa-solid fa-rectangle-list',
                 "items" => [
                     [
-                        "label" => 'Pagine orientamento', "icon" => 'fa fa-users-line', "to" => '/manage/ModelPagina'
+                        "label" => 'Pagine orientamento', "icon" => 'fa fa-users-line', "to" => '/manage/ModelPaginaOrientamento'
+                    ],
+                    [
+                        "label" => 'Pagine standard', "icon" => 'fa fa-users-line', "to" => '/manage/ModelPagina'
                     ],
                     [
                         "label" => 'News', "icon" => 'fa fa-newspaper', "to" => '/manage/ModelNews'

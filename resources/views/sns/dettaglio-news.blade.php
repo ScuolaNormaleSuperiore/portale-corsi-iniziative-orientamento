@@ -6,12 +6,12 @@
         @include('sections.breadcrumbs-standard')
         <div class="container">
 
-            <div class="d-flex">
+            <div class="row">
 
-                <div class="w-25">
+                <div class="col-12 col-lg-4">
                     @include('sections.navleft')
                 </div>
-                <div class="w-75">
+                <div class="col-12 col-lg-8">
                     @if($notizia->picture)
                     <div class="img-responsive-wrapper">
                         <div class="img-responsive img-responsive-panoramic">

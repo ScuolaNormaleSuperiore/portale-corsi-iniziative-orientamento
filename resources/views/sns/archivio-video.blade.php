@@ -7,6 +7,9 @@
 
         <div class="container">
 
+            <section class="pb-4">
+                {!! $descrizione->testo_it !!}
+            </section>
 
             {{--            <h2 class="title-xxlarge mb-4">Esplora tutte le novità</h2>--}}
 {{--            <form method="GET" action="/archivio-video">--}}

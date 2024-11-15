@@ -77,6 +77,7 @@ return [
         'candidato_corso',
         'appuntamento',
         'pagina',
+        'pagina_orientamento',
         'sezione_contenuto',
         'classe',
         'materia_orientamento',

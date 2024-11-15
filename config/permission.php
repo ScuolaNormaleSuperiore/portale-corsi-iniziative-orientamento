@@ -145,6 +145,8 @@ return [
                 'Login',
                 'Admin',
                 'Operatore',
+                'Scuola',
+                'Studente',
             ]
         ],
 
@@ -168,6 +170,16 @@ return [
             'candidato',
             'candidato_voti',
             'candidato_corso',
+            'pagina',
+            'pagina_orientamento',
+            'news',
+            'evento',
+            'video',
+            'sezione_layout',
+            'materia_orientamento',
+            'categoria_video',
+            'studente_orientamento',
+
         ],
 
         'models_permissions_prefixes' => [

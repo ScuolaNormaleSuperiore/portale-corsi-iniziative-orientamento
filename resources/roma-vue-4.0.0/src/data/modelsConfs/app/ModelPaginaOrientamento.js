@@ -1,10 +1,10 @@
 import cs from "cupparis-primevue";
 
 export default {
-    modelName : 'pagina',
+    modelName : 'pagina_orientamento',
     search: {
         type: 'v-search',
-        modelName : 'pagina',
+        modelName : 'pagina_orientamento',
         fields: [
 			'titolo_it',
 
@@ -33,13 +33,20 @@ export default {
     },
     list: {
         type: 'v-list',
-        modelName : 'pagina',
+        modelName : 'pagina_orientamento',
         actions : [
+            'action-insert',
             'action-edit',
+            'action-delete',
+            'action-delete-selected',
         ],
         fields: [
 			'titolo_it',
 			// 'sottotitolo_it',
+			'ordine',
+            'homepage',
+			'attivo',
+
         ],
         fieldsConfig: {
 			'titolo_it' : {
@@ -48,16 +55,48 @@ export default {
 			'sottotitolo_it' : {
                 type : "w-text",
 			},
+            ordine: {
+                type: 'w-select',
+                modelName: 'pagina_orientamento',
+                oldValue: null,
+                ready() {
+                    this.oldValue = this.value;
+                },
+                change() {
+                    let that = this;
+                    let st = that.getValue();
+                    if (st === that.oldValue) {
+                        return;
+                    }
+
+                    let r = that.createRoute('set');
+                    r.modelName = 'pagina_orientamento'
+                    r.setParams({
+                        field: 'ordine',
+                        value: st,
+                        id: that.conf.pk,
+                    })
+                    cs.Server.route(r, function (json) {
+                        console.debug('json', json)
+                        if (json.error) {
+                            cs.CrudCore.alertError(json.msg);
+                            return;
+                        }
+                        that.view.reload();
+                    })
+
+                }
+            },
 
             'attivo' : {
                 type : "w-swap",
-                modelName : 'pagina',
+                modelName : 'pagina_orientamento',
                 //switchClass: 'form-switch-danger banned',
                 //dataSwitched : true,
 			},
             'homepage' : {
                 type : "w-swap",
-                modelName : 'pagina',
+                modelName : 'pagina_orientamento',
                 //switchClass: 'form-switch-danger banned',
                 //dataSwitched : true,
             },
@@ -74,11 +113,14 @@ export default {
     },
     edit: {
         type: 'v-edit',
-        modelName : 'pagina',
+        modelName : 'pagina_orientamento',
         actions : ['action-save','action-back'],
         fields: [
 			'titolo_it',
 			'sottotitolo_it',
+			'ordine',
+            'attivo',
+            'homepage',
             'sezioni',
             'fotos',
             'attachments',
@@ -92,7 +134,7 @@ export default {
                 type : "w-radio",
             },
 			'titolo_it' : {
-                type : "w-text",
+                type : "w-input",
                 layout : {
                     colClass : 'w-12',
                 }
@@ -124,7 +166,7 @@ export default {
                                 field : 'attachments|resource',
                                 resource_type : 'attachment'
                             },
-                            modelName : 'pagina',
+                            modelName : 'pagina_orientamento',
                             previewConf:{
                                 iconSize:'fa-3x'
                             },
@@ -157,7 +199,7 @@ export default {
                                 field : 'fotos|resource',
                                 resource_type : 'foto'
                             },
-                            modelName : 'pagina',
+                            modelName : 'pagina_orientamento',
                             previewConf:{
                                 iconSize:'fa-3x'
                             },

@@ -9,15 +9,15 @@ use Spatie\Sluggable\SlugOptions;
 /**
  * Breeze (Eloquent) model for pagine table.
  */
-class Pagina extends Breeze
+class PaginaOrientamento extends Breeze
 {
-	use Relations\PaginaRelations;
+	use Relations\PaginaOrientamentoRelations;
 
     use HasSlug;
     use PaginaTrait;
 //    use ModelWithUploadsTrait;
 
-    protected static $tipoPagina = 'standard';
+    protected static $tipoPagina = 'orientamento';
 
     protected $table = 'pagine';
 

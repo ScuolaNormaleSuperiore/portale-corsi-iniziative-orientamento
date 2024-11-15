@@ -14,7 +14,7 @@
                 <div class="card-wrapper card-teaser-wrapper card-teaser-block-3">
                     <!--start card-->
                     @foreach($classi as $classe)
-                        @include('components.card-orientamento',['pagina' => $classe, 'baselink' => 'sportello-studenti'])
+                        @include('components.card-orientamento',['pagina' => $classe, 'baselink' => 'sportello-studenti', 'routefield' => 'id'])
                     @endforeach
                 </div>
             </section>

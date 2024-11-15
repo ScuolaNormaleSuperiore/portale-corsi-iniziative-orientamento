@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Pagina;
+use App\Models\PaginaOrientamento;
 use Gecche\Cupparis\App\Foorm\FoormManager;
 use Gecche\Cupparis\Menus\Facades\Menus;
 use Illuminate\Support\Facades\Auth;
@@ -52,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('dashboardType', $dashboardType);
             $view->with('cupparisMenus', $this->getMenuByRole());
 
-            $orientamentoFooter = Pagina::where('attivo', 1)->orderBy('ordine')->get();
+            $orientamentoFooter = PaginaOrientamento::where('attivo', 1)->orderBy('ordine')->get();
 
             $i = 1;
             $orientamentoFooterArray = [

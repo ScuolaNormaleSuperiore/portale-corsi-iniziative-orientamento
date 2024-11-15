@@ -6,6 +6,7 @@ use App\Models\Classe;
 use App\Models\Evento;
 use App\Models\News;
 use App\Models\Pagina;
+use App\Models\PaginaOrientamento;
 use App\Models\SezioneLayout;
 use App\Models\StudenteOrientamento;
 use App\Models\Video;
@@ -33,7 +34,7 @@ class FEController extends Controller
      */
     public function index()
     {
-        $pagine = Pagina::where('attivo', 1)
+        $pagine = PaginaOrientamento::where('attivo', 1)
             ->where('homepage', 1)
             ->orderBy('ordine', 'ASC')
             ->limit(6)
@@ -57,7 +58,7 @@ class FEController extends Controller
         return view('index', compact('pagine', 'newsAlta', 'newsBasse', 'eventi'));
     }
 
-    public function paginaOrientamento(Request $request, Pagina $pagina)
+    public function paginaOrientamento(Request $request, PaginaOrientamento $pagina)
     {
 
         $navleft = [
@@ -70,6 +71,20 @@ class FEController extends Controller
             $pagina->titolo_it => '#',
         ];
         return view('pagina-orientamento', compact('pagina', 'navleft', 'breadcrumbs'));
+    }
+
+    public function pagina(Request $request, Pagina $pagina)
+    {
+
+        $navleft = [
+            'sezioni' => $pagina->sezioni->whereNotNull('nome_it')->all(),
+            'allegati' => $pagina->attachments,
+        ];
+        $breadcrumbs = [
+            'Home' => '/',
+            $pagina->titolo_it => '#',
+        ];
+        return view('pagina', compact('pagina', 'navleft', 'breadcrumbs'));
     }
 
     public function sportelloStudenti(Request $request)
@@ -88,7 +103,7 @@ class FEController extends Controller
     {
 
         $descrizione = SezioneLayout::where('codice', 'orientamento-intro')->firstOrNew();
-        $pagine = Pagina::where('attivo',1)->orderBy('ordine','ASC')->orderBy('titolo_it','ASC')->get();
+        $pagine = PaginaOrientamento::where('attivo',1)->orderBy('ordine','ASC')->orderBy('titolo_it','ASC')->get();
         $breadcrumbs = [
             'Home' => '/',
             'Orientamento' => '#',
@@ -160,6 +175,7 @@ class FEController extends Controller
 
     public function archivioVideo(Request $request) {
 
+        $descrizione = SezioneLayout::where('codice', 'video-intro')->firstOrNew();
         $filter = $request->get('filter');
 
         $items = Video::where('attivo', 1)
@@ -176,7 +192,7 @@ class FEController extends Controller
             'Home' => '/',
             'Video' => '#',
         ];
-        return view('archivio-video', compact('items', 'filter','breadcrumbs'));
+        return view('archivio-video', compact('items', 'filter','descrizione','breadcrumbs'));
     }
     public function dettaglioNews(Request $request, News $notizia) {
 

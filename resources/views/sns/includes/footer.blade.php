@@ -15,7 +15,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 @if($loop->last) pb-4 @else pb-0 @endif">
                                 <div class="link-list-wrapper">
                                     <ul class="footer-list link-list clearfix mb-0">
-                                        <li><a class="list-item" href="/pagina-orientamento/{{$orientamentoFooterElement->id}}"
+                                        <li><a class="list-item" href="/pagina-orientamento/{{$orientamentoFooterElement->slug_it}}"
                                                title="{{$orientamentoFooterElement->titolo_it}}">{{$orientamentoFooterElement->titolo_it}}</a>
                                         </li>
                                     </ul>
@@ -104,9 +104,9 @@
         <div class="container-fluid">
             <!-- <h3 class="visually-hidden">Sezione Link Utili</h3> -->
             <ul class="it-footer-small-prints-list list-inline mb-0 d-flex flex-column flex-md-row">
-                <li class="list-inline-item"><a href="#" title="Note Legali">Media policy</a></li>
-                <li class="list-inline-item"><a href="#" title="Note Legali">Note legali</a></li>
-                <li class="list-inline-item"><a href="#" title="Privacy-Cookies">Privacy policy</a></li>
+                <li class="list-inline-item"><a href="/pagina/media-policy" title="Media Policy">Media policy</a></li>
+                <li class="list-inline-item"><a href="/pagina/note-legali" title="Note Legali">Note legali</a></li>
+                <li class="list-inline-item"><a href="/pagina/privacy-policy" title="Privacy Policy">Privacy policy</a></li>
                 <li class="list-inline-item"><a href="#" title="Mappa del sito">Mappa del sito</a></li>
             </ul>
         </div>

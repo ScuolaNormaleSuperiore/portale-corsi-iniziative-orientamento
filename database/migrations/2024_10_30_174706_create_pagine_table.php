@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->boolean('attivo')->default(1);
             $table->boolean('homepage')->default(0);
             $table->string('slug_it')->nullable();
-            $table->enum('tipo',['standard','blade'])->default('standard');
+            $table->enum('tipo',['standard','blade','orientamento'])->default('standard');
             $table->nullableTimestamps();
             $table->nullableOwnerships();
 
