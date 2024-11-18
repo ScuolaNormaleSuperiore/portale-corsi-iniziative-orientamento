@@ -7,7 +7,7 @@
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
     {!! \Igaster\LaravelTheme\Facades\Theme::css('css/bootstrap-italia.min.css') !!}
-{{--    {!! \Igaster\LaravelTheme\Facades\Theme::css('css/bootstrap-italia-comuni.css') !!}--}}
+    <link media="all" type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css">
 
     @include('includes/fonts')
     <!-- favicon -->

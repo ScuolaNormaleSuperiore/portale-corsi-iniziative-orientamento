@@ -107,7 +107,9 @@
                 <li class="list-inline-item"><a href="/pagina/media-policy" title="Media Policy">Media policy</a></li>
                 <li class="list-inline-item"><a href="/pagina/note-legali" title="Note Legali">Note legali</a></li>
                 <li class="list-inline-item"><a href="/pagina/privacy-policy" title="Privacy Policy">Privacy policy</a></li>
+                <li class="list-inline-item" data-cc="show-preferencesModal"><a href="#">Manage cookie preferences</a></li>
                 <li class="list-inline-item"><a href="#" title="Mappa del sito">Mappa del sito</a></li>
+
             </ul>
         </div>
     </div>
