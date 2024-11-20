@@ -103,6 +103,9 @@ class FoormController extends Controller
                     [
                         "label" => 'Utenti', "icon" => 'fa fa-users', "to" => '/manage/ModelUser'
                     ],
+                    [
+                        "label" => 'Richieste scuole', "icon" => 'fa fa-circle-question', "to" => '/manage/ModelScuolaRichiesta'
+                    ],
 //                     [
 //                         "label"  =>'Materie', "icon" =>'pi pi-fw pi-shopping-cart', "to"=>'/manage/ModelMateria'
 //                     ],

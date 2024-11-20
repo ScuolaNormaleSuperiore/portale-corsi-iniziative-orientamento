@@ -1,5 +1,6 @@
 import cs from 'cupparis-primevue';
 //IMPORT START
+import ModelScuolaRichiesta from './ModelScuolaRichiesta.js';
 import ModelVideo from './ModelVideo.js';
 import ModelCategoriaVideo from './ModelCategoriaVideo.js';
 import ModelSezioneLayout from './ModelSezioneLayout.js';
@@ -37,6 +38,7 @@ import DCupGeoComune from './DCupGeoComune.js';
 export default {
     install() {
         //INSTALL START
+		cs.CrudVars.modelConfs.ModelScuolaRichiesta = ModelScuolaRichiesta;
 		cs.CrudVars.modelConfs.ModelVideo = ModelVideo;
 		cs.CrudVars.modelConfs.ModelCategoriaVideo = ModelCategoriaVideo;
 		cs.CrudVars.modelConfs.ModelSezioneLayout = ModelSezioneLayout;

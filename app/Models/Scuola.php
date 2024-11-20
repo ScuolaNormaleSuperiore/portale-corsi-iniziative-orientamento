@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Gecche\Cupparis\App\Breeze\Breeze;
+use Illuminate\Support\Arr;
 
 /**
  * Breeze (Eloquent) model for scuole table.
@@ -23,6 +24,10 @@ class Scuola extends Breeze
 
     public $appends = [
         "provincia_sigla",
+    ];
+
+    protected $casts = [
+      'info' => 'array',
     ];
 
 
@@ -84,5 +89,22 @@ class Scuola extends Breeze
             return null;
         }
         return $this->provincia->sigla;
+    }
+
+
+    public function addAnnoToInfo($anno) {
+        $info = $this->info;
+        if (!is_array($info)) {
+            $this->info = [
+                'anni' => [
+                    $anno => $anno,
+                ],
+            ];
+            return $this->info;
+        }
+        $anni = Arr::get($info,'anni',[]);
+        $anni[$anno] = $anno;
+        $this->info['anni'] = $anni;
+        return $this->info;
     }
 }

@@ -33,6 +33,8 @@ Route::get('/dettaglio-news/{notizia}', [FEController::class,'dettaglioNews'])->
 Route::get('/archivio-eventi', [FEController::class,'archivioEventi'])->name('archivio-eventi')->middleware([]);
 Route::get('/dettaglio-evento/{evento}', [FEController::class,'dettaglioEvento'])->name('dettaglio-evento')->middleware([]);
 
+Route::get('/cortesia-scuola-richiesta', [FEController::class,'scuolaRichiestaCortesia'])->name('cortesia-scuola-richiesta')->middleware([]);
+
 
 Route::get('/archivio-video', [FEController::class,'archivioVideo'])->name('archivio-video')->middleware([]);
 
@@ -57,7 +59,7 @@ Route::get('/sakai', function () {
 })->middleware(['auth'])->name('sakai');
 
 
-Route::group(["middleware" => "auth"], function() {
+Route::group(["middleware" => ["auth","verified"]], function() {
     Route::get("profile", [UserController::class, 'getProfile'])->name('user.profile');
     Route::post("profile", [UserController::class, 'postProfile'])->name('user.profile-update');
 });

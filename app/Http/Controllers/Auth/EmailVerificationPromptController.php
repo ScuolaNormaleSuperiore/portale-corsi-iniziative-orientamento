@@ -4,10 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Http\Request;
 
 class EmailVerificationPromptController extends Controller
 {
+    public function __construct()
+    {
+        Theme::set('sns');
+    }
     /**
      * Display the email verification prompt.
      *

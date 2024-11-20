@@ -48,7 +48,15 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
         $this->loginBySantum($request);
 
+        if (!Auth::user()->hasVerifiedEmail()) {
+            return redirect()->intended(route('verification.notice'));
+        }
+
+        if (auth_is_admin()) {
+            return redirect()->intended('/dashboard');
+        }
         return redirect()->intended(RouteServiceProvider::HOME);
+
     }
 
     /**

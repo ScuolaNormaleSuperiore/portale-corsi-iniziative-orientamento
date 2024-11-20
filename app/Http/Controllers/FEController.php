@@ -227,4 +227,8 @@ class FEController extends Controller
         return view('dettaglio-evento', compact('evento', 'navleft', 'breadcrumbs'));
     }
 
+    public function scuolaRichiestaCortesia(Request $request) {
+        return view('cortesia-scuola-richiesta');
+    }
+
 }

@@ -81,6 +81,7 @@ Route::group([
 });
 
 Route::get('/iniziativa-corsi/{iniziativa}',[\App\Http\Controllers\Api\AppController::class,'getIniziativaCorsi'])->name('iniziativa-corsi');
+Route::post('/scuole-suggest',[\App\Http\Controllers\Api\AppController::class,'getScuoleAutocomplete'])->name('scuole-suggest');
 
 
 require __DIR__ . '/api-foorm.php';

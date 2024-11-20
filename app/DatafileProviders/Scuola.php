@@ -129,11 +129,11 @@ class Scuola extends BreezeDatafileProvider
 
     public function associateRow(BreezeDatafileInterface $modelDatafile)
     {
-        $anno = $this->getAnno($modelDatafile);
+//        $anno = $this->getAnno($modelDatafile);
 
         $codice = trim($modelDatafile->CODICESCUOLA);
 
-        return \App\Models\Scuola::where('anno',$anno)->where('codice',$codice)->firstOrNew();
+        return \App\Models\Scuola::where('codice',$codice)->firstOrNew();
 
     }
 
@@ -190,6 +190,9 @@ class Scuola extends BreezeDatafileProvider
 //        }
 
         $values['anno'] = $this->getAnno($modelDatafile);
+
+        $values['info'] = $modelTarget->addAnnoToInfo(trim($modelDatafile->ANNOSCOLASTICO));
+
 
         $values['regione_id'] = Arr::get($this->provinceRegioni,$values['provincia_id']);
 

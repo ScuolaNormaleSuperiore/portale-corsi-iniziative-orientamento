@@ -100,4 +100,7 @@ return array (
   'testo_it' => 'testo it',
   'video_id' => 'video id',
   'categoria_id' => 'categoria id',
+  'token' => 'token',
+  'created_at' => 'created at',
+  'approvata' => 'approvata',
 );

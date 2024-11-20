@@ -201,5 +201,10 @@ return [
             ]
             //Altri permessi non correlati ai singoli modelli
         ],
-    ]
+    ],
+    'admin_roles' => [
+        'Superutente',
+        'Admin',
+        'Operatore',
+    ],
 ];

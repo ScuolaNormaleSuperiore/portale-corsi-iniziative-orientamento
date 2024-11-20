@@ -39,8 +39,9 @@ return new class extends Migration {
             $table->boolean('sede_scolastica')->nullable();
             $table->string('email_riferimento')->nullable();
             $table->unsignedBigInteger('user_id')->nullable()->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
             $table->string('tipo')->nullable();
+            $table->text('info')->nullable();
             $table->nullableTimestamps();
             $table->nullableOwnerships();
 
