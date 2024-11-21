@@ -15,6 +15,10 @@ class User extends CupparisUser {
         'fename',
     ];
 
+    protected $fillable = [
+        'name', 'email', 'password',
+        'nome', 'cognome',
+    ];
 
     public function getFenameAttribute() {
         if (!$this->getKey()) {

@@ -8,11 +8,11 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a><span class="separator">/</span></li>
                 <li class="breadcrumb-item"><a href="/login">Accesso</a><span class="separator">/</span></li>
-                <li class="breadcrumb-item active">Accesso per studenti stranieri</li>
+                <li class="breadcrumb-item active">Accesso per referenti scolastici</li>
             </ol>
         </nav>
 
-            <h2 class="h2 py-2">Accesso per studenti stranieri</h2>
+            <h2 class="h2 py-2">Accesso per referenti scolastici</h2>
             <hr/>
 
         </section>
@@ -91,7 +91,7 @@
 
                     <p></p>
                 </div>
-                <p>Se non hai ancora creato un account, <a href="{{ route('register') }}">registrati</a> adesso.</p>
+                <p>Se la tua scuola non ha ancor un account, <a href="{{ route('register-scuola') }}">registrala</a> adesso.</p>
                 <p>Se invece hai dimenticato la password, puoi <a href="{{ route('password.request') }}">reimpostarla</a>.</p>
             </form>
         </section>

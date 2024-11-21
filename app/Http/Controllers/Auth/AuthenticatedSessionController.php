@@ -34,6 +34,11 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login-classic');
     }
 
+    public function createScuola()
+    {
+        return view('auth.login-scuola');
+    }
+
     /**
      * Handle an incoming authentication request.
      *
