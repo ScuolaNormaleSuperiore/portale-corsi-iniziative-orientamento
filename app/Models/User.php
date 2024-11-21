@@ -17,7 +17,7 @@ class User extends CupparisUser {
 
     protected $fillable = [
         'name', 'email', 'password',
-        'nome', 'cognome',
+        'nome', 'cognome', 'email_verified_at',
     ];
 
     public function getFenameAttribute() {
