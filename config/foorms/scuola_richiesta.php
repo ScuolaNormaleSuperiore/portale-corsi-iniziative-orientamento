@@ -106,6 +106,14 @@ return [
     ],
     'list' => [
 
+        'basic_query_fields' => ['email','scuola|denominazione'],
+        'actions' => [
+            'set' => [
+                'allowed_fields' => [
+                    'approvata',
+                ],
+            ],
+        ],
         'dependencies' => [
             'search' => 'search',
         ],
@@ -146,6 +154,7 @@ return [
                 "fields" => [
                     'denominazione' => [],
                     'codice' => [],
+                    'provincia_sigla' => [],
                     'email_riferimento' => [],
                 ]
             ]

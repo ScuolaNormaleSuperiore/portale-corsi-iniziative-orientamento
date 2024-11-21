@@ -5,7 +5,7 @@ export default {
         type: 'v-search',
         modelName : 'scuola',
         fields: [
-			'anno',
+			// 'anno',
 			'regione_id',
 			'provincia_id',
 			'codice',
@@ -69,7 +69,7 @@ export default {
             'action-delete-selected',
         ],
         fields: [
-			'anno',
+			// 'anno',
 			'codice',
 			'denominazione',
 			'indirizzo',
@@ -99,7 +99,9 @@ export default {
 			}, 
 			'provincia' : { 
                 type : "w-belongsto",
-                fields : [],
+                labelFields : [
+					'sigla'
+				],
 			}, 
 
         },

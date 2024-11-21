@@ -287,7 +287,7 @@ return [
             ],
             "provincia" => [
                 "fields" => [
-
+                    'sigla' => [],
                 ]
             ],
             "user" => [

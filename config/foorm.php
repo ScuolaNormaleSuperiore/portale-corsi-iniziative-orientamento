@@ -87,6 +87,7 @@ return [
         'sezione_layout',
         'categoria_video',
         'video',
+        'scuola_richiesta',
 //        'foto',
 //        'attachment',
     ],
