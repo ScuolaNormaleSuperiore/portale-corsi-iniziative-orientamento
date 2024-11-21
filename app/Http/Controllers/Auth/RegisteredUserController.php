@@ -7,6 +7,7 @@ use App\Models\Scuola;
 use App\Models\ScuolaRichiesta;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Rules\ScuolaEmailRequired;
 use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -85,7 +86,7 @@ class RegisteredUserController extends Controller
             ]);
         } else {
             $request->validate([
-                'idScuola' => ['required', 'exists:scuole,id'],
+                'idScuola' => ['required', new ScuolaEmailRequired()],
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
             ]);
 

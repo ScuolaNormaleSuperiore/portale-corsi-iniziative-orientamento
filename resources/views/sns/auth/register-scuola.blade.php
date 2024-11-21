@@ -18,10 +18,35 @@
         </section>
 
         <section class="container pt-4 pb-4">
-            <form class="validate-form" method="post"
+            <h3>Inserisci i dati di accesso della scuola</h3>
+            <p>La scuola ha già un account? <a href="/login-scuola">Accedi</a>.</p>
+
+            <form class="needsValidation" method="post" id="registerScuolaForm"
+                  method="post"
                   action="{{ route('register-scuola') }}"
             >
                 @csrf
+
+                @if ($errors->any())
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {!! $error !!}
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div aria-live="polite" id="errorMsgContainer">
+
+                        </div>
+                    </div>
+                </div>
+
 
                 <h3 class="pb-5">Scegli la scuola da registrare</h3>
                 <p>
@@ -111,7 +136,7 @@
 
                 <div class="d-none pt-4" id="cambiaEmailScuola">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="emailScuolaAggiornato"
+                        <input type="text" class="form-control" id="emailScuolaAggiornato"
                                name="emailScuolaAggiornato">
                         <label for="emailScuolaAggiornato" class="" style="width: auto;">Indirizzo E-mail Scuola
                             aggiornato</label>
@@ -143,17 +168,86 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+
+            const errorMessage = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Attenzione</strong> Alcuni campi inseriti sono da controllare.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Chiudi avviso">';
+            const errorWrapper = document.querySelector('#errorMsgContainer');
+            const validate = new bootstrap.FormValidate('#registerScuolaForm', {
+                errorFieldCssClass: 'is-invalid',
+                errorLabelCssClass: 'form-feedback',
+                errorLabelStyle: '',
+                focusInvalidField: false,
+            })
+
             var button = document.getElementById('cambiaEmailButton');
-            button.addEventListener('click', function () {
+            button.addEventListener('change', function (e) {
                 var divEmail = document.getElementById('cambiaEmailScuola');
-                if (divEmail.classList.contains('d-none')) {
+                if (e.target.checked) {
                     divEmail.classList.remove('d-none');
+                    validate.addField('#emailScuolaAggiornato', [
+                        {
+                            rule: 'email',
+                            errorMessage: 'Inserisci una e-mail valida'
+                        },
+                    ]);
                 } else {
                     divEmail.classList.add('d-none');
+                    validate.removeField('#emailScuolaAggiornato');
                 }
             })
-        });
+
+            validate
+                .addField('#idScuola', [
+                    {
+                        rule: 'required',
+                        errorMessage: 'Questo campo è richiesto'
+                    }
+                ])
+                .addField('#password', [
+                    {
+                        rule: 'required',
+                        errorMessage: 'Questo campo è richiesto'
+                    },
+                    {
+                        rule: 'strongPassword',
+                        errorMessage: 'Inserisci almeno 8 caratteri, con almeno una minuscola, una maiuscola, un numero e un carattere speciale.'
+                    }
+
+                ])
+                .addField('#password_confirmation', [
+                    {
+                        rule: 'required',
+                        errorMessage: 'Questo campo è richiesto'
+                    },
+                    {
+                        validator: (value, fields) => {
+                            if (
+                                fields[3] &&
+                                fields[3].elem
+                            ) {
+                                const repeatPasswordValue =
+                                    fields[3].elem.value;
+                                return value === repeatPasswordValue;
+                            }
+
+                            return true;
+                        },
+                        errorMessage: 'Le password non coincidono',
+                    }
+
+                ])
+                .onSuccess(() => {
+                    document.forms['registerScuolaForm'].submit()
+                })
+                .onFail((fields) => {
+                    errorWrapper.innerHTML = '';
+                    errorWrapper.innerHTML = errorMessage
+                })
+
+        })
 
     </script>
 

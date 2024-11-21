@@ -145,6 +145,7 @@ return [
 
     'uuid' => 'The :attribute must be a valid UUID.',
 
+    'scuola_email_required' => 'La scuola non ha una email di riferimento valida.',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

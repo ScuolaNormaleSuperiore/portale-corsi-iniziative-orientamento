@@ -26,13 +26,24 @@
 
 
                 @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {{$error}}
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{$error}}
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
-                    @endforeach
                 @endif
 
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div aria-live="polite" id="errorMsgContainer">
+
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="email">Indirizzo e-mail</label>
@@ -73,13 +84,7 @@
                 <p>Se invece hai dimenticato la password, puoi <a
                             href="{{ route('password.request') }}">reimpostarla</a>.</p>
             </form>
-            <div class="row mt-4">
-                <div class="col-12">
-                    <div aria-live="polite" id="errorMsgContainer">
 
-                    </div>
-                </div>
-            </div>
         </section>
 
     </div>

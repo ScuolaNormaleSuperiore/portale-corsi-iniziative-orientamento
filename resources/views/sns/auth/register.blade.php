@@ -21,27 +21,47 @@
             <h3>Inserisci i tuoi dati</h3>
             <p>Hai già un account? <a href="/login-classic">Accedi</a>.</p>
 
-            <form method="POST" action="{{ route('register') }}">
+            <form class="needsValidation" method="post" id="registerForm"
+                  action="{{ route('register') }}">
                 @csrf
 
+                @if ($errors->any())
+                    <div class="row mb-4">
+                        <div class="col-12">
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {!! $error !!}
+                        </div>
+                    @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div aria-live="polite" id="errorMsgContainer">
+
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="id_nome" name="nome">
-                    <label for="id_nome" style="width: auto;">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" value="{{old('nome')}}">
+                    <label for="nome" style="width: auto;">Nome</label>
 
 
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="id_cognome" name="cognome">
-                    <label for="id_cognome" style="width: auto;">Cognome</label>
+                    <input type="text" class="form-control" id="cognome" name="cognome" value="{{old('cognome')}}">
+                    <label for="cognome" style="width: auto;">Cognome</label>
 
 
                 </div>
 
                 <div class="form-group">
-                    <input type="email" class="form-control" id="id_email" name="email">
-                    <label for="id_email" class="" style="width: auto;">Indirizzo E-mail</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
+                    <label for="email" class="" style="width: auto;">Indirizzo E-mail</label>
 
 
                 </div>
@@ -109,5 +129,81 @@
 
 
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const errorMessage = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Attenzione</strong> Alcuni campi inseriti sono da controllare.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Chiudi avviso">';
+            const errorWrapper = document.querySelector('#errorMsgContainer');
+            const validate = new bootstrap.FormValidate('#registerForm', {
+                errorFieldCssClass: 'is-invalid',
+                errorLabelCssClass: 'form-feedback',
+                errorLabelStyle: '',
+                focusInvalidField: false,
+            })
+            validate
+                .addField('#nome', [
+                    {
+                        rule: 'required',
+                        errorMessage: 'Questo campo è richiesto'
+                    }
+                ])
+                .addField('#cognome', [
+                    {
+                        rule: 'required',
+                        errorMessage: 'Questo campo è richiesto'
+                    }
+                ])
+                .addField('#email', [
+                    {
+                        rule: 'required',
+                        errorMessage: 'Questo campo è richiesto'
+                    },
+                    {
+                        rule: 'email',
+                        errorMessage: 'Inserisci un e-mail valida'
+                    },
+                ])
+                .addField('#password', [
+                    {
+                        rule: 'required',
+                        errorMessage: 'Questo campo è richiesto'
+                    },
+                    {
+                        rule: 'strongPassword',
+                        errorMessage: 'Inserisci almeno 8 caratteri, con almeno una minuscola, una maiuscola, un numero e un carattere speciale.'
+                    },
+
+                ])
+                .addField('#password_confirmation', [
+                    {
+                        rule: 'required',
+                        errorMessage: 'Questo campo è richiesto'
+                    },
+                    {
+                        validator: (value, fields) => {
+                            if (
+                                fields[3] &&
+                                fields[3].elem
+                            ) {
+                                const repeatPasswordValue =
+                                    fields[3].elem.value;
+                                return value === repeatPasswordValue;
+                            }
+
+                            return true;
+                        },
+                        errorMessage: 'Le password non coincidono',
+                    }
+
+                ])
+                .onSuccess(() => {
+                    document.forms['registerForm'].submit()
+                })
+                .onFail((fields) => {
+                    errorWrapper.innerHTML = '';
+                    errorWrapper.innerHTML = errorMessage
+                })
+        })
+    </script>
 
 @endsection

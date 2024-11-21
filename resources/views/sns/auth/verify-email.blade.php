@@ -3,16 +3,16 @@
 
     <div class="container-fluid">
 
-        <nav class="breadcrumb-container" aria-label="Percorso di navigazione">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a><span class="separator">/</span></li>
-                <li class="breadcrumb-item"><a href="/login">Accesso</a><span class="separator">/</span></li>
-                <li class="breadcrumb-item active">Verifica e-mail</li>
-            </ol>
-        </nav>
+        <section class="pb-5 mb-1  px-2 ps-4" style="">
+            <nav class="breadcrumb-container" aria-label="Percorso di navigazione">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a><span class="separator">/</span></li>
+                    <li class="breadcrumb-item"><a href="/login">Accesso</a><span class="separator">/</span></li>
+                    <li class="breadcrumb-item active">Verifica e-mail</li>
+                </ol>
+            </nav>
 
-        <section>
-            <h2 class="pb-5">Verifica il tuo indirizzo e-mail</h2>
+            <h2 class="h2 py-2">Verifica il tuo indirizzo e-mail</h2>
             <hr/>
 
         </section>
@@ -30,7 +30,9 @@
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     Ti abbiamo appena inviata una nuova e-mail di verifica
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Chiudi avviso">
-                        <svg class="icon"><use href="{{Theme::url('svg/sprites.svg')}}#it-close"></use></svg>
+                        <svg class="icon">
+                            <use href="{{Theme::url('svg/sprites.svg')}}#it-close"></use>
+                        </svg>
                     </button>
                 </div>
 
