@@ -21,9 +21,26 @@ class Set extends BaseSet
             return true;
         }
 
+        $scuola = Scuola::find($modelToSet->scuola_id);
+
+        if ($scuola->user_id) {
+            throw new \Exception("L'istituto ha già un referente assegnato");
+        }
+
+        $scuolaConStessaEmail = Scuola::where('email_riferimento',$modelToSet->email)
+            ->first();
+        if ($scuolaConStessaEmail && $scuolaConStessaEmail->getKey()) {
+            throw new \Exception("Questa email è già utilizzata da un altro istituto");
+        }
+
+        $userConStessaEmail = User::where('email',$modelToSet->email)
+            ->first();
+        if ($userConStessaEmail && $userConStessaEmail->getKey()) {
+            throw new \Exception("Questa email è già utilizzata da un altro utente del portale");
+        }
+
         $modelToSet->{$this->fieldToSet} = $valueToSet;
 
-        $scuola = Scuola::find($modelToSet->scuola_id);
 
         $scuola->email_riferimento = $modelToSet->email;
 

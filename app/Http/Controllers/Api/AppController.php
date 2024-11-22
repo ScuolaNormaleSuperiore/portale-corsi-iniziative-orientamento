@@ -34,7 +34,7 @@ class AppController extends Controller
     public function getScuoleAutocomplete(Request $request) {
 
 
-        $nItems = $request->get('nItems',10);
+        $nItems = $request->get('nItems',50);
 
         $value = $request->get('value');
 
