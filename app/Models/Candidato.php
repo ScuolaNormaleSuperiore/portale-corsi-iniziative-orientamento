@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Gecche\Cupparis\App\Breeze\Breeze;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Breeze (Eloquent) model for candidati table.
@@ -23,7 +24,7 @@ class Candidato extends Breeze
     public $ownerships = true;
 
     public $appends = [
-
+        'fename',
     ];
 
 
@@ -75,6 +76,10 @@ class Candidato extends Breeze
 
     public function save(array $options = [])
     {
+        if (!$this->getKey()) {
+            $this->user_id = Auth::id();
+        }
+
         if (is_null($this->informativa)) {
             $this->informativa = 0;
         }
@@ -112,5 +117,16 @@ class Candidato extends Breeze
             'comune' => null,
             'provincia|sigla' => null,
         ];
+    }
+
+    public function getFenameAttribute() {
+        if (!$this->getKey()) {
+            return "N.D.";
+        }
+        if ($this->nome) {
+            return trim($this->nome . ' ' . $this->cognome);
+        }
+
+        return $this->emails ?: "N.D.";
     }
 }

@@ -18,7 +18,7 @@
                             {{--							<span class="it-Categoria">Categoria</span>--}}
                             <h2 class="fw-bold">Scopri il tuo futuro, costruisci l'eccellenza: entra alla Normale.</h2>
                             {{--							<p class="d-none d-lg-block">Candidati per i corsi di orientamento</p>--}}
-                            <div class="it-btn-container"><a class="btn btn-sm btn-secondary" href="#">Candidati per i
+                            <div class="it-btn-container"><a class="btn btn-sm btn-secondary" href="/candidature">Candidati per i
                                     corsi di orientamento</a></div>
                         </div>
                     </div>

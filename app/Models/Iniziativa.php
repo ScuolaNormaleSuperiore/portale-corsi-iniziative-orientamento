@@ -39,6 +39,9 @@ class Iniziativa extends Breeze
         'candidati' => [self::HAS_MANY, 'related' => Candidato::class,
             'foreignKey' => 'iniziativa_id'
         ],
+        'authcandidature' => [self::HAS_MANY, 'related' => Candidato::class,
+            'foreignKey' => 'iniziativa_id'
+        ],
 
         'fotos' => [self::MORPH_MANY, 'related' => Foto::class, 'name' => 'mediable'],
         'attachments' => [self::MORPH_MANY, 'related' => Attachment::class, 'name' => 'mediable'],

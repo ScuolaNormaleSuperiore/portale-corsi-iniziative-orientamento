@@ -5,6 +5,7 @@ use App\Http\Controllers\MiscController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JsonController;
 use App\Http\Controllers\FEController;
+use App\Http\Controllers\CandidatureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,15 @@ Route::get('/dettaglio-evento/{evento}', [FEController::class,'dettaglioEvento']
 
 Route::get('/cortesia-scuola-richiesta', [FEController::class,'scuolaRichiestaCortesia'])->name('cortesia-scuola-richiesta')->middleware([]);
 
+Route::group([
+    'middleware' => ['auth','verified']
+], function () {
+    Route::get('/candidature', [CandidatureController::class, 'index'])->name('candidature');
+    Route::get('/candidatura/{iniziativa}/new', [CandidatureController::class, 'create'])->name('candidatura.new');
+    Route::get('/candidatura/edit/{candidatura}/{step?}', [CandidatureController::class, 'edit'])->name('candidatura.edit');
+    Route::put('/candidatura/{iniziativa}/new', [CandidatureController::class, 'store'])->name('candidatura.store');
+    Route::post('/candidatura/update/{candidatura}', [CandidatureController::class, 'update'])->name('candidatura.update');
+});
 
 Route::get('/archivio-video', [FEController::class,'archivioVideo'])->name('archivio-video')->middleware([]);
 
