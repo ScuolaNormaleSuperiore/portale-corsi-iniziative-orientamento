@@ -59,7 +59,7 @@ class AppController extends Controller
 
         $email = $request->get('email');
 
-        if (!$this->validate($request,['email'=>'email'])) {
+        if (!$this->validate($request,['email'=>$email])) {
             return $this->_error("Indirizzo email non valido",400);
         }
 

@@ -90,6 +90,9 @@ return [
             "classe" => [
 
             ],
+            "sezione" => [
+
+            ],
             "gen1_titolo_studio_id" => [
 
             ],
@@ -310,7 +313,20 @@ return [
             "scuola_id" => [
                 'referred_data' => 'method:model',
             ],
+            "scuola_estera" => [
+
+            ],
             "classe" => [
+                'options' => [
+                    3 => '3^',
+                    4 => '4^',
+                    5 => '5^',
+                ]
+            ],
+            "sezione" => [
+
+            ],
+            "profilo" => [
 
             ],
             "gen1_titolo_studio_id" => [

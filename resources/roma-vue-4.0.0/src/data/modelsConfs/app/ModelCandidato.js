@@ -140,7 +140,9 @@ export default {
             'telefono',
 
             'scuola_id',
+            'scuola_estera',
             'classe',
+            'sezione',
 
 
             'gen1_titolo_studio_id',
@@ -157,6 +159,7 @@ export default {
             'cinese_livello_linguistico_id',
             'altre_competenze_linguistiche',
 
+            'profilo',
             'partecipazione_concorsi',
             'esperienze_estere',
             'settore_professionale',
@@ -290,8 +293,20 @@ export default {
                 dividerContentClass: 'font-bold border-1 p-2',
                 dividerContent: 'Scuola di provenienza',
             },
+            'scuola_estera': {
+                type: 'w-input',
+            },
             'classe': {
+                type: "w-select",
+                layout : {
+                    colClass: 'col-6 md:col-3',
+                }
+            },
+            'sezione': {
                 type: "w-input",
+                layout : {
+                    colClass: 'col-6 md:col-3',
+                }
             },
             'gen1_titolo_studio_id': {
                 type: "w-select",
@@ -327,12 +342,15 @@ export default {
             'note': {
                 type: "w-textarea",
             },
-            'partecipazione_concorsi': {
+            'profilo': {
                 type: "w-textarea",
                 divider: 'before',
                 dividerClass: 'text-primary-700 my-5',
                 dividerContentClass: 'font-bold border-1 p-2',
-                dividerContent: 'Esperienze e motivazioni',
+                dividerContent: 'Profilo, esperienze, motivazioni',
+            },
+            'partecipazione_concorsi': {
+                type: "w-textarea",
             },
             'inglese_livello_linguistico_id': {
                 type: "w-select",
