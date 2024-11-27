@@ -3,6 +3,12 @@ import cs from "cupparis-primevue";
 export default {
     modelName: 'dscuolaparitaria',
     providerName: 'dscuolaparitaria',
+    importTitolo : 'Importazione scuole paritarie',
+    importDesc : 'app.import-desc-scuola-paritaria',
+    importFile : 'Seleziona il file csv',
+    importLoading : 'Importazione e analisi delle scuole',
+    importSaving : 'Salvataggio delle scuole importate',
+    // importLinkExample : '/pippo/3',
     confUpload: {
         value: null,
         name: "resource",

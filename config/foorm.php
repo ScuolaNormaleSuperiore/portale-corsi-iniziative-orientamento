@@ -65,6 +65,7 @@ return [
         'provincia',
         'scuola',
         'dscuola',
+        'dscuolaparitaria',
         'iniziativa',
         'corso',
         'filtro_selezione',

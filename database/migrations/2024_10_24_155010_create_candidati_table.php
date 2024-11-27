@@ -34,7 +34,9 @@ return new class extends Migration {
             $table->string('telefono')->nullable();
             $table->unsignedBigInteger('scuola_id')->nullable()->index();
             $table->foreign('scuola_id')->references('id')->on('scuole')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('scuola_estera')->nullable();
             $table->string('classe')->nullable();
+            $table->string('sezione')->nullable();
             $table->unsignedBigInteger('gen1_titolo_studio_id')->nullable()->index();
             $table->foreign('gen1_titolo_studio_id')->references('id')->on('titoli_studio')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('gen2_titolo_studio_id')->nullable()->index();
@@ -58,6 +60,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('cinese_livello_linguistico_id')->nullable()->index();
             $table->foreign('cinese_livello_linguistico_id')->references('id')->on('livelli_linguistici')->onDelete('cascade')->onUpdate('cascade');
             $table->string('altre_competenze_linguistiche')->nullable();
+            $table->mediumText('profilo')->nullable();
             $table->text('esperienze_estere')->nullable();
             $table->text('settore_professionale')->nullable();
             $table->text('motivazioni')->nullable();

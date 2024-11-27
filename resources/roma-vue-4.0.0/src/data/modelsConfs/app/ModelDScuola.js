@@ -5,10 +5,10 @@ export default {
     providerName: 'dscuola',
     importTitolo : 'Importazione scuole pubbliche',
     importDesc : 'app.import-desc-scuola-pubblica',
-    importFile : 'Seleziona il file excel recuperato dal web',
+    importFile : 'Seleziona il file csv',
     importLoading : 'Importazione e analisi delle scuole',
     importSaving : 'Salvataggio delle scuole importate',
-    importLinkExample : '/pippo/3',
+    // importLinkExample : '/pippo/3',
     //importLinkDesc : 'qui puoi trovare come deve essere il file excel',
     confUpload: {
         value: null,

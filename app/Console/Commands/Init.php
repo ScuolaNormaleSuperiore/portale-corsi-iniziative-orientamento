@@ -18,12 +18,10 @@ class Init extends \Gecche\Cupparis\App\Console\Commands\Init
                 }
 
                 $postStorageCmdArray = [
-//                    ['seed' => [env('PHP_PATH','php'),'artisan','db:seed','--class=DumpDemoSeeder']],
-//                    ['mig' => [env('PHP_PATH','php'),'artisan','migrate:reset']],
-//                    ['mig' => [env('PHP_PATH','php'),'artisan','migrate']],
-//                    ['seed' => [env('PHP_PATH','php'),'artisan','db:seed','--class=RegioniProvinceTableSeeder']],
-//                    ['seed' => [env('PHP_PATH','php'),'artisan','db:seed','--class=MaterieSettoriTableSeeder']],
-//                    ['seed' => [env('PHP_PATH','php'),'artisan','db:seed','--class=TitoliProfessioniLivelliTableSeeder']],
+                    ['mig' => [env('PHP_PATH','php'),'artisan','migrate:reset']],
+                    ['mig' => [env('PHP_PATH','php'),'artisan','migrate']],
+                    ['seed' => [env('PHP_PATH','php'),'artisan','db:seed','--class=DatabaseSeeder']],
+                    ['seed' => [env('PHP_PATH','php'),'artisan','db:seed','--class=DumpDemoSeeder']],
                     ['seed' => [env('PHP_PATH','php'),'artisan','permissions']],
                     ['seed' => [env('PHP_PATH','php'),'artisan','cache:clear']],
                 ];

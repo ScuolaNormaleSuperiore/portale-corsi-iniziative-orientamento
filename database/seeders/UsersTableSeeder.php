@@ -21,21 +21,19 @@ class UsersTableSeeder extends Seeder
 
         $usersData = [
             [
+                'password' => 'giacomo1234',
+                'email' => 'giacomo.terreni@gmail.com',
+                'name' => 'giacomo.terreni@gmail.com',
+                'nome' => 'Giacomo',
+                'cognome' => 'Terreni',
+                'role' => 'Superutente',
+            ],
+            [
                 'password' => 'massi1234',
                 'email' => 'massimiliano.pardini@gmail.com',
                 'name' => 'massimiliano.pardini@gmail.com',
                 'nome' => 'Massimiliano',
                 'cognome' => 'Pardini',
-//                'codice_fiscale' => 'TRRGCM78B07G702C',
-                'role' => 'Superutente',
-            ],
-            [
-                'password' => 'amministratore',
-                'email' => 'amministratore@amministratore.it',
-                'name' => 'amministratore@amministratore.it',
-                'nome' => 'Amministratore',
-                'cognome' => 'Amministratore',
-//                'codice_fiscale' => 'AMMGCM78B07G702C',
                 'role' => 'Admin',
             ],
         ];
@@ -60,15 +58,15 @@ class UsersTableSeeder extends Seeder
 
 
 
-        \Illuminate\Support\Facades\Auth::loginUsingId(3);
-        \App\Models\User::factory(10)->create()->each(function($u) {
-
-            //$role = $localizedFaker->boolean(85) ? 'Operatore' : 'Admin'; //15% Admin, 85% Operatore
-//            $role = rand(0,100) > 80 ? 'Operatore' : 'Cliente';
-            $role = 'Operatore';
-            $u->assignRole($role);
-
-        });
+//        \Illuminate\Support\Facades\Auth::loginUsingId(3);
+//        \App\Models\User::factory(10)->create()->each(function($u) {
+//
+//            //$role = $localizedFaker->boolean(85) ? 'Operatore' : 'Admin'; //15% Admin, 85% Operatore
+////            $role = rand(0,100) > 80 ? 'Operatore' : 'Cliente';
+//            $role = 'Operatore';
+//            $u->assignRole($role);
+//
+//        });
 
     }
 }

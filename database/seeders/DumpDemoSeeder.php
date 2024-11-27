@@ -20,34 +20,39 @@ class DumpDemoSeeder extends Seeder
     {
         Model::unguard();
 
-        $dumpFile = __DIR__ . '/../dumps/sns_2024-11-05.sql';
         $path = base_path();
-        $mySqlString = env('MYSQL_PATH', 'mysql') . ' --user=' . env('DB_USERNAME', '')
+        $mySqlStringPrefix = env('MYSQL_PATH', 'mysql') . ' --user=' . env('DB_USERNAME', '')
             . ' --password=' . env('DB_PASSWORD', '') . ' ' . env('DB_DATABASE', '')
-            . ' < ' . $dumpFile;
+            . ' < ';
+        $dumpFile = __DIR__ . '/../dumps/sns_2024-11-27_pagine.sql';
+        $dumpFileScuole = __DIR__ . '/../dumps/sns_2024-11-27_scuole.sql';
+
+        $mySqlString = $mySqlStringPrefix . $dumpFile;
+        $mySqlStringScuole = $mySqlStringPrefix . $dumpFileScuole;
 
         $cmdArray = [
             $mySqlString => 'seed',
+            $mySqlStringScuole => 'seed',
         ];
-//
-//
-//        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-//        foreach ($cmdArray as $cmd => $group) {
-//
-//            $cmdArrayProcessed[] = $cmd;
-//
-//            $process = Process::fromShellCommandline($cmd, $path);
-//            $process->setTimeout(null);
-//            $process->run();
-//
-//// executes after the command finishes
-//            if (!$process->isSuccessful()) {
-//                throw new ProcessFailedException($process);
-//            }
-//
-//            $this->command->comment($process->getOutput());
-//        }
-//        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        foreach ($cmdArray as $cmd => $group) {
+
+            $cmdArrayProcessed[] = $cmd;
+
+            $process = Process::fromShellCommandline($cmd, $path);
+            $process->setTimeout(null);
+            $process->run();
+
+// executes after the command finishes
+            if (!$process->isSuccessful()) {
+                throw new ProcessFailedException($process);
+            }
+
+            $this->command->comment($process->getOutput());
+        }
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 
         File::ensureDirectoryExists(storage_path('files/foto'));
         File::delete(storage_path('files/foto/*'));

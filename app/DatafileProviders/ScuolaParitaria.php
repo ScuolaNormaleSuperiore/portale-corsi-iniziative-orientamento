@@ -121,9 +121,17 @@ class ScuolaParitaria extends BreezeDatafileProvider
     }
 
 
+    protected function getAnno(BreezeDatafileInterface $modelDatafile) {
+        return intval(substr(trim($modelDatafile->ANNOSCOLASTICO),0,4));
+    }
+
     public function associateRow(BreezeDatafileInterface $modelDatafile)
     {
-        return new $this->modelTargetName;
+//        $anno = $this->getAnno($modelDatafile);
+
+        $codice = trim($modelDatafile->CODICESCUOLA);
+
+        return \App\Models\Scuola::where('codice',$codice)->firstOrNew();
 
     }
 
@@ -176,7 +184,10 @@ class ScuolaParitaria extends BreezeDatafileProvider
 //            $values['user_id'] = $user->getKey();
 //        }
 
-        $values['anno'] = intval(substr($modelDatafile->ANNOSCOLASTICO,0,4));
+        $values['anno'] = $this->getAnno($modelDatafile);
+
+        $values['info'] = $modelTarget->addAnnoToInfo(trim($modelDatafile->ANNOSCOLASTICO));
+
 
         $values['regione_id'] = Arr::get($this->provinceRegioni,$values['provincia_id']);
 

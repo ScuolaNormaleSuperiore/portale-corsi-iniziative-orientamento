@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -14,5 +15,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PermissionsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+
+        $this->call(RegioniProvinceTableSeeder::class);
+        $this->call(MaterieSettoriTableSeeder::class);
+        $this->call(TitoliProfessioniLivelliTableSeeder::class);
+        $this->call(ClassiOrientamentoTableSeeder::class);
+        $this->call(SezioniLayoutTableSeeder::class);
+
     }
 }
