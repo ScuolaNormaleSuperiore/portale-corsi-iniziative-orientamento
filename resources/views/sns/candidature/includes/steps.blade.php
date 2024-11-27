@@ -1,10 +1,10 @@
 <div class="steppers-header">
     <ul>
-        @foreach ($steps as $nStep => $descStep)
+        @foreach ($steps as $nStep => $contenutoStep)
             @php
                 $stepClass = $step > $nStep ? 'confirmed' : ($step == $nStep ? 'active' : '')
             @endphp
-            <li class="{{$stepClass}}">0{{$nStep}}. {{$descStep}}
+            <li class="{{$stepClass}}">0{{$nStep}}. {{$contenutoStep['title']}}
                 @if ($stepClass == 'confirmed')
                     <svg class="icon steppers-success">
                         <use href="{{Theme::url('svg/sprites.svg')}}#it-check"></use>

@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content-body')
+    @php
+        $datiStep = $steps[$step];
+    @endphp
     <div class="container-fluid">
 
 
@@ -16,7 +19,41 @@
 
                     <div class="steppers-content" aria-live="polite">
                         <!-- Esempio START -->
-                        <p>Contenuto di esempio dello step corrente</p>
+                        <div class="row">
+
+                            @if (count($datiStep['sections']) > 1)
+                                <div class="col-12 col-lg-4">
+                                    @include('candidature.includes.navleft',['sezioni' => $datiStep['sections']])
+                                </div>
+                                <div class="col-12 col-lg-8">
+                                    <p>I campi contraddistinti dal simbolo asterisco (*) sono obbligatori</p>
+
+                                    <div class="card-wrapper border border-light rounded shadow-sm">
+                                        @foreach ($datiStep['sections'] as $sezioneForm)
+                                            <div class="card no-after rounded has-bkg-primary-grey mb-4">
+                                                <div class="card-body">
+                                                    <h3 class="card-title h3">{{$sezioneForm['title']}}</h3>
+                                                    @if(\Illuminate\Support\Arr::get($sezioneForm,'subtitle'))
+                                                        <p class="card-text text-secondary">
+                                                            {{$sezioneForm['subtitle']}}
+                                                        </p>
+                                                    @endif
+                                                    @include('candidature.sezioni.'.$sezioneForm['code'],['datiStep' => $datiStep])
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @else
+                                <div class="col-12">
+                                    <p>I campi contraddistinti dal simbolo asterisco (*) sono obbligatori</p>
+                                    @foreach ($datiStep['sections'] as $sezioneForm)
+                                        @include('candidature.sezioni.'.$sezioneForm['code'],['datiStep' => $datiStep])
+                                    @endforeach
+                                </div>
+                            @endif
+
+                        </div>
                         <!-- Esempio END -->
                     </div>
                     <nav class="steppers-nav">

@@ -22,12 +22,53 @@ class CandidatureController extends Controller
 {
 
     protected $steps = [
-        1 => 'Dati personali e familiari',
-        2 => 'Info scolastiche',
-        3 => 'Profilo, competenze ed esperienze',
-        4 => 'Preferenze e Corsi',
-        5 => 'Informativa',
-        6 => 'Riepilogo',
+        1 => [
+            'title' => 'Dati personali e familiari',
+            'sections' => [
+                [
+                    'code' => 'dati_anagrafici',
+                    'title' =>'Dati anagrafici'
+                ],
+                [
+                    'code' => 'dati_contatto',
+                    'title' =>'Dati di contatto'
+                ],
+                [
+                    'code' => 'genitori',
+                    'title' =>'Titoli e professioni dei genitori'
+                ],
+            ]
+        ],
+        2 => [
+            'title' => 'Info scolastiche',
+            'sections' => [
+
+            ]
+        ],
+        3 => [
+            'title' => 'Profilo, competenze ed esperienze',
+            'sections' => [
+
+            ]
+        ],
+        4 => [
+            'title' => 'Preferenze e Corsi',
+            'sections' => [
+
+            ]
+        ],
+        5 => [
+            'title' => 'Informativa',
+            'sections' => [
+
+            ]
+        ],
+        6 => [
+            'title' => 'Riepilogo',
+            'sections' => [
+
+            ]
+        ],
     ];
 
     /**
