@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content-body')
 
-    <div class="container-fluid px-0">
+    <div class="container-fluid px-0 mb-5">
 
         @include('sections.breadcrumbs-standard')
         <div class="container">

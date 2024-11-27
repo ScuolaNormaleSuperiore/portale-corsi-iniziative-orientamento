@@ -182,11 +182,12 @@
                     {
                         validator: (value, fields) => {
                             if (
-                                fields[3] &&
-                                fields[3].elem
+                                fields[4] &&
+                                fields[4].elem
                             ) {
+                                console.log("RP:::",value,fields[4].elem.value);
                                 const repeatPasswordValue =
-                                    fields[3].elem.value;
+                                    fields[4].elem.value;
                                 return value === repeatPasswordValue;
                             }
 

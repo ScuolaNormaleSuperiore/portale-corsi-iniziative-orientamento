@@ -225,11 +225,11 @@
                     {
                         validator: (value, fields) => {
                             if (
-                                fields[3] &&
-                                fields[3].elem
+                                fields[2] &&
+                                fields[2].elem
                             ) {
                                 const repeatPasswordValue =
-                                    fields[3].elem.value;
+                                    fields[2].elem.value;
                                 return value === repeatPasswordValue;
                             }
 
