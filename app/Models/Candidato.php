@@ -57,6 +57,8 @@ class Candidato extends Breeze
     ];
 
     public static $rules = [
+        'cognome' => 'required',
+        'nome' => 'required',
 //        'username' => 'required|between:4,255|unique:users,username',
     ];
 

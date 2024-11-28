@@ -1,6 +1,7 @@
 @php
     $fieldData = \Illuminate\Support\Arr::get($sectionData['fields'],$field,[]);
     $validation = \Illuminate\Support\Arr::get($fieldData,'validation',[]);
+    $value = \Illuminate\Support\Arr::get($fieldData,'value',old($field));
 @endphp
 <div class="form-group form-group-candidature {{$cssForm ?? ''}}" id="form-group-candidature-{{$field}}">
     <div class="input-group input-group-candidature">
@@ -10,7 +11,7 @@
             {{$label ?? $field}}{{in_array('required',$validation)?'*':''}}
         </label>
         <input type="{{$type ?? 'text'}}" class="form-control" id="{{$field}}" name="{{$field}}"
-                value="{{$value ?? ''}}"
+                value="{{$value}}"
         >
     </div>
 </div>

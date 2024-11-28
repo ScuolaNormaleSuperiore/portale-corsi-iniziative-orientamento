@@ -1,6 +1,7 @@
 @php
     $fieldData = \Illuminate\Support\Arr::get($sectionData['fields'],$field,[]);
     $validation = \Illuminate\Support\Arr::get($fieldData,'validation',[]);
+    $value = \Illuminate\Support\Arr::get($fieldData,'value',old($field));
     if (!isset($options)) {
         $options = \Illuminate\Support\Arr::get($fieldData,'options',[]);
     }
@@ -15,7 +16,11 @@
         @endif
         @if (isset($options))
             @foreach($options as $option)
-                <option value="{{\Illuminate\Support\Arr::get($option,'value')}}">
+                <option value="{{\Illuminate\Support\Arr::get($option,'value')}}"
+                        @if(\Illuminate\Support\Arr::get($option,'value') == $value)
+                            selected
+                        @endif
+                >
                     {{\Illuminate\Support\Arr::get($option,'label')}}
                 </option>
             @endforeach

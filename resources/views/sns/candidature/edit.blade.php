@@ -14,8 +14,9 @@
             <div class="steppers">
                 @include('candidature.includes.steps')
 
-                <form method="POST" action="{{route('candidatura.store',['iniziativa' => $iniziativa->getKey()])}}">
+                <form method="POST" action="{{route('candidatura.update',['candidatura' => $candidatura->getKey()])}}">
                     @csrf
+                    <input type="hidden" name="_method" value="PUT"/>
                     <input type="hidden" name="step" value="{{$step}}"/>
 
                     <div class="steppers-content" aria-live="polite">
