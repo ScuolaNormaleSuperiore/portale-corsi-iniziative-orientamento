@@ -8,7 +8,7 @@
 
         @include('candidature.includes.breadcrumbs')
 
-        <section class="mx-5 px-5 mb-4">
+        <section class="mx-1 px-1 mx-lg-5 px-lg-5 mb-4">
 
             <div class="steppers">
                 @include('candidature.includes.steps')
@@ -29,7 +29,7 @@
                                     <p>I campi contraddistinti dal simbolo asterisco (*) sono obbligatori</p>
 
                                     @foreach ($datiStep['sections'] as $sezioneForm)
-                                        <div class="">
+                                        <div class="" id="sezione_{{$sezioneForm['code']}}">
                                             <div class="card no-after rounded mb-4" style="background-color:#EFF8FA;">
                                                 <div class="card-body">
                                                     <h3 class="card-title h3">{{$sezioneForm['title']}}</h3>
@@ -61,20 +61,30 @@
                         <!-- Esempio END -->
                     </div>
                     <nav class="steppers-nav">
-                        <button type="button" class="btn btn-outline-primary btn-sm steppers-btn-prev">
-                            <svg class="icon icon-primary">
-                                <use href="{{Theme::url('svg/sprites.svg')}}#it-chevron-left"></use>
-                            </svg>
-                            Indietro
-                        </button>
-                        <button type="submit" class="btn btn-outline-primary btn-sm steppers-btn-next">Avanti
-                            <svg class="icon icon-primary">
-                                <use href="{{Theme::url('svg/sprites.svg')}}#it-chevron-right"></use>
-                            </svg>
-                        </button>
-                        <button type="submit" class="btn btn-primary btn-sm steppers-btn-confirm d-none d-lg-block">
-                            Conferma
-                        </button>
+                        <div>
+                            @if($step > 1)
+                                <button type="button" class="btn btn-outline-primary btn-sm steppers-btn-prev">
+                                    <svg class="icon icon-primary">
+                                        <use href="{{Theme::url('svg/sprites.svg')}}#it-chevron-left"></use>
+                                    </svg>
+                                    Indietro
+                                </button>
+                            @endif
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-lg-3 gap-5">
+
+                            <button type="submit" class="btn btn-primary btn-sm steppers-btn-save d-lg-block">
+                                Salva
+                            </button>
+                            <button type="submit" class="btn btn-outline-primary btn-sm steppers-btn-next">Avanti
+                                <svg class="icon icon-primary">
+                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-chevron-right"></use>
+                                </svg>
+                            </button>
+
+
+                        </div>
                     </nav>
                 </form>
             </div>

@@ -22,7 +22,6 @@
     document.addEventListener("DOMContentLoaded", function () {
         var select = document.getElementById('gen1_professione_id');
         select.addEventListener('change', function (e,v) {
-            console.log("VALLLL::",e,v)
             var div = document.getElementById('form-group-candidature-gen1_professione_altro');
             if (e.target.value) {
                 if (parseInt(e.target.value) ===  2)
@@ -34,7 +33,6 @@
 
         var select2 = document.getElementById('gen2_professione_id');
         select2.addEventListener('change', function (e,v) {
-            console.log("VALLLL::",e,v)
             var div = document.getElementById('form-group-candidature-gen2_professione_altro');
             if (e.target.value) {
                 if (parseInt(e.target.value) ===  2)

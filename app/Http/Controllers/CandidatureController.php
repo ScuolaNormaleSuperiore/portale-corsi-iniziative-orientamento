@@ -30,23 +30,67 @@ class CandidatureController extends Controller
                     'code' => 'dati_anagrafici',
                     'title' =>'Dati anagrafici',
                     'fields' => [
-                        'cognome' => [],
-                        'nome' => [],
-                        'luogo_nascita' => [],
-                        'data_nascita' => [],
-                        'sesso' => [],
+                        'cognome' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'nome' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'luogo_nascita' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'data_nascita' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'sesso' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
                     ],
                 ],
                 [
                     'code' => 'dati_contatto',
                     'title' =>'Dati di contatto',
                     'fields' => [
-                        'emails' => [],
-                        'telefono' => [],
-                        'indirizzo' => [],
-                        'comune' => [],
-                        'cap' => [],
-                        'provincia_id' => [],
+                        'emails' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'telefono' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'indirizzo' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'comune' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'cap' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'provincia_id' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
 
                     ],
                 ],
@@ -68,7 +112,45 @@ class CandidatureController extends Controller
         2 => [
             'title' => 'Info scolastiche',
             'sections' => [
+                [
+                    'code' => 'scuola',
+                    'title' =>'Scuola e classe',
+                    'fields' => [
+                        'scuola_id' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'classe' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'sezione' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
 
+                    ],
+                ],
+                [
+                    'code' => 'voti',
+                    'title' =>'Voti scolastici',
+                    'fields' => [
+
+                    ],
+                ],
+                [
+                    'code' => 'allegati',
+                    'title' =>'Allegati',
+                    'subtitle' => ' In questa sezione, puoi caricare le pagelle scolastiche degli ultimi tre anni. Assicurati che i documenti siano chiari e completi, includendo tutti i voti finali per ciascun anno scolastico richiesto.',
+                    'fields' => [
+                        'curriculum' => [
+                            'validation' => [],
+                        ]
+                    ],
+                ],
             ]
         ],
         3 => [
@@ -131,26 +213,16 @@ class CandidatureController extends Controller
         return view('candidature.index', compact('iniziative', 'nomeCognome', 'maxCandidatureScuole'));
     }
 
-    public function create(Request $request, Iniziativa $iniziativa)
-    {
-
-        $step = 1;
-        $candidaturaTitle = $iniziativa->titolo;
-
-        $steps = $this->steps;
-
-        $foorm = Foorm::getFoorm('candidato.insert',$request,[]);
-        $metadata = $foorm->getFormMetadata();
-
-        foreach ($steps[$step]['sections'] as $section => $sectionData) {
+    protected function setOptionsInStepData($stepData,$metadata) {
+        foreach ($stepData['sections'] as $section => $sectionData) {
 
             foreach (Arr::get($sectionData,'fields',[]) as $fieldName => $fieldData) {
 
                 $options = Arr::get($metadata['fields'][$fieldName],'options');
                 if (is_array($options)) {
-                    $steps[$step]['sections'][$section]['fields'][$fieldName]['options'] = [];
+                    $stepData['sections'][$section]['fields'][$fieldName]['options'] = [];
                     foreach($options as $optionValue => $optionLabel) {
-                        $steps[$step]['sections'][$section]['fields'][$fieldName]['options'][] = [
+                        $stepData['sections'][$section]['fields'][$fieldName]['options'][] = [
                             'value' => $optionValue,
                             'label' => $optionLabel,
                         ];
@@ -162,8 +234,33 @@ class CandidatureController extends Controller
 
         }
 
+        return $stepData;
 
+    }
 
+    public function create(Request $request, Iniziativa $iniziativa)
+    {
+        $step = 1;
+        $candidaturaTitle = $iniziativa->titolo;
+        $steps = $this->steps;
+
+        $foorm = Foorm::getFoorm('candidato.insert',$request,[]);
+        $metadata = $foorm->getFormMetadata();
+
+        $steps[$step] = $this->setOptionsInStepData($steps[$step],$metadata);
+        return view('candidature.create', compact('iniziativa','candidaturaTitle', 'steps','step'));
+    }
+
+    public function store(Request $request, Iniziativa $iniziativa)
+    {
+        $step = 1;
+        $candidaturaTitle = $iniziativa->titolo;
+        $steps = $this->steps;
+
+        $foorm = Foorm::getFoorm('candidato.insert',$request,[]);
+        $metadata = $foorm->getFormMetadata();
+
+        $steps[$step] = $this->setOptionsInStepData($steps[$step],$metadata);
         return view('candidature.create', compact('iniziativa','candidaturaTitle', 'steps','step'));
     }
 

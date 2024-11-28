@@ -1,10 +1,14 @@
 @php
+    $fieldData = \Illuminate\Support\Arr::get($sectionData['fields'],$field,[]);
+    $validation = \Illuminate\Support\Arr::get($fieldData,'validation',[]);
     if (!isset($options)) {
-        $options = \Illuminate\Support\Arr::get($sectionData['fields'][$field],'options',[]);
+        $options = \Illuminate\Support\Arr::get($fieldData,'options',[]);
     }
 @endphp
 <div class="select-wrapper form-group-candidature {{$cssForm ?? ''}}" id="form-group-candidature-{{$field}}">
-    <label for="{{$field}}">{{$label ?? $field}}</label>
+    <label for="{{$field}}">
+        {{$label ?? $field}}{{in_array('required',$validation)?'*':''}}
+    </label>
     <select id="{{$field}}" name="{{$field}}">
         @if(isset($nullOption))
             <option selected="" value="">Scegli un'opzione</option>
