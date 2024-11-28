@@ -65,5 +65,12 @@
             color: #5d7083;
 
         }
+
+        #scuolaAutocomplete {
+            border: 1px solid #5d7083;
+            border-radius: 4px;
+            color: #5d7083;
+            font-weight:normal;
+        }
     </style>
 </head>

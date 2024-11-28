@@ -14,7 +14,12 @@
             <div class="steppers">
                 @include('candidature.includes.steps')
 
-                <form method="POST" action="{{route('candidatura.store',['iniziativa' => $iniziativa->getKey()])}}">
+                <form class="upload-dragdrop"
+                      enctype="multipart/form-data"
+                      id="candidaturaForm"
+                      data-bs-upload-dragdrop
+                      method="POST"
+                      action="{{route('candidatura.store',['iniziativa' => $iniziativa->getKey()])}}">
                     @csrf
                     <input type="hidden" name="step" value="{{$step}}"/>
 

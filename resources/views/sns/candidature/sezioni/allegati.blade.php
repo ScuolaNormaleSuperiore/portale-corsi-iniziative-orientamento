@@ -1,1 +1,1 @@
-
+{{--@include('candidature.form.upload-drag',[])--}}

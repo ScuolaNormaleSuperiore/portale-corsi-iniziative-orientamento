@@ -16,7 +16,7 @@ trait CandidatoTrait
 
         $validationCacheKey = 'candidatura.validation';
 
-        if (!Cache::has($validationCacheKey)) {
+        if (true || !Cache::has($validationCacheKey)) {
             $steps = Config::get('fe.candidatura.steps', []);
             $validation = [];
             foreach ($steps as $stepKey => $stepData) {

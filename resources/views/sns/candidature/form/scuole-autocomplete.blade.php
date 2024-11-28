@@ -1,0 +1,197 @@
+<div class="select-wrapper form-group-candidature" id="form-group-candidature-scuola_id">
+    <label for="scuolaAutocomplete">Scuola*</label>
+    <select class="form-control" id="scuolaAutocomplete" title="Scegli una scuola">
+    </select>
+    <input type="hidden" value="" name="scuola_id" id="scuola_id"/>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+
+        let status;
+
+        let scuole = {};
+
+        let scuoleToArray = function () {
+            console.log("SCUOLE:::", scuole);
+            var sa = [];
+
+            for (var i in scuole) {
+                var scuola = scuole[i];
+                sa.push(scuola.denominazione + ' (' + scuola.provincia_sigla + ') - Cod:' + scuola.codice);
+            }
+
+            return sa;
+        }
+
+        function requestSuggestions(query, fetchArgs = {}) {
+            console.log("JSON1::: ", query);
+            document.getElementById('scuola_id').value = null;
+            return axios.post('/api/scuole-suggest', {
+                value: query,
+            })
+                .then(function (response) {
+                    scuole = {};
+                    for (var i in response.data.result) {
+                        var scuola = response.data.result[i];
+                        scuole[scuola.codice] = scuola;
+
+                    }
+
+                    console.log("JSON::: ", response.data.result);
+
+                    return scuoleToArray();
+                })
+                .catch(function (error) {
+                    scuole = {};
+                    console.log("JSONE::: ", error);
+                    var data = error.response.data;
+                    // console.log(error.response.data);
+                });
+        }
+
+        // We'll wrap that function multiple times, each enhancing the previous
+        // wrapping to handle the the different behaviours necessary to
+        // appropriately coordinate requests to the server and display feedback to
+        // users
+        const makeRequest =
+            // Wrapping everything is the error handling to make sure it catches
+            // errors from any of the other wrappers
+            trackErrors(
+                // Next up is tracking whether we're loading new results
+                trackLoading(
+                    // To avoid overloading the server with potentially costly requests
+                    // as well as avoid wasting bandwidth while users are typing we'll
+                    // only send requests a little bit after they stop typing
+                    debounce(
+                        // Finally we want to cancel requests that are already sent, so
+                        // only the results of the last one update the UI This is the role
+                        // of the next two wrappers
+                        abortExisting(
+                            // That last one is for demo only, to simulate server behaviours
+                            // (latency, errors, filtering) on the client
+                            requestSuggestions
+                        ),
+                        250
+                    )
+                )
+            );
+
+        // We can then use the function we built and adapt it to the autocomplete
+        // API encapsulating the adjustments specific to rendering the 'No result
+        // found' message
+        function source(query, populateResults) {
+            // Start by clearing the results to ensure a loading message
+            // shows when a the query gets updated after results have loaded
+            populateResults([])
+
+            makeRequest(query)
+                // Only update the results if an actual array of options get returned
+                // allowing for `makeRequest` to avoid making updates to results being
+                // already displayed by resolving to `undefined`, like when we're
+                // aborting requests
+                .then(options => options && populateResults(options))
+                // In case of errors, we need to clear the results so the accessible
+                // autocomplate show its 'No result found'
+                .catch(error => populateResults([]))
+        }
+
+        // And finally we can set up our accessible autocomplete
+        const element = document.getElementById("scuolaAutocomplete")
+        const id = 'scuolaAutocomplete'
+        new bootstrap.SelectAutocomplete(element, {
+
+            name: 'scuolaAutocomplete',
+            confirmOnBlur: false,
+            showAllValues: true,
+            defaultValue: '',
+            autoselect: false,
+            showNoOptionsFound: false,
+            dropdownArrow: () => '',
+            // source: (query, populateResults) => {
+            //     const results = form_data[categorySelect.value]
+            //     const filteredResults = results.filter(result => result.indexOf(query) !== -1)
+            //     populateResults(filteredResults)
+            // }
+            source: source,
+            onConfirm(val) {
+
+                console.log("CONFIRM::: ", val);
+
+                var cod = val.split("Cod:").pop();
+
+                document.getElementById('scuola_id').value = scuole[cod] ? scuole[cod].id : null;
+            }
+            //tNoResults: tNoResults,
+        })
+
+        let abortController;
+
+        function abortExisting(fn) {
+            return function (...args) {
+                if (abortController) {
+                    abortController.abort();
+                }
+
+                abortController = new AbortController();
+
+                return fn(...args, {signal: abortController.signal})
+                    .then(result => {
+                        abortController = null;
+                        return result;
+                    }, error => {
+                        // Aborting requests will lead to `fetch` rejecting with an
+                        // `AbortError` In that situation, that's something we expect, so
+                        // we don't want to show a message to users
+                        if (error.name !== 'AbortError') {
+                            abortController = null;
+                            throw error;
+                        }
+                    })
+            }
+        }
+
+        // Debounces the given function so it only gets executed after a specific delay
+        function debounce(fn, wait) {
+            let timeout
+            return function (...args) {
+                return new Promise(resolve => {
+                    clearTimeout(timeout)
+
+                    const later = function () {
+                        timeout = null
+                        resolve(fn(...args))
+                    }
+                    timeout = setTimeout(later, wait)
+                })
+            }
+        }
+
+
+        // Tracks the loading state so we can adapt the message being displayed to the user
+        function trackLoading(fn) {
+            return function (...args) {
+                status = 'loading';
+                return fn(...args)
+                    .then(result => {
+                        status = null;
+                        return result
+                    }, error => {
+                        status = null;
+                        throw error
+                    })
+            }
+        }
+
+        // In a similar fashion, we can track errors happening, which will adjust the message
+        function trackErrors(fn) {
+            return function (...args) {
+                return fn(...args)
+                    .catch(error => {
+                        status = 'error'
+                        throw error
+                    })
+            }
+        }
+    });
+</script>

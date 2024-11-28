@@ -97,7 +97,13 @@ return [
                     'fields' => [
                         'scuola_id' => [
                             'validation' => [
-                                'required',
+                                'nullable',
+                                'exists:scuole,id',
+                            ]
+                        ],
+                        'scuola_estera' => [
+                            'validation' => [
+                                'required_without:scuola_id',
                             ]
                         ],
                         'classe' => [
