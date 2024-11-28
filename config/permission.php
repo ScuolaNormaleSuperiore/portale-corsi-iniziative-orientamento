@@ -191,6 +191,8 @@ return [
                 'delete',
                 'menu',
                 'tab',
+                'listing',
+                'datafile',
             ]
         ],
 

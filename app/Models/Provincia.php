@@ -51,7 +51,7 @@ class Provincia extends Breeze
      //['cognome','denominazione','codicefiscale','partitaiva'];
 
     public $nItemsAutoComplete = 20;
-    public $nItemsForSelectList = 100;
+    public $nItemsForSelectList = 200;
     public $itemNoneForSelectList = false;
     public $fieldsSeparator = ' - ';
 

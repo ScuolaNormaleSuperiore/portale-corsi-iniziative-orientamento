@@ -1,6 +1,8 @@
 <?php namespace App\Console\Commands;
 
 
+use Illuminate\Support\Facades\Log;
+
 class Permissions extends \Gecche\Cupparis\App\Console\Commands\Permissions
 {
 
@@ -49,11 +51,21 @@ class Permissions extends \Gecche\Cupparis\App\Console\Commands\Permissions
             ];
         }
 
+        //STUDENTE - SCUOLA
+        $scuolaModels = [];
+        foreach ($models as $model) {
+            $scuolaModels[$model] = [
+                'view',
+                'listing',
+            ];
+        }
 
         $rolesModelsPermissions = [
             'web' => [
                 'Admin' => $adminModels,
                 'Operatore' => $operatoreModels,
+                'Scuola' => $scuolaModels,
+                'Studente' => $scuolaModels,
             ],
         ];
 

@@ -12,6 +12,7 @@ use App\Models\PaginaOrientamento;
 use App\Models\SezioneLayout;
 use App\Models\StudenteOrientamento;
 use App\Models\Video;
+use Gecche\Foorm\Facades\Foorm;
 use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -27,15 +28,40 @@ class CandidatureController extends Controller
             'sections' => [
                 [
                     'code' => 'dati_anagrafici',
-                    'title' =>'Dati anagrafici'
+                    'title' =>'Dati anagrafici',
+                    'fields' => [
+                        'cognome' => [],
+                        'nome' => [],
+                        'luogo_nascita' => [],
+                        'data_nascita' => [],
+                        'sesso' => [],
+                    ],
                 ],
                 [
                     'code' => 'dati_contatto',
-                    'title' =>'Dati di contatto'
+                    'title' =>'Dati di contatto',
+                    'fields' => [
+                        'emails' => [],
+                        'telefono' => [],
+                        'indirizzo' => [],
+                        'comune' => [],
+                        'cap' => [],
+                        'provincia_id' => [],
+
+                    ],
                 ],
                 [
                     'code' => 'genitori',
-                    'title' =>'Titoli e professioni dei genitori'
+                    'title' =>'Titoli e professioni dei genitori',
+                    'fields' => [
+                        'gen1_titolo_studio_id' => [],
+                        'gen2_titolo_studio_id' => [],
+                        'gen1_professione_id' => [],
+                        'gen2_professione_id' => [],
+                        'gen1_professione_altro' => [],
+                        'gen2_professione_altro' => [],
+
+                    ],
                 ],
             ]
         ],
@@ -112,6 +138,30 @@ class CandidatureController extends Controller
         $candidaturaTitle = $iniziativa->titolo;
 
         $steps = $this->steps;
+
+        $foorm = Foorm::getFoorm('candidato.insert',$request,[]);
+        $metadata = $foorm->getFormMetadata();
+
+        foreach ($steps[$step]['sections'] as $section => $sectionData) {
+
+            foreach (Arr::get($sectionData,'fields',[]) as $fieldName => $fieldData) {
+
+                $options = Arr::get($metadata['fields'][$fieldName],'options');
+                if (is_array($options)) {
+                    $steps[$step]['sections'][$section]['fields'][$fieldName]['options'] = [];
+                    foreach($options as $optionValue => $optionLabel) {
+                        $steps[$step]['sections'][$section]['fields'][$fieldName]['options'][] = [
+                            'value' => $optionValue,
+                            'label' => $optionLabel,
+                        ];
+                    }
+
+                }
+
+            }
+
+        }
+
 
 
         return view('candidature.create', compact('iniziativa','candidaturaTitle', 'steps','step'));

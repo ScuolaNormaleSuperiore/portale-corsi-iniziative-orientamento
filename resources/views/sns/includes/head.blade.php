@@ -20,5 +20,50 @@
             background: url('{!! \Igaster\LaravelTheme\Facades\Theme::url('images/card-1x.png') !!}') no-repeat right bottom;
             height: 128px;
         }
+
+        .form-group-candidature {
+            padding-bottom:20px;
+            border-bottom: 1px solid #ccd4de;
+            margin-bottom:30px;
+            /*padding-top:5px;*/
+        }
+        .input-group-candidature {
+            margin-top:10px;
+            /*padding-top:5px;*/
+        }
+        .input-group-candidature .input-group-text {
+            border: 1px solid #5d7083;
+            border-radius: 4px;
+            border-right: 0;
+        }
+
+        .input-group-candidature input {
+            border: 1px solid #5d7083;
+            border-radius: 4px;
+            border-left: 0;
+
+        }
+        .input-group-candidature label.active {
+            padding-bottom: 5px;
+            margin-left: -35px !important;
+        }
+
+
+        .form-group-candidature select {
+            border: 1px solid #5d7083;
+            border-radius: 4px;
+            color: #5d7083;
+            font-weight:normal;
+
+        }
+
+        .form-group-candidature.select-wrapper label {
+            padding-bottom: 5px;
+        }
+
+        .form-group-candidature select option {
+            color: #5d7083;
+
+        }
     </style>
 </head>

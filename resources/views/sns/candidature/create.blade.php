@@ -28,9 +28,9 @@
                                 <div class="col-12 col-lg-8">
                                     <p>I campi contraddistinti dal simbolo asterisco (*) sono obbligatori</p>
 
-                                    <div class="card-wrapper border border-light rounded shadow-sm">
-                                        @foreach ($datiStep['sections'] as $sezioneForm)
-                                            <div class="card no-after rounded has-bkg-primary-grey mb-4">
+                                    @foreach ($datiStep['sections'] as $sezioneForm)
+                                        <div class="">
+                                            <div class="card no-after rounded mb-4" style="background-color:#EFF8FA;">
                                                 <div class="card-body">
                                                     <h3 class="card-title h3">{{$sezioneForm['title']}}</h3>
                                                     @if(\Illuminate\Support\Arr::get($sezioneForm,'subtitle'))
@@ -38,11 +38,15 @@
                                                             {{$sezioneForm['subtitle']}}
                                                         </p>
                                                     @endif
-                                                    @include('candidature.sezioni.'.$sezioneForm['code'],['datiStep' => $datiStep])
+                                                    <div class="card rounded bg-white">
+                                                        <div class="card-body">
+                                                            @include('candidature.sezioni.'.$sezioneForm['code'],['datiStep' => $datiStep,'sectionData' => $sezioneForm])
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        @endforeach
-                                    </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             @else
                                 <div class="col-12">
