@@ -107,4 +107,10 @@ class Scuola extends Breeze
         $this->info['anni'] = $anni;
         return $this->info;
     }
+
+    public function getScuolaFE() {
+
+        return $this->denominazione
+            . ' (' . $this->provincia_sigla . ') - Cod:' . $this->codice;
+    }
 }

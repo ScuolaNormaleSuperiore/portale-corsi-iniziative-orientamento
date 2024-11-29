@@ -3,12 +3,13 @@
 namespace App\Foorm\Candidato;
 
 
-use Gecche\Cupparis\App\Foorm\Base\FoormEdit as BaseFoormEdit;
+use Gecche\Cupparis\App\Foorm\Base\FoormInsert as BaseFoormInsert;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
-class FoormInsert extends BaseFoormEdit
+class FoormInsert extends BaseFoormInsert
 {
+    protected $step;
 
     use CandidatoTrait;
 

@@ -54,6 +54,7 @@ class Candidato extends Breeze
 //        'belongsto' => array(self::BELONGS_TO, Candidato::class, 'foreignKey' => '<FOREIGNKEYNAME>'),
 //        'belongstomany' => array(self::BELONGS_TO_MANY, Candidato::class, 'table' => '<TABLEPIVOTNAME>','pivotKeys' => [],'foreignKey' => '<FOREIGNKEYNAME>','otherKey' => '<OTHERKEYNAME>') ,
 //        'hasmany' => array(self::HAS_MANY, Candidato::class, 'table' => '<TABLENAME>','foreignKey' => '<FOREIGNKEYNAME>'),
+        'attachments' => [self::MORPH_MANY, 'related' => Attachment::class, 'name' => 'mediable'],
     ];
 
     public static $rules = [

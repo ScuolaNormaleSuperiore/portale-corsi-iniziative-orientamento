@@ -10,5 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class FoormEdit extends BaseFoormEdit
 {
 
+    protected $step;
+
     use CandidatoTrait;
 }

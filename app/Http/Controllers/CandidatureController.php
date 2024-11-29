@@ -9,6 +9,7 @@ use App\Models\Iniziativa;
 use App\Models\News;
 use App\Models\Pagina;
 use App\Models\PaginaOrientamento;
+use App\Models\Scuola;
 use App\Models\SezioneLayout;
 use App\Models\StudenteOrientamento;
 use App\Models\Video;
@@ -94,8 +95,18 @@ class CandidatureController extends Controller
 
             foreach (Arr::get($sectionData, 'fields', []) as $fieldName => $fieldData) {
 
+                $value = Arr::get($data, $fieldName);
                 $stepData['sections'][$section]['fields'][$fieldName]['value'] =
-                    Arr::get($data, $fieldName);
+                    $value;
+
+                if ($fieldName == 'scuola_id' && $value) {
+                    $scuola = Scuola::find($value);
+                    if ($scuola) {
+                        $stepData['sections'][$section]['fields'][$fieldName]['referred_data']
+                          = $scuola->getScuolaFE();
+
+                    }
+                }
             }
         }
         return $stepData;

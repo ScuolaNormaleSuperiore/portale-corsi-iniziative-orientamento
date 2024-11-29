@@ -13,22 +13,29 @@
 </label>
 
 <ul class="upload-file-list" id="upload-file-list-candidatura-{{$field}}">
-    {{--    <li class="upload-file success">--}}
-    {{--        <svg class="icon icon-sm" aria-hidden="true">--}}
-    {{--            <use href="{{Theme::url('svg/sprites.svg')}}#it-file"></use>--}}
-    {{--        </svg>--}}
-    {{--        <p>--}}
-    {{--            <span class="visually-hidden">File caricato:</span>--}}
-    {{--            nome-file-01.pdf <span class="upload-file-weight">68 MB</span>--}}
-    {{--        </p>--}}
-    {{--        <button>--}}
-    {{--            <span class="visually-hidden">Elimina file caricato nome-file-04.jpg</span>--}}
-    {{--            <svg class="icon" aria-hidden="true">--}}
-    {{--                <use href="{{Theme::url('svg/sprites.svg')}}#it-close"></use>--}}
-    {{--            </svg>--}}
-    {{--        </button>--}}
 
-    {{--    </li>--}}
+    @foreach($candidatura->attachments as $attachment)
+    <li class="upload-file success">
+        <svg class="icon icon-sm" aria-hidden="true">
+            <use href="{{Theme::url('svg/sprites.svg')}}#it-file"></use>
+        </svg>
+        <p>
+            <span class="visually-hidden">File caricato:</span>
+            {{$attachment->nome}} <span class="upload-file-weight">{{$attachment->dim}}</span>
+        </p>
+        <button type="button" class="remove-attachment">
+            <span class="visually-hidden">Elimina file caricato {{$attachment->dim}}</span>
+            <svg class="icon" aria-hidden="true">
+                <use href="{{Theme::url('svg/sprites.svg')}}#it-close"></use>
+            </svg>
+        </button>
+        <input type="hidden" name="attachments-id[]" value="{{$attachment->id}}"/>
+        <input type="hidden" name="attachments-status[]" value=""/>
+        <input type="hidden" name="attachments-resource[]" value="{{json_encode($attachment->resource)}}"/>
+        <input type="hidden" name="attachments-nome[]" value="{{$attachment->nome}}"/>
+
+    </li>
+    @endforeach
     {{--    <li class="upload-file error">--}}
     {{--        <svg class="icon icon-sm" aria-hidden="true">--}}
     {{--            <use href="{{Theme::url('svg/sprites.svg')}}#it-file"></use>--}}
@@ -65,6 +72,16 @@
     {{--</button>--}}
 
     document.addEventListener("DOMContentLoaded", function () {
+
+        var removeButtons = document.querySelectorAll('.remove-attachment');
+        if (removeButtons.length > 0) {
+            for (var i in removeButtons) {
+                (removeButtons.item(i)).addEventListener('click', function (e) {
+                    removeAttachment(e.target)
+                });
+            }
+        }
+
         var inputFile = document.getElementById('{{$field}}');
         inputFile.addEventListener('change', function (e, v) {
             var uploadList = document.getElementById('upload-file-list-candidatura-{{$field}}');
@@ -140,18 +157,26 @@
             input3.setAttribute('name', 'attachments-resource[]');
             input3.value = JSON.stringify(json);
             input3.setAttribute('type', 'hidden');
+            let input4 = document.createElement('input');
+            input4.setAttribute('name', 'attachments-nome[]');
+            input4.setAttribute('type', 'hidden');
+            input4.value = json.filename;
 
             li.appendChild(input1);
             li.appendChild(input2);
             li.appendChild(input3);
+            li.appendChild(input4);
 
             button.addEventListener('click', function (e) {
-                var button = e.target;
-                var li = button.closest('li');
-                li.remove();
+                removeAttachment(e.target)
             });
 
             return dFrag;
+        }
+
+        function removeAttachment(el) {
+            var li = el.closest('li');
+            li.remove();
         }
     })
 

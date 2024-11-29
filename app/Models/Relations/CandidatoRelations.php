@@ -109,6 +109,11 @@ trait CandidatoRelations
     
     }
 
+    public function attachments() {
+
+        return $this->morphMany('App\Models\Attachment', 'mediable', null, null, null);
+
+    }
 
 
 }

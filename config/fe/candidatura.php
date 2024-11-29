@@ -131,7 +131,7 @@ return [
                     'title' => 'Allegati',
                     'subtitle' => ' In questa sezione, puoi caricare le pagelle scolastiche degli ultimi tre anni. Assicurati che i documenti siano chiari e completi, includendo tutti i voti finali per ciascun anno scolastico richiesto.',
                     'fields' => [
-                        'curriculum' => [
+                        'attachments' => [
                             'validation' => [],
                         ]
                     ],

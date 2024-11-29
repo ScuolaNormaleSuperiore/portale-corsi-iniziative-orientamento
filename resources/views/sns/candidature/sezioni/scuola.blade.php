@@ -2,7 +2,7 @@
     Digita alcune lettere della scuola e scegli dall'elenco che appare.
 </p>
 
-@include('candidature.form.scuole-autocomplete')
+@include('candidature.form.scuole-autocomplete',['field' => 'scuola_id'])
 
 <p class="pb-2">
     In caso di scuola straniera, compilare manualmente il campo sottostante.

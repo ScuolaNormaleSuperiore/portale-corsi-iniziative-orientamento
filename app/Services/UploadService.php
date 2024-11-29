@@ -28,15 +28,8 @@ class UploadService  extends \Gecche\Cupparis\App\Services\UploadService
             'filename' => $file->getClientOriginalName(),
 
             'url' => $this->getUrl($type,$tempFileName),
-            'dim' => $this->filesize_formatted(storage_temp_path($tempFileName)),
+            'dim' => FormatValues::filesize(storage_temp_path($tempFileName)),
         ];
     }
 
-    protected function filesize_formatted($path)
-    {
-        $size = filesize($path);
-        $units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
-        $power = $size > 0 ? floor(log($size, 1024)) : 0;
-        return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
-    }
 }

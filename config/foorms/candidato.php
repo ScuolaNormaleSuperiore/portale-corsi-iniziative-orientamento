@@ -431,6 +431,7 @@ return [
                     'descrizione' => [],
                     'resource' => [],
                     'ordine' => [],
+                    'dim' => [],
                 ],
                 'orderKey' => 'ordine',
 

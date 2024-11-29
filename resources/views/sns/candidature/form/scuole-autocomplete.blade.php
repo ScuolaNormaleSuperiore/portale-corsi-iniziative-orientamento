@@ -1,8 +1,15 @@
+@php
+    $fieldData = \Illuminate\Support\Arr::get($sectionData['fields'],$field,[]);
+    $validation = \Illuminate\Support\Arr::get($fieldData,'validation',[]);
+    $value = \Illuminate\Support\Arr::get($fieldData,'value',old($field));
+    $referredData = \Illuminate\Support\Arr::get($fieldData,'referred_data');
+@endphp
 <div class="select-wrapper form-group-candidature" id="form-group-candidature-scuola_id">
     <label for="scuolaAutocomplete">Scuola*</label>
-    <select class="form-control" id="scuolaAutocomplete" title="Scegli una scuola">
+    <select class="form-control" id="scuolaAutocomplete" title="Scegli una scuola"
+        >
     </select>
-    <input type="hidden" value="" name="scuola_id" id="scuola_id"/>
+    <input type="hidden" value="{{$value}}" name="scuola_id" id="scuola_id"/>
 </div>
 
 <script type="text/javascript">
@@ -104,7 +111,7 @@
             name: 'scuolaAutocomplete',
             confirmOnBlur: false,
             showAllValues: true,
-            defaultValue: '',
+            defaultValue: '{{$referredData}}',
             autoselect: false,
             showNoOptionsFound: false,
             dropdownArrow: () => '',
