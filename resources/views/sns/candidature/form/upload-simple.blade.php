@@ -13,37 +13,37 @@
 </label>
 
 <ul class="upload-file-list" id="upload-file-list-candidatura-{{$field}}">
-{{--    <li class="upload-file success">--}}
-{{--        <svg class="icon icon-sm" aria-hidden="true">--}}
-{{--            <use href="{{Theme::url('svg/sprites.svg')}}#it-file"></use>--}}
-{{--        </svg>--}}
-{{--        <p>--}}
-{{--            <span class="visually-hidden">File caricato:</span>--}}
-{{--            nome-file-01.pdf <span class="upload-file-weight">68 MB</span>--}}
-{{--        </p>--}}
-{{--        <button>--}}
-{{--            <span class="visually-hidden">Elimina file caricato nome-file-04.jpg</span>--}}
-{{--            <svg class="icon" aria-hidden="true">--}}
-{{--                <use href="{{Theme::url('svg/sprites.svg')}}#it-close"></use>--}}
-{{--            </svg>--}}
-{{--        </button>--}}
+    {{--    <li class="upload-file success">--}}
+    {{--        <svg class="icon icon-sm" aria-hidden="true">--}}
+    {{--            <use href="{{Theme::url('svg/sprites.svg')}}#it-file"></use>--}}
+    {{--        </svg>--}}
+    {{--        <p>--}}
+    {{--            <span class="visually-hidden">File caricato:</span>--}}
+    {{--            nome-file-01.pdf <span class="upload-file-weight">68 MB</span>--}}
+    {{--        </p>--}}
+    {{--        <button>--}}
+    {{--            <span class="visually-hidden">Elimina file caricato nome-file-04.jpg</span>--}}
+    {{--            <svg class="icon" aria-hidden="true">--}}
+    {{--                <use href="{{Theme::url('svg/sprites.svg')}}#it-close"></use>--}}
+    {{--            </svg>--}}
+    {{--        </button>--}}
 
-{{--    </li>--}}
-{{--    <li class="upload-file error">--}}
-{{--        <svg class="icon icon-sm" aria-hidden="true">--}}
-{{--            <use href="{{Theme::url('svg/sprites.svg')}}#it-file"></use>--}}
-{{--        </svg>--}}
-{{--        <p>--}}
-{{--            <span class="visually-hidden">Errore caricamento file:</span>--}}
-{{--            nome-file-04.jpg <span class="upload-file-weight"></span>--}}
-{{--        </p>--}}
-{{--        <button>--}}
-{{--            <span class="visually-hidden">Elimina file caricato nome-file-04.jpg</span>--}}
-{{--            <svg class="icon" aria-hidden="true">--}}
-{{--                <use href="{{Theme::url('svg/sprites.svg')}}#it-close"></use>--}}
-{{--            </svg>--}}
-{{--        </button>--}}
-{{--    </li>--}}
+    {{--    </li>--}}
+    {{--    <li class="upload-file error">--}}
+    {{--        <svg class="icon icon-sm" aria-hidden="true">--}}
+    {{--            <use href="{{Theme::url('svg/sprites.svg')}}#it-file"></use>--}}
+    {{--        </svg>--}}
+    {{--        <p>--}}
+    {{--            <span class="visually-hidden">Errore caricamento file:</span>--}}
+    {{--            nome-file-04.jpg <span class="upload-file-weight"></span>--}}
+    {{--        </p>--}}
+    {{--        <button>--}}
+    {{--            <span class="visually-hidden">Elimina file caricato nome-file-04.jpg</span>--}}
+    {{--            <svg class="icon" aria-hidden="true">--}}
+    {{--                <use href="{{Theme::url('svg/sprites.svg')}}#it-close"></use>--}}
+    {{--            </svg>--}}
+    {{--        </button>--}}
+    {{--    </li>--}}
 </ul>
 
 <svg class="d-none icon icon-sm" aria-hidden="true" id="svg-{{$field}}">
@@ -68,7 +68,7 @@
         var inputFile = document.getElementById('{{$field}}');
         inputFile.addEventListener('change', function (e, v) {
             var uploadList = document.getElementById('upload-file-list-candidatura-{{$field}}');
-            uploadList.innerHTML = '';
+            // uploadList.innerHTML = '';
 
             let formData = new FormData();
             formData.append("file", inputFile.files[0]);
@@ -80,48 +80,79 @@
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
-            }).then(
-                function (j) {
+            }).then(function (j) {
 
-                    console.log("RESULT:::", j);
-                    var json = j.data;
-                    var res = json.result;
-                    const dFrag = document.createDocumentFragment();
+                console.log("RESULT:::", j);
+                var json = j.data;
+                var res = json.result;
 
-                    const li = document.createElement('li');
-                    li.classList.add('upload-file', 'success')
-                    li.id = res.id;
 
-                    let svg = document.getElementById('svg-{{$field}}').cloneNode(true);
-                    svg.classList.remove('d-none');
-                    li.appendChild(svg);
+                const dFrag = createUploadAttachment(res);
 
-                    const p = document.createElement('p');
-                    p.innerHTML = '<span class="visually-hidden">File caricato:</span>' +
-                        res.filename + '<span class="upload-file-weight">' + res.dim + '</span>';
+                uploadList.appendChild(dFrag);
 
-                    li.appendChild(p);
-
-                    const button = document.createElement('button');
-                    button.innerHTML =
-                        '<span class="visually-hidden">Elimina file caricato ' + res.filename + '</span>';
-                    button.setAttribute('type','button');
-
-                    let svgClose = document.getElementById('svg-close-{{$field}}').cloneNode(true);
-                    svgClose.classList.remove('d-none');
-                    button.appendChild(svgClose);
-
-                    li.appendChild(button);
-                    dFrag.appendChild(li);
-
-// Add fragment to a list:
-                    uploadList.appendChild(dFrag);
-
-                    console.log("FILE SUCCESS", j);
-                }).catch(function (e) {
+                console.log("FILE SUCCESS", j);
+            }).catch(function (e) {
                 console.log("FILE ERROR", e);
             });
         })
+
+        function createUploadAttachment(json, id) {
+            const dFrag = document.createDocumentFragment();
+
+            const li = document.createElement('li');
+            li.classList.add('upload-file', 'success')
+            li.id = json.id;
+
+            let svg = document.getElementById('svg-{{$field}}').cloneNode(true);
+            svg.classList.remove('d-none');
+            li.appendChild(svg);
+
+            const p = document.createElement('p');
+            p.innerHTML = '<span class="visually-hidden">File caricato:</span>' +
+                json.filename + '<span class="upload-file-weight">' + json.dim + '</span>';
+
+            li.appendChild(p);
+
+            const button = document.createElement('button');
+            button.innerHTML =
+                '<span class="visually-hidden">Elimina file caricato ' + json.filename + '</span>';
+            button.setAttribute('type', 'button');
+
+            let svgClose = document.getElementById('svg-close-{{$field}}').cloneNode(true);
+            svgClose.classList.remove('d-none');
+            button.appendChild(svgClose);
+
+            li.appendChild(button);
+            dFrag.appendChild(li);
+
+            let input1 = document.createElement('input');
+            input1.setAttribute('name', 'attachments-id[]');
+            input1.setAttribute('type', 'hidden');
+            if (id) {
+                input1.value = id;
+            }
+            let input2 = document.createElement('input');
+            input2.setAttribute('name', 'attachments-status[]');
+            input2.setAttribute('type', 'hidden');
+            input2.value = 'created';
+            let input3 = document.createElement('input');
+            input3.setAttribute('name', 'attachments-resource[]');
+            input3.value = JSON.stringify(json);
+            input3.setAttribute('type', 'hidden');
+
+            li.appendChild(input1);
+            li.appendChild(input2);
+            li.appendChild(input3);
+
+            button.addEventListener('click', function (e) {
+                var button = e.target;
+                var li = button.closest('li');
+                li.remove();
+            });
+
+            return dFrag;
+        }
     })
 
 </script>
