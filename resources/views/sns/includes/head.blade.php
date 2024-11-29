@@ -43,13 +43,25 @@
             border-left: 0;
 
         }
+
+        .input-group-candidature-voti {
+            /*margin-top:10px;*/
+            /*padding-top:5px;*/
+        }
+        .form-group-candidature textarea,
+        .input-group-candidature-voti input {
+            border: 1px solid #5d7083;
+            border-radius: 4px;
+        }
+
         .input-group-candidature label.active {
             padding-bottom: 5px;
             margin-left: -35px !important;
         }
 
 
-        .form-group-candidature select {
+        .form-group-candidature select,
+        .form-group-candidature-voti select {
             border: 1px solid #5d7083;
             border-radius: 4px;
             color: #5d7083;

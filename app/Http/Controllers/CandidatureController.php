@@ -20,6 +20,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
 use Illuminate\Validation\ValidationException;
@@ -65,11 +66,18 @@ class CandidatureController extends Controller
 
     protected function setOptionsInStepData($stepData, $metadata)
     {
+
         foreach ($stepData['sections'] as $section => $sectionData) {
 
             foreach (Arr::get($sectionData, 'fields', []) as $fieldName => $fieldData) {
 
-                $options = Arr::get(Arr::get($metadata['fields'],$fieldName,[]), 'options', []);
+                if ($fieldName == 'voti') {
+                    Log::info("VOTI::::");
+                    Log::info($metadata['relations']);
+                    $options = Arr::get(Arr::get(Arr::get(Arr::get($metadata['relations'],'voti',[]),'fields',[]),'materia_id',[]), 'options', []);
+                } else {
+                    $options = Arr::get(Arr::get($metadata['fields'],$fieldName,[]), 'options', []);
+                }
                 if (is_array($options)) {
                     $stepData['sections'][$section]['fields'][$fieldName]['options'] = [];
                     foreach ($options as $optionValue => $optionLabel) {
@@ -78,8 +86,9 @@ class CandidatureController extends Controller
                             'label' => $optionLabel,
                         ];
                     }
-
                 }
+
+
 
             }
 
@@ -98,6 +107,8 @@ class CandidatureController extends Controller
                 $value = Arr::get($data, $fieldName);
                 $stepData['sections'][$section]['fields'][$fieldName]['value'] =
                     $value;
+
+                Log::info($data);
 
                 if ($fieldName == 'scuola_id' && $value) {
                     $scuola = Scuola::find($value);

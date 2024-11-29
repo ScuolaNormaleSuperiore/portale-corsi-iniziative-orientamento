@@ -11,19 +11,20 @@
 
             <p>I campi contraddistinti dal simbolo asterisco (*) sono obbligatori</p>
 
-            @foreach ($datiStep['sections'] as $sezioneForm)
-                <div class="" id="sezione_{{$sezioneForm['code']}}">
+            @foreach ($datiStep['sections'] as $sectionData)
+                @dump($sectionData)
+                <div class="" id="sezione_{{$sectionData['code']}}">
                     <div class="card no-after rounded mb-4" style="background-color:#EFF8FA;">
                         <div class="card-body">
-                            <h3 class="card-title h3">{{$sezioneForm['title']}}</h3>
-                            @if(\Illuminate\Support\Arr::get($sezioneForm,'subtitle'))
+                            <h3 class="card-title h3">{{$sectionData['title']}}</h3>
+                            @if(\Illuminate\Support\Arr::get($sectionData,'subtitle'))
                                 <p class="card-text text-secondary">
-                                    {{$sezioneForm['subtitle']}}
+                                    {{$sectionData['subtitle']}}
                                 </p>
                             @endif
                             <div class="card rounded bg-white">
                                 <div class="card-body">
-                                    @include('candidature.sezioni.'.$sezioneForm['code'],['datiStep' => $datiStep,'sectionData' => $sezioneForm])
+                                    @include('candidature.sezioni.'.$sectionData['code'],['datiStep' => $datiStep,'sectionData' => $sectionData])
                                 </div>
                             </div>
                         </div>
@@ -37,8 +38,24 @@
 
 
             <p>I campi contraddistinti dal simbolo asterisco (*) sono obbligatori</p>
-            @foreach ($datiStep['sections'] as $sezioneForm)
-                @include('candidature.sezioni.'.$sezioneForm['code'],['datiStep' => $datiStep])
+            @foreach ($datiStep['sections'] as $sectionData)
+                <div class="" id="sezione_{{$sectionData['code']}}">
+                    <div class="card no-after rounded mb-4" style="background-color:#EFF8FA;">
+                        <div class="card-body">
+                            <h3 class="card-title h3">{{$sectionData['title']}}</h3>
+                            @if(\Illuminate\Support\Arr::get($sectionData,'subtitle'))
+                                <p class="card-text text-secondary">
+                                    {{$sectionData['subtitle']}}
+                                </p>
+                            @endif
+                            <div class="card rounded bg-white">
+                                <div class="card-body">
+                                    @include('candidature.sezioni.'.$sectionData['code'],['datiStep' => $datiStep,'sectionData' => $sectionData])
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endforeach
         </div>
     @endif

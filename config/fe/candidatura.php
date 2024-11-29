@@ -123,7 +123,9 @@ return [
                     'code' => 'voti',
                     'title' => 'Voti scolastici',
                     'fields' => [
+                        'voti' => [
 
+                        ],
                     ],
                 ],
                 [
@@ -141,7 +143,19 @@ return [
         3 => [
             'title' => 'Profilo, competenze ed esperienze',
             'sections' => [
+                [
+                    'code' => 'profilo',
+                    'title' => 'Profilo personale',
+                    'fields' => [
+                        'profilo' => [
+                            'validation' => [
+                                'required',
+                                'max:500'
+                            ],
+                        ]
 
+                    ]
+                ]
             ]
         ],
         4 => [
