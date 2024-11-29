@@ -10,12 +10,11 @@
 
         <section class="mx-1 px-1 mx-lg-5 px-lg-5 mb-4">
 
-            @dump($req)
+{{--            @dump($req)--}}
             <div class="steppers">
                 @include('candidature.includes.steps')
 
-                <form class="upload-dragdrop"
-                      enctype="multipart/form-data"
+                <form
                       id="candidaturaForm"
                       data-bs-upload-dragdrop
                       method="POST"
