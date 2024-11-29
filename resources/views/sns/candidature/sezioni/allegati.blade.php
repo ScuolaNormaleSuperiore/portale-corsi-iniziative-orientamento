@@ -1,1 +1,1 @@
-{{--@include('candidature.form.upload-drag',[])--}}
+@include('candidature.form.upload-simple',['field' => 'curriculum'])

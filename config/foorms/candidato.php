@@ -248,6 +248,23 @@ return [
     ],
     'edit' => [
         'actions' => [
+            'uploadfile' => [
+                'allowed_fields' => [
+                    'attachments|resource',
+                ],
+                'fields' => [
+                    'attachments|resource' => [
+                        'resource_type' => 'attachment',
+                        //'max_size' => '4M',
+                        'exts' => 'pdf',
+                    ],
+//                'thumb_url_file' => [
+//                    'resource_type' => 'foto',
+//                    //'max_size' => '4M',
+//                    'exts' => 'png,jpg',
+//                ],
+                ],
+            ],
             'autocomplete' => [
                 'fields' => [
                     'scuola_id' => [
@@ -395,9 +412,6 @@ return [
             "user_id" => [
 
             ],
-            "id" => [
-
-            ],
             "status" => [
 
             ],
@@ -410,6 +424,21 @@ return [
 
         ],
         'relations' => [
+            "attachments" => [
+                "fields" => [
+                    'id' => [],
+                    'nome' => [],
+                    'descrizione' => [],
+                    'resource' => [],
+                    'ordine' => [],
+                ],
+                'orderKey' => 'ordine',
+
+                'beforeNewCallbackMethods' => ['setFieldsFromResource'],
+                'beforeUpdateCallbackMethods' => ['setFieldsFromResource'],
+                'afterNewCallbackMethods' => ['filesOps'],
+                'afterUpdateCallbackMethods' => ['filesOps'],
+            ],
             'corsi' => [
                 'as_options' => [
 

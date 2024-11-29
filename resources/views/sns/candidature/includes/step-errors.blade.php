@@ -1,4 +1,4 @@
-@dump($errors);
+{{--@dump($errors);--}}
 @if ($errors->any())
     <div class="row mb-4">
         <div class="col-12">
