@@ -155,13 +155,17 @@ class CandidatureController extends Controller
 
         $foorm->save();
 
+        $candidatura = $foorm->getModel();
         $metadata = $foorm->getFormMetadata();
 
-        $candidatura = $foorm->getModel();
 
         $submitType = $request->get('submit-type', 'save');
-        if ($submitType == 'next') {
-            $step++;
+        if ($submitType) {
+            $data = $foorm->getFormData();
+            $steps[$step] = $this->setValuesInStepData($steps[$step], $data);
+            if ($submitType == 'next') {
+                $step++;
+            }
         }
         $steps[$step] = $this->setOptionsInStepData($steps[$step], $metadata);
         return view('candidature.edit', compact('candidatura', 'iniziativa', 'candidaturaTitle', 'steps', 'step', 'req'));

@@ -63,6 +63,8 @@ return [
                         'cap' => [
                             'validation' => [
                                 'required',
+                                'numeric',
+                                'max:5',
                             ]
                         ],
                         'provincia_id' => [
@@ -155,13 +157,111 @@ return [
                         ]
 
                     ]
-                ]
+                ],
+                [
+                    'code' => 'competenze_linguistiche',
+                    'title' => 'Competenze linguistiche',
+                    'fields' => [
+                        'inglese_livello_linguistico_id' => [
+                            'validation' => [
+                                'required'
+                            ],
+                        ],
+                        'francese_livello_linguistico_id' => [
+                            'validation' => [
+                                'required'
+                            ],
+                        ],
+                        'spagnolo_livello_linguistico_id' => [
+                            'validation' => [
+                                'required'
+                            ],
+                        ],
+                        'tedesco_livello_linguistico_id' => [
+                            'validation' => [
+                                'required'
+                            ],
+                        ],
+                        'cinese_livello_linguistico_id' => [
+                            'validation' => [
+                                'required'
+                            ],
+                        ],
+                        'altre_competenze_linguistiche' => [
+                            'validation' => [
+//                                'required'
+                            ],
+                        ],
+
+                    ]
+                ],
+                [
+                    'code' => 'partecipazione_concorsi',
+                    'title' => 'Partecipazione a concorsi e risultati',
+                    'fields' => [
+                        'partecipazione_concorsi' => [
+                            'validation' => [
+                                'max:500'
+                            ],
+                        ]
+
+                    ]
+                ],
+                [
+                    'code' => 'esperienze_estere',
+                    'title' => 'Eventuali esperienze all\'estero',
+                    'fields' => [
+                        'esperienze_estere' => [
+                            'validation' => [
+                                'max:500'
+                            ],
+                        ]
+
+                    ]
+                ],
             ]
         ],
         4 => [
             'title' => 'Preferenze e Corsi',
             'sections' => [
+//                [
+//                    'code' => 'materie_settori',
+//                    'title' => 'Materie e settori preferiti',
+//                    'fields' => [
+//                        'modalita_conoscenza_sns' => [
+//                            'validation' => [
+//                                'required',
+//                            ],
+//                        ]
+//
+//                    ]
+//                ],
+                [
+                    'code' => 'motivazioni',
+                    'title' => 'Motivazioni',
+                    'subtitle' => 'Motivazioni che spingono a partecipare ai corsi della SNS',
+                    'fields' => [
+                        'motivazioni' => [
+                            'validation' => [
+                                'required',
+                                'max:500'
+                            ],
+                        ]
 
+                    ]
+                ],
+                [
+                    'code' => 'conoscenza_sns',
+                    'title' => 'Come ha scoperto i corsi SNS?',
+                    'fields' => [
+                        'modalita_conoscenza_sns' => [
+                            'validation' => [
+                                'required',
+                            ],
+                        ]
+
+                    ]
+                ],
             ]
         ],
         5 => [
