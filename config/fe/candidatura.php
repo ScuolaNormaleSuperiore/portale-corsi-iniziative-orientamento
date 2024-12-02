@@ -64,7 +64,7 @@ return [
                             'validation' => [
                                 'required',
                                 'numeric',
-                                'max:5',
+                                'max_digits:5',
                             ]
                         ],
                         'provincia_id' => [
@@ -251,10 +251,24 @@ return [
                     ]
                 ],
                 [
+                    'code' => 'corsi',
+                    'title' => 'Preferenze per i corsi',
+                    'subtitle' => 'Seleziona uno o più corsi presenti nell\'elenco',
+                    'fields' => [
+                        'corsi' => [
+                            'validation' => [
+                                'required',
+//                                'max:500'
+                            ],
+                        ]
+
+                    ]
+                ],
+                [
                     'code' => 'conoscenza_sns',
                     'title' => 'Come ha scoperto i corsi SNS?',
                     'fields' => [
-                        'modalita_conoscenza_sns' => [
+                        'modalita_conoscenza_sns_id' => [
                             'validation' => [
                                 'required',
                             ],

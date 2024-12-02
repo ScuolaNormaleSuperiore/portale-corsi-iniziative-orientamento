@@ -72,9 +72,11 @@ class CandidatureController extends Controller
             foreach (Arr::get($sectionData, 'fields', []) as $fieldName => $fieldData) {
 
                 if ($fieldName == 'voti') {
-                    Log::info("VOTI::::");
-                    Log::info($metadata['relations']);
-                    $options = Arr::get(Arr::get(Arr::get(Arr::get($metadata['relations'],'voti',[]),'fields',[]),'materia_id',[]), 'options', []);
+//                    Log::info("VOTI::::");
+//                    Log::info($metadata['relations']);
+                    $options = Arr::get(Arr::get(Arr::get(Arr::get($metadata['relations'], 'voti', []), 'fields', []), 'materia_id', []), 'options', []);
+                } elseif ($fieldName == 'corsi') {
+                    $options = Arr::get(Arr::get($metadata['relations'], 'corsi', []), 'options', []);
                 } else {
                     $options = Arr::get(Arr::get($metadata['fields'],$fieldName,[]), 'options', []);
                 }

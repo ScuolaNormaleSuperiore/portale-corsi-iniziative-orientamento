@@ -12,7 +12,7 @@
             <p>I campi contraddistinti dal simbolo asterisco (*) sono obbligatori</p>
 
             @foreach ($datiStep['sections'] as $sectionData)
-                @dump($sectionData)
+{{--                @dump($sectionData)--}}
                 <div class="" id="sezione_{{$sectionData['code']}}">
                     <div class="card no-after rounded mb-4" style="background-color:#EFF8FA;">
                         <div class="card-body">

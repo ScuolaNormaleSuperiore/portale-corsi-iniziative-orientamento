@@ -442,7 +442,7 @@ return [
             ],
             'corsi' => [
                 'as_options' => [
-
+                    'nulloption' => false,
                 ],
             ],
             'voti' => [
