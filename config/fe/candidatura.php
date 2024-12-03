@@ -281,7 +281,10 @@ return [
         5 => [
             'title' => 'Informativa',
             'sections' => [
-
+                [
+                    'code' => 'informativa',
+                    'title' => 'Informativa',
+                ]
             ]
         ],
         6 => [
