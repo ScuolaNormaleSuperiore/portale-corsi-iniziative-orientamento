@@ -12,11 +12,12 @@ use Illuminate\Support\Str;
 trait CandidatoTrait
 {
 
+    protected $validationCacheKey = 'candidatura.validation';
 
     public function setValidationSettings($input, $rules = null)
     {
 
-        $validationCacheKey = 'candidatura.validation';
+        $validationCacheKey = $this->validationCacheKey;
 
         if (true || !Cache::has($validationCacheKey)) {
             $steps = Config::get('fe.candidatura.steps', []);
@@ -38,6 +39,11 @@ trait CandidatoTrait
 
         if ($step) {
             $validationRules = Arr::get($validationRules,$step,[]);
+        }
+
+        if (array_key_exists('corsi',$validationRules)) {
+            unset($validationRules['corsi']);
+            $validationRules['corsi-id'] = ['array','min:2'];
         }
 
         $this->validationSettings['rules'] = $validationRules;
@@ -65,10 +71,11 @@ trait CandidatoTrait
 
 
         foreach ($this->hasManies as $hasManyKey => $hasManyValue) {
-            if ($this->step && $this->step != 2) {
-                if (in_array($hasManyKey,['attachments','voti'])) {
+            if ($this->step) {
+                $stepValidationRules = Arr::get(Cache::get($this->validationCacheKey,[]),$this->step,[]);
+                if (!array_key_exists($hasManyKey,$stepValidationRules)) {
                     continue;
-                };
+                }
             }
             $saveRelatedName = 'saveRelated' . Str::studly($hasManyKey);
             $hasManyType = $hasManyValue['relationType'];
