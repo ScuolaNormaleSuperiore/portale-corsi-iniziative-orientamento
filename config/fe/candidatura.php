@@ -3,6 +3,8 @@
 return [
     'steps' => [
         1 => [
+            'riepilogo' => true,
+            'code' => 'dati_personali',
             'title' => 'Dati personali e familiari',
             'sections' => [
                 [
@@ -91,6 +93,8 @@ return [
             ]
         ],
         2 => [
+            'riepilogo' => true,
+            'code' => 'info_scolastiche',
             'title' => 'Info scolastiche',
             'sections' => [
                 [
@@ -143,6 +147,8 @@ return [
             ]
         ],
         3 => [
+            'riepilogo' => true,
+            'code' => 'profilo_competenze',
             'title' => 'Profilo, competenze ed esperienze',
             'sections' => [
                 [
@@ -222,6 +228,8 @@ return [
             ]
         ],
         4 => [
+            'riepilogo' => true,
+            'code' => 'preferenze',
             'title' => 'Preferenze e Corsi',
             'sections' => [
 //                [

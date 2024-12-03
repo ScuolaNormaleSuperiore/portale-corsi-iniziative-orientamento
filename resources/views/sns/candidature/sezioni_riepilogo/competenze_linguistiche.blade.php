@@ -1,0 +1,6 @@
+@include('candidature.form.select',['field' => 'inglese_livello_linguistico_id','label' => 'Inglese'])
+@include('candidature.form.select',['field' => 'francese_livello_linguistico_id','label' => 'Francese'])
+@include('candidature.form.select',['field' => 'tedesco_livello_linguistico_id','label' => 'Tedesco'])
+@include('candidature.form.select',['field' => 'spagnolo_livello_linguistico_id','label' => 'Spagnolo'])
+@include('candidature.form.select',['field' => 'cinese_livello_linguistico_id','label' => 'Cinese'])
+@include('candidature.form.input-icon',['field' => 'altre_cometenze_linguistiche','label' => 'Altro'])
