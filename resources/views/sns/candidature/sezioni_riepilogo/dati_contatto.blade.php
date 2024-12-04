@@ -6,4 +6,4 @@
 @include('candidature.form.riepilogo-text',['value' => $candidatura->comune,'label' => 'Comune'])
 @include('candidature.form.riepilogo-text',['value' => $candidatura->cap,'label' => 'CAP'])
 
-@include('candidature.form.riepilogo-text',['value' => $candidatura->provincia_id,'label' => 'Provincia'])
+@include('candidature.form.riepilogo-text',['value' => $candidatura->provincia->nome . ' (' . $candidatura->provincia->sigla . ')','label' => 'Provincia'])

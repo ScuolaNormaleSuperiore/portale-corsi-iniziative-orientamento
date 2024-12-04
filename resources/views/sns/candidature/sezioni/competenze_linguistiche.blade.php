@@ -3,4 +3,4 @@
 @include('candidature.form.select',['field' => 'tedesco_livello_linguistico_id','label' => 'Tedesco'])
 @include('candidature.form.select',['field' => 'spagnolo_livello_linguistico_id','label' => 'Spagnolo'])
 @include('candidature.form.select',['field' => 'cinese_livello_linguistico_id','label' => 'Cinese'])
-@include('candidature.form.input-icon',['field' => 'altre_cometenze_linguistiche','label' => 'Altro'])
+@include('candidature.form.input-icon',['field' => 'altre_competenze_linguistiche','label' => 'Altro'])

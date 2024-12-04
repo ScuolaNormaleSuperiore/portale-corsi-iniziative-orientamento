@@ -1,1 +1,1 @@
-@include('candidature.form.textarea',['field' => 'profilo','label' => 'Profilo personale'])
+@include('candidature.form.riepilogo-text',['value' => $candidatura->profilo])

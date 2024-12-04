@@ -1,1 +1,1 @@
-@include('candidature.form.textarea',['field' => 'partecipazione_concorsi','label' => 'Partecipazione a concorsi'])
+@include('candidature.form.riepilogo-text',['value' => $candidatura->partecipazione_concorsi])
