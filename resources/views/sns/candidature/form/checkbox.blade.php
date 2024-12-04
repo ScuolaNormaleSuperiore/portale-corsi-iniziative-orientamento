@@ -15,7 +15,7 @@
             <input id="{{$field}}[{{$optionIndex}}]" name="{{$field}}[]"
                    type="checkbox"
                    value="{{\Illuminate\Support\Arr::get($option,'value')}}"
-                   @if(\Illuminate\Support\Arr::get($option,'value') == $value)
+                   @if(in_array(\Illuminate\Support\Arr::get($option,'value'),$value))
                        checked="checked"
                    @endif
             >

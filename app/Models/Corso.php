@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\FormatValues;
 use Gecche\Cupparis\App\Breeze\Breeze;
 
 /**
@@ -12,7 +13,7 @@ class Corso extends Breeze
 	use Relations\CorsoRelations;
 
 
-    
+
 //    use ModelWithUploadsTrait;
 
     protected $table = 'corsi';
@@ -57,5 +58,10 @@ class Corso extends Breeze
     public $itemNoneForSelectList = false;
     public $fieldsSeparator = ' - ';
 
+    public function getCorsoFE() {
 
+        return $this->titolo
+            . ' - ' . $this->luogo . ' dal ' . FormatValues::formatDateIta($this->data_inizio)
+            . ' al ' . FormatValues::formatDateIta($this->data_fine);
+    }
 }

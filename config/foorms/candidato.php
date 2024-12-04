@@ -391,6 +391,9 @@ return [
             "esperienze_estere" => [
 
             ],
+            "materie_preferite" => [
+
+            ],
             "settore_professionale" => [
 
             ],

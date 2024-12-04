@@ -63,6 +63,7 @@ return new class extends Migration {
             $table->mediumText('profilo')->nullable();
             $table->text('esperienze_estere')->nullable();
             $table->text('settore_professionale')->nullable();
+            $table->text('materie_preferite')->nullable();
             $table->text('motivazioni')->nullable();
             $table->unsignedBigInteger('modalita_conoscenza_sns_id')->nullable()->index();
             $table->foreign('modalita_conoscenza_sns_id')->references('id')->on('modalita_conoscenza_sns')->onDelete('cascade')->onUpdate('cascade');

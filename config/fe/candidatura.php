@@ -232,18 +232,18 @@ return [
             'code' => 'preferenze',
             'title' => 'Preferenze e Corsi',
             'sections' => [
-//                [
-//                    'code' => 'materie_settori',
-//                    'title' => 'Materie e settori preferiti',
-//                    'fields' => [
-//                        'modalita_conoscenza_sns' => [
-//                            'validation' => [
-//                                'required',
-//                            ],
-//                        ]
-//
-//                    ]
-//                ],
+                [
+                    'code' => 'materie_settori',
+                    'title' => 'Materie e settori preferiti',
+                    'fields' => [
+                        'materie_preferite' => [
+
+                        ],
+                        'settore_professionale' => [
+
+                        ]
+                    ]
+                ],
                 [
                     'code' => 'motivazioni',
                     'title' => 'Motivazioni',
@@ -292,6 +292,13 @@ return [
                 [
                     'code' => 'informativa',
                     'title' => 'Informativa',
+                    'fields' => [
+                        'informativa' => [
+                            'validation' => [
+                                'accepted',
+                            ]
+                        ],
+                    ]
                 ]
             ]
         ],

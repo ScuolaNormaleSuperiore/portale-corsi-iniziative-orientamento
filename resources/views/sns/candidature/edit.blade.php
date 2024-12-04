@@ -25,19 +25,16 @@
                     <input type="hidden" name="step" value="{{$step}}"/>
 
                         {{-- NON E' RIEPILOGO--}}
-                    @if (array_key_last($steps) != $step)
 
                         <div class="steppers-content" aria-live="polite">
-                            @include('candidature.includes.step-data')
+                            @if (array_key_last($steps) != $step)
+                                @include('candidature.includes.step-data')
+                            @else
+                                @include('candidature.includes.step-data-riepilogo')
+                            @endif
                             <!-- Esempio END -->
                         </div>
                         @include('candidature.includes.step-buttons')
-                    @else
-                        <div class="steppers-content" aria-live="polite">
-                            @include('candidature.includes.step-data-riepilogo')
-                        </div>
-                        @include('candidature.includes.step-buttons')
-                    @endif
                 </form>
             </div>
 
