@@ -9,6 +9,8 @@ use Gecche\Cupparis\App\Breeze\Breeze;
  */
 class CandidatoVoti extends Breeze
 {
+	use Relations\CandidatoVotiRelations;
+
 
 
 //    use ModelWithUploadsTrait;
