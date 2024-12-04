@@ -8,6 +8,7 @@
     }
     if (count($value) == 0) {
         $value[] = [
+            'id' => null,
             'materia_id' => null,
             'voto_anno_2' => null,
             'voto_anno_1' => null,
@@ -52,6 +53,7 @@
                 </button>
             </th>
             <td class="select-wrapper form-group-candidature-voti vertical-align-middle pt-2">
+                <input type="hidden" name="voti-id[]" value="{{$voto['id']}}"/>
                 <select name="voti-materia_id[]" class="mt-2">
                     @foreach($options as $option)
                         <option value="{{\Illuminate\Support\Arr::get($option,'value')}}"
@@ -110,7 +112,8 @@
             </button>
         </th>
         <td class="select-wrapper form-group-candidature-voti vertical-align-middle pt-2">
-            <select name="voti-materia_id[]" class="mt-2">
+            <input class="voti-tpl" type="hidden" name="tpl-voti-id[]" value=""/>
+            <select name="tpl-voti-materia_id[]" class="mt-2 voti-tpl">
                 @foreach($options as $option)
                     <option value="{{\Illuminate\Support\Arr::get($option,'value')}}"
                             @if(\Illuminate\Support\Arr::get($option,'value') == $value)
@@ -124,21 +127,21 @@
         </td>
         <td class="form-group form-group-candidature-voti vertical-align-middle">
             <div class="input-group input-group-candidature-voti pt-2">
-                <input type="number" class="form-control" name="voti-voto_anno_2[]"
+                <input type="number" class="form-control voti-tpl" name="tpl-voti-voto_anno_2[]"
                        value=""
                 >
             </div>
         </td>
         <td class="form-group form-group-candidature-voti vertical-align-middle">
             <div class="input-group input-group-candidature-voti pt-2">
-                <input type="number" class="form-control" name="voti-voto_anno_1[]"
+                <input type="number" class="form-control voti-tpl" name="tpl-voti-voto_anno_1[]"
                        value=""
                 >
             </div>
         </td>
         <td class="form-group form-group-candidature-voti vertical-align-middle">
             <div class="input-group input-group-candidature-voti pt-2">
-                <input type="number" class="form-control" name="voti-voto_primo_quadrimestre[]"
+                <input type="number" class="form-control voti-tpl" name="tpl-voti-voto_primo_quadrimestre[]"
                        value=""
                 >
             </div>
@@ -166,6 +169,18 @@
             var votiBody = document.getElementById('voti_body');
             var tplVotoRow = document.getElementById('voto-row-tpl').cloneNode(true);
             tplVotoRow.classList.remove('d-none');
+            var inputEls = tplVotoRow.getElementsByClassName('voti-tpl');
+            console.log("ELSS::::",inputEls);
+            for (var i in inputEls) {
+                var el = inputEls.item(i);
+                if (!el) {
+                    continue;
+                }
+                console.log("EL::::",inputEls.item(i));
+                var name = el.getAttribute('name');
+                el.setAttribute('name',name.substring(4,name.length));
+                el.classList.remove('voti-tpl');
+            }
             tplVotoRow.id = '';
             var rButton = tplVotoRow.getElementsByClassName('remove-voto').item(0);
             rButton.addEventListener('click', function (e) {

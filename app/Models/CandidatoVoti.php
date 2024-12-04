@@ -10,12 +10,14 @@ use Gecche\Cupparis\App\Breeze\Breeze;
 class CandidatoVoti extends Breeze
 {
 
-    
+
 //    use ModelWithUploadsTrait;
 
     protected $table = 'candidati_voti';
 
-    //protected $fillable = [];
+    protected $guarded = [
+        'id'
+    ];
 
     public $timestamps = true;
     public $ownerships = true;

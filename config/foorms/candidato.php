@@ -447,6 +447,7 @@ return [
             ],
             'voti' => [
                 'fields' => [
+                    'id' => [],
                     'voto_anno_1' => [],
                     'voto_anno_2' => [],
                     'voto_primo_quadrimestre' => [],
