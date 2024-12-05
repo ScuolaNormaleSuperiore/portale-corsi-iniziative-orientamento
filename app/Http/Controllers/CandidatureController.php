@@ -191,6 +191,8 @@ class CandidatureController extends Controller
         $steps[$step] = $this->setOptionsInStepData($steps[$step], $metadata);
         $steps[$step] = $this->setValuesInStepData($steps[$step], $data);
 
+        $candidatura = $candidatura->fresh();
+
         return view('candidature.edit', compact('candidatura', 'iniziativa', 'candidaturaTitle', 'steps', 'step', 'req'));
     }
 
@@ -225,6 +227,9 @@ class CandidatureController extends Controller
         }
         $steps[$step] = $this->setOptionsInStepData($steps[$step], $metadata);
         $steps[$step] = $this->setValuesInStepData($steps[$step], $data);
+
+        $candidatura = $candidatura->fresh();
+
         return view('candidature.edit', compact('candidatura', 'iniziativa', 'candidaturaTitle', 'steps', 'step', 'req','errors'));
 
     }

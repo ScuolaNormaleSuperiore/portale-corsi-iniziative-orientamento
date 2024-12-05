@@ -72,6 +72,7 @@ return new class extends Migration {
             $table->string('tipo')->nullable()->index();
             $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->text('info')->nullable();
 
             $table->date('data_candidatura')->nullable();
             $table->string('status')->nullable();

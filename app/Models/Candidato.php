@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Gecche\Cupparis\App\Breeze\Breeze;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -25,6 +26,10 @@ class Candidato extends Breeze
 
     public $appends = [
         'fename',
+    ];
+
+    protected $casts = [
+      'info' => 'array',
     ];
 
 
@@ -131,5 +136,25 @@ class Candidato extends Breeze
         }
 
         return $this->emails ?: "N.D.";
+    }
+
+    public function getInfoAttribute($value) {
+        $value = json_decode($value,true);
+        if (!is_array($value)) {
+            return [
+                'steps' => [],
+            ];
+        }
+        if (!array_key_exists('steps', $value)) {
+            $value['steps'] = [];
+        }
+        return $value;
+    }
+
+    public function addStepToInfo($step) {
+        $info = $this->info;
+        $info['steps'][$step] = true;
+        $this->info = $info;
+        return $this->info;
     }
 }

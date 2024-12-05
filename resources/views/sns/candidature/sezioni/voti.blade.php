@@ -6,6 +6,9 @@
     if (!isset($options)) {
         $options = \Illuminate\Support\Arr::get($fieldData,'options',[]);
     }
+    if (!is_array($value)) {
+        $value = [];
+    }
     if (count($value) == 0) {
         $value[] = [
             'id' => null,
