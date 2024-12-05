@@ -1,7 +1,7 @@
 @php
     $fieldData = \Illuminate\Support\Arr::get($sectionData['fields'],$field,[]);
     $validation = \Illuminate\Support\Arr::get($fieldData,'validation',[]);
-    $value = \Illuminate\Support\Arr::get($fieldData,'value',old($field));
+    $value = old($field) ?: \Illuminate\Support\Arr::get($fieldData,'value');
     $maxLength = \Illuminate\Support\Arr::get($fieldData,'maxLength',500);
 @endphp
 <div class="form-group form-group-candidature {{$cssForm ?? ''}}" id="form-group-candidature-{{$field}}">

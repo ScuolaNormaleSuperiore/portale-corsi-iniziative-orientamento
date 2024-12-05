@@ -210,7 +210,8 @@ class CandidatureController extends Controller
             return redirect(route('candidatura.edit',[
                 'candidatura' => $candidatura->getKey(),
                 'step' => $step,
-            ]))->withErrors($e->errors());
+            ]))->withInput($req)
+                ->withErrors($e->errors());
         }
 
         $metadata = $foorm->getFormMetadata();

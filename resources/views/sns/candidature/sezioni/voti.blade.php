@@ -2,7 +2,7 @@
     $field = 'voti';
     $fieldData = \Illuminate\Support\Arr::get($sectionData['fields'],$field,[]);
     $validation = \Illuminate\Support\Arr::get($fieldData,'validation',[]);
-    $value = \Illuminate\Support\Arr::get($fieldData,'value',old($field));
+    $value = old($field) ?: \Illuminate\Support\Arr::get($fieldData,'value');
     if (!isset($options)) {
         $options = \Illuminate\Support\Arr::get($fieldData,'options',[]);
     }
