@@ -39,7 +39,13 @@ class AppController extends Controller
         $value = $request->get('value');
 
         $searchFields = ['denominazione'];
-        $resultFields = ['denominazione','codice','email_riferimento'];
+        $resultFields = [
+            'denominazione','codice','email_riferimento',
+            'tipologia_grado_istruzione',
+            'indirizzo',
+            'cap',
+            'comune',
+        ];
         $appends = ['provincia_sigla'];
 
 

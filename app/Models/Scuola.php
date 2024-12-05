@@ -108,9 +108,13 @@ class Scuola extends Breeze
         return $this->info;
     }
 
-    public function getScuolaFE() {
+    public function getScuolaFE($full = false) {
 
-        return $this->denominazione
-            . ' (' . $this->provincia_sigla . ') - Cod:' . $this->codice;
+        if (!$full) {
+            return $this->denominazione
+                . ' (' . $this->provincia_sigla . ') - Cod:' . $this->codice;
+        }
+
+        return $this;
     }
 }

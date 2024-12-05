@@ -117,6 +117,8 @@ class CandidatureController extends Controller
                     if ($scuola) {
                         $stepData['sections'][$section]['fields'][$fieldName]['referred_data']
                           = $scuola->getScuolaFE();
+                        $stepData['sections'][$section]['fields'][$fieldName]['referred_data_full']
+                            = $scuola->getScuolaFE(true);
 
                     }
                 }

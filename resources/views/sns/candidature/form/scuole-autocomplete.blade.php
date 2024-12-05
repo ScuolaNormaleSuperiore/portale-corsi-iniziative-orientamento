@@ -3,13 +3,31 @@
     $validation = \Illuminate\Support\Arr::get($fieldData,'validation',[]);
     $value = \Illuminate\Support\Arr::get($fieldData,'value',old($field));
     $referredData = \Illuminate\Support\Arr::get($fieldData,'referred_data');
+    $referredDataFull = \Illuminate\Support\Arr::get($fieldData,'referred_data_full');
 @endphp
 <div class="select-wrapper form-group-candidature" id="form-group-candidature-scuola_id">
     <label for="scuolaAutocomplete">Scuola*</label>
     <select class="form-control" id="scuolaAutocomplete" title="Scegli una scuola"
-        >
+    >
     </select>
     <input type="hidden" value="{{$value}}" name="scuola_id" id="scuola_id"/>
+</div>
+<div class="" id="scuola_text">
+
+    @if($referredDataFull)
+        <div id="scuola_text">
+            <span class="badge bg-primary">
+                {{$referredDataFull->tipologia_grado_istruzione}}
+            </span>
+        </div>
+        <p>
+            {{$referredDataFull->denominazione}} (Cod: {{$referredDataFull->codice}})
+            <br/>
+            {{$referredDataFull->indirizzo}}
+            <br/>
+            {{$referredDataFull->cap}} {{$referredDataFull->comune}} ({{$referredDataFull->provincia?->sigla}})
+        </p>
+    @endif
 </div>
 
 <script type="text/javascript">
@@ -127,7 +145,29 @@
 
                 var cod = val.split("Cod:").pop();
 
-                document.getElementById('scuola_id').value = scuole[cod] ? scuole[cod].id : null;
+                var scuola = scuole[cod];
+                var scuolaText = document.getElementById('scuola_text');
+
+                if (scuola) {
+                    document.getElementById('scuola_id').value = scuola.id;
+                    scuolaText.innerHTML = '<div>' +
+                        '<span class="badge bg-primary">' +
+                        scuola['tipologia_grado_istruzione'] +
+                        '</span>' +
+                        '</div><p>' +
+                        scuola['denominazione'] + '(Cod: ' + scuola['codice'] + ')' +
+                        '<br/>' +
+                        scuola['indirizzo'] +
+                        '<br/>' +
+                        scuola['cap'] + ' ' + scuola['comune'] + ' (' + scuola['provincia_sigla'] + ')' +
+                        '</p>';
+                } else {
+                    document.getElementById('scuola_id').value = null;
+                    scuolaText.innerHTML = '';
+
+
+                }
+
             }
             //tNoResults: tNoResults,
         })
