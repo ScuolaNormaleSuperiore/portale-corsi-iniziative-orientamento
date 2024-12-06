@@ -53,7 +53,7 @@
                                             @endif
                                         </div>
                                     @elseif ($ruolo == 'Scuola')
-                                        <div class="d-flex justify-content-start pb-5">
+                                        <div class="d-flex justify-content-start pb-5 gap-3">
                                             @foreach ($candidature as $candidatura)
                                                 <a href="/candidatura/edit/{{$candidatura->getKey()}}">
                                                     <button type="button" class="btn btn-outline-primary">

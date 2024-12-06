@@ -29,7 +29,10 @@ class CandidatureController extends Controller
 {
 
     protected $steps = [];
-        /**
+
+    protected $role;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -37,7 +40,7 @@ class CandidatureController extends Controller
     public function __construct()
     {
         Theme::set('sns');
-        $this->steps = Config::get('fe.candidatura.steps',[]);
+        $this->steps = Config::get('fe.candidatura.steps', []);
     }
 
     /**
@@ -78,7 +81,7 @@ class CandidatureController extends Controller
                 } elseif ($fieldName == 'corsi') {
                     $options = Arr::get(Arr::get($metadata['relations'], 'corsi', []), 'options', []);
                 } else {
-                    $options = Arr::get(Arr::get($metadata['fields'],$fieldName,[]), 'options', []);
+                    $options = Arr::get(Arr::get($metadata['fields'], $fieldName, []), 'options', []);
                 }
                 if (is_array($options)) {
                     $stepData['sections'][$section]['fields'][$fieldName]['options'] = [];
@@ -89,7 +92,6 @@ class CandidatureController extends Controller
                         ];
                     }
                 }
-
 
 
             }
@@ -110,13 +112,20 @@ class CandidatureController extends Controller
                 $stepData['sections'][$section]['fields'][$fieldName]['value'] =
                     $value;
 
-                Log::info($data);
 
-                if ($fieldName == 'scuola_id' && $value) {
-                    $scuola = Scuola::find($value);
+                if ($fieldName == 'scuola_id') {
+                    $scuola = null;
+                    if ($value && $value > 0) {
+                        $scuola = Scuola::find($value);
+                    } elseif ($this->role == 'Scuola') {
+                            $scuola = Auth::user()->scuola;
+                        $stepData['sections'][$section]['fields'][$fieldName]['value'] =
+                            $scuola->getKey();
+                    }
+
                     if ($scuola) {
                         $stepData['sections'][$section]['fields'][$fieldName]['referred_data']
-                          = $scuola->getScuolaFE();
+                            = $scuola->getScuolaFE();
                         $stepData['sections'][$section]['fields'][$fieldName]['referred_data_full']
                             = $scuola->getScuolaFE(true);
 
@@ -127,8 +136,58 @@ class CandidatureController extends Controller
         return $stepData;
     }
 
+    protected function checkUserCreate(Request $request, Iniziativa $iniziativa)
+    {
+
+        $role = auth_role_name();
+        $this->role = $role;
+
+        switch ($role) {
+            case 'Admin':
+            case 'Superutente':
+                return true;
+            case 'Studente':
+                $maxCandidature = 1;
+                break;
+            case 'Scuola':
+                $maxCandidature = config('sns.max_candidature_scuole', 5);
+                break;
+            default:
+                return false;
+        }
+        $countCandidature = Candidato::where('iniziativa_id', $iniziativa->getKey())
+            ->where('user_id', Auth::id())
+            ->count();
+        if ($countCandidature < $maxCandidature) {
+            return true;
+        }
+        return false;
+
+
+    }
+
+    protected function checkUserEdit(Request $request, Candidato $candidatura)
+    {
+
+        $role = auth_role_name();
+        $this->role = $role;
+
+        switch ($role) {
+            case 'Admin':
+            case 'Superutente':
+                return true;
+            default:
+                return $candidatura->user_id == Auth::id();
+        }
+
+    }
+
     public function create(Request $request, Iniziativa $iniziativa)
     {
+
+        if (!$this->checkUserCreate($request, $iniziativa)) {
+            return redirect()->route('candidature');
+        }
 
 
         $step = 1;
@@ -146,6 +205,10 @@ class CandidatureController extends Controller
 
     public function store(Request $request, Iniziativa $iniziativa)
     {
+        if (!$this->checkUserCreate($request, $iniziativa)) {
+            return redirect()->route('candidature');
+        }
+
         $step = 1;
         $candidaturaTitle = $iniziativa->titolo;
         $steps = $this->steps;
@@ -177,6 +240,9 @@ class CandidatureController extends Controller
 
     public function edit(Request $request, Candidato $candidatura, $step = 1)
     {
+        if (!$this->checkUserEdit($request, $candidatura)) {
+            return redirect()->route('candidature');
+        }
 
         $iniziativa = $candidatura->iniziativa;
         $candidaturaTitle = $iniziativa->titolo;
@@ -198,6 +264,9 @@ class CandidatureController extends Controller
 
     public function update(Request $request, Candidato $candidatura)
     {
+        if (!$this->checkUserEdit($request, $candidatura)) {
+            return redirect()->route('candidature');
+        }
 
         $step = $request->get('step');
         $iniziativa = $candidatura->iniziativa;
@@ -211,7 +280,7 @@ class CandidatureController extends Controller
         try {
             $foorm->save();
         } catch (ValidationException $e) {
-            return redirect(route('candidatura.edit',[
+            return redirect(route('candidatura.edit', [
                 'candidatura' => $candidatura->getKey(),
                 'step' => $step,
             ]))->withInput($req)
@@ -230,7 +299,7 @@ class CandidatureController extends Controller
 
         $candidatura = $candidatura->fresh();
 
-        return view('candidature.edit', compact('candidatura', 'iniziativa', 'candidaturaTitle', 'steps', 'step', 'req','errors'));
+        return view('candidature.edit', compact('candidatura', 'iniziativa', 'candidaturaTitle', 'steps', 'step', 'req', 'errors'));
 
     }
 

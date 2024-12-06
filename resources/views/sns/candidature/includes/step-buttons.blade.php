@@ -13,9 +13,18 @@
     </div>
 
     <div class="d-flex justify-content-end gap-lg-3 gap-5">
+        @php
+            $info = isset($candidatura) ? $candidatura->info : [];
+            $stepsDone = \Illuminate\Support\Arr::get($info,'steps',[]);
+        @endphp
+        <div class="d-flex justify-content-end gap-lg-3 gap-5">
 
-        <button type="submit" name="submit-type" value="save"
-                class="btn btn-primary btn-sm steppers-btn-save d-lg-block">
+            <button type="submit" name="submit-type" value="save"
+                    class="btn btn-primary btn-sm steppers-btn-save d-lg-block"
+                    @if(array_key_last($steps) == $step && count($stepsDone) < (count($steps)-1))
+                        disabled="disabled"
+                @endif
+            >
             @if (array_key_last($steps) != $step)
                 Salva
             @else
