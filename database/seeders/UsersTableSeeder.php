@@ -3,6 +3,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Support\Arr;
 
 class UsersTableSeeder extends Seeder
 {
@@ -23,6 +24,7 @@ class UsersTableSeeder extends Seeder
             [
                 'password' => 'giacomo1234',
                 'email' => 'giacomo.terreni@gmail.com',
+                'email_verified_at' => '2024-11-01 00:00:01',
                 'name' => 'giacomo.terreni@gmail.com',
                 'nome' => 'Giacomo',
                 'cognome' => 'Terreni',
@@ -30,11 +32,12 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'password' => 'massi1234',
-                'email' => 'massimiliano.pardini@gmail.com',
-                'name' => 'massimiliano.pardini@gmail.com',
+                'email' => 'massimiliano.pardini@netseven.it',
+                'email_verified_at' => '2024-11-01 00:00:01',
+                'name' => 'massimiliano.pardini@netseven.it',
                 'nome' => 'Massimiliano',
                 'cognome' => 'Pardini',
-                'role' => 'Admin',
+                'role' => 'Superutente',
             ],
         ];
 
@@ -48,6 +51,7 @@ class UsersTableSeeder extends Seeder
 //            $user->codice_fiscale = $userData['codice_fiscale'];
             $user->password = bcrypt($userData['password']);
             $user->remember_token = \Illuminate\Support\Str::random(10);
+            $user->email_verified_at = Arr::get($userData,'email_verified_at');
             //$user->verified = 1;
 
             $user->save();

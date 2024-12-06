@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         //Schema::defaultStringLength(191);
         //
         View::composer(['*'], function ($view) {
-            $authRole = Auth::id() ? Auth::user()->mainrole : null;
+            $authRole = Auth::id() ? Auth::user()?->mainrole : null;
             $view->with('authRole', $authRole);
             $view->with('layoutGradientColor', 'bg-gradient-info overlay-dark overlay-opacity-4');
             $role = auth_role();
