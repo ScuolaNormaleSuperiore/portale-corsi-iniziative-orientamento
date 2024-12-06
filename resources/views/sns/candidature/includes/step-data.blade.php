@@ -13,7 +13,7 @@
 
             @foreach ($datiStep['sections'] as $sectionData)
 {{--                @dump($sectionData)--}}
-                <div class="" id="sezione_{{$sectionData['code']}}">
+                <div class="candidature" id="sezione_{{$sectionData['code']}}">
                     <div class="card no-after rounded mb-4" style="background-color:#EFF8FA;">
                         <div class="card-body">
                             <h3 class="card-title h3">{{$sectionData['title']}}</h3>
@@ -22,7 +22,7 @@
                                     {{$sectionData['subtitle']}}
                                 </p>
                             @endif
-                            <div class="card rounded bg-white">
+                            <div class="card no-after rounded bg-white">
                                 <div class="card-body">
                                     @include('candidature.sezioni.'.$sectionData['code'],['datiStep' => $datiStep,'sectionData' => $sectionData])
                                 </div>

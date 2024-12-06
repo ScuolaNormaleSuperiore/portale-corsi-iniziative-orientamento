@@ -6,4 +6,4 @@
 @include('candidature.form.input-icon',['field' => 'comune','label' => 'Comune'])
 @include('candidature.form.input-icon',['field' => 'cap','label' => 'CAP'])
 
-@include('candidature.form.select',['field' => 'provincia_id','label' => 'Provincia'])
+@include('candidature.form.select',['field' => 'provincia_id','label' => 'Provincia', 'cssForm' => 'last'])

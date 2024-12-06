@@ -1,1 +1,1 @@
-@include('candidature.form.checkbox',['field' => 'corsi','label' => 'Corsi'])
+@include('candidature.form.checkbox',['field' => 'corsi','label' => '', 'cssForm' => 'last'])

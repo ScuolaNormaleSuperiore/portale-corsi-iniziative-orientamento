@@ -9,10 +9,10 @@
     'cssForm' => 'd-none',
    ])
 
-@include('candidature.form.select',['field' => 'gen2_professione_id','label' => 'Professione del genitore 2'])
+@include('candidature.form.select',['field' => 'gen2_professione_id','label' => 'Professione del genitore 2', 'cssForm' => 'last'])
 
 @include('candidature.form.input-icon',['field' => 'gen2_professione_altro','label' => 'Professione del genitore 2 (specificare se "Altro")',
-   'cssForm' => 'd-none',
+   'cssForm' => 'd-none last',
    ])
 
 
@@ -20,14 +20,18 @@
 
 
     document.addEventListener("DOMContentLoaded", function () {
+        var selectWrap = document.getElementById('form-group-candidature-gen1_professione_id');
         var select = document.getElementById('gen1_professione_id');
         select.addEventListener('change', function (e,v) {
             var div = document.getElementById('form-group-candidature-gen1_professione_altro');
             if (e.target.value) {
-                if (parseInt(e.target.value) ===  2)
-                    div.classList.remove('d-none');
-                else
+                if (parseInt(e.target.value) ===  2) {
+                        div.classList.remove('d-none');
+                    selectWrap.classList.add('last');
+                } else {
                     div.classList.add('d-none');
+                    selectWrap.classList.remove('last');
+                }
             }
         })
 

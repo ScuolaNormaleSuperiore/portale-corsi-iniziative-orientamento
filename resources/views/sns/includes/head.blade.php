@@ -27,6 +27,21 @@
             margin-bottom:30px;
             /*padding-top:5px;*/
         }
+
+        .form-group-candidature.last {
+            padding-bottom:0;
+            border-bottom: none;
+            margin-bottom:0;
+            /*padding-top:5px;*/
+        }
+
+        .form-group-candidature.inTable {
+            padding-bottom:5px;
+            border-bottom: none;
+            margin-bottom:5px;
+            margin-top:10px;
+        }
+
         .input-group-candidature {
             margin-top:10px;
             /*padding-top:5px;*/
@@ -83,6 +98,10 @@
             border-radius: 4px;
             color: #5d7083;
             font-weight:normal;
+        }
+
+        p.riepilogo-value {
+            font-weight: 600;
         }
     </style>
 </head>

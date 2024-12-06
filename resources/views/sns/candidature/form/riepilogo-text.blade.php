@@ -1,7 +1,12 @@
+@php
+    $hr = $hr ?? true;
+@endphp
 <div class="">
     @if (isset($label) && $label)
-        <p>{{$label}}</p>
+        <p class="riepilogo-label">{{$label}}</p>
     @endif
-    <p>{{$value}}</p>
-    <hr/>
+    <p class="riepilogo-value">{{$value}}</p>
+    @if($hr)
+        <hr/>
+    @endif
 </div>
