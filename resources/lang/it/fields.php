@@ -103,7 +103,7 @@ return array (
   'token' => 'token',
   'created_at' => 'created at',
   'approvata' => 'approvata',
-    'sezione' => 'Sezione',
-    'profilo' => 'Profilo personale',
-    'scuola_estera' => 'Scuola estera',
+  'sezione' => 'Sezione',
+  'profilo' => 'Profilo personale',
+  'scuola_estera' => 'Scuola estera',
 );

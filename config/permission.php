@@ -179,6 +179,7 @@ return [
             'materia_orientamento',
             'categoria_video',
             'studente_orientamento',
+            'avviso',
 
         ],
 

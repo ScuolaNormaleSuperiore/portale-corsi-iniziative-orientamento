@@ -76,6 +76,9 @@ class FoormController extends Controller
                     [
                         "label" => 'Testi statici', "icon" => 'fa fa-font', "to" => '/manage/ModelSezioneLayout'
                     ],
+                    [
+                        "label" => 'Avvisi', "icon" => 'fa fa-exclamation-circle', "to" => '/manage/ModelAvviso'
+                    ],
                 ],
             ],
             [

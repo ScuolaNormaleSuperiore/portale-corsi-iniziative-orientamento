@@ -89,6 +89,7 @@ return [
         'categoria_video',
         'video',
         'scuola_richiesta',
+        'avviso',
 //        'foto',
 //        'attachment',
     ],
