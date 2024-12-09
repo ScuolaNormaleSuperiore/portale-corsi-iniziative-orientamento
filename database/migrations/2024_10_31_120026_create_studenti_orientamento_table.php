@@ -16,7 +16,7 @@ return new class extends Migration {
         Schema::create('studenti_orientamento', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('materia_id')->index();
-            $table->foreign('materia_id')->references('id')->on('materie_orientamento')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('materia_id')->references('id')->on('materie_orientamento')->onDelete('restrict')->onUpdate('cascade');
             $table->string('nome');
             $table->string('cognome');
             $table->text('descrizione_it')->nullable();

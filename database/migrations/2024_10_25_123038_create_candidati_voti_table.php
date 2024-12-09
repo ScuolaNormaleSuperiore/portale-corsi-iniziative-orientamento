@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('candidato_id')->index();
             $table->foreign('candidato_id')->references('id')->on('candidati')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('materia_id')->index();
-            $table->foreign('materia_id')->references('id')->on('materie')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('materia_id')->references('id')->on('materie')->onDelete('restrict')->onUpdate('cascade');
             $table->decimal('voto_anno_2', 3, 1)->default(0);
             $table->decimal('voto_anno_1', 3, 1)->default(0);
             $table->decimal('voto_primo_quadrimestre', 3, 1)->default(0);

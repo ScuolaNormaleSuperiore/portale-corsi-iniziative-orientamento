@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ClassiOrientamentoTableSeeder::class);
         $this->call(SezioniLayoutTableSeeder::class);
 
+        $this->call(IniziativeTableSeeder::class);
     }
 }

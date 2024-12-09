@@ -28,12 +28,12 @@ return new class extends Migration {
             $table->string('comune')->nullable();
             $table->string('cap', 5)->nullable();
             $table->unsignedBigInteger('provincia_id')->nullable()->index();
-            $table->foreign('provincia_id')->references('id')->on('province')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('provincia_id')->references('id')->on('province')->onDelete('restrict')->onUpdate('cascade');
             $table->unsignedBigInteger('regione_id')->nullable()->index();
-            $table->foreign('regione_id')->references('id')->on('regioni')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('regione_id')->references('id')->on('regioni')->onDelete('restrict')->onUpdate('cascade');
             $table->string('telefono')->nullable();
             $table->unsignedBigInteger('scuola_id')->nullable()->index();
-            $table->foreign('scuola_id')->references('id')->on('scuole')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('scuola_id')->references('id')->on('scuole')->onDelete('restrict')->onUpdate('cascade');
             $table->string('scuola_estera')->nullable();
             $table->string('classe')->nullable();
             $table->string('sezione')->nullable();

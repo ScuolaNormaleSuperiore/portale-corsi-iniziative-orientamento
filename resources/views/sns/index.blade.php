@@ -2,6 +2,7 @@
 @section('content-body')
     <div class="container-fluid px-0">
 
+        @if($avvisi->count() > 0)
         <section class="my-2 px-2 bg-white d-flex flex-column gap-2">
             @foreach ($avvisi as $avviso)
                 <div class="alert alert-warning mb-0" role="alert">
@@ -9,6 +10,7 @@
                 </div>
             @endforeach
         </section>
+        @endif
 
         <section class="it-hero-wrapper it-dark">
             <!-- - img-->
@@ -103,74 +105,6 @@
                 <h2 class="pb-5">In evidenza</h2>
 
 
-                <div class="row">
-
-                    @if($newsAlta)
-                        <div class="col-12 pb-5 d-lg-block d-none d-sm-none d-md-none">
-                            <!--start card-->
-                            <div class="card-wrapper">
-                                <div class="card card-bg card-img no-after">
-                                    <div class="card-body d-flex p-0">
-                                        <div class="img-responsive-wrapper w-50">
-                                            <div class="img-responsive img-responsive-panoramic">
-                                                <figure class="img-wrapper">
-                                                    <img src="{{$newsAlta->picture}}"
-                                                         title="{{$newsAlta->titolo_it}}"
-                                                         alt="{{$newsAlta->titolo_it}}">
-                                                </figure>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="d-flex flex-column justify-content-center w-50 align-items-start p-4">
-                                            <h3 class="card-title h5 ">
-                                                <a href="/dettaglio-news/{{$newsAlta->id}}">
-                                                    {{$newsAlta->titolo_it}}
-                                                </a>
-                                            </h3>
-
-                                            <p class="card-text font-serif text-left">
-                                                <a href="/dettaglio-news/{{$newsAlta->id}}">
-                                                    {{$newsAlta->sottotitolo_it}}
-                                                </a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end card-->
-                        </div>
-
-                        <div class="col-12 col-lg-4 d-lg-none d-xs-block">
-                            <!--start card-->
-                            <div class="card-wrapper">
-                                <div class="card card-bg  card-img no-after">
-                                    <div class="img-responsive-wrapper">
-                                        <div class="img-responsive img-responsive-panoramic">
-                                            <figure class="img-wrapper">
-                                                <img src="{{$newsAlta->picture}}"
-                                                     title="{{$newsAlta->titolo_it}}" alt="{{$newsAlta->titolo_it}}">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h3 class="card-title h5 ">
-                                            <a href="/dettaglio-news/{{$newsAlta->id}}">
-                                                {{$newsAlta->titolo_it}}
-                                            </a>
-                                        </h3>
-
-                                        <p class="card-text font-serif text-left">
-                                            <a href="/dettaglio-news/{{$newsAlta->id}}">
-                                                {{$newsAlta->sottotitolo_it}}
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end card-->
-                        </div>
-                    @endif
-                </div>
                 <div class="row pb-5">
 
                     @foreach ($newsBasse as $newsBassa)

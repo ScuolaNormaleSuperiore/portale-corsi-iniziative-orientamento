@@ -72,7 +72,7 @@ return [
             "slug_it" => [
 
             ],
-            "categoria_id" => [
+            "materia_id" => [
 
             ],
             "id" => [
@@ -86,6 +86,9 @@ return [
                 "operator" => "like"
             ],
             "descrizione_it" => [
+                "operator" => "like"
+            ],
+            "autore" => [
                 "operator" => "like"
             ],
             "tipo" => [
@@ -109,7 +112,7 @@ return [
             "slug_it" => [
                 "operator" => "like"
             ],
-            "categoria_id" => [
+            "materia_id" => [
                 "operator" => "=",
                 "options" => "relation:categoria"
             ],
@@ -145,6 +148,9 @@ return [
             "descrizione_it" => [
 
             ],
+            "autore" => [
+
+            ],
             "tipo" => [
 
             ],
@@ -163,7 +169,7 @@ return [
             "slug_it" => [
 
             ],
-            "categoria_id" => [
+            "materia_id" => [
 
             ],
             "id" => [
@@ -192,6 +198,9 @@ return [
             "descrizione_it" => [
 
             ],
+            "autore" => [
+
+            ],
             "tipo" => [
 
             ],
@@ -214,7 +223,7 @@ return [
             "slug_it" => [
 
             ],
-            "categoria_id" => [
+            "materia_id" => [
                 "options" => "relation:categoria"
             ],
             "id" => [

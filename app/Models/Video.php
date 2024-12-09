@@ -33,7 +33,7 @@ class Video extends Breeze
 
     public static $relationsData = [
 
-			'categoria' => [self::BELONGS_TO, 'related' => 'App\Models\CategoriaVideo', 'table' => 'categorie_video', 'foreignKey' => 'categoria_id'],
+			'categoria' => [self::BELONGS_TO, 'related' => 'App\Models\MateriaOrientamento', 'table' => 'materie_orientamento', 'foreignKey' => 'materia_id'],
 
 
 //        'belongsto' => array(self::BELONGS_TO, Video::class, 'foreignKey' => '<FOREIGNKEYNAME>'),

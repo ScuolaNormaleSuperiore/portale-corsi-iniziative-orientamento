@@ -44,6 +44,7 @@ export default {
         fields: [
             'picture',
             'titolo_it',
+            'autore',
             'categoria',
             'video_id',
             'ordine',
@@ -151,7 +152,8 @@ export default {
         fields: [
             'titolo_it',
             'descrizione_it',
-            'categoria_id',
+            'autore',
+            'materia_id',
             'video_id',
             'attivo',
             'ordine',
@@ -174,7 +176,7 @@ export default {
             'ordine': {
                 type: "w-select",
             },
-            'categoria_id': {
+            'materia_id': {
                 type: "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],

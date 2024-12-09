@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->id();
             $table->string('nome_it')->unique();
             $table->unsignedBigInteger('classe_id')->index();
-            $table->foreign('classe_id')->references('id')->on('classi')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('classe_id')->references('id')->on('classi')->onDelete('restrict')->onUpdate('cascade');
             $table->nullableTimestamps();
             $table->nullableOwnerships();
 

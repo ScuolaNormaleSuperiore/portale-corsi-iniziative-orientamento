@@ -25,7 +25,7 @@ return new class extends Migration {
             $table->string('luogo')->nullable();
             $table->string('indirizzo')->nullable();
             $table->unsignedBigInteger('provincia_id')->nullable()->index();
-            $table->foreign('provincia_id')->references('id')->on('province')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('provincia_id')->references('id')->on('province')->onDelete('restrict')->onUpdate('cascade');
             $table->boolean('attivo')->default(1);
             $table->nullableTimestamps();
             $table->nullableOwnerships();

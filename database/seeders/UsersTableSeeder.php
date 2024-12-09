@@ -32,9 +32,9 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'password' => 'massi1234',
-                'email' => 'massimiliano.pardini@netseven.it',
+                'email' => 'pardini@netseven.it',
                 'email_verified_at' => '2024-11-01 00:00:01',
-                'name' => 'massimiliano.pardini@netseven.it',
+                'name' => 'pardini@netseven.it',
                 'nome' => 'Massimiliano',
                 'cognome' => 'Pardini',
                 'role' => 'Superutente',

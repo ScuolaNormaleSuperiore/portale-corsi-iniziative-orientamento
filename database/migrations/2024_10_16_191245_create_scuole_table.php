@@ -18,9 +18,9 @@ return new class extends Migration {
             $table->integer('anno')->unsigned()->index();
             $table->string('area_geografica')->nullable();
             $table->unsignedBigInteger('regione_id')->index();
-            $table->foreign('regione_id')->references('id')->on('regioni')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('regione_id')->references('id')->on('regioni')->onDelete('restrict')->onUpdate('cascade');
             $table->unsignedBigInteger('provincia_id')->index();
-            $table->foreign('provincia_id')->references('id')->on('province')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('provincia_id')->references('id')->on('province')->onDelete('restrict')->onUpdate('cascade');
             $table->string('codice_istituto_riferimento')->nullable();
             $table->string('denominazione_istituto_riferimento')->nullable();
             $table->string('codice')->nullable();
