@@ -2,6 +2,14 @@
 @section('content-body')
     <div class="container-fluid px-0">
 
+        <section class="my-2 px-2 bg-white d-flex flex-column gap-2">
+            @foreach ($avvisi as $avviso)
+                <div class="alert alert-warning mb-0" role="alert">
+                    {!! $avviso->descrizione !!}
+                </div>
+            @endforeach
+        </section>
+
         <section class="it-hero-wrapper it-dark">
             <!-- - img-->
             <div class="img-responsive-wrapper">
@@ -18,13 +26,15 @@
                             {{--							<span class="it-Categoria">Categoria</span>--}}
                             <h2 class="fw-bold">Scopri il tuo futuro, costruisci l'eccellenza: entra alla Normale.</h2>
                             {{--							<p class="d-none d-lg-block">Candidati per i corsi di orientamento</p>--}}
-                            <div class="it-btn-container"><a class="btn btn-sm btn-secondary" href="/candidature">Candidati per i
+                            <div class="it-btn-container"><a class="btn btn-sm btn-secondary" href="/candidature">Candidati
+                                    per i
                                     corsi di orientamento</a></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
 
         <section class="evidence-section">
             <div class=""
@@ -110,7 +120,8 @@
                                                 </figure>
                                             </div>
                                         </div>
-                                        <div class="d-flex flex-column justify-content-center w-50 align-items-start p-4">
+                                        <div
+                                            class="d-flex flex-column justify-content-center w-50 align-items-start p-4">
                                             <h3 class="card-title h5 ">
                                                 <a href="/dettaglio-news/{{$newsAlta->id}}">
                                                     {{$newsAlta->titolo_it}}

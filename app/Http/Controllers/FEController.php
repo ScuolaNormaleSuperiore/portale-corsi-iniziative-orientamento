@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avviso;
 use App\Models\Classe;
 use App\Models\Evento;
 use App\Models\News;
@@ -46,6 +47,8 @@ class FEController extends Controller
             ->limit(4)
             ->get();
 
+        $avvisi = Avviso::where('attivo',1)->get();
+
         $newsAlta = $news->where('evidenza', 1)->first();
 
         $newsBasse = $news->where('evidenza', '>', 1)->all();
@@ -55,7 +58,7 @@ class FEController extends Controller
             ->orderBy('evidenza', 'ASC')
             ->get();
 
-        return view('index', compact('pagine', 'newsAlta', 'newsBasse', 'eventi'));
+        return view('index', compact('pagine', 'newsAlta', 'newsBasse', 'eventi', 'avvisi'));
     }
 
     public function paginaOrientamento(Request $request, PaginaOrientamento $pagina)
