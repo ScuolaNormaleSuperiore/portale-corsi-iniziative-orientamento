@@ -258,6 +258,12 @@
                                                     <span>Eventi</span>
                                                 </a>
                                             </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/candidature"
+                                                   data-element="all-services">
+                                                    <span>Per candidarsi</span>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </nav>
                                     <nav aria-label="Secondaria">

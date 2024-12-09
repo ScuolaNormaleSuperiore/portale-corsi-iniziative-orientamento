@@ -58,7 +58,13 @@ class FEController extends Controller
             ->orderBy('evidenza', 'ASC')
             ->get();
 
-        return view('index', compact('pagine', 'newsAlta', 'newsBasse', 'eventi', 'avvisi'));
+        $video = Video::where('attivo', 1)
+            ->where('homepage',1)
+            ->orderBy('ordine', 'ASC')
+            ->limit(3)
+            ->get();
+
+        return view('index', compact('pagine', 'newsAlta', 'newsBasse', 'eventi', 'avvisi', 'video'));
     }
 
     public function paginaOrientamento(Request $request, PaginaOrientamento $pagina)

@@ -98,7 +98,7 @@ return array (
   'resource' => 'File',
   'scuola' => 'Scuola',
   'testo_it' => 'testo it',
-  'video_id' => 'video id',
+  'video_id' => 'Youtube ID',
   'categoria_id' => 'categoria id',
   'token' => 'token',
   'created_at' => 'created at',
@@ -106,4 +106,5 @@ return array (
   'sezione' => 'Sezione',
   'profilo' => 'Profilo personale',
   'scuola_estera' => 'Scuola estera',
+    'autore' => 'Autore',
 );

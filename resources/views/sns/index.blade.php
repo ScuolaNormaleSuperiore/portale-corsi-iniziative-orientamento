@@ -3,13 +3,13 @@
     <div class="container-fluid px-0">
 
         @if($avvisi->count() > 0)
-        <section class="my-2 px-2 bg-white d-flex flex-column gap-2">
-            @foreach ($avvisi as $avviso)
-                <div class="alert alert-warning mb-0" role="alert">
-                    {!! $avviso->descrizione !!}
-                </div>
-            @endforeach
-        </section>
+            <section class="my-2 px-2 bg-white d-flex flex-column gap-2">
+                @foreach ($avvisi as $avviso)
+                    <div class="alert alert-warning mb-0" role="alert">
+                        {!! $avviso->descrizione !!}
+                    </div>
+                @endforeach
+            </section>
         @endif
 
         <section class="it-hero-wrapper it-dark">
@@ -157,6 +157,43 @@
             </div>
         </section>
 
+        {{-- Video --}}
+        @if ($video->count() > 0)
+            <section class="pt-5">
+                <div class="container">
+                    <h2 class="pb-5">Video</h2>
+
+
+                    <div class="row pb-5">
+
+                        <script>
+                            const loadYouTubeVideo = function (videoUrl, id) {
+                                const videoEl = document.getElementById(id);
+                                const video = bootstrap.VideoPlayer.getOrCreateInstance(videoEl);
+                                video.setYouTubeVideo(videoUrl);
+                            }
+                        </script>
+                        @foreach ($video as $singleVideo)
+                            <div class="col-12 col-lg-4">
+                                @include('single-video',['item' => $singleVideo])
+                            </div>
+                        @endforeach
+
+                    </div>
+
+                    <div class="d-flex justify-content-end pb-5">
+                        <a href="/archivio-video">
+                            <button type="button" class="btn btn-outline-primary">
+                                Tutti i video
+                                <svg class="icon icon-primary">
+                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-arrow-right"></use>
+                                </svg>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        @endif
 
         {{-- Newsletter --}}
 

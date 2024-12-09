@@ -178,6 +178,7 @@ export default {
             },
             'materia_id': {
                 type: "w-select",
+                label: 'Categoria',
                 //domainValues : [],
                 //domainValuesOrder : [],
             },
