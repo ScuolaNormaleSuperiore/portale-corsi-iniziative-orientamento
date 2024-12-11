@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Brevo\Client\Api\AccountApi;
 use Brevo\Client\Api\ContactsApi;
 use Hofmannsven\Brevo\Facades\Brevo;
+use Vedmant\FeedReader\Facades\FeedReader;
+
 class TestController extends Controller
 {
     /**
@@ -18,6 +20,44 @@ class TestController extends Controller
     }
 
     public function test() {
+
+
+        $f = FeedReader::read('https://normalenews.sns.it/feed-highlights.xml');
+
+        echo '<pre>';
+
+        echo count($f->get_items());
+        print_r($f->data);
+        foreach ($f->get_items() as $k => $item) {
+            echo "-------<br/>";
+            echo "-------<br/>";
+            echo "-------<br/>";
+            echo $k . '/' . count($f->get_items()) . "<br/>";
+            print_r($item->get_title());
+            echo "-------<br/>";
+            print_r($item->get_permalink());
+            echo "-------<br/>";
+            print_r($item->data);
+            echo "-------<br/>";
+            echo "-------<br/>";
+            echo "-------<br/>";
+            echo "-------<br/>";
+            echo "-------<br/>";
+            echo "-------<br/>";
+//            print_r($item->get_image_url());
+//            print_r($item->get_image_link());
+//            print_r($item->get_image_title());
+
+//            break;
+
+        }
+
+
+
+        echo '</pre>';
+
+
+        return;
 
         $brevo = new Brevo();
 
