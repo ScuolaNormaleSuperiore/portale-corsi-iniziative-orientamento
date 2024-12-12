@@ -34,7 +34,7 @@ class FEController extends Controller
     protected function getFeeds()
     {
 
-        $f = FeedsFacade::make('https://normalenews.sns.it/feed-highlights.xml', 3, true);
+        $f = FeedsFacade::make(Config::get('feeds.url'), 3, true);
 //        $data = array(
 //            'title'     => $feed->get_title(),
 //            'permalink' => $feed->get_permalink(),
@@ -91,14 +91,15 @@ class FEController extends Controller
 
         $avvisi = Avviso::where('attivo', 1)->get();
 
-        $newsAlta = $news->where('evidenza', 1)->first();
-
         $newsBasse = $news->where('evidenza', '>', 1)->all();
 
         $eventi = Evento::where('attivo', 1)
-            ->whereNotNull('evidenza')
+            ->whereIn('evidenza',[1,2,3])
             ->orderBy('evidenza', 'ASC')
             ->get();
+        $eventoSpeciale = Evento::where('attivo', 1)
+            ->where('evidenza',9)
+            ->first();
 
         $video = Video::where('attivo', 1)
             ->where('homepage', 1)
@@ -106,7 +107,8 @@ class FEController extends Controller
             ->limit(3)
             ->get();
 
-        return view('index', compact('pagine', 'newsAlta', 'newsBasse', 'eventi', 'avvisi', 'video', 'feeds'));
+        return view('index', compact('pagine', 'newsBasse', 'eventi',
+            'eventoSpeciale','avvisi', 'video', 'feeds'));
     }
 
     public function paginaOrientamento(Request $request, PaginaOrientamento $pagina)

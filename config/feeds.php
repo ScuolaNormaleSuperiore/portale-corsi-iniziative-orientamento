@@ -2,6 +2,7 @@
 
 return [
 
+    'url' => env("FEEDS_URL",'https://normalenews.sns.it/feed-highlights.xml'),
     /*
     |--------------------------------------------------------------------------
     | Cache Location

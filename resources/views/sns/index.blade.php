@@ -157,66 +157,8 @@
             </div>
         </section>
 
-            {{--        News--}}
 
-{{--            <section class="pt-5">--}}
-{{--                <div class="container">--}}
-{{--                    <h2 class="pb-5">In evidenza</h2>--}}
-
-
-{{--                    <div class="row pb-5">--}}
-
-{{--                        @foreach ($newsBasse as $newsBassa)--}}
-{{--                            <div class="col-12 col-lg-4">--}}
-{{--                                <!--start card-->--}}
-{{--                                <div class="card-wrapper">--}}
-{{--                                    <div class="card card-bg  card-img no-after">--}}
-{{--                                        <div class="img-responsive-wrapper">--}}
-{{--                                            <div class="img-responsive img-responsive-panoramic">--}}
-{{--                                                <figure class="img-wrapper">--}}
-{{--                                                    <img src="{{$newsBassa->picture}}"--}}
-{{--                                                         title="{{$newsBassa->titolo_it}}" alt="{{$newsBassa->titolo_it}}">--}}
-{{--                                                </figure>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="card-body">--}}
-{{--                                            <h3 class="card-title h5 ">--}}
-{{--                                                <a href="/dettaglio-news/{{$newsBassa->id}}">--}}
-{{--                                                    {{$newsBassa->titolo_it}}--}}
-{{--                                                </a>--}}
-{{--                                            </h3>--}}
-
-{{--                                            --}}{{--                                        <p class="card-text font-serif"></p>--}}
-{{--                                            --}}{{--                                        <a class="read-more" href="#">--}}
-{{--                                            --}}{{--                                            <span class="text">Leggi di più</span>--}}
-{{--                                            --}}{{--                                            <span class="visually-hidden">su Lorem ipsum dolor sit amet, consectetur adipiscing elit…</span>--}}
-{{--                                            --}}{{--                                            <svg class="icon">--}}
-{{--                                            --}}{{--                                                <use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-right"></use>--}}
-{{--                                            --}}{{--                                            </svg>--}}
-{{--                                            --}}{{--                                        </a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <!--end card-->--}}
-{{--                            </div>--}}
-{{--                        @endforeach--}}
-
-{{--                    </div>--}}
-
-{{--                    <div class="d-flex justify-content-end pb-5">--}}
-{{--                        <a href="/archivio-news">--}}
-{{--                            <button type="button" class="btn btn-outline-primary">--}}
-{{--                                Tutte le notizie--}}
-{{--                                <svg class="icon icon-primary">--}}
-{{--                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-arrow-right"></use>--}}
-{{--                                </svg>--}}
-{{--                            </button>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </section>--}}
-
-            {{-- Video --}}
+        {{-- Video --}}
         @if ($video->count() > 0)
             <section class="pt-5">
                 <div class="container">
@@ -348,6 +290,49 @@
             </div>
         </section>
 
-    </div>
+        {{--        Evento speciale --}}
+
+        @if($eventoSpeciale)
+
+                <section class="pt-5 it-hero-wrapper it-dark it-overlay bg-white">
+                    <!-- - img-->
+                    <div class="img-responsive-wrapper">
+                        <div class="img-responsive">
+                            <div class="img-wrapper">
+                                <img src="{{$eventoSpeciale->picture}}"
+                                     title="{{$eventoSpeciale->titolo_it}}" alt="{{$eventoSpeciale->titolo_it}}">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- - texts-->
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="it-hero-text-wrapper bg-dark">
+                                    @if($eventoSpeciale->luogo)
+                                    <span class="text-white">{{$eventoSpeciale->luogo}}</span>
+                                    @endif
+                                    <h2 class="text-white">{{$eventoSpeciale->titolo_it}}</h2>
+                                    <p class="d-none d-lg-block text-white">{{$eventoSpeciale->sottotitolo_it}}</p>
+                                    @if ($eventoSpeciale->data)
+                                        @php
+                                            $date = \Carbon\Carbon::createFromFormat("Y-m-d",$eventoSpeciale->data)->locale('it_IT');
+                                        @endphp
+                                        <div class="text-white">
+                                            {{ucfirst($date->dayName)}} {{$date->day}} {{ucfirst($date->monthName)}} {{$date->year}}
+                                        </div>
+                                    @endif
+                                    <div class="it-btn-container">
+                                        <a class="btn btn-sm btn-secondary" href="/dettaglio-evento/{{$evento->id}}">
+                                            Scopri l'evento
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    @endif
+
 @stop
 

@@ -165,7 +165,8 @@ return [
             ],
             "id" => [
 
-            ],"picture" => [
+            ],
+            "picture" => [
 
             ],
         ],

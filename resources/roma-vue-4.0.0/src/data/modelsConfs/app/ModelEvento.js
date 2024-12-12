@@ -11,9 +11,9 @@ export default {
 
         ],
         fieldsConfig: {
-			'titolo_it' : { 
+			'titolo_it' : {
                 type : "w-input",
-			}, 
+			},
 
         },
         searchType: 'basic',
@@ -72,13 +72,13 @@ export default {
                         "</div>";
                 },
             },
-			'data' : { 
+			'data' : {
                 type : "w-text",
-			}, 
-			'orario' : { 
+			},
+			'orario' : {
                 type : "w-text",
-			}, 
-			'titolo_it' : { 
+			},
+			'titolo_it' : {
                 type : "w-text",
 			},
 			evidenza: {
@@ -100,7 +100,7 @@ export default {
 					r.setParams({
 						field: 'evidenza',
 						value: st,
-						id: that.conf.pk,
+						id: that.modelData.id,
 					})
 					cs.Server.route(r, function (json) {
 						console.debug('json', json)
@@ -113,24 +113,24 @@ export default {
 
 				}
 			},
-			'sottotitolo_it' : { 
+			'sottotitolo_it' : {
                 type : "w-text",
-			}, 
-			'slug_it' : { 
+			},
+			'slug_it' : {
                 type : "w-text",
-			}, 
-			'data_fine' : { 
+			},
+			'data_fine' : {
                 type : "w-text",
-			}, 
-			'luogo' : { 
+			},
+			'luogo' : {
                 type : "w-text",
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-swap",
                 modelName : 'evento',
                 //switchClass: 'form-switch-danger banned',
                 //dataSwitched : true,
-			}, 
+			},
 
 
         },
@@ -167,39 +167,39 @@ export default {
 
         ],
         fieldsConfig: {
-			'data' : { 
-                type : "w-input",
-				inputType : 'date',
-			}, 
-			'orario' : { 
-                type : "w-input",
-			}, 
-			'titolo_it' : { 
-                type : "w-input",
-			}, 
-			'sottotitolo_it' : { 
-                type : "w-input",
-			}, 
-			'slug_it' : { 
-                type : "w-input",
-			}, 
-			'data_fine' : { 
+			'data' : {
                 type : "w-input",
 				inputType : 'date',
 			},
-			'luogo' : { 
+			'orario' : {
                 type : "w-input",
-			}, 
-			'attivo' : { 
+			},
+			'titolo_it' : {
+                type : "w-input",
+			},
+			'sottotitolo_it' : {
+                type : "w-input",
+			},
+			'slug_it' : {
+                type : "w-input",
+			},
+			'data_fine' : {
+                type : "w-input",
+				inputType : 'date',
+			},
+			'luogo' : {
+                type : "w-input",
+			},
+			'attivo' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'evidenza' : { 
+			},
+			'evidenza' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
+			},
 
 
             attachments : {

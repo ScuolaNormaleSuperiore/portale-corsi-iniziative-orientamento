@@ -61,9 +61,9 @@ class FoormController extends Controller
                     [
                         "label" => 'Pagine standard', "icon" => 'fa fa-users-line', "to" => '/manage/ModelPagina'
                     ],
-                    [
-                        "label" => 'News', "icon" => 'fa fa-newspaper', "to" => '/manage/ModelNews'
-                    ],
+//                    [
+//                        "label" => 'News', "icon" => 'fa fa-newspaper', "to" => '/manage/ModelNews'
+//                    ],
                     [
                         "label" => 'Eventi', "icon" => 'fa fa-bullhorn', "to" => '/manage/ModelEvento'
                     ],
