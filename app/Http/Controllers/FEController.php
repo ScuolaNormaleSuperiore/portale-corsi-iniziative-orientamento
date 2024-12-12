@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Avviso;
 use App\Models\Classe;
 use App\Models\Evento;
+use App\Models\MateriaOrientamento;
 use App\Models\News;
 use App\Models\Pagina;
 use App\Models\PaginaOrientamento;
@@ -30,9 +31,10 @@ class FEController extends Controller
         Theme::set('sns');
     }
 
-    protected function getFeeds() {
+    protected function getFeeds()
+    {
 
-        $f = FeedsFacade::make('https://normalenews.sns.it/feed-highlights.xml',3,true);
+        $f = FeedsFacade::make('https://normalenews.sns.it/feed-highlights.xml', 3, true);
 //        $data = array(
 //            'title'     => $feed->get_title(),
 //            'permalink' => $feed->get_permalink(),
@@ -42,20 +44,20 @@ class FEController extends Controller
 //        echo count($f->get_items()) . "<br/>";
 
 
-        $response = Arr::get(Arr::get(Arr::get($f->data,'child',[]),"",[]),'response',[]);
-        $items = Arr::get(Arr::get(Arr::get(Arr::get($response,0,[]),"child",[]),"",[]),'item',[]);
+        $response = Arr::get(Arr::get(Arr::get($f->data, 'child', []), "", []), 'response', []);
+        $items = Arr::get(Arr::get(Arr::get(Arr::get($response, 0, []), "child", []), "", []), 'item', []);
 
         $news = [];
 
         foreach ($items as $item) {
-            $itemData = Arr::get(Arr::get($item,'child',[]),"",[]);
+            $itemData = Arr::get(Arr::get($item, 'child', []), "", []);
 
             $singleNews = [];
 
-            $singleNews['title'] = html_entity_decode(Arr::get(Arr::get(Arr::get($itemData,'title',[]),0,[]),'data'));
-            $singleNews['link'] = Arr::get(Arr::get(Arr::get($itemData,'link',[]),0,[]),'data');
-            $singleNews['date'] = Carbon::parse(Arr::get(Arr::get(Arr::get($itemData,'pubDate',[]),0,[]),'data'))->toDateTimeString();
-            $singleNews['media'] = Arr::get(Arr::get(Arr::get($itemData,'media',[]),0,[]),'data');
+            $singleNews['title'] = html_entity_decode(Arr::get(Arr::get(Arr::get($itemData, 'title', []), 0, []), 'data'));
+            $singleNews['link'] = Arr::get(Arr::get(Arr::get($itemData, 'link', []), 0, []), 'data');
+            $singleNews['date'] = Carbon::parse(Arr::get(Arr::get(Arr::get($itemData, 'pubDate', []), 0, []), 'data'))->toDateTimeString();
+            $singleNews['media'] = Arr::get(Arr::get(Arr::get($itemData, 'media', []), 0, []), 'data');
 
             $news[] = $singleNews;
             if (count($news) >= 3) {
@@ -87,7 +89,7 @@ class FEController extends Controller
 
         $feeds = $this->getFeeds();
 
-        $avvisi = Avviso::where('attivo',1)->get();
+        $avvisi = Avviso::where('attivo', 1)->get();
 
         $newsAlta = $news->where('evidenza', 1)->first();
 
@@ -99,7 +101,7 @@ class FEController extends Controller
             ->get();
 
         $video = Video::where('attivo', 1)
-            ->where('homepage',1)
+            ->where('homepage', 1)
             ->orderBy('ordine', 'ASC')
             ->limit(3)
             ->get();
@@ -152,7 +154,7 @@ class FEController extends Controller
     {
 
         $descrizione = SezioneLayout::where('codice', 'orientamento-intro')->firstOrNew();
-        $pagine = PaginaOrientamento::where('attivo',1)->orderBy('ordine','ASC')->orderBy('titolo_it','ASC')->get();
+        $pagine = PaginaOrientamento::where('attivo', 1)->orderBy('ordine', 'ASC')->orderBy('titolo_it', 'ASC')->get();
         $breadcrumbs = [
             'Home' => '/',
             'Orientamento' => '#',
@@ -179,61 +181,81 @@ class FEController extends Controller
     }
 
 
-    protected function getArchivioItems(Request $request,$filter,$className) {
+    protected function getArchivioItems(Request $request, $filter, $className)
+    {
 
-        $items = $className::where('attivo', 1)
-            ->orderBy('data','DESC');
+        $items = $className::where('attivo', 1);
 
         if ($filter) {
-            $items->where(function ($q) use ($filter) {
-                return $q->where('titolo_it','LIKE', '%' . $filter . '%')
-                    ->orWhere('sottotitolo_it','LIKE', '%' . $filter . '%');
-            });
+
+            switch ($className) {
+                case Video::class:
+                    $items->orderBy('titolo_it', 'DESC')
+                        ->where(function ($q) use ($filter) {
+                        return $q->where('titolo_it', 'LIKE', '%' . $filter . '%')
+                            ->orWhere('descrizione_it', 'LIKE', '%' . $filter . '%');
+                    });
+                    $categoriaSelected = intval($request->get('video-categoria'));
+                    if ($categoriaSelected > 0) {
+                        $items->where('materia_id', $categoriaSelected);
+                    }
+                    break;
+                default:
+                    $items->orderBy('data', 'DESC')
+                        ->where(function ($q) use ($filter) {
+                        return $q->where('titolo_it', 'LIKE', '%' . $filter . '%')
+                            ->orWhere('sottotitolo_it', 'LIKE', '%' . $filter . '%');
+                    });
+                    break;
+
+            }
         }
+
         $items = $items->paginate(Config::get('sns.per-page'))->withQueryString();
 
         return $items;
     }
 
-    public function archivioNews(Request $request) {
+    public function archivioNews(Request $request)
+    {
 
         $filter = $request->get('filter');
 
-        $items = $this->getArchivioItems($request,$filter,News::class);
+        $items = $this->getArchivioItems($request, $filter, News::class);
 
         $breadcrumbs = [
             'Home' => '/',
             'Notizie' => '#',
         ];
-        return view('archivio-news', compact('items', 'filter','breadcrumbs'));
+        return view('archivio-news', compact('items', 'filter', 'breadcrumbs'));
     }
 
-    public function archivioEventi(Request $request) {
+    public function archivioEventi(Request $request)
+    {
 
         $filter = $request->get('filter');
 
-        $items = $this->getArchivioItems($request,$filter,Evento::class);
+        $items = $this->getArchivioItems($request, $filter, Evento::class);
 
         $breadcrumbs = [
             'Home' => '/',
             'Eventi' => '#',
         ];
-        return view('archivio-eventi', compact('items', 'filter','breadcrumbs'));
+        return view('archivio-eventi', compact('items', 'filter', 'breadcrumbs'));
     }
 
 
-    public function archivioVideo(Request $request) {
+    public function archivioVideo(Request $request)
+    {
 
         $descrizione = SezioneLayout::where('codice', 'video-intro')->firstOrNew();
+
         $filter = $request->get('filter');
+        $categoriaSelected = $request->get('video-categoria');
 
-        $items = Video::where('attivo', 1)
-            ->orderBy('ordine','ASC');
+        $items = $this->getArchivioItems($request, $filter, Video::class);
 
-        if ($filter) {
-            $items->where('titolo_it','LIKE', '%' . $filter . '%');
-        }
-        $items = $items->paginate(Config::get('sns.per-page'))->withQueryString();
+        $categorie = (new MateriaOrientamento())->getForSelectList();
 
 //        $items = $this->getArchivioItems($request,$filter,Video::class);
 
@@ -241,9 +263,11 @@ class FEController extends Controller
             'Home' => '/',
             'Video' => '#',
         ];
-        return view('archivio-video', compact('items', 'filter','descrizione','breadcrumbs'));
+        return view('archivio-video', compact('items', 'filter', 'descrizione', 'breadcrumbs', 'categoriaSelected', 'categorie'));
     }
-    public function dettaglioNews(Request $request, News $notizia) {
+
+    public function dettaglioNews(Request $request, News $notizia)
+    {
 
         $navleft = [
             'sezioni' => $notizia->sezioni->whereNotNull('nome_it')->all(),
@@ -258,7 +282,8 @@ class FEController extends Controller
         return view('dettaglio-news', compact('notizia', 'navleft', 'breadcrumbs'));
     }
 
-    public function dettaglioEvento(Request $request, Evento $evento) {
+    public function dettaglioEvento(Request $request, Evento $evento)
+    {
 
         $navleft = [
             'sezioni' => $evento->sezioni->whereNotNull('nome_it')->all(),
@@ -276,7 +301,8 @@ class FEController extends Controller
         return view('dettaglio-evento', compact('evento', 'navleft', 'breadcrumbs'));
     }
 
-    public function scuolaRichiestaCortesia(Request $request) {
+    public function scuolaRichiestaCortesia(Request $request)
+    {
         return view('cortesia-scuola-richiesta');
     }
 

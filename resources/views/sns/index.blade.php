@@ -145,7 +145,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end pb-5">
-                    <a href="/archivio-news">
+                    <a target="_blank" href="https://normalenews.sns.it">
                         <button type="button" class="btn btn-outline-primary">
                             Tutte le notizie
                             <svg class="icon icon-primary">
@@ -159,62 +159,62 @@
 
             {{--        News--}}
 
-            <section class="pt-5">
-                <div class="container">
-                    <h2 class="pb-5">In evidenza</h2>
+{{--            <section class="pt-5">--}}
+{{--                <div class="container">--}}
+{{--                    <h2 class="pb-5">In evidenza</h2>--}}
 
 
-                    <div class="row pb-5">
+{{--                    <div class="row pb-5">--}}
 
-                        @foreach ($newsBasse as $newsBassa)
-                            <div class="col-12 col-lg-4">
-                                <!--start card-->
-                                <div class="card-wrapper">
-                                    <div class="card card-bg  card-img no-after">
-                                        <div class="img-responsive-wrapper">
-                                            <div class="img-responsive img-responsive-panoramic">
-                                                <figure class="img-wrapper">
-                                                    <img src="{{$newsBassa->picture}}"
-                                                         title="{{$newsBassa->titolo_it}}" alt="{{$newsBassa->titolo_it}}">
-                                                </figure>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h3 class="card-title h5 ">
-                                                <a href="/dettaglio-news/{{$newsBassa->id}}">
-                                                    {{$newsBassa->titolo_it}}
-                                                </a>
-                                            </h3>
+{{--                        @foreach ($newsBasse as $newsBassa)--}}
+{{--                            <div class="col-12 col-lg-4">--}}
+{{--                                <!--start card-->--}}
+{{--                                <div class="card-wrapper">--}}
+{{--                                    <div class="card card-bg  card-img no-after">--}}
+{{--                                        <div class="img-responsive-wrapper">--}}
+{{--                                            <div class="img-responsive img-responsive-panoramic">--}}
+{{--                                                <figure class="img-wrapper">--}}
+{{--                                                    <img src="{{$newsBassa->picture}}"--}}
+{{--                                                         title="{{$newsBassa->titolo_it}}" alt="{{$newsBassa->titolo_it}}">--}}
+{{--                                                </figure>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h3 class="card-title h5 ">--}}
+{{--                                                <a href="/dettaglio-news/{{$newsBassa->id}}">--}}
+{{--                                                    {{$newsBassa->titolo_it}}--}}
+{{--                                                </a>--}}
+{{--                                            </h3>--}}
 
-                                            {{--                                        <p class="card-text font-serif"></p>--}}
-                                            {{--                                        <a class="read-more" href="#">--}}
-                                            {{--                                            <span class="text">Leggi di più</span>--}}
-                                            {{--                                            <span class="visually-hidden">su Lorem ipsum dolor sit amet, consectetur adipiscing elit…</span>--}}
-                                            {{--                                            <svg class="icon">--}}
-                                            {{--                                                <use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-right"></use>--}}
-                                            {{--                                            </svg>--}}
-                                            {{--                                        </a>--}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end card-->
-                            </div>
-                        @endforeach
+{{--                                            --}}{{--                                        <p class="card-text font-serif"></p>--}}
+{{--                                            --}}{{--                                        <a class="read-more" href="#">--}}
+{{--                                            --}}{{--                                            <span class="text">Leggi di più</span>--}}
+{{--                                            --}}{{--                                            <span class="visually-hidden">su Lorem ipsum dolor sit amet, consectetur adipiscing elit…</span>--}}
+{{--                                            --}}{{--                                            <svg class="icon">--}}
+{{--                                            --}}{{--                                                <use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-right"></use>--}}
+{{--                                            --}}{{--                                            </svg>--}}
+{{--                                            --}}{{--                                        </a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!--end card-->--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
 
-                    </div>
+{{--                    </div>--}}
 
-                    <div class="d-flex justify-content-end pb-5">
-                        <a href="/archivio-news">
-                            <button type="button" class="btn btn-outline-primary">
-                                Tutte le notizie
-                                <svg class="icon icon-primary">
-                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-arrow-right"></use>
-                                </svg>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </section>
+{{--                    <div class="d-flex justify-content-end pb-5">--}}
+{{--                        <a href="/archivio-news">--}}
+{{--                            <button type="button" class="btn btn-outline-primary">--}}
+{{--                                Tutte le notizie--}}
+{{--                                <svg class="icon icon-primary">--}}
+{{--                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-arrow-right"></use>--}}
+{{--                                </svg>--}}
+{{--                            </button>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </section>--}}
 
             {{-- Video --}}
         @if ($video->count() > 0)
