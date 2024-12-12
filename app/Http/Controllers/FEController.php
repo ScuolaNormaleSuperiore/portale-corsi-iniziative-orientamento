@@ -11,10 +11,12 @@ use App\Models\PaginaOrientamento;
 use App\Models\SezioneLayout;
 use App\Models\StudenteOrientamento;
 use App\Models\Video;
+use Carbon\Carbon;
 use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
+use willvincent\Feeds\Facades\FeedsFacade;
 
 class FEController extends Controller
 {
@@ -26,6 +28,42 @@ class FEController extends Controller
     public function __construct()
     {
         Theme::set('sns');
+    }
+
+    protected function getFeeds() {
+
+        $f = FeedsFacade::make('https://normalenews.sns.it/feed-highlights.xml',3,true);
+//        $data = array(
+//            'title'     => $feed->get_title(),
+//            'permalink' => $feed->get_permalink(),
+//            'items'     => $feed->get_items(),
+//        );
+
+//        echo count($f->get_items()) . "<br/>";
+
+
+        $response = Arr::get(Arr::get(Arr::get($f->data,'child',[]),"",[]),'response',[]);
+        $items = Arr::get(Arr::get(Arr::get(Arr::get($response,0,[]),"child",[]),"",[]),'item',[]);
+
+        $news = [];
+
+        foreach ($items as $item) {
+            $itemData = Arr::get(Arr::get($item,'child',[]),"",[]);
+
+            $singleNews = [];
+
+            $singleNews['title'] = html_entity_decode(Arr::get(Arr::get(Arr::get($itemData,'title',[]),0,[]),'data'));
+            $singleNews['link'] = Arr::get(Arr::get(Arr::get($itemData,'link',[]),0,[]),'data');
+            $singleNews['date'] = Carbon::parse(Arr::get(Arr::get(Arr::get($itemData,'pubDate',[]),0,[]),'data'))->toDateTimeString();
+            $singleNews['media'] = Arr::get(Arr::get(Arr::get($itemData,'media',[]),0,[]),'data');
+
+            $news[] = $singleNews;
+            if (count($news) >= 3) {
+                break;
+            }
+        }
+
+        return $news;
     }
 
     /**
@@ -47,6 +85,8 @@ class FEController extends Controller
             ->limit(4)
             ->get();
 
+        $feeds = $this->getFeeds();
+
         $avvisi = Avviso::where('attivo',1)->get();
 
         $newsAlta = $news->where('evidenza', 1)->first();
@@ -64,7 +104,7 @@ class FEController extends Controller
             ->limit(3)
             ->get();
 
-        return view('index', compact('pagine', 'newsAlta', 'newsBasse', 'eventi', 'avvisi', 'video'));
+        return view('index', compact('pagine', 'newsAlta', 'newsBasse', 'eventi', 'avvisi', 'video', 'feeds'));
     }
 
     public function paginaOrientamento(Request $request, PaginaOrientamento $pagina)

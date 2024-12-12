@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Brevo\Client\Api\AccountApi;
 use Brevo\Client\Api\ContactsApi;
+use Carbon\Carbon;
 use Hofmannsven\Brevo\Facades\Brevo;
+use Illuminate\Support\Arr;
 use Vedmant\FeedReader\Facades\FeedReader;
+use willvincent\Feeds\Facades\FeedsFacade;
 
 class TestController extends Controller
 {
@@ -21,36 +24,65 @@ class TestController extends Controller
 
     public function test() {
 
+//        $f = FeedReader::read('https://normalenews.sns.it/feed-highlights.xml');
 
-        $f = FeedReader::read('https://normalenews.sns.it/feed-highlights.xml');
+        $f = FeedsFacade::make('https://normalenews.sns.it/feed-highlights.xml',3,true);
+//        $data = array(
+//            'title'     => $feed->get_title(),
+//            'permalink' => $feed->get_permalink(),
+//            'items'     => $feed->get_items(),
+//        );
 
         echo '<pre>';
 
-        echo count($f->get_items());
-        print_r($f->data);
-        foreach ($f->get_items() as $k => $item) {
-            echo "-------<br/>";
-            echo "-------<br/>";
-            echo "-------<br/>";
-            echo $k . '/' . count($f->get_items()) . "<br/>";
-            print_r($item->get_title());
-            echo "-------<br/>";
-            print_r($item->get_permalink());
-            echo "-------<br/>";
-            print_r($item->data);
-            echo "-------<br/>";
-            echo "-------<br/>";
-            echo "-------<br/>";
-            echo "-------<br/>";
-            echo "-------<br/>";
-            echo "-------<br/>";
-//            print_r($item->get_image_url());
-//            print_r($item->get_image_link());
-//            print_r($item->get_image_title());
+//        echo count($f->get_items()) . "<br/>";
 
-//            break;
 
+        $response = Arr::get(Arr::get(Arr::get($f->data,'child',[]),"",[]),'response',[]);
+        $items = Arr::get(Arr::get(Arr::get(Arr::get($response,0,[]),"child",[]),"",[]),'item',[]);
+
+        $news = [];
+
+        foreach ($items as $item) {
+            $itemData = Arr::get(Arr::get($item,'child',[]),"",[]);
+
+            $singleNews = [];
+
+            $singleNews['title'] = html_entity_decode(Arr::get(Arr::get(Arr::get($itemData,'title',[]),0,[]),'data'));
+            $singleNews['link'] = Arr::get(Arr::get(Arr::get($itemData,'link',[]),0,[]),'data');
+            $singleNews['date'] = Carbon::parse(Arr::get(Arr::get(Arr::get($itemData,'pubDate',[]),0,[]),'data'))->toDateTimeString();
+            $singleNews['media'] = Arr::get(Arr::get(Arr::get($itemData,'media',[]),0,[]),'data');
+
+            $news[] = $singleNews;
+            if (count($news) >= 3) {
+                break;
+            }
         }
+
+//        print_r($f->data);
+//        foreach ($f->get_items() as $k => $item) {
+//            echo "-------<br/>";
+//            echo "-------<br/>";
+//            echo "-------<br/>";
+//            echo $k . '/' . count($f->get_items()) . "<br/>";
+//            print_r($item->get_title());
+//            echo "-------<br/>";
+//            print_r($item->get_permalink());
+//            echo "-------<br/>";
+//            print_r($item->data);
+//            echo "-------<br/>";
+//            echo "-------<br/>";
+//            echo "-------<br/>";
+//            echo "-------<br/>";
+//            echo "-------<br/>";
+//            echo "-------<br/>";
+////            print_r($item->get_image_url());
+////            print_r($item->get_image_link());
+////            print_r($item->get_image_title());
+//
+////            break;
+//
+//        }
 
 
 

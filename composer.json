@@ -82,7 +82,7 @@
         "laravel/tinker": "^2.8",
         "nwidart/laravel-modules": "^10.0",
         "spatie/laravel-sluggable": "^3.6",
-        "vedmant/laravel-feed-reader": "^1.6"
+        "willvincent/feeds": "^2.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
