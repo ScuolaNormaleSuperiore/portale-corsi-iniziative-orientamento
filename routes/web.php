@@ -44,6 +44,7 @@ Route::group([
     Route::get('/candidatura/edit/{candidatura}/{step?}', [CandidatureController::class, 'edit'])->name('candidatura.edit');
     Route::post('/candidatura/{iniziativa}/new', [CandidatureController::class, 'store'])->name('candidatura.store');
     Route::put('/candidatura/edit/{candidatura}/{step?}', [CandidatureController::class, 'update'])->name('candidatura.update');
+    Route::get('/candidatura/view/{candidatura}', [CandidatureController::class, 'view'])->name('candidatura.view');
 });
 
 Route::get('/archivio-video', [FEController::class,'archivioVideo'])->name('archivio-video')->middleware([]);

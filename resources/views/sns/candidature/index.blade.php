@@ -11,7 +11,7 @@
                 </ol>
             </nav>
             <h2 class="h2 py-2">{{$nomeCognome}}</h2>
-            <p>DA questa pagina puoi candidarti alle nostre iniziative di orientamento</p>
+            <p>Da questa pagina puoi candidarti alle nostre iniziative di orientamento</p>
             <hr/>
         </section>
 
@@ -39,11 +39,19 @@
                                         @endphp
                                         <div class="d-flex justify-content-start pb-5">
                                             @if ($candidatura)
-                                                <a href="/candidatura/edit/{{$candidatura->getKey()}}">
-                                                    <button type="button" class="btn btn-outline-primary">
-                                                        Gestisci la candidatura
-                                                    </button>
-                                                </a>
+                                                @if ($candidatura->status == \App\Enums\CandidatoStatuses::BOZZA->value)
+                                                    <a href="/candidatura/edit/{{$candidatura->getKey()}}">
+                                                        <button type="button" class="btn btn-outline-primary">
+                                                            Gestisci la candidatura
+                                                        </button>
+                                                    </a>
+                                                @else
+                                                    <a href="/candidatura/view/{{$candidatura->getKey()}}">
+                                                        <button type="button" class="btn btn-outline-primary">
+                                                            Vedi la candidatura
+                                                        </button>
+                                                    </a>
+                                                @endif
                                             @else
                                                 <a href="/candidatura/{{$iniziativa->getKey()}}/new">
                                                     <button type="button" class="btn btn-outline-primary">
@@ -55,11 +63,19 @@
                                     @elseif ($ruolo == 'Scuola')
                                         <div class="d-flex justify-content-start pb-5 gap-3">
                                             @foreach ($candidature as $candidatura)
-                                                <a href="/candidatura/edit/{{$candidatura->getKey()}}">
-                                                    <button type="button" class="btn btn-outline-primary">
-                                                        {{$candidatura->fename}}
-                                                    </button>
-                                                </a>
+                                                @if ($candidatura->status == \App\Enums\CandidatoStatuses::BOZZA->value)
+                                                    <a href="/candidatura/edit/{{$candidatura->getKey()}}">
+                                                        <button type="button" class="btn btn-outline-primary">
+                                                            {{$candidatura->fename}}
+                                                        </button>
+                                                    </a>
+                                                @else
+                                                    <a href="/candidatura/view/{{$candidatura->getKey()}}">
+                                                        <button type="button" class="btn btn-outline-primary">
+                                                            {{$candidatura->fename}}
+                                                        </button>
+                                                    </a>
+                                                @endif
                                             @endforeach
                                             @if ($candidature->count() < $maxCandidatureScuole)
                                                 <a href="/candidatura/{{$iniziativa->getKey()}}/new">

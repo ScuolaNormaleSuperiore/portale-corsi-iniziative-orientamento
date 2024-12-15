@@ -19,11 +19,16 @@
         @endphp
         <div class="d-flex justify-content-end gap-lg-3 gap-5">
 
-            <button type="submit" name="submit-type" value="save"
+            <button type="submit" name="submit-type"
                     class="btn btn-primary btn-sm steppers-btn-save d-lg-block"
-                    @if(array_key_last($steps) == $step && count($stepsDone) < (count($steps)-1))
-                        disabled="disabled"
-                @endif
+                    @if(array_key_last($steps) == $step)
+                        value="invia"
+                        @if (count($stepsDone) < (count($steps)-1))
+                            disabled="disabled"
+                        @endif
+                    @else
+                        value="save"
+                    @endif
             >
             @if (array_key_last($steps) != $step)
                 Salva

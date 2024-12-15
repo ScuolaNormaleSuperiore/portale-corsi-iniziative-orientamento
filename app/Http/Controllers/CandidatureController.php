@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\CandidatoStatuses;
 use App\Models\Candidato;
 use App\Models\Classe;
 use App\Models\Evento;
@@ -14,6 +15,7 @@ use App\Models\SezioneLayout;
 use App\Models\StudenteOrientamento;
 use App\Models\Video;
 use Gecche\Foorm\Facades\Foorm;
+use Gecche\Foorm\FoormAction;
 use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -118,7 +120,7 @@ class CandidatureController extends Controller
                     if ($value && $value > 0) {
                         $scuola = Scuola::find($value);
                     } elseif ($this->role == 'Scuola') {
-                            $scuola = Auth::user()->scuola;
+                        $scuola = Auth::user()->scuola;
                         $stepData['sections'][$section]['fields'][$fieldName]['value'] =
                             $scuola->getKey();
                     }
@@ -166,12 +168,18 @@ class CandidatureController extends Controller
 
     }
 
-    protected function checkUserEdit(Request $request, Candidato $candidatura)
+    protected function checkUserEdit(Request $request, Candidato $candidatura, $edit = true)
     {
 
         $role = auth_role_name();
         $this->role = $role;
 
+        if ($edit && ($candidatura->status != CandidatoStatuses::BOZZA->value)) {
+            return false;
+        }
+        if (!$edit && ($candidatura->status == CandidatoStatuses::BOZZA->value)) {
+            return false;
+        }
         switch ($role) {
             case 'Admin':
             case 'Superutente':
@@ -273,12 +281,19 @@ class CandidatureController extends Controller
         $candidaturaTitle = $iniziativa->titolo;
         $steps = $this->steps;
         $req = $request->all();
+        $submitType = $request->get('submit-type', 'save');
+
 
         $foorm = Foorm::getFoorm('candidato.edit', $request, ['id' => $candidatura->getKey()]);
-
         $errors = new MessageBag();
         try {
-            $foorm->save();
+            if ($submitType == 'invia') {
+                $candidatura->makeTransitionAndSave('inviata');
+                $view = 'candidature.view';
+            } else {
+                $foorm->save();
+                $view = 'candidature.edit';
+            }
         } catch (ValidationException $e) {
             return redirect(route('candidatura.edit', [
                 'candidatura' => $candidatura->getKey(),
@@ -290,7 +305,7 @@ class CandidatureController extends Controller
         $metadata = $foorm->getFormMetadata();
         $data = $foorm->getFormData();
 
-        $submitType = $request->get('submit-type', 'save');
+
         if ($submitType == 'next') {
             $step++;
         }
@@ -299,7 +314,31 @@ class CandidatureController extends Controller
 
         $candidatura = $candidatura->fresh();
 
-        return view('candidature.edit', compact('candidatura', 'iniziativa', 'candidaturaTitle', 'steps', 'step', 'req', 'errors'));
+        return view($view, compact('candidatura', 'iniziativa', 'candidaturaTitle', 'steps', 'step', 'req', 'errors'));
+
+    }
+
+    public function view(Request $request, Candidato $candidatura)
+    {
+        if (!$this->checkUserEdit($request, $candidatura, false)) {
+            return redirect()->route('candidature');
+        }
+
+        $step = count($this->steps) - 1;
+        $iniziativa = $candidatura->iniziativa;
+        $candidaturaTitle = $iniziativa->titolo;
+        $steps = $this->steps;
+        $req = $request->all();
+        $foorm = Foorm::getFoorm('candidato.edit', $request, ['id' => $candidatura->getKey()]);
+
+        $metadata = $foorm->getFormMetadata();
+        $data = $foorm->getFormData();
+
+
+        $steps[$step] = $this->setOptionsInStepData($steps[$step], $metadata);
+        $steps[$step] = $this->setValuesInStepData($steps[$step], $data);
+
+        return view('candidature.view', compact('candidatura', 'iniziativa', 'candidaturaTitle', 'steps', 'step', 'req'));
 
     }
 

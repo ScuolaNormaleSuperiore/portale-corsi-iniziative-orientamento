@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Gecche\Cupparis\App\Breeze\Breeze;
+use Gecche\FSM\FSMTrait;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +15,7 @@ class Candidato extends Breeze
 {
 	use Relations\CandidatoRelations;
 
+    use FSMTrait;
 
 
 //    use ModelWithUploadsTrait;
@@ -86,6 +89,7 @@ class Candidato extends Breeze
     {
         if (!$this->getKey()) {
             $this->user_id = Auth::id();
+            $this->startFSM();
         }
 
         if (is_null($this->informativa)) {
@@ -156,5 +160,14 @@ class Candidato extends Breeze
         $info['steps'][$step] = true;
         $this->info = $info;
         return $this->info;
+    }
+
+    public function getLastTimestamp() {
+        $timestamp = Arr::get($this->getLastStatus(),'timestamp');
+        try {
+            return Carbon::createFromFormat('Y-m-d H:i:s',$timestamp);
+        } catch (\Throwable $e) {
+            return null;
+        }
     }
 }

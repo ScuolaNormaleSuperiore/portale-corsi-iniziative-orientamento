@@ -76,6 +76,7 @@ return new class extends Migration {
 
             $table->date('data_candidatura')->nullable();
             $table->string('status')->nullable();
+            $table->longText('status_history')->nullable();
 
             $table->string('albergo')->nullable();
             $table->boolean('conferma')->default(0);

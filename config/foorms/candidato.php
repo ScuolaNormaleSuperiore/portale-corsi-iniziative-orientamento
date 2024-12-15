@@ -196,7 +196,13 @@ return [
         ],
     ],
     'list' => [
-
+        'actions' => [
+            'set' => [
+                'allowed_fields' => [
+                    'status',
+                ],
+            ],
+        ],
         'dependencies' => [
             'search' => 'search',
         ],
