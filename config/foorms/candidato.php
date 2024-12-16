@@ -190,6 +190,10 @@ return [
                 "operator" => "=",
                 "options" => "relation:scuola"
             ],
+            "tipo" => [
+                "operator" => "=",
+                "options" => "enum:App\\Enums\\TipoCandidatura"
+            ],
             "id" => [
 
             ]
@@ -231,7 +235,13 @@ return [
             "status" => [
                 "options" => 'enum:App\\Enums\\CandidatoStatuses',
             ],
+            "tipo_text" => [
 
+            ],
+
+        ],
+        'appends' => [
+          'tipo_text',
         ],
         'relations' => [
             "iniziativa" => [

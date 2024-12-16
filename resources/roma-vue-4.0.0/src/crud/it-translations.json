@@ -568,6 +568,7 @@
     "candidato.fields.attachments.ordine.label": "Ordine",
     "candidato.fields.attachments.dim.label": "Dim",
     "candidato.fields.data_candidatura.label": "Data candidatura",
+    "candidato.fields.tipo_text.label": "Tipologia",
     "candidato.fields.iniziativa.label": "iniziativa|iniziative",
     "candidato.fields.iniziativa.titolo.label": "Titolo",
     "candidato.fields.scuola.label": "scuola|scuole",

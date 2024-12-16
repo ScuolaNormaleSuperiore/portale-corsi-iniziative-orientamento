@@ -3,6 +3,11 @@
 return [
 
     'statuses' => [
+        'tipo_candidatura' => [
+            'studente' => 'Candidatura singola',
+            'scuola' => 'Candidatura da Scuola',
+            'altro' => 'Altro',
+        ],
         'candidato' => [
             'bozza' => 'In bozza',
             'inviata' => 'Inviata',

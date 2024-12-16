@@ -288,6 +288,9 @@ class CandidatureController extends Controller
         $errors = new MessageBag();
         try {
             if ($submitType == 'invia') {
+                if (!$candidatura->data_candidatura) {
+                    $candidatura->data_candidatura = now()->toDateString();
+                }
                 $candidatura->makeTransitionAndSave('inviata');
                 $view = 'candidature.view';
             } else {

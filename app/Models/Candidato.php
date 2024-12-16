@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TipoCandidatura;
 use Carbon\Carbon;
 use Gecche\Cupparis\App\Breeze\Breeze;
 use Gecche\FSM\FSMTrait;
@@ -30,6 +31,7 @@ class Candidato extends Breeze
 
     public $appends = [
         'fename',
+        'tipo_text',
     ];
 
     protected $casts = [
@@ -91,6 +93,17 @@ class Candidato extends Breeze
         if (!$this->getKey()) {
             $this->user_id = Auth::id();
             $this->startFSM();
+            switch (auth_role_name()) {
+                case 'Scuola':
+                    $this->tipo = 'scuola';
+                    break;
+                case 'Studente':
+                    $this->tipo = 'studente';
+                    break;
+                default:
+                    $this->tipo = 'altro';
+                    break;
+            }
         }
 
         if (is_null($this->informativa)) {
@@ -170,6 +183,10 @@ class Candidato extends Breeze
         } catch (\Throwable $e) {
             return null;
         }
+    }
+
+    public function getTipoTextAttribute() {
+        return TipoCandidatura::optionLabel($this->tipo);
     }
 
 }

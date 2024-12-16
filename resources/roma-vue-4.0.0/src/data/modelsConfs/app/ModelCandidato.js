@@ -14,12 +14,16 @@ export default {
             'nome',
             'cognome',
             'provincia_id',
+            'tipo',
             // 'scuola_id',
             // 'tipo',
 
         ],
         fieldsConfig: {
             'iniziativa_id': {
+                type: "w-select",
+            },
+            'tipo': {
                 type: "w-select",
             },
             'nome': {
@@ -73,12 +77,17 @@ export default {
             'iniziativa',
             'nome',
             'cognome',
+            'tipo_text',
             'media',
             // 'tipo',
             'scuola',
+            'data_candidatura',
 
         ],
         fieldsConfig: {
+            'data_candidatura' : {
+              type: 'w-date-text'
+            },
             'iniziativa': {
                 type: "w-custom",
                 ready() {

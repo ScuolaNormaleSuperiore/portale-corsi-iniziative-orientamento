@@ -110,4 +110,6 @@ return array (
 
     'olimpiadi_matematica' => 'Olimpiadi  di matematica (individuali)',
     'olimpiadi_fisica' => 'Olimpiadi  di fisica (individuali)',
+
+    'tipo_text' => 'Tipologia',
 );
