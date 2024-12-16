@@ -17,6 +17,7 @@ use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use willvincent\Feeds\Facades\FeedsFacade;
 
 class FEController extends Controller
@@ -94,11 +95,11 @@ class FEController extends Controller
         $newsBasse = $news->where('evidenza', '>', 1)->all();
 
         $eventi = Evento::where('attivo', 1)
-            ->whereIn('evidenza',[1,2,3])
+            ->whereIn('evidenza', [1, 2, 3])
             ->orderBy('evidenza', 'ASC')
             ->get();
         $eventoSpeciale = Evento::where('attivo', 1)
-            ->where('evidenza',9)
+            ->where('evidenza', 9)
             ->first();
 
         $video = Video::where('attivo', 1)
@@ -108,7 +109,7 @@ class FEController extends Controller
             ->get();
 
         return view('index', compact('pagine', 'newsBasse', 'eventi',
-            'eventoSpeciale','avvisi', 'video', 'feeds'));
+            'eventoSpeciale', 'avvisi', 'video', 'feeds'));
     }
 
     public function paginaOrientamento(Request $request, PaginaOrientamento $pagina)
@@ -188,29 +189,32 @@ class FEController extends Controller
 
         $items = $className::where('attivo', 1);
 
-        if ($filter) {
 
-            switch ($className) {
-                case Video::class:
-                    $items->orderBy('titolo_it', 'DESC')
-                        ->where(function ($q) use ($filter) {
+        switch ($className) {
+            case Video::class:
+                $items->orderBy('titolo_it', 'DESC');
+                if ($filter) {
+                    $items->where(function ($q) use ($filter) {
                         return $q->where('titolo_it', 'LIKE', '%' . $filter . '%')
                             ->orWhere('descrizione_it', 'LIKE', '%' . $filter . '%');
                     });
-                    $categoriaSelected = intval($request->get('video-categoria'));
-                    if ($categoriaSelected > 0) {
-                        $items->where('materia_id', $categoriaSelected);
-                    }
-                    break;
-                default:
-                    $items->orderBy('data', 'DESC')
-                        ->where(function ($q) use ($filter) {
+                }
+                $categoriaSelected = intval($request->get('video-categoria'));
+                Log::info("CAT::::" . $categoriaSelected);
+                if ($categoriaSelected > 0) {
+                    $items->where('materia_id', $categoriaSelected);
+                }
+                break;
+            default:
+                $items = $items->orderBy('data', 'DESC');
+                if ($filter) {
+                    $items->where(function ($q) use ($filter) {
                         return $q->where('titolo_it', 'LIKE', '%' . $filter . '%')
                             ->orWhere('sottotitolo_it', 'LIKE', '%' . $filter . '%');
                     });
-                    break;
+                }
+                break;
 
-            }
         }
 
         $items = $items->paginate(Config::get('sns.per-page'))->withQueryString();
@@ -218,7 +222,8 @@ class FEController extends Controller
         return $items;
     }
 
-    public function archivioNews(Request $request)
+    public
+    function archivioNews(Request $request)
     {
 
         $filter = $request->get('filter');
@@ -232,7 +237,8 @@ class FEController extends Controller
         return view('archivio-news', compact('items', 'filter', 'breadcrumbs'));
     }
 
-    public function archivioEventi(Request $request)
+    public
+    function archivioEventi(Request $request)
     {
 
         $filter = $request->get('filter');
@@ -247,7 +253,8 @@ class FEController extends Controller
     }
 
 
-    public function archivioVideo(Request $request)
+    public
+    function archivioVideo(Request $request)
     {
 
         $descrizione = SezioneLayout::where('codice', 'video-intro')->firstOrNew();
@@ -268,7 +275,8 @@ class FEController extends Controller
         return view('archivio-video', compact('items', 'filter', 'descrizione', 'breadcrumbs', 'categoriaSelected', 'categorie'));
     }
 
-    public function dettaglioNews(Request $request, News $notizia)
+    public
+    function dettaglioNews(Request $request, News $notizia)
     {
 
         $navleft = [
@@ -284,7 +292,8 @@ class FEController extends Controller
         return view('dettaglio-news', compact('notizia', 'navleft', 'breadcrumbs'));
     }
 
-    public function dettaglioEvento(Request $request, Evento $evento)
+    public
+    function dettaglioEvento(Request $request, Evento $evento)
     {
 
         $navleft = [
@@ -303,7 +312,8 @@ class FEController extends Controller
         return view('dettaglio-evento', compact('evento', 'navleft', 'breadcrumbs'));
     }
 
-    public function scuolaRichiestaCortesia(Request $request)
+    public
+    function scuolaRichiestaCortesia(Request $request)
     {
         return view('cortesia-scuola-richiesta');
     }
