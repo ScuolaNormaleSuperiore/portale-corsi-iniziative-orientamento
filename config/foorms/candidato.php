@@ -381,7 +381,7 @@ return [
                 'options' => 'enum:App\\Enums\\OlimpiadiMatematica',
             ],
             "olimpiadi_fisica" => [
-                'options' => 'enum:App\\Enums\\OlimpiadiMatematica',
+                'options' => 'enum:App\\Enums\\OlimpiadiFisica',
             ],
             "partecipazione_concorsi" => [
 

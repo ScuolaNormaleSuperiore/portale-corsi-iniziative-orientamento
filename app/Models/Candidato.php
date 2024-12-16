@@ -7,6 +7,7 @@ use Gecche\Cupparis\App\Breeze\Breeze;
 use Gecche\FSM\FSMTrait;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 /**
  * Breeze (Eloquent) model for candidati table.
@@ -170,4 +171,5 @@ class Candidato extends Breeze
             return null;
         }
     }
+
 }
