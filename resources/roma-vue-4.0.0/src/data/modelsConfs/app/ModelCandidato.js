@@ -10,7 +10,7 @@ export default {
         type: 'v-search',
         modelName: 'candidato',
         fields: [
-            'anno',
+            'iniziativa_id',
             'nome',
             'cognome',
             'provincia_id',
@@ -19,9 +19,8 @@ export default {
 
         ],
         fieldsConfig: {
-            'anno': {
-                type: "w-input",
-                inputType: "number",
+            'iniziativa_id': {
+                type: "w-select",
             },
             'nome': {
                 type: "w-input",
@@ -70,7 +69,8 @@ export default {
             'action-delete-selected',
         ],
         fields: [
-            'anno',
+            'status',
+            'iniziativa',
             'nome',
             'cognome',
             'media',
@@ -79,8 +79,15 @@ export default {
 
         ],
         fieldsConfig: {
-            'anno': {
-                type: "w-text",
+            'iniziativa': {
+                type: "w-custom",
+                ready() {
+                    this.value = this.modelData.iniziativa.titolo;
+                }
+            },
+            'status': {
+                type: "w-swap-select",
+                modelName : 'candidato',
             },
             'nome': {
                 type: "w-text",

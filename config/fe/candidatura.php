@@ -205,6 +205,16 @@ return [
                     'code' => 'partecipazione_concorsi',
                     'title' => 'Partecipazione a concorsi e risultati',
                     'fields' => [
+                        'olimpiadi_matematica' => [
+                            'validation' => [
+                                'required'
+                            ],
+                        ],
+                        'olimpiadi_fisica' => [
+                            'validation' => [
+                                'required'
+                            ],
+                        ],
                         'partecipazione_concorsi' => [
                             'validation' => [
                                 'max:500'

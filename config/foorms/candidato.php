@@ -196,6 +196,9 @@ return [
         ],
     ],
     'list' => [
+        'allowed_actions' => [
+            'set' => true,
+        ],
         'actions' => [
             'set' => [
                 'allowed_fields' => [
@@ -226,8 +229,9 @@ return [
 
             ],
             "status" => [
-
+                "options" => 'enum:App\\Enums\\CandidatoStatuses',
             ],
+
         ],
         'relations' => [
             "iniziativa" => [
