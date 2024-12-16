@@ -155,12 +155,9 @@ return [
             "id" => [
 
             ],
-            "picture" => [
-
-            ],
         ],
         'appends' => [
-          "picture",
+
         ],
         'relations' => [
 
@@ -170,31 +167,6 @@ return [
         ],
     ],
     'edit' => [
-        'actions' => [
-            'uploadfile' => [
-                'allowed_fields' => [
-                    'attachments|resource',
-                    'fotos|resource',
-                ],
-                'fields' => [
-                    'attachments|resource' => [
-                        'resource_type' => 'attachment',
-                        //'max_size' => '4M',
-                        'exts' => 'pdf,doc,docx,zip',
-                    ],
-                    'fotos|resource' => [
-                        'resource_type' => 'foto',
-                        //'max_size' => '4M',
-                        'exts' => 'jpg,png',
-                    ],
-//                'thumb_url_file' => [
-//                    'resource_type' => 'foto',
-//                    //'max_size' => '4M',
-//                    'exts' => 'png,jpg',
-//                ],
-                ],
-            ],
-        ],
         'fields' => [
             "anno" => [
                 'options' => 'method',

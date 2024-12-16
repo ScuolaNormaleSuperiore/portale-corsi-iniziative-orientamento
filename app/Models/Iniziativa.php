@@ -43,9 +43,6 @@ class Iniziativa extends Breeze
             'foreignKey' => 'iniziativa_id'
         ],
 
-        'fotos' => [self::MORPH_MANY, 'related' => Foto::class, 'name' => 'mediable'],
-        'attachments' => [self::MORPH_MANY, 'related' => Attachment::class, 'name' => 'mediable'],
-
 //        'belongsto' => array(self::BELONGS_TO, Iniziativa::class, 'foreignKey' => '<FOREIGNKEYNAME>'),
 //        'belongstomany' => array(self::BELONGS_TO_MANY, Iniziativa::class, 'table' => '<TABLEPIVOTNAME>','pivotKeys' => [],'foreignKey' => '<FOREIGNKEYNAME>','otherKey' => '<OTHERKEYNAME>') ,
 //        'hasmany' => array(self::HAS_MANY, Iniziativa::class, 'table' => '<TABLENAME>','foreignKey' => '<FOREIGNKEYNAME>'),
@@ -70,25 +67,7 @@ class Iniziativa extends Breeze
     public $fieldsSeparator = ' - ';
 
 
-    public function getPictureAttribute()
-    {
-        $foto = $this->fotos->first();
-//        Log::info(print_r($foto,true));
-        if ($foto) {
-            return $foto->getUrl('orig');
-        }
-        return null;
-    }
 
-    public function getPictureIconAttribute()
-    {
-        $foto = $this->fotos->first();
-//        Log::info(print_r($foto,true));
-        if ($foto) {
-            return $foto->getUrl('iniziativaicon');
-        }
-        return '/imagecache/small/0';
-    }
 
     public static function getModalitaCandidaturaOptions() {
         return [

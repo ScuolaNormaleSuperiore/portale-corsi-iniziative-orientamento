@@ -160,6 +160,8 @@ export default {
             'altre_competenze_linguistiche',
 
             'profilo',
+            'olimpiadi_matematica',
+            'olimpiadi_fisica',
             'partecipazione_concorsi',
             'esperienze_estere',
             'settore_professionale',
@@ -176,6 +178,13 @@ export default {
 
         ],
         fieldsConfig: {
+            'olimpiadi_matematica' : {
+                type: 'w-select',
+            },
+            'olimpiadi_fisica'  : {
+                type: 'w-select',
+            },
+
             'iniziativa_id': {
                 type: 'w-select',
                 divider: 'before',
@@ -348,6 +357,9 @@ export default {
                 dividerClass: 'text-primary-700 my-5',
                 dividerContentClass: 'font-bold border-1 p-2',
                 dividerContent: 'Profilo, esperienze, motivazioni',
+                layout : {
+                    lastInRow : true,
+                }
             },
             'partecipazione_concorsi': {
                 type: "w-textarea",

@@ -1,3 +1,4 @@
+import CrudHelpers from "cupparis-primevue/src/lib/CrudHelpers";
 
 export default {
     modelName : 'corso',
@@ -46,6 +47,7 @@ export default {
             'action-delete-selected',
         ],
         fields: [
+			'picture',
 			'titolo',
 			// 'descrizione',
 			'data_inizio',
@@ -59,6 +61,26 @@ export default {
 
         ],
         fieldsConfig: {
+
+			'picture' : {
+				type : "w-custom",
+				ready() {
+					var that = this;
+					var urlPrefix = import.meta.env.VITE_APP_TARGET || '';
+					var url = urlPrefix + '' + CrudHelpers.addBearerTokenToUrl(that.modelData.picture);
+
+					var style = "background-image: url(\"" + url + "\") !important;";
+					//+ "background-color: red;";
+
+					//[style]="'background-image:url('+getImage(element.id)+')'"
+					that.value = "<div class='w-5rem h-4rem m-auto bg-contain bg-no-repeat' " +
+						// ":style=\"{ 'background-image': url('" + url + "') }\" " +
+						//":style=\"{ 'background-image': url('" + url + "') }\" " +
+						"style='" + style + "' >&nbsp;" +
+						// "<img class='w-full' src='/api" + CrudHelpers.addBearerTokenToUrl(url) + "'/>" +
+						"</div>";
+				},
+			},
 			'titolo' : { 
                 type : "w-text",
 			}, 
@@ -114,13 +136,15 @@ export default {
 			'iniziativa_id',
 			'data_inizio',
 			'data_fine',
-			'descrizione',
 			'luogo',
 			'indirizzo',
 			'provincia_id',
 			'note',
+			'descrizione',
 			// 'attivo',
 
+			'attachments',
+			'fotos'
         ],
         fieldsConfig: {
 			'titolo' : { 
@@ -129,6 +153,9 @@ export default {
 			'descrizione' : { 
                 type : "w-texthtml",
                 htmlAttributes: {},
+				layout : {
+					colClass : 'col-12',
+				}
 			}, 
 			'data_inizio' : { 
                 type : "w-input",
@@ -162,7 +189,66 @@ export default {
                 type : "w-radio",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
+			},
+
+			attachments : {
+				type :'w-hasmany',
+				langContext : 'attachments.fields',
+
+				hasmanyConf : {
+					fields : [
+						'id','nome','resource','status'
+					],
+					fieldsConfig : {
+						resource : {
+							type : 'w-upload-ajax',
+							extensions : ['pdf','doc','docx'],
+							//extensions : ['csv','xls'],
+							maxFileSize : '2M',
+							ajaxFields : {
+								field : 'attachments|resource',
+								resource_type : 'attachment'
+							},
+							modelName : 'corso',
+							previewConf:{
+								iconSize:'fa-3x'
+							},
+							label: 'File',
+						},
+						status : 'w-hidden',
+						id : 'w-hidden',
+					}
+				}
+			},
+			fotos : {
+				type :'w-hasmany',
+				hasmanyConf : {
+					langContext : 'fotos.fields',
+					fields : [
+						'id','nome','resource','status'
+					],
+					fieldsConfig : {
+						resource : {
+							type : 'w-upload-ajax',
+							extensions : ['jpg','png'],
+							//extensions : ['csv','xls'],
+							maxFileSize : '2M',
+							ajaxFields : {
+								field : 'fotos|resource',
+								resource_type : 'foto'
+							},
+							modelName : 'corso',
+							previewConf:{
+								iconSize:'fa-3x'
+							},
+							label: 'File',
+						},
+						status : 'w-hidden',
+						id : 'w-hidden',
+						nome : 'w-hidden',
+					}
+				}
+			},
 
         }
 

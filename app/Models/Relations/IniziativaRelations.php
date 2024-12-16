@@ -32,17 +32,6 @@ trait IniziativaRelations
 
     }
 
-    public function fotos() {
-
-        return $this->morphMany('App\Models\Foto', 'mediable', null, null, null);
-    
-    }
-
-    public function attachments() {
-
-        return $this->morphMany('App\Models\Attachment', 'mediable', null, null, null);
-    
-    }
 
 
 

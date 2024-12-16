@@ -175,7 +175,13 @@ return [
             ],
             "id" => [
 
-            ]
+            ],
+            "picture" => [
+
+            ],
+        ],
+        'appends' => [
+          "picture",
         ],
         'relations' => [
             'provincia' => [
@@ -194,6 +200,31 @@ return [
         ],
     ],
     'edit' => [
+        'actions' => [
+            'uploadfile' => [
+                'allowed_fields' => [
+                    'attachments|resource',
+                    'fotos|resource',
+                ],
+                'fields' => [
+                    'attachments|resource' => [
+                        'resource_type' => 'attachment',
+                        //'max_size' => '4M',
+                        'exts' => 'pdf,doc,docx,zip',
+                    ],
+                    'fotos|resource' => [
+                        'resource_type' => 'foto',
+                        //'max_size' => '4M',
+                        'exts' => 'jpg,png',
+                    ],
+//                'thumb_url_file' => [
+//                    'resource_type' => 'foto',
+//                    //'max_size' => '4M',
+//                    'exts' => 'png,jpg',
+//                ],
+                ],
+            ],
+        ],
         'fields' => [
             "titolo" => [
 
@@ -245,7 +276,38 @@ return [
                 "savetype" => [
 
                 ]
-            ]
+            ],
+            "attachments" => [
+                "fields" => [
+                    'id' => [],
+                    'nome' => [],
+                    'descrizione' => [],
+                    'resource' => [],
+                    'ordine' => [],
+                ],
+                'orderKey' => 'ordine',
+
+                'beforeNewCallbackMethods' => ['setFieldsFromResource'],
+                'beforeUpdateCallbackMethods' => ['setFieldsFromResource'],
+                'afterNewCallbackMethods' => ['filesOps'],
+                'afterUpdateCallbackMethods' => ['filesOps'],
+            ],
+            "fotos" => [
+                "fields" => [
+                    'id' => [],
+                    'nome' => [],
+                    'descrizione' => [],
+                    'resource' => [],
+                    'ordine' => [],
+                ],
+                'orderKey' => 'ordine',
+
+                'beforeNewCallbackMethods' => ['setFieldsFromResource'],
+                'beforeUpdateCallbackMethods' => ['setFieldsFromResource'],
+                'afterNewCallbackMethods' => ['filesOps'],
+                'afterUpdateCallbackMethods' => ['filesOps'],
+            ],
+
         ],
         'params' => [
 

@@ -107,4 +107,7 @@ return array (
   'profilo' => 'Profilo personale',
   'scuola_estera' => 'Scuola estera',
     'autore' => 'Autore',
+
+    'olimpiadi_matematica' => 'Olimpiadi  di matematica (individuali)',
+    'olimpiadi_fisica' => 'Olimpiadi  di fisica (individuali)',
 );

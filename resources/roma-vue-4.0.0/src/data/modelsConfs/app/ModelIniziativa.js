@@ -41,7 +41,6 @@ export default {
             'action-delete-selected',
         ],
         fields: [
-            'picture',
 			'anno',
 			'titolo',
 			'descrizione',
@@ -52,25 +51,6 @@ export default {
 
         ],
         fieldsConfig: {
-            'picture' : {
-                type : "w-custom",
-                ready() {
-                    var that = this;
-                    var urlPrefix = import.meta.env.VITE_APP_TARGET || '';
-                    var url = urlPrefix + '' + CrudHelpers.addBearerTokenToUrl(that.modelData.picture);
-
-                    var style = "background-image: url(\"" + url + "\") !important;";
-                    //+ "background-color: red;";
-
-                    //[style]="'background-image:url('+getImage(element.id)+')'"
-                    that.value = "<div class='w-5rem h-4rem m-auto bg-contain bg-no-repeat' " +
-                        // ":style=\"{ 'background-image': url('" + url + "') }\" " +
-                        //":style=\"{ 'background-image': url('" + url + "') }\" " +
-                        "style='" + style + "' >&nbsp;" +
-                        // "<img class='w-full' src='/api" + CrudHelpers.addBearerTokenToUrl(url) + "'/>" +
-                        "</div>";
-                },
-            },
             'anno' : {
                 type : "w-text",
 			}, 
@@ -122,8 +102,6 @@ export default {
 			'attivo',
 			'descrizione',
 
-            'attachments',
-            'fotos'
 
         ],
         fieldsConfig: {

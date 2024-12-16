@@ -373,6 +373,12 @@ return [
             "note" => [
 
             ],
+            "olimpiadi_matematica" => [
+                'options' => 'enum:App\\Enums\\OlimpiadiMatematica',
+            ],
+            "olimpiadi_fisica" => [
+                'options' => 'enum:App\\Enums\\OlimpiadiMatematica',
+            ],
             "partecipazione_concorsi" => [
 
             ],
