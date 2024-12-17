@@ -294,7 +294,7 @@
 
         @if($eventoSpeciale)
 
-                <section class="pt-5 it-hero-wrapper it-dark it-overlay bg-white">
+                <section class="pt-5 it-hero-wrapper it-dark it-overlay bg-white it-hero-small-size">
                     <!-- - img-->
                     <div class="img-responsive-wrapper">
                         <div class="img-responsive">

@@ -13,4 +13,21 @@ class FoormInsert extends BaseFoormInsert
 
     use CandidatoTrait;
 
+    public function getExtraDefaults()
+    {
+        $role = auth_role_name();
+
+        switch ($role) {
+            case 'Studente':
+                $user = Auth::user();
+                $this->extraDefaults['nome'] = $user->nome;
+                $this->extraDefaults['cognome'] = $user->cognome;
+            default:
+                break;
+        }
+
+        return $this->extraDefaults;
+    }
+
+
 }

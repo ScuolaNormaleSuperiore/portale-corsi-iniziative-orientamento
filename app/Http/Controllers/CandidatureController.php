@@ -204,10 +204,13 @@ class CandidatureController extends Controller
 
         $foorm = Foorm::getFoorm('candidato.insert', $request, []);
         $metadata = $foorm->getFormMetadata();
+        $data = $foorm->getFormData();
+
 
         $req = $request->all();
 
         $steps[$step] = $this->setOptionsInStepData($steps[$step], $metadata);
+        $steps[$step] = $this->setValuesInStepData($steps[$step], $data);
         return view('candidature.create', compact('iniziativa', 'candidaturaTitle', 'steps', 'step', 'req'));
     }
 
