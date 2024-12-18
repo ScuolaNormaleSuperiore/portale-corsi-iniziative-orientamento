@@ -18,7 +18,7 @@
             </p>
         </th>
         <th>
-            @include('candidature.form.riepilogo-text',['value' => $candidatura->inglese->nome,'hr' => false])
+            @include('candidature.form.riepilogo-text',['value' => $candidatura->inglese?->nome,'hr' => false])
         </th>
     </tr>
 
@@ -29,7 +29,7 @@
             </p>
         </th>
         <th>
-            @include('candidature.form.riepilogo-text',['value' => $candidatura->francese->nome,'hr' => false])
+            @include('candidature.form.riepilogo-text',['value' => $candidatura->francese?->nome,'hr' => false])
         </th>
     </tr>
 
@@ -40,7 +40,7 @@
             </p>
         </th>
         <th>
-            @include('candidature.form.riepilogo-text',['value' => $candidatura->tedesco->nome,'hr' => false])
+            @include('candidature.form.riepilogo-text',['value' => $candidatura->tedesco?->nome,'hr' => false])
         </th>
     </tr>
 
@@ -51,7 +51,7 @@
             </p>
         </th>
         <th>
-            @include('candidature.form.riepilogo-text',['value' => $candidatura->spagnolo->nome,'hr' => false])
+            @include('candidature.form.riepilogo-text',['value' => $candidatura->spagnolo?->nome,'hr' => false])
         </th>
     </tr>
 
@@ -62,7 +62,7 @@
             </p>
         </th>
         <th>
-            @include('candidature.form.riepilogo-text',['value' => $candidatura->cinese->nome,'hr' => false])
+            @include('candidature.form.riepilogo-text',['value' => $candidatura->cinese?->nome,'hr' => false])
         </th>
     </tr>
 
