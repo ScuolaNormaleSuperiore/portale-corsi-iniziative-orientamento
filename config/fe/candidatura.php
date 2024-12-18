@@ -170,27 +170,27 @@ return [
                     'fields' => [
                         'inglese_livello_linguistico_id' => [
                             'validation' => [
-                                'required'
+//                                'required'
                             ],
                         ],
                         'francese_livello_linguistico_id' => [
                             'validation' => [
-                                'required'
+//                                'required'
                             ],
                         ],
                         'spagnolo_livello_linguistico_id' => [
                             'validation' => [
-                                'required'
+//                                'required'
                             ],
                         ],
                         'tedesco_livello_linguistico_id' => [
                             'validation' => [
-                                'required'
+//                                'required'
                             ],
                         ],
                         'cinese_livello_linguistico_id' => [
                             'validation' => [
-                                'required'
+//                                'required'
                             ],
                         ],
                         'altre_competenze_linguistiche' => [
