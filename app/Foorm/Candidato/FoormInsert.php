@@ -22,6 +22,7 @@ class FoormInsert extends BaseFoormInsert
                 $user = Auth::user();
                 $this->extraDefaults['nome'] = $user->nome;
                 $this->extraDefaults['cognome'] = $user->cognome;
+                $this->extraDefaults['emails'] = $user->email;
             default:
                 break;
         }
