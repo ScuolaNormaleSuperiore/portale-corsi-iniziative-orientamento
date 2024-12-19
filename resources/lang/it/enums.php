@@ -26,6 +26,13 @@ return [
             'secondo_livello' => 'secondo livello (gara di Febbraio)',
             'finale_nazionale' => 'gara nazionale (Senigallia)',
         ],
+        'avvisi_tipologie' => [
+            'primary' => 'Primario (blu)',
+            'info' => 'Info (grigio)',
+            'success' => 'Successo (verde)',
+            'warning' => 'Attenzione (giallo)',
+            'danger' => 'Pericolo (rosso)',
+        ]
     ],
 
 ];

@@ -2,7 +2,7 @@
 
 <meta name=bearer-token content={{Session::get('sanctum_token')}}>
 
-<head>
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="icon" href="/roma-vue/favicon.ico">
@@ -10,8 +10,8 @@
 
 	<link id="theme-css" rel="stylesheet" type="text/css" href="/roma-vue/theme/theme-blue.css">
 	<link id="layout-css" rel="stylesheet" type="text/css" href="/roma-vue/layout/css/layout-blue.css">
-  <script type="module" crossorigin src="/roma-vue/assets/index-0a6edc7b.js"></script>
-  <link rel="stylesheet" href="/roma-vue/assets/index-c2336939.css">
-</head>
+  <script type="module" crossorigin src="/roma-vue/assets/index-23eaffb6.js"></script>
+  <link rel="stylesheet" href="/roma-vue/assets/index-a49194c8.css">
+
 </head>
 

@@ -117,7 +117,7 @@ export default {
         actions : ['action-save','action-back'],
         fields: [
 			'titolo_it',
-			'sottotitolo_it',
+			//'sottotitolo_it',
 			'ordine',
             'attivo',
             'homepage',
@@ -129,14 +129,20 @@ export default {
         fieldsConfig: {
             'attivo' : {
                 type : "w-radio",
+                layout : {
+                    colClass : 'col-12 md:col-4',
+                }
             },
             'homepage' : {
                 type : "w-radio",
+                layout : {
+                    colClass : 'col-12 md:col-4',
+                }
             },
 			'titolo_it' : {
                 type : "w-input",
                 layout : {
-                    colClass : 'w-12',
+                    colClass : 'col-12',
                 }
 			},
 			'sottotitolo_it' : {
@@ -144,6 +150,9 @@ export default {
 			},
 			'ordine' : {
                 type : "w-select",
+                layout : {
+                    colClass : 'col-12 md:col-4',
+                }
 			},
 
 
@@ -209,7 +218,8 @@ export default {
                         id : 'w-hidden',
                         nome : 'w-hidden',
                     }
-                }
+                },
+                limit: 1,
             },
             sezioni : {
                 label: '',

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\AvvisiTipologie;
+use App\Enums\TipoCandidatura;
 use Gecche\Cupparis\App\Breeze\Breeze;
 
 /**
@@ -21,7 +23,7 @@ class Avviso extends Breeze
     public $ownerships = true;
 
     public $appends = [
-
+        'tipo_text',
     ];
 
 
@@ -52,5 +54,7 @@ class Avviso extends Breeze
     public $itemNoneForSelectList = false;
     public $fieldsSeparator = ' - ';
 
-
+    public function getTipoTextAttribute() {
+        return AvvisiTipologie::optionLabel($this->tipo);
+    }
 }

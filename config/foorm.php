@@ -90,6 +90,7 @@ return [
         'video',
         'scuola_richiesta',
         'avviso',
+        'copertina',
 //        'foto',
 //        'attachment',
     ],

@@ -34,4 +34,5 @@ return array (
   'video' => 'video|video',
   'scuola_richiesta' => 'richiesta registrazione scuola|richieste registrazioni scuole',
   'avviso' => 'avviso|avvisi',
+  'copertina' => 'copertina|copertine',
 );

@@ -39,6 +39,7 @@ export default {
         fields: [
             'created_at',
 			'descrizione',
+            'tipo_text',
 			'attivo',
 
         ],
@@ -67,12 +68,19 @@ export default {
         actions : ['action-save','action-back'],
         fields: [
 			'descrizione',
+            'tipo',
 			'attivo',
 
         ],
         fieldsConfig: {
+            'tipo' : {
+                type : "w-select",
+            },
 			'descrizione' : {
                 type : "w-textarea",
+                layout: {
+                    colClass: 'col-12'
+                }
 			},
 			'attivo' : {
                 type : "w-select",

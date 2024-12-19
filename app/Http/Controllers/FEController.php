@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Avviso;
 use App\Models\Classe;
+use App\Models\Copertina;
 use App\Models\Evento;
 use App\Models\MateriaOrientamento;
 use App\Models\News;
@@ -108,8 +109,10 @@ class FEController extends Controller
             ->limit(3)
             ->get();
 
+        $copertina = Copertina::find(1);
+
         return view('index', compact('pagine', 'newsBasse', 'eventi',
-            'eventoSpeciale', 'avvisi', 'video', 'feeds'));
+            'eventoSpeciale', 'avvisi', 'video', 'feeds', 'copertina'));
     }
 
     public function paginaOrientamento(Request $request, PaginaOrientamento $pagina)

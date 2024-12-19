@@ -78,7 +78,7 @@ export default {
         actions : ['action-save','action-back'],
         fields: [
 			'titolo_it',
-			'sottotitolo_it',
+			//'sottotitolo_it',
             'sezioni',
             'fotos',
             'attachments',
@@ -167,7 +167,8 @@ export default {
                         id : 'w-hidden',
                         nome : 'w-hidden',
                     }
-                }
+                },
+                limit: 1
             },
             sezioni : {
                 label: '',

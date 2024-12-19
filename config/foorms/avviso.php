@@ -98,12 +98,18 @@ return [
             "descrizione" => [
 
             ],
+            "tipo_text" => [
+
+            ],
             "attivo" => [
 
             ],
             "id" => [
 
             ]
+        ],
+        'appends' => [
+          'tipo_text'
         ],
         'relations' => [
 
@@ -119,6 +125,9 @@ return [
             ],
             "attivo" => [
                 'options' => 'boolean',
+            ],
+            "tipo" => [
+                'options' => "enum:".\App\Enums\AvvisiTipologie::class,
             ],
             "id" => [
 

@@ -5,19 +5,27 @@
         @if($avvisi->count() > 0)
             <section class="my-2 px-2 bg-white d-flex flex-column gap-2">
                 @foreach ($avvisi as $avviso)
-                    <div class="alert alert-warning mb-0" role="alert">
+                    <div class="alert alert-{{$avviso->tipo ?: 'success'}} mb-0" role="alert">
                         {!! $avviso->descrizione !!}
                     </div>
                 @endforeach
             </section>
         @endif
 
-        <section class="it-hero-wrapper it-dark">
+
+        @php
+            $heroText = $copertina->titolo_it ?: "Scopri il tuo futuro, costruisci l'eccellenza: entra alla Normale.";
+            $heroCallToAction = $copertina->call_to_action ?: "Candidati per i corsi di orientamento";
+            $heroLink = $copertina->link ?: "/candidature";
+        @endphp
+        <section class="it-hero-wrapper it-dark
+            @if ($copertina->picture) it-overlay @endif
+        ">
             <!-- - img-->
             <div class="img-responsive-wrapper">
                 <div class="img-responsive">
-                    <div class="img-wrapper"><img src="{{Theme::url('/assets/bg-hero-index.png')}}"
-                                                  title="titolo immagine" alt="descrizione immagine"></div>
+                    <div class="img-wrapper"><img src="{{$copertina->picture ?: Theme::url('/assets/bg-hero-index.png')}}"
+                                                  title="{{$heroText}}" alt="{{$heroText}}"></div>
                 </div>
             </div>
             <!-- - texts-->
@@ -25,12 +33,10 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="it-hero-text-wrapper bg-dark">
-                            {{--							<span class="it-Categoria">Categoria</span>--}}
-                            <h2 class="fw-bold">Scopri il tuo futuro, costruisci l'eccellenza: entra alla Normale.</h2>
-                            {{--							<p class="d-none d-lg-block">Candidati per i corsi di orientamento</p>--}}
-                            <div class="it-btn-container"><a class="btn btn-sm btn-secondary" href="/candidature">Candidati
-                                    per i
-                                    corsi di orientamento</a></div>
+                            <h2 class="fw-bold @if ($copertina->picture) text-white @endif">{{$heroText}}</h2>
+                            <div class="it-btn-container"><a class="btn btn-sm btn-secondary" href="{{$heroLink}}">
+                                    {{$heroCallToAction}}
+                                </a></div>
                         </div>
                     </div>
                 </div>

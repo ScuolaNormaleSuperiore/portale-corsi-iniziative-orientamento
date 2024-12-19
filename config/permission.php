@@ -180,6 +180,7 @@ return [
             'categoria_video',
             'studente_orientamento',
             'avviso',
+            'copertina',
 
         ],
 

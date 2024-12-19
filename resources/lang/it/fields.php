@@ -106,10 +106,8 @@ return array (
   'sezione' => 'Sezione',
   'profilo' => 'Profilo personale',
   'scuola_estera' => 'Scuola estera',
-    'autore' => 'Autore',
-
-    'olimpiadi_matematica' => 'Olimpiadi  di matematica (individuali)',
-    'olimpiadi_fisica' => 'Olimpiadi  di fisica (individuali)',
-
-    'tipo_text' => 'Tipologia',
+  'autore' => 'Autore',
+  'olimpiadi_matematica' => 'Olimpiadi  di matematica (individuali)',
+  'olimpiadi_fisica' => 'Olimpiadi  di fisica (individuali)',
+  'tipo_text' => 'Tipologia',
 );

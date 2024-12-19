@@ -79,23 +79,46 @@ class FoormController extends Controller
                     [
                         "label" => 'Avvisi', "icon" => 'fa fa-exclamation-circle', "to" => '/manage/ModelAvviso'
                     ],
-                ],
-            ],
-            [
-                "label" => 'Scuole',
-                'icon' => 'fa-solid fa-school',
-                "items" => [
                     [
-                        "label" => 'Scuole', "icon" => 'fa fa-school', "to" => '/manage/ModelScuola'
-                    ],
-                    [
-                        "label" => 'Importa scuole pubbliche', "icon" => "fa fa-upload", "to" => '/import/ModelDScuola'
-                    ],
-                    [
-                        "label" => 'Importa scuole paritarie', "icon" => "fa fa-upload", "to" => '/import/ModelDScuolaParitaria'
+                        "label" => 'Copertina', "icon" => 'fa fa-star', "to" => '/manage/ModelCopertina/edit/1'
                     ],
                 ],
             ],
+        ];
+
+        if (auth_role_name() == 'Superutente') {
+            $menu[] =
+                [
+                    "label" => 'Scuole',
+                    'icon' => 'fa-solid fa-school',
+                    "items" => [
+                        [
+                            "label" => 'Scuole', "icon" => 'fa fa-school', "to" => '/manage/ModelScuola'
+                        ],
+                        [
+                            "label" => 'Importa scuole pubbliche', "icon" => "fa fa-upload", "to" => '/import/ModelDScuola'
+                        ],
+                        [
+                            "label" => 'Importa scuole paritarie', "icon" => "fa fa-upload", "to" => '/import/ModelDScuolaParitaria'
+                        ],
+                    ],
+                ];
+        } else {
+            $menu[] =
+                [
+                    "label" => 'Scuole',
+                    'icon' => 'fa-solid fa-school',
+                    "items" => [
+                        [
+                            "label" => 'Scuole', "icon" => 'fa fa-school', "to" => '/manage/ModelScuola'
+                        ],
+                    ],
+            ];
+
+        }
+
+
+        $menu[] =
             [
                 "label" => 'Admin',
                 'icon' => 'fa-solid fa-toolbox',
@@ -109,40 +132,12 @@ class FoormController extends Controller
                     [
                         "label" => 'Richieste scuole', "icon" => 'fa fa-circle-question', "to" => '/manage/ModelScuolaRichiesta'
                     ],
-//                     [
-//                         "label"  =>'Materie', "icon" =>'pi pi-fw pi-shopping-cart', "to"=>'/manage/ModelMateria'
-//                     ],
-//                    [
-//                        "label"  =>'Settori', "icon" =>'pi pi-fw pi-shopping-cart', "to"=>'/manage/ModelSettore'
-//                    ],
-//                    [
-//                        "label"  =>'Regioni', "icon" =>'pi pi-fw pi-shopping-cart', "to"=>'/manage/ModelRegione'
-//                    ],
-//                    [
-//                        "label"  =>'Province', "icon" =>'pi pi-fw pi-shopping-cart', "to"=>'/manage/ModelProvincia'
-//                    ],
-//                    [
-//                        "label"  =>'Filtri selezioni', "icon" =>'pi pi-fw pi-shopping-cart', "to"=>'/manage/ModelFiltroSelezione'
-//                    ],
-//                    [
-//                        "label"  =>'Titoli di studio', "icon" =>'pi pi-fw pi-shopping-cart', "to"=>'/manage/ModelTitoloStudio'
-//                    ],
-//                    [
-//                        "label"  =>'Professioni', "icon" =>'pi pi-fw pi-shopping-cart', "to"=>'/manage/ModelProfessione'
-//                    ],
-//                    [
-//                        "label"  =>'Livelli linguistici', "icon" =>'pi pi-fw pi-shopping-cart', "to"=>'/manage/ModelLivelloLinguistico'
-//                    ],
-//                    [
-//                        "label"  =>'Modalità consocenza corsi SNS', "icon" =>'pi pi-fw pi-shopping-cart', "to"=>'/manage/ModelModalitaConoscenzaSns'
-//                    ],
 
                     [
                         "label" => 'Tabelle di supporto', "icon" => 'fa fa-wrench', "to" => '/tabelle'
                     ],
                 ]
-            ],
-        ];
+            ];
         if (\config('cupparis-vue-client.profile_items_in_menu')) {
             $menu[] = [
                 "label" => 'Profilo',
