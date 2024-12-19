@@ -7,6 +7,8 @@ use Brevo\Client\Api\ContactsApi;
 use Carbon\Carbon;
 use Hofmannsven\Brevo\Facades\Brevo;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 use Vedmant\FeedReader\Facades\FeedReader;
 use willvincent\Feeds\Facades\FeedsFacade;
 
@@ -23,6 +25,14 @@ class TestController extends Controller
     }
 
     public function test() {
+
+
+//        $response = Http::get("https://sns.idp.pp.cineca.it/idp/shibboleth");
+//
+//        print_r($response->body());
+//
+//        File::put(base_path('cineca-pp-metadata.xml'),$response->body());
+//        return;
 
 //        $f = FeedReader::read('https://normalenews.sns.it/feed-highlights.xml');
 
@@ -126,5 +136,6 @@ class TestController extends Controller
         echo '</pre>';
 
     }
+
 
 }

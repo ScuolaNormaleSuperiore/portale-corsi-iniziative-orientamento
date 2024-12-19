@@ -345,7 +345,15 @@ return [
         |
         */
 
-        'requestedAuthnContext' => true,
+        'requestedAuthnContext' => [
+            'urn:oasis:names:tc:SAML:2.0:ac:classes:SPIDOnly',
+            'urn:oasis:names:tc:SAML:2.0:ac:classes:Kerberos',
+            'urn:federation:authentication:windows',
+            'urn:oasis:names:tc:SAML:2.0:ac:classes:X509',
+            'urn:oasis:names:tc:SAML:2.0:ac:classes:TLSClient',
+            'urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport',
+            'urn:oasis:names:tc:SAML:2.0:ac:classes:Password'
+        ],
     ],
 
     /*
