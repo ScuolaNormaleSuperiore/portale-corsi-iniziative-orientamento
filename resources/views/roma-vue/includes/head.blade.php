@@ -13,5 +13,10 @@
   <script type="module" crossorigin src="/roma-vue/assets/index-23eaffb6.js"></script>
   <link rel="stylesheet" href="/roma-vue/assets/index-a49194c8.css">
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
 </head>
+
 

@@ -10,9 +10,9 @@ export default {
 
         ],
         fieldsConfig: {
-			'titolo' : { 
+			'titolo' : {
                 type : "w-input",
-			}, 
+			},
 
         },
         searchType: 'basic',
@@ -39,7 +39,13 @@ export default {
             'action-edit',
             'action-delete',
             'action-delete-selected',
+            //'action-prova',
         ],
+        actionsConfig : {
+          'action-prova' : {
+
+          }
+        },
         fields: [
 			'anno',
 			'titolo',
@@ -53,25 +59,25 @@ export default {
         fieldsConfig: {
             'anno' : {
                 type : "w-text",
-			}, 
-			'titolo' : { 
+			},
+			'titolo' : {
                 type : "w-text",
-			}, 
-			'data_apertura' : { 
+			},
+			'data_apertura' : {
                 type : "w-text",
-			}, 
-			'data_chiusura' : { 
+			},
+			'data_chiusura' : {
                 type : "w-text",
-			}, 
-			'modalita_candidatura' : { 
+			},
+			'modalita_candidatura' : {
                 type : "w-text",
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-swap",
                 modelName : 'iniziativa',
                 //switchClass: 'form-switch-danger banned',
                 //dataSwitched : true,
-			}, 
+			},
 
         },
         orderFields : {
@@ -105,28 +111,28 @@ export default {
 
         ],
         fieldsConfig: {
-			'anno' : { 
+			'anno' : {
                 type : "w-select",
 
 			},
-			'titolo' : { 
+			'titolo' : {
                 type : "w-input",
-			}, 
-			'descrizione' : { 
+			},
+			'descrizione' : {
                 type : "w-texthtml",
                 htmlAttributes: {},
                 layout: {
                     colClass : "col-12"
                 }
-			}, 
-			'data_apertura' : { 
+			},
+			'data_apertura' : {
                 type : "w-input",
                 inputType : "date",
 			},
 			'data_chiusura' : {
                 type : "w-input",
                 inputType : "date",
-			}, 
+			},
 			'posti' : {
                 type : "w-input",
                 inputType : "number",

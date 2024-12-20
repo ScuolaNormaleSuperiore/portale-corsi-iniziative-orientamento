@@ -9,9 +9,12 @@
       <i class="pi pi-bars"></i>
     </button>
 
-    <router-link to="/" class="p-link layout-topbar-logo" :class="orizzontalMenu?'m-0 p-0':'m-0 p-0'">
-      <img id="topbar-logo" :src="publicPath(config.generic.logo)" alt="cupparis-vue"/>
-    </router-link>
+<!--    <router-link to="/" class="p-link layout-topbar-logo" :class="orizzontalMenu?'m-0 p-0':'m-0 p-0'">-->
+<!--      <img id="topbar-logo" :src="publicPath(config.generic.logo)" alt="cupparis-vue"/>-->
+<!--    </router-link>-->
+      <a href="/" class="p-link layout-topbar-logo" :class="orizzontalMenu?'m-0 p-0':'m-0 p-0'">
+          <img id="topbar-logo" :src="publicPath(config.generic.logo)" alt="cupparis-vue"/>
+      </a>
 
     <span class="layout-topbar-search" v-if="config.boolean.globalSearch">
             <i class="pi pi-search"></i>
