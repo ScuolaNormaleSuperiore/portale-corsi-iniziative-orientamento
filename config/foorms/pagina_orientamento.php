@@ -99,6 +99,7 @@ return [
                 'allowed_fields' => [
                     'attivo',
                     'homepage',
+                    'ordine'
                 ],
             ],
         ],

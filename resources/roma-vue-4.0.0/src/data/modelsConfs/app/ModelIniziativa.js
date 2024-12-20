@@ -39,12 +39,27 @@ export default {
             'action-edit',
             'action-delete',
             'action-delete-selected',
-            //'action-prova',
+            // 'action-view2',
         ],
         actionsConfig : {
-          'action-prova' : {
+            'action-view2': {
+                type: 'record',
+                title: 'app.vista',
+                //css: 'btn-outline-secondary',
+                icon: 'fa fa-eye',
+                text: '',
 
-          }
+                controlType: 'link-download',
+                href: function () {
+                    var that = this;
+
+                    return "#/iniziativa/" + that.modelData.id;
+                    // var urlPrefix = import.meta.env.VITE_APP_TARGET || '';
+                    // //
+                    // return urlPrefix + CrudHelpers.addBearerTokenToUrl("#/front/studente/" + that.modelData.id);
+                },
+                target: '',
+            },
         },
         fields: [
 			'anno',

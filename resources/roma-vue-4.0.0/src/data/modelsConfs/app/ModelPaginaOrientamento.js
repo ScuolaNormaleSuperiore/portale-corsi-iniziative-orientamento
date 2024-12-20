@@ -74,7 +74,7 @@ export default {
                     r.setParams({
                         field: 'ordine',
                         value: st,
-                        id: that.conf.pk,
+                        id: that.modelData.id,
                     })
                     cs.Server.route(r, function (json) {
                         console.debug('json', json)

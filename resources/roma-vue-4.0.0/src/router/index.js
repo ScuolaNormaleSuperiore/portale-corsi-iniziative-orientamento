@@ -15,6 +15,11 @@ const devChildren = [
                 component: () => import('@/views/Dashboard.vue'),
             },
             {
+                path: "/iniziativa/:iniziativaId",
+                name: "iniziativa (view)",
+                component: () => import('@/views/pages/app/Iniziativa.vue'),
+            },
+            {
                 path: '/formlayout',
                 name: 'formlayout',
                 component: () => import('@/views/uikit/FormLayoutDemo.vue'),
