@@ -241,7 +241,7 @@ return [
 
         ],
         'appends' => [
-          'tipo_text',
+            'tipo_text',
         ],
         'relations' => [
             "iniziativa" => [
@@ -389,9 +389,44 @@ return [
             ],
             "olimpiadi_matematica" => [
                 'options' => 'enum:App\\Enums\\OlimpiadiMatematica',
+                'nulloption' => false,
             ],
             "olimpiadi_fisica" => [
                 'options' => 'enum:App\\Enums\\OlimpiadiFisica',
+                'nulloption' => false,
+            ],
+
+            'olimpiadi_matematica_squadre' => [
+                'options' => 'enum:App\\Enums\\OlimpiadiMatematicaSquadre',
+                'nulloption' => false,
+            ],
+            'olimpiadi_matematica_squadre_femminili' => [
+                'options' => 'enum:App\\Enums\\OlimpiadiMatematicaSquadreFemminili',
+                'nulloption' => false,
+            ],
+            'olimpiadi_fisica_squadre_miste' => [
+                'options' => 'enum:App\\Enums\\OlimpiadiFisicaSquadreMiste',
+                'nulloption' => false,
+            ],
+            'olimpiadi_scienze_naturali' => [
+                'options' => 'enum:App\\Enums\\OlimpiadiScienzeNaturali',
+                'nulloption' => false,
+            ],
+            'giochi_chimica' => [
+                'options' => 'enum:App\\Enums\\GiochiChimica',
+                'nulloption' => false,
+            ],
+            'olimpiadi_informatica' => [
+                'options' => 'enum:App\\Enums\\OlimpiadiInformatica',
+                'nulloption' => false,
+            ],
+            'stages' => [
+                'options' => 'enum:App\\Enums\\Stages',
+                'nulloption' => false,
+            ],
+            'gare_internazionali' => [
+                'options' => 'enum:App\\Enums\\GareInternazionali',
+                'nulloption' => false,
             ],
             "partecipazione_concorsi" => [
 

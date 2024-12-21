@@ -5,20 +5,19 @@ namespace App\Enums;
 use Gecche\FSM\Contracts\FSMConfigInterface;
 use Illuminate\Support\Arr;
 
-enum OlimpiadiMatematica: string
+enum OlimpiadiFisicaSquadreMiste: string
 {
     use EnumHelperTrait;
 
     case NESSUNA_PARTECIPAZIONE = 'nessuna_partecipazione';
 //    case VALIDATION = 'validation';
 //    case REFERENT_REJECTED = 'referent_rejected';
-    case PRIMO_LIVELLO = 'primo_livello';
-    case GARA_DISTRETTUALE = 'gara_distrettuale';
+    case QUALIFICA_ONLINE = 'qualifica_online';
     case FINALE_NAZIONALE = 'finale_nazionale';
 
     public static function getLangKey($case)
     {
-        return 'enums.statuses.olimpiadi_matematica.' . $case->value;
+        return 'enums.statuses.olimpiadi_fisica_squadre_miste.' . $case->value;
     }
 
 }
@@ -28,43 +27,6 @@ enum OlimpiadiMatematica: string
 /*
 
 
-Squadre, miste: menu a tendina con le seguenti scelte
-
-nessuna partecipazione
-
-fase locale
-
-semifinale nazionale
-
-finale nazionale
-
-Squadre, femminili: menu a tendina con le seguenti scelte (Attenzione: non esiste la semifinale nazionale!)
-
-nessuna partecipazione
-
-fase locale
-
-finale nazionale
-
-Olimpiadi di Fisica
-
-Individuali: menu a tendina con le seguenti scelte
-
-nessuna partecipazione
-
-primo livello (gara di istituto)
-
-secondo livello (gara di febbraio)
-
-gara nazionale (Senigallia)
-
-Squadre, miste: menu a tendina con le seguenti scelte
-
-nessuna partecipazione
-
-qualifica online
-
-finale nazionale
 
 Olimpiadi di Scienze Naturali
 

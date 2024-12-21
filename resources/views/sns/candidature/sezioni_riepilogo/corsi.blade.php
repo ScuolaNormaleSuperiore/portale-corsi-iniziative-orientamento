@@ -1,5 +1,5 @@
 @foreach($candidatura->corsi as $optionIndex => $corso)
-    <div class="form-check form-check-group">
+    <div class="form-check form-check-group fw-bold">
 {{--        <input id="{{$field}}[{{$optionIndex}}]" name="{{$field}}[]"--}}
 {{--               type="checkbox"--}}
 {{--               value="{{\Illuminate\Support\Arr::get($option,'value')}}"--}}

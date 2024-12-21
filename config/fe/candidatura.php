@@ -210,10 +210,50 @@ return [
                                 'required'
                             ],
                         ],
+                        'olimpiadi_matematica_squadre' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'olimpiadi_matematica_squadre_femminili' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
                         'olimpiadi_fisica' => [
                             'validation' => [
                                 'required'
                             ],
+                        ],
+                        'olimpiadi_fisica_squadre_miste' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'olimpiadi_scienze_naturali' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'giochi_chimica' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'olimpiadi_informatica' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+                        'stages' => [
+                            'validation' => [
+//                                'required',
+                            ]
+                        ],
+                        'gare_internazionali' => [
+                            'validation' => [
+//                                'required',
+                            ]
                         ],
                         'partecipazione_concorsi' => [
                             'validation' => [

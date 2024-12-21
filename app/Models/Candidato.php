@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Lang;
  */
 class Candidato extends Breeze
 {
-	use Relations\CandidatoRelations;
+    use Relations\CandidatoRelations;
 
     use FSMTrait;
 
@@ -35,7 +35,9 @@ class Candidato extends Breeze
     ];
 
     protected $casts = [
-      'info' => 'array',
+        'info' => 'array',
+        'stages' => 'array',
+        'gare_internazionali' => 'array',
     ];
 
 
@@ -114,7 +116,7 @@ class Candidato extends Breeze
         }
 
         if ($this->provincia_id) {
-            $provincia = Provincia::where('id',$this->provincia_id)->first();
+            $provincia = Provincia::where('id', $this->provincia_id)->first();
             $this->regione_id = $provincia->regione_id;
         } else {
             $this->regione_id = null;
@@ -145,7 +147,8 @@ class Candidato extends Breeze
         ];
     }
 
-    public function getFenameAttribute() {
+    public function getFenameAttribute()
+    {
         if (!$this->getKey()) {
             return "N.D.";
         }
@@ -156,8 +159,9 @@ class Candidato extends Breeze
         return $this->emails ?: "N.D.";
     }
 
-    public function getInfoAttribute($value) {
-        $value = json_decode($value,true);
+    public function getInfoAttribute($value)
+    {
+        $value = json_decode($value, true);
         if (!is_array($value)) {
             return [
                 'steps' => [],
@@ -169,23 +173,43 @@ class Candidato extends Breeze
         return $value;
     }
 
-    public function addStepToInfo($step) {
+    public function getStagesAttribute($value)
+    {
+        $value = json_decode($value, true);
+        if (!is_array($value)) {
+            return [];
+        }
+        return $value;
+    }
+    public function getGareInternazionaliAttribute($value)
+    {
+        $value = json_decode($value, true);
+        if (!is_array($value)) {
+            return [];
+        }
+        return $value;
+    }
+
+    public function addStepToInfo($step)
+    {
         $info = $this->info;
         $info['steps'][$step] = true;
         $this->info = $info;
         return $this->info;
     }
 
-    public function getLastTimestamp() {
-        $timestamp = Arr::get($this->getLastStatus(),'timestamp');
+    public function getLastTimestamp()
+    {
+        $timestamp = Arr::get($this->getLastStatus(), 'timestamp');
         try {
-            return Carbon::createFromFormat('Y-m-d H:i:s',$timestamp);
+            return Carbon::createFromFormat('Y-m-d H:i:s', $timestamp);
         } catch (\Throwable $e) {
             return null;
         }
     }
 
-    public function getTipoTextAttribute() {
+    public function getTipoTextAttribute()
+    {
         return TipoCandidatura::optionLabel($this->tipo);
     }
 

@@ -5,20 +5,20 @@ namespace App\Enums;
 use Gecche\FSM\Contracts\FSMConfigInterface;
 use Illuminate\Support\Arr;
 
-enum OlimpiadiMatematica: string
+enum OlimpiadiMatematicaSquadre: string
 {
     use EnumHelperTrait;
 
     case NESSUNA_PARTECIPAZIONE = 'nessuna_partecipazione';
 //    case VALIDATION = 'validation';
 //    case REFERENT_REJECTED = 'referent_rejected';
-    case PRIMO_LIVELLO = 'primo_livello';
-    case GARA_DISTRETTUALE = 'gara_distrettuale';
+    case FASE_LOCALE = 'fase_locale';
+    case SEMIFINALE_NAZIONALE = 'semifinale_nazionale';
     case FINALE_NAZIONALE = 'finale_nazionale';
 
     public static function getLangKey($case)
     {
-        return 'enums.statuses.olimpiadi_matematica.' . $case->value;
+        return 'enums.statuses.olimpiadi_matematica_squadre.' . $case->value;
     }
 
 }
@@ -28,15 +28,6 @@ enum OlimpiadiMatematica: string
 /*
 
 
-Squadre, miste: menu a tendina con le seguenti scelte
-
-nessuna partecipazione
-
-fase locale
-
-semifinale nazionale
-
-finale nazionale
 
 Squadre, femminili: menu a tendina con le seguenti scelte (Attenzione: non esiste la semifinale nazionale!)
 
