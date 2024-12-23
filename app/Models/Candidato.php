@@ -6,6 +6,7 @@ use App\Enums\TipoCandidatura;
 use Carbon\Carbon;
 use Gecche\Cupparis\App\Breeze\Breeze;
 use Gecche\FSM\FSMTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Lang;
 class Candidato extends Breeze
 {
     use Relations\CandidatoRelations;
+
+    use HasFactory;
 
     use FSMTrait;
 
@@ -93,18 +96,21 @@ class Candidato extends Breeze
     public function save(array $options = [])
     {
         if (!$this->getKey()) {
-            $this->user_id = Auth::id();
-            $this->startFSM();
-            switch (auth_role_name()) {
-                case 'Scuola':
-                    $this->tipo = 'scuola';
-                    break;
-                case 'Studente':
-                    $this->tipo = 'studente';
-                    break;
-                default:
-                    $this->tipo = 'altro';
-                    break;
+            if (!$this->user_id) {
+
+                $this->user_id = Auth::id();
+                $this->startFSM();
+                switch (auth_role_name()) {
+                    case 'Scuola':
+                        $this->tipo = 'scuola';
+                        break;
+                    case 'Studente':
+                        $this->tipo = 'studente';
+                        break;
+                    default:
+                        $this->tipo = 'altro';
+                        break;
+                }
             }
         }
 
@@ -181,6 +187,7 @@ class Candidato extends Breeze
         }
         return $value;
     }
+
     public function getGareInternazionaliAttribute($value)
     {
         $value = json_decode($value, true);

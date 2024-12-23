@@ -48,14 +48,7 @@ return new class extends Migration {
             $table->string('gen1_professione_altro')->nullable();
             $table->string('gen2_professione_altro')->nullable();
             $table->text('note')->nullable();
-/*
-            "Riporta il livello più alto che hai raggiunto nelle seguenti competizioni."
 
-nessuna partecipazione
-primo livello (gara di istituto)
-secondo livello (gara di febbraio)
-gara nazionale (Senigallia)
-                */
             $table->string('olimpiadi_matematica')->nullable()->default(null);
             $table->string('olimpiadi_fisica')->nullable()->default(null);
 
