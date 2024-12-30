@@ -428,6 +428,10 @@ return [
                 'options' => 'enum:App\\Enums\\GareInternazionali',
                 'nulloption' => false,
             ],
+            'gare_umanistiche' => [
+                'options' => 'enum:App\\Enums\\GareUmanistiche',
+                'nulloption' => false,
+            ],
             "partecipazione_concorsi" => [
 
             ],

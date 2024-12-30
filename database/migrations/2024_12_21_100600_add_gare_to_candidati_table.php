@@ -18,6 +18,7 @@ return new class extends Migration {
 
             $table->string('stages')->nullable();
             $table->string('gare_internazionali')->nullable();
+            $table->string('gare_umanistiche')->nullable();
 
         });
     }
@@ -35,6 +36,7 @@ return new class extends Migration {
 
                 'stages',
                 'gare_internazionali',
+                'gare_umanistiche',
             ]);
         });
     }

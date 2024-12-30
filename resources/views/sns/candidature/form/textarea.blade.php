@@ -2,7 +2,7 @@
     $fieldData = \Illuminate\Support\Arr::get($sectionData['fields'],$field,[]);
     $validation = \Illuminate\Support\Arr::get($fieldData,'validation',[]);
     $value = old($field) ?: \Illuminate\Support\Arr::get($fieldData,'value');
-    $maxLength = \Illuminate\Support\Arr::get($fieldData,'maxLength',500);
+    $maxLength = \Illuminate\Support\Arr::get($fieldData,'maxLength',env('MAX_TEXTAREA_LENGTH',500));
 @endphp
 <div class="form-group form-group-candidature {{$cssForm ?? ''}}" id="form-group-candidature-{{$field}}">
     <label for="{{$field}}">

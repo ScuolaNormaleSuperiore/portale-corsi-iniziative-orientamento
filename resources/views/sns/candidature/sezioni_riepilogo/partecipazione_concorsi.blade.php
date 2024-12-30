@@ -38,6 +38,18 @@
 @endforeach
 
 <p class="mt-5">
+    Eventuali partecipazioni a gare umanistichhe
+</p>
+
+@foreach($candidatura->gare_umanistiche as $optionIndex => $gara)
+    <div class="form-check form-check-group fw-bold">
+        <label for="corsi[{{$optionIndex}}]">
+            {{\App\Enums\GareUmanistiche::optionLabel($gara)}}
+        </label>
+    </div>
+@endforeach
+
+<p class="mt-5">
     Eventuali altre partecipazioni a concorsi.
 </p>
 

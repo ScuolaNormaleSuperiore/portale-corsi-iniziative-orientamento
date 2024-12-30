@@ -41,6 +41,7 @@ class Candidato extends Breeze
         'info' => 'array',
         'stages' => 'array',
         'gare_internazionali' => 'array',
+        'gare_umanistiche' => 'array',
     ];
 
 
@@ -179,7 +180,7 @@ class Candidato extends Breeze
         return $value;
     }
 
-    public function getStagesAttribute($value)
+    public function getDefaultArray($value)
     {
         $value = json_decode($value, true);
         if (!is_array($value)) {
@@ -188,13 +189,19 @@ class Candidato extends Breeze
         return $value;
     }
 
+    public function getStagesAttribute($value)
+    {
+        return $this->getDefaultArray($value);
+    }
+
     public function getGareInternazionaliAttribute($value)
     {
-        $value = json_decode($value, true);
-        if (!is_array($value)) {
-            return [];
-        }
-        return $value;
+        return $this->getDefaultArray($value);
+    }
+
+    public function getGareUmanisticheAttribute($value)
+    {
+        return $this->getDefaultArray($value);
     }
 
     public function addStepToInfo($step)

@@ -117,6 +117,12 @@ class CandidatoFactory extends Factory
             $gareValues[] = $gare[$garePosition];
         }
 
+        $gareUmanistiche = GareInternazionali::values();
+        $gareUmanistichePositions = multi_rand(rand(0,count($gareUmanistiche)-1),0,count($gareUmanistiche)-1);
+        $gareUmanisticheValues = [];
+        foreach ($gareUmanistichePositions as $gareUmanistichePosition) {
+            $gareUmanisticheValues[] = $gareUmanistiche[$gareUmanistichePosition];
+        }
 
         $this->setFakerLocale('it_IT');
         $email = $this->faker->unique()->safeEmail;
@@ -162,6 +168,7 @@ class CandidatoFactory extends Factory
 
             'stages' => $stagesValues,
             'gare_internazionali' => $gareValues,
+            'gare_umanistiche' => $gareUmanisticheValues,
 
             'partecipazione_concorsi' => rand(1, 100) > 88 ? implode("<br/>",$this->faker->paragraphs(1)) : null,
             'inglese_livello_linguistico_id' => rand(1, 100) > 70 ? null : Arr::random($livelliLingusitici),

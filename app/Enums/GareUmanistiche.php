@@ -5,24 +5,22 @@ namespace App\Enums;
 use Gecche\FSM\Contracts\FSMConfigInterface;
 use Illuminate\Support\Arr;
 
-enum Stages: string
+enum GareUmanistiche: string
 {
     use EnumHelperTrait;
 
-    case SCIENZIATE_DOMANI = 'scienziate_domani';
-    case STAGE_FISICA_PISA_NORMALE = 'fisica_pisa_normale';
-    case STAGE_CHIMICA_PISA_NORMALE = 'chimica_pisa_normale';
-    case STAGE_BIOLOGIA_PISA_NORMALE = 'biologia_pisa_normale';
-    case EGMO_CAMP = 'egmo_camp';
-    case WINTER_CAMP_PISA_MATEMATICA = 'winter_camp_pisa_matematica';
-    case STAGE_SENIOR_PISA_MATEMATICA = 'senior_pisa_matematica';
-    case STAGE_PREIMO_PISA_MATEMATICA = 'preimo_pisa_matematica';
-    case NORMALE_ANCHE_TU = 'normale_anche_tu';
-    case ALTRO_ORIENTAMENTO = 'altro_orientamento';
+
+case CAMPIONATI_ITALIANO = 'camp_italiano';
+case CAMPIONATI_LINGUE_CIVILTA_CLASSICHE = 'camp_lingue_civilta_classiche';
+case CAMPIONATO_NAZIONALE_LINGUE = 'camp_naz_lingue';
+case CERTAMEN_CICERONIANUM_ARPINAS = 'certamen_ciceronianum_arpinas';
+case CERTAMEN_LATINUM__TANTUCCI_TRIENNIO = 'certamen_latinum_tantucci_triennio';
+case CAMPIONATI_DI_FILOSOFIA = 'camp_filosofia';
+case ROMANAE_DISPUTATIONES = 'romanae_disputationes';
 
     public static function getLangKey($case)
     {
-        return 'enums.statuses.stages.' . $case->value;
+        return 'enums.statuses.gare_umanistiche.' . $case->value;
     }
 
 }

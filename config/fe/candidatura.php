@@ -158,8 +158,11 @@ return [
                         'profilo' => [
                             'validation' => [
                                 'required',
-                                'max:500'
+                                'max:' . env('MAX_LENGTH_TEXTAREA', 1500),
+                                'min:' . env('MIN_LENGTH_TEXTAREA', 400)
                             ],
+                            'maxLength' => env('MAX_LENGTH_TEXTAREA', 1500),
+                            'minLength' => env('MIN_LENGTH_TEXTAREA', 400),
                         ]
 
                     ]
@@ -255,11 +258,19 @@ return [
 //                                'required',
                             ]
                         ],
+                        'gare_umanistiche' => [
+                            'validation' => [
+//                                'required',
+                            ]
+                        ],
                         'partecipazione_concorsi' => [
                             'validation' => [
-                                'max:500'
+                                'max:' . env('MAX_LENGTH_TEXTAREA', 1500),
+//                                'min:' . env('MIN_LENGTH_TEXTAREA', 400)
                             ],
-                        ]
+                            'maxLength' => env('MAX_LENGTH_TEXTAREA', 1500),
+//                            'minLength' => env('MIN_LENGTH_TEXTAREA', 400),
+                        ],
 
                     ]
                 ],
@@ -269,8 +280,11 @@ return [
                     'fields' => [
                         'esperienze_estere' => [
                             'validation' => [
-                                'max:500'
+                                'max:' . env('MAX_LENGTH_TEXTAREA', 1500),
+//                                'min:' . env('MIN_LENGTH_TEXTAREA', 400)
                             ],
+                            'maxLength' => env('MAX_LENGTH_TEXTAREA', 1500),
+//                            'minLength' => env('MIN_LENGTH_TEXTAREA', 400),
                         ]
 
                     ]
@@ -302,8 +316,11 @@ return [
                         'motivazioni' => [
                             'validation' => [
                                 'required',
-                                'max:500'
+                                'max:' . env('MAX_LENGTH_TEXTAREA', 1500),
+                                'min:' . env('MIN_LENGTH_TEXTAREA', 400)
                             ],
+                            'maxLength' => env('MAX_LENGTH_TEXTAREA', 1500),
+                            'minLength' => env('MIN_LENGTH_TEXTAREA', 400),
                         ]
 
                     ]

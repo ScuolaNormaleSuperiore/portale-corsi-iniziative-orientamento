@@ -21,6 +21,10 @@
 </p>
 @include('candidature.form.checkbox',['field' => 'gare_internazionali','label' => '', 'cssForm' => 'last'])
 
+<p class="mt-5">
+    Eventuali partecipazioni a gare umanistiche
+</p>
+@include('candidature.form.checkbox',['field' => 'gare_umanistiche','label' => '', 'cssForm' => 'last'])
 
 <p class="mt-5">
     Riporta eventuali altre partecipazioni a concorsi.
