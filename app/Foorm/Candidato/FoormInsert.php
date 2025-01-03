@@ -18,6 +18,10 @@ class FoormInsert extends BaseFoormInsert
         $role = auth_role_name();
 
         switch ($role) {
+            case 'Admin':
+            case 'Superutente':
+            case 'Operatore':
+                $this->extraDefaults['informativa'] = true;
             case 'Studente':
                 $user = Auth::user();
                 $this->extraDefaults['nome'] = $user->nome;

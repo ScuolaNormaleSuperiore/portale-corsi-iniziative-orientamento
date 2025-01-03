@@ -42,11 +42,7 @@ export default {
                 //domainValues : [],
                 //domainValuesOrder : [],
             },
-            'tipo': {
-                type: "w-select",
-                //domainValues : [],
-                //domainValuesOrder : [],
-            },
+
 
         },
         // groups: {
@@ -85,8 +81,8 @@ export default {
 
         ],
         fieldsConfig: {
-            'data_candidatura' : {
-              type: 'w-date-text'
+            'data_candidatura': {
+                type: 'w-date-text'
             },
             'iniziativa': {
                 type: "w-custom",
@@ -96,7 +92,7 @@ export default {
             },
             'status': {
                 type: "w-swap-select",
-                modelName : 'candidato',
+                modelName: 'candidato',
             },
             'nome': {
                 type: "w-text",
@@ -176,30 +172,81 @@ export default {
             'altre_competenze_linguistiche',
 
             'profilo',
+
             'olimpiadi_matematica',
+            'olimpiadi_matematica_squadre',
+            'olimpiadi_matematica_squadre_femminili',
             'olimpiadi_fisica',
+            'olimpiadi_fisica_squadre_miste',
+            'olimpiadi_scienze_naturali',
+            'giochi_chimica',
+            'olimpiadi_informatica',
+            'stages',
+            'gare_internazionali',
+            'gare_umanistiche',
+
+
             'partecipazione_concorsi',
             'esperienze_estere',
             'settore_professionale',
             'motivazioni',
 
             'modalita_conoscenza_sns_id',
-            'note',
             'informativa',
+            'note',
             'media',
             'tipo',
             'user_id',
 
+            'attachments',
             'voti',
+
 
         ],
         fieldsConfig: {
-            'olimpiadi_matematica' : {
+            'olimpiadi_matematica': {
                 type: 'w-select',
             },
-            'olimpiadi_fisica'  : {
+            'olimpiadi_matematica_squadre': {
                 type: 'w-select',
             },
+            'olimpiadi_matematica_squadre_femminili': {
+                type: 'w-select',
+            },
+            'olimpiadi_fisica': {
+                type: 'w-select',
+            },
+            'olimpiadi_fisica_squadre_miste': {
+                type: 'w-select',
+            },
+            'olimpiadi_scienze_naturali': {
+                type: 'w-select',
+            },
+            'giochi_chimica': {
+                type: 'w-select',
+            },
+            'olimpiadi_informatica': {
+                type: 'w-select',
+            },
+            'stages': {
+                type: 'w-checkbox',
+                layout: {
+                    colClass: 'w-12',
+                },
+            },
+            'gare_internazionali': {
+                type: 'w-checkbox',
+                layout: {
+                    colClass: 'w-12',
+                },
+            },
+            'gare_umanistiche': {
+                type: 'w-checkbox',
+                layout: {
+                    colClass: 'w-12',
+                },
+            },
+
 
             'iniziativa_id': {
                 type: 'w-select',
@@ -234,15 +281,20 @@ export default {
                         var dv = json.result.options;
                         var dvo = json.result.options_order
                         console.log("CHANGE CROSI", dv, dvo);
+                        console.log("CORSIII ", that.view.getWidget('corsi').getValue());
                         that.view.metadata.corsi.domainValues = dv;
                         that.view.metadata.corsi.domainValuesOrder = dvo;
+                        // that.view.config.fieldsConfig.corsi.type = 'w-select';
+                        // that.view.getWidget('corsi').setValue(that.view.getWidget('corsi').getValue())
+// /                        that.view.getWidget('corsi').value = that.view.getWidget('corsi').getValue();
+                        // that.view.getWidget('corsi').setValue(that.view.modelData.corsi);
 
                     })
                     return;
                 }
             },
             'corsi': {
-                type: 'w-checkbox',
+                type: 'w-multi-select',
                 layout: {
                     colClass: 'w-12',
                 },
@@ -323,13 +375,13 @@ export default {
             },
             'classe': {
                 type: "w-select",
-                layout : {
+                layout: {
                     colClass: 'col-6 md:col-3',
                 }
             },
             'sezione': {
                 type: "w-input",
-                layout : {
+                layout: {
                     colClass: 'col-6 md:col-3',
                 }
             },
@@ -373,8 +425,8 @@ export default {
                 dividerClass: 'text-primary-700 my-5',
                 dividerContentClass: 'font-bold border-1 p-2',
                 dividerContent: 'Profilo, esperienze, motivazioni',
-                layout : {
-                    lastInRow : true,
+                layout: {
+                    lastInRow: true,
                 }
             },
             'partecipazione_concorsi': {
@@ -432,7 +484,8 @@ export default {
 
             },
             'informativa': {
-                type: "w-hidden",
+                type: "w-select",
+                'label': 'Informativa privacy',
                 //domainValues : [],
                 //domainValuesOrder : [],
             },
@@ -469,6 +522,10 @@ export default {
                 // },
                 hasmanyType: 'list',
                 hasmanyConf: {
+                    getFieldName(name) {
+                        return 'voti-' + name + '[]';
+
+                    },
                     actions: ['action-insert', 'action-delete', 'action-delete-selected'],
                     modelName: 'candidato_voti',
                     fields: [
@@ -497,8 +554,40 @@ export default {
                     }
                 }
             },
+            attachments: {
+                type: 'w-hasmany',
+                langContext: 'attachments.fields',
+
+                hasmanyConf: {
+                    fields: [
+                        'id', 'nome', 'resource', 'status'
+                    ],
+                    fieldsConfig: {
+                        resource: {
+                            type: 'w-upload-ajax',
+                            extensions: ['pdf', 'doc', 'docx'],
+                            //extensions : ['csv','xls'],
+                            maxFileSize: '2M',
+                            ajaxFields: {
+                                field: 'attachments|resource',
+                                resource_type: 'attachment'
+                            },
+                            modelName: 'candidato',
+                            previewConf: {
+                                iconSize: 'fa-3x'
+                            },
+                            label: 'File',
+                        },
+                        status: 'w-hidden',
+                        id: 'w-hidden',
+                        nome: 'w-hidden',
+                    }
+                }
+
+            },
 
         }
 
-    },
+    }
+    ,
 }

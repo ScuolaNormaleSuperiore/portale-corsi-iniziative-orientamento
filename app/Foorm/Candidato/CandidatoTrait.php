@@ -7,6 +7,7 @@ use App\Models\Evento;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 trait CandidatoTrait
@@ -39,6 +40,12 @@ trait CandidatoTrait
 
         if ($step) {
             $validationRules = Arr::get($validationRules,$step,[]);
+        } else {
+            $fullValidationRules = [];
+            foreach (array_keys($validationRules) as $currStep) {
+                $fullValidationRules = $fullValidationRules + $validationRules[$currStep];
+            }
+            $validationRules = $fullValidationRules;
         }
 
         if (array_key_exists('corsi',$validationRules)) {
@@ -55,6 +62,11 @@ trait CandidatoTrait
         }
 
         $this->validationSettings['rules'] = $validationRules;
+
+        Log::info("VALIDATION RULES");
+
+        Log::info($this->validationSettings['rules']);
+        Log::info($this->step);
 
     }
 

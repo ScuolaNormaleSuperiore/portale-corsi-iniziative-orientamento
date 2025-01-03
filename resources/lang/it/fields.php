@@ -62,7 +62,7 @@ return array(
     'gen2_professione_id' => 'Professione genitore 2',
     'gen1_professione_altro' => 'Professione genitore 1 (altro)',
     'gen2_professione_altro' => 'Professione genitore 2 (altro)',
-    'partecipazione_concorsi' => 'partecipazione concorsi',
+    'partecipazione_concorsi' => 'Altre partecipazioni a concorsi',
     'inglese_livello_linguistico_id' => 'inglese livello linguistico',
     'francese_livello_linguistico_id' => 'francese livello linguistico',
     'tedesco_livello_linguistico_id' => 'tedesco livello linguistico',

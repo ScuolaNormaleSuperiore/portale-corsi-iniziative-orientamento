@@ -390,35 +390,43 @@ return [
             "olimpiadi_matematica" => [
                 'options' => 'enum:App\\Enums\\OlimpiadiMatematica',
                 'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
             ],
             "olimpiadi_fisica" => [
                 'options' => 'enum:App\\Enums\\OlimpiadiFisica',
                 'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
             ],
 
             'olimpiadi_matematica_squadre' => [
                 'options' => 'enum:App\\Enums\\OlimpiadiMatematicaSquadre',
                 'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
             ],
             'olimpiadi_matematica_squadre_femminili' => [
                 'options' => 'enum:App\\Enums\\OlimpiadiMatematicaSquadreFemminili',
                 'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
             ],
             'olimpiadi_fisica_squadre_miste' => [
                 'options' => 'enum:App\\Enums\\OlimpiadiFisicaSquadreMiste',
                 'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
             ],
             'olimpiadi_scienze_naturali' => [
                 'options' => 'enum:App\\Enums\\OlimpiadiScienzeNaturali',
                 'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
             ],
             'giochi_chimica' => [
                 'options' => 'enum:App\\Enums\\GiochiChimica',
                 'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
             ],
             'olimpiadi_informatica' => [
                 'options' => 'enum:App\\Enums\\OlimpiadiInformatica',
                 'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
             ],
             'stages' => [
                 'options' => 'enum:App\\Enums\\Stages',
@@ -469,7 +477,7 @@ return [
                 'options' => 'model:ModalitaConoscenzaSns',
             ],
             "informativa" => [
-
+                'options' => 'boolean',
             ],
             "media" => [
 
