@@ -78,13 +78,16 @@ onMounted(() => {
     }
 
 
-    regionData.value = {
-        "Toscana": parseInt(100 * Math.random()),
-        "Puglia": parseInt(100 * Math.random()),
-          "Lombardia": parseInt(100 * Math.random()),
-        "Lazio": parseInt(100 * Math.random()),
-        "Campania": parseInt(100 * Math.random()),
-    }
+    regionData.value = json.result.dati_statistici.totale_stati_regioni.approvata;
+    //   {
+    //     "Toscana": parseInt(100 * Math.random()),
+    //     "Puglia": parseInt(100 * Math.random()),
+    //       "Lombardia": parseInt(100 * Math.random()),
+    //     "Lazio": parseInt(100 * Math.random()),
+    //     "Campania": parseInt(100 * Math.random()),
+    // }
+
+      console.log("REGIONSSSS",regionData.value);
 
       var map = L.map('map').setView([41.9028, 12.4964], 6); // Coordinate centrali dell'Italia
 
@@ -124,7 +127,7 @@ onMounted(() => {
       legend.onAdd = function (map) {
 
           var div = L.DomUtil.create('div', 'info legend'),
-              grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+              grades = [0, 1, 3, 6, 9, 12, 15],
               labels = ["PIPPO","PASTICCIO"];
 
           // loop through our density intervals and generate a label with a colored square for each interval
@@ -164,16 +167,17 @@ function getImage(picture) {
 }
 
 function getColor(d) {
-    return d > 80 ? '#800026' :
-        d > 60 ? '#BD0026' :
-            d > 40 ? '#E31A1C' :
-                d > 20 ? '#FC4E2A' :
-                    d > 10 ? '#FD8D3C' :
+    return d > 10 ? '#800026' :
+        d > 8 ? '#BD0026' :
+            d > 4 ? '#E31A1C' :
+                d > 2 ? '#FC4E2A' :
+                    d > 0 ? '#FD8D3C' :
                         '#FFEDA0';
 }
 
 // Stile da applicare a ciascuna regione
 function style(feature) {
+    console.log("REG NAME",feature.properties.reg_name,regionData.value[feature.properties.reg_name]);
     return {
         fillColor: getColor(regionData.value[feature.properties.reg_name]),
         weight: 2,
@@ -200,10 +204,10 @@ function getDays(giustificazione, tipo) {
     <section class="py-5">
       <div class="grid text-center md:text-left">
 
-        <div class="col-12 lg:col-6 text-center align-content-center"
+        <div class="col-12 xl:col-8 xl:col-offset-2
+        text-center align-content-center"
 
         >
-
             <div id="map"></div>
 
 
@@ -246,10 +250,16 @@ function getDays(giustificazione, tipo) {
   </div>
 </template>
 
-<style scoped>
-    #map {
+<style>
+
+    .leaflet-container {
         height: 800px;
-        width: 600px;
+        width: 100%;
     }
+
+    .leaflet-container  .leaflet-map-pane  .leaflet-tile-pane  .leaflet-layer {
+        opacity: 0 !important;
+    }
+
 </style>
 

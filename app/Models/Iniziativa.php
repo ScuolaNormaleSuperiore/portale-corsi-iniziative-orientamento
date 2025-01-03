@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\CandidatoStatuses;
 use Gecche\Cupparis\App\Breeze\Breeze;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Breeze (Eloquent) model for iniziative table.
@@ -12,7 +14,7 @@ class Iniziativa extends Breeze
 	use Relations\IniziativaRelations;
 
 
-    
+
 //    use ModelWithUploadsTrait;
 
     protected $table = 'iniziative';
@@ -23,7 +25,6 @@ class Iniziativa extends Breeze
     public $ownerships = true;
 
     public $appends = [
-
     ];
 
 
@@ -75,5 +76,51 @@ class Iniziativa extends Breeze
             'scuola' => "Solo candidatura tramite scuola",
             'singola_sccuola' => "Candidatura singola e tramite scuola",
         ];
+    }
+
+    public function getCandidatureData() {
+
+        if (!$this->getKey()) {
+            return [
+                'totale' => 0,
+                'totale_stati' => [],
+                'totale_stati_regioni' => [],
+            ];
+        }
+
+        $totaleCandidature = DB::table('candidati')
+            ->where('iniziativa_id',$this->getKey())
+            ->count();
+
+        $candidatureStati = DB::table('candidati')
+            ->selectRaw('COUNT(*) as tot, status')
+            ->where('iniziativa_id',$this->getKey())
+            ->groupBy('status')
+            ->get()
+            ->pluck('tot','status')
+            ->all();
+
+        $candidatureStatiRegioniRaw = DB::table('candidati')
+            ->selectRaw('COUNT(*) as tot, status, regioni.nome as regione')
+            ->where('iniziativa_id',$this->getKey())
+            ->join('regioni','regione_id', '=' , 'regioni.id')
+            ->groupBy('status','regione')
+            ->get();
+
+        $candidatureStatiRegioni = CandidatoStatuses::states();
+        foreach ($candidatureStatiRegioniRaw as $record) {
+            $candidatureStatiRegioni[$record->status][$record->regione] = $record->tot;
+        }
+
+        return [
+            'totale' => $totaleCandidature,
+            'totale_stati' => $candidatureStati,
+            'totale_stati_regioni' => $candidatureStatiRegioni,
+        ];
+
+    }
+
+    public function getDatiStatisticiAttribute() {
+        return $this->getCandidatureData();
     }
 }

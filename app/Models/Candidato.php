@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Breeze (Eloquent) model for candidati table.
@@ -97,10 +98,10 @@ class Candidato extends Breeze
     public function save(array $options = [])
     {
         if (!$this->getKey()) {
+            $this->startFSM();
             if (!$this->user_id) {
 
                 $this->user_id = Auth::id();
-                $this->startFSM();
                 switch (auth_role_name()) {
                     case 'Scuola':
                         $this->tipo = 'scuola';

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\GareInternazionali;
+use App\Enums\GareUmanistiche;
 use App\Enums\GiochiChimica;
 use App\Enums\OlimpiadiFisica;
 use App\Enums\OlimpiadiFisicaSquadreMiste;
@@ -117,7 +118,7 @@ class CandidatoFactory extends Factory
             $gareValues[] = $gare[$garePosition];
         }
 
-        $gareUmanistiche = GareInternazionali::values();
+        $gareUmanistiche = GareUmanistiche::values();
         $gareUmanistichePositions = multi_rand(rand(0,count($gareUmanistiche)-1),0,count($gareUmanistiche)-1);
         $gareUmanisticheValues = [];
         foreach ($gareUmanistichePositions as $gareUmanistichePosition) {
@@ -176,9 +177,9 @@ class CandidatoFactory extends Factory
             'tedesco_livello_linguistico_id' => rand(1, 100) > 40 ? null : Arr::random($livelliLingusitici),
             'spagnolo_livello_linguistico_id' => rand(1, 100) > 60 ? null : Arr::random($livelliLingusitici),
             'cinese_livello_linguistico_id' => rand(1, 100) > 10 ? null : Arr::random($livelliLingusitici),
-            'altre_competenze_linguistiche' => rand(1, 100) > 70 ? implode("<br/>",$this->faker->paragraphs(1)) : null,
+            'altre_competenze_linguistiche' => rand(1, 100) > 70 ? implode(" ",$this->faker->words(5)) : null,
             'profilo' => implode("<br/>",$this->faker->paragraphs(1)),
-            'esperienze_estere' => rand(1, 100) > 70 ? implode("<br/>",$this->faker->paragraphs(1)) : null,
+            'esperienze_estere' => rand(1, 100) > 70 ? implode($this->faker->paragraphs(1)) : null,
             'settore_professionale' => implode(" ",$this->faker->words(5)),
             'materie_preferite' => implode(" ",$this->faker->words(5)),
             'motivazioni' => implode("<br/>",$this->faker->paragraphs(1)),

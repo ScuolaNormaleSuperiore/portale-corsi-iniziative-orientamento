@@ -71,8 +71,14 @@ return [
             ],
             "id" => [
 
-            ]
+            ],
+            "dati_statistici" => [
+
+            ],
         ],
+        'appends' => [
+            'dati_statistici',
+        ]
     ],
     'search' => [
         'fields' => [

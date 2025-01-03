@@ -48,7 +48,6 @@ class CandidatiTableSeeder extends Seeder
             ->all();
 
         $province = Provincia::all()->pluck('regione_id', 'id')->all();
-        $provinciaId = Arr::random(array_keys($province));
 
         $titoliStudio = TitoloStudio::all()->pluck('id', 'id')->all();
         $professioni = Professione::all()->pluck('id', 'id')->all();
@@ -62,8 +61,8 @@ class CandidatiTableSeeder extends Seeder
 
 
         \Illuminate\Support\Facades\Auth::loginUsingId(3);
-        \App\Models\User::factory(10)->create()->each(function($u)
-            use ($iniziativeIds,$provinciaId,$province,$titoliStudio,$professioni,
+        \App\Models\User::factory(100)->create()->each(function($u)
+            use ($iniziativeIds,$province,$titoliStudio,$professioni,
                 $professione2Altro,$professione1Altro, $livelliLingusitici,$modalitaConoscenza, $scuoleIds
             )
         {
@@ -102,6 +101,7 @@ class CandidatiTableSeeder extends Seeder
                             $scuolaEstera = null;
 
                         }
+                        $provinciaId = Arr::random(array_keys($province));
 
                         $data = [
                             'anno' => $anno,
@@ -132,11 +132,13 @@ class CandidatiTableSeeder extends Seeder
                             'user_id' => $u->getKey(),
                         ];
                         $candidati = Candidato::factory()->create($data);
+                        $this->transitions($candidati);
                         break;
                     case 'Scuola':
                         $nCandidature = rand(0,5);
                         echo " --- " . $nCandidature . ' --- ' . $u->getKey() . "\n";
                         for ($i = 1;$i <= $nCandidature;$i++) {
+                            $provinciaId = Arr::random(array_keys($province));
                             $data = [
                                 'anno' => $anno,
                                 'iniziativa_id' => $iniziativaId,
@@ -166,14 +168,25 @@ class CandidatiTableSeeder extends Seeder
                                 'user_id' => $u->getKey(),
                             ];
                             $candidati = Candidato::factory()->create($data);
+                            $this->transitions($candidati);
                         }
                         break;
                     default:
                         break;
                 }
+
             }
 
         });
 
+    }
+
+    protected function transitions($candidati) {
+        if (rand(0,100) > 15) {
+            $candidati->makeTransitionAndSave('inviata');
+            if (rand(0,100) > 75) {
+                $candidati->makeTransitionAndSave('approvata');
+            }
+        }
     }
 }
