@@ -63,10 +63,10 @@ trait CandidatoTrait
 
         $this->validationSettings['rules'] = $validationRules;
 
-        Log::info("VALIDATION RULES");
-
-        Log::info($this->validationSettings['rules']);
-        Log::info($this->step);
+//        Log::info("VALIDATION RULES");
+//
+//        Log::info($this->validationSettings['rules']);
+//        Log::info($this->step);
 
     }
 

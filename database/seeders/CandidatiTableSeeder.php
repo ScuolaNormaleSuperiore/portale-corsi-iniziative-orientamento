@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use App\Enums\GareInternazionali;
@@ -30,6 +31,7 @@ class CandidatiTableSeeder extends Seeder
 {
 
     protected $faker = null;
+
     /**
      * Run the database seeds.
      *
@@ -54,102 +56,72 @@ class CandidatiTableSeeder extends Seeder
         $livelliLingusitici = LivelloLinguistico::all()->pluck('id', 'id')->all();
         $modalitaConoscenza = ModalitaConoscenzaSns::all()->pluck('id', 'id')->all();
 
-        $professione1Altro = rand(1, 100) > 85 ? implode(" ",$this->faker->words(3)) : null;
-        $professione2Altro = rand(1, 100) > 85 ? implode(" ",$this->faker->words(3)) : null;
+        $professione1Altro = rand(1, 100) > 85 ? implode(" ", $this->faker->words(3)) : null;
+        $professione2Altro = rand(1, 100) > 85 ? implode(" ", $this->faker->words(3)) : null;
 
-        $scuoleIds = DB::table('scuole')->pluck('id','id')->all();
+        $scuoleIds = DB::table('scuole')->pluck('id', 'id')->all();
 
 
         \Illuminate\Support\Facades\Auth::loginUsingId(3);
-        \App\Models\User::factory(100)->create()->each(function($u)
-            use ($iniziativeIds,$province,$titoliStudio,$professioni,
-                $professione2Altro,$professione1Altro, $livelliLingusitici,$modalitaConoscenza, $scuoleIds
-            )
-        {
+        foreach (range(1, 1000) as $i) {
 
-            //$role = $localizedFaker->boolean(85) ? 'Operatore' : 'Admin'; //15% Admin, 85% Operatore
-            $role = rand(0,100) > 50 ? 'Studente' : 'Scuola';
+            $email = $this->faker->unique()->safeEmail . '_' . $i;
+            \App\Models\User::factory(1)->create([
+                'email' => $email,
+                'name' => $email,
+            ])->each(function ($u)
+            use (
+                $iniziativeIds, $province, $titoliStudio, $professioni,
+                $professione2Altro, $professione1Altro, $livelliLingusitici, $modalitaConoscenza, $scuoleIds,
+            ) {
+
+                //$role = $localizedFaker->boolean(85) ? 'Operatore' : 'Admin'; //15% Admin, 85% Operatore
+                $role = rand(0, 100) > 50 ? 'Studente' : 'Scuola';
 //            $role = 'Operatore';
-            $u->assignRole($role);
+                $u->assignRole($role);
 
-            if ($role == 'Scuola') {
-                $scuolaId = Arr::random($scuoleIds);
-                $scuola = Scuola::find($scuolaId);
-                while ($scuola->user_id) {
+                if ($role == 'Scuola') {
                     $scuolaId = Arr::random($scuoleIds);
                     $scuola = Scuola::find($scuolaId);
+                    while ($scuola->user_id) {
+                        $scuolaId = Arr::random($scuoleIds);
+                        $scuola = Scuola::find($scuolaId);
+                    }
+                    $scuola->user_id = $u->getKey();
+                    $scuola->save();
                 }
-                $scuola->user_id = $u->getKey();
-                $scuola->save();
-            }
 
 
-            foreach ($iniziativeIds as $iniziativaId => $anno) {
+                foreach ($iniziativeIds as $iniziativaId => $anno) {
 
-                switch ($role) {
-                    case 'Studente':
-                        if (rand(1,100) > 85) {
-                            break;
-                        }
-                        $estero = rand(1, 100) > 99;
+                    switch ($role) {
+                        case 'Studente':
+                            if (rand(1, 100) > 85) {
+                                break;
+                            }
+                            $estero = rand(1, 100) > 99;
 
-                        if ($estero) {
-                            $scuolaId = null;
-                            $scuolaEstera = $this->faker->company;
-                        } else {
-                            $scuolaId = Arr::random($scuoleIds);
-                            $scuolaEstera = null;
+                            if ($estero) {
+                                $scuolaId = null;
+                                $scuolaEstera = $this->faker->company;
+                            } else {
+                                $scuolaId = Arr::random($scuoleIds);
+                                $scuolaEstera = null;
 
-                        }
-                        $provinciaId = Arr::random(array_keys($province));
-
-                        $data = [
-                            'anno' => $anno,
-                            'iniziativa_id' => $iniziativaId,
-
-                            'nome' => $u->nome,
-                            'cognome' => $u->cognome,
-                            'emails' => $u->email,
-                            'provincia_id' => $provinciaId,
-                            'regione_id' => Arr::get($province, $provinciaId),
-                            'scuola_id' => $scuolaId,
-                            'scuola_estera' => $scuolaEstera,
-                            'gen1_titolo_studio_id' => Arr::random($titoliStudio),
-                            'gen2_titolo_studio_id' => Arr::random($titoliStudio),
-                            'gen1_professione_id' => $professione1Altro ? null : Arr::random($professioni),
-                            'gen2_professione_id' => $professione2Altro ? null : Arr::random($professioni),
-                            'gen1_professione_altro' => $professione1Altro,
-                            'gen2_professione_altro' => $professione2Altro,
-
-
-                            'inglese_livello_linguistico_id' => rand(1, 100) > 70 ? null : Arr::random($livelliLingusitici),
-                            'francese_livello_linguistico_id' => rand(1, 100) > 50 ? null : Arr::random($livelliLingusitici),
-                            'tedesco_livello_linguistico_id' => rand(1, 100) > 40 ? null : Arr::random($livelliLingusitici),
-                            'spagnolo_livello_linguistico_id' => rand(1, 100) > 60 ? null : Arr::random($livelliLingusitici),
-                            'cinese_livello_linguistico_id' => rand(1, 100) > 10 ? null : Arr::random($livelliLingusitici),
-                            'modalita_conoscenza_sns_id' => Arr::random($modalitaConoscenza),
-                            'tipo' => 'studente',
-                            'user_id' => $u->getKey(),
-                        ];
-                        $candidati = Candidato::factory()->create($data);
-                        $this->transitions($candidati);
-                        break;
-                    case 'Scuola':
-                        $nCandidature = rand(0,5);
-                        echo " --- " . $nCandidature . ' --- ' . $u->getKey() . "\n";
-                        for ($i = 1;$i <= $nCandidature;$i++) {
+                            }
                             $provinciaId = Arr::random(array_keys($province));
+
                             $data = [
                                 'anno' => $anno,
                                 'iniziativa_id' => $iniziativaId,
 
-                                'nome' => $this->faker->firstName,
-                                'cognome' => $this->faker->lastName,
-                                'emails' => $this->faker->unique()->safeEmail,
+                                'nome' => $u->nome,
+                                'cognome' => $u->cognome,
+                                'emails' => $u->email,
                                 'provincia_id' => $provinciaId,
                                 'regione_id' => Arr::get($province, $provinciaId),
                                 'scuola_id' => $scuolaId,
-                                'scuola_estera' => null,
+                                'scuola_estera' => $scuolaEstera,
                                 'gen1_titolo_studio_id' => Arr::random($titoliStudio),
                                 'gen2_titolo_studio_id' => Arr::random($titoliStudio),
                                 'gen1_professione_id' => $professione1Altro ? null : Arr::random($professioni),
@@ -164,27 +136,66 @@ class CandidatiTableSeeder extends Seeder
                                 'spagnolo_livello_linguistico_id' => rand(1, 100) > 60 ? null : Arr::random($livelliLingusitici),
                                 'cinese_livello_linguistico_id' => rand(1, 100) > 10 ? null : Arr::random($livelliLingusitici),
                                 'modalita_conoscenza_sns_id' => Arr::random($modalitaConoscenza),
-                                'tipo' => 'scuola',
+                                'tipo' => 'studente',
                                 'user_id' => $u->getKey(),
                             ];
                             $candidati = Candidato::factory()->create($data);
                             $this->transitions($candidati);
-                        }
-                        break;
-                    default:
-                        break;
+                            break;
+                        case 'Scuola':
+                            $nCandidature = rand(0, 5);
+                            echo " --- " . $nCandidature . ' --- ' . $u->getKey() . "\n";
+                            for ($i = 1; $i <= $nCandidature; $i++) {
+                                $provinciaId = Arr::random(array_keys($province));
+                                $data = [
+                                    'anno' => $anno,
+                                    'iniziativa_id' => $iniziativaId,
+
+                                    'nome' => $this->faker->firstName,
+                                    'cognome' => $this->faker->lastName,
+                                    'emails' => $this->faker->unique()->safeEmail,
+                                    'provincia_id' => $provinciaId,
+                                    'regione_id' => Arr::get($province, $provinciaId),
+                                    'scuola_id' => $scuolaId,
+                                    'scuola_estera' => null,
+                                    'gen1_titolo_studio_id' => Arr::random($titoliStudio),
+                                    'gen2_titolo_studio_id' => Arr::random($titoliStudio),
+                                    'gen1_professione_id' => $professione1Altro ? null : Arr::random($professioni),
+                                    'gen2_professione_id' => $professione2Altro ? null : Arr::random($professioni),
+                                    'gen1_professione_altro' => $professione1Altro,
+                                    'gen2_professione_altro' => $professione2Altro,
+
+
+                                    'inglese_livello_linguistico_id' => rand(1, 100) > 70 ? null : Arr::random($livelliLingusitici),
+                                    'francese_livello_linguistico_id' => rand(1, 100) > 50 ? null : Arr::random($livelliLingusitici),
+                                    'tedesco_livello_linguistico_id' => rand(1, 100) > 40 ? null : Arr::random($livelliLingusitici),
+                                    'spagnolo_livello_linguistico_id' => rand(1, 100) > 60 ? null : Arr::random($livelliLingusitici),
+                                    'cinese_livello_linguistico_id' => rand(1, 100) > 10 ? null : Arr::random($livelliLingusitici),
+                                    'modalita_conoscenza_sns_id' => Arr::random($modalitaConoscenza),
+                                    'tipo' => 'scuola',
+                                    'user_id' => $u->getKey(),
+                                ];
+                                $candidati = Candidato::factory()->create($data);
+                                $this->transitions($candidati);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
                 }
 
-            }
+            });
 
-        });
-
+        }
     }
 
-    protected function transitions($candidati) {
-        if (rand(0,100) > 15) {
+
+    protected function transitions($candidati)
+    {
+        if (rand(0, 100) > 15) {
             $candidati->makeTransitionAndSave('inviata');
-            if (rand(0,100) > 75) {
+            if (rand(0, 100) > 75) {
                 $candidati->makeTransitionAndSave('approvata');
             }
         }

@@ -14,7 +14,7 @@ enum CandidatoStatuses: string implements FSMConfigInterface
 //    case REFERENT_REJECTED = 'referent_rejected';
     case INVIATA = 'inviata';
     case APPROVATA = 'approvata';
-    case RIFIUTATA = 'rifutata';
+    case RIFIUTATA = 'rifiutata';
 
     public static function getLangKey($case)
     {

@@ -80,6 +80,7 @@ class Iniziativa extends Breeze
 
     public function getCandidatureData() {
 
+
         if (!$this->getKey()) {
             return [
                 'totale' => 0,
@@ -88,9 +89,11 @@ class Iniziativa extends Breeze
             ];
         }
 
+        $regioni = Regione::all()->pluck('nome')->all();
         $totaleCandidature = DB::table('candidati')
             ->where('iniziativa_id',$this->getKey())
             ->count();
+
 
         $candidatureStati = DB::table('candidati')
             ->selectRaw('COUNT(*) as tot, status')
@@ -100,6 +103,13 @@ class Iniziativa extends Breeze
             ->pluck('tot','status')
             ->all();
 
+        $candidatureStati = array_merge(
+            array_fill_keys(array_keys(CandidatoStatuses::states()), 0)
+            ,$candidatureStati);
+
+        $candidatureStati['inviata'] += $candidatureStati['approvata'] + $candidatureStati['rifiutata'];
+        $candidatureStati['totale'] = $candidatureStati['inviata'] + $candidatureStati['bozza'];
+
         $candidatureStatiRegioniRaw = DB::table('candidati')
             ->selectRaw('COUNT(*) as tot, status, regioni.nome as regione')
             ->where('iniziativa_id',$this->getKey())
@@ -108,14 +118,73 @@ class Iniziativa extends Breeze
             ->get();
 
         $candidatureStatiRegioni = CandidatoStatuses::states();
+        $candidatureStatiRegioni['totale'] = [];
+        foreach ($candidatureStatiRegioni as $key => $item) {
+            $candidatureStatiRegioni[$key] = array_fill_keys($regioni,0);
+        }
+        $maxStatiRegioni = array_fill_keys(array_keys($candidatureStatiRegioni), 0);
         foreach ($candidatureStatiRegioniRaw as $record) {
             $candidatureStatiRegioni[$record->status][$record->regione] = $record->tot;
+            if ($maxStatiRegioni[$record->status] < $record->tot) {
+                $maxStatiRegioni[$record->status] = $record->tot;
+            }
         }
+
+        foreach ($candidatureStatiRegioni['inviata'] as $regione => $totale) {
+            $newTotale = $totale +
+                $candidatureStatiRegioni['approvata'][$regione] +
+                $candidatureStatiRegioni['rifiutata'][$regione];
+
+            $candidatureStatiRegioni['inviata'][$regione] = $newTotale;
+            $candidatureStatiRegioni['totale'][$regione] = $candidatureStatiRegioni['inviata'][$regione] + $candidatureStatiRegioni['bozza'][$regione];
+            if ($maxStatiRegioni['inviata'] < $newTotale) {
+                $maxStatiRegioni['inviata'] = $newTotale;
+            }
+            if ($maxStatiRegioni['totale'] < $candidatureStatiRegioni['totale'][$regione]) {
+                $maxStatiRegioni['totale'] = $candidatureStatiRegioni['totale'][$regione];
+            }
+        }
+
+
+        $fasce = [];
+        foreach ($maxStatiRegioni as $status => $max) {
+
+            $fasce[$status] = [["label"  => "Nessuna candidatura", "min" => 0]];
+            if ($max == 0) {
+                continue;
+            }
+            if ($max <= 6) {
+                foreach (range(1,$max) as $curr) {
+                    $fasce[$status] = [(string)$curr => $curr];
+                }
+                continue;
+            }
+            foreach (range(1,4) as $curr) {
+                $floor = floor(($max-1) / 5 * $curr);
+                if ($curr == 1) {
+                    $fasce[$status][] = ["label" => "Da 1 a " . $floor, "min" => 1];
+                }
+                $ceil =  min(floor(($max-1) / 5 * ($curr+1)),$max-1);
+
+                if ($floor == $ceil) {
+                    $fasce[$status][(string)$floor] = $floor;
+                } else {
+                    $fasce[$status][] = ["label" =>  "Da " . $floor . ' a ' . $ceil, "min" => $floor];
+                }
+            }
+            $fasce[$status][] = ["label" =>  "Max: " . (string)$max, "min" => $max];
+
+
+
+        }
+
 
         return [
             'totale' => $totaleCandidature,
             'totale_stati' => $candidatureStati,
             'totale_stati_regioni' => $candidatureStatiRegioni,
+            'max_stati_regioni' => $maxStatiRegioni,
+            'fasce_stati_regioni' => $fasce,
         ];
 
     }
