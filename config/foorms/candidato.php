@@ -198,6 +198,9 @@ return [
             ],
             "id" => [
 
+            ],
+            "status" => [
+                "options" => 'enum:App\\Enums\\CandidatoStatuses',
             ]
         ],
     ],
@@ -234,7 +237,7 @@ return [
                         "classe",
                         "scuola|regione_id",
 
-//                        "scuola|biennio",
+                        "scuola|biennio",
                         "scuola|denominazione",
                         "scuola|email_riferimento",
                         "profilo",
@@ -276,45 +279,6 @@ return [
 
                     ],
                     'fieldsParams' => [
-                        "email" => [
-                            'header' => 'email',
-                        ],
-                        "annoaccademico|categoriaaccademica_id" => [
-                            'header' => 'categoriaaccademica',
-                        ],
-                        "fb_id" => [
-                            'header' => 'Facebook id',
-                        ],
-                        "as400_sent" => [
-                            'header' => 'Inviato AS400',
-                        ],
-                        "anagrafica|nome" => [
-                            'header' => 'nome',
-                        ],
-                        "anagrafica|cognome" => [
-                            'header' => 'cognome',
-                        ],
-                        "anagrafica|denominazione" => [
-                            'header' => 'Denominazione',
-                        ],
-                        "anagrafica|codicefiscale" => [
-                            'header' => 'C.F.',
-                        ],
-                        "anagrafica|partitaiva" => [
-                            'header' => 'P. IVA',
-                        ],
-                        "anagrafica|sesso" => [
-                            'header' => 'Sesso',
-                        ],
-                        "created_at" => [
-                            'header' => 'Utente creato il',
-                        ],
-                        "updated_at" => [
-                            'header' => 'Ultima modifica',
-                        ],
-                        "n_orders" => [
-                            'header' => 'N. ordini',
-                        ]
                     ],
                     'separator' => ';',
                     'endline' => "\n",

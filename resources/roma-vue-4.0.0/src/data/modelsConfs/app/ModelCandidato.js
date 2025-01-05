@@ -11,6 +11,7 @@ export default {
         modelName: 'candidato',
         fields: [
             'iniziativa_id',
+            'status',
             'nome',
             'cognome',
             'provincia_id',
@@ -20,6 +21,9 @@ export default {
 
         ],
         fieldsConfig: {
+            'status': {
+                type: "w-select",
+            },
             'iniziativa_id': {
                 type: "w-select",
             },

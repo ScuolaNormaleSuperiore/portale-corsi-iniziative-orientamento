@@ -80,7 +80,7 @@ class CsvExport extends BaseCsvExport
             'Tipo di scuola',
             'classe',
             'Regione della scuola',
-//            'Candidati selezionati nella scuola nell biennio precedente',
+            'Candidati selezionati nella scuola nel biennio precedente',
             'Denominazione scuola',
             'Email scuola',
             'Profilo',
@@ -414,7 +414,11 @@ class CsvExport extends BaseCsvExport
             $votiArray[] = $voto->voto_primo_quadrimestre;
         }
 
-        return implode($this->separator, $votiArray) . $this->separator;
+        return implode($this->separator, $votiArray);
+    }
+
+    protected function getCsvFieldScuolaBiennio($value) {
+        return "";
     }
 
 //
