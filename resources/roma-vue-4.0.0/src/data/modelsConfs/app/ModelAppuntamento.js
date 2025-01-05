@@ -10,12 +10,12 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome' : { 
+			'nome' : {
                 type : "w-input",
-			}, 
-			'cognome' : { 
+			},
+			'cognome' : {
                 type : "w-input",
-			}, 
+			},
 
         },
         // groups: {
@@ -41,7 +41,7 @@ export default {
             'action-insert',
             'action-edit',
             'action-delete',
-            'action-delete-selected',
+            //'action-delete-selected',
         ],
         fields: [
 			'nome',
@@ -51,24 +51,24 @@ export default {
 
         ],
         fieldsConfig: {
-			'settore' : { 
+			'settore' : {
                 type : "w-belongsto",
                 fields : [
                     'nome'
                 ],
-			}, 
-			'nome' : { 
+			},
+			'nome' : {
                 type : "w-text",
-			}, 
-			'cognome' : { 
+			},
+			'cognome' : {
                 type : "w-text",
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-swap",
                 modelName : 'appuntamento',
                 //switchClass: 'form-switch-danger banned',
                 //dataSwitched : true,
-			}, 
+			},
 
         },
         orderFields : {
@@ -93,32 +93,32 @@ export default {
 
         ],
         fieldsConfig: {
-			'settore_id' : { 
+			'settore_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'nome' : { 
+			},
+			'nome' : {
                 type : "w-input",
-			}, 
-			'cognome' : { 
+			},
+			'cognome' : {
                 type : "w-input",
-			}, 
-			'descrizione' : { 
+			},
+			'descrizione' : {
                 type : "w-texthtml",
                 layout: {
                     colClass : 'w-12',
                 }
-			}, 
-			'link' : { 
+			},
+			'link' : {
                 type : "w-input",
                 label: 'Link a Eventbrite'
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
+			},
 
         }
 

@@ -12,19 +12,19 @@ export default {
 
         ],
         fieldsConfig: {
-			'titolo_it' : { 
+			'titolo_it' : {
                 type : "w-input",
-			}, 
-			'contenuto_it' : { 
+			},
+			'contenuto_it' : {
                 type : "w-input",
-			}, 
-			'slug_it' : { 
+			},
+			'slug_it' : {
                 type : "w-input",
-			}, 
-			'ordine' : { 
+			},
+			'ordine' : {
                 type : "w-input",
                 inputType: "number",
-			}, 
+			},
 
         },
         // groups: {
@@ -48,7 +48,7 @@ export default {
             'action-insert',
             'action-edit',
             'action-delete',
-            'action-delete-selected',
+            // 'action-delete-selected',
         ],
         fields: [
 			'titolo_it',
@@ -58,18 +58,18 @@ export default {
 
         ],
         fieldsConfig: {
-			'titolo_it' : { 
+			'titolo_it' : {
                 type : "w-text",
-			}, 
-			'contenuto_it' : { 
+			},
+			'contenuto_it' : {
                 type : "w-text",
-			}, 
-			'slug_it' : { 
+			},
+			'slug_it' : {
                 type : "w-text",
-			}, 
-			'ordine' : { 
+			},
+			'ordine' : {
                 type : "w-text",
-			}, 
+			},
 
         },
         orderFields : {
@@ -93,19 +93,19 @@ export default {
 
         ],
         fieldsConfig: {
-			'titolo_it' : { 
+			'titolo_it' : {
                 type : "w-input",
-			}, 
-			'contenuto_it' : { 
+			},
+			'contenuto_it' : {
                 type : "w-input",
-			}, 
-			'slug_it' : { 
+			},
+			'slug_it' : {
                 type : "w-input",
-			}, 
-			'ordine' : { 
+			},
+			'ordine' : {
                 type : "w-input",
                 inputType: "number",
-			}, 
+			},
 
         }
 

@@ -31,7 +31,7 @@ export default {
             'action-insert',
             'action-edit',
             'action-delete',
-            'action-delete-selected',
+            //'action-delete-selected',
         ],
         fields: [
 
@@ -55,20 +55,20 @@ export default {
 
         ],
         fieldsConfig: {
-			'candidato_id' : { 
+			'candidato_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'corso_id' : { 
+			},
+			'corso_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'ordine' : { 
+			},
+			'ordine' : {
                 type : "w-input",
                 inputType: "number",
-			}, 
+			},
 
         }
 

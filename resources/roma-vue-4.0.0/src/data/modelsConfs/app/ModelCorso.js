@@ -11,14 +11,14 @@ export default {
 
         ],
         fieldsConfig: {
-			'titolo' : { 
+			'titolo' : {
                 type : "w-input",
-			}, 
-			'iniziativa_id' : { 
+			},
+			'iniziativa_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
+			},
 
         },
         searchType: 'basic',
@@ -44,7 +44,7 @@ export default {
             'action-insert',
             'action-edit',
             'action-delete',
-            'action-delete-selected',
+            // 'action-delete-selected',
         ],
         fields: [
 			'picture',
@@ -81,39 +81,39 @@ export default {
 						"</div>";
 				},
 			},
-			'titolo' : { 
+			'titolo' : {
                 type : "w-text",
-			}, 
-			'data_inizio' : { 
+			},
+			'data_inizio' : {
                 type : "w-text",
-			}, 
-			'data_fine' : { 
+			},
+			'data_fine' : {
                 type : "w-text",
-			}, 
-			'luogo' : { 
+			},
+			'luogo' : {
                 type : "w-text",
-			}, 
-			'indirizzo' : { 
+			},
+			'indirizzo' : {
                 type : "w-text",
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-swap",
                 modelName : 'corso',
                 //switchClass: 'form-switch-danger banned',
                 //dataSwitched : true,
-			}, 
-			'provincia' : { 
+			},
+			'provincia' : {
                 type : "w-belongsto",
                 labelFields : [
 					'sigla'
 				],
-			}, 
-			'iniziativa' : { 
+			},
+			'iniziativa' : {
                 type : "w-belongsto",
                 labelFields : [
 					'titolo',
 				],
-			}, 
+			},
 
         },
         orderFields : {
@@ -147,45 +147,45 @@ export default {
 			'fotos'
         ],
         fieldsConfig: {
-			'titolo' : { 
+			'titolo' : {
                 type : "w-input",
-			}, 
-			'descrizione' : { 
+			},
+			'descrizione' : {
                 type : "w-texthtml",
                 htmlAttributes: {},
 				layout : {
 					colClass : 'col-12',
 				}
-			}, 
-			'data_inizio' : { 
+			},
+			'data_inizio' : {
                 type : "w-input",
                 inputType: 'date',
-			}, 
+			},
 			'data_fine' : {
                 type : "w-input",
                 inputType: 'date',
-			}, 
-			'note' : { 
+			},
+			'note' : {
                 type : "w-textarea",
                 htmlAttributes: {},
-			}, 
-			'iniziativa_id' : { 
+			},
+			'iniziativa_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'luogo' : { 
+			},
+			'luogo' : {
                 type : "w-input",
-			}, 
-			'indirizzo' : { 
+			},
+			'indirizzo' : {
                 type : "w-input",
-			}, 
-			'provincia_id' : { 
+			},
+			'provincia_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-radio",
                 //domainValues : [],
                 //domainValuesOrder : [],

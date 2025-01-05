@@ -9,9 +9,9 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome' : { 
+			'nome' : {
                 type : "w-input",
-			}, 
+			},
 
         },
         searchType: 'basic',
@@ -34,19 +34,19 @@ export default {
         type: 'v-list',
         modelName : 'regione',
         actions : [
-            'action-insert',
-            'action-edit',
-            'action-delete',
-            'action-delete-selected',
+            // 'action-insert',
+            // 'action-edit',
+            // 'action-delete',
+            // 'action-delete-selected',
         ],
         fields: [
 			'nome',
 
         ],
         fieldsConfig: {
-			'nome' : { 
+			'nome' : {
                 type : "w-text",
-			}, 
+			},
 
         },
         orderFields : {
@@ -64,9 +64,9 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome' : { 
+			'nome' : {
                 type : "w-input",
-			}, 
+			},
 
         }
 

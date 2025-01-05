@@ -35,7 +35,7 @@ export default {
             'action-insert',
             'action-edit',
             'action-delete',
-            'action-delete-selected',
+            // 'action-delete-selected',
         ],
         fields: [
 			'titolo_it',

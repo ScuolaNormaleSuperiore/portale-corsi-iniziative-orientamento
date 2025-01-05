@@ -31,7 +31,7 @@ export default {
             'action-insert',
             'action-edit',
             'action-delete',
-            'action-delete-selected',
+            //'action-delete-selected',
         ],
         fields: [
 
@@ -57,37 +57,37 @@ export default {
 
         ],
         fieldsConfig: {
-			'candidato_id' : { 
+			'candidato_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'materia_id' : { 
+			},
+			'materia_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'voto_anno_2' : { 
+			},
+			'voto_anno_2' : {
                 type : "decimal",
                 digits : 2,
                 symbol : null,
                 symbol_position : "left",
                 htmlAttributes: {},
-			}, 
-			'voto_anno_1' : { 
+			},
+			'voto_anno_1' : {
                 type : "decimal",
                 digits : 2,
                 symbol : null,
                 symbol_position : "left",
                 htmlAttributes: {},
-			}, 
-			'voto_primo_quadrimestre' : { 
+			},
+			'voto_primo_quadrimestre' : {
                 type : "decimal",
                 digits : 2,
                 symbol : null,
                 symbol_position : "left",
                 htmlAttributes: {},
-			}, 
+			},
 
         }
 

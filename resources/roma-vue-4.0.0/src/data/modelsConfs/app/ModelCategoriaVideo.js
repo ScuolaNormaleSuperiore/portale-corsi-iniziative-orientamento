@@ -9,9 +9,9 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome_it' : { 
+			'nome_it' : {
                 type : "w-input",
-			}, 
+			},
 
         },
         searchType: 'basic',
@@ -37,16 +37,16 @@ export default {
             'action-insert',
             'action-edit',
             'action-delete',
-            'action-delete-selected',
+            //'action-delete-selected',
         ],
         fields: [
 			'nome_it',
 
         ],
         fieldsConfig: {
-			'nome_it' : { 
+			'nome_it' : {
                 type : "w-text",
-			}, 
+			},
 
         },
         orderFields : {
@@ -64,9 +64,9 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome_it' : { 
+			'nome_it' : {
                 type : "w-input",
-			}, 
+			},
 
         }
 

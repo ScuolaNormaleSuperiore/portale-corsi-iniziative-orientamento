@@ -10,14 +10,14 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome_it' : { 
+			'nome_it' : {
                 type : "w-input",
-			}, 
-			'classe_id' : { 
+			},
+			'classe_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
+			},
 
         },
         searchType: 'basic',
@@ -43,7 +43,7 @@ export default {
             'action-insert',
             'action-edit',
             'action-delete',
-            'action-delete-selected',
+            // 'action-delete-selected',
         ],
         fields: [
 			'nome_it',
@@ -51,15 +51,15 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome_it' : { 
+			'nome_it' : {
                 type : "w-text",
-			}, 
-			'classe' : { 
+			},
+			'classe' : {
                 type : "w-belongsto",
                 labelFields : [
                     'nome_it',
                 ],
-			}, 
+			},
 
         },
         orderFields : {
@@ -78,14 +78,14 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome_it' : { 
+			'nome_it' : {
                 type : "w-input",
-			}, 
-			'classe_id' : { 
+			},
+			'classe_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
+			},
 
         }
 

@@ -67,6 +67,7 @@ export default {
             'action-edit',
             'action-delete',
             // 'action-delete-selected',
+            'action-export-csv',
         ],
         fields: [
             'status',

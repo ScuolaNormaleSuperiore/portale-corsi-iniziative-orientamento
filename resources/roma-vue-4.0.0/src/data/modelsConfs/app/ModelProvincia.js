@@ -11,17 +11,17 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome' : { 
+			'nome' : {
                 type : "w-input",
-			}, 
-			'sigla' : { 
+			},
+			'sigla' : {
                 type : "w-input",
-			}, 
-			'regione_id' : { 
+			},
+			'regione_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
+			},
 
         },
         searchType: 'basic',
@@ -46,8 +46,8 @@ export default {
         actions : [
             'action-insert',
             'action-edit',
-            'action-delete',
-            'action-delete-selected',
+            // 'action-delete',
+            // 'action-delete-selected',
         ],
         fields: [
 			'nome',
@@ -58,25 +58,25 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome' : { 
+			'nome' : {
                 type : "w-text",
-			}, 
-			'sigla' : { 
+			},
+			'sigla' : {
                 type : "w-text",
-			}, 
-			'codice' : { 
+			},
+			'codice' : {
                 type : "w-text",
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-swap",
                 modelName : '{{$modelName}}',
                 //switchClass: 'form-switch-danger banned',
                 //dataSwitched : true,
-			}, 
-			'regione' : { 
+			},
+			'regione' : {
                 type : "w-belongsto",
                 fields : [],
-			}, 
+			},
 
         },
         orderFields : {
@@ -101,25 +101,25 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome' : { 
+			'nome' : {
                 type : "w-input",
-			}, 
-			'sigla' : { 
+			},
+			'sigla' : {
                 type : "w-input",
-			}, 
-			'codice' : { 
+			},
+			'codice' : {
                 type : "w-input",
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'regione_id' : { 
+			},
+			'regione_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
+			},
 
         }
 

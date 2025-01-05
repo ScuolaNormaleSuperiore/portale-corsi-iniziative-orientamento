@@ -53,7 +53,13 @@ export default {
             // 'email_verified_at',
             'fotos',
             'banned','mainrole'],
-        actions : ['action-edit','action-delete','action-insert','action-delete-selected','action-view'],
+        actions : [
+            'action-edit',
+            'action-delete',
+            'action-insert',
+            // 'action-delete-selected',
+            'action-view'
+        ],
         //actions : ['ActionSelect','action-delete-selected'],
         //actions : ['action-delete-selected'],
         actionsConfig : {

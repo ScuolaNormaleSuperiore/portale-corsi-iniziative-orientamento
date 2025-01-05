@@ -15,32 +15,32 @@ export default {
 
         ],
         fieldsConfig: {
-			'anno' : { 
+			'anno' : {
                 type : "w-input",
                 inputType: "number",
-			}, 
-			'regione_id' : { 
+			},
+			'regione_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'provincia_id' : { 
+			},
+			'provincia_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'codice' : { 
+			},
+			'codice' : {
                 type : "w-input",
-			}, 
-			'denominazione' : { 
+			},
+			'denominazione' : {
                 type : "w-input",
-			}, 
-			'comune' : { 
+			},
+			'comune' : {
                 type : "w-input",
-			}, 
-			'email_riferimento' : { 
+			},
+			'email_riferimento' : {
                 type : "w-input",
-			}, 
+			},
 
         },
 		searchType : 'advanced',
@@ -66,7 +66,7 @@ export default {
             'action-insert',
             'action-edit',
             'action-delete',
-            'action-delete-selected',
+            // 'action-delete-selected',
         ],
         fields: [
 			// 'anno',
@@ -79,30 +79,30 @@ export default {
 
         ],
         fieldsConfig: {
-			'anno' : { 
+			'anno' : {
                 type : "w-text",
-			}, 
-			'codice' : { 
+			},
+			'codice' : {
                 type : "w-text",
-			}, 
-			'denominazione' : { 
+			},
+			'denominazione' : {
                 type : "w-text",
-			}, 
-			'indirizzo' : { 
+			},
+			'indirizzo' : {
                 type : "w-text",
-			}, 
-			'comune' : { 
+			},
+			'comune' : {
                 type : "w-text",
-			}, 
-			'email_riferimento' : { 
+			},
+			'email_riferimento' : {
                 type : "w-text",
-			}, 
-			'provincia' : { 
+			},
+			'provincia' : {
                 type : "w-belongsto",
                 labelFields : [
 					'sigla'
 				],
-			}, 
+			},
 
         },
         orderFields : {
@@ -145,78 +145,78 @@ export default {
 
         ],
         fieldsConfig: {
-			'anno' : { 
+			'anno' : {
                 type : "w-input",
                 inputType: "number",
-			}, 
-			'area_geografica' : { 
+			},
+			'area_geografica' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'provincia_id' : { 
+			},
+			'provincia_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'codice_istituto_riferimento' : { 
+			},
+			'codice_istituto_riferimento' : {
                 type : "w-input",
-			}, 
-			'denominazione_istituto_riferimento' : { 
+			},
+			'denominazione_istituto_riferimento' : {
                 type : "w-input",
-			}, 
-			'codice' : { 
+			},
+			'codice' : {
                 type : "w-input",
-			}, 
-			'denominazione' : { 
+			},
+			'denominazione' : {
                 type : "w-input",
-			}, 
-			'indirizzo' : { 
+			},
+			'indirizzo' : {
                 type : "w-input",
-			}, 
-			'cap' : { 
+			},
+			'cap' : {
                 type : "w-input",
-			}, 
-			'catastale_comune' : { 
+			},
+			'catastale_comune' : {
                 type : "w-input",
-			}, 
-			'comune' : { 
+			},
+			'comune' : {
                 type : "w-input",
-			}, 
-			'caratteristica' : { 
+			},
+			'caratteristica' : {
                 type : "w-input",
-			}, 
-			'tipologia_grado_istruzione' : { 
+			},
+			'tipologia_grado_istruzione' : {
                 type : "w-input",
-			}, 
-			'indicazione_sede_direttivo' : { 
+			},
+			'indicazione_sede_direttivo' : {
                 type : "w-radio",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'indicazione_sede_omnicomprensivo' : { 
+			},
+			'indicazione_sede_omnicomprensivo' : {
                 type : "w-input",
-			}, 
-			'email' : { 
+			},
+			'email' : {
                 type : "w-input",
-			}, 
-			'pec' : { 
+			},
+			'pec' : {
                 type : "w-input",
-			}, 
-			'web' : { 
+			},
+			'web' : {
                 type : "w-input",
-			}, 
-			'sede_scolastica' : { 
+			},
+			'sede_scolastica' : {
                 type : "w-radio",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'email_riferimento' : { 
+			},
+			'email_riferimento' : {
                 type : "w-input",
-			}, 
-			'user' : { 
+			},
+			'user' : {
                 type : "w-text",
-			}, 
+			},
 
         }
 
