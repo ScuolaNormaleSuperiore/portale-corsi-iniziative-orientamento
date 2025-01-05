@@ -13,6 +13,9 @@ use App\Enums\OlimpiadiMatematicaSquadreFemminili;
 use App\Enums\OlimpiadiScienzeNaturali;
 use App\Enums\Stages;
 use App\Models\Candidato;
+use App\Models\CandidatoCorso;
+use App\Models\CandidatoVoti;
+use App\Models\Corso;
 use App\Models\Iniziativa;
 use App\Models\LivelloLinguistico;
 use App\Models\ModalitaConoscenzaSns;
@@ -20,12 +23,14 @@ use App\Models\Professione;
 use App\Models\Provincia;
 use App\Models\Scuola;
 use App\Models\TitoloStudio;
+use App\Services\FormatValues;
 use Database\Factories\LocalizeFakerFactoryTrait;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CandidatiTableSeeder extends Seeder
 {
@@ -40,6 +45,9 @@ class CandidatiTableSeeder extends Seeder
     public function run()
     {
         $this->faker = Factory::create('it');
+
+        Candidato::where('id','>=',1)->delete();
+        User::where('id','>',2)->delete();
         //
 //        $users = factory(App\User::class, 3)->make();
         // \App\Models\User::factory(10)->create();
@@ -61,9 +69,10 @@ class CandidatiTableSeeder extends Seeder
 
         $scuoleIds = DB::table('scuole')->pluck('id', 'id')->all();
 
+        $materie = DB::table('materie')->pluck('id', 'id')->all();
 
         \Illuminate\Support\Facades\Auth::loginUsingId(3);
-        foreach (range(1, 1000) as $i) {
+        foreach (range(1, 100) as $i) {
 
             $email = $this->faker->unique()->safeEmail . '_' . $i;
             \App\Models\User::factory(1)->create([
@@ -71,7 +80,7 @@ class CandidatiTableSeeder extends Seeder
                 'name' => $email,
             ])->each(function ($u)
             use (
-                $iniziativeIds, $province, $titoliStudio, $professioni,
+                $iniziativeIds, $province, $titoliStudio, $professioni, $materie,
                 $professione2Altro, $professione1Altro, $livelliLingusitici, $modalitaConoscenza, $scuoleIds,
             ) {
 
@@ -93,6 +102,9 @@ class CandidatiTableSeeder extends Seeder
 
 
                 foreach ($iniziativeIds as $iniziativaId => $anno) {
+
+                    $corsiDisponibili = Corso::where('iniziativa_id',$iniziativaId)
+                        ->get()->pluck('id','id')->all();
 
                     switch ($role) {
                         case 'Studente':
@@ -140,6 +152,7 @@ class CandidatiTableSeeder extends Seeder
                                 'user_id' => $u->getKey(),
                             ];
                             $candidati = Candidato::factory()->create($data);
+                            $this->createRelations($candidati,$corsiDisponibili,$materie);
                             $this->transitions($candidati);
                             break;
                         case 'Scuola':
@@ -176,6 +189,7 @@ class CandidatiTableSeeder extends Seeder
                                     'user_id' => $u->getKey(),
                                 ];
                                 $candidati = Candidato::factory()->create($data);
+                                $this->createRelations($candidati,$corsiDisponibili,$materie);
                                 $this->transitions($candidati);
                             }
                             break;
@@ -198,6 +212,33 @@ class CandidatiTableSeeder extends Seeder
             if (rand(0, 100) > 75) {
                 $candidati->makeTransitionAndSave('approvata');
             }
+        }
+    }
+
+    protected function createRelations($candidati,$corsiDisponibili,$materieDisponibili) {
+        $corsi = Arr::wrap(array_rand($corsiDisponibili,rand(1,count($corsiDisponibili))));
+        $j = 0;
+        foreach ($corsi as $corso) {
+            CandidatoCorso::create([
+                'candidato_id' => $candidati->getKey(),
+                'corso_id' => $corso,
+                'ordine' => $j,
+            ]);
+            $j++;
+        }
+
+        $materie = Arr::wrap(array_rand($materieDisponibili,rand(1,30)));
+        $j = 0;
+        foreach ($materie as $materia) {
+            CandidatoVoti::create([
+                'candidato_id' => $candidati->getKey(),
+                'materia_id' => $materia,
+                'voto_anno_1' => FormatValues::formatNumber(rand(12,20)/2,2),
+                'voto_anno_2' => FormatValues::formatNumber(rand(12,20)/2,2),
+                'voto_primo_quadrimestre' => FormatValues::formatNumber(rand(12,20)/2,2),
+//                'ordine' => $j,
+            ]);
+            $j++;
         }
     }
 }

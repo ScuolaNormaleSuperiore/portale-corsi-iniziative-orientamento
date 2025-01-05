@@ -44,6 +44,8 @@
  * ]
  */
 
+use App\Models\LivelloLinguistico;
+
 return [
 
     'view' => [
@@ -200,15 +202,131 @@ return [
         ],
     ],
     'list' => [
-        'allowed_actions' => [
-            'set' => true,
-        ],
         'actions' => [
             'set' => [
                 'allowed_fields' => [
                     'status',
                 ],
             ],
+            'csv-export' => [
+                'default' => [
+                    'blacklist' => [
+//                        'password'
+                    ],
+                    'whitelist' => [
+                        "cognome",
+                        "nome",
+                        "sesso",
+                        "luogo_nascita",
+                        "data_nascita",
+                        "indirizzo",
+                        "cap",
+                        "comune",
+                        "provincia_id",
+                        "regione_id",
+                        "telefono",
+                        "emails",
+
+                        "gen1_titolo_studio_id",
+                        "gen2_titolo_studio_id",
+
+                        "scuola|tipologia_grado_istruzione",
+                        "classe",
+                        "scuola|regione_id",
+
+//                        "scuola|biennio",
+                        "scuola|denominazione",
+                        "scuola|email_riferimento",
+                        "profilo",
+
+
+                        'olimpiadi_matematica',
+                        'olimpiadi_matematica_squadre',
+                        'olimpiadi_matematica_squadre_femminili',
+                        'olimpiadi_fisica',
+                        'olimpiadi_fisica_squadre_miste',
+                        'olimpiadi_scienze_naturali',
+                        'giochi_chimica',
+                        'olimpiadi_informatica',
+
+                        'stages',
+                        'gare_internazionali',
+                        'gare_umanistiche',
+                        'partecipazione_concorsi',
+
+                        'inglese_livello_linguistico_id',
+                        'francese_livello_linguistico_id',
+                        'spagnolo_livello_linguistico_id',
+                        'tedesco_livello_linguistico_id',
+                        'cinese_livello_linguistico_id',
+
+                        'altre_competenze_linguistiche',
+
+                        'esperienze_estere',
+                        'materie_preferite',
+                        'settore_professionale',
+                        'motivazioni',
+
+                        'corsi',
+
+                        'media',
+                        'status',
+                        'voti',
+
+
+                    ],
+                    'fieldsParams' => [
+                        "email" => [
+                            'header' => 'email',
+                        ],
+                        "annoaccademico|categoriaaccademica_id" => [
+                            'header' => 'categoriaaccademica',
+                        ],
+                        "fb_id" => [
+                            'header' => 'Facebook id',
+                        ],
+                        "as400_sent" => [
+                            'header' => 'Inviato AS400',
+                        ],
+                        "anagrafica|nome" => [
+                            'header' => 'nome',
+                        ],
+                        "anagrafica|cognome" => [
+                            'header' => 'cognome',
+                        ],
+                        "anagrafica|denominazione" => [
+                            'header' => 'Denominazione',
+                        ],
+                        "anagrafica|codicefiscale" => [
+                            'header' => 'C.F.',
+                        ],
+                        "anagrafica|partitaiva" => [
+                            'header' => 'P. IVA',
+                        ],
+                        "anagrafica|sesso" => [
+                            'header' => 'Sesso',
+                        ],
+                        "created_at" => [
+                            'header' => 'Utente creato il',
+                        ],
+                        "updated_at" => [
+                            'header' => 'Ultima modifica',
+                        ],
+                        "n_orders" => [
+                            'header' => 'N. ordini',
+                        ]
+                    ],
+                    'separator' => ';',
+                    'endline' => "\n",
+                    'headers' => 'plain',
+                    'decimalFrom' => '.',
+                    'decimalTo' => false,
+                ],
+            ]
+        ],
+        'allowed_actions' => [
+            "set" => true,
+            "csv-export" => true,
         ],
         'dependencies' => [
             'search' => 'search',
@@ -261,6 +379,23 @@ return [
 
                 ]
             ],
+            "provincia" => [
+                "fields" => [
+
+                ]
+            ],
+            "corsi" => [
+                "fields" => [
+
+                ],
+            ],
+            "voti" => [
+                "fields" => [
+
+                ],
+            ]
+
+
         ],
         'params' => [
 
