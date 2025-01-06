@@ -87,7 +87,8 @@ export default {
         ],
         fieldsConfig: {
             'data_candidatura': {
-                type: 'w-date-text'
+                type: 'w-date-text',
+                invalidDateString : "N.D.",
             },
             'iniziativa': {
                 type: "w-custom",

@@ -240,5 +240,6 @@ class CandidatiTableSeeder extends Seeder
             ]);
             $j++;
         }
+        $candidati->calculateMedia(true);
     }
 }
