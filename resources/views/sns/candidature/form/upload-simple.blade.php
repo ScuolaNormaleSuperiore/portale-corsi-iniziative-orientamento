@@ -2,9 +2,15 @@
     $fieldData = \Illuminate\Support\Arr::get($sectionData['fields'],$field,[]);
     $validation = \Illuminate\Support\Arr::get($fieldData,'validation',[]);
     $value = \Illuminate\Support\Arr::get($fieldData,'value',old($field));
+    $exts = \Illuminate\Support\Arr::get($fieldData,'exts');
 @endphp
 
+@if($exts)
+<p>Estensioni accettate: {{$exts}}</p>
+@endif
+
 <input type="file" name="{{$field}}" id="{{$field}}" class="upload" multiple="multiple"/>
+
 <label for="{{$field}}">
     <svg class="icon icon-sm" aria-hidden="true">
         <use href="{{Theme::url('svg/sprites.svg')}}#it-upload"></use>
@@ -14,43 +20,48 @@
 
 <ul class="upload-file-list" id="upload-file-list-candidatura-{{$field}}">
 
-    @foreach($candidatura->attachments as $attachment)
-    <li class="upload-file success">
+    <li class="upload-file error d-none" style="max-width:100%" id="error-file-li">
         <svg class="icon icon-sm" aria-hidden="true">
             <use href="{{Theme::url('svg/sprites.svg')}}#it-file"></use>
         </svg>
         <p>
-            <span class="visually-hidden">File caricato:</span>
-            {{$attachment->nome}} <span class="upload-file-weight">{{$attachment->dim}}</span>
+            Errore nel caricamento file <span id="error-filename"></span>.<br/>
+            @if($exts)
+                <span>Si prega di riprovare ricordandosi che le estensioni accettate sono: {{$exts}}.</span>
+            @else
+                <span>Si prega di riprovare.</span>
+            @endif
         </p>
-        <button type="button" class="remove-attachment">
-            <span class="visually-hidden">Elimina file caricato {{$attachment->dim}}</span>
+        <button type="button" id="error-file-button">
+            <span class="visually-hidden">Nascondi errore caricamento file</span>
             <svg class="icon" aria-hidden="true">
                 <use href="{{Theme::url('svg/sprites.svg')}}#it-close"></use>
             </svg>
         </button>
-        <input type="hidden" name="attachments-id[]" value="{{$attachment->id}}"/>
-        <input type="hidden" name="attachments-status[]" value=""/>
-        <input type="hidden" name="attachments-resource[]" value="{{json_encode($attachment->resource)}}"/>
-        <input type="hidden" name="attachments-nome[]" value="{{$attachment->nome}}"/>
-
     </li>
+
+    @foreach($candidatura->attachments as $attachment)
+        <li class="upload-file success">
+            <svg class="icon icon-sm" aria-hidden="true">
+                <use href="{{Theme::url('svg/sprites.svg')}}#it-file"></use>
+            </svg>
+            <p>
+                <span class="visually-hidden">File caricato:</span>
+                {{$attachment->nome}} <span class="upload-file-weight">{{$attachment->dim}}</span>
+            </p>
+            <button type="button" class="remove-attachment">
+                <span class="visually-hidden">Elimina file caricato {{$attachment->dim}}</span>
+                <svg class="icon" aria-hidden="true">
+                    <use href="{{Theme::url('svg/sprites.svg')}}#it-close"></use>
+                </svg>
+            </button>
+            <input type="hidden" name="attachments-id[]" value="{{$attachment->id}}"/>
+            <input type="hidden" name="attachments-status[]" value=""/>
+            <input type="hidden" name="attachments-resource[]" value="{{json_encode($attachment->resource)}}"/>
+            <input type="hidden" name="attachments-nome[]" value="{{$attachment->nome}}"/>
+
+        </li>
     @endforeach
-    {{--    <li class="upload-file error">--}}
-    {{--        <svg class="icon icon-sm" aria-hidden="true">--}}
-    {{--            <use href="{{Theme::url('svg/sprites.svg')}}#it-file"></use>--}}
-    {{--        </svg>--}}
-    {{--        <p>--}}
-    {{--            <span class="visually-hidden">Errore caricamento file:</span>--}}
-    {{--            nome-file-04.jpg <span class="upload-file-weight"></span>--}}
-    {{--        </p>--}}
-    {{--        <button>--}}
-    {{--            <span class="visually-hidden">Elimina file caricato nome-file-04.jpg</span>--}}
-    {{--            <svg class="icon" aria-hidden="true">--}}
-    {{--                <use href="{{Theme::url('svg/sprites.svg')}}#it-close"></use>--}}
-    {{--            </svg>--}}
-    {{--        </button>--}}
-    {{--    </li>--}}
 </ul>
 
 <svg class="d-none icon icon-sm" aria-hidden="true" id="svg-{{$field}}">
@@ -83,6 +94,10 @@
         }
 
         var inputFile = document.getElementById('{{$field}}');
+
+        document.getElementById('error-file-button').addEventListener('click', function () {
+            hideErrorfile();
+        });
         inputFile.addEventListener('change', function (e, v) {
             var uploadList = document.getElementById('upload-file-list-candidatura-{{$field}}');
             // uploadList.innerHTML = '';
@@ -109,8 +124,9 @@
                 uploadList.appendChild(dFrag);
 
                 console.log("FILE SUCCESS", j);
-            }).catch(function (e) {
-                console.log("FILE ERROR", e);
+            }).catch(function (err) {
+                document.getElementById('error-filename').innerText = e.target.files[0].name;
+                document.getElementById('error-file-li').classList.remove('d-none');
             });
         })
 
@@ -177,6 +193,12 @@
         function removeAttachment(el) {
             var li = el.closest('li');
             li.remove();
+        }
+
+        function hideErrorfile() {
+            var li = document.getElementById('error-file-li');
+            console.log('li');
+            li.classList.add('d-none');
         }
     })
 

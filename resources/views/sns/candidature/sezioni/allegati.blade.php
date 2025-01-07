@@ -1,1 +1,1 @@
-@include('candidature.form.upload-simple',['field' => 'curriculum'])
+@include('candidature.form.upload-simple',['field' => 'attachments'])

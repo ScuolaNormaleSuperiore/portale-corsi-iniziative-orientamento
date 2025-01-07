@@ -375,7 +375,7 @@ return [
                     'attachments|resource' => [
                         'resource_type' => 'attachment',
                         //'max_size' => '4M',
-                        'exts' => 'pdf',
+                        'exts' => 'pdf,png,jpg',
                     ],
 //                'thumb_url_file' => [
 //                    'resource_type' => 'foto',
