@@ -21,7 +21,8 @@ use App\Http\Controllers\CandidatureController;
 Route::get('json/dynamic-conf', [JsonController::class,'postDynamicConf'])->name('json-dynamic-conf');
 Route::post('json/user-info', [JsonController::class,'getUserInfo'])->name('json-user-info');
 
-Route::get('test', [\App\Http\Controllers\TestController::class,'test'])->name('test');
+//Route::get('test', [\App\Http\Controllers\TestController::class,'test'])->name('test');
+//Route::get('testn', [\App\Http\Controllers\TestController::class,'newsletter'])->name('testn');
 
 Route::get('/', [FEController::class,'index'])->name('fe-index')->middleware([]);
 Route::get('/orientamento', [FEController::class,'orientamento'])->name('orientamento')->middleware([]);

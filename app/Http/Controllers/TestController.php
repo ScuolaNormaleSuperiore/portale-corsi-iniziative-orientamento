@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Brevo\Client\Api\AccountApi;
 use Brevo\Client\Api\ContactsApi;
+use Brevo\Client\ApiException;
+use Brevo\Client\Model\AddContactToList;
 use Carbon\Carbon;
 use Hofmannsven\Brevo\Facades\Brevo;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Vedmant\FeedReader\Facades\FeedReader;
 use willvincent\Feeds\Facades\FeedsFacade;
 
@@ -137,5 +140,81 @@ class TestController extends Controller
 
     }
 
+
+    public function newsletter() {
+        $brevo = new Brevo();
+
+
+
+        $apiInstance = new AccountApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            null,
+            $brevo::getConfiguration()
+        );
+        $contanctsApiInstance = new ContactsApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            null,
+            $brevo::getConfiguration()
+        );
+
+        echo '<pre>';
+
+        $identifier = "giacomo.terreni@gmail.com";
+        $list = 63;
+
+        try {
+
+            $result = $contanctsApiInstance->getContactInfo("giacomo.terreni@gmail.com");
+            print_r($result);
+                        $contanctsApiInstance->deleteContact("giacomo.terreni@gmail.com");
+
+            return;
+//            $result = $apiInstance->getAccount();
+//            print_r($result);
+//            $contactEmails = new \Brevo\Client\Model\AddContactToList(["giacomo.terreni@gmail.com"]);
+//            $result = $contanctsApiInstance->addContactToList(63,$contactEmails);
+//            print_r($result);
+
+            $result = $contanctsApiInstance->getContactInfo($identifier);
+
+            if ($result->getId()) {
+                $lists = $result->getListIds();
+                if (in_array($list,$lists)) {
+                    echo "Contact already in list";
+                } else {
+                    $identifier = $result->getId();
+                    $contact = new AddContactToList(['ids' => [$identifier]]);
+                    $result = $contanctsApiInstance->addContactToList(63,$contact);
+                    print_r($result);
+                }
+            } else {
+                $contact = new \Brevo\Client\Model\CreateContact();
+                $contact->setEmail($identifier);
+                $contact->setListIds([63]);
+                $result = $contanctsApiInstance->createContact($contact);
+                print_r($result);
+
+            }
+
+            $result = $contanctsApiInstance->getLists(50);
+            $result = $contanctsApiInstance->getContactsFromList(63);
+            print_r($result);
+//            $contanctsApiInstance->deleteContact("giacomo.terreni@gmail.com");
+//            $result = $contanctsApiInstance->getContactInfo("giacomo.terreni@gmail.com");
+//            print_r($result);
+        } catch (ApiException $e) {
+            Log::info('BREVO API Exception');
+            Log::info($e->getMessage());
+            Log::info($e->getCode());
+        } catch (\Throwable $e) {
+            Log::info('BREVO API Exception -- OTHER ERROR');
+            Log::info($e->getMessage());
+        }
+
+
+        echo '</pre>';
+    }
 
 }
