@@ -35,16 +35,6 @@ class DownloadController extends DownloadControllerCupparis {
         return Route::dispatch($request);
     }
 
-    public function downloadMAVFile(Studente $studente,$dir)
-    {
-
-        $anno = AppVars::getSessionValue('anno');
-        $cf = strtoupper($studente->codicefiscale);
-        $diskDriver = property_exists($this, 'disk_driver') ? $this->disk_driver : 'local';
-        $filepath = 'files/mavs/' . $anno . '/' . $dir . '/' . $cf . '.pdf';
-        $filename = $dir . '-' . $cf . '.pdf';
-        return Storage::disk($diskDriver)->response($filepath, $filename, [], 'attachment');
-    }
 
     public function downloadtemp($nome)
     {

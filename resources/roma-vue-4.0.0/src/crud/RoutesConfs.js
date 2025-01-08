@@ -24,6 +24,17 @@ export default {
             resultType: 'record'
         }
 
+        routes['xls-exporta'] = {
+            url: prefix + '/foormaction/csv-export/{foorm}/{foormtype}', // {foormpk?}',
+            method: 'post',
+            resultType: 'record'
+        }
+        routes['media-export'] = {
+            url: prefix + '/foormaction/media-download/{foorm}/{foormtype}/{foormpk}', // {foormpk?}',
+            method: 'post',
+            resultType: 'record'
+        }
+
         routes['multi-delete'].url = '/foormaction/multi-delete/{modelName}/list'
         routes['uploadfile'].url = '/foormaction/uploadfile/{modelName}/edit'
 

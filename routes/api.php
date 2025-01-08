@@ -78,6 +78,8 @@ Route::group([
     Route::get('viewuploadable/{filename}/{template?}', [DownloadController::class, 'viewUploadableFile']);
     Route::get('downloaduploadable/{filename}/{disposition?}', [DownloadController::class, 'downloadUploadableFile']);
 
+    Route::get('downloadrelation/{model}/{pk}/{relation?}', [DownloadController::class, 'downloadRelation']);
+
 });
 
 Route::get('/iniziativa-corsi/{iniziativa}',[\App\Http\Controllers\Api\AppController::class,'getIniziativaCorsi'])->name('iniziativa-corsi');

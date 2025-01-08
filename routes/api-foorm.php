@@ -51,6 +51,13 @@ Route::group(['prefix' => 'foormaction','middleware' => 'auth:sanctum'], functio
     Route::post('elastic-json/{foorm}/{foormtype}/{foormpk?}', [FoormActionController::class,'postElasticJson'])->where([
         'foorm' => $whereFoorm
     ]);
+
+    Route::post('xls-export/{foorm}/{foormtype}/{foormpk?}', [FoormActionController::class,'postXlsExport'])->where([
+        'foorm' => $whereFoorm
+    ]);
+    Route::post('media-download/{foorm}/{foormtype}/{foormpk}', [FoormActionController::class,'postMediaDownload'])->where([
+        'foorm' => $whereFoorm
+    ]);
 });
 
 

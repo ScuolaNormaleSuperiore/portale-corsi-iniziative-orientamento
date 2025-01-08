@@ -1,5 +1,8 @@
 import cs from 'cupparis-primevue';
 import _ from "lodash";
+import Server from "cupparis-primevue/src/lib/Server";
+import CrudHelpers from "cupparis-primevue/src/lib/CrudHelpers";
+import CrudVars from "cupparis-primevue/src/lib/CrudVars";
 
 export default {
     modelName: 'candidato',
@@ -72,7 +75,76 @@ export default {
             'action-delete',
             // 'action-delete-selected',
             'action-export-csv',
+            'action-export-media',
         ],
+        actionsConfig : {
+            'action-export-media' : {
+                visible() {
+                    console.log("CICCIO",this.modelData);
+                  return this.modelData.attachments.length > 0;
+                },
+                execute (event) {
+                    let tA = this;
+                    return new Promise(function (resolve,reject) {
+                        tA._exportPdf(function (esito) {
+                            console.log('save back Event',event,esito);
+                            if (esito) {
+                                resolve();
+                            } else {
+                                reject();
+                            }
+
+                        })
+                    })
+                    //this._save(callback)
+                },
+                _exportPdf (callback) {
+                    var that = this
+                    var r = that.view.createRoute(that.routeName)
+                    let foormPk = that.modelData[that.view.primaryKey];
+                    r.setValues({
+                        'foorm': that.view.modelName,
+                        'foormtype': 'list',
+                        'foormpk' : foormPk
+                    })
+                    // r.setParams(that.view.getParams());
+                    // r.setParam('relation', that.pdfType)
+                    that.view.waitStart(that.startMessage)
+                    Server.route(r, function (json) {
+                        that.view.waitEnd()
+                        if (json.error) {
+                            that.view.errorDialog(json.msg)
+                            callback(false);
+                            return
+                        }
+                        if (that.blob) {
+                            let filename = json.result[that.nameField]?json.result[that.nameField]:'file.zip';
+                            CrudHelpers.createRuntimeDownload(json.result[that.contentField],json.result[that.mimeField],filename);
+                        } else {
+                            let prefix = CrudVars.useApi?'/api':'';
+                            document.location.href = prefix + json.result.link
+                        }
+                        callback(true);
+                        //console.log(json)
+                    })
+
+                    //console.log('r', r)
+                },
+                type: 'record',
+                icon: 'fa fa-download',
+                text: '',
+                title: 'Esportazione di tutti gli allegati',
+                css: 'p-button-sm p-button-text p-button-secondary',
+                pdfType: 'record',
+                routeName: 'media-export',
+                startMessage: 'Generazione file zip in corso...',
+                blob: true,
+                contentField: 'content',
+                mimeField: 'mime',
+                nameField: 'name',
+            }
+
+        },
         fields: [
             'status',
             'iniziativa',

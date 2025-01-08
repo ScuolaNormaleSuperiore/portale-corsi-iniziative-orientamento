@@ -67,6 +67,20 @@ class FoormActionController extends Controller
         return $this->_json();
     }
 
+    public function postXlsExport($foormName, $foormType, $pk = null)
+    {
+        $params = $pk ? ['id' => $pk] : [];
+        $this->buildAndGetFoormActionResult('xls-export', $foormName, $foormType, $params);
+        return $this->_json();
+    }
+
+    public function postMediaDownload($foormName, $foormType, $pk = null)
+    {
+        $params = $pk ? ['id' => $pk] : [];
+        $this->buildAndGetFoormActionResult('media-download', $foormName, $foormType, $params);
+        return $this->_json();
+    }
+
     protected function buildAndGetFoormActionResult($action, $foormName, $foormType, $params)
     {
 

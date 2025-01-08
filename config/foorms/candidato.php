@@ -289,6 +289,7 @@ return [
             ]
         ],
         'allowed_actions' => [
+            'media-download' => true,
             "set" => true,
             "csv-export" => true,
         ],
@@ -357,6 +358,11 @@ return [
                 "fields" => [
 
                 ],
+            ],
+            "attachments" => [
+                "fields" => [
+                    'id' => [],
+                ]
             ]
 
 
