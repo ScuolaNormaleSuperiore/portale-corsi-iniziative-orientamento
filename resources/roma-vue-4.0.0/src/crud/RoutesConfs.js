@@ -25,7 +25,7 @@ export default {
         }
 
         routes['xls-exporta'] = {
-            url: prefix + '/foormaction/csv-export/{foorm}/{foormtype}', // {foormpk?}',
+            url: prefix + '/foormaction/xls-export/{foorm}/{foormtype}', // {foormpk?}',
             method: 'post',
             resultType: 'record'
         }

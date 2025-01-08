@@ -137,7 +137,7 @@ class CandidatoFactory extends Factory
             'emails' => $email,
             'sesso' => Arr::random(['F', 'M', 'A']),
             'luogo_nascita' => $this->faker->city,
-            'data_nascita' => ($this->faker->dateTimeInInterval('19 years', '+2 years'))->format('Y-m-d'),
+            'data_nascita' => ($this->faker->dateTimeInInterval('-19 years', '+2 years'))->format('Y-m-d'),
             'indirizzo' => $this->faker->address,
             'comune' => $this->faker->city,
             'cap' => $this->faker->postcode,

@@ -211,7 +211,7 @@ return [
                     'status',
                 ],
             ],
-            'csv-export' => [
+            'xls-export' => [
                 'default' => [
                     'blacklist' => [
 //                        'password'
@@ -292,6 +292,7 @@ return [
             'media-download' => true,
             "set" => true,
             "csv-export" => true,
+            "xls-export" => true,
         ],
         'dependencies' => [
             'search' => 'search',

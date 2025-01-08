@@ -74,10 +74,75 @@ export default {
             'action-edit',
             'action-delete',
             // 'action-delete-selected',
-            'action-export-csv',
+            'action-export-xls',
             'action-export-media',
         ],
         actionsConfig : {
+
+            'action-export-xls' : {
+                execute (event) {
+                    let tA = this;
+                    return new Promise(function (resolve,reject) {
+                        tA._exportCsv(function (esito) {
+                            console.log('save back Event',event,esito);
+                            if (esito) {
+                                resolve();
+                            } else {
+                                reject();
+                            }
+
+                        })
+                    })
+                    //this._save(callback)
+                },
+                _exportCsv (callback) {
+                    var that = this
+                    var r = that.view.createRoute(that.routeName)
+                    r.setValues({
+                        'foorm': that.view.modelName,
+                        'foormtype': 'list'
+                    })
+                    r.setParams(that.view.getParams());
+                    r.setParam('csvType', that.csvType)
+                    that.view.waitStart(that.startMessage)
+                    Server.route(r, function (json) {
+                        that.view.waitEnd()
+                        if (json.error) {
+                            that.view.errorDialog(json.msg)
+                            callback(false)
+                            return
+                        }
+                        //let prefix = CrudVars.useApi?'/api':'';
+                        //document.location.href = prefix + json.result.link
+                        if (that.blob) {
+                            let filename = json.result[that.nameField]?json.result[that.nameField]:'file.pdf';
+                            CrudHelpers.createRuntimeDownload(json.result[that.contentField],json.result[that.mimeField],filename);
+                        } else {
+                            var anchor = document.createElement('a');
+                            anchor.href = json.result.link;
+                            anchor.target="_blank";
+                            anchor.click();
+                        }
+                        callback(true)
+                        //console.log(json)
+                    })
+
+                    //console.log('r', r)
+                },
+                type: 'collection',
+                icon: 'fa fa-file-excel',
+                text: 'Esporta',
+                css: 'p-button-sm p-button-text p-button-secondary',
+                csvType: 'default',
+                routeName: 'xls-exporta',
+                startMessage: 'Generazione csv in corso...',
+                blob: true,
+                contentField: 'content',
+                mimeField: 'mime',
+                nameField: 'name',
+            },
+
+
             'action-export-media' : {
                 visible() {
                     console.log("CICCIO",this.modelData);
