@@ -15,7 +15,7 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 
-  <script type="module" crossorigin src="/roma-vue/assets/index-cf0b6f76.js"></script>
+  <script type="module" crossorigin src="/roma-vue/assets/index-42eaf8d0.js"></script>
   <link rel="stylesheet" href="/roma-vue/assets/index-e08087fc.css">
 </head>
 </head>
