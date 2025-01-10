@@ -304,7 +304,7 @@ class XlsExport extends BaseCsvExport
 //            $chunkData = $builder->toArray();
 
             if ($builder->count() >= 1) {
-                $dataArray = $dataArray + $this->getDataFromChunk($builder);
+                $dataArray = array_merge($dataArray,$this->getDataFromChunk($builder));
 
                 $builder = $clonedBuilder;
             } else {
