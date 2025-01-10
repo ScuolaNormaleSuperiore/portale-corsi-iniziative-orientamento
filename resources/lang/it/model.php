@@ -20,6 +20,7 @@ return array (
   'appuntamento' => 'appuntamento|appuntamenti',
   'pagina_orientamento' => 'pagina (orientamento)|pagine (orientamento)',
   'pagina' => 'pagina (stanndard)|pagine (standard)',
+    'pagina_info' => 'pagina (info corsi)|pagine (info corsi)',
   'sezione_contenuto' => 'sezione|sezioni',
   'fotos' => 'Foto|Foto',
   'attachments' => 'Allegati|Allegati',

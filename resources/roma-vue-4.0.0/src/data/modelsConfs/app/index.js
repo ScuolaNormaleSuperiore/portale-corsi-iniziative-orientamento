@@ -14,6 +14,7 @@ import ModelClasse from './ModelClasse.js';
 import ModelSezioneContenuto from './ModelSezioneContenuto.js';
 import ModelPagina from './ModelPagina.js';
 import ModelPaginaOrientamento from './ModelPaginaOrientamento.js';
+import ModelPaginaInfo from './ModelPaginaInfo.js';
 import ModelAppuntamento from './ModelAppuntamento.js';
 import ModelCandidatoCorso from './ModelCandidatoCorso.js';
 import ModelCandidatoVoti from './ModelCandidatoVoti.js';
@@ -54,6 +55,7 @@ export default {
 		cs.CrudVars.modelConfs.ModelSezioneContenuto = ModelSezioneContenuto;
 		cs.CrudVars.modelConfs.ModelPagina = ModelPagina;
 		cs.CrudVars.modelConfs.ModelPaginaOrientamento = ModelPaginaOrientamento;
+        cs.CrudVars.modelConfs.ModelPaginaInfo = ModelPaginaInfo;
 		cs.CrudVars.modelConfs.ModelAppuntamento = ModelAppuntamento;
 		cs.CrudVars.modelConfs.ModelCandidatoCorso = ModelCandidatoCorso;
 		cs.CrudVars.modelConfs.ModelCandidatoVoti = ModelCandidatoVoti;

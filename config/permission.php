@@ -172,6 +172,7 @@ return [
             'candidato_corso',
             'pagina',
             'pagina_orientamento',
+            'pagina_info',
             'news',
             'evento',
             'video',

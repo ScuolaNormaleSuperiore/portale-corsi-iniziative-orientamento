@@ -322,6 +322,9 @@ return [
             "tipo_text" => [
 
             ],
+            "media" => [
+
+            ],
 
         ],
         'appends' => [

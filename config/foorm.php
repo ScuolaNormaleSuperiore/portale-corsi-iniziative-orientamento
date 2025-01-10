@@ -91,6 +91,7 @@ return [
         'scuola_richiesta',
         'avviso',
         'copertina',
+        'pagina_info',
 //        'foto',
 //        'attachment',
     ],
