@@ -9,3 +9,4 @@ sassdoc
 /.idea
 
 package-lock.json
+.env.local
