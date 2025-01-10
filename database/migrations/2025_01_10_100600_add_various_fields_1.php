@@ -8,6 +8,14 @@ return new class extends Migration {
     public function up()
     {
 
+        $query = "ALTER TABLE iniziative MODIFY COLUMN note TEXT NULL";
+        \Illuminate\Support\Facades\DB::statement($query);
+        $query = "ALTER TABLE iniziative MODIFY COLUMN posti INT(10) NULL";
+        \Illuminate\Support\Facades\DB::statement($query);
+        $query = "ALTER TABLE iniziative MODIFY COLUMN posti_onere INT(10) NULL";
+        \Illuminate\Support\Facades\DB::statement($query);
+
+
         $query = "ALTER TABLE pagine MODIFY COLUMN tipo ENUM('standard','blade','orientamento','info') DEFAULT 'standard'";
         \Illuminate\Support\Facades\DB::statement($query);
 
@@ -16,10 +24,13 @@ return new class extends Migration {
             $table->text('info')->nullable();
 
         });
+
         Schema::table('pagine', function (Blueprint $table) {
 
             $table->unsignedBigInteger('parent_id')->nullable()->default(null);
 
+            $table->dropUnique(['titolo_it']);
+            $table->unique(['tipo','titolo_it'],'pag_slug_uq');
         });
     }
 
@@ -34,6 +45,8 @@ return new class extends Migration {
             $table->dropColumn([
                 'parent_id',
             ]);
+            $table->dropUnique('pag_slug_uq');
+            $table->unique('titolo_it');
         });
     }
 };

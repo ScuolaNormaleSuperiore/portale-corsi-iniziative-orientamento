@@ -9,6 +9,7 @@ use App\Models\Evento;
 use App\Models\MateriaOrientamento;
 use App\Models\News;
 use App\Models\Pagina;
+use App\Models\PaginaInfo;
 use App\Models\PaginaOrientamento;
 use App\Models\SezioneLayout;
 use App\Models\StudenteOrientamento;
@@ -119,7 +120,7 @@ class FEController extends Controller
     {
 
         $navleft = [
-            'sezioni' => $pagina->sezioni->whereNotNull('nome_it')->all(),
+            'sezioni' => $pagina->sezioni,
             'allegati' => $pagina->attachments,
         ];
         $breadcrumbs = [
@@ -134,7 +135,7 @@ class FEController extends Controller
     {
 
         $navleft = [
-            'sezioni' => $pagina->sezioni->whereNotNull('nome_it')->all(),
+            'sezioni' => $pagina->sezioni,
             'allegati' => $pagina->attachments,
         ];
         $breadcrumbs = [
@@ -166,6 +167,30 @@ class FEController extends Controller
             'Orientamento' => '#',
         ];
         return view('orientamento', compact('descrizione', 'pagine', 'breadcrumbs'));
+    }
+
+    public function infoCorsi(Request $request, PaginaInfo $pagina = null)
+    {
+
+        $descrizione = SezioneLayout::where('codice', 'info-corsi-intro')->firstOrNew();
+        $pagine = PaginaInfo::where('attivo', 1)->orderBy('ordine', 'ASC')->orderBy('titolo_it', 'ASC')->get();
+
+        $navleft = [];
+        if ($pagina) {
+            $navleft = [
+                'sezioni' => $pagina->sezioni,
+                'allegati' => $pagina->attachments,
+            ];
+        }
+        $navleftInfo = [
+            'pagine' => $pagine->pluck('slug_it','id')->all(),
+        ];
+        $breadcrumbs = [
+            'Home' => '/',
+            'Info corsi' => '#',
+        ];
+
+        return view('info-corsi', compact('descrizione','navleftInfo','pagine', 'breadcrumbs', 'pagina', 'navleft'));
     }
 
     public function sportelloStudentiClasse(Request $request, Classe $classe)
@@ -283,7 +308,7 @@ class FEController extends Controller
     {
 
         $navleft = [
-            'sezioni' => $notizia->sezioni->whereNotNull('nome_it')->all(),
+            'sezioni' => $notizia->sezioni,
             'data_news' => $notizia->data,
             'allegati' => $notizia->attachments,
         ];
@@ -300,7 +325,7 @@ class FEController extends Controller
     {
 
         $navleft = [
-            'sezioni' => $evento->sezioni->whereNotNull('nome_it')->all(),
+            'sezioni' => $evento->sezioni,
             'luogo_evento' => $evento->luogo,
             'data_evento' => $evento->data,
             'orario_evento' => $evento->orario,

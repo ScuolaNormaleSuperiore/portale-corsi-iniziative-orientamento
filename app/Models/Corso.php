@@ -44,6 +44,9 @@ class Corso extends Breeze
     ];
 
     public static $rules = [
+        'titolo' => 'required',
+        'iniziativa_id' => 'required',
+
 //        'username' => 'required|between:4,255|unique:users,username',
     ];
 

@@ -1,0 +1,72 @@
+{
+    "data": [
+        {
+            "titolo_it": "Come si accede",
+            "sottotitolo_it": null,
+            "ordine": 1,
+            "attivo": 1,
+            "homepage": 0,
+            "slug_it": "come-si-accede",
+            "tipo": "info",
+            "created_at": "2024-10-30 19:10:57",
+            "updated_at": "2024-10-30 19:10:57",
+            "created_by": 1,
+            "updated_by": 1,
+            "sezioni": [
+                {
+                    "nome_it" : null,
+                    "contenuto_it" : "<p>Le candidature potranno essere presentate attraverso due canali:</p><p><br></p><ol><li>Segnalazione degli istituti scolastici</li><li>Domanda diretta di partecipazione da parte di studenti e studentesse interessati (in questo caso possono fare domanda che studenti dell'ultimo anno)</li></ol><p><br></p><p>secondo le indicazioni di seguito riportate.</p>"
+                },
+                {
+                    "nome_it" : "Segnalazioni degli istituti scolastici",
+                    "contenuto_it" : "<p>I Dirigenti scolastici saranno invitati a segnalare, con una informativa inviata loro per posta elettronica nel mese di marzo, uno/a o più studenti e studentesse del penultimo anno secondo le seguenti specifiche:</p><p>a. quattro studenti o studentesse del penultimo anno, meritevoli e motivati/e, particolarmente interessati/e a materie di area scientifica (matematica, fisica, biologia, chimica) e/o umanistica (lettere classiche, italianistica, storia, filosofia, storia dell'arte).</p><p>b. due ulteriori studenti o studentesse del penultimo anno, che si distinguano particolarmente o nelle materie di area umanistica o in quelle di area scientifica.</p><p>Le segnalazioni possono essere effettuate esclusivamente per via telematica sul&nbsp;<a href=\"https://orientamento.sns.it/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(0, 129, 157);\">sito di riferimento</a>.</p><p>Gli istituti che non riceveranno l'informativa potranno richiederla all'indirizzo mail di contatto dei Corsi di Orientamento.</p><p>Perché le segnalazioni siano valide dovranno essere indicate, tra l’altro, le votazioni finali per ogni materia di studio riportate al termine degli anni scolastici precedenti, e al termine del primo periodo dell’anno scolastico 2023/24. È richiesta anche una breve presentazione del candidato o della candidata (discorsivo e con alcuni campi a scelta multipla) e l'indicazione delle motivazioni a partecipare al Corso di Orientamento.</p><p>Potrà inoltre essere presa in considerazione la partecipazione del candidato o della candidata con risultati di rilievo a competizioni inserite nel programma ministeriale di valorizzazione delle eccellenze e potranno essere richieste informazioni su eventuali periodi scolastici trascorsi all’estero e, a titolo soltanto statistico e senza influenza sulla valutazione, il titolo di studio e la professione dei genitori.</p><p>Le segnalazioni potranno essere inserite da lunedì 18 marzo sino alle ore 24 di martedì 23 aprile 2024. L’elenco di studentesse e studenti selezionati sarà pubblicato nel corso del mese di maggio del 2024.</p><p>Ai corsi sarà assicurata la presenza di studenti e studentesse da ogni regione d'Italia. Studentesse e studenti ammessi ai corsi non dovranno sostenere alcuna spesa di vitto e alloggio per la partecipazione. Solo in casi di particolare e comprovata necessità, che saranno valutati singolarmente, potrà essere erogato un contributo per la copertura delle spese di viaggio per raggiungere la sede del corso (che resta di norma a carico del corsista o della corsista). Per studenti e studentesse con disabilità ammessi a partecipare, la Scuola Normale sosterrà le spese di permanenza dell'eventuale personale di supporto e assistenza.</p><p><br></p>"
+                },
+                {
+                    "nome_it" : "Domande dirette di partecipazione",
+                    "contenuto_it" : "<p>Domande di partecipazione potranno essere presentate anche direttamente da studenti e studentesse del penultimo o dell’ultimo anno di scuola secondaria di secondo grado. Le domande potranno essere inserite sempre da lunedì 18 marzo e sino alle ore 24 di martedì 23 aprile 2024 attraverso il&nbsp;<a href=\"https://orientamento.sns.it/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(0, 129, 157);\">sito di riferimento</a>.</p><p>Per l'inserimento delle candidature studentesse e studenti devono effettuare la procedura di registrazione utilizzando un codice di accesso che verrà loro rilasciato previo invio di una e-mail all'indirizzo di contatto dei Corsi di Orientamento.</p><p>Le candidature dirette dovranno prevedere sostanzialmente i medesimi dati previsti per le segnalazioni degli istituti scolastici.</p><p>Anche in questo caso, studentesse e studenti ammessi ai corsi non dovranno sostenere alcuna spesa di vitto e alloggio per la partecipazione. Solo in casi di particolare e comprovata necessità, che saranno valutati singolarmente, potrà essere erogato un contributo per la copertura delle spese di viaggio per raggiungere la sede del corso (che resta di norma a carico del corsista o della corsista). Per studenti e studentesse con disabilità ammessi a partecipare, la Scuola Normale sosterrà le spese di permanenza dell'eventuale personale di supporto e assistenza.</p><p>L'elenco degli ammessi e delle ammesse a domanda diretta sarà pubblicato sul sito della Normale entro la fine di maggio e comunicato direttamente all’indirizzo di posta elettronica degli interessati e delle interessate.</p><p>La Scuola Normale si riserva di acquisire la documentazione dei risultati scolastici degli studenti selezionati.</p><p>I posti sono assegnati a studenti e studentesse valutati/e meritevoli e idonei/e in base ai dati risultanti dalla candidatura, secondo i criteri sotto illustrati. Sulla base delle preferenze espresse, le persone selezionate per ciascuna delle due aree comprese nei corsi (scientifica e umanistica) non potranno superare il 60%. All'interno di ciascuna area, le persone dello stesso genere non potranno essere più del 60%.</p>"
+                }
+
+            ]
+
+
+        },
+        {
+            "titolo_it": "Criteri di selezione",
+            "sottotitolo_it": null,
+            "ordine": 2,
+            "attivo": 1,
+            "homepage": 0,
+            "slug_it": "come-si-accede",
+            "tipo": "info",
+            "created_at": "2024-10-30 19:10:57",
+            "updated_at": "2024-10-30 19:10:57",
+            "created_by": 1,
+            "updated_by": 1,
+            "sezioni": [
+                {
+                    "nome_it" : null,
+                    "contenuto_it" : "<p>I posti sono assegnati a studenti e studentesse valutati/e meritevoli e idonei/e in base ai dati risultanti dalla candidatura, secondo i criteri sotto illustrati. Sulla base delle preferenze espresse, le persone selezionate per ciascuna delle due aree comprese nei corsi (scientifica e umanistica) non potranno superare il 60%. All'interno di ciascuna area, le persone dello stesso genere non potranno essere più del 60%.</p><p>a. Voti finali di profitto ottenuti nei due precedenti anni scolastici. Saranno presi in considerazione sia la media dei voti (con esclusione di condotta, educazione cattolica, scienze motorie, comunque denominate), sia risultati particolarmente significativi in materie tra loro affini:</p><ul><li>media dei voti: punteggio da 1 (media di 7/10) a 4 (media di 10/10), con possibilità di decimali;</li><li>risultati particolarmente significativi in materie tra loro affini, che segnalino interessi e capacità orientati a un determinato campo di studio: fino a un massimo incremento di 2 punti, con possibilità di decimali.</li><li>Il punteggio complessivo per i risultati scolastici, in ogni caso, non potrà essere superiore a punti 4 su 10.</li></ul><p>b. Profilo, comprendente interessi e attività anche extrascolastici, e motivazioni fornite dallo studente relativamente alla partecipazione ai corsi: punti 4 su 10, con possibilità di decimali.</p><p>c) Partecipazione e risultati ottenuti in concorsi su materie scientifiche e/o umanistiche (olimpiadi, campionati, certamina ecc.): punti 2 su 10, con possibilità di decimali.</p><p>Le altre informazioni personali che saranno acquisite nel format di candidatura hanno rilievo puramente statistico e non concorreranno in alcun modo all'attribuzione di punteggio al momento della selezione.</p><p>In situazioni valutate equivalenti, potranno essere tenuti in considerazione criteri di inclusione sociale, come il titolo di studio dei genitori. Sempre in situazioni equivalenti, la selezione potrà favorire la partecipazione di studenti e studentesse proposti/e da istituti dai quali non sono stati/e selezionati/e candidati/e nel precedente biennio, al fine di consentire l'inclusione di un maggior numero di istituti scolastici e località e una rotazione tra gli istituti. Di norma, potranno essere due al massimo le persone selezionate da uno stesso istituto scolastico.</p><p>Sono considerate equivalenti le candidature che, dopo la valutazione in base ai criteri indicati, presentano una differenza di punteggio contenuta entro 0,5/10.</p><p>Studenti e studentesse segnalati/e per i corsi di orientamento della Scuola Normale potranno essere segnalati/e anche per i corsi della Scuola di Orientamento Universitario; in nessun caso, però, una stessa persona potrà essere selezionata per prendere parte a più di un corso.</p><p>Agli stessi criteri sarà fatto riferimento anche per la selezione di studenti e studentesse che faranno domanda tramite autocandidatura. In questo caso possono presentare domanda anche studenti e studentesse che stiano frequentando il V anno delle superiori.</p><p>Responsabile della selezione per i corsi organizzati dalla Scuola Normale Superiore è il Direttore, che potrà avvalersi, per le attività istruttorie, di una apposita Commissione.</p>"
+                }
+            ]
+        },
+        {
+            "titolo_it": "Contatti",
+            "sottotitolo_it": null,
+            "ordine": 3,
+            "attivo": 1,
+            "homepage": 0,
+            "slug_it": "contatti",
+            "tipo": "info",
+            "created_at": "2024-10-30 19:10:57",
+            "updated_at": "2024-10-30 19:10:57",
+            "created_by": 1,
+            "updated_by": 1,
+            "sezioni": [
+                {
+                    "nome_it" : null,
+                    "contenuto_it" : "<p>Per eventuali richieste, chiarimenti e specifiche informazioni è possibile inviare una email all'indirizzo di contatto dei Corsi di Orientamento (orientamento@sns.it), oppure chiamare i numeri telefonici telefonici: 050509670 - 307 - 757, dal lunedì al giovedì dalle 10.00 alle 13.00 (lunedì e giovedì anche dalle 15.00 alle 17.00).</p><p>Per il supporto tecnico, in caso di problemi nell'inserimento dei dati nel form di candidatura, è possibile contattare: Davide Guglielmo, responsabile della gestione del programma informatico di raccolta delle candidature, all'indirizzo email di contatto, oppure al seguente recapito telefonico: 347.793.56.28 (dal lunedì al venerdì, dalle 9.00 alle12.30 e dalle 15.00 alle 18.00). Si invita a telefonare avendo a portata di mano il computer acceso e collegato al sito.</p>"
+                }
+            ]
+        }
+    ]
+}

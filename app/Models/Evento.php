@@ -44,6 +44,8 @@ class Evento extends Breeze
     ];
 
     public static $rules = [
+        'titolo_it' => 'required|unique:eventi,titolo_it',
+
 //        'username' => 'required|between:4,255|unique:users,username',
     ];
 

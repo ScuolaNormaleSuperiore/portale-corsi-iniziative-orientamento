@@ -6,6 +6,7 @@
     $orarioEvento = \Illuminate\Support\Arr::get($navleft, 'orario_evento');
     $dataFineEvento = \Illuminate\Support\Arr::get($navleft, 'data_fine_evento');
     $allegati = \Illuminate\Support\Arr::get($navleft, 'allegati', []);
+    $navTitle = $navTitle ?? 'Contenuto';
 @endphp
 
 <nav class="navbar it-navscroll-wrapper navbar-expand-lg it-bottom-navscroll it-left-side border-start-0"
@@ -136,13 +137,15 @@
 
                 <div class="sidebar-linklist-wrapper ">
                     <div class="link-list-wrapper">
-                        <h3>Contenuto</h3>
+                        <h3>{{$navTitle}}</h3>
                         <ul class="link-list">
 
                             <li class="nav-item">
                                 @foreach ($sezioni as $sezione)
+                                    @if($sezione->nome_it)
                                     <a class="nav-link"
                                        href="#sezione_{{$loop->index}}"><span>{{$sezione->nome_it}}</span></a>
+                                    @endif
                                 @endforeach
                             </li>
 

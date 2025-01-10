@@ -50,9 +50,14 @@ class Iniziativa extends Breeze
     ];
 
     public static $rules = [
+        'anno' => 'required',
+        'titolo' => 'required',
+        'data_apertura' => 'required|date',
+        'data_chiusura' => 'required|date',
+        'modalita_candidatura' => 'required',
+
 //        'username' => 'required|between:4,255|unique:users,username',
     ];
-
     public $columnsForSelectList = ['titolo'];
      //['id','descrizione'];
 

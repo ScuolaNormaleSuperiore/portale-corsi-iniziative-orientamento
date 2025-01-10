@@ -259,6 +259,12 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
+                                                <a class="nav-link" href="/info-corsi"
+                                                   data-element="all-services">
+                                                    <span>Info sui corsi</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
                                                 <a class="nav-link" href="/candidature"
                                                    data-element="all-services">
                                                     <span>Per candidarsi</span>
