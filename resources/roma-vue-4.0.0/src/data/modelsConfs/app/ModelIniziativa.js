@@ -39,7 +39,7 @@ export default {
             'action-edit',
             'action-delete',
             // 'action-delete-selected',
-            'action-view2',
+            //'action-view2',
         ],
         actionsConfig : {
             'action-view2': {
