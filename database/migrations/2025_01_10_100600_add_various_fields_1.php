@@ -22,6 +22,8 @@ return new class extends Migration {
         Schema::table('users', function (Blueprint $table) {
 
             $table->text('info')->nullable();
+            $table->string('codice_fiscale')->nullable()->default(null);
+
 
         });
 
@@ -39,6 +41,7 @@ return new class extends Migration {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn([
                 'info',
+                'codice_fiscale',
             ]);
         });
         Schema::table('pagine', function (Blueprint $table) {
