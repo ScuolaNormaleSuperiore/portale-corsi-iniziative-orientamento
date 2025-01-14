@@ -11,6 +11,11 @@
                 <div class="row">
 
                     <div class="col-12 col-lg-4">
+                        @if(count($iniziative) > 0)
+                                @include('sections.navleft-pagine-info-corsi-attivi',
+                                    ['iniziative' => $iniziative])
+                        @endif
+
                         @if($pagina)
                             @include('sections.navleft',['navTitle' => $pagina->titolo_it])
                         @endif
@@ -21,7 +26,7 @@
                             {!! $descrizione->testo_it !!}
                         </section>
                         @if($pagina)
-                                <hr/>
+                            <hr/>
                             <section class="pt-4">
                                 <h2 class="h2">{{$pagina->titolo_it}}</h2>
                                 @if($pagina->picture)

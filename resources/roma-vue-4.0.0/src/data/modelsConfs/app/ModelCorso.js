@@ -247,7 +247,8 @@ export default {
 						id : 'w-hidden',
 						nome : 'w-hidden',
 					}
-				}
+				},
+                limit: 1
 			},
 
         }

@@ -27,6 +27,7 @@ Route::post('json/user-info', [JsonController::class,'getUserInfo'])->name('json
 Route::get('/', [FEController::class,'index'])->name('fe-index')->middleware([]);
 Route::get('/orientamento', [FEController::class,'orientamento'])->name('orientamento')->middleware([]);
 Route::get('/info-corsi/{pagina?}', [FEController::class,'infoCorsi'])->name('info-corsi')->middleware([]);
+Route::get('/info-corso/{corso}', [FEController::class,'infoCorso'])->name('info-corso')->middleware([]);
 Route::get('/pagina-orientamento/{pagina}', [FEController::class,'paginaOrientamento'])->name('pagina-orientamento')->middleware([]);
 Route::get('/pagina/{pagina}', [FEController::class,'pagina'])->name('pagina')->middleware([]);
 Route::get('/sportello-studenti', [FEController::class,'sportelloStudenti'])->name('sportello-studenti')->middleware([]);

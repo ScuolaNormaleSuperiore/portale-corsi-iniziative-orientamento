@@ -8,10 +8,19 @@
 
             <div class="row">
 
-                <div class="col-12 col-lg-4">
-                    @include('sections.navleft')
-                </div>
-                <div class="col-12 col-lg-8">
+                @php
+                    $sezioni = \Illuminate\Support\Arr::get($navleft,'sezioni',[]);
+                    $allegati = \Illuminate\Support\Arr::get($navleft, 'allegati', []);
+                    $sidebar = (count($sezioni) + count($allegati)) > 0;
+                @endphp
+
+                @if($sidebar)
+                    <div class="col-12 col-lg-4">
+                        @include('sections.navleft')
+                    </div>
+                @endif
+
+                <div class="col-12 {{$sidebar ? 'col-lg-8' : ''}}">
                     @if($pagina->picture)
                     <div class="img-responsive-wrapper">
                         <div class="img-responsive img-responsive-panoramic">

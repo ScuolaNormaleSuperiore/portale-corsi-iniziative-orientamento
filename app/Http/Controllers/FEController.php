@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Avviso;
 use App\Models\Classe;
 use App\Models\Copertina;
+use App\Models\Corso;
 use App\Models\Evento;
+use App\Models\Iniziativa;
 use App\Models\MateriaOrientamento;
 use App\Models\News;
 use App\Models\Pagina;
@@ -125,7 +127,7 @@ class FEController extends Controller
         ];
         $breadcrumbs = [
             'Home' => '/',
-            'Orientamento' => '/',
+            'Orientamento' => '/orientamento',
             $pagina->titolo_it => '#',
         ];
         return view('pagina-orientamento', compact('pagina', 'navleft', 'breadcrumbs'));
@@ -172,6 +174,12 @@ class FEController extends Controller
     public function infoCorsi(Request $request, PaginaInfo $pagina = null)
     {
 
+        $iniziative = Iniziativa::with('corsi')
+            ->where('attivo', 1)
+            ->whereDate('data_apertura', '<=', date('Y-m-d'))
+            ->whereDate('data_chiusura', '>=', date('Y-m-d'))
+            ->orderBy('data_apertura', 'ASC')
+            ->get();
         $descrizione = SezioneLayout::where('codice', 'info-corsi-intro')->firstOrNew();
         $pagine = PaginaInfo::where('attivo', 1)->orderBy('ordine', 'ASC')->orderBy('titolo_it', 'ASC')->get();
 
@@ -190,7 +198,35 @@ class FEController extends Controller
             'Info corsi' => '#',
         ];
 
-        return view('info-corsi', compact('descrizione','navleftInfo','pagine', 'breadcrumbs', 'pagina', 'navleft'));
+        return view('info-corsi', compact('descrizione','navleftInfo','pagine', 'breadcrumbs', 'pagina', 'navleft','iniziative'));
+    }
+
+    public function infoCorso(Request $request, Corso $corso)
+    {
+
+        $iniziative = Iniziativa::with('corsi')
+            ->where('attivo', 1)
+            ->whereDate('data_apertura', '<=', date('Y-m-d'))
+            ->whereDate('data_chiusura', '>=', date('Y-m-d'))
+            ->orderBy('data_apertura', 'ASC')
+            ->get();
+
+        $descrizione = SezioneLayout::where('codice', 'info-corsi-intro')->firstOrNew();
+        $pagine = PaginaInfo::where('attivo', 1)->orderBy('ordine', 'ASC')->orderBy('titolo_it', 'ASC')->get();
+
+            $navleft = [
+                'allegati' => $corso->attachments,
+            ];
+        $navleftInfo = [
+            'pagine' => $pagine->pluck('slug_it','id')->all(),
+        ];
+        $breadcrumbs = [
+            'Home' => '/',
+            'Info corsi' => '/info-corsi',
+            $corso->titolo => '#',
+        ];
+
+        return view('info-corso', compact('descrizione','navleftInfo','pagine', 'breadcrumbs', 'corso', 'navleft','iniziative'));
     }
 
     public function sportelloStudentiClasse(Request $request, Classe $classe)
