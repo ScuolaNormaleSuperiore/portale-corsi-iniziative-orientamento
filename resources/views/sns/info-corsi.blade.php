@@ -11,10 +11,10 @@
                 <div class="row">
 
                     <div class="col-12 col-lg-4">
-                        @if(count($iniziative) > 0)
-                                @include('sections.navleft-pagine-info-corsi-attivi',
-                                    ['iniziative' => $iniziative])
-                        @endif
+{{--                        @if(count($iniziative) > 0)--}}
+{{--                                @include('sections.navleft-pagine-info-corsi-attivi',--}}
+{{--                                    ['iniziative' => $iniziative])--}}
+{{--                        @endif--}}
 
                         @if($pagina)
                             @include('sections.navleft',['navTitle' => $pagina->titolo_it])

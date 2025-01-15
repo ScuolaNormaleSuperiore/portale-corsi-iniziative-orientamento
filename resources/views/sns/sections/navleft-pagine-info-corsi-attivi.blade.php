@@ -12,22 +12,29 @@
             <div class="sidebar-linklist-wrapper ">
                 <div class="link-list-wrapper">
                     <h3>I corsi attivi</h3>
-                    @foreach ($iniziative as $iniziativa)
+                    <ul class="link-list">
+                        @foreach ($iniziative as $iniziativa)
 
+                            @if(count($iniziativa->corsi) > 0)
 
-                        <ul class="link-list">
+                                <li class="nav-item">
+                                    <span class="">{{$iniziativa->titolo}}</span>
+                                    <ul class="link-sublist" id="collapseTwo">
+                                        @foreach ($iniziativa->corsi as $corso)
+                                            <li>
+                                                <a class="list-item" href="/info-corso/{{$corso->getKey()}}">
+                                                    <span>
+                                                        {{$corso->titolo}}
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
 
-                            <li class="nav-item">
-                                <span class=""><strong>{{$iniziativa->titolo}}</strong></span>
-                                @foreach ($iniziativa->corsi as $corso)
-                                    <a class="nav-link"
-                                       href="/info-corso/{{$corso->getKey()}}"><span>{{$corso->titolo}}</span></a>
-                                @endforeach
-                            </li>
-
-
-                        </ul>
-                    @endforeach
+                            @endif
+                        @endforeach
+                    </ul>
                 </div>
             </div>
 

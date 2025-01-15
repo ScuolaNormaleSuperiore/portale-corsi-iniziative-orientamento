@@ -11,8 +11,8 @@
                 <div class="row">
 
                     <div class="col-12 col-lg-4">
-                        @include('sections.navleft-pagine-info-corsi-attivi',
-                            ['iniziative' => $iniziative])
+{{--                        @include('sections.navleft-pagine-info-corsi-attivi',--}}
+{{--                            ['iniziative' => $iniziative])--}}
 
                             @include('sections.navleft',['navTitle' => $corso->titolo])
                             @include('sections.navleft-pagine-info')
