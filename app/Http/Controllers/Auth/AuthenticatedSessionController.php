@@ -60,7 +60,7 @@ class AuthenticatedSessionController extends Controller
         if (auth_is_admin()) {
             return redirect()->intended('/dashboard');
         }
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(RouteServiceProvider::CANDIDATURE);
 
     }
 

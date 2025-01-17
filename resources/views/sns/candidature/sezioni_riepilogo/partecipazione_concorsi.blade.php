@@ -13,9 +13,9 @@
 
 @include('candidature.form.riepilogo-text',['value' => \App\Enums\OlimpiadiInformatica::optionLabel($candidatura->olimpiadi_informatica),'label' => 'Olimpiadi di matematica (individuale)'])
 
-<p class="mt-5">
+<h5 class="mt-5 mb-4">
     Eventuali partecipazioni a stages
-</p>
+</h5>
 
 @foreach($candidatura->stages as $optionIndex => $stage)
     <div class="form-check form-check-group fw-bold">
@@ -25,9 +25,9 @@
     </div>
 @endforeach
 
-<p class="mt-5">
+<h5 class="mt-5 mb-4">
     Eventuali partecipazioni a gare internazionali
-</p>
+</h5>
 
 @foreach($candidatura->gare_internazionali as $optionIndex => $gara)
     <div class="form-check form-check-group fw-bold">
@@ -37,9 +37,9 @@
     </div>
 @endforeach
 
-<p class="mt-5">
-    Eventuali partecipazioni a gare umanistichhe
-</p>
+<h5 class="mt-5 mb-4">
+    Eventuali partecipazioni a gare umanistiche
+</h5>
 
 @foreach($candidatura->gare_umanistiche as $optionIndex => $gara)
     <div class="form-check form-check-group fw-bold">
@@ -49,8 +49,8 @@
     </div>
 @endforeach
 
-<p class="mt-5">
-    Eventuali altre partecipazioni a concorsi.
-</p>
+<h5 class="mt-5 mb-4">
+    Riporta eventuali altre partecipazioni a concorsi.
+</h5>
 
 @include('candidature.form.riepilogo-text',['value' => $candidatura->partecipazione_concorsi])

@@ -1,6 +1,6 @@
 {!!  Theme::js('js/bootstrap-italia.bundle.min.js') !!}
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.umd.js"></script>
+{!!  Theme::js('js/axios.min.js') !!}
+{!!  Theme::js('js/cookieconsent.umd.js') !!}
 
 <script>
 

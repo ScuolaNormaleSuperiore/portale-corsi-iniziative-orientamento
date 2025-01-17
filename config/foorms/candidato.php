@@ -627,6 +627,8 @@ return [
             ],
             'corsi' => [
                 'as_options' => [
+                    'field' => 'corsi',
+                    'options' => 'method',
                     'nulloption' => false,
                 ],
             ],

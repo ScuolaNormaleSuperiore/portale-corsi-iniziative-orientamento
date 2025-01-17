@@ -65,7 +65,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::CANDIDATURE);
     }
 
     public function createScuola()

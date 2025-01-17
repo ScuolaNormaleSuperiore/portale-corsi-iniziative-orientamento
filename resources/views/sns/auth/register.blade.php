@@ -168,10 +168,10 @@
                         rule: 'required',
                         errorMessage: 'Questo campo è richiesto'
                     },
-                    {
-                        rule: 'strongPassword',
-                        errorMessage: 'Inserisci almeno 8 caratteri, con almeno una minuscola, una maiuscola, un numero e un carattere speciale.'
-                    },
+                    // {
+                    //     rule: 'strongPassword',
+                    //     errorMessage: 'Inserisci almeno 8 caratteri, con almeno una minuscola, una maiuscola, un numero e un carattere speciale.'
+                    // },
 
                 ])
                 .addField('#password_confirmation', [

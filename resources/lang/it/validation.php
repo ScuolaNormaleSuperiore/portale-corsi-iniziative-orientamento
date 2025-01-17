@@ -79,6 +79,7 @@ return [
     'url' => 'Il formato del campo :attribute non &egrave; valido.',
 
 
+    'max_digits' => 'Il campo :attribute non deve avere più di :max caratteri.',
 
 
 
@@ -158,8 +159,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'corsi-id' => [
+            'min' => 'E\' necessario esprimere almeno :min preferenze per i corsi',
         ],
     ],
 
@@ -175,6 +176,11 @@ return [
     */
 
     'attributes' => [
+        'modalita_conoscenza_sns_id' => 'modalità di consocenza della scuola SNS',
+        'voti-materia_id.*' => 'Materia (Riga voti n. :index)',
+        'voti-voto_anno_1.*' => 'Voto anno precedente (Riga voti n. :index)',
+        'voti-voto_anno_2.*' => 'Voto due anni precedenti (Riga voti n. :index)',
+        'voti-voto_primo_quadrimestre.*' => 'Voto primo quadrimestre (Riga voti n. :index)',
 
     ],
 

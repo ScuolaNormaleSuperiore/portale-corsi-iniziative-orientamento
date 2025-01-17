@@ -11,23 +11,24 @@
 @include('candidature.form.select',['field' => 'giochi_chimica', 'label' => 'Giochi della chimica'])
 @include('candidature.form.select',['field' => 'olimpiadi_informatica', 'label' => 'Olimpiadi di informatica'])
 
-<p class="mt-5">
+<h5 class="mt-5 mb-4">
     Eventuali partecipazioni a stages
-</p>
+</h5>
+
 @include('candidature.form.checkbox',['field' => 'stages','label' => '', 'cssForm' => 'last'])
 
-<p class="mt-5">
+<h5 class="mt-5 mb-4">
     Eventuali partecipazioni a gare internazionali
-</p>
+</h5>
 @include('candidature.form.checkbox',['field' => 'gare_internazionali','label' => '', 'cssForm' => 'last'])
 
-<p class="mt-5">
+<h5 class="mt-5 mb-4">
     Eventuali partecipazioni a gare umanistiche
-</p>
+</h5>
 @include('candidature.form.checkbox',['field' => 'gare_umanistiche','label' => '', 'cssForm' => 'last'])
 
-<p class="mt-5">
+<h5 class="mt-5 mb-4">
     Riporta eventuali altre partecipazioni a concorsi.
-</p>
+</h5>
 
 @include('candidature.form.textarea',['field' => 'partecipazione_concorsi','label' => 'Partecipazione a concorsi', 'cssForm' => 'last'])

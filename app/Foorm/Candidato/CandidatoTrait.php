@@ -3,6 +3,7 @@
 namespace App\Foorm\Candidato;
 
 
+use App\Models\Corso;
 use App\Models\Evento;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
@@ -56,9 +57,10 @@ trait CandidatoTrait
         if (array_key_exists('voti',$validationRules)) {
             unset($validationRules['voti']);
             $validationRules['voti-id'] = ['array'];
-            $validationRules['voti-voto_anno_1.*'] = ['required'];
-            $validationRules['voti-voto_anno_2.*'] = ['required'];
-            $validationRules['voti-voto_primo_quadrimestre.*'] = ['required'];
+            $validationRules['voti-materia_id.*'] = ['required'];
+            $validationRules['voti-voto_anno_1.*'] = ['required','numeric','max:10'];
+            $validationRules['voti-voto_anno_2.*'] = ['required','numeric','max:10'];
+            $validationRules['voti-voto_primo_quadrimestre.*'] = ['required','numeric','max:10'];
         }
 
         $this->validationSettings['rules'] = $validationRules;
@@ -128,5 +130,18 @@ trait CandidatoTrait
         }
         return $saved;
     }
+
+    public function createOptionsCorsi($fieldValue,$defaultOptionsValues,$relationName = null,$relationMetadata = []) {
+
+        Log::info("HERE CORSI " . $this->model->iniziativa_id);
+        $corso = new Corso();
+        if (!$this->model->iniziativa) {
+            return $corso->getForSelectList();
+        }
+
+        return $corso->getForSelectList($corso->where('iniziativa_id',$this->model->iniziativa_id));
+
+    }
+
 
 }
