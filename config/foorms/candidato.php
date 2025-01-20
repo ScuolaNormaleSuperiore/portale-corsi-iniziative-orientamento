@@ -50,6 +50,12 @@ return [
 
     'view' => [
         'fields' => [
+            'id' => [
+
+            ],
+            'iniziativa_id' => [
+                'options' => 'relation:iniziativa',
+            ],
             "anno" => [
 
             ],
@@ -59,11 +65,14 @@ return [
             "cognome" => [
 
             ],
+            "codice_fiscale" => [
+
+            ],
             "emails" => [
 
             ],
             "sesso" => [
-
+                'options' => config('enums.sesso'),
             ],
             "luogo_nascita" => [
 
@@ -81,31 +90,41 @@ return [
 
             ],
             "provincia_id" => [
-
+                'options' => 'relation:provincia',
             ],
             "telefono" => [
 
             ],
             "scuola_id" => [
+                'referred_data' => 'method:model',
+            ],
+            "scuola_estera" => [
 
             ],
             "classe" => [
-
+                'options' => [
+                    3 => '3^',
+                    4 => '4^',
+                    5 => '5^',
+                ]
             ],
             "sezione" => [
 
             ],
-            "gen1_titolo_studio_id" => [
+            "profilo" => [
 
+            ],
+            "gen1_titolo_studio_id" => [
+                'options' => 'model:TitoloStudio',
             ],
             "gen2_titolo_studio_id" => [
-
+                'options' => 'model:TitoloStudio',
             ],
             "gen1_professione_id" => [
-
+                'options' => 'model:Professione',
             ],
             "gen2_professione_id" => [
-
+                'options' => 'model:Professione',
             ],
             "gen1_professione_altro" => [
 
@@ -116,28 +135,84 @@ return [
             "note" => [
 
             ],
+            "olimpiadi_matematica" => [
+                'options' => 'enum:App\\Enums\\OlimpiadiMatematica',
+                'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
+            ],
+            "olimpiadi_fisica" => [
+                'options' => 'enum:App\\Enums\\OlimpiadiFisica',
+                'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
+            ],
+
+            'olimpiadi_matematica_squadre' => [
+                'options' => 'enum:App\\Enums\\OlimpiadiMatematicaSquadre',
+                'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
+            ],
+            'olimpiadi_matematica_squadre_femminili' => [
+                'options' => 'enum:App\\Enums\\OlimpiadiMatematicaSquadreFemminili',
+                'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
+            ],
+            'olimpiadi_fisica_squadre_miste' => [
+                'options' => 'enum:App\\Enums\\OlimpiadiFisicaSquadreMiste',
+                'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
+            ],
+            'olimpiadi_scienze_naturali' => [
+                'options' => 'enum:App\\Enums\\OlimpiadiScienzeNaturali',
+                'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
+            ],
+            'giochi_chimica' => [
+                'options' => 'enum:App\\Enums\\GiochiChimica',
+                'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
+            ],
+            'olimpiadi_informatica' => [
+                'options' => 'enum:App\\Enums\\OlimpiadiInformatica',
+                'nulloption' => false,
+                'default' => 'nessuna_partecipazione',
+            ],
+            'stages' => [
+                'options' => 'enum:App\\Enums\\Stages',
+                'nulloption' => false,
+            ],
+            'gare_internazionali' => [
+                'options' => 'enum:App\\Enums\\GareInternazionali',
+                'nulloption' => false,
+            ],
+            'gare_umanistiche' => [
+                'options' => 'enum:App\\Enums\\GareUmanistiche',
+                'nulloption' => false,
+            ],
             "partecipazione_concorsi" => [
 
             ],
             "inglese_livello_linguistico_id" => [
-
+                'options' => 'model:LivelloLinguistico',
             ],
             "francese_livello_linguistico_id" => [
-
+                'options' => 'model:LivelloLinguistico',
             ],
             "tedesco_livello_linguistico_id" => [
-
+                'options' => 'model:LivelloLinguistico',
             ],
             "spagnolo_livello_linguistico_id" => [
-
+                'options' => 'model:LivelloLinguistico',
             ],
             "cinese_livello_linguistico_id" => [
-
+                'options' => 'model:LivelloLinguistico',
             ],
             "altre_competenze_linguistiche" => [
 
             ],
             "esperienze_estere" => [
+
+            ],
+            "materie_preferite" => [
 
             ],
             "settore_professionale" => [
@@ -147,10 +222,10 @@ return [
 
             ],
             "modalita_conoscenza_sns_id" => [
-
+                'options' => 'model:ModalitaConoscenzaSns',
             ],
             "informativa" => [
-
+                'options' => 'boolean',
             ],
             "media" => [
 
@@ -161,10 +236,62 @@ return [
             "user_id" => [
 
             ],
-            "id" => [
+            "status" => [
 
-            ]
+            ],
+            "conferma" => [
+
+            ],
+            "pagamento" => [
+
+            ],
         ],
+        "relations" => [
+
+            "attachments" => [
+                "fields" => [
+                    "id" => [],
+                ]
+            ],
+            "iniziativa" => [
+                "fields" => [
+                    "titolo" => [],
+                ]
+            ],
+            "provincia" => [
+                "fields" => [
+                    "sigla" => [],
+                    "nome" => [],
+                ]
+            ],
+            "scuola" => [
+                "fields" => [
+                    "denominazione" => [],
+                    "codice" => [],
+                    "tipologia_grado_istruzione" => [],
+                    "comune" => [],
+                    "provincia_id" => [],
+                ]
+            ],
+            "voti" => [
+                "fields" => [
+                    'id' => [],
+                    'voto_anno_1' => [],
+                    'voto_anno_2' => [],
+                    'voto_primo_quadrimestre' => [],
+                    'materia_id' => [
+                        'options' => 'model:Materia',
+                    ]
+                ]
+            ],
+            'corsi' => [
+                'as_options' => [
+//                    'field' => '',
+                    'options' => 'method:createOptionsCorsi',
+                    'nulloption' => false,
+                ],
+            ],
+        ]
     ],
     'search' => [
         'fields' => [
@@ -627,8 +754,8 @@ return [
             ],
             'corsi' => [
                 'as_options' => [
-                    'field' => 'corsi',
-                    'options' => 'method',
+//                    'field' => '',
+                    'options' => 'method:createOptionsCorsi',
                     'nulloption' => false,
                 ],
             ],
@@ -642,7 +769,8 @@ return [
                         'options' => 'model:Materia',
                     ]
                 ]
-            ]
+            ],
+
 
         ],
         'params' => [

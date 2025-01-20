@@ -76,9 +76,28 @@ export default {
             // 'action-delete-selected',
             'action-export-xls',
             'action-export-media',
+            'action-view2',
         ],
         actionsConfig : {
 
+            'action-view2': {
+                type: 'record',
+                title: 'app.vista',
+                //css: 'btn-outline-secondary',
+                icon: 'fa fa-eye',
+                text: '',
+
+                controlType: 'link-download',
+                href: function () {
+                    var that = this;
+
+                    return "#/candidato/" + that.modelData.id;
+                    // var urlPrefix = import.meta.env.VITE_APP_TARGET || '';
+                    // //
+                    // return urlPrefix + CrudHelpers.addBearerTokenToUrl("#/front/studente/" + that.modelData.id);
+                },
+                target: '',
+            },
             'action-export-xls' : {
                 execute (event) {
                     let tA = this;
@@ -419,7 +438,6 @@ export default {
                             return;
                         }
 
-                        that.view.showWidget('corsi');
 
                         var dv = json.result.options;
                         var dvo = json.result.options_order
@@ -427,6 +445,18 @@ export default {
                         console.log("CORSIII ", that.view.getWidget('corsi').getValue());
                         that.view.metadata.corsi.domainValues = dv;
                         that.view.metadata.corsi.domainValuesOrder = dvo;
+
+                        let corsi = that.view.getWidget('corsi');
+                        corsi.domainValues = dv;
+                        corsi.domainValuesOrder = dvo;
+                        corsi.options = [];
+                        for (var i in dvo) {
+                            corsi.options.push({
+                                code : ""+dvo[i],
+                                name : dv[dvo[i]],
+                            })
+                        }
+                        that.view.showWidget('corsi');
                         // that.view.config.fieldsConfig.corsi.type = 'w-select';
                         // that.view.getWidget('corsi').setValue(that.view.getWidget('corsi').getValue())
 // /                        that.view.getWidget('corsi').value = that.view.getWidget('corsi').getValue();
@@ -437,11 +467,16 @@ export default {
                 }
             },
             'corsi': {
-                type: 'w-multi-select',
+                type: 'w-checkbox',
                 layout: {
                     colClass: 'w-12',
                 },
-                label: ''
+                label: '',
+                ready() {
+                    for (var i in this.value) {
+                        this.value[i] = '' + this.value[i];
+                    }
+                }
             },
             'nome': {
                 divider: 'before',
