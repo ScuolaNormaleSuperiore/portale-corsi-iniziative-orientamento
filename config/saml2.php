@@ -170,8 +170,8 @@ return [
         |
         */
 
-        'x509cert' => env('SAML2_SP_CERT_X509',''),
-        'privateKey' => env('SAML2_SP_CERT_PRIVATEKEY',''),
+        'x509cert' => env('SAML2_SP_CERT_X509', ''),
+        'privateKey' => env('SAML2_SP_CERT_PRIVATEKEY', ''),
 
         /*
         |--------------------------------------------------------------------------
@@ -182,7 +182,7 @@ return [
         |
         */
 
-        'entityId' => env('SAML2_SP_ENTITYID',''),
+        'entityId' => env('SAML2_SP_ENTITYID', ''),
 
         /*
         |--------------------------------------------------------------------------
@@ -212,7 +212,11 @@ return [
         */
 
         'singleLogoutService' => [
-            'url' => ''
+            'url' => '',
+            'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+        ],
+        'singleSignOnService' => [
+            'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', // Verifica che il binding sia POST
         ],
     ],
 
