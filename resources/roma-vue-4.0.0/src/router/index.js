@@ -21,7 +21,7 @@ const devChildren = [
         component: () => import('@/views/pages/app/Iniziativa.vue'),
     },
     {
-        path: "/candidato/:candidatoId",
+        path: "/candidatov/:candidatoId",
         name: "candidato (view)",
         component: () => import('@/views/pages/app/Candidato.vue'),
     },
