@@ -130,7 +130,7 @@ export default {
     edit: {
         type: 'v-edit',
         modelName : 'corso',
-        actions : ['action-save','action-back'],
+        actions : ['action-save','action-save-back','action-back'],
         fields: [
 			'titolo',
 			'iniziativa_id',

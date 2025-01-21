@@ -151,7 +151,7 @@ export default {
     edit: {
         type: 'v-edit',
         modelName : 'evento',
-        actions : ['action-save','action-back'],
+        actions : ['action-save','action-save-back','action-back'],
         fields: [
 			'data',
 			'orario',

@@ -81,7 +81,6 @@ return array(
     'review-reply' => 'Rispondi alla recensione',
     'role_automatically_associated' => 'Gli utenti con questo ruolo sono automaticamente associati a tutti gli elementi di questo tipo',
     'role_not_associable' => 'Il ruolo dell\'utente non prevede questa associazione',
-    'salva' => 'salva',
     'saved' => 'salvataggio avvenuto con successo',
     'scegli_file' => 'scegli il file da caricare',
     'cerca' => 'ricerca',
@@ -209,6 +208,7 @@ return array(
     'ordina' => 'Ordina',
     'richiesta-conferma' => 'Richiesta di Conferma',
     'salva' => 'Salva',
+    'salva-torna-indietro' => 'Salva e chiudi',
     'salvataggio-ok' => 'Salvataggio avvenuto con successo!',
     'vista' => 'Vista',
 

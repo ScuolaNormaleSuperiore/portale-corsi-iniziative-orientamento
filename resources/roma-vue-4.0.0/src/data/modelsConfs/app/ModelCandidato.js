@@ -295,7 +295,7 @@ export default {
         afterDraw() {
             this.getWidget('iniziativa_id').change();
         },
-        actions: ['action-save', 'action-back'],
+        actions : ['action-save','action-save-back','action-back'],
         fields: [
             'iniziativa_id',
 

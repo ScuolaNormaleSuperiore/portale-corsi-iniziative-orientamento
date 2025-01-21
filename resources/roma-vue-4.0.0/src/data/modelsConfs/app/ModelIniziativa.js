@@ -109,7 +109,7 @@ export default {
     edit: {
         type: 'v-edit',
         modelName : 'iniziativa',
-        actions : ['action-save','action-back'],
+        actions : ['action-save','action-save-back','action-back'],
         fields: [
 			'anno',
 			'titolo',

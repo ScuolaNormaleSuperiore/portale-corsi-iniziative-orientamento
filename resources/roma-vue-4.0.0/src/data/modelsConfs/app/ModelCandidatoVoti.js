@@ -47,7 +47,7 @@ export default {
     edit: {
         type: 'v-edit',
         modelName : 'candidato_voti',
-        actions : ['action-save','action-back'],
+        actions : ['action-save','action-save-back','action-back'],
         fields: [
 			'candidato_id',
 			'materia_id',

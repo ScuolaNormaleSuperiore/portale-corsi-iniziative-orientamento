@@ -65,7 +65,7 @@ export default {
     edit: {
         type: 'v-edit',
         modelName : 'avviso',
-        actions : ['action-save','action-back'],
+        actions : ['action-save','action-save-back','action-back'],
         fields: [
 			'descrizione',
             'tipo',

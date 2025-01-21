@@ -148,7 +148,7 @@ export default {
     edit: {
         type: 'v-edit',
         modelName: 'video',
-        actions: ['action-save', 'action-back'],
+        actions : ['action-save','action-save-back','action-back'],
         fields: [
             'titolo_it',
             'descrizione_it',

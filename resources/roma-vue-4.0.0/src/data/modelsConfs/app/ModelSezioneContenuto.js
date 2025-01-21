@@ -84,7 +84,7 @@ export default {
     edit: {
         type: 'v-edit',
         modelName : 'sezione_contenuto',
-        actions : ['action-save','action-back'],
+        actions : ['action-save','action-save-back','action-back'],
         fields: [
 			'titolo_it',
 			'contenuto_it',

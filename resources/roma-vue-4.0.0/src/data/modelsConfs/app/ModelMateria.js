@@ -62,7 +62,7 @@ export default {
     edit: {
         type: 'v-edit',
         modelName: 'materia',
-        actions: ['action-save', 'action-back'],
+        actions : ['action-save','action-save-back','action-back'],
         fields: [
             'nome',
             'moltiplicatore',

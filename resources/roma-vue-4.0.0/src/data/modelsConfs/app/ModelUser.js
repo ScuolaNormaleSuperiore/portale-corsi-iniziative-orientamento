@@ -121,8 +121,7 @@ export default {
     edit : {
         modelName : 'user',
         type : 'v-edit',
-        actions : ['action-save','action-back','action-test',
-            'action-remove','action-hide','action-put-in','action-show'],
+        actions : ['action-save','action-save-back','action-back'],
         fields : ['info','name','email','password','password_confirmation','mainrole','empty',
             'fotos','attachments'
         ],

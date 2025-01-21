@@ -58,7 +58,7 @@ export default {
     edit: {
         type: 'v-edit',
         modelName : 'modalita_conoscenza_sns',
-        actions : ['action-save','action-back'],
+        actions : ['action-save','action-save-back','action-back'],
         fields: [
 			'nome',
 
