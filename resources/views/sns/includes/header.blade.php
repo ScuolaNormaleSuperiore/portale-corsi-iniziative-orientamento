@@ -241,46 +241,28 @@
                                     </a>
                                     <nav aria-label="Principale">
                                         <ul class="navbar-nav navbar-secondary" data-element="main-navigation">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="/orientamento"
-                                                   data-element="management">
-                                                    Orientamento
+                                        @foreach ($headerMenuPrincipale as $menuItem)
+                                            <li class="nav-item {{isset($menuItem['active']) ? 'active' : ''}}">
+                                                <a class="nav-link {{isset($menuItem['active']) ? 'active' : ''}}"
+                                                   href="{{$menuItem['path']}}"
+                                                   data-element="{{$menuItem['title']}}">
+                                                    {{$menuItem['title']}}
                                                 </a>
                                             </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="/archivio-news" data-element="news">
-                                                    <span>Notizie</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="/archivio-eventi"
-                                                   data-element="all-services">
-                                                    <span>Eventi</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="/info-corsi"
-                                                   data-element="all-services">
-                                                    <span>Info sui corsi</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="/candidature"
-                                                   data-element="all-services">
-                                                    <span>Per candidarsi</span>
-                                                </a>
-                                            </li>
+                                        @endforeach
                                         </ul>
                                     </nav>
                                     <nav aria-label="Secondaria">
                                         <ul class="navbar-nav navbar-secondary">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#">Parla con noi</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="/sportello-studenti">Sportello da Studente a
-                                                    Studente</a>
-                                            </li>
+                                            @foreach ($headerMenuSecondario as $menuItem)
+                                                <li class="nav-item {{isset($menuItem['active']) ? 'active' : ''}}">
+                                                    <a class="nav-link {{isset($menuItem['active']) ? 'active' : ''}}"
+                                                       href="{{$menuItem['path']}}"
+                                                       data-element="{{$menuItem['title']}}">
+                                                        {{$menuItem['title']}}
+                                                    </a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </nav>
                                     <div class="it-socials">

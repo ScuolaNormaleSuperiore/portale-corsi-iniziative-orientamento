@@ -6,11 +6,13 @@ use App\Models\Pagina;
 use App\Models\PaginaOrientamento;
 use Gecche\Cupparis\App\Foorm\FoormManager;
 use Gecche\Cupparis\Menus\Facades\Menus;
+use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,8 +39,48 @@ class AppServiceProvider extends ServiceProvider
     {
         //Schema::defaultStringLength(191);
         //
-        View::composer(['*'], function ($view) {
+        $headerActive = $this->calculateHeaderActive();
+        $headerMenuPrincipale = [
+            'orientamento' => [
+                'path' => '/orientamento',
+                'title' => 'Orientamento',
+            ],
+            'eventi' => [
+                'path' => '/archivio-eventi',
+                'title' => 'Eventi',
+            ],
+            'info-corsi' => [
+                'path' => '/info-corsi',
+                'title' => 'Info sui corsi',
+            ],
+            'candidature' => [
+                'path' => '/candidature',
+                'title' => 'Per candidarsi',
+            ],
+        ];
+        $headerMenuSecondario = [
+            'parla-con-noi' => [
+                'path' => '/parla-con-noi',
+                'title' => 'Parla con noi',
+            ],
+            'sportello-studenti' => [
+                'path' => '/sportello-studenti',
+                'title' => 'Sportello da studente a Studente',
+            ],
+        ];
+        if ($headerActive && isset($headerMenuPrincipale[$headerActive])) {
+            $headerMenuPrincipale[$headerActive]['active'] = true;
+        }
+        if ($headerActive && isset($headerMenuSecondario[$headerActive])) {
+            $headerMenuSecondario[$headerActive]['active'] = true;
+        }
+
+
+
+        View::composer(['*'], function ($view) use ($headerMenuPrincipale,$headerMenuSecondario) {
             $authRole = Auth::id() ? Auth::user()?->mainrole : null;
+            $view->with('headerMenuPrincipale', $headerMenuPrincipale);
+            $view->with('headerMenuSecondario', $headerMenuSecondario);
             $view->with('authRole', $authRole);
             $view->with('layoutGradientColor', 'bg-gradient-info overlay-dark overlay-opacity-4');
             $role = auth_role();
@@ -73,6 +115,32 @@ class AppServiceProvider extends ServiceProvider
         });
         Validator::extend('username_email', 'App\Validation\Rules@usernameEmail');
 
+    }
+
+    protected function calculateHeaderActive() {
+//        if (Theme::get() != 'sns') {
+//            return null;
+//        }
+        $uri = request()->getRequestUri();
+
+        if (Str::startsWith($uri,['/orientamento','/pagina-orientamento'])) {
+            return 'orientamento';
+        }
+        if (Str::startsWith($uri, ['/archivio-eventi','/dettaglio-evento'])) {
+            return 'eventi';
+        }
+        if (Str::startsWith($uri, ['/info-corsi','/info-corso'])) {
+            return 'info-corsi';
+        }
+        if (Str::startsWith($uri, ['/candidatura','/candidature'])) {
+            return 'candidature';
+        }
+        if (Str::startsWith($uri, ['/sportello-studenti'])) {
+            return 'sportello-studenti';
+        }
+
+
+        return $uri;
     }
 
     protected function getMenuByRole()
