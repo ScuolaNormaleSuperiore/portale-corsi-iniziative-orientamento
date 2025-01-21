@@ -237,12 +237,15 @@ return [
 
             ],
             "status" => [
-
+                "options" => 'enum:App\\Enums\\CandidatoStatuses',
             ],
             "conferma" => [
 
             ],
             "pagamento" => [
+
+            ],
+            "data_candidatura" => [
 
             ],
         ],
