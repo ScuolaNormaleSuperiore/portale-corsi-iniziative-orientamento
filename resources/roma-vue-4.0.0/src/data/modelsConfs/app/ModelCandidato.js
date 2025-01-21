@@ -91,7 +91,7 @@ export default {
                 href: function () {
                     var that = this;
 
-                    return "#/candidatov/" + that.modelData.id;
+                    return "#/candidato/" + that.modelData.id;
                     // var urlPrefix = import.meta.env.VITE_APP_TARGET || '';
                     // //
                     // return urlPrefix + CrudHelpers.addBearerTokenToUrl("#/front/studente/" + that.modelData.id);
