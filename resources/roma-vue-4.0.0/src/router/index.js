@@ -16,16 +16,6 @@ const devChildren = [
         component: () => import('@/views/Dashboard.vue'),
     },
     {
-        path: "/iniziativa/:iniziativaId",
-        name: "iniziativa (view)",
-        component: () => import('@/views/pages/app/Iniziativa.vue'),
-    },
-    {
-        path: "/candidatov/:candidatoId",
-        name: "candidato (view)",
-        component: () => import('@/views/pages/app/Candidato.vue'),
-    },
-    {
         path: '/formlayout',
         name: 'formlayout',
         component: () => import('@/views/uikit/FormLayoutDemo.vue'),
@@ -260,6 +250,16 @@ const appRoutes = [
                 path: '/',
                 name: 'dashboard',
                 component: () => import('@/views/Dashboard.vue')
+            },
+            {
+                path: "/iniziativa/:iniziativaId",
+                name: "iniziativa (view)",
+                component: () => import('@/views/pages/app/Iniziativa.vue'),
+            },
+            {
+                path: "/candidato/:candidatoId",
+                name: "candidato (view)",
+                component: () => import('@/views/pages/app/Candidato.vue'),
             },
             // {
             //     path: "geoitalia/",
