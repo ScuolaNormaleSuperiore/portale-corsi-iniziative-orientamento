@@ -182,6 +182,8 @@ return [
             'studente_orientamento',
             'avviso',
             'copertina',
+            'comune',
+            'nazione',
 
         ],
 
