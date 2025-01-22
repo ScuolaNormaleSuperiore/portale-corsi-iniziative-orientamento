@@ -9,15 +9,16 @@ import './i18n/config';
 
 const initializeApp = async () => {
   const rootEl = document.getElementById('chat');
-  if (!rootEl) return;
 
-  boot({ rootElement: rootEl });
+  if (!rootEl) return;
 
   const root = isProduction
     ? await initializeShadowRoot(rootEl)
     : ReactDOM.createRoot(rootEl);
 
   if (!root) return;
+
+  boot({ rootElement: rootEl });
 
   root.render(
     <Provider store={store}>

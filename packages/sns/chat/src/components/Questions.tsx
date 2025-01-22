@@ -2,6 +2,7 @@ import React from 'react';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { rootAttributesAtom } from '@atoms/rootAttributes';
 import { fetchMessageAtom, isMessageLoadingAtom } from '@atoms/messages';
+import { sanitize } from '@utils/sanitizer';
 import Accordion from '@components/Accordion';
 import AccordionItem from '@components/AccordionItem';
 import clsx from 'clsx';
@@ -33,8 +34,8 @@ const Questions: React.FC<{ className?: string }> = ({ className }) => {
                     },
                   )}
                   onClick={() => {
-                    if (!isMessageLoading) {
-                      setFetchMessage(item.title);
+                    if (!isMessageLoading && item?.title) {
+                      setFetchMessage(sanitize(item.title));
                     }
                   }}
                   disabled={isMessageLoading}

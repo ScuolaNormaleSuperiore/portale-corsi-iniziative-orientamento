@@ -16,6 +16,14 @@ i18n.use(initReactI18next).init({
           inputPlaceholder: 'Scrivi un messaggio',
           errorMessage: 'Ops! Qualcosa è andato storto, riprova!',
         },
+        avatar: {
+          user: {
+            alt: 'avatar utente',
+          },
+          assistant: {
+            alt: 'avatar assistente',
+          },
+        },
       },
     },
     en: {
@@ -24,6 +32,14 @@ i18n.use(initReactI18next).init({
           send: 'Send',
           inputPlaceholder: 'Write a message',
           errorMessage: 'Ops! Something went wrong, try again!',
+        },
+        avatar: {
+          user: {
+            alt: 'user avatar',
+          },
+          assistant: {
+            alt: 'assistant avatar',
+          },
         },
       },
     },

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import { MessageType } from '../types/message';
-import { formatMessage } from '@utils/sanitizer';
+import { formatMessage } from '@utils/parser';
 import Avatar from './Avatar';
 
 const Message: React.FC<{ message: MessageType }> = ({ message }) => {
@@ -15,7 +15,7 @@ const Message: React.FC<{ message: MessageType }> = ({ message }) => {
         'bg-primary-lighter': message.role === 'user',
       })}
     >
-      <Avatar role={message.role} />
+      <Avatar role={message.role} isLoading={message.isLoading} />
       <div
         className="message-content w-full"
         dangerouslySetInnerHTML={{ __html: formatMessage(message.content) }}

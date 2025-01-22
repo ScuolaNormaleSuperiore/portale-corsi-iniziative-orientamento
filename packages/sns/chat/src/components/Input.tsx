@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAtom, useSetAtom, useAtomValue } from 'jotai';
+import { useSetAtom, useAtomValue } from 'jotai';
 import {
   currentUserMessageAtom,
   fetchMessageAtom,
@@ -9,12 +9,19 @@ import {
 
 const Input: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [currentUserMessage, setCurrentUserMessage] = useAtom(
-    currentUserMessageAtom,
-  );
+  const setCurrentUserMessage = useSetAtom(currentUserMessageAtom);
+  const currentUserMessage = useAtomValue(currentUserMessageAtom);
   const setFetchMessage = useSetAtom(fetchMessageAtom);
   const isMessageLoading = useAtomValue(isMessageLoadingAtom);
   const { t } = useTranslation();
+
+  const handleSetCurrentMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length > 0) {
+      setCurrentUserMessage(e.target.value);
+    } else {
+      setCurrentUserMessage('');
+    }
+  };
 
   const handleSendMessage = () => {
     if (currentUserMessage?.trim()) {
@@ -34,7 +41,7 @@ const Input: React.FC = () => {
       className="w-full min-h-10 px-4 py-2"
       type="text"
       value={currentUserMessage}
-      onChange={(e) => setCurrentUserMessage(e.target.value)}
+      onChange={handleSetCurrentMessage}
       onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
       placeholder={t('chat.inputPlaceholder')}
       disabled={isMessageLoading}

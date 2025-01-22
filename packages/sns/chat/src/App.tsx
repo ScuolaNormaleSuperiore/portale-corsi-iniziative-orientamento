@@ -14,7 +14,6 @@ import clsx from 'clsx';
 const App = () => {
   const [isLeftColumnCollapsed, setIsLeftColumnCollapsed] = useState(false);
   const rootAttributes = useAtomValue(rootAttributesAtom);
-  console.log(rootAttributes);
   return (
     <>
       {isDevelopment && (
