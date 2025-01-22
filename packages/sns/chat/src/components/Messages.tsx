@@ -17,7 +17,7 @@ const Messages: React.FC = () => {
   }, [messages, elementRef, scrollToBottom]);
   return (
     <div
-      className="flex flex-col gap-4 w-full h-[525px] min-h-96 overflow-y-auto messages-container"
+      className="flex flex-col gap-4 w-full overflow-y-auto messages-container"
       ref={elementRef}
     >
       {messages.map((message: MessageType) => (

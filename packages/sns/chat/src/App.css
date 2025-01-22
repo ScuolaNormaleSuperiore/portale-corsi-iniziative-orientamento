@@ -4,7 +4,7 @@
 
 .messages-container {
   scrollbar-gutter: stable;
-  @apply mr-2;
+  @apply pr-5;
 
   &::-webkit-scrollbar {
     width: 8px;

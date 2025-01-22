@@ -8,17 +8,11 @@ import { rootAttributesAtom } from '@atoms/rootAttributes';
 import DefaultUserAvatar from '@assets/images/user-avatar.svg';
 import DefaultAssistantAvatar from '@assets/images/assistant-avatar.svg';
 
-const Avatar: React.FC<AvatarProps> = ({
-  role = 'assistant',
-  isLoading = false,
-}) => {
+const Avatar: React.FC<AvatarProps> = ({ role = 'assistant' }) => {
   return (
     <div
       className={clsx(
         'overflow-hidden w-10 h-10 min-w-10 min-h-10 rounded-full bg-secondary-lighter self-start sticky top-0',
-        {
-          'animate-pulse': isLoading,
-        },
       )}
     >
       <div className="relative w-full h-full">
@@ -56,7 +50,7 @@ const UserAvatar = () => {
         className="absolute w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         style={{
           backgroundImage: `url(${userAvatar})`,
-          backgroundPosition: 'center',
+          backgroundPosition: 'center center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
         }}

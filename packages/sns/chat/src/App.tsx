@@ -81,12 +81,12 @@ const App = () => {
                 </motion.div>
               </div>
             )}
-          <div className="flex flex-col w-full gap-6">
+          <div className="flex flex-col w-full">
             <div className="flex flex-col gap-6 flex-grow">
               <div className="px-6 pt-5 md:px-12 md:pt-10">
                 <Title />
               </div>
-              <div className="flex flex-col px-6 md:px-12 w-full">
+              <div className="flex flex-col px-6 md:px-12 w-full flex-grow pb-4 h-[525px] min-h-96">
                 <Messages />
               </div>
             </div>

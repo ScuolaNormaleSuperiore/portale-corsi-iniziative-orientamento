@@ -15,11 +15,22 @@ const Message: React.FC<{ message: MessageType }> = ({ message }) => {
         'bg-primary-lighter': message.role === 'user',
       })}
     >
-      <Avatar role={message.role} isLoading={message.isLoading} />
-      <div
-        className="message-content w-full"
-        dangerouslySetInnerHTML={{ __html: formatMessage(message.content) }}
-      />
+      <Avatar role={message.role} />
+      <div className="flex flex-col gap-2">
+        <div
+          className="message-content w-full"
+          dangerouslySetInnerHTML={{
+            __html: formatMessage(message.content),
+          }}
+        />
+        {message.role === 'assistant' && message.isLoading && (
+          <div className="flex gap-1 items-center">
+            <div className="w-1.5 h-1.5 bg-primary rounded-full animate-[bounce_0.6s_infinite]" />
+            <div className="w-1.5 h-1.5 bg-primary rounded-full animate-[bounce_0.6s_infinite_0.1s]" />
+            <div className="w-1.5 h-1.5 bg-primary rounded-full animate-[bounce_0.6s_infinite_0.2s]" />
+          </div>
+        )}
+      </div>
     </article>
   );
 };
