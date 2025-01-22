@@ -1,0 +1,2030 @@
+{
+  "data":
+  [
+    {
+      "id": 1,
+      "codice_istat": "100",
+      "codice_catastale": null,
+      "codice_iso_2": "IT",
+      "codice_iso_3": "ITA",
+      "nome": "Italia",
+      "attivo": 1
+    },
+    {
+      "id": 2,
+      "codice_istat": "201",
+      "codice_catastale": "Z100",
+      "codice_iso_2": "AL",
+      "codice_iso_3": "ALB",
+      "nome": "Albania",
+      "attivo": 1
+    },
+    {
+      "id": 3,
+      "codice_istat": "202",
+      "codice_catastale": "Z101",
+      "codice_iso_2": "AD",
+      "codice_iso_3": "AND",
+      "nome": "Andorra",
+      "attivo": 1
+    },
+    {
+      "id": 4,
+      "codice_istat": "203",
+      "codice_catastale": "Z102",
+      "codice_iso_2": "AT",
+      "codice_iso_3": "AUT",
+      "nome": "Austria",
+      "attivo": 1
+    },
+    {
+      "id": 5,
+      "codice_istat": "206",
+      "codice_catastale": "Z103",
+      "codice_iso_2": "BE",
+      "codice_iso_3": "BEL",
+      "nome": "Belgio",
+      "attivo": 1
+    },
+    {
+      "id": 6,
+      "codice_istat": "209",
+      "codice_catastale": "Z104",
+      "codice_iso_2": "BG",
+      "codice_iso_3": "BGR",
+      "nome": "Bulgaria",
+      "attivo": 1
+    },
+    {
+      "id": 7,
+      "codice_istat": "212",
+      "codice_catastale": "Z107",
+      "codice_iso_2": "DK",
+      "codice_iso_3": "DNK",
+      "nome": "Danimarca",
+      "attivo": 1
+    },
+    {
+      "id": 8,
+      "codice_istat": "214",
+      "codice_catastale": "Z109",
+      "codice_iso_2": "FI",
+      "codice_iso_3": "FIN",
+      "nome": "Finlandia",
+      "attivo": 1
+    },
+    {
+      "id": 9,
+      "codice_istat": "215",
+      "codice_catastale": "Z110",
+      "codice_iso_2": "FR",
+      "codice_iso_3": "FRA",
+      "nome": "Francia",
+      "attivo": 1
+    },
+    {
+      "id": 10,
+      "codice_istat": "216",
+      "codice_catastale": "Z112",
+      "codice_iso_2": "DE",
+      "codice_iso_3": "DEU",
+      "nome": "Germania",
+      "attivo": 1
+    },
+    {
+      "id": 11,
+      "codice_istat": "219",
+      "codice_catastale": "Z114",
+      "codice_iso_2": "UK",
+      "codice_iso_3": "GBR",
+      "nome": "Regno Unito",
+      "attivo": 1
+    },
+    {
+      "id": 12,
+      "codice_istat": "220",
+      "codice_catastale": "Z115",
+      "codice_iso_2": "GR",
+      "codice_iso_3": "GRC",
+      "nome": "Grecia",
+      "attivo": 1
+    },
+    {
+      "id": 13,
+      "codice_istat": "221",
+      "codice_catastale": "Z116",
+      "codice_iso_2": "IE",
+      "codice_iso_3": "IRL",
+      "nome": "Irlanda",
+      "attivo": 1
+    },
+    {
+      "id": 14,
+      "codice_istat": "223",
+      "codice_catastale": "Z117",
+      "codice_iso_2": "IS",
+      "codice_iso_3": "ISL",
+      "nome": "Islanda",
+      "attivo": 1
+    },
+    {
+      "id": 15,
+      "codice_istat": "225",
+      "codice_catastale": "Z119",
+      "codice_iso_2": "LI",
+      "codice_iso_3": "LIE",
+      "nome": "Liechtenstein",
+      "attivo": 1
+    },
+    {
+      "id": 16,
+      "codice_istat": "226",
+      "codice_catastale": "Z120",
+      "codice_iso_2": "LU",
+      "codice_iso_3": "LUX",
+      "nome": "Lussemburgo",
+      "attivo": 1
+    },
+    {
+      "id": 17,
+      "codice_istat": "227",
+      "codice_catastale": "Z121",
+      "codice_iso_2": "MT",
+      "codice_iso_3": "MLT",
+      "nome": "Malta",
+      "attivo": 1
+    },
+    {
+      "id": 18,
+      "codice_istat": "229",
+      "codice_catastale": "Z123",
+      "codice_iso_2": "MC",
+      "codice_iso_3": "MCO",
+      "nome": "Monaco",
+      "attivo": 1
+    },
+    {
+      "id": 19,
+      "codice_istat": "231",
+      "codice_catastale": "Z125",
+      "codice_iso_2": "NO",
+      "codice_iso_3": "NOR",
+      "nome": "Norvegia",
+      "attivo": 1
+    },
+    {
+      "id": 20,
+      "codice_istat": "232",
+      "codice_catastale": "Z126",
+      "codice_iso_2": "NL",
+      "codice_iso_3": "NLD",
+      "nome": "Paesi Bassi",
+      "attivo": 1
+    },
+    {
+      "id": 21,
+      "codice_istat": "233",
+      "codice_catastale": "Z127",
+      "codice_iso_2": "PL",
+      "codice_iso_3": "POL",
+      "nome": "Polonia",
+      "attivo": 1
+    },
+    {
+      "id": 22,
+      "codice_istat": "234",
+      "codice_catastale": "Z128",
+      "codice_iso_2": "PT",
+      "codice_iso_3": "PRT",
+      "nome": "Portogallo",
+      "attivo": 1
+    },
+    {
+      "id": 23,
+      "codice_istat": "235",
+      "codice_catastale": "Z129",
+      "codice_iso_2": "RO",
+      "codice_iso_3": "ROU",
+      "nome": "Romania",
+      "attivo": 1
+    },
+    {
+      "id": 24,
+      "codice_istat": "236",
+      "codice_catastale": "Z130",
+      "codice_iso_2": "SM",
+      "codice_iso_3": "SMR",
+      "nome": "San Marino",
+      "attivo": 1
+    },
+    {
+      "id": 25,
+      "codice_istat": "239",
+      "codice_catastale": "Z131",
+      "codice_iso_2": "ES",
+      "codice_iso_3": "ESP",
+      "nome": "Spagna",
+      "attivo": 1
+    },
+    {
+      "id": 26,
+      "codice_istat": "240",
+      "codice_catastale": "Z132",
+      "codice_iso_2": "SE",
+      "codice_iso_3": "SWE",
+      "nome": "Svezia",
+      "attivo": 1
+    },
+    {
+      "id": 27,
+      "codice_istat": "241",
+      "codice_catastale": "Z133",
+      "codice_iso_2": "CH",
+      "codice_iso_3": "CHE",
+      "nome": "Svizzera",
+      "attivo": 1
+    },
+    {
+      "id": 28,
+      "codice_istat": "243",
+      "codice_catastale": "Z138",
+      "codice_iso_2": "UA",
+      "codice_iso_3": "UKR",
+      "nome": "Ucraina",
+      "attivo": 1
+    },
+    {
+      "id": 29,
+      "codice_istat": "244",
+      "codice_catastale": "Z134",
+      "codice_iso_2": "HU",
+      "codice_iso_3": "HUN",
+      "nome": "Ungheria",
+      "attivo": 1
+    },
+    {
+      "id": 30,
+      "codice_istat": "245",
+      "codice_catastale": "Z154",
+      "codice_iso_2": "RU",
+      "codice_iso_3": "RUS",
+      "nome": "Federazione russa",
+      "attivo": 1
+    },
+    {
+      "id": 31,
+      "codice_istat": "246",
+      "codice_catastale": "Z106",
+      "codice_iso_2": "VA",
+      "codice_iso_3": "VAT",
+      "nome": "Stato della Città del Vaticano",
+      "attivo": 1
+    },
+    {
+      "id": 32,
+      "codice_istat": "247",
+      "codice_catastale": "Z144",
+      "codice_iso_2": "EE",
+      "codice_iso_3": "EST",
+      "nome": "Estonia",
+      "attivo": 1
+    },
+    {
+      "id": 33,
+      "codice_istat": "248",
+      "codice_catastale": "Z145",
+      "codice_iso_2": "LV",
+      "codice_iso_3": "LVA",
+      "nome": "Lettonia",
+      "attivo": 1
+    },
+    {
+      "id": 34,
+      "codice_istat": "249",
+      "codice_catastale": "Z146",
+      "codice_iso_2": "LT",
+      "codice_iso_3": "LTU",
+      "nome": "Lituania",
+      "attivo": 1
+    },
+    {
+      "id": 35,
+      "codice_istat": "250",
+      "codice_catastale": "Z149",
+      "codice_iso_2": "HR",
+      "codice_iso_3": "HRV",
+      "nome": "Croazia",
+      "attivo": 1
+    },
+    {
+      "id": 36,
+      "codice_istat": "251",
+      "codice_catastale": "Z150",
+      "codice_iso_2": "SI",
+      "codice_iso_3": "SVN",
+      "nome": "Slovenia",
+      "attivo": 1
+    },
+    {
+      "id": 37,
+      "codice_istat": "252",
+      "codice_catastale": "Z153",
+      "codice_iso_2": "BA",
+      "codice_iso_3": "BIH",
+      "nome": "Bosnia-Erzegovina",
+      "attivo": 1
+    },
+    {
+      "id": 38,
+      "codice_istat": "253",
+      "codice_catastale": "Z148",
+      "codice_iso_2": "MK",
+      "codice_iso_3": "MKD",
+      "nome": "Macedonia del Nord",
+      "attivo": 1
+    },
+    {
+      "id": 39,
+      "codice_istat": "254",
+      "codice_catastale": "Z140",
+      "codice_iso_2": "MD",
+      "codice_iso_3": "MDA",
+      "nome": "Moldova",
+      "attivo": 1
+    },
+    {
+      "id": 40,
+      "codice_istat": "255",
+      "codice_catastale": "Z155",
+      "codice_iso_2": "SK",
+      "codice_iso_3": "SVK",
+      "nome": "Slovacchia",
+      "attivo": 1
+    },
+    {
+      "id": 41,
+      "codice_istat": "256",
+      "codice_catastale": "Z139",
+      "codice_iso_2": "BY",
+      "codice_iso_3": "BLR",
+      "nome": "Bielorussia",
+      "attivo": 1
+    },
+    {
+      "id": 42,
+      "codice_istat": "257",
+      "codice_catastale": "Z156",
+      "codice_iso_2": "CZ",
+      "codice_iso_3": "CZE",
+      "nome": "Repubblica ceca",
+      "attivo": 1
+    },
+    {
+      "id": 43,
+      "codice_istat": "270",
+      "codice_catastale": "Z159",
+      "codice_iso_2": "ME",
+      "codice_iso_3": "MNE",
+      "nome": "Montenegro",
+      "attivo": 1
+    },
+    {
+      "id": 44,
+      "codice_istat": "271",
+      "codice_catastale": "Z158",
+      "codice_iso_2": "RS",
+      "codice_iso_3": "SRB",
+      "nome": "Serbia",
+      "attivo": 1
+    },
+    {
+      "id": 45,
+      "codice_istat": "272",
+      "codice_catastale": "Z160",
+      "codice_iso_2": null,
+      "codice_iso_3": "KOS",
+      "nome": "Kosovo",
+      "attivo": 1
+    },
+    {
+      "id": 46,
+      "codice_istat": "301",
+      "codice_catastale": "Z200",
+      "codice_iso_2": "AF",
+      "codice_iso_3": "AFG",
+      "nome": "Afghanistan",
+      "attivo": 1
+    },
+    {
+      "id": 47,
+      "codice_istat": "302",
+      "codice_catastale": "Z203",
+      "codice_iso_2": "SA",
+      "codice_iso_3": "SAU",
+      "nome": "Arabia Saudita",
+      "attivo": 1
+    },
+    {
+      "id": 48,
+      "codice_istat": "304",
+      "codice_catastale": "Z204",
+      "codice_iso_2": "BH",
+      "codice_iso_3": "BHR",
+      "nome": "Bahrein",
+      "attivo": 1
+    },
+    {
+      "id": 49,
+      "codice_istat": "305",
+      "codice_catastale": "Z249",
+      "codice_iso_2": "BD",
+      "codice_iso_3": "BGD",
+      "nome": "Bangladesh",
+      "attivo": 1
+    },
+    {
+      "id": 50,
+      "codice_istat": "306",
+      "codice_catastale": "Z205",
+      "codice_iso_2": "BT",
+      "codice_iso_3": "BTN",
+      "nome": "Bhutan",
+      "attivo": 1
+    },
+    {
+      "id": 51,
+      "codice_istat": "307",
+      "codice_catastale": "Z206",
+      "codice_iso_2": "MM",
+      "codice_iso_3": "MMR",
+      "nome": "Myanmar/Birmania",
+      "attivo": 1
+    },
+    {
+      "id": 52,
+      "codice_istat": "309",
+      "codice_catastale": "Z207",
+      "codice_iso_2": "BN",
+      "codice_iso_3": "BRN",
+      "nome": "Brunei Darussalam",
+      "attivo": 1
+    },
+    {
+      "id": 53,
+      "codice_istat": "310",
+      "codice_catastale": "Z208",
+      "codice_iso_2": "KH",
+      "codice_iso_3": "KHM",
+      "nome": "Cambogia",
+      "attivo": 1
+    },
+    {
+      "id": 54,
+      "codice_istat": "311",
+      "codice_catastale": "Z209",
+      "codice_iso_2": "LK",
+      "codice_iso_3": "LKA",
+      "nome": "Sri Lanka",
+      "attivo": 1
+    },
+    {
+      "id": 55,
+      "codice_istat": "314",
+      "codice_catastale": "Z210",
+      "codice_iso_2": "CN",
+      "codice_iso_3": "CHN",
+      "nome": "Cina",
+      "attivo": 1
+    },
+    {
+      "id": 56,
+      "codice_istat": "315",
+      "codice_catastale": "Z211",
+      "codice_iso_2": "CY",
+      "codice_iso_3": "CYP",
+      "nome": "Cipro",
+      "attivo": 1
+    },
+    {
+      "id": 57,
+      "codice_istat": "319",
+      "codice_catastale": "Z214",
+      "codice_iso_2": "KP",
+      "codice_iso_3": "PRK",
+      "nome": "Corea del Nord",
+      "attivo": 1
+    },
+    {
+      "id": 58,
+      "codice_istat": "320",
+      "codice_catastale": "Z213",
+      "codice_iso_2": "KR",
+      "codice_iso_3": "KOR",
+      "nome": "Corea del Sud",
+      "attivo": 1
+    },
+    {
+      "id": 59,
+      "codice_istat": "322",
+      "codice_catastale": "Z215",
+      "codice_iso_2": "AE",
+      "codice_iso_3": "ARE",
+      "nome": "Emirati Arabi Uniti",
+      "attivo": 1
+    },
+    {
+      "id": 60,
+      "codice_istat": "323",
+      "codice_catastale": "Z216",
+      "codice_iso_2": "PH",
+      "codice_iso_3": "PHL",
+      "nome": "Filippine",
+      "attivo": 1
+    },
+    {
+      "id": 61,
+      "codice_istat": "324",
+      "codice_catastale": "Z161",
+      "codice_iso_2": "PS",
+      "codice_iso_3": "PSE",
+      "nome": "Palestina",
+      "attivo": 1
+    },
+    {
+      "id": 62,
+      "codice_istat": "326",
+      "codice_catastale": "Z219",
+      "codice_iso_2": "JP",
+      "codice_iso_3": "JPN",
+      "nome": "Giappone",
+      "attivo": 1
+    },
+    {
+      "id": 63,
+      "codice_istat": "327",
+      "codice_catastale": "Z220",
+      "codice_iso_2": "JO",
+      "codice_iso_3": "JOR",
+      "nome": "Giordania",
+      "attivo": 1
+    },
+    {
+      "id": 64,
+      "codice_istat": "330",
+      "codice_catastale": "Z222",
+      "codice_iso_2": "IN",
+      "codice_iso_3": "IND",
+      "nome": "India",
+      "attivo": 1
+    },
+    {
+      "id": 65,
+      "codice_istat": "331",
+      "codice_catastale": "Z223",
+      "codice_iso_2": "ID",
+      "codice_iso_3": "IDN",
+      "nome": "Indonesia",
+      "attivo": 1
+    },
+    {
+      "id": 66,
+      "codice_istat": "332",
+      "codice_catastale": "Z224",
+      "codice_iso_2": "IR",
+      "codice_iso_3": "IRN",
+      "nome": "Iran",
+      "attivo": 1
+    },
+    {
+      "id": 67,
+      "codice_istat": "333",
+      "codice_catastale": "Z225",
+      "codice_iso_2": "IQ",
+      "codice_iso_3": "IRQ",
+      "nome": "Iraq",
+      "attivo": 1
+    },
+    {
+      "id": 68,
+      "codice_istat": "334",
+      "codice_catastale": "Z226",
+      "codice_iso_2": "IL",
+      "codice_iso_3": "ISR",
+      "nome": "Israele",
+      "attivo": 1
+    },
+    {
+      "id": 69,
+      "codice_istat": "335",
+      "codice_catastale": "Z227",
+      "codice_iso_2": "KW",
+      "codice_iso_3": "KWT",
+      "nome": "Kuwait",
+      "attivo": 1
+    },
+    {
+      "id": 70,
+      "codice_istat": "336",
+      "codice_catastale": "Z228",
+      "codice_iso_2": "LA",
+      "codice_iso_3": "LAO",
+      "nome": "Laos",
+      "attivo": 1
+    },
+    {
+      "id": 71,
+      "codice_istat": "337",
+      "codice_catastale": "Z229",
+      "codice_iso_2": "LB",
+      "codice_iso_3": "LBN",
+      "nome": "Libano",
+      "attivo": 1
+    },
+    {
+      "id": 72,
+      "codice_istat": "338",
+      "codice_catastale": "Z242",
+      "codice_iso_2": "TL",
+      "codice_iso_3": "TLS",
+      "nome": "Timor Leste",
+      "attivo": 1
+    },
+    {
+      "id": 73,
+      "codice_istat": "339",
+      "codice_catastale": "Z232",
+      "codice_iso_2": "MV",
+      "codice_iso_3": "MDV",
+      "nome": "Maldive",
+      "attivo": 1
+    },
+    {
+      "id": 74,
+      "codice_istat": "340",
+      "codice_catastale": "Z247",
+      "codice_iso_2": "MY",
+      "codice_iso_3": "MYS",
+      "nome": "Malaysia",
+      "attivo": 1
+    },
+    {
+      "id": 75,
+      "codice_istat": "341",
+      "codice_catastale": "Z233",
+      "codice_iso_2": "MN",
+      "codice_iso_3": "MNG",
+      "nome": "Mongolia",
+      "attivo": 1
+    },
+    {
+      "id": 76,
+      "codice_istat": "342",
+      "codice_catastale": "Z234",
+      "codice_iso_2": "NP",
+      "codice_iso_3": "NPL",
+      "nome": "Nepal",
+      "attivo": 1
+    },
+    {
+      "id": 77,
+      "codice_istat": "343",
+      "codice_catastale": "Z235",
+      "codice_iso_2": "OM",
+      "codice_iso_3": "OMN",
+      "nome": "Oman",
+      "attivo": 1
+    },
+    {
+      "id": 78,
+      "codice_istat": "344",
+      "codice_catastale": "Z236",
+      "codice_iso_2": "PK",
+      "codice_iso_3": "PAK",
+      "nome": "Pakistan",
+      "attivo": 1
+    },
+    {
+      "id": 79,
+      "codice_istat": "345",
+      "codice_catastale": "Z237",
+      "codice_iso_2": "QA",
+      "codice_iso_3": "QAT",
+      "nome": "Qatar",
+      "attivo": 1
+    },
+    {
+      "id": 80,
+      "codice_istat": "346",
+      "codice_catastale": "Z248",
+      "codice_iso_2": "SG",
+      "codice_iso_3": "SGP",
+      "nome": "Singapore",
+      "attivo": 1
+    },
+    {
+      "id": 81,
+      "codice_istat": "348",
+      "codice_catastale": "Z240",
+      "codice_iso_2": "SY",
+      "codice_iso_3": "SYR",
+      "nome": "Siria",
+      "attivo": 1
+    },
+    {
+      "id": 82,
+      "codice_istat": "349",
+      "codice_catastale": "Z241",
+      "codice_iso_2": "TH",
+      "codice_iso_3": "THA",
+      "nome": "Thailandia",
+      "attivo": 1
+    },
+    {
+      "id": 83,
+      "codice_istat": "351",
+      "codice_catastale": "Z243",
+      "codice_iso_2": "TR",
+      "codice_iso_3": "TUR",
+      "nome": "Turchia",
+      "attivo": 1
+    },
+    {
+      "id": 84,
+      "codice_istat": "353",
+      "codice_catastale": "Z251",
+      "codice_iso_2": "VN",
+      "codice_iso_3": "VNM",
+      "nome": "Vietnam",
+      "attivo": 1
+    },
+    {
+      "id": 85,
+      "codice_istat": "354",
+      "codice_catastale": "Z246",
+      "codice_iso_2": "YE",
+      "codice_iso_3": "YEM",
+      "nome": "Yemen",
+      "attivo": 1
+    },
+    {
+      "id": 86,
+      "codice_istat": "356",
+      "codice_catastale": "Z255",
+      "codice_iso_2": "KZ",
+      "codice_iso_3": "KAZ",
+      "nome": "Kazakhstan",
+      "attivo": 1
+    },
+    {
+      "id": 87,
+      "codice_istat": "357",
+      "codice_catastale": "Z259",
+      "codice_iso_2": "UZ",
+      "codice_iso_3": "UZB",
+      "nome": "Uzbekistan",
+      "attivo": 1
+    },
+    {
+      "id": 88,
+      "codice_istat": "358",
+      "codice_catastale": "Z252",
+      "codice_iso_2": "AM",
+      "codice_iso_3": "ARM",
+      "nome": "Armenia",
+      "attivo": 1
+    },
+    {
+      "id": 89,
+      "codice_istat": "359",
+      "codice_catastale": "Z253",
+      "codice_iso_2": "AZ",
+      "codice_iso_3": "AZE",
+      "nome": "Azerbaigian",
+      "attivo": 1
+    },
+    {
+      "id": 90,
+      "codice_istat": "360",
+      "codice_catastale": "Z254",
+      "codice_iso_2": "GE",
+      "codice_iso_3": "GEO",
+      "nome": "Georgia",
+      "attivo": 1
+    },
+    {
+      "id": 91,
+      "codice_istat": "361",
+      "codice_catastale": "Z256",
+      "codice_iso_2": "KG",
+      "codice_iso_3": "KGZ",
+      "nome": "Kirghizistan",
+      "attivo": 1
+    },
+    {
+      "id": 92,
+      "codice_istat": "362",
+      "codice_catastale": "Z257",
+      "codice_iso_2": "TJ",
+      "codice_iso_3": "TJK",
+      "nome": "Tagikistan",
+      "attivo": 1
+    },
+    {
+      "id": 93,
+      "codice_istat": "363",
+      "codice_catastale": "Z217",
+      "codice_iso_2": "TW",
+      "codice_iso_3": "TWN",
+      "nome": "Taiwan",
+      "attivo": 1
+    },
+    {
+      "id": 94,
+      "codice_istat": "364",
+      "codice_catastale": "Z258",
+      "codice_iso_2": "TM",
+      "codice_iso_3": "TKM",
+      "nome": "Turkmenistan",
+      "attivo": 1
+    },
+    {
+      "id": 95,
+      "codice_istat": "401",
+      "codice_catastale": "Z301",
+      "codice_iso_2": "DZ",
+      "codice_iso_3": "DZA",
+      "nome": "Algeria",
+      "attivo": 1
+    },
+    {
+      "id": 96,
+      "codice_istat": "402",
+      "codice_catastale": "Z302",
+      "codice_iso_2": "AO",
+      "codice_iso_3": "AGO",
+      "nome": "Angola",
+      "attivo": 1
+    },
+    {
+      "id": 97,
+      "codice_istat": "404",
+      "codice_catastale": "Z313",
+      "codice_iso_2": "CI",
+      "codice_iso_3": "CIV",
+      "nome": "Costa d'Avorio",
+      "attivo": 1
+    },
+    {
+      "id": 98,
+      "codice_istat": "406",
+      "codice_catastale": "Z314",
+      "codice_iso_2": "BJ",
+      "codice_iso_3": "BEN",
+      "nome": "Benin",
+      "attivo": 1
+    },
+    {
+      "id": 99,
+      "codice_istat": "408",
+      "codice_catastale": "Z358",
+      "codice_iso_2": "BW",
+      "codice_iso_3": "BWA",
+      "nome": "Botswana",
+      "attivo": 1
+    },
+    {
+      "id": 100,
+      "codice_istat": "409",
+      "codice_catastale": "Z354",
+      "codice_iso_2": "BF",
+      "codice_iso_3": "BFA",
+      "nome": "Burkina Faso",
+      "attivo": 1
+    },
+    {
+      "id": 101,
+      "codice_istat": "410",
+      "codice_catastale": "Z305",
+      "codice_iso_2": "BI",
+      "codice_iso_3": "BDI",
+      "nome": "Burundi",
+      "attivo": 1
+    },
+    {
+      "id": 102,
+      "codice_istat": "411",
+      "codice_catastale": "Z306",
+      "codice_iso_2": "CM",
+      "codice_iso_3": "CMR",
+      "nome": "Camerun",
+      "attivo": 1
+    },
+    {
+      "id": 103,
+      "codice_istat": "413",
+      "codice_catastale": "Z307",
+      "codice_iso_2": "CV",
+      "codice_iso_3": "CPV",
+      "nome": "Capo Verde",
+      "attivo": 1
+    },
+    {
+      "id": 104,
+      "codice_istat": "414",
+      "codice_catastale": "Z308",
+      "codice_iso_2": "CF",
+      "codice_iso_3": "CAF",
+      "nome": "Repubblica Centrafricana",
+      "attivo": 1
+    },
+    {
+      "id": 105,
+      "codice_istat": "415",
+      "codice_catastale": "Z309",
+      "codice_iso_2": "TD",
+      "codice_iso_3": "TCD",
+      "nome": "Ciad",
+      "attivo": 1
+    },
+    {
+      "id": 106,
+      "codice_istat": "417",
+      "codice_catastale": "Z310",
+      "codice_iso_2": "KM",
+      "codice_iso_3": "COM",
+      "nome": "Comore",
+      "attivo": 1
+    },
+    {
+      "id": 107,
+      "codice_istat": "418",
+      "codice_catastale": "Z311",
+      "codice_iso_2": "CG",
+      "codice_iso_3": "COG",
+      "nome": "Congo",
+      "attivo": 1
+    },
+    {
+      "id": 108,
+      "codice_istat": "419",
+      "codice_catastale": "Z336",
+      "codice_iso_2": "EG",
+      "codice_iso_3": "EGY",
+      "nome": "Egitto",
+      "attivo": 1
+    },
+    {
+      "id": 109,
+      "codice_istat": "420",
+      "codice_catastale": "Z315",
+      "codice_iso_2": "ET",
+      "codice_iso_3": "ETH",
+      "nome": "Etiopia",
+      "attivo": 1
+    },
+    {
+      "id": 110,
+      "codice_istat": "421",
+      "codice_catastale": "Z316",
+      "codice_iso_2": "GA",
+      "codice_iso_3": "GAB",
+      "nome": "Gabon",
+      "attivo": 1
+    },
+    {
+      "id": 111,
+      "codice_istat": "422",
+      "codice_catastale": "Z317",
+      "codice_iso_2": "GM",
+      "codice_iso_3": "GMB",
+      "nome": "Gambia",
+      "attivo": 1
+    },
+    {
+      "id": 112,
+      "codice_istat": "423",
+      "codice_catastale": "Z318",
+      "codice_iso_2": "GH",
+      "codice_iso_3": "GHA",
+      "nome": "Ghana",
+      "attivo": 1
+    },
+    {
+      "id": 113,
+      "codice_istat": "424",
+      "codice_catastale": "Z361",
+      "codice_iso_2": "DJ",
+      "codice_iso_3": "DJI",
+      "nome": "Gibuti",
+      "attivo": 1
+    },
+    {
+      "id": 114,
+      "codice_istat": "425",
+      "codice_catastale": "Z319",
+      "codice_iso_2": "GN",
+      "codice_iso_3": "GIN",
+      "nome": "Guinea",
+      "attivo": 1
+    },
+    {
+      "id": 115,
+      "codice_istat": "426",
+      "codice_catastale": "Z320",
+      "codice_iso_2": "GW",
+      "codice_iso_3": "GNB",
+      "nome": "Guinea-Bissau",
+      "attivo": 1
+    },
+    {
+      "id": 116,
+      "codice_istat": "427",
+      "codice_catastale": "Z321",
+      "codice_iso_2": "GQ",
+      "codice_iso_3": "GNQ",
+      "nome": "Guinea equatoriale",
+      "attivo": 1
+    },
+    {
+      "id": 117,
+      "codice_istat": "428",
+      "codice_catastale": "Z322",
+      "codice_iso_2": "KE",
+      "codice_iso_3": "KEN",
+      "nome": "Kenya",
+      "attivo": 1
+    },
+    {
+      "id": 118,
+      "codice_istat": "429",
+      "codice_catastale": "Z359",
+      "codice_iso_2": "LS",
+      "codice_iso_3": "LSO",
+      "nome": "Lesotho",
+      "attivo": 1
+    },
+    {
+      "id": 119,
+      "codice_istat": "430",
+      "codice_catastale": "Z325",
+      "codice_iso_2": "LR",
+      "codice_iso_3": "LBR",
+      "nome": "Liberia",
+      "attivo": 1
+    },
+    {
+      "id": 120,
+      "codice_istat": "431",
+      "codice_catastale": "Z326",
+      "codice_iso_2": "LY",
+      "codice_iso_3": "LBY",
+      "nome": "Libia",
+      "attivo": 1
+    },
+    {
+      "id": 121,
+      "codice_istat": "432",
+      "codice_catastale": "Z327",
+      "codice_iso_2": "MG",
+      "codice_iso_3": "MDG",
+      "nome": "Madagascar",
+      "attivo": 1
+    },
+    {
+      "id": 122,
+      "codice_istat": "434",
+      "codice_catastale": "Z328",
+      "codice_iso_2": "MW",
+      "codice_iso_3": "MWI",
+      "nome": "Malawi",
+      "attivo": 1
+    },
+    {
+      "id": 123,
+      "codice_istat": "435",
+      "codice_catastale": "Z329",
+      "codice_iso_2": "ML",
+      "codice_iso_3": "MLI",
+      "nome": "Mali",
+      "attivo": 1
+    },
+    {
+      "id": 124,
+      "codice_istat": "436",
+      "codice_catastale": "Z330",
+      "codice_iso_2": "MA",
+      "codice_iso_3": "MAR",
+      "nome": "Marocco",
+      "attivo": 1
+    },
+    {
+      "id": 125,
+      "codice_istat": "437",
+      "codice_catastale": "Z331",
+      "codice_iso_2": "MR",
+      "codice_iso_3": "MRT",
+      "nome": "Mauritania",
+      "attivo": 1
+    },
+    {
+      "id": 126,
+      "codice_istat": "438",
+      "codice_catastale": "Z332",
+      "codice_iso_2": "MU",
+      "codice_iso_3": "MUS",
+      "nome": "Maurizio",
+      "attivo": 1
+    },
+    {
+      "id": 127,
+      "codice_istat": "440",
+      "codice_catastale": "Z333",
+      "codice_iso_2": "MZ",
+      "codice_iso_3": "MOZ",
+      "nome": "Mozambico",
+      "attivo": 1
+    },
+    {
+      "id": 128,
+      "codice_istat": "441",
+      "codice_catastale": "Z300",
+      "codice_iso_2": "NA",
+      "codice_iso_3": "NAM",
+      "nome": "Namibia",
+      "attivo": 1
+    },
+    {
+      "id": 129,
+      "codice_istat": "442",
+      "codice_catastale": "Z334",
+      "codice_iso_2": "NE",
+      "codice_iso_3": "NER",
+      "nome": "Niger",
+      "attivo": 1
+    },
+    {
+      "id": 130,
+      "codice_istat": "443",
+      "codice_catastale": "Z335",
+      "codice_iso_2": "NG",
+      "codice_iso_3": "NGA",
+      "nome": "Nigeria",
+      "attivo": 1
+    },
+    {
+      "id": 131,
+      "codice_istat": "446",
+      "codice_catastale": "Z338",
+      "codice_iso_2": "RW",
+      "codice_iso_3": "RWA",
+      "nome": "Ruanda",
+      "attivo": 1
+    },
+    {
+      "id": 132,
+      "codice_istat": "448",
+      "codice_catastale": "Z341",
+      "codice_iso_2": "ST",
+      "codice_iso_3": "STP",
+      "nome": "Sao Tomé e Principe",
+      "attivo": 1
+    },
+    {
+      "id": 133,
+      "codice_istat": "449",
+      "codice_catastale": "Z342",
+      "codice_iso_2": "SC",
+      "codice_iso_3": "SYC",
+      "nome": "Seychelles",
+      "attivo": 1
+    },
+    {
+      "id": 134,
+      "codice_istat": "450",
+      "codice_catastale": "Z343",
+      "codice_iso_2": "SN",
+      "codice_iso_3": "SEN",
+      "nome": "Senegal",
+      "attivo": 1
+    },
+    {
+      "id": 135,
+      "codice_istat": "451",
+      "codice_catastale": "Z344",
+      "codice_iso_2": "SL",
+      "codice_iso_3": "SLE",
+      "nome": "Sierra Leone",
+      "attivo": 1
+    },
+    {
+      "id": 136,
+      "codice_istat": "453",
+      "codice_catastale": "Z345",
+      "codice_iso_2": "SO",
+      "codice_iso_3": "SOM",
+      "nome": "Somalia",
+      "attivo": 1
+    },
+    {
+      "id": 137,
+      "codice_istat": "454",
+      "codice_catastale": "Z347",
+      "codice_iso_2": "ZA",
+      "codice_iso_3": "ZAF",
+      "nome": "Sudafrica",
+      "attivo": 1
+    },
+    {
+      "id": 138,
+      "codice_istat": "455",
+      "codice_catastale": "Z348",
+      "codice_iso_2": "SD",
+      "codice_iso_3": "SDN",
+      "nome": "Sudan",
+      "attivo": 1
+    },
+    {
+      "id": 139,
+      "codice_istat": "456",
+      "codice_catastale": "Z349",
+      "codice_iso_2": "SZ",
+      "codice_iso_3": "SWZ",
+      "nome": "Eswatini",
+      "attivo": 1
+    },
+    {
+      "id": 140,
+      "codice_istat": "457",
+      "codice_catastale": "Z357",
+      "codice_iso_2": "TZ",
+      "codice_iso_3": "TZA",
+      "nome": "Tanzania",
+      "attivo": 1
+    },
+    {
+      "id": 141,
+      "codice_istat": "458",
+      "codice_catastale": "Z351",
+      "codice_iso_2": "TG",
+      "codice_iso_3": "TGO",
+      "nome": "Togo",
+      "attivo": 1
+    },
+    {
+      "id": 142,
+      "codice_istat": "460",
+      "codice_catastale": "Z352",
+      "codice_iso_2": "TN",
+      "codice_iso_3": "TUN",
+      "nome": "Tunisia",
+      "attivo": 1
+    },
+    {
+      "id": 143,
+      "codice_istat": "461",
+      "codice_catastale": "Z353",
+      "codice_iso_2": "UG",
+      "codice_iso_3": "UGA",
+      "nome": "Uganda",
+      "attivo": 1
+    },
+    {
+      "id": 144,
+      "codice_istat": "463",
+      "codice_catastale": "Z312",
+      "codice_iso_2": "CD",
+      "codice_iso_3": "COD",
+      "nome": "Repubblica Democratica del Congo",
+      "attivo": 1
+    },
+    {
+      "id": 145,
+      "codice_istat": "464",
+      "codice_catastale": "Z355",
+      "codice_iso_2": "ZM",
+      "codice_iso_3": "ZMB",
+      "nome": "Zambia",
+      "attivo": 1
+    },
+    {
+      "id": 146,
+      "codice_istat": "465",
+      "codice_catastale": "Z337",
+      "codice_iso_2": "ZW",
+      "codice_iso_3": "ZWE",
+      "nome": "Zimbabwe",
+      "attivo": 1
+    },
+    {
+      "id": 147,
+      "codice_istat": "466",
+      "codice_catastale": "Z368",
+      "codice_iso_2": "ER",
+      "codice_iso_3": "ERI",
+      "nome": "Eritrea",
+      "attivo": 1
+    },
+    {
+      "id": 148,
+      "codice_istat": "467",
+      "codice_catastale": "Z907",
+      "codice_iso_2": "SS",
+      "codice_iso_3": "SSD",
+      "nome": "Sud Sudan",
+      "attivo": 1
+    },
+    {
+      "id": 149,
+      "codice_istat": "503",
+      "codice_catastale": "Z532",
+      "codice_iso_2": "AG",
+      "codice_iso_3": "ATG",
+      "nome": "Antigua e Barbuda",
+      "attivo": 1
+    },
+    {
+      "id": 150,
+      "codice_istat": "505",
+      "codice_catastale": "Z502",
+      "codice_iso_2": "BS",
+      "codice_iso_3": "BHS",
+      "nome": "Bahamas",
+      "attivo": 1
+    },
+    {
+      "id": 151,
+      "codice_istat": "506",
+      "codice_catastale": "Z522",
+      "codice_iso_2": "BB",
+      "codice_iso_3": "BRB",
+      "nome": "Barbados",
+      "attivo": 1
+    },
+    {
+      "id": 152,
+      "codice_istat": "507",
+      "codice_catastale": "Z512",
+      "codice_iso_2": "BZ",
+      "codice_iso_3": "BLZ",
+      "nome": "Belize",
+      "attivo": 1
+    },
+    {
+      "id": 153,
+      "codice_istat": "509",
+      "codice_catastale": "Z401",
+      "codice_iso_2": "CA",
+      "codice_iso_3": "CAN",
+      "nome": "Canada",
+      "attivo": 1
+    },
+    {
+      "id": 154,
+      "codice_istat": "513",
+      "codice_catastale": "Z503",
+      "codice_iso_2": "CR",
+      "codice_iso_3": "CRI",
+      "nome": "Costa Rica",
+      "attivo": 1
+    },
+    {
+      "id": 155,
+      "codice_istat": "514",
+      "codice_catastale": "Z504",
+      "codice_iso_2": "CU",
+      "codice_iso_3": "CUB",
+      "nome": "Cuba",
+      "attivo": 1
+    },
+    {
+      "id": 156,
+      "codice_istat": "515",
+      "codice_catastale": "Z526",
+      "codice_iso_2": "DM",
+      "codice_iso_3": "DMA",
+      "nome": "Dominica",
+      "attivo": 1
+    },
+    {
+      "id": 157,
+      "codice_istat": "516",
+      "codice_catastale": "Z505",
+      "codice_iso_2": "DO",
+      "codice_iso_3": "DOM",
+      "nome": "Repubblica Dominicana",
+      "attivo": 1
+    },
+    {
+      "id": 158,
+      "codice_istat": "517",
+      "codice_catastale": "Z506",
+      "codice_iso_2": "SV",
+      "codice_iso_3": "SLV",
+      "nome": "El Salvador",
+      "attivo": 1
+    },
+    {
+      "id": 159,
+      "codice_istat": "518",
+      "codice_catastale": "Z507",
+      "codice_iso_2": "JM",
+      "codice_iso_3": "JAM",
+      "nome": "Giamaica",
+      "attivo": 1
+    },
+    {
+      "id": 160,
+      "codice_istat": "519",
+      "codice_catastale": "Z524",
+      "codice_iso_2": "GD",
+      "codice_iso_3": "GRD",
+      "nome": "Grenada",
+      "attivo": 1
+    },
+    {
+      "id": 161,
+      "codice_istat": "523",
+      "codice_catastale": "Z509",
+      "codice_iso_2": "GT",
+      "codice_iso_3": "GTM",
+      "nome": "Guatemala",
+      "attivo": 1
+    },
+    {
+      "id": 162,
+      "codice_istat": "524",
+      "codice_catastale": "Z510",
+      "codice_iso_2": "HT",
+      "codice_iso_3": "HTI",
+      "nome": "Haiti",
+      "attivo": 1
+    },
+    {
+      "id": 163,
+      "codice_istat": "525",
+      "codice_catastale": "Z511",
+      "codice_iso_2": "HN",
+      "codice_iso_3": "HND",
+      "nome": "Honduras",
+      "attivo": 1
+    },
+    {
+      "id": 164,
+      "codice_istat": "527",
+      "codice_catastale": "Z514",
+      "codice_iso_2": "MX",
+      "codice_iso_3": "MEX",
+      "nome": "Messico",
+      "attivo": 1
+    },
+    {
+      "id": 165,
+      "codice_istat": "529",
+      "codice_catastale": "Z515",
+      "codice_iso_2": "NI",
+      "codice_iso_3": "NIC",
+      "nome": "Nicaragua",
+      "attivo": 1
+    },
+    {
+      "id": 166,
+      "codice_istat": "530",
+      "codice_catastale": "Z516",
+      "codice_iso_2": "PA",
+      "codice_iso_3": "PAN",
+      "nome": "Panama",
+      "attivo": 1
+    },
+    {
+      "id": 167,
+      "codice_istat": "532",
+      "codice_catastale": "Z527",
+      "codice_iso_2": "LC",
+      "codice_iso_3": "LCA",
+      "nome": "Santa Lucia",
+      "attivo": 1
+    },
+    {
+      "id": 168,
+      "codice_istat": "533",
+      "codice_catastale": "Z528",
+      "codice_iso_2": "VC",
+      "codice_iso_3": "VCT",
+      "nome": "Saint Vincent e Grenadine",
+      "attivo": 1
+    },
+    {
+      "id": 169,
+      "codice_istat": "534",
+      "codice_catastale": "Z533",
+      "codice_iso_2": "KN",
+      "codice_iso_3": "KNA",
+      "nome": "Saint Kitts e Nevis",
+      "attivo": 1
+    },
+    {
+      "id": 170,
+      "codice_istat": "536",
+      "codice_catastale": "Z404",
+      "codice_iso_2": "US",
+      "codice_iso_3": "USA",
+      "nome": "Stati Uniti d'America",
+      "attivo": 1
+    },
+    {
+      "id": 171,
+      "codice_istat": "602",
+      "codice_catastale": "Z600",
+      "codice_iso_2": "AR",
+      "codice_iso_3": "ARG",
+      "nome": "Argentina",
+      "attivo": 1
+    },
+    {
+      "id": 172,
+      "codice_istat": "604",
+      "codice_catastale": "Z601",
+      "codice_iso_2": "BO",
+      "codice_iso_3": "BOL",
+      "nome": "Bolivia",
+      "attivo": 1
+    },
+    {
+      "id": 173,
+      "codice_istat": "605",
+      "codice_catastale": "Z602",
+      "codice_iso_2": "BR",
+      "codice_iso_3": "BRA",
+      "nome": "Brasile",
+      "attivo": 1
+    },
+    {
+      "id": 174,
+      "codice_istat": "606",
+      "codice_catastale": "Z603",
+      "codice_iso_2": "CL",
+      "codice_iso_3": "CHL",
+      "nome": "Cile",
+      "attivo": 1
+    },
+    {
+      "id": 175,
+      "codice_istat": "608",
+      "codice_catastale": "Z604",
+      "codice_iso_2": "CO",
+      "codice_iso_3": "COL",
+      "nome": "Colombia",
+      "attivo": 1
+    },
+    {
+      "id": 176,
+      "codice_istat": "609",
+      "codice_catastale": "Z605",
+      "codice_iso_2": "EC",
+      "codice_iso_3": "ECU",
+      "nome": "Ecuador",
+      "attivo": 1
+    },
+    {
+      "id": 177,
+      "codice_istat": "612",
+      "codice_catastale": "Z606",
+      "codice_iso_2": "GY",
+      "codice_iso_3": "GUY",
+      "nome": "Guyana",
+      "attivo": 1
+    },
+    {
+      "id": 178,
+      "codice_istat": "614",
+      "codice_catastale": "Z610",
+      "codice_iso_2": "PY",
+      "codice_iso_3": "PRY",
+      "nome": "Paraguay",
+      "attivo": 1
+    },
+    {
+      "id": 179,
+      "codice_istat": "615",
+      "codice_catastale": "Z611",
+      "codice_iso_2": "PE",
+      "codice_iso_3": "PER",
+      "nome": "Perù",
+      "attivo": 1
+    },
+    {
+      "id": 180,
+      "codice_istat": "616",
+      "codice_catastale": "Z608",
+      "codice_iso_2": "SR",
+      "codice_iso_3": "SUR",
+      "nome": "Suriname",
+      "attivo": 1
+    },
+    {
+      "id": 181,
+      "codice_istat": "617",
+      "codice_catastale": "Z612",
+      "codice_iso_2": "TT",
+      "codice_iso_3": "TTO",
+      "nome": "Trinidad e Tobago",
+      "attivo": 1
+    },
+    {
+      "id": 182,
+      "codice_istat": "618",
+      "codice_catastale": "Z613",
+      "codice_iso_2": "UY",
+      "codice_iso_3": "URY",
+      "nome": "Uruguay",
+      "attivo": 1
+    },
+    {
+      "id": 183,
+      "codice_istat": "619",
+      "codice_catastale": "Z614",
+      "codice_iso_2": "VE",
+      "codice_iso_3": "VEN",
+      "nome": "Venezuela",
+      "attivo": 1
+    },
+    {
+      "id": 184,
+      "codice_istat": "701",
+      "codice_catastale": "Z700",
+      "codice_iso_2": "AU",
+      "codice_iso_3": "AUS",
+      "nome": "Australia",
+      "attivo": 1
+    },
+    {
+      "id": 185,
+      "codice_istat": "703",
+      "codice_catastale": "Z704",
+      "codice_iso_2": "FJ",
+      "codice_iso_3": "FJI",
+      "nome": "Figi",
+      "attivo": 1
+    },
+    {
+      "id": 186,
+      "codice_istat": "708",
+      "codice_catastale": "Z731",
+      "codice_iso_2": "KI",
+      "codice_iso_3": "KIR",
+      "nome": "Kiribati",
+      "attivo": 1
+    },
+    {
+      "id": 187,
+      "codice_istat": "712",
+      "codice_catastale": "Z711",
+      "codice_iso_2": "MH",
+      "codice_iso_3": "MHL",
+      "nome": "Isole Marshall",
+      "attivo": 1
+    },
+    {
+      "id": 188,
+      "codice_istat": "713",
+      "codice_catastale": "Z735",
+      "codice_iso_2": "FM",
+      "codice_iso_3": "FSM",
+      "nome": "Stati Federati di Micronesia",
+      "attivo": 1
+    },
+    {
+      "id": 189,
+      "codice_istat": "715",
+      "codice_catastale": "Z713",
+      "codice_iso_2": "NR",
+      "codice_iso_3": "NRU",
+      "nome": "Nauru",
+      "attivo": 1
+    },
+    {
+      "id": 190,
+      "codice_istat": "719",
+      "codice_catastale": "Z719",
+      "codice_iso_2": "NZ",
+      "codice_iso_3": "NZL",
+      "nome": "Nuova Zelanda",
+      "attivo": 1
+    },
+    {
+      "id": 191,
+      "codice_istat": "720",
+      "codice_catastale": "Z734",
+      "codice_iso_2": "PW",
+      "codice_iso_3": "PLW",
+      "nome": "Palau",
+      "attivo": 1
+    },
+    {
+      "id": 192,
+      "codice_istat": "721",
+      "codice_catastale": "Z730",
+      "codice_iso_2": "PG",
+      "codice_iso_3": "PNG",
+      "nome": "Papua Nuova Guinea",
+      "attivo": 1
+    },
+    {
+      "id": 193,
+      "codice_istat": "725",
+      "codice_catastale": "Z724",
+      "codice_iso_2": "SB",
+      "codice_iso_3": "SLB",
+      "nome": "Isole Salomone",
+      "attivo": 1
+    },
+    {
+      "id": 194,
+      "codice_istat": "727",
+      "codice_catastale": "Z726",
+      "codice_iso_2": "WS",
+      "codice_iso_3": "WSM",
+      "nome": "Samoa",
+      "attivo": 1
+    },
+    {
+      "id": 195,
+      "codice_istat": "730",
+      "codice_catastale": "Z728",
+      "codice_iso_2": "TO",
+      "codice_iso_3": "TON",
+      "nome": "Tonga",
+      "attivo": 1
+    },
+    {
+      "id": 196,
+      "codice_istat": "731",
+      "codice_catastale": "Z732",
+      "codice_iso_2": "TV",
+      "codice_iso_3": "TUV",
+      "nome": "Tuvalu",
+      "attivo": 1
+    },
+    {
+      "id": 197,
+      "codice_istat": "732",
+      "codice_catastale": "Z733",
+      "codice_iso_2": "VU",
+      "codice_iso_3": "VUT",
+      "nome": "Vanuatu",
+      "attivo": 1
+    },
+    {
+      "id": 198,
+      "codice_istat": "902",
+      "codice_catastale": "Z716",
+      "codice_iso_2": "NC",
+      "codice_iso_3": "NCL",
+      "nome": "Nuova Caledonia",
+      "attivo": 1
+    },
+    {
+      "id": 199,
+      "codice_istat": "904",
+      "codice_catastale": null,
+      "codice_iso_2": "MF",
+      "codice_iso_3": "MAF",
+      "nome": "Saint-Martin (FR)",
+      "attivo": 1
+    },
+    {
+      "id": 200,
+      "codice_istat": "905",
+      "codice_catastale": "Z339",
+      "codice_iso_2": "EH",
+      "codice_iso_3": "ESH",
+      "nome": "Sahara occidentale",
+      "attivo": 1
+    },
+    {
+      "id": 201,
+      "codice_istat": "906",
+      "codice_catastale": null,
+      "codice_iso_2": "BL",
+      "codice_iso_3": "BLM",
+      "nome": "Saint-Barthélemy",
+      "attivo": 1
+    },
+    {
+      "id": 202,
+      "codice_istat": "908",
+      "codice_catastale": "Z400",
+      "codice_iso_2": "BM",
+      "codice_iso_3": "BMU",
+      "nome": "Bermuda",
+      "attivo": 1
+    },
+    {
+      "id": 203,
+      "codice_istat": "909",
+      "codice_catastale": "Z703",
+      "codice_iso_2": "CK",
+      "codice_iso_3": "COK",
+      "nome": "Isole Cook (NZ)",
+      "attivo": 1
+    },
+    {
+      "id": 204,
+      "codice_istat": "910",
+      "codice_catastale": "Z113",
+      "codice_iso_2": "GI",
+      "codice_iso_3": "GIB",
+      "nome": "Gibilterra",
+      "attivo": 1
+    },
+    {
+      "id": 205,
+      "codice_istat": "911",
+      "codice_catastale": "Z530",
+      "codice_iso_2": "KY",
+      "codice_iso_3": "CYM",
+      "nome": "Isole Cayman",
+      "attivo": 1
+    },
+    {
+      "id": 206,
+      "codice_istat": "917",
+      "codice_catastale": "Z529",
+      "codice_iso_2": "AI",
+      "codice_iso_3": "AIA",
+      "nome": "Anguilla",
+      "attivo": 1
+    },
+    {
+      "id": 207,
+      "codice_istat": "920",
+      "codice_catastale": "Z723",
+      "codice_iso_2": "PF",
+      "codice_iso_3": "PYF",
+      "nome": "Polinesia francese",
+      "attivo": 1
+    },
+    {
+      "id": 208,
+      "codice_istat": "924",
+      "codice_catastale": "Z108",
+      "codice_iso_2": "FO",
+      "codice_iso_3": "FRO",
+      "nome": "Isole Fær Øer",
+      "attivo": 1
+    },
+    {
+      "id": 209,
+      "codice_istat": "925",
+      "codice_catastale": null,
+      "codice_iso_2": "JE",
+      "codice_iso_3": "JEY",
+      "nome": "Jersey",
+      "attivo": 1
+    },
+    {
+      "id": 210,
+      "codice_istat": "926",
+      "codice_catastale": "Z501",
+      "codice_iso_2": "AW",
+      "codice_iso_3": "ABW",
+      "nome": "Aruba",
+      "attivo": 1
+    },
+    {
+      "id": 211,
+      "codice_istat": "928",
+      "codice_catastale": null,
+      "codice_iso_2": "SX",
+      "codice_iso_3": "SXM",
+      "nome": "Sint Maarten (NL)",
+      "attivo": 1
+    },
+    {
+      "id": 212,
+      "codice_istat": "934",
+      "codice_catastale": "Z402",
+      "codice_iso_2": "GL",
+      "codice_iso_3": "GRL",
+      "nome": "Groenlandia",
+      "attivo": 1
+    },
+    {
+      "id": 213,
+      "codice_istat": "939",
+      "codice_catastale": null,
+      "codice_iso_2": null,
+      "codice_iso_3": null,
+      "nome": "Sark",
+      "attivo": 1
+    },
+    {
+      "id": 214,
+      "codice_istat": "940",
+      "codice_catastale": null,
+      "codice_iso_2": "GG",
+      "codice_iso_3": "GGY",
+      "nome": "Guernsey",
+      "attivo": 1
+    },
+    {
+      "id": 215,
+      "codice_istat": "958",
+      "codice_catastale": "Z609",
+      "codice_iso_2": "FK",
+      "codice_iso_3": "FLK",
+      "nome": "Isole Falkland (Malvine)",
+      "attivo": 1
+    },
+    {
+      "id": 216,
+      "codice_istat": "959",
+      "codice_catastale": "Z122",
+      "codice_iso_2": "IM",
+      "codice_iso_3": "IMN",
+      "nome": "Isola di Man",
+      "attivo": 1
+    },
+    {
+      "id": 217,
+      "codice_istat": "964",
+      "codice_catastale": "Z531",
+      "codice_iso_2": "MS",
+      "codice_iso_3": "MSR",
+      "nome": "Montserrat",
+      "attivo": 1
+    },
+    {
+      "id": 218,
+      "codice_istat": "966",
+      "codice_catastale": null,
+      "codice_iso_2": "CW",
+      "codice_iso_3": "CUW",
+      "nome": "Curaçao",
+      "attivo": 1
+    },
+    {
+      "id": 219,
+      "codice_istat": "972",
+      "codice_catastale": "Z722",
+      "codice_iso_2": "PN",
+      "codice_iso_3": "PCN",
+      "nome": "Isole Pitcairn",
+      "attivo": 1
+    },
+    {
+      "id": 220,
+      "codice_istat": "980",
+      "codice_catastale": "Z403",
+      "codice_iso_2": "PM",
+      "codice_iso_3": "SPM",
+      "nome": "Saint Pierre e Miquelon",
+      "attivo": 1
+    },
+    {
+      "id": 221,
+      "codice_istat": "983",
+      "codice_catastale": "Z340",
+      "codice_iso_2": "SH",
+      "codice_iso_3": "SHN",
+      "nome": "Sant'Elena",
+      "attivo": 1
+    },
+    {
+      "id": 222,
+      "codice_istat": "988",
+      "codice_catastale": null,
+      "codice_iso_2": "TF",
+      "codice_iso_3": "ATF",
+      "nome": "Terre australi e antartiche francesi",
+      "attivo": 1
+    },
+    {
+      "id": 223,
+      "codice_istat": "992",
+      "codice_catastale": "Z519",
+      "codice_iso_2": "TC",
+      "codice_iso_3": "TCA",
+      "nome": "Isole Turks e Caicos",
+      "attivo": 1
+    },
+    {
+      "id": 224,
+      "codice_istat": "994",
+      "codice_catastale": "Z525",
+      "codice_iso_2": "VG",
+      "codice_iso_3": "VGB",
+      "nome": "Isole Vergini britanniche",
+      "attivo": 1
+    },
+    {
+      "id": 225,
+      "codice_istat": "997",
+      "codice_catastale": "Z729",
+      "codice_iso_2": "WF",
+      "codice_iso_3": "WLF",
+      "nome": "Wallis e Futuna",
+      "attivo": 1
+    }
+  ]
+}

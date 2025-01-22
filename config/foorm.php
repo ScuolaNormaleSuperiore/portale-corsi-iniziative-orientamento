@@ -92,6 +92,8 @@ return [
         'avviso',
         'copertina',
         'pagina_info',
+        'nazione',
+        'comune',
 //        'foto',
 //        'attachment',
     ],

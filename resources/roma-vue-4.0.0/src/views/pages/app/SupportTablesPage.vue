@@ -27,6 +27,7 @@ import ModelLivelloLinguistico from "../../../data/modelsConfs/app/ModelLivelloL
 import ModelFiltroSelezione from "../../../data/modelsConfs/app/ModelFiltroSelezione";
 import ModelMateriaOrientamento from "../../../data/modelsConfs/app/ModelMateriaOrientamento";
 import ModelCategoriaVideo from "../../../data/modelsConfs/app/ModelCategoriaVideo";
+import ModelComune from "@/data/modelsConfs/app/ModelComune";
 
 export default {
   data() {
@@ -48,6 +49,12 @@ export default {
         label: 'Province', icon: 'fa fa-map-location-dot',
         command() {
           that.setConf(ModelProvincia);
+        }
+      },
+      {
+        label: 'Comuni', icon: 'fa fa-map-location-dot',
+        command() {
+          that.setConf(ModelComune);
         }
       },
       {
