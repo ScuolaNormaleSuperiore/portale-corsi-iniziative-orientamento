@@ -1,14 +1,8 @@
 import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
 
-// const { publicVars } = loadEnv();
-// const isDev = publicVars.MODE === 'development';
-
 export default defineConfig({
   plugins: [pluginReact()],
-  tools: {
-    htmlPlugin: true,
-  },
   html: {
     mountId: 'chat',
   },
@@ -19,6 +13,18 @@ export default defineConfig({
     assetPrefix: '/chat/',
     distPath: {
       root: '../../../public/chat',
+    },
+  },
+  environments: {
+    development: {
+      tools: {
+        htmlPlugin: true,
+      },
+    },
+    production: {
+      tools: {
+        htmlPlugin: false,
+      },
     },
   },
 });

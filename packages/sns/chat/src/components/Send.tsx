@@ -7,7 +7,7 @@ import {
 } from '@atoms/messages';
 import { useAtom, useSetAtom } from 'jotai';
 
-const Send = () => {
+const Send: React.FC = () => {
   const { t } = useTranslation();
   const [currentUserMessage] = useAtom(currentUserMessageAtom);
   const setFetchMessage = useSetAtom(fetchMessageAtom);

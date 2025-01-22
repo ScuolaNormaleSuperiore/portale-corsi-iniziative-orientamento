@@ -25,6 +25,7 @@ export default [
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      'react/prop-types': 'off',
     },
   },
   { ignores: ['dist/'] },

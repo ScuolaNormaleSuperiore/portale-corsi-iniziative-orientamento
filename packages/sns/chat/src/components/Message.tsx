@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { MessageType } from '../types/message';
 import { formatMessage } from '@utils/sanitizer';
+import Avatar from './Avatar';
 
 const Message: React.FC<{ message: MessageType }> = ({ message }) => {
   if (!message.content) {
@@ -9,13 +10,17 @@ const Message: React.FC<{ message: MessageType }> = ({ message }) => {
   }
 
   return (
-    <div
-      className={clsx('message', {
-        'user-message': message.role === 'user',
-        'assistant-message': message.role === 'assistant',
+    <article
+      className={clsx('pt-4 pb-4 pl-4 flex gap-4 items-center', {
+        'bg-primary-lighter': message.role === 'user',
       })}
-      dangerouslySetInnerHTML={{ __html: formatMessage(message.content) }}
-    />
+    >
+      <Avatar role={message.role} />
+      <div
+        className="message-content mt-[6px] w-full"
+        dangerouslySetInnerHTML={{ __html: formatMessage(message.content) }}
+      />
+    </article>
   );
 };
 

@@ -1,29 +1,29 @@
 {
   "allFiles": [
-    "/static/css/index.css",
-    "/static/js/index.js",
     "/static/js/lib-react.js",
     "/static/js/vendors-node_modules_rspack_core_dist_cssExtractHmr_js-node_modules_showdown_dist_showdown_js-fb48f0.js",
+    "/static/css/index.css",
+    "/static/js/index.js",
     "/index.html",
-    "/static/js/index.js.map",
     "/static/js/lib-react.js.map",
-    "/static/js/vendors-node_modules_rspack_core_dist_cssExtractHmr_js-node_modules_showdown_dist_showdown_js-fb48f0.js.map"
+    "/static/js/vendors-node_modules_rspack_core_dist_cssExtractHmr_js-node_modules_showdown_dist_showdown_js-fb48f0.js.map",
+    "/static/js/index.js.map"
   ],
   "entries": {
     "index": {
       "assets": [
+        "static/js/index.js.map",
         "static/js/vendors-node_modules_rspack_core_dist_cssExtractHmr_js-node_modules_showdown_dist_showdown_js-fb48f0.js.map",
-        "static/js/lib-react.js.map",
-        "static/js/index.js.map"
+        "static/js/lib-react.js.map"
       ],
       "html": [
         "/index.html"
       ],
       "initial": {
         "js": [
+          "/static/js/index.js",
           "/static/js/vendors-node_modules_rspack_core_dist_cssExtractHmr_js-node_modules_showdown_dist_showdown_js-fb48f0.js",
-          "/static/js/lib-react.js",
-          "/static/js/index.js"
+          "/static/js/lib-react.js"
         ],
         "css": [
           "/static/css/index.css"

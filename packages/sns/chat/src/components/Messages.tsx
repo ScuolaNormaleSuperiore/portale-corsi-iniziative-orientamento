@@ -5,7 +5,7 @@ import { useScrollToBottom } from '@hooks/useScrollToBottom';
 import Message from './Message';
 import { messagesAtom } from '@atoms/messages';
 
-const Messages = () => {
+const Messages: React.FC = () => {
   const messages = useAtomValue(messagesAtom);
   const { elementRef, scrollToBottom } = useScrollToBottom();
   const isFirstRender = useRef(true);

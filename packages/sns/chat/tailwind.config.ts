@@ -13,6 +13,7 @@ export default {
         subtle: '#C5C7C9',
         black: '#191919',
         gray: '#5C6F82',
+        'secondary-lighter': '#D9DADB',
       },
       fontFamily: {
         sans: ['Titillium Web', ...defaultTheme.fontFamily.sans],
