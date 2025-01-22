@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        \Slides\Saml2\Events\SignedIn::class => [
+            \App\Listeners\SamlSignedInListener::class,
+        ],
     ];
 
     /**
