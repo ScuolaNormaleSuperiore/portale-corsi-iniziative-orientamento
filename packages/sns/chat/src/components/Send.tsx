@@ -23,7 +23,7 @@ const Send: React.FC = () => {
     <button
       onClick={handleSendMessage}
       disabled={!currentUserMessage?.trim() || isMessageLoading}
-      className="bg-primary text-white text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-opacity duration-300 h-10 px-4 flex items-center justify-center"
+      className="bg-primary text-white text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 h-10 px-4 flex items-center justify-center hover:bg-primary-hover"
     >
       {t('chat.send')}
     </button>
