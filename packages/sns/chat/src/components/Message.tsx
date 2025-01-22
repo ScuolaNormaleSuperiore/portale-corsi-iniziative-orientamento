@@ -17,7 +17,7 @@ const Message: React.FC<{ message: MessageType }> = ({ message }) => {
     >
       <Avatar role={message.role} />
       <div
-        className="message-content mt-[6px] w-full"
+        className="message-content w-full"
         dangerouslySetInnerHTML={{ __html: formatMessage(message.content) }}
       />
     </article>

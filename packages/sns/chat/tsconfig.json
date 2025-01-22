@@ -25,7 +25,8 @@
       "@hooks/*": ["hooks/*"],
       "@utils/*": ["utils/*"],
       "@atoms/*": ["atoms/*"],
-      "@store/*": ["store/*"]
+      "@store/*": ["store/*"],
+      "@assets/*": ["assets/*"]
     }
   },
   "include": ["src"],

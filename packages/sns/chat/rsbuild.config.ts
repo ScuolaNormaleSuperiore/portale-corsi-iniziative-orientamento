@@ -17,5 +17,5 @@ export default defineConfig({
   },
   tools: {
     htmlPlugin: process.env.NODE_ENV === 'development',
-  }
+  },
 });

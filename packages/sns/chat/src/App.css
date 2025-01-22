@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+.messages-container {
+  scrollbar-gutter: stable;
+  @apply mr-2;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #005a73;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #005a73;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #002d3a;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: #005a73 transparent;
+}
+
 .message-content {
   @apply text-black text-base leading-relaxed transition-all duration-300;
 

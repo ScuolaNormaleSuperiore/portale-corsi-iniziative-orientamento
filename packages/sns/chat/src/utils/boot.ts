@@ -70,7 +70,7 @@ const pushFirstAssistantAnswer = (firstAnswer: string) => {
 };
 
 const developmentRootAttributes: RootAttributes = {
-  userAvatar: '',
+  userAvatar: 'https://i.imgur.com/Z6BfEFC.jpeg',
   pageTitle: 'Parla con noi',
   firstAnswer:
     'Ciao! Sono qui per aiutarti con tutte le tue domande sui Corsi di orientamento della Scuola Normale Superiore. Scrivi qui la tua domanda o, se preferisci, contattaci:<br><ul><li>Telefono: <a href="tel:+39050509111">+39 050509111</a></li><li>Email: <a href="mailto:orientamento@sns.it">orientamento@sns.it</a></li></ul>',
