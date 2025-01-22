@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Slides\Saml2\Events\SignedIn;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -35,6 +36,7 @@ class SamlSignedInListener
         if ($user) {
             // Login the user
             Auth::login($user);
+            return redirect(RouteServiceProvider::CANDIDATURE);
         } else {
             // Generate a random password
             $randomPassword = Str::random(12);
@@ -47,6 +49,7 @@ class SamlSignedInListener
                 'cognome' => $userData['attributes']['urn:oid:2.5.4.4'][0] ?? null,
             ]);
             Auth::login($user);
+            return redirect(RouteServiceProvider::CANDIDATURE);
         }
     }
 }
