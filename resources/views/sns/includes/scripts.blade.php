@@ -167,3 +167,5 @@
 --cc-btn-border-radius: 10px;
 }
 </style>
+
+@yield('extra-scripts')

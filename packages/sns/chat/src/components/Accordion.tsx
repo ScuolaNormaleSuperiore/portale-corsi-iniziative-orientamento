@@ -36,17 +36,17 @@ const Accordion: React.FC<AccordionProps> = ({
       </button>
 
       <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={false}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <ul className="flex flex-col gap-4 px-6 py-5">{children}</ul>
-          </motion.div>
-        )}
+        <motion.div
+          initial={false}
+          animate={
+            isOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }
+          }
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="overflow-hidden"
+        >
+          <ul className="flex flex-col gap-4 px-6 py-5">{children}</ul>
+        </motion.div>
       </AnimatePresence>
     </div>
   );

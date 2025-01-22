@@ -275,7 +275,7 @@
                                     <nav aria-label="Secondaria">
                                         <ul class="navbar-nav navbar-secondary">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Parla con noi</a>
+                                                <a class="nav-link" href="{{ route('chat') }}">Parla con noi</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="/sportello-studenti">Sportello da Studente a
