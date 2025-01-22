@@ -15,16 +15,7 @@ export default defineConfig({
       root: '../../../public/chat',
     },
   },
-  environments: {
-    development: {
-      tools: {
-        htmlPlugin: true,
-      },
-    },
-    production: {
-      tools: {
-        htmlPlugin: false,
-      },
-    },
-  },
+  tools: {
+    htmlPlugin: process.env.NODE_ENV === 'development',
+  }
 });
