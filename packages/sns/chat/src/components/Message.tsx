@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { MessageType } from '../types/message';
 import { formatMessage } from '@utils/parser';
+import Exclamation from './icons/Exclamation';
 import Avatar from './Avatar';
 
 const Message: React.FC<{ message: MessageType }> = ({ message }) => {
@@ -11,14 +12,17 @@ const Message: React.FC<{ message: MessageType }> = ({ message }) => {
 
   return (
     <article
-      className={clsx('pt-4 pb-4 pl-4 flex gap-4 items-center', {
+      className={clsx('pt-4 pb-4 lg:pl-4 flex gap-4 items-center', {
         'bg-primary-lighter': message.role === 'user',
       })}
     >
-      <Avatar role={message.role} />
+      {!message?.error && <Avatar role={message.role} />}
+      {message?.error && <Exclamation />}
       <div className="flex flex-col gap-2">
         <div
-          className="message-content w-full"
+          className={clsx('message-content w-full', {
+            'text-red-700': message?.error,
+          })}
           dangerouslySetInnerHTML={{
             __html: formatMessage(message.content),
           }}

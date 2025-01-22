@@ -14,7 +14,9 @@ i18n.use(initReactI18next).init({
         chat: {
           send: 'Invia',
           inputPlaceholder: 'Scrivi un messaggio',
-          errorMessage: 'Ops! Qualcosa è andato storto, riprova!',
+        },
+        message: {
+          error: 'Ops! Qualcosa è andato storto, riprova.',
         },
         avatar: {
           user: {
@@ -31,7 +33,9 @@ i18n.use(initReactI18next).init({
         chat: {
           send: 'Send',
           inputPlaceholder: 'Write a message',
-          errorMessage: 'Ops! Something went wrong, try again!',
+        },
+        message: {
+          error: 'Ops! Something went wrong, try again.',
         },
         avatar: {
           user: {

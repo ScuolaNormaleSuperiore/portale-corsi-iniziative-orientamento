@@ -82,7 +82,7 @@ const App = () => {
               </div>
             )}
           <div className="flex flex-col w-full">
-            <div className="flex flex-col gap-6 flex-grow">
+            <div className="flex flex-col gap-3 lg:gap-6 flex-grow">
               <div className="px-6 pt-5 md:px-12 md:pt-10">
                 <Title />
               </div>

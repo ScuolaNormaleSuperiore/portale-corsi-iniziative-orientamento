@@ -30,14 +30,14 @@
 }
 
 .message-content {
-  @apply text-black text-lg leading-relaxed transition-all duration-300;
+  @apply text-base md:text-lg leading-relaxed transition-all duration-300;
 
   & p:only-of-type {
     @apply mb-0;
   }
 
   & p:not(:only-of-type) {
-    @apply mb-4;
+    @apply mb-2 lg:mb-4;
   }
 
   & a {
@@ -45,43 +45,43 @@
   }
 
   & ul {
-    @apply list-disc pl-6 mb-4;
+    @apply list-disc pl-6 mb-2 lg:mb-4;
   }
 
   & ol {
-    @apply list-decimal pl-6 mb-4;
+    @apply list-decimal pl-6 mb-2 lg:mb-4;
   }
 
   & li {
-    @apply mb-2;
+    @apply mb-1 lg:mb-2;
   }
 
   & h1 {
-    @apply text-xl font-bold mb-4;
+    @apply text-xl font-bold mb-2 lg:mb-4;
   }
 
   & h2 {
-    @apply text-xl font-bold mb-3;
+    @apply text-xl font-bold mb-1 lg:mb-3;
   }
 
   & h3 {
-    @apply text-lg font-bold mb-2;
+    @apply text-lg font-bold mb-1 lg:mb-2;
   }
 
   & h4 {
-    @apply text-base font-bold mb-2;
+    @apply text-base font-bold mb-1 lg:mb-2;
   }
 
   & h5 {
-    @apply text-sm font-bold mb-2;
+    @apply text-sm font-bold mb-1 lg:mb-2;
   }
 
   & h6 {
-    @apply text-xs font-bold mb-2;
+    @apply text-xs font-bold mb-1 lg:mb-2;
   }
 
   & pre {
-    @apply bg-primary-lighter p-4 rounded-lg mb-4 overflow-x-auto;
+    @apply bg-primary-lighter p-2 lg:p-4 rounded-lg mb-2 lg:mb-4 overflow-x-auto;
   }
 
   & code {
@@ -89,27 +89,27 @@
   }
 
   & blockquote {
-    @apply border-l-4 border-primary-lighter pl-4 italic my-4;
+    @apply border-l-4 border-primary-lighter pl-2 lg:pl-4 italic my-2 lg:my-4;
   }
 
   & hr {
-    @apply border-secondary-lighter my-4;
+    @apply border-secondary-lighter my-2 lg:my-4;
   }
 
   & img {
-    @apply max-w-full h-auto rounded-lg my-4;
+    @apply max-w-full h-auto rounded-lg my-2 lg:my-4;
   }
 
   & table {
-    @apply w-full border-collapse mb-4;
+    @apply w-full border-collapse mb-2 lg:mb-4;
   }
 
   & th {
-    @apply bg-primary-lighter text-left p-2 border border-secondary-lighter;
+    @apply bg-primary-lighter text-left p-1 lg:p-2 border border-secondary-lighter;
   }
 
   & td {
-    @apply p-2 border border-secondary-lighter;
+    @apply p-1 lg:p-2 border border-secondary-lighter;
   }
 
   & thead {

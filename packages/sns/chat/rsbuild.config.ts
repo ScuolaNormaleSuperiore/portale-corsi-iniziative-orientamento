@@ -8,7 +8,7 @@ export default defineConfig({
   },
   output: {
     cleanDistPath: true,
-    manifest: true,
+    manifest: process.env.NODE_ENV === 'production',
     target: 'web',
     assetPrefix: '/chat/',
     distPath: {

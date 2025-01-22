@@ -123,7 +123,7 @@ export const fetchMessageAtom = atom(
         if (currentChunk.includes('[ERROR]')) {
           set(updateMessageAtom, {
             messageId: newAssistantMessage.id,
-            content: i18n.t('errorMessage'),
+            content: i18n.t('message.error'),
             error: true,
           });
           break;
@@ -150,7 +150,7 @@ export const fetchMessageAtom = atom(
       console.error('Error in fetchMessageAtom:', error);
       set(updateMessageAtom, {
         messageId: newAssistantMessage.id,
-        content: i18n.t('errorMessage'),
+        content: i18n.t('message.error'),
         error: true,
       });
     } finally {
