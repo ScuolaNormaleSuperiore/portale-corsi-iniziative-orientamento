@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { MessageType } from '../types/message';
 import { formatMessage } from '@utils/parser';
+import { sanitizeFormattedMessage } from '@utils/sanitizer';
 import Exclamation from './icons/Exclamation';
 import MessageLoader from './MessageLoader';
 import Avatar from './Avatar';
@@ -28,7 +29,7 @@ const Message: React.FC<{ message: MessageType }> = ({ message }) => {
             'text-red-700': message?.error,
           })}
           dangerouslySetInnerHTML={{
-            __html: formatMessage(message.content),
+            __html: sanitizeFormattedMessage(formatMessage(message.content)),
           }}
         />
         {message.role === 'assistant' && message.isLoading && <MessageLoader />}
