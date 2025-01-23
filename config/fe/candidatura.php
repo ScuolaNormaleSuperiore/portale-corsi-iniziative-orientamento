@@ -21,6 +21,12 @@ return [
                                 'required',
                             ]
                         ],
+                        'codice_fiscale' => [
+                            'validation' => [
+                                'required',
+                            ]
+                        ],
+
                         'luogo_nascita' => [
                             'validation' => [
                                 'required',
