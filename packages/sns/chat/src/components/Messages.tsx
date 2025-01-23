@@ -16,9 +16,14 @@ const Messages: React.FC = () => {
     }
     isFirstRender.current = false;
   }, [messages, elementRef, scrollToBottom]);
+
+  if (messages.length === 0) {
+    return null;
+  }
+
   return (
     <div
-      className="flex flex-col gap-2 lg:gap-4 w-full overflow-y-auto messages-container"
+      className="flex flex-col gap-2 lg:gap-4 w-full overflow-y-auto overflow-x-hidden messages-container md:pr-2"
       ref={elementRef}
     >
       <AnimatePresence initial={false}>

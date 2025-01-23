@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { isDevelopment } from '@utils/env';
 import { useAtomValue } from 'jotai';
+import { isLeftColumnCollapsedAtom } from '@atoms/layout';
 import { rootAttributesAtom } from '@atoms/rootAttributes';
+import ButtonToggleColumn from '@components/ButtonToggleColumn';
 import Messages from '@components/Messages';
 import Input from '@components/Input';
 import Send from '@components/Send';
@@ -12,14 +14,15 @@ import clsx from 'clsx';
 import './App.css';
 
 const App = () => {
-  const [isLeftColumnCollapsed, setIsLeftColumnCollapsed] = useState(false);
+  const isLeftColumnCollapsed = useAtomValue(isLeftColumnCollapsedAtom);
   const rootAttributes = useAtomValue(rootAttributesAtom);
+
   return (
     <>
       {isDevelopment && (
         <>
           <div className="w-full h-12 bg-primary-darker" />
-          <div className="w-full h-44 bg-white" />
+          <div className="w-full h-20 lg:h-44 bg-white" />
         </>
       )}
       <section className="w-full h-full text-black flex flex-col border-t border-subtle">
@@ -29,7 +32,7 @@ const App = () => {
               isLeftColumnCollapsed &&
               rootAttributes?.faqs?.questions &&
               rootAttributes.faqs.questions.length > 0,
-            'grid auto-cols-[1fr] lg:grid-cols-[33%_1fr] grid-rows-[1fr] gap-[0px_0px]':
+            'grid auto-cols-[1fr] lg:grid-cols-[30%_1fr] grid-rows-[1fr]':
               rootAttributes?.faqs?.questions &&
               rootAttributes.faqs.questions.length > 0,
           })}
@@ -55,43 +58,23 @@ const App = () => {
                     transition: { duration: 0.3 },
                   }}
                 >
-                  <button
-                    onClick={() =>
-                      setIsLeftColumnCollapsed(!isLeftColumnCollapsed)
-                    }
-                    className="w-6 h-6 self-end hover:drop-shadow-lg"
-                  >
-                    <motion.svg
-                      animate={{ rotate: isLeftColumnCollapsed ? 0 : 180 }}
-                      transition={{ duration: 0 }}
-                      initial={false}
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="15 18 9 12 15 6" />
-                    </motion.svg>
-                  </button>
+                  <ButtonToggleColumn className="hidden lg:flex self-end" />
                   {!isLeftColumnCollapsed && <Questions />}
                 </motion.div>
               </div>
             )}
-          <div className="flex flex-col w-full">
-            <div className="flex flex-col gap-3 lg:gap-6 flex-grow">
-              <div className="px-6 pt-5 md:px-12 md:pt-10">
+          <div className="flex flex-col">
+            <div className="flex flex-col gap-3 lg:gap-6 container mx-auto max-w-screen-xl flex-grow">
+              <div className="px-6 pt-5 md:px-12 md:pt-10 gap-2 flex flex-col">
+                <ButtonToggleColumn className="lg:hidden" />
                 <Title />
               </div>
-              <div className="flex flex-col px-6 md:px-12 w-full flex-grow pb-4 h-[525px] min-h-96">
+              <div className="flex flex-col px-6 md:px-12 w-full h-[525px] min-h-96 pb-2 lg:pb-4 flex-grow">
                 <Messages />
               </div>
             </div>
             <div className="px-6 py-3 md:px-12 md:py-6 bg-primary-lighter sticky bottom-0">
-              <div className="flex items-center relative border border-gray rounded overflow-hidden">
+              <div className="flex relative items-center border border-gray rounded overflow-hidden container mx-auto max-w-screen-xl">
                 <Input />
                 <Send />
               </div>
@@ -109,4 +92,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default React.memo(App);
