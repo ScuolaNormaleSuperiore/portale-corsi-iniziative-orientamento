@@ -15,13 +15,13 @@ const Accordion: React.FC<AccordionProps> = ({
     <div className="flex flex-col w-full bg-white rounded border border-subtle">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full py-2 md:py-4 px-3 md:px-6 gap-6"
+        className="flex items-center justify-between w-full py-2 md:py-4 px-3 md:px-6 gap-3"
         aria-expanded={isOpen}
         tabIndex={0}
       >
         <p
           className={clsx(
-            'text-lg transition-colors duration-300 text-primary font-semibold',
+            'text-lg transition-colors duration-300 text-primary font-semibold text-balance',
             {
               'text-primary-active': isOpen,
             },
