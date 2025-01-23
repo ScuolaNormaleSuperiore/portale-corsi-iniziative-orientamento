@@ -100,10 +100,12 @@ export const fetchMessageAtom = atom(
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          messages: get(messagesAtom).map((msg) => ({
-            role: msg.role,
-            content: msg.content,
-          })),
+          messages: get(messagesAtom)
+            .filter((msg) => !msg.error && msg.content.length > 0)
+            .map((msg) => ({
+              role: msg.role,
+              content: msg.content,
+            })),
         }),
         signal: AbortSignal.timeout(30000),
       });

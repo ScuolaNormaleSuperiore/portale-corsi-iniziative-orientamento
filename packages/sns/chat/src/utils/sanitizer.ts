@@ -1,7 +1,7 @@
 import DOMPurify from 'isomorphic-dompurify';
 
 export function sanitize(message: string): string {
-  return DOMPurify?.sanitize(message) || '';
+  return DOMPurify?.sanitize(message, { ALLOWED_TAGS: ['#text'] }) || '';
 }
 
 export function sanitizeFormattedMessage(message: string): string {

@@ -8,8 +8,8 @@ import Input from '@components/Input';
 import Send from '@components/Send';
 import Title from '@components/Title';
 import Questions from '@components/Questions';
-import './App.css';
 import clsx from 'clsx';
+import './App.css';
 
 const App = () => {
   const [isLeftColumnCollapsed, setIsLeftColumnCollapsed] = useState(false);

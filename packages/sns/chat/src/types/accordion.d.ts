@@ -1,5 +1,7 @@
+import { Question } from './rootAttributes';
+
 export interface AccordionProps {
-  children: React.ReactNode;
   title: string;
+  items: Question[];
   defaultOpen?: boolean;
 }

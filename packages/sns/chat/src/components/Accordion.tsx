@@ -3,10 +3,11 @@ import clsx from 'clsx';
 import { ChevronUp } from '@components/icons/Chevron';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AccordionProps } from '../types/accordion';
+import AccordionItem from './AccordionItem';
 
 const Accordion: React.FC<AccordionProps> = ({
-  children,
   title,
+  items,
   defaultOpen = false,
 }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
@@ -15,6 +16,8 @@ const Accordion: React.FC<AccordionProps> = ({
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-between w-full py-4 px-6 gap-6"
+        aria-expanded={isOpen}
+        tabIndex={0}
       >
         <p
           className={clsx(
@@ -45,7 +48,15 @@ const Accordion: React.FC<AccordionProps> = ({
           transition={{ duration: 0.3 }}
           className="overflow-hidden"
         >
-          <ul className="flex flex-col gap-4 px-6 py-5">{children}</ul>
+          <ul className="flex flex-col gap-4 px-6 py-5">
+            {items?.map((item) => (
+              <AccordionItem
+                key={item.id}
+                text={item.title || ''}
+                isOpen={isOpen}
+              />
+            ))}
+          </ul>
         </motion.div>
       </AnimatePresence>
     </div>
