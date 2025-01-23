@@ -5,37 +5,34 @@ export default {
         type: 'v-search',
         modelName : 'nazione',
         fields: [
-			'codice_istat',
-			'codice_catastale',
 			'codice_iso_2',
-			'codice_iso_3',
 			'nome',
-			'attivo',
-
         ],
         fieldsConfig: {
-			'codice_istat' : { 
+			'codice_istat' : {
                 type : "w-input",
-			}, 
-			'codice_catastale' : { 
+			},
+			'codice_catastale' : {
                 type : "w-input",
-			}, 
-			'codice_iso_2' : { 
+			},
+			'codice_iso_2' : {
                 type : "w-input",
-			}, 
-			'codice_iso_3' : { 
+			},
+			'codice_iso_3' : {
                 type : "w-input",
-			}, 
-			'nome' : { 
+			},
+			'nome' : {
                 type : "w-input",
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
+			},
 
         },
+        searchType: 'advanced',
+        searchLabel: false,
         // groups: {
         //     'g0': {
         //         fields: [
@@ -56,40 +53,40 @@ export default {
         actions : [
             'action-insert',
             'action-edit',
-            'action-delete',
-            'action-delete-selected',
+            //'action-delete',
+            //'action-delete-selected',
         ],
         fields: [
+			'nome',
 			'codice_istat',
 			'codice_catastale',
 			'codice_iso_2',
 			'codice_iso_3',
-			'nome',
-			'attivo',
+//			'attivo',
 
         ],
         fieldsConfig: {
-			'codice_istat' : { 
+			'codice_istat' : {
                 type : "w-text",
-			}, 
-			'codice_catastale' : { 
+			},
+			'codice_catastale' : {
                 type : "w-text",
-			}, 
-			'codice_iso_2' : { 
+			},
+			'codice_iso_2' : {
                 type : "w-text",
-			}, 
-			'codice_iso_3' : { 
+			},
+			'codice_iso_3' : {
                 type : "w-text",
-			}, 
-			'nome' : { 
+			},
+			'nome' : {
                 type : "w-text",
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-swap",
                 modelName : '{{$modelName}}',
                 //switchClass: 'form-switch-danger banned',
                 //dataSwitched : true,
-			}, 
+			},
 
         },
         orderFields : {
@@ -108,35 +105,35 @@ export default {
         modelName : 'nazione',
         actions : ['action-save','action-back'],
         fields: [
+			'nome',
 			'codice_istat',
 			'codice_catastale',
 			'codice_iso_2',
 			'codice_iso_3',
-			'nome',
-			'attivo',
+			// 'attivo',
 
         ],
         fieldsConfig: {
-			'codice_istat' : { 
+			'codice_istat' : {
                 type : "w-input",
-			}, 
-			'codice_catastale' : { 
+			},
+			'codice_catastale' : {
                 type : "w-input",
-			}, 
-			'codice_iso_2' : { 
+			},
+			'codice_iso_2' : {
                 type : "w-input",
-			}, 
-			'codice_iso_3' : { 
+			},
+			'codice_iso_3' : {
                 type : "w-input",
-			}, 
-			'nome' : { 
+			},
+			'nome' : {
                 type : "w-input",
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-radio",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
+			},
 
         }
 

@@ -11,44 +11,44 @@ export default {
 			'cap',
         ],
         fieldsConfig: {
-			'nome' : { 
+			'nome' : {
                 type : "w-input",
-			}, 
-			'codice_istat' : { 
+			},
+			'codice_istat' : {
                 type : "w-input",
-			}, 
-			'codice_catastale' : { 
+			},
+			'codice_catastale' : {
                 type : "w-input",
-			}, 
-			'provincia_id' : { 
+			},
+			'provincia_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'sigla_provincia' : { 
+			},
+			'sigla_provincia' : {
                 type : "w-input",
-			}, 
-			'regione_id' : { 
+			},
+			'regione_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'nazione_id' : { 
+			},
+			'nazione_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'cap' : { 
+			},
+			'cap' : {
                 type : "w-input",
-			}, 
-			'prefisso' : { 
+			},
+			'prefisso' : {
                 type : "w-input",
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
+			},
 
         },
 		searchType: 'advanced',
@@ -73,8 +73,8 @@ export default {
         actions : [
             'action-insert',
             'action-edit',
-            'action-delete',
-            'action-delete-selected',
+            //'action-delete',
+            //'action-delete-selected',
         ],
         fields: [
 			'nome',
@@ -87,45 +87,45 @@ export default {
 			'regione',
         ],
         fieldsConfig: {
-			'nome' : { 
+			'nome' : {
                 type : "w-text",
-			}, 
-			'codice_istat' : { 
+			},
+			'codice_istat' : {
                 type : "w-text",
-			}, 
-			'codice_catastale' : { 
+			},
+			'codice_catastale' : {
                 type : "w-text",
-			}, 
+			},
 			'cap' : {
                 type : "w-text",
-			}, 
-			'prefisso' : { 
+			},
+			'prefisso' : {
                 type : "w-text",
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-swap",
                 modelName : '{{$modelName}}',
                 //switchClass: 'form-switch-danger banned',
                 //dataSwitched : true,
-			}, 
-			'provincia' : { 
+			},
+			'provincia' : {
                 type : "w-custom",
                 ready() {
 					this.value = this.modelData.provincia ?
 						this.modelData.provincia.nome + ' (' + this.modelData.sigla_provincia+ ')' :
 						"--";
 				}
-			}, 
-			'regione' : { 
+			},
+			'regione' : {
                 type : "w-belongsto",
                 labelFields : [
 					"nome",
 				],
-			}, 
-			'nazione' : { 
+			},
+			'nazione' : {
                 type : "w-belongsto",
                 fields : [],
-			}, 
+			},
 
         },
         orderFields : {
@@ -159,44 +159,44 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome' : { 
+			'nome' : {
                 type : "w-input",
-			}, 
-			'codice_istat' : { 
+			},
+			'codice_istat' : {
                 type : "w-input",
-			}, 
-			'codice_catastale' : { 
+			},
+			'codice_catastale' : {
                 type : "w-input",
-			}, 
-			'provincia_id' : { 
+			},
+			'provincia_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'sigla_provincia' : { 
+			},
+			'sigla_provincia' : {
                 type : "w-input",
-			}, 
-			'regione_id' : { 
+			},
+			'regione_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'nazione_id' : { 
+			},
+			'nazione_id' : {
                 type : "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
-			'cap' : { 
+			},
+			'cap' : {
                 type : "w-input",
-			}, 
-			'prefisso' : { 
+			},
+			'prefisso' : {
                 type : "w-input",
-			}, 
-			'attivo' : { 
+			},
+			'attivo' : {
                 type : "w-radio",
                 //domainValues : [],
                 //domainValuesOrder : [],
-			}, 
+			},
 
         }
 
