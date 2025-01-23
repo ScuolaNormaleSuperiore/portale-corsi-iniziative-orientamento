@@ -11,6 +11,7 @@ export default defineConfig({
     manifest: process.env.NODE_ENV === 'production',
     minify: process.env.NODE_ENV === 'production',
     target: 'web',
+    polyfill: 'entry',
     assetPrefix: '/chat/',
     distPath: {
       root: '../../../public/chat',

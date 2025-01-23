@@ -6,13 +6,15 @@ import {
   fetchMessageAtom,
   isMessageLoadingAtom,
 } from '@atoms/messages';
-
+import { isPanelOpenAtom, isLeftColumnCollapsedAtom } from '@atoms/layout';
 const Input: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const setCurrentUserMessage = useSetAtom(currentUserMessageAtom);
   const currentUserMessage = useAtomValue(currentUserMessageAtom);
   const setFetchMessage = useSetAtom(fetchMessageAtom);
   const isMessageLoading = useAtomValue(isMessageLoadingAtom);
+  const isPanelOpen = useAtomValue(isPanelOpenAtom);
+  const isLeftColumnCollapsed = useAtomValue(isLeftColumnCollapsedAtom);
   const { t } = useTranslation();
 
   const handleSetCurrentMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,10 +32,13 @@ const Input: React.FC = () => {
   };
 
   useEffect(() => {
-    if (inputRef.current && !isMessageLoading) {
+    if (
+      inputRef.current &&
+      (!isMessageLoading || !isPanelOpen || isLeftColumnCollapsed)
+    ) {
       inputRef.current.focus();
     }
-  }, [isMessageLoading]);
+  }, [isMessageLoading, isPanelOpen, isLeftColumnCollapsed]);
 
   return (
     <input

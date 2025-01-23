@@ -11,6 +11,7 @@ export const initializeShadowRoot = async (rootEl: HTMLElement) => {
       container = document.createElement('div');
       shadowRoot.appendChild(container);
     }
+    container.style.height = '100%';
     const root = ReactDOM.createRoot(container);
     const styleLinks = document.querySelectorAll('link[data-chat-styles]');
     await Promise.all(

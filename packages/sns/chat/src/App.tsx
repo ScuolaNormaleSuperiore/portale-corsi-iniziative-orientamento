@@ -38,7 +38,7 @@ const App = () => {
       )}
       <section className="w-full h-full text-black flex flex-col border-t border-subtle">
         <div
-          className={clsx('w-full', {
+          className={clsx('w-full h-full', {
             'lg:grid-cols-[50px_1fr]':
               isLeftColumnCollapsed &&
               rootAttributes?.faqs?.questions &&

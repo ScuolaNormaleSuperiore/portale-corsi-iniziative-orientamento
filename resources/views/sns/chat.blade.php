@@ -4,8 +4,8 @@
             data-page-title="{{ $pageTitle }}"
             data-user-avatar="{{ $userAvatar }}"
             data-faqs="{{ $faqs->toJson() }}"
-            data-first-answer="{{ $firstAnswer }}">
-        </div>
+            data-first-answer="{{ $firstAnswer }}"
+        ></div>
 @endsection
 @section('extra-scripts')
     @foreach ($assets['js'] as $asset)
