@@ -49,7 +49,7 @@ class CandidatoFactory extends Factory
         $iniziativeIds = $iniziative->pluck('anno', 'id')
             ->all();
 
-        $inizitivaId = Arr::random(array_keys($iniziativeIds));
+        $iniziativaId = Arr::random(array_keys($iniziativeIds));
 
 //        $province = Provincia::all()->pluck('regione_id', 'id')->all();
 //        $provinciaId = Arr::random(array_keys($province));
@@ -92,6 +92,8 @@ class CandidatoFactory extends Factory
 
         $province = [1 => 1];
         $provinciaId = 1;
+        $comuneId = 1;
+        $nazioneId = 1;
 
         $titoliStudio = [1];
         $professioni = [1];
@@ -127,22 +129,41 @@ class CandidatoFactory extends Factory
 
         $this->setFakerLocale('it_IT');
         $email = $this->faker->unique()->safeEmail;
+
+        $codiceFiscale = $this->faker->unique()->taxId();
+
+        $estero = rand(1,100) <= 10 ? true : false;
+        if ($estero) {
+            $comuneId = null;
+            $provinciaId = null;
+            $regioneId = null;
+            $nazioneId = rand(2,200);
+            $comuneEstero = $this->faker->city;
+        } else {
+            $comuneId = 1;
+            $provinciaId = 1;
+            $regioneId = 1;
+            $nazioneId = 1;
+            $comuneEstero = null;
+        }
         return [
-            'anno' => Arr::get($iniziativeIds, $inizitivaId),
-            'iniziativa_id' => $inizitivaId,
+            'anno' => Arr::get($iniziativeIds, $iniziativaId),
+            'iniziativa_id' => $iniziativaId,
 
             'nome' => $this->faker->firstName,
             'cognome' => $this->faker->lastName,
-//            'codice_fiscale' => $this->faker-,
+            'codice_fiscale' => $codiceFiscale,
             'emails' => $email,
             'sesso' => Arr::random(['F', 'M', 'A']),
             'luogo_nascita' => $this->faker->city,
             'data_nascita' => ($this->faker->dateTimeInInterval('-19 years', '+2 years'))->format('Y-m-d'),
             'indirizzo' => $this->faker->address,
-            'comune' => $this->faker->city,
+            'comune_id' => $comuneId,
+            'comune_estero' => $this->faker->city,
             'cap' => $this->faker->postcode,
             'provincia_id' => $provinciaId,
             'regione_id' => Arr::get($province, $provinciaId),
+            'nazione_id' => $nazioneId,
             'telefono' => $this->faker->phoneNumber,
             'scuola_id' => $scuolaId,
             'scuola_estera' => $scuolaEstera,

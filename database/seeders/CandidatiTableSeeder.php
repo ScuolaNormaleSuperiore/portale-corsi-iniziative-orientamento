@@ -15,10 +15,12 @@ use App\Enums\Stages;
 use App\Models\Candidato;
 use App\Models\CandidatoCorso;
 use App\Models\CandidatoVoti;
+use App\Models\Comune;
 use App\Models\Corso;
 use App\Models\Iniziativa;
 use App\Models\LivelloLinguistico;
 use App\Models\ModalitaConoscenzaSns;
+use App\Models\Nazione;
 use App\Models\Professione;
 use App\Models\Provincia;
 use App\Models\Scuola;
@@ -58,6 +60,8 @@ class CandidatiTableSeeder extends Seeder
             ->all();
 
         $province = Provincia::all()->pluck('regione_id', 'id')->all();
+        $nazioni = Nazione::all()->pluck('id', 'id')->all();
+        $comuni = Comune::all()->pluck('id', 'id')->all();
 
         $titoliStudio = TitoloStudio::all()->pluck('id', 'id')->all();
         $professioni = Professione::all()->pluck('id', 'id')->all();
@@ -71,6 +75,7 @@ class CandidatiTableSeeder extends Seeder
 
         $materie = DB::table('materie')->pluck('id', 'id')->all();
 
+
         \Illuminate\Support\Facades\Auth::loginUsingId(3);
         foreach (range(1, 100) as $i) {
 
@@ -80,7 +85,7 @@ class CandidatiTableSeeder extends Seeder
                 'name' => $email,
             ])->each(function ($u)
             use (
-                $iniziativeIds, $province, $titoliStudio, $professioni, $materie,
+                $iniziativeIds, $province, $titoliStudio, $professioni, $materie, $nazioni, $comuni,
                 $professione2Altro, $professione1Altro, $livelliLingusitici, $modalitaConoscenza, $scuoleIds,
             ) {
 
@@ -111,15 +116,25 @@ class CandidatiTableSeeder extends Seeder
                             if (rand(1, 100) > 85) {
                                 break;
                             }
-                            $estero = rand(1, 100) > 99;
+
+                            $estero = rand(1, 100) > 90;
 
                             if ($estero) {
+                                $comuneId = null;
+                                $provinciaId = null;
+                                $regioneId = null;
+                                $nazioneId = Arr::random($nazioni);
+                                $comuneEstero = $this->faker->city;
                                 $scuolaId = null;
                                 $scuolaEstera = $this->faker->company;
                             } else {
+                                $comuneId = Arr::random($comuni);
+                                $provinciaId = 1;
+                                $regioneId = 1;
+                                $nazioneId = 1;
+                                $comuneEstero = null;
                                 $scuolaId = Arr::random($scuoleIds);
                                 $scuolaEstera = null;
-
                             }
                             $provinciaId = Arr::random(array_keys($province));
 
@@ -130,8 +145,9 @@ class CandidatiTableSeeder extends Seeder
                                 'nome' => $u->nome,
                                 'cognome' => $u->cognome,
                                 'emails' => $u->email,
-                                'provincia_id' => $provinciaId,
-                                'regione_id' => Arr::get($province, $provinciaId),
+                                'comune_id' => $comuneId,
+                                'nazione_id' => $nazioneId,
+                                'comune_estero' => $comuneEstero,
                                 'scuola_id' => $scuolaId,
                                 'scuola_estera' => $scuolaEstera,
                                 'gen1_titolo_studio_id' => Arr::random($titoliStudio),
@@ -159,7 +175,23 @@ class CandidatiTableSeeder extends Seeder
                             $nCandidature = rand(0, 5);
                             echo " --- " . $nCandidature . ' --- ' . $u->getKey() . "\n";
                             for ($i = 1; $i <= $nCandidature; $i++) {
-                                $provinciaId = Arr::random(array_keys($province));
+
+                                $estero = rand(1, 100) > 90;
+
+                                if ($estero) {
+                                    $comuneId = null;
+                                    $provinciaId = null;
+                                    $regioneId = null;
+                                    $nazioneId = Arr::random($nazioni);
+                                    $comuneEstero = $this->faker->city;
+                                } else {
+                                    $comuneId = Arr::random($comuni);
+                                    $provinciaId = 1;
+                                    $regioneId = 1;
+                                    $nazioneId = 1;
+                                    $comuneEstero = null;
+                                }
+
                                 $data = [
                                     'anno' => $anno,
                                     'iniziativa_id' => $iniziativaId,
@@ -167,8 +199,9 @@ class CandidatiTableSeeder extends Seeder
                                     'nome' => $this->faker->firstName,
                                     'cognome' => $this->faker->lastName,
                                     'emails' => $this->faker->unique()->safeEmail,
-                                    'provincia_id' => $provinciaId,
-                                    'regione_id' => Arr::get($province, $provinciaId),
+                                    'comune_id' => $comuneId,
+                                    'nazione_id' => $nazioneId,
+                                    'comune_estero' => $comuneEstero,
                                     'scuola_id' => $scuolaId,
                                     'scuola_estera' => null,
                                     'gen1_titolo_studio_id' => Arr::random($titoliStudio),

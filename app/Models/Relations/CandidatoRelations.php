@@ -23,6 +23,12 @@ trait CandidatoRelations
     
     }
 
+    public function comune() {
+
+        return $this->belongsTo('App\Models\Comune', 'comune_id', null, null);
+    
+    }
+
     public function provincia() {
 
         return $this->belongsTo('App\Models\Provincia', 'provincia_id', null, null);
@@ -31,7 +37,13 @@ trait CandidatoRelations
 
     public function regione() {
 
-        return $this->belongsTo('App\Models\Provincia', 'provincia_id', null, null);
+        return $this->belongsTo('App\Models\Regione', 'regione_id', null, null);
+    
+    }
+
+    public function nazione() {
+
+        return $this->belongsTo('App\Models\Nazione', 'nazione_id', null, null);
     
     }
 
@@ -112,8 +124,9 @@ trait CandidatoRelations
     public function attachments() {
 
         return $this->morphMany('App\Models\Attachment', 'mediable', null, null, null);
-
+    
     }
+
 
 
 }
