@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Http\Controllers\JsonControllerTrait;
+use App\Models\Comune;
 use App\Models\Corso;
 use App\Models\Iniziativa;
 use App\Models\Scuola;
@@ -65,6 +66,20 @@ class AppController extends Controller
 //        }
 
         $result = $autocompleteResult;
+
+        return $this->_result($result);
+    }
+
+    public function getComuniProvincia(Request $request)
+    {
+
+
+        $value = $request->get('value');
+        $comune = new Comune();
+        $comuni = $comune->getForSelectList($comune->where('provincia_id',$value));
+
+
+        $result = $comuni;
 
         return $this->_result($result);
     }

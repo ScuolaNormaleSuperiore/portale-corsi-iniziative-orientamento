@@ -57,9 +57,9 @@ return [
                                 'required',
                             ]
                         ],
-                        'comune' => [
+                        'comune_estero' => [
                             'validation' => [
-                                'required',
+//                                'required',
                             ]
                         ],
                         'cap' => [
@@ -69,9 +69,19 @@ return [
                                 'max_digits:5',
                             ]
                         ],
+                        'nazione_id' => [
+                            'validation' => [
+//                                'required',
+                            ]
+                        ],
                         'provincia_id' => [
                             'validation' => [
-                                'required',
+//                                'required',
+                            ]
+                        ],
+                        'comune_id' => [
+                            'validation' => [
+//                                'required',
                             ]
                         ],
 

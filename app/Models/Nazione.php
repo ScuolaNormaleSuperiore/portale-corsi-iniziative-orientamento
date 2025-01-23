@@ -10,7 +10,7 @@ use Gecche\Cupparis\App\Breeze\Breeze;
 class Nazione extends Breeze
 {
 
-    
+
 //    use ModelWithUploadsTrait;
 
     protected $table = 'nazioni';
@@ -48,7 +48,7 @@ class Nazione extends Breeze
      //['cognome','denominazione','codicefiscale','partitaiva'];
 
     public $nItemsAutoComplete = 20;
-    public $nItemsForSelectList = 100;
+    public $nItemsForSelectList = 300;
     public $itemNoneForSelectList = false;
     public $fieldsSeparator = ' - ';
 

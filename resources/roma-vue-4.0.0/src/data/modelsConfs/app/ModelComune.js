@@ -8,7 +8,7 @@ export default {
 			'nome',
 			'provincia_id',
 			'regione_id',
-			'cap',
+			// 'cap',
         ],
         fieldsConfig: {
 			'nome' : {
@@ -81,7 +81,7 @@ export default {
 			'codice_istat',
 			'codice_catastale',
 			'sigla_provincia',
-			'cap',
+			// 'cap',
 			// 'attivo',
 			'provincia',
 			'regione',
@@ -152,8 +152,8 @@ export default {
 			// 'sigla_provincia',
 			// 'regione_id',
 			// 'nazione_id',
-			'cap',
-			'prefisso',
+			// 'cap',
+			// 'prefisso',
 			// 'attivo',
 
 

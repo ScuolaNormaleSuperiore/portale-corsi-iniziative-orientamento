@@ -574,7 +574,7 @@ return [
             "indirizzo" => [
 
             ],
-            "comune" => [
+            "comune_estero" => [
 
             ],
             "cap" => [
@@ -582,6 +582,13 @@ return [
             ],
             "provincia_id" => [
                 'options' => 'relation:provincia',
+            ],
+            "nazione_id" => [
+                'options' => 'relation:nazione',
+                'default' =>  1,
+            ],
+            "comune_id" => [
+
             ],
             "telefono" => [
 
