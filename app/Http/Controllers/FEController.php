@@ -432,19 +432,19 @@ class FEController extends Controller
                 [
                     'heading' => 'Domande per i genitori',
                     'items' => [
-                        'Ciao, come posso aiutarti?',
-                        'Ciao, come posso aiutarti?',
-                        'Ciao, come posso aiutarti?',
-                        'Ciao, come posso aiutarti?',
+                        ['title' => 'Ciao, come posso aiutarti?'],
+                        ['title' => 'Ciao, come posso aiutarti?'],
+                        ['title' => 'Ciao, come posso aiutarti?'],
+                        ['title' => 'Ciao, come posso aiutarti?'],
                     ],
                 ],
                 [
                     'heading' => 'Domande per gli studenti',
                     'items' => [
-                        'Ciao, come posso aiutarti?',
-                        'Ciao, come posso aiutarti?',
-                        'Ciao, come posso aiutarti?',
-                        'Ciao, come posso aiutarti?',
+                        ['title' => 'Ciao, come posso aiutarti?'],
+                        ['title' => 'Ciao, come posso aiutarti?'],
+                        ['title' => 'Ciao, come posso aiutarti?'],
+                        ['title' => 'Ciao, come posso aiutarti?'],
                     ],
                 ],
             ],

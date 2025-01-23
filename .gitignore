@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/vueapp
+/public/chat/*
 
 /storage/*.key
 /vendor

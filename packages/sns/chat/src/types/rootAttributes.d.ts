@@ -11,12 +11,12 @@ export type Faqs = {
 };
 
 export type Questions = {
-  id: string;
+  id?: string;
   heading: string;
   items?: Question[];
 };
 
 export type Question = {
-  id: string;
+  id?: string;
   title?: string;
 };

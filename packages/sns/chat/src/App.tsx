@@ -79,12 +79,12 @@ const App = () => {
             )}
           <div className="flex flex-col relative">
             <div className="flex flex-col gap-3 lg:gap-6 container mx-auto max-w-screen-xl flex-grow">
-              <div className="px-6 pt-5 md:px-12 md:pt-10 gap-2 flex flex-col">
+              <div className="px-6 pt-5 md:px-12 md:pt-10 gap-4 flex flex-col">
                 {rootAttributes?.faqs?.questions &&
                   rootAttributes.faqs.questions.length > 0 && (
                     <>
                       <ButtonToggleColumn
-                        className="lg:hidden"
+                        className="lg:hidden self-start"
                         handler={togglePanel}
                       />
                       <Panel isOpen={isPanelOpen} onClose={togglePanel} />

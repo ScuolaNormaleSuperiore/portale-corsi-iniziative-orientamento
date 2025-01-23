@@ -41,12 +41,12 @@ export const boot = ({
     faqs: {
       ...faqs,
       questions:
-        faqs?.questions?.map((question: Questions) => ({
-          ...question,
+        faqs?.questions?.map((questions: Questions) => ({
+          ...questions,
           id: uuidv4(),
           items:
-            question.items?.map((item: Question) => ({
-              ...item,
+            questions.items?.map((question: Question) => ({
+              ...question,
               id: uuidv4(),
             })) || [],
         })) || [],
@@ -78,66 +78,53 @@ const developmentRootAttributes: RootAttributes = {
     title: 'Qualche argomento di cui posso parlarti:',
     questions: [
       {
-        id: uuidv4(),
         heading: 'Domande per i genitori',
         items: [
           {
-            id: uuidv4(),
             title:
               'Cosa sono i corsi di orientamento della Scuola Normale Superiore?',
           },
           {
-            id: uuidv4(),
             title:
               'Quali sono gli obiettivi principali dei corsi di orientamento?',
           },
           {
-            id: uuidv4(),
             title:
               'I corsi di orientamento sono incentrati su materie specifiche o sono interdisciplinari?',
           },
           {
-            id: uuidv4(),
             title:
               'I corsi di orientamento sono incentrati su materie insegnate alla Normale?',
           },
           {
-            id: uuidv4(),
             title: 'Quando si svolgono i corsi di orientamento?',
           },
         ],
       },
       {
-        id: uuidv4(),
         heading: 'Domande per gli studenti',
         items: [
           {
-            id: uuidv4(),
             title:
               'Cosa sono i corsi di orientamento della Scuola Normale Superiore?',
           },
           {
-            id: uuidv4(),
             title:
               'Quali sono gli obiettivi principali dei corsi di orientamento?',
           },
           {
-            id: uuidv4(),
             title:
               'Quali sono le tematiche principali trattate nei corsi di orientamento?',
           },
           {
-            id: uuidv4(),
             title:
               'I corsi di orientamento sono incentrati su materie specifiche o sono interdisciplinari?',
           },
           {
-            id: uuidv4(),
             title:
               'I corsi di orientamento sono incentrati su materie insegnate alla Normale?',
           },
           {
-            id: uuidv4(),
             title: 'Quando si svolgono i corsi di orientamento?',
           },
         ],

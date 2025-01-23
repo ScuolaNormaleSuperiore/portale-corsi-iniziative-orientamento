@@ -21,7 +21,7 @@ const Accordion: React.FC<AccordionProps> = ({
       >
         <p
           className={clsx(
-            'text-base md:text-lg transition-colors duration-300 text-primary font-semibold',
+            'text-lg transition-colors duration-300 text-primary font-semibold',
             {
               'text-primary-active': isOpen,
             },
