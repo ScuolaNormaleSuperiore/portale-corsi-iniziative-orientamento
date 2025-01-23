@@ -2,6 +2,8 @@
 
 @include('candidature.form.riepilogo-text',['label' => 'Nome','value' => $candidatura->nome])
 
+@include('candidature.form.riepilogo-text',['label' => 'Codice fiscale','value' => $candidatura->codice_fiscale])
+
 @include('candidature.form.riepilogo-text',['value' => $candidatura->luogo_nascita,'label' => 'Luogo di nascita'])
 
 @include('candidature.form.riepilogo-text',['value' => $candidatura->data_nascita,'label' => 'Data di nascita'])

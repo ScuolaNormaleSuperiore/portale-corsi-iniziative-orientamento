@@ -126,14 +126,7 @@ class Candidato extends Breeze
             $this->anno = $this->iniziativa->anno;
         }
 
-        if ($this->provincia_id) {
-            $provincia = Provincia::where('id', $this->provincia_id)->first();
-            $this->regione_id = $provincia->regione_id;
-        } else {
-            $this->regione_id = null;
-        }
-
-        if ($this->comune_id) {
+        if ($this->nazione_id == 1) {
             $this->provincia_id = $this->comune->provincia_id;
             $provincia = Provincia::where('id', $this->provincia_id)->first();
             $this->regione_id = $provincia->regione_id;
