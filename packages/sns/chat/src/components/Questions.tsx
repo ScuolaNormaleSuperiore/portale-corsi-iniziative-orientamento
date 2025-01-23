@@ -10,9 +10,11 @@ const Questions: React.FC<{ className?: string }> = ({ className }) => {
   if (!faqs || !faqs?.questions || !faqs?.questions?.length) return null;
 
   return (
-    <div className={clsx('flex flex-col gap-8 w-full', className)}>
-      {faqs?.title && <h4 className="text-2xl font-semibold">{faqs.title}</h4>}
-      <div className="flex flex-col gap-4">
+    <div className={clsx('flex flex-col gap-4 md:gap-8 w-full', className)}>
+      {faqs?.title && (
+        <h4 className="text-lg md:text-2xl font-semibold">{faqs.title}</h4>
+      )}
+      <div className="flex flex-col gap-2 md:gap-4">
         {faqs?.questions?.map((question, index) => (
           <Accordion
             key={question.id}

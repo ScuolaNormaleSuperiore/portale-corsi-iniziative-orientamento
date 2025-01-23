@@ -15,13 +15,13 @@ const Accordion: React.FC<AccordionProps> = ({
     <div className="flex flex-col w-full bg-white rounded border border-subtle">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full py-4 px-6 gap-6"
+        className="flex items-center justify-between w-full py-2 md:py-4 px-3 md:px-6 gap-6"
         aria-expanded={isOpen}
         tabIndex={0}
       >
         <p
           className={clsx(
-            'text-lg transition-colors duration-300 text-primary font-semibold',
+            'text-base md:text-lg transition-colors duration-300 text-primary font-semibold',
             {
               'text-primary-active': isOpen,
             },
@@ -48,7 +48,7 @@ const Accordion: React.FC<AccordionProps> = ({
           transition={{ duration: 0.3 }}
           className="overflow-hidden"
         >
-          <ul className="flex flex-col gap-4 px-6 py-5">
+          <ul className="flex flex-col gap-2 md:gap-4 px-3 md:px-6 py-3 md:py-5">
             {items?.map((item) => (
               <AccordionItem
                 key={item.id}

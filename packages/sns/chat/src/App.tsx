@@ -1,9 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { isDevelopment } from '@utils/env';
-import { useAtomValue } from 'jotai';
-import { isLeftColumnCollapsedAtom } from '@atoms/layout';
+import { useAtomValue, useSetAtom } from 'jotai';
+import {
+  isLeftColumnCollapsedAtom,
+  isPanelOpenAtom,
+  toggleLeftColumnAtom,
+  togglePanelAtom,
+} from '@atoms/layout';
 import { rootAttributesAtom } from '@atoms/rootAttributes';
+import Panel from '@components/Panel';
 import ButtonToggleColumn from '@components/ButtonToggleColumn';
 import Messages from '@components/Messages';
 import Input from '@components/Input';
@@ -14,8 +20,13 @@ import clsx from 'clsx';
 import './App.css';
 
 const App = () => {
-  const isLeftColumnCollapsed = useAtomValue(isLeftColumnCollapsedAtom);
   const rootAttributes = useAtomValue(rootAttributesAtom);
+
+  const isLeftColumnCollapsed = useAtomValue(isLeftColumnCollapsedAtom);
+  const isPanelOpen = useAtomValue(isPanelOpenAtom);
+
+  const toggleLeftColumn = useSetAtom(toggleLeftColumnAtom);
+  const togglePanel = useSetAtom(togglePanelAtom);
 
   return (
     <>
@@ -58,18 +69,30 @@ const App = () => {
                     transition: { duration: 0.3 },
                   }}
                 >
-                  <ButtonToggleColumn className="hidden lg:flex self-end" />
+                  <ButtonToggleColumn
+                    className="hidden lg:flex self-end"
+                    handler={toggleLeftColumn}
+                  />
                   {!isLeftColumnCollapsed && <Questions />}
                 </motion.div>
               </div>
             )}
-          <div className="flex flex-col">
+          <div className="flex flex-col relative">
             <div className="flex flex-col gap-3 lg:gap-6 container mx-auto max-w-screen-xl flex-grow">
               <div className="px-6 pt-5 md:px-12 md:pt-10 gap-2 flex flex-col">
-                <ButtonToggleColumn className="lg:hidden" />
+                {rootAttributes?.faqs?.questions &&
+                  rootAttributes.faqs.questions.length > 0 && (
+                    <>
+                      <ButtonToggleColumn
+                        className="lg:hidden"
+                        handler={togglePanel}
+                      />
+                      <Panel isOpen={isPanelOpen} onClose={togglePanel} />
+                    </>
+                  )}
                 <Title />
               </div>
-              <div className="flex flex-col px-6 md:px-12 w-full h-[525px] min-h-96 pb-2 lg:pb-4 flex-grow">
+              <div className="flex flex-col px-6 md:px-12 w-full lg:h-[525px] lg:min-h-96 h-[350px] min-h-64 pb-2 lg:pb-4 flex-grow">
                 <Messages />
               </div>
             </div>

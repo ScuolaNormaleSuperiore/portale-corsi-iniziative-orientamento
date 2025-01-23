@@ -3,13 +3,14 @@ import clsx from 'clsx';
 import { sanitize } from '@utils/sanitizer';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { isMessageLoadingAtom, fetchMessageAtom } from '@atoms/messages';
-
+import { isPanelOpenAtom } from '@atoms/layout';
 const AccordionItem: React.FC<{ text: string; isOpen: boolean }> = ({
   text,
   isOpen = false,
 }) => {
   const isMessageLoading = useAtomValue(isMessageLoadingAtom);
   const setFetchMessage = useSetAtom(fetchMessageAtom);
+  const setIsPanelOpen = useSetAtom(isPanelOpenAtom);
 
   if (!text) return null;
 
@@ -17,7 +18,7 @@ const AccordionItem: React.FC<{ text: string; isOpen: boolean }> = ({
     <li className="w-full bg-white rounded border border-subtle">
       <button
         className={clsx(
-          'w-full text-left py-2 px-3 transition-shadow duration-300 disabled:opacity-50 disabled:cursor-not-allowed',
+          'w-full text-left py-1 md:py-2 px-3 md:px-4 transition-shadow duration-300 disabled:opacity-50 disabled:cursor-not-allowed',
           {
             'group/button hover:shadow-lg': !isMessageLoading,
           },
@@ -25,6 +26,7 @@ const AccordionItem: React.FC<{ text: string; isOpen: boolean }> = ({
         onClick={() => {
           if (!isMessageLoading && text) {
             setFetchMessage(sanitize(text));
+            setIsPanelOpen(false);
           }
         }}
         disabled={isMessageLoading}

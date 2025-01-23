@@ -4,6 +4,7 @@ import { store } from '@store/store';
 import { boot } from '@utils/boot';
 import { isProduction } from '@utils/env';
 import { initializeShadowRoot } from '@utils/shadow';
+import AppProvider from './components/AppProvider';
 import App from './App';
 import './i18n/config';
 
@@ -22,7 +23,9 @@ const initializeApp = async () => {
 
   root.render(
     <Provider store={store}>
-      <App />
+      <AppProvider>
+        <App />
+      </AppProvider>
     </Provider>,
   );
 };
