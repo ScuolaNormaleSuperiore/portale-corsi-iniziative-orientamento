@@ -79,7 +79,7 @@ const App = () => {
             )}
           <div className="flex flex-col relative">
             <div className="flex flex-col gap-3 lg:gap-6 container mx-auto max-w-screen-xl flex-grow">
-              <div className="px-6 pt-5 md:px-12 md:pt-10 gap-4 flex flex-col">
+              <div className="px-3 pt-5 md:px-12 md:pt-10 gap-4 flex flex-col">
                 {rootAttributes?.faqs?.questions &&
                   rootAttributes.faqs.questions.length > 0 && (
                     <>
@@ -92,11 +92,11 @@ const App = () => {
                   )}
                 <Title />
               </div>
-              <div className="flex flex-col px-6 md:px-12 w-full lg:h-[525px] lg:min-h-96 h-[350px] min-h-64 pb-2 lg:pb-4 flex-grow">
+              <div className="flex flex-col px-3 md:px-12 w-full lg:h-[525px] lg:min-h-96 h-[350px] min-h-64 pb-2 lg:pb-4 flex-grow">
                 <Messages />
               </div>
             </div>
-            <div className="px-6 py-3 md:px-12 md:py-6 bg-primary-lighter sticky bottom-0">
+            <div className="px-3 py-3 md:px-12 md:py-6 bg-primary-lighter sticky bottom-0">
               <div className="flex relative items-center border border-gray rounded overflow-hidden container mx-auto max-w-screen-xl">
                 <Input />
                 <Send />

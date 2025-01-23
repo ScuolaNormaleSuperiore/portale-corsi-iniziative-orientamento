@@ -19,17 +19,18 @@ const ButtonToggleColumn: React.FC<{
       )}
     >
       <motion.svg
-        animate={{ rotate: isLeftColumnCollapsed || isPanelOpen ? 0 : 180 }}
+        animate={{ rotate: isLeftColumnCollapsed || isPanelOpen ? 180 : 0 }}
         transition={{ duration: 0 }}
         initial={false}
-        width="20"
-        height="20"
+        width="24"
+        height="24"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        className="text-primary"
       >
         <polyline points="15 18 9 12 15 6" />
       </motion.svg>

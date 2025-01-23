@@ -30,8 +30,8 @@ const Accordion: React.FC<AccordionProps> = ({
           {title}
         </p>
         <motion.span
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          initial={isOpen ? { rotate: 180 } : { rotate: 0 }}
+          animate={{ rotate: isOpen ? 0 : 180 }}
+          initial={isOpen ? { rotate: 0 } : { rotate: 180 }}
           transition={{ duration: 0.3 }}
         >
           <ChevronUp className={clsx({ 'rotate-180': isOpen })} />

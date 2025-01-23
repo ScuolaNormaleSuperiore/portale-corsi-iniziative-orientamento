@@ -64,9 +64,9 @@ const UserAvatar = () => {
       alt={t('avatar.user.alt')}
       role="presentation"
       loading="lazy"
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8"
-      width={32}
-      height={32}
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5"
+      width={20}
+      height={20}
     />
   );
 };
