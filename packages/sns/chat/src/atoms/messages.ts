@@ -1,6 +1,7 @@
 import { atom } from 'jotai';
 import { v4 as uuidv4 } from 'uuid';
-import { sanitize } from '../utils/sanitizer';
+import { CHAT_API_ENDPOINT } from '@utils/api';
+import { sanitize } from '@utils/sanitizer';
 import { MessageType } from '../types/message';
 import { UpdateMessageParams, UpdateMessageChunkParams } from '../types/atoms';
 import { RoleType } from '../types/message';
@@ -94,7 +95,7 @@ export const fetchMessageAtom = atom(
       set(addMessageAtom, newUserMessage);
       set(addMessageAtom, newAssistantMessage);
 
-      const response = await fetch('http://localhost:8081/chat', {
+      const response = await fetch(CHAT_API_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

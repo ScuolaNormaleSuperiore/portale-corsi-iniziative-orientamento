@@ -16,7 +16,8 @@ i18n.use(initReactI18next).init({
           inputPlaceholder: 'Scrivi un messaggio',
         },
         message: {
-          error: 'Ops! Qualcosa è andato storto, riprova.',
+          error:
+            'Mi dispiace, sembra che ci sia stato un problema. Prova a ricaricare la pagina o riprova più tardi.',
         },
         avatar: {
           user: {
@@ -35,7 +36,8 @@ i18n.use(initReactI18next).init({
           inputPlaceholder: 'Write a message',
         },
         message: {
-          error: 'Ops! Something went wrong, try again.',
+          error:
+            "I'm sorry, it seems there was an issue. Please try reloading the page or try again later.",
         },
         avatar: {
           user: {
