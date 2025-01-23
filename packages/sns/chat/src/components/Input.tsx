@@ -36,7 +36,7 @@ const Input: React.FC = () => {
   };
 
   useEffect(() => {
-    void delay(1500).then(() => {
+    void delay(1600).then(() => {
       if (isMounted()) focusInput();
     });
   }, [isMounted]);
