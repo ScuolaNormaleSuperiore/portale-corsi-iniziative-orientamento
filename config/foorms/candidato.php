@@ -248,6 +248,15 @@ return [
             "data_candidatura" => [
 
             ],
+            "nazione_id" => [
+
+            ],
+            "comune_id" => [
+
+            ],
+            "comune_estero" => [
+
+            ],
         ],
         "relations" => [
 
@@ -264,6 +273,21 @@ return [
             "provincia" => [
                 "fields" => [
                     "sigla" => [],
+                    "nome" => [],
+                ]
+            ],
+            "nazione" => [
+                "fields" => [
+                    "nome" => [],
+                ]
+            ],
+            "regione" => [
+                "fields" => [
+                    "nome" => [],
+                ]
+            ],
+            "comune" => [
+                "fields" => [
                     "nome" => [],
                 ]
             ],

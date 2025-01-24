@@ -72,11 +72,19 @@ function getStandardField(field, fieldType, fieldTypeParam, onlyRes, candValue) 
       candValue = candidato.value[field];
     } else if (candFieldArray.length === 2) {
       translation = CrudCore.translate('candidato.relations.' + candFieldArray[0] + '.label');
-      candValue = candidato.value[candFieldArray[0]][candFieldArray[1]];
+      candValue = candidato.value[candFieldArray[0]] ? candidato.value[candFieldArray[0]][candFieldArray[1]] : "";
     }
   }
   var value = "";
   switch (fieldType) {
+    case 'comune':
+      var nazione = parseInt(candidato.value['nazione_id']);
+      if (nazione === 1) {
+        value = candidato.value['comune'] ? candidato.value['comune']['nome'] : '';
+      } else {
+        value = candidato.value['comune_estero'];
+      }
+      break;
     case 'date':
       value = getFormattedDateValue(candValue);
       break;
@@ -147,12 +155,16 @@ function getStandardSection(section) {
   switch (section) {
     case 'anagrafica':
       fields = [
-        'nome', 'cognome', 'luogo_nascita', 'data_nascita', 'sesso',
-        'emails', 'indirizzo', 'comune', 'cap', 'provincia.sigla',
+        'nome', 'cognome', 'codice_fiscale','luogo_nascita', 'data_nascita', 'sesso', 'emails',
+        'nazione.nome',
+        'regione.nome',
+        'provincia.sigla',
+        'comune','indirizzo', 'cap',
         'gen1_titolo_studio_id', 'gen2_titolo_studio_id',
         'gen1_professione_id', 'gen2_professione_id'
       ];
       specialFields = {
+        'comune': 'comune',
         'data_nascita': 'date',
         'gen1_titolo_studio_id': 'select',
         'gen2_titolo_studio_id': 'select',
