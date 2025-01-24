@@ -24,8 +24,9 @@
             <!-- - img-->
             <div class="img-responsive-wrapper">
                 <div class="img-responsive">
-                    <div class="img-wrapper"><img src="{{$copertina->picture ?: Theme::url('/assets/bg-hero-index.png')}}"
-                                                  title="{{$heroText}}" alt="{{$heroText}}"></div>
+                    <div class="img-wrapper"><img
+                            src="{{$copertina->picture ?: Theme::url('/assets/bg-hero-index.png')}}"
+                            title="{{$heroText}}" alt="{{$heroText}}"></div>
                 </div>
             </div>
             <!-- - texts-->
@@ -101,6 +102,37 @@
                         </button>
                     </a>
                 </div>
+            </div>
+        </section>
+
+        {{--        Corsi--}}
+
+        <section style="background-color:white;" class="pt-5 border-bottom">
+
+            <div class="container">
+                <h2>I nostri corsi</h2>
+{{--                <p class="" style="color:#2F475E;">Scopri le opportunità offerte per partecipare ad eventi di--}}
+{{--                    orientamento, visitare i luoghi della Normale e vivere esperienze educative uniche.</p>--}}
+                <div class="row pb-5">
+                    <div class="card-wrapper card-teaser-wrapper card-teaser-block-3">
+                        <!--start card-->
+                        @foreach($corsi as $corso)
+                            @include('components.card-corso',['corso' => $corso])
+                        @endforeach
+
+                    </div>
+                </div>
+
+{{--                <div class="d-flex justify-content-end pb-5">--}}
+{{--                    <a href="/orientamento">--}}
+{{--                        <button type="button" class="btn btn-outline-primary">--}}
+{{--                            Scopri l'orientamento--}}
+{{--                            <svg class="icon icon-primary">--}}
+{{--                                <use href="{{Theme::url('svg/sprites.svg')}}#it-arrow-right"></use>--}}
+{{--                            </svg>--}}
+{{--                        </button>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
             </div>
         </section>
 
@@ -300,44 +332,44 @@
 
         @if($eventoSpeciale)
 
-                <section class="pt-5 it-hero-wrapper it-dark it-overlay bg-white it-hero-small-size">
-                    <!-- - img-->
-                    <div class="img-responsive-wrapper">
-                        <div class="img-responsive">
-                            <div class="img-wrapper">
-                                <img src="{{$eventoSpeciale->picture}}"
-                                     title="{{$eventoSpeciale->titolo_it}}" alt="{{$eventoSpeciale->titolo_it}}">
-                            </div>
+            <section class="pt-5 it-hero-wrapper it-dark it-overlay bg-white it-hero-small-size">
+                <!-- - img-->
+                <div class="img-responsive-wrapper">
+                    <div class="img-responsive">
+                        <div class="img-wrapper">
+                            <img src="{{$eventoSpeciale->picture}}"
+                                 title="{{$eventoSpeciale->titolo_it}}" alt="{{$eventoSpeciale->titolo_it}}">
                         </div>
                     </div>
-                    <!-- - texts-->
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="it-hero-text-wrapper bg-dark">
-                                    @if($eventoSpeciale->luogo)
+                </div>
+                <!-- - texts-->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="it-hero-text-wrapper bg-dark">
+                                @if($eventoSpeciale->luogo)
                                     <span class="text-white">{{$eventoSpeciale->luogo}}</span>
-                                    @endif
-                                    <h2 class="text-white">{{$eventoSpeciale->titolo_it}}</h2>
-                                    <p class="d-none d-lg-block text-white">{{$eventoSpeciale->sottotitolo_it}}</p>
-                                    @if ($eventoSpeciale->data)
-                                        @php
-                                            $date = \Carbon\Carbon::createFromFormat("Y-m-d",$eventoSpeciale->data)->locale('it_IT');
-                                        @endphp
-                                        <div class="text-white">
-                                            {{ucfirst($date->dayName)}} {{$date->day}} {{ucfirst($date->monthName)}} {{$date->year}}
-                                        </div>
-                                    @endif
-                                    <div class="it-btn-container">
-                                        <a class="btn btn-sm btn-secondary" href="/dettaglio-evento/{{$evento->id}}">
-                                            Scopri l'evento
-                                        </a>
+                                @endif
+                                <h2 class="text-white">{{$eventoSpeciale->titolo_it}}</h2>
+                                <p class="d-none d-lg-block text-white">{{$eventoSpeciale->sottotitolo_it}}</p>
+                                @if ($eventoSpeciale->data)
+                                    @php
+                                        $date = \Carbon\Carbon::createFromFormat("Y-m-d",$eventoSpeciale->data)->locale('it_IT');
+                                    @endphp
+                                    <div class="text-white">
+                                        {{ucfirst($date->dayName)}} {{$date->day}} {{ucfirst($date->monthName)}} {{$date->year}}
                                     </div>
+                                @endif
+                                <div class="it-btn-container">
+                                    <a class="btn btn-sm btn-secondary" href="/dettaglio-evento/{{$evento->id}}">
+                                        Scopri l'evento
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
     @endif
 
 @stop

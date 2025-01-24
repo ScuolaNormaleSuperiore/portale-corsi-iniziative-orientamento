@@ -49,10 +49,10 @@ class AppServiceProvider extends ServiceProvider
                 'path' => '/archivio-eventi',
                 'title' => 'Eventi',
             ],
-            'info-corsi' => [
-                'path' => '/info-corsi',
-                'title' => 'Info sui corsi',
-            ],
+//            'info-corsi' => [
+//                'path' => '/info-corsi',
+//                'title' => 'Info sui corsi',
+//            ],
             'candidature' => [
                 'path' => '/candidature',
                 'title' => 'Per candidarsi',

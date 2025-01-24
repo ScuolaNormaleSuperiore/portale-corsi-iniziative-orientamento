@@ -16,6 +16,7 @@ use App\Models\PaginaOrientamento;
 use App\Models\SezioneLayout;
 use App\Models\StudenteOrientamento;
 use App\Models\Video;
+use App\Providers\RouteServiceProvider;
 use Carbon\Carbon;
 use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Http\Request;
@@ -92,6 +93,11 @@ class FEController extends Controller
             ->limit(4)
             ->get();
 
+        $corsi = Corso::where('attivo', 1)
+            ->where('homepage',1)
+            ->orderBy('titolo', 'ASC')
+            ->get();
+
         $feeds = $this->getFeeds();
 
         $avvisi = Avviso::where('attivo', 1)->get();
@@ -115,7 +121,7 @@ class FEController extends Controller
         $copertina = Copertina::find(1);
 
         return view('index', compact('pagine', 'newsBasse', 'eventi',
-            'eventoSpeciale', 'avvisi', 'video', 'feeds', 'copertina'));
+            'eventoSpeciale', 'avvisi', 'video', 'feeds', 'copertina', 'corsi'));
     }
 
     public function paginaOrientamento(Request $request, PaginaOrientamento $pagina)
@@ -204,11 +210,19 @@ class FEController extends Controller
     public function infoCorso(Request $request, Corso $corso)
     {
 
+        if (!$corso->homepage) {
+            return redirect(RouteServiceProvider::HOME);
+        }
         $iniziative = Iniziativa::with('corsi')
             ->where('attivo', 1)
             ->whereDate('data_apertura', '<=', date('Y-m-d'))
             ->whereDate('data_chiusura', '>=', date('Y-m-d'))
             ->orderBy('data_apertura', 'ASC')
+            ->get();
+
+        $corsi = Corso::where('attivo', 1)
+            ->where('homepage',1)
+            ->orderBy('titolo', 'ASC')
             ->get();
 
         $descrizione = SezioneLayout::where('codice', 'info-corsi-intro')->firstOrNew();
@@ -226,7 +240,7 @@ class FEController extends Controller
             $corso->titolo => '#',
         ];
 
-        return view('info-corso', compact('descrizione','navleftInfo','pagine', 'breadcrumbs', 'corso', 'navleft','iniziative'));
+        return view('info-corso', compact('descrizione','navleftInfo','pagine', 'breadcrumbs', 'corso', 'navleft','iniziative','corsi'));
     }
 
     public function sportelloStudentiClasse(Request $request, Classe $classe)

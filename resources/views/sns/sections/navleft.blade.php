@@ -6,7 +6,7 @@
     $orarioEvento = \Illuminate\Support\Arr::get($navleft, 'orario_evento');
     $dataFineEvento = \Illuminate\Support\Arr::get($navleft, 'data_fine_evento');
     $allegati = \Illuminate\Support\Arr::get($navleft, 'allegati', []);
-    $navTitle = $navTitle ?? 'Contenuto';
+    $navTitle = $navTitle ?? ((count($allegati) + count($sezioni) > 0) ? 'Contenuto' : '');
 @endphp
 
 <nav class="navbar it-navscroll-wrapper navbar-expand-lg it-bottom-navscroll it-left-side border-start-0"

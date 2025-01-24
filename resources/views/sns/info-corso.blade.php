@@ -11,17 +11,17 @@
                 <div class="row">
 
                     <div class="col-12 col-lg-4">
-{{--                        @include('sections.navleft-pagine-info-corsi-attivi',--}}
-{{--                            ['iniziative' => $iniziative])--}}
 
-                            @include('sections.navleft',['navTitle' => $corso->titolo])
-                            @include('sections.navleft-pagine-info')
+                            @include('sections.navleft',['navTitle' => null])
+{{--                            @include('sections.navleft-pagine-info')--}}
+                        @include('sections.navleft-pagine-info-corsi-attivi',
+                            ['corsi' => $corsi])
                     </div>
                     <div class="col-12 col-lg-8">
-                        <section class="pb-4">
-                            {!! $descrizione->testo_it !!}
-                        </section>
-                            <hr/>
+{{--                        <section class="pb-4">--}}
+{{--                            {!! $descrizione->testo_it !!}--}}
+{{--                        </section>--}}
+{{--                            <hr/>--}}
                             <section class="pt-4">
                                 <h2 class="h2">{{$corso->titolo}}</h2>
                                 @if($corso->picture)
