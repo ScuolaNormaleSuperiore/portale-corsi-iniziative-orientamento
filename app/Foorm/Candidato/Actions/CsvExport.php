@@ -16,6 +16,7 @@ use App\Enums\Stages;
 use App\Models\LivelloLinguistico;
 use App\Models\Materia;
 use App\Models\ModalitaConoscenzaSns;
+use App\Models\Nazione;
 use App\Models\Professione;
 use App\Models\Provincia;
 use App\Models\Regione;
@@ -30,6 +31,7 @@ use Illuminate\Support\Str;
 class CsvExport extends BaseCsvExport
 {
 
+    protected $nazioni = null;
     protected $regioni = null;
     protected $province = null;
 
@@ -43,6 +45,8 @@ class CsvExport extends BaseCsvExport
     protected function init()
     {
         parent::init();
+        $this->nazioni = Nazione::all()
+            ->pluck('nome', 'id')->all();
         $this->regioni = Regione::all()
             ->pluck('nome', 'id')->all();
         $this->province = Provincia::all()
@@ -65,14 +69,17 @@ class CsvExport extends BaseCsvExport
         $headers = [
             'Cognome',
             'Nome',
+            'Codice fiscale',
             'Genere',
             'Luogo di nascita',
             'Data di nascita',
             'Residenza o recapito postale',
             'CAP',
-            'Città o Località',
+            'Comune',
+            'Comune (catastale)',
             'Provincia',
             'Regione',
+            'Nazione',
             'Telefono',
             'Email',
             'Titolo di studio del padre',
@@ -276,9 +283,32 @@ class CsvExport extends BaseCsvExport
         return $this->getFromArray($value, $this->regioni);
     }
 
+    protected function getCsvFieldComune($value,$itemArray,$item)
+    {
+        if ($item->nazione_id == 1) {
+            return $item->comune->nome;
+        } else {
+            return $item->comune_estero;
+        }
+    }
+
+    protected function getCsvFieldComuneCatastale($value,$itemArray,$item)
+    {
+        if ($item->nazione_id == 1) {
+            return $item->comune->codice_catastale;
+        } else {
+            return "";
+        }
+    }
+
     protected function getCsvFieldRegioneId($value)
     {
         return $this->getFromArray($value, $this->regioni);
+    }
+
+    protected function getCsvFieldNazioneId($value)
+    {
+        return $this->getFromArray($value, $this->nazioni);
     }
 
     protected function getCsvFieldProvinciaId($value)

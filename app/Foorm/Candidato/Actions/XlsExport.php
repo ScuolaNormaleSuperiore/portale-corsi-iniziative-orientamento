@@ -17,6 +17,7 @@ use App\Exports\ModelArrayExport;
 use App\Models\LivelloLinguistico;
 use App\Models\Materia;
 use App\Models\ModalitaConoscenzaSns;
+use App\Models\Nazione;
 use App\Models\Professione;
 use App\Models\Provincia;
 use App\Models\Regione;
@@ -47,6 +48,8 @@ class XlsExport extends BaseCsvExport
     protected function init()
     {
         parent::init();
+        $this->nazioni = Nazione::all()
+            ->pluck('nome', 'id')->all();
         $this->regioni = Regione::all()
             ->pluck('nome', 'id')->all();
         $this->province = Provincia::all()
@@ -69,14 +72,17 @@ class XlsExport extends BaseCsvExport
         $headers = [
             'Cognome',
             'Nome',
+            'Codice fiscale',
             'Genere',
             'Luogo di nascita',
             'Data di nascita',
             'Residenza o recapito postale',
             'CAP',
-            'Città o Località',
+            'Comune',
+            'Comune (catastale)',
             'Provincia',
             'Regione',
+            'Nazione',
             'Telefono',
             'Email',
             'Titolo di studio del padre',
@@ -267,8 +273,8 @@ class XlsExport extends BaseCsvExport
         }
 
         $columnsFormats = [
-            'E' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'G' => NumberFormat::FORMAT_TEXT,
+            'F' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'H' => NumberFormat::FORMAT_TEXT,
         ];
         Excel::store(new ModelArrayExport($dataArray,$columnsFormats), $storageFilename);
 
@@ -358,9 +364,32 @@ class XlsExport extends BaseCsvExport
         return $this->getFromArray($value, $this->regioni);
     }
 
+    protected function getCsvFieldComune($value,$itemArray,$item)
+    {
+        if ($item->nazione_id == 1) {
+            return $item->comune->nome;
+        } else {
+            return $item->comune_estero;
+        }
+    }
+
+    protected function getCsvFieldComuneCatastale($value,$itemArray,$item)
+    {
+        if ($item->nazione_id == 1) {
+            return $item->comune->codice_catastale;
+        } else {
+            return "";
+        }
+    }
+
     protected function getCsvFieldRegioneId($value)
     {
         return $this->getFromArray($value, $this->regioni);
+    }
+
+    protected function getCsvFieldNazioneId($value)
+    {
+        return $this->getFromArray($value, $this->nazioni);
     }
 
     protected function getCsvFieldProvinciaId($value)

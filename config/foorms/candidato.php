@@ -349,14 +349,17 @@ return [
                     'whitelist' => [
                         "cognome",
                         "nome",
+                        "codice_fiscale",
                         "sesso",
                         "luogo_nascita",
                         "data_nascita",
                         "indirizzo",
                         "cap",
                         "comune",
+                        "comune_catastale",
                         "provincia_id",
                         "regione_id",
+                        "nazione_id",
                         "telefono",
                         "emails",
 
@@ -474,6 +477,16 @@ return [
                 ]
             ],
             "user" => [
+                "fields" => [
+
+                ]
+            ],
+            "comune" => [
+                "fields" => [
+
+                ]
+            ],
+            "nazione" => [
                 "fields" => [
 
                 ]
