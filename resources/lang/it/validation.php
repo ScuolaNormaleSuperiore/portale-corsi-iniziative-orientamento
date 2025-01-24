@@ -182,6 +182,8 @@ return [
         'voti-voto_anno_2.*' => 'Voto due anni precedenti (Riga voti n. :index)',
         'voti-voto_primo_quadrimestre.*' => 'Voto primo quadrimestre (Riga voti n. :index)',
 
+        'comune_id' => 'comune',
+        'nazione_id' => 'nazione',
     ],
 
 ];

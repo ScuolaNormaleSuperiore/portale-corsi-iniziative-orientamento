@@ -294,6 +294,7 @@ export default {
         modelName: 'candidato',
         afterDraw() {
             this.getWidget('iniziativa_id').change();
+            this.getWidget('nazione_id').change();
         },
         actions : ['action-save','action-save-back','action-back'],
         fields: [
@@ -304,12 +305,17 @@ export default {
             'nome',
             'cognome',
             'sesso',
-            'luogo_nascita',
             'data_nascita',
+            'luogo_nascita',
+            'codice_fiscale',
+
+            'nazione_id',
+
+            'comune_id',
+            'comune_estero',
+            // 'provincia_id',
             'indirizzo',
-            'comune',
             'cap',
-            'provincia_id',
             'emails',
             'telefono',
 
@@ -366,6 +372,53 @@ export default {
 
         ],
         fieldsConfig: {
+            'comune_id': {
+                type: "w-autocomplete",
+                foormName: 'candidato',
+                viewType: 'edit',
+                labelFields: [
+                    'id',
+                    'nome',
+                    'sigla_provincia',
+                    'codice_catastale',
+                ],
+                clearButton: true,
+                extraBind: {
+                    'placeholder': "Digita le iniziali di un comune...",
+                    'dropdown': true,
+                    'option-label': function (obj) {
+                        if (!obj.nome) {
+                            return null;
+                        }
+                        return obj.nome + ' (' + obj.sigla_provincia + ')';
+                    },
+                    'option-value': 'id',
+                },
+                label: 'Comune',
+            },
+            'codice_fiscale' : {
+                type: 'w-input',
+                layout: {
+                    lastInRow: true,
+                }
+            },
+            'nazione_id' : {
+                type: 'w-select',
+                layout: {
+                    // lastInRow: true,
+                },
+                change() {
+                    var that = this;
+                    if (this.getValue() === 1) {
+                        that.view.hideWidget('comune_estero');
+                        that.view.showWidget('comune_id');
+                    } else {
+                        that.view.showWidget('comune_estero');
+                        that.view.hideWidget('comune_id');
+                    }
+                    return;
+                }
+            },
             'olimpiadi_matematica': {
                 type: 'w-select',
             },
@@ -493,6 +546,9 @@ export default {
             },
             'sesso': {
                 type: "w-select",
+                layout: {
+                    colClass: 'col-6 md:col-3',
+                },
             },
             'luogo_nascita': {
                 type: "w-input",
@@ -500,6 +556,9 @@ export default {
             'data_nascita': {
                 type: "w-input",
                 inputType: "date",
+                layout: {
+                    colClass: 'col-6 md:col-3',
+                },
             },
             'indirizzo': {
                 type: "w-input",

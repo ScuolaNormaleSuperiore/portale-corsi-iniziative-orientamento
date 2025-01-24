@@ -49,7 +49,8 @@ export default {
         fields: [
 			'picture',
 			'titolo',
-			// 'descrizione',
+            'homepage',
+            // 'descrizione',
 			'data_inizio',
 			'data_fine',
 			'note',
@@ -62,6 +63,12 @@ export default {
         ],
         fieldsConfig: {
 
+            'homepage' : {
+                type : "w-swap",
+                modelName : 'corso',
+                //switchClass: 'form-switch-danger banned',
+                //dataSwitched : true,
+            },
 			'picture' : {
 				type : "w-custom",
 				ready() {
@@ -134,6 +141,7 @@ export default {
         fields: [
 			'titolo',
 			'iniziativa_id',
+            'homepage',
 			'data_inizio',
 			'data_fine',
 			'luogo',
@@ -147,6 +155,13 @@ export default {
 			'fotos'
         ],
         fieldsConfig: {
+            'homepage' : {
+                type : "w-radio",
+                layout : {
+                    lastInRow: true,
+                    // colClass : 'col-12 md:col-4',
+                }
+            },
 			'titolo' : {
                 type : "w-input",
 			},

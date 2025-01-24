@@ -588,7 +588,7 @@ return [
                 'default' =>  1,
             ],
             "comune_id" => [
-
+                'referred_data' => 'relation:comune',
             ],
             "telefono" => [
 

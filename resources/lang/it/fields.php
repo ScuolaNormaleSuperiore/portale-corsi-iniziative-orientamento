@@ -123,6 +123,7 @@ return array (
   'codice_iso_2' => 'codice iso 2',
   'codice_iso_3' => 'codice iso 3',
   'sigla_provincia' => 'sigla provincia',
-  'nazione_id' => 'nazione id',
+  'nazione_id' => 'nazione',
   'prefisso' => 'prefisso',
+    'comune_id' => 'comune',
 );

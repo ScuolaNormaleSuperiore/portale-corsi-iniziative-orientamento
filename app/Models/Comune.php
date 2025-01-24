@@ -12,7 +12,7 @@ class Comune extends Breeze
 	use Relations\ComuneRelations;
 
 
-    
+
 //    use ModelWithUploadsTrait;
 
     protected $table = 'comuni';
@@ -43,7 +43,7 @@ class Comune extends Breeze
 //        'username' => 'required|between:4,255|unique:users,username',
     ];
 
-    public $columnsForSelectList = ['nome'];
+    public $columnsForSelectList = ['nome', 'sigla_provincia', 'codice_catastale'];
      //['id','descrizione'];
 
     public $defaultOrderColumns = ['nome' => 'ASC', ];

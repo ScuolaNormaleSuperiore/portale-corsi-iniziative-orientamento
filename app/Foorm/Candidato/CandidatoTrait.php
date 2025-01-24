@@ -5,6 +5,7 @@ namespace App\Foorm\Candidato;
 
 use App\Models\Corso;
 use App\Models\Evento;
+use App\Rules\CodiceFiscale;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
@@ -61,6 +62,14 @@ trait CandidatoTrait
             $validationRules['voti-voto_anno_1.*'] = ['required','numeric','max:10'];
             $validationRules['voti-voto_anno_2.*'] = ['required','numeric','max:10'];
             $validationRules['voti-voto_primo_quadrimestre.*'] = ['required','numeric','max:10'];
+        }
+
+        $nazione = Arr::get($input,'nazione_id');
+        if ($nazione == 1) {
+            $validationRules['codice_fiscale'] = ['required', new CodiceFiscale()];
+            $validationRules['comune_id'] = ['required'];
+        } else {
+            $validationRules['comune_estero'] = ['required'];
         }
 
         $this->validationSettings['rules'] = $validationRules;

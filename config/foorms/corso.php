@@ -120,7 +120,7 @@ return [
             ],
             "id" => [
 
-            ]
+            ],
         ],
     ],
     'list' => [
@@ -130,6 +130,7 @@ return [
             'set' => [
                 'allowed_fields' => [
                     'attivo',
+                    'homepage',
                 ],
             ],
         ],
@@ -179,6 +180,12 @@ return [
             "picture" => [
 
             ],
+            "homepage" => [
+                "options" => "boolean",
+                "nulloption" => false,
+                "default" => 0,
+            ]
+
         ],
         'appends' => [
           "picture",
@@ -258,6 +265,11 @@ return [
             ],
             "id" => [
 
+            ],
+            "homepage" => [
+                "options" => "boolean",
+                "nulloption" => false,
+                "default" => 0,
             ]
         ],
         'relations' => [
