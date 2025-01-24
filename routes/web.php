@@ -39,6 +39,8 @@ Route::get('/dettaglio-evento/{evento}', [FEController::class,'dettaglioEvento']
 
 Route::get('/cortesia-scuola-richiesta', [FEController::class,'scuolaRichiestaCortesia'])->name('cortesia-scuola-richiesta')->middleware([]);
 
+Route::get('/chat', [FEController::class,'chat'])->name('chat')->middleware([]);
+
 Route::group([
     'middleware' => ['auth','verified']
 ], function () {

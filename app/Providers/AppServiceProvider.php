@@ -59,8 +59,8 @@ class AppServiceProvider extends ServiceProvider
             ],
         ];
         $headerMenuSecondario = [
-            'parla-con-noi' => [
-                'path' => '/parla-con-noi',
+            'chat' => [
+                'path' => '/chat',
                 'title' => 'Parla con noi',
             ],
             'sportello-studenti' => [
@@ -137,6 +137,9 @@ class AppServiceProvider extends ServiceProvider
         }
         if (Str::startsWith($uri, ['/sportello-studenti'])) {
             return 'sportello-studenti';
+        }
+        if (Str::startsWith($uri, ['/chat'])) {
+            return 'chat';
         }
 
 
