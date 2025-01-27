@@ -33,7 +33,7 @@ class SamlSignedInListener
         ];
         Log::info('SAML User authenticated', $userData);
 
-        $userEmail = Arr::get($attributes,'spidEmail');
+        $userEmail = Arr::get(Arr::get($attributes,'spidEmail'),0);
 
         $user = $userEmail ? User::where('email', $userEmail)->first() : null;
 
@@ -45,15 +45,16 @@ class SamlSignedInListener
             // Generate a random password
             $randomPassword = Str::random(12);
             // Create a new user in your database
-            $user = User::create([
+            $userData = [
                 'name' => $userEmail,
                 'email' => $userEmail,
                 'password' => \bcrypt($randomPassword),
-                'nome' => Arr::get($attributes,'spidName'),
-                'cognome' => Arr::get($attributes,'spidFamilyName'),
-//                'info' => $attributes,
-            ]);
-            $user->assignRole($userData['role']);
+                'nome' => Arr::get(Arr::get($attributes,'spidName'),0),
+                'cognome' => Arr::get(Arr::get($attributes,'spidFamilyName'),0),
+                'info' => $attributes,
+            ];
+            $user = User::create($userData);
+            $user->assignRole('Studente');
             $this->login($user);
         } else {
             return redirect()->intended(RouteServiceProvider::HOME);
