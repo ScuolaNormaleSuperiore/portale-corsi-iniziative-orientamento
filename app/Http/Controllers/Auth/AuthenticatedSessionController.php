@@ -9,6 +9,8 @@ use App\Providers\RouteServiceProvider;
 use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -23,7 +25,12 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
+    public function saml2Error(Request $request) {
 
+        Log::info("ERRORE SAML 2");
+        Log::info(Session::get('saml2'));
+        return view('auth.login')->with(['saml2Error' => true]);
+    }
     /**
      * Display the login view.
      *

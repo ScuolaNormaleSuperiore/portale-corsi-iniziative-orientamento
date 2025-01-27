@@ -52,6 +52,8 @@ Route::group([
     Route::get('/candidatura/view/{candidatura}', [CandidatureController::class, 'view'])->name('candidatura.view');
 });
 
+Route::get('saml2-error',[\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'saml2Error'])->name('saml2-error');
+
 Route::get('/archivio-video', [FEController::class,'archivioVideo'])->name('archivio-video')->middleware([]);
 
 Route::get('/bladepuro', function () {

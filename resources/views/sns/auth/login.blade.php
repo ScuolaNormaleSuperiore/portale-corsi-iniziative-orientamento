@@ -15,7 +15,14 @@
             <hr/>
         </section>
 
+        @if ($saml2Error)
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Si è verificato un inconveniente tecnico con il login tramite SPID. Si prega di riprovare.
+            </div>
+        @endif
+
         <section class="mx-5 px-5 mb-4">
+
 
             <div class="row mb-5 pb-5 border-bottom">
                 <div class="col-12">
@@ -25,7 +32,7 @@
                 <div class="col-6">
                     <h4 class="h4 pb-3">Per i possessori di SPID o CIE</h4>
                     <div class="btn-example">
-                        <a href="/login-studenti">
+                        <a href="/saml2/bf441d43-662c-4c96-9451-b7c8a51c21a1/login">
                             <button type="button" class="btn btn-primary">
                                 Accedi
                             </button>
@@ -48,7 +55,7 @@
                 <div class="col-12">
 
                     <h2 class="h2 pb-1">Per gli istituti scolastici</h2>
-                        <p class="pb-3">Modalità di accesso per i referenti scolastici</p>
+                    <p class="pb-3">Modalità di accesso per i referenti scolastici</p>
                 </div>
                 <div class="col-6">
                     <div class="d-flex flex-column">
