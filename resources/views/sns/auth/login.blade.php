@@ -15,7 +15,7 @@
             <hr/>
         </section>
 
-        @if ($saml2Error)
+        @if (isset($saml2Error) && $saml2Error)
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 Si è verificato un inconveniente tecnico con il login tramite SPID. Si prega di riprovare.
             </div>
