@@ -49,9 +49,9 @@ class SamlSignedInListener
                 'name' => $userEmail,
                 'email' => $userEmail,
                 'password' => \bcrypt($randomPassword),
-                'nome' => Arr::get($attributes,'nome'),
-                'cognome' => Arr::get($attributes,'cognome'),
-                'info' => $attributes,
+                'nome' => Arr::get($attributes,'spidName'),
+                'cognome' => Arr::get($attributes,'spidFamilyName'),
+//                'info' => $attributes,
             ]);
             $user->assignRole($userData['role']);
             $this->login($user);
