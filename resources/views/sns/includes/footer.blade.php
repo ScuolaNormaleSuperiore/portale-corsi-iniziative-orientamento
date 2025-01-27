@@ -31,16 +31,27 @@
                     <div class="col-lg-6 col-md-6 pb-2">
                         <h4><a href="#" title="Vai alla pagina: Contatti">Contatti</a></h4>
                         <p>
-                            <strong>Sede di Pisa</strong><br>
+                            <strong>Scuola Normale Superiore</strong><br>
                             Piazza dei Cavalieri, 7 - 56125 Pisa
                         </p>
+                    <p>
+                        <strong>Orari uffici</strong><br/>
+                        Lun-Ven 9.30-12.30<br/>
+                        Lun, Mar, Mer, Gio 14.30-16.30
+                    </p>
                         <div class="link-list-wrapper">
                             <ul class="footer-list link-list clearfix">
                                 <li><a class="list-item" href="mailto:orientamento@sns.it"
                                        title="Invia email a orientamento@sns.it">orientamento@sns.it</a>
                                 </li>
                                 <li>
-                                       +39 050509111
+                                    +39 050 50 9307/9670/9057/9493
+                                </li>
+                                <li>
+                                    +39 3316990724
+                                </li>
+                                <li>
+                                    +39 3471092201
                                 </li>
 {{--                                <li>--}}
 {{--                                    Staff dei corsi id orientamento--}}
@@ -49,7 +60,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6 col-md-6 pb-2">
+                    <div class="col-lg-6 col-md-6 pb-2 d-flex flex-column justify-content-end">
                         <div class="pb-2">
                             <h4><a href="#" title="Vai alla pagina: Seguici su">Seguici su</a></h4>
                             <ul class="list-inline text-left social">

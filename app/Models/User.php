@@ -17,9 +17,14 @@ class User extends CupparisUser {
         'fename',
     ];
 
+    protected $casts = [
+        'info' => 'array',
+    ];
+
     protected $fillable = [
         'name', 'email', 'password',
         'nome', 'cognome', 'email_verified_at',
+        'info', 'codice_fiscale',
     ];
 
     public static $relationsData = [
@@ -55,5 +60,14 @@ class User extends CupparisUser {
         }
 
         return $this->name ?: $this->email;
+    }
+
+    public function getInfoAttribute($value)
+    {
+        $value = json_decode($value, true);
+        if (!is_array($value)) {
+            return [];
+        }
+        return $value;
     }
 }

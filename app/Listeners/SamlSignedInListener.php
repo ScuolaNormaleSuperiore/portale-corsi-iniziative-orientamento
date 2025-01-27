@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Arr;
 use Slides\Saml2\Events\SignedIn;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -24,32 +25,54 @@ class SamlSignedInListener
         // Prevent replay attacks (implement your own logic if needed)
 
         $samlUser = $event->getSaml2User();
+        $attributes = $samlUser->getAttributes();
         $userData = [
             'id' => $samlUser->getUserId(),
-            'attributes' => $samlUser->getAttributes(),
+            'attributes' => $attributes,
             'assertion' => $samlUser->getRawSamlAssertion()
         ];
         Log::info('SAML User authenticated', $userData);
-        // Find the user in your database using their SAML ID or attributes
-        $user = User::where('email', $userData['attributes']['urn:oid:0.9.2342.19200300.100.1.1'][0] ?? null)->first();
+
+        $userEmail = Arr::get($attributes,'spidEmail');
+
+        $user = $userEmail ? User::where('email', $userEmail)->first() : null;
 
         if ($user) {
             // Login the user
-            Auth::login($user);
-            return redirect(RouteServiceProvider::CANDIDATURE);
-        } else {
+            $this->login($user);
+
+        } elseif ($userEmail) {
             // Generate a random password
             $randomPassword = Str::random(12);
             // Create a new user in your database
             $user = User::create([
-                'name' => $userData['attributes']['urn:oid:0.9.2342.19200300.100.1.1'][0] ?? null,
-                'email' => $userData['attributes']['urn:oid:0.9.2342.19200300.100.1.1'][0] ?? null,
+                'name' => $userEmail,
+                'email' => $userEmail,
                 'password' => \bcrypt($randomPassword),
-                'nome' => $userData['attributes']['urn:oid:2.5.4.42'][0] ?? null,
-                'cognome' => $userData['attributes']['urn:oid:2.5.4.4'][0] ?? null,
+                'nome' => Arr::get($attributes,'nome'),
+                'cognome' => Arr::get($attributes,'cognome'),
+                'info' => $attributes,
             ]);
-            Auth::login($user);
-            return redirect(RouteServiceProvider::CANDIDATURE);
+            $user->assignRole($userData['role']);
+            $this->login($user);
+        } else {
+            return redirect()->intended(RouteServiceProvider::HOME);
+            //NO EMAIL DA GESTIRE
         }
+    }
+
+    protected function login(User $user) {
+        Auth::login($user);
+        $token = $user->createToken('auth_token')->plainTextToken;
+        request()->session()->regenerate();
+        request()->session()->put('sanctum_token',$token);
+        if (!Auth::user()->hasVerifiedEmail()) {
+            return redirect()->intended(route('verification.notice'));
+        }
+
+        if (auth_is_admin()) {
+            return redirect()->intended('/dashboard');
+        }
+        return redirect()->intended(RouteServiceProvider::CANDIDATURE);
     }
 }
