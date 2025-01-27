@@ -52,6 +52,7 @@ class SamlSignedInListener
                 'nome' => Arr::get(Arr::get($attributes,'spidName'),0),
                 'cognome' => Arr::get(Arr::get($attributes,'spidFamilyName'),0),
                 'info' => $attributes,
+                'email_verified_at' => now()->toDateTimeString(),
             ];
             $user = User::create($userData);
             $user->assignRole('Studente');
