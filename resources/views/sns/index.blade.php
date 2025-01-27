@@ -107,34 +107,26 @@
 
         {{--        Corsi--}}
 
-        <section style="background-color:white;" class="pt-5 border-bottom">
+        @if ($corsi->count() > 0)
+            <section style="background-color:white;" class="pt-5 border-bottom">
 
-            <div class="container">
-                <h2>I nostri corsi</h2>
-{{--                <p class="" style="color:#2F475E;">Scopri le opportunità offerte per partecipare ad eventi di--}}
-{{--                    orientamento, visitare i luoghi della Normale e vivere esperienze educative uniche.</p>--}}
-                <div class="row pb-5">
-                    <div class="card-wrapper card-teaser-wrapper card-teaser-block-3">
-                        <!--start card-->
-                        @foreach($corsi as $corso)
-                            @include('components.card-corso',['corso' => $corso])
-                        @endforeach
+                <div class="container">
+                    <h2>I nostri corsi</h2>
+                    {{--                <p class="" style="color:#2F475E;">Scopri le opportunità offerte per partecipare ad eventi di--}}
+                    {{--                    orientamento, visitare i luoghi della Normale e vivere esperienze educative uniche.</p>--}}
+                    <div class="row pb-5">
+                        <div class="card-wrapper card-teaser-wrapper card-teaser-block-3">
+                            <!--start card-->
+                            @foreach($corsi as $corso)
+                                @include('components.card-corso',['corso' => $corso])
+                            @endforeach
 
+                        </div>
                     </div>
-                </div>
 
-{{--                <div class="d-flex justify-content-end pb-5">--}}
-{{--                    <a href="/orientamento">--}}
-{{--                        <button type="button" class="btn btn-outline-primary">--}}
-{{--                            Scopri l'orientamento--}}
-{{--                            <svg class="icon icon-primary">--}}
-{{--                                <use href="{{Theme::url('svg/sprites.svg')}}#it-arrow-right"></use>--}}
-{{--                            </svg>--}}
-{{--                        </button>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-            </div>
-        </section>
+                </div>
+            </section>
+        @endif
 
         {{--        News--}}
 

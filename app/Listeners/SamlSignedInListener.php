@@ -44,12 +44,13 @@ class SamlSignedInListener
             // Generate a random password
             $randomPassword = Str::random(12);
             // Create a new user in your database
+
             $userData = [
                 'name' => $userEmail,
                 'email' => $userEmail,
                 'password' => \bcrypt($randomPassword),
-                'nome' => Arr::get(Arr::get($attributes, 'spidName'), 0),
-                'cognome' => Arr::get(Arr::get($attributes, 'spidFamilyName'), 0),
+                'nome' => implode(" ",Arr::get($attributes, 'spidName')),
+                'cognome' => implode(" ",Arr::get($attributes, 'spidFamilyName')),
                 'info' => $attributes,
                 'email_verified_at' => now()->toDateTimeString(),
             ];
