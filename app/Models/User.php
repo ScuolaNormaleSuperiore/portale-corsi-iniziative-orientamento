@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Notifications\CandidaturaInviata;
+use App\Notifications\RegistrazioneStudente;
 use App\Notifications\VerifyEmail;
 use Gecche\Cupparis\App\Models\User as CupparisUser;
 
@@ -81,5 +83,20 @@ class User extends CupparisUser {
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public function sendRegistrazioneStudenteNotification()
+    {
+        $this->notify(new RegistrazioneStudente());
+    }
+
+    public function sendCandidaturaInviataNotification($candidato)
+    {
+        $this->notify(new CandidaturaInviata($candidato));
+    }
+
+    public function sendCandidaturaApprovataNotification($candidato)
+    {
+//        $this->notify(new CandidaturaApprovata($candidato));
     }
 }

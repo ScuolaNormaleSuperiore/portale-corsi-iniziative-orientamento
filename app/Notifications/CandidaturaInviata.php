@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Candidato;
 use App\Models\Esame;
 
 use App\Models\ScuolaRichiesta;
@@ -15,16 +16,22 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 
-class RichiestaScuolaAccettata extends Notification
+class CandidaturaInviata extends Notification
 {
 
 
+    protected $candidato;
     /**
      * The callback that should be used to build the mail message.
      *
      * @var \Closure|null
      */
     public static $toMailCallback;
+
+    public function __construct(Candidato $candidato)
+    {
+        $this->candidato = $candidato;
+    }
 
 
     /**
@@ -47,9 +54,15 @@ class RichiestaScuolaAccettata extends Notification
     public function toMail($notifiable)
     {
 
-        $view = 'emails.notifications.richiesta-scuola-accettata';
+        if ($this->candidato->tipo == 'scuola') {
+            $view = 'emails.notifications.candidatura-inviata-scuola';
+            $subject = 'Canidatura inviata';
+        } elseif ($this->candidato->tipo == 'studente') {
+            $view = 'emails.notifications.candidatura-inviata-studente';
+            $subject = 'Canidatura inviata';
+        }
         return (new MailMessage)
-            ->subject(Lang::get('Accettazione cambio indirizzo email istituto'))
+            ->subject(Lang::get($subject))
             ->view($view,
                 [
                     'url' => config('app.url'),

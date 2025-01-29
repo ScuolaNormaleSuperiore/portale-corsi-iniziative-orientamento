@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 
-class RichiestaScuolaAccettata extends Notification
+class RegistrazioneStudente extends Notification
 {
 
 
@@ -47,9 +47,9 @@ class RichiestaScuolaAccettata extends Notification
     public function toMail($notifiable)
     {
 
-        $view = 'emails.notifications.richiesta-scuola-accettata';
+        $view = 'emails.notifications.registrazione-studente';
         return (new MailMessage)
-            ->subject(Lang::get('Accettazione cambio indirizzo email istituto'))
+            ->subject(Lang::get('Registrazione effettuata'))
             ->view($view,
                 [
                     'url' => config('app.url'),

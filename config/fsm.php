@@ -57,7 +57,7 @@ return [
     'listener' => "\\App\\Listeners\\HandleStatusTransition",
 
     'models_listeners' => [
-        //\App\Models\Candidato::class => listenerclass
+        \App\Models\Candidato::class => \App\Listeners\HandleCandidatoStatusTransition::class,
     ],
 
     'types' => [

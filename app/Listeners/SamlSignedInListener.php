@@ -3,7 +3,9 @@
 namespace App\Listeners;
 
 use App\Models\User;
+use App\Notifications\RegistrazioneStudente;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Arr;
 use Slides\Saml2\Events\SignedIn;
 use Illuminate\Support\Facades\Auth;
@@ -56,6 +58,7 @@ class SamlSignedInListener
             ];
             $user = User::create($userData);
             $user->assignRole('Studente');
+            event(new Registered($user));
             return $this->login($user);
         } else {
             return redirect()->intended(RouteServiceProvider::HOME);
