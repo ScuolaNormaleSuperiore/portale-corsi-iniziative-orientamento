@@ -50,7 +50,7 @@ export default {
         actionsConfig: {
             'action-approva': {
                 visible: function () {
-                    return true;
+                    // return true;
                     return parseInt(this.modelData.approvata) === 0;
                 },
                 //enabled : false,

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Notifications\RichiestaScuola;
+use App\Notifications\RichiestaScuolaAccettata;
 use Gecche\Cupparis\App\Breeze\Breeze;
 use Illuminate\Notifications\Notifiable;
 
@@ -61,5 +62,10 @@ class ScuolaRichiesta extends Breeze
     public function sendNuovaRichiestaNotification()
     {
         $this->notify(new RichiestaScuola());
+    }
+
+    public function sendAccettataNotification()
+    {
+        $this->notify(new RichiestaScuolaAccettata());
     }
 }

@@ -48,15 +48,16 @@ class Set extends BaseSet
             'name' => $scuola->email_riferimento,
             'email' => $scuola->email_riferimento,
             'password' => $modelToSet->password,
+            'email_verified_at' => now()->toDateTimeString()
         ]);
 
-        event(new Registered($user));
         $user->assignRole('Scuola');
         $user->save();
 
         $scuola->user_id = $user->getKey();
         $scuola->save();
 
+        $modelToSet->sendAccettataNotification();
         return $modelToSet->save();
     }
 }
