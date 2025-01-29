@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Notifications\RichiestaScuola;
 use Gecche\Cupparis\App\Breeze\Breeze;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Breeze (Eloquent) model for scuole_richieste table.
@@ -10,9 +12,10 @@ use Gecche\Cupparis\App\Breeze\Breeze;
 class ScuolaRichiesta extends Breeze
 {
 	use Relations\ScuolaRichiestaRelations;
+    use Notifiable;
 
 
-    
+
 //    use ModelWithUploadsTrait;
 
     protected $table = 'scuole_richieste';
@@ -55,5 +58,8 @@ class ScuolaRichiesta extends Breeze
     public $itemNoneForSelectList = false;
     public $fieldsSeparator = ' - ';
 
-
+    public function sendNuovaRichiestaNotification()
+    {
+        $this->notify(new RichiestaScuola());
+    }
 }

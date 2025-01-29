@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Notifications\VerifyEmail;
 use Gecche\Cupparis\App\Models\User as CupparisUser;
 
+use App\Notifications\ResetPassword as ResetPasswordNotification;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends CupparisUser {
@@ -69,5 +71,15 @@ class User extends CupparisUser {
             return [];
         }
         return $value;
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail());
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
     }
 }

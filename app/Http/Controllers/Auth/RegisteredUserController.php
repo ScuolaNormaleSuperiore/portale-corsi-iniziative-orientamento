@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\RichiestaScuola;
 use App\Http\Controllers\Controller;
 use App\Models\Scuola;
 use App\Models\ScuolaRichiesta;
@@ -118,7 +119,10 @@ class RegisteredUserController extends Controller
                 'password' => Hash::make($request->password),
             ];
 
-            ScuolaRichiesta::create($scuolaRichiestaData);
+            $richiestaScuola = ScuolaRichiesta::create($scuolaRichiestaData);
+            if ($richiestaScuola) {
+                $richiestaScuola->sendNuovaRichiestaNotification();
+            }
 
             return redirect(route('cortesia-scuola-richiesta'));
         }

@@ -228,12 +228,15 @@ export default {
                 dividerClass: 'text-primary-700 my-5',
                 dividerContentClass: 'font-bold border-1 p-2',
                 dividerContent: 'Le sezioni della pagina',
+                // hasmanyType : 'list',
                 hasmanyConf : {
                     // name : 'sezioni',
                     // modelName: 'sezione_contenuto',
                     langContext : 'sezione_contenuto.fields',
                     fields : [
-                        'id','nome_it','contenuto_it','status'
+                        'id','nome_it',
+                        'contenuto_it',
+                        'status',
                     ],
                     fieldsConfig : {
                         "contenuto_it" : {

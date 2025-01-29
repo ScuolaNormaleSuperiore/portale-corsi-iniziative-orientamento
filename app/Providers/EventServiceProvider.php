@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Events\RichiestaScuola;
 use Gecche\Cupparis\App\Listeners\UserEventSubscriber;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
