@@ -301,18 +301,8 @@ class CandidatureController extends Controller
                 $view = 'candidature.edit';
             }
         } catch (ValidationException $e) {
-            $hasVoti = isset($req['voti-id']) && is_array($req['voti-id']);
 
-            if($hasVoti) {
-                $req['voti'] = $this->buildvoti($req);
-            }
-
-            $scuolaId = Arr::get($req,'scuola_id');
-            if ($scuolaId) {
-                $scuola = Scuola::find($scuolaId);
-                $req['scuola_referred_data'] = $scuola->getScuolaFE();
-                $req['scuola_referred_data_full'] = $scuola->getScuolaFE(true);
-            }
+            $req = $this->manageReqOnError($req);
 
             return redirect(route('candidatura.edit', [
                 'candidatura' => $candidatura->getKey(),
@@ -361,7 +351,23 @@ class CandidatureController extends Controller
 
     }
 
-    protected function buildvoti($req) {
+    protected function manageReqOnError($req) {
+        $hasVoti = isset($req['voti-id']) && is_array($req['voti-id']);
+
+        if($hasVoti) {
+            $req['voti'] = $this->buildVoti($req);
+        }
+
+        $scuolaId = Arr::get($req,'scuola_id');
+        if ($scuolaId) {
+            $scuola = Scuola::find($scuolaId);
+            $req['scuola_referred_data'] = $scuola->getScuolaFE();
+            $req['scuola_referred_data_full'] = $scuola->getScuolaFE(true);
+        }
+
+        return $req;
+    }
+    protected function buildVoti($req) {
         $voti = [];
         foreach ($req['voti-id'] as $key => $votoId) {
             $voto['id'] = $votoId;

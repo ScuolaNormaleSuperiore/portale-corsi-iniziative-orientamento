@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\CandidatoStatuses;
 use Gecche\Cupparis\App\Breeze\Breeze;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 /**
  * Breeze (Eloquent) model for iniziative table.
@@ -25,6 +26,7 @@ class Iniziativa extends Breeze
     public $ownerships = true;
 
     public $appends = [
+        'voti_labels',
     ];
 
 
@@ -196,5 +198,22 @@ class Iniziativa extends Breeze
 
     public function getDatiStatisticiAttribute() {
         return $this->getCandidatureData();
+    }
+
+    public function getVotiLabelsAttribute() {
+        $year = date('y');
+        if (Str::length($this->anno) == 4) {
+            $year = substr($this->anno,2,2);
+        }
+        $year = intval($year);
+
+        $year3 = $year - 3;
+        $year2 = $year - 2;
+        $year1 = $year - 1;
+        return [
+            'voto_anno_2' => "Voto finale " . $year3 . '/' . $year2,
+            'voto_anno_1' => "Voto finale " . $year2 . '/' . $year1,
+            'voto_primo_quadrimestre' => "Voto 1° Quad. " . $year1 . '/' . $year,
+        ];
     }
 }
