@@ -65,11 +65,13 @@ trait CandidatoTrait
         }
 
         $nazione = Arr::get($input,'nazione_id');
-        if ($nazione && $nazione == 1) {
-            $validationRules['codice_fiscale'] = ['required', new CodiceFiscale()];
-            $validationRules['comune_id'] = ['required'];
-        } else {
-            $validationRules['comune_estero'] = ['required'];
+        if ($nazione) {
+            if ($nazione == 1) {
+                $validationRules['codice_fiscale'] = ['required', new CodiceFiscale()];
+                $validationRules['comune_id'] = ['required'];
+            } else {
+                $validationRules['comune_estero'] = ['required'];
+            }
         }
 
         $this->validationSettings['rules'] = $validationRules;
