@@ -65,7 +65,7 @@ trait CandidatoTrait
         }
 
         $nazione = Arr::get($input,'nazione_id');
-        if ($nazione == 1) {
+        if ($nazione && $nazione == 1) {
             $validationRules['codice_fiscale'] = ['required', new CodiceFiscale()];
             $validationRules['comune_id'] = ['required'];
         } else {

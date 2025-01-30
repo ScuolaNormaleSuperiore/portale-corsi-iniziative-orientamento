@@ -1,4 +1,4 @@
-@include('candidature.form.select',['field' => 'gen1_titolo_studio_id','label' => 'Titolo di studio del genitore 2'])
+@include('candidature.form.select',['field' => 'gen1_titolo_studio_id','label' => 'Titolo di studio del genitore 1'])
 
 @include('candidature.form.select',['field' => 'gen2_titolo_studio_id','label' => 'Titolo di studio del genitore 2'])
 
