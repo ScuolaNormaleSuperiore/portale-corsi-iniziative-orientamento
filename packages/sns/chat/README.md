@@ -2,6 +2,12 @@
 
 ## Setup
 
+Switch node version with nvm:
+
+```bash
+nvm use
+```
+
 Install the dependencies:
 
 ```bash
