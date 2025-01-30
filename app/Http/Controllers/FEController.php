@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Log;
 use willvincent\Feeds\Facades\FeedsFacade;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
 class FEController extends Controller
 {
     /**
@@ -43,10 +44,10 @@ class FEController extends Controller
 
         $f = FeedsFacade::make(Config::get('feeds.url'), 3, true);
         //        $data = array(
-//            'title'     => $feed->get_title(),
-//            'permalink' => $feed->get_permalink(),
-//            'items'     => $feed->get_items(),
-//        );
+        //            'title'     => $feed->get_title(),
+        //            'permalink' => $feed->get_permalink(),
+        //            'items'     => $feed->get_items(),
+        //        );
 
         //        echo count($f->get_items()) . "<br/>";
 
@@ -56,8 +57,7 @@ class FEController extends Controller
 
         $news = [];
 
-        foreach ($items as $item)
-        {
+        foreach ($items as $item) {
             $itemData = Arr::get(Arr::get($item, 'child', []), "", []);
 
             $singleNews = [];
@@ -68,8 +68,7 @@ class FEController extends Controller
             $singleNews['media'] = Arr::get(Arr::get(Arr::get($itemData, 'media', []), 0, []), 'data');
 
             $news[] = $singleNews;
-            if (count($news) >= 3)
-            {
+            if (count($news) >= 3) {
                 break;
             }
         }
@@ -97,7 +96,7 @@ class FEController extends Controller
             ->get();
 
         $corsi = Corso::where('attivo', 1)
-            ->where('homepage',1)
+            ->where('homepage', 1)
             ->orderBy('titolo', 'ASC')
             ->get();
 
@@ -123,8 +122,17 @@ class FEController extends Controller
 
         $copertina = Copertina::find(1);
 
-        return view('index', compact('pagine', 'newsBasse', 'eventi',
-            'eventoSpeciale', 'avvisi', 'video', 'feeds', 'copertina', 'corsi'));
+        return view('index', compact(
+            'pagine',
+            'newsBasse',
+            'eventi',
+            'eventoSpeciale',
+            'avvisi',
+            'video',
+            'feeds',
+            'copertina',
+            'corsi'
+        ));
     }
 
     public function paginaOrientamento(Request $request, PaginaOrientamento $pagina)
@@ -193,8 +201,7 @@ class FEController extends Controller
         $pagine      = PaginaInfo::where('attivo', 1)->orderBy('ordine', 'ASC')->orderBy('titolo_it', 'ASC')->get();
 
         $navleft = [];
-        if ($pagina)
-        {
+        if ($pagina) {
             $navleft = [
                 'sezioni'  => $pagina->sezioni,
                 'allegati' => $pagina->attachments,
@@ -225,7 +232,7 @@ class FEController extends Controller
             ->get();
 
         $corsi = Corso::where('attivo', 1)
-            ->where('homepage',1)
+            ->where('homepage', 1)
             ->orderBy('titolo', 'ASC')
             ->get();
 
@@ -244,14 +251,13 @@ class FEController extends Controller
             $corso->titolo => '#',
         ];
 
-        return view('info-corso', compact('descrizione','navleftInfo','pagine', 'breadcrumbs', 'corso', 'navleft','iniziative','corsi'));
+        return view('info-corso', compact('descrizione', 'navleftInfo', 'pagine', 'breadcrumbs', 'corso', 'navleft', 'iniziative', 'corsi'));
     }
 
     public function sportelloStudentiClasse(Request $request, Classe $classe)
     {
 
-        $studenti = StudenteOrientamento::whereHas('materia', function ($q) use ($classe)
-        {
+        $studenti = StudenteOrientamento::whereHas('materia', function ($q) use ($classe) {
             return $q->where('classe_id', $classe->id);
         })
             ->where('attivo', 1)
@@ -273,37 +279,30 @@ class FEController extends Controller
         $items = $className::where('attivo', 1);
 
 
-        switch ($className)
-        {
+        switch ($className) {
             case Video::class:
                 $items->orderBy('titolo_it', 'DESC');
-                if ($filter)
-                {
-                    $items->where(function ($q) use ($filter)
-                    {
+                if ($filter) {
+                    $items->where(function ($q) use ($filter) {
                         return $q->where('titolo_it', 'LIKE', '%' . $filter . '%')
                             ->orWhere('descrizione_it', 'LIKE', '%' . $filter . '%');
                     });
                 }
                 $categoriaSelected = intval($request->get('video-categoria'));
                 Log::info("CAT::::" . $categoriaSelected);
-                if ($categoriaSelected > 0)
-                {
+                if ($categoriaSelected > 0) {
                     $items->where('materia_id', $categoriaSelected);
                 }
                 break;
             default:
                 $items = $items->orderBy('data', 'DESC');
-                if ($filter)
-                {
-                    $items->where(function ($q) use ($filter)
-                    {
+                if ($filter) {
+                    $items->where(function ($q) use ($filter) {
                         return $q->where('titolo_it', 'LIKE', '%' . $filter . '%')
                             ->orWhere('sottotitolo_it', 'LIKE', '%' . $filter . '%');
                     });
                 }
                 break;
-
         }
 
         $items = $items->paginate(Config::get('sns.per-page'))->withQueryString();
@@ -312,7 +311,7 @@ class FEController extends Controller
     }
 
     public
-        function archivioNews(
+    function archivioNews(
         Request $request,
     ) {
 
@@ -328,7 +327,7 @@ class FEController extends Controller
     }
 
     public
-        function archivioEventi(
+    function archivioEventi(
         Request $request,
     ) {
 
@@ -345,7 +344,7 @@ class FEController extends Controller
 
 
     public
-        function archivioVideo(
+    function archivioVideo(
         Request $request,
     ) {
 
@@ -368,7 +367,7 @@ class FEController extends Controller
     }
 
     public
-        function dettaglioNews(
+    function dettaglioNews(
         Request $request,
         News $notizia,
     ) {
@@ -387,7 +386,7 @@ class FEController extends Controller
     }
 
     public
-        function dettaglioEvento(
+    function dettaglioEvento(
         Request $request,
         Evento $evento,
     ) {
@@ -409,7 +408,7 @@ class FEController extends Controller
     }
 
     public
-        function scuolaRichiestaCortesia(
+    function scuolaRichiestaCortesia(
         Request $request,
     ) {
         return view('cortesia-scuola-richiesta');
@@ -418,45 +417,59 @@ class FEController extends Controller
     public function chat()
     {
         // Don't touch this ...
-        try
-        {
+        try {
             $chatManifest     = file_get_contents(public_path('chat/manifest.json'));
             $chatManifestJSON = json_decode($chatManifest, true);
             $JSAssets         = $chatManifestJSON['entries']['index']['initial']['js'] ?? [];
             $CSSAssets        = $chatManifestJSON['entries']['index']['initial']['css'] ?? [];
-        }
-        catch (\Throwable $th)
-        {
+        } catch (\Throwable $th) {
             $JSAssets  = [];
             $CSSAssets = [];
         }
         // ...to this
         $userAvatar             = '';
-        $faqs              = [
+        $faqs = [
             'title' => 'Qualche argomento di cui posso parlarti:',
             'questions' => [
                 [
-                    'heading' => 'Domande per i genitori',
+                    'heading' => 'Domande studenti',
                     'items' => [
-                        ['title' => 'Ciao, come posso aiutarti?'],
-                        ['title' => 'Ciao, come posso aiutarti?'],
-                        ['title' => 'Ciao, come posso aiutarti?'],
-                        ['title' => 'Ciao, come posso aiutarti?'],
+                        ['title' => 'Cosa sono i corsi di orientamento della Scuola Normale Superiore?'],
+                        ['title' => 'Quali sono gli obiettivi principali dei corsi di orientamento?'],
+                        ['title' => 'Quali sono le tematiche principali trattate nei corsi di orientamento?'],
+                        ['title' => 'I corsi di orientamento sono incentrati su materie specifiche o sono interdisciplinari?'],
+                        ['title' => 'I corsi di orientamento sono incentrati su materie insegnate alla Normale?'],
+                        ['title' => 'Quando si svolgono i corsi di orientamento?'],
+                        ['title' => 'Quali sono i criteri di selezione ai corsi di orientamento?'],
+                        ['title' => 'La Scuola offre vitto e alloggio per chi partecipa ai corsi?'],
+                        ['title' => 'Che differenza c’è tra \'Settimane orientamento\' e \'Scuola Orientamento\'?'],
                     ],
                 ],
                 [
-                    'heading' => 'Domande per gli studenti',
+                    'heading' => 'Domande genitori',
                     'items' => [
-                        ['title' => 'Ciao, come posso aiutarti?'],
-                        ['title' => 'Ciao, come posso aiutarti?'],
-                        ['title' => 'Ciao, come posso aiutarti?'],
-                        ['title' => 'Ciao, come posso aiutarti?'],
+                        ['title' => 'Cosa sono i corsi di orientamento organizzati dalla Scuola Normale Superiore?'],
+                        ['title' => 'Quali sono gli obiettivi principali di questi corsi di orientamento?'],
+                        ['title' => 'A chi sono rivolti i corsi di orientamento?'],
+                        ['title' => 'Quanti studenti partecipano ogni anno ai corsi di orientamento?'],
+                        ['title' => 'Quali sono i temi principali trattati durante i corsi di orientamento?'],
+                        ['title' => 'Se mio figlio viene scelto, quanto impegno richiedono questi corsi di orientamento?'],
+                        ['title' => 'È necessario avere conoscenze o competenze specifiche per partecipare ai corsi di orientamento?'],
+                        ['title' => 'Il corso di orientamento è adatto anche a chi viene da piccole scuole o paesi?'],
+                        ['title' => 'Mio figlio non è mai stato fuori casa da solo. Sarebbe seguito e accompagnato durante i corsi di orientamento?'],
+                        ['title' => 'Quali sono i criteri di selezione ai corsi di orientamento per gli studenti?'],
+                        ['title' => 'Come si invia la candidatura ai corsi di orientamento e quali documenti sono necessari?'],
+                        ['title' => 'Entro quando bisogna presentare la domanda di iscrizione ai corsi di orientamento?'],
+                        ['title' => 'Posso presentare la domanda ai corsi di orientamento per conto di mio figlio/figlia?'],
+                        ['title' => 'I corsi trattano argomenti specifici delle discipline scientifiche, umanistiche o entrambi?'],
+                        ['title' => 'Chi sono i docenti che tengono le lezioni dei corsi di orientamento? Si tratta di professori della Scuola Normale o di esperti esterni?'],
+                        ['title' => 'Come posso contattare la Scuola Normale per ricevere ulteriori dettagli o chiarimenti sui corsi di orientamento?'],
                     ],
                 ],
             ],
         ];
         $pageTitle              = 'Parla con noi';
-        $firstAnswer            = 'Ciao, come posso aiutarti?';
+        $firstAnswer            = 'Ciao! Sono qui per aiutarti a rispondere alle tue domande sulla Scuola Normale Superiore di Pisa. Scrivi pure la tua domanda e proverò a darti tutte le informazioni di cui hai bisogno!';
         return view('sns.chat', [
             'assets'                 => [
                 'js'  => $JSAssets,
@@ -468,5 +481,4 @@ class FEController extends Controller
             'firstAnswer'            => $firstAnswer,
         ]);
     }
-
 }
