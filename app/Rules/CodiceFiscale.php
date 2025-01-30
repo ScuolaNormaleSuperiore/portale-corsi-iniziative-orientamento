@@ -51,6 +51,7 @@ class CodiceFiscale implements Rule
         if (is_numeric(substr($value, 15, 1))) {
             return false;
         };
+        return true;
 
     }
 
