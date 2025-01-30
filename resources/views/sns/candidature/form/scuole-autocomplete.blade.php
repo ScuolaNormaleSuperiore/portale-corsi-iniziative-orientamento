@@ -1,9 +1,9 @@
 @php
     $fieldData = \Illuminate\Support\Arr::get($sectionData['fields'],$field,[]);
     $validation = \Illuminate\Support\Arr::get($fieldData,'validation',[]);
-    $value = \Illuminate\Support\Arr::get($fieldData,'value',old($field));
-    $referredData = \Illuminate\Support\Arr::get($fieldData,'referred_data');
-    $referredDataFull = \Illuminate\Support\Arr::get($fieldData,'referred_data_full');
+    $value = old($field) ?: \Illuminate\Support\Arr::get($fieldData,'value');
+    $referredData = old('scuola_referred_data') ?: \Illuminate\Support\Arr::get($fieldData,'referred_data');
+    $referredDataFull = old('scuola_referred_data_full') ?:  \Illuminate\Support\Arr::get($fieldData,'referred_data_full');
 @endphp
 <div class="select-wrapper form-group-candidature" id="form-group-candidature-scuola_id">
     <label for="scuolaAutocomplete">Scuola*</label>

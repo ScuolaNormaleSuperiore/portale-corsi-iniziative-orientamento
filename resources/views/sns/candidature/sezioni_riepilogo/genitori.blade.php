@@ -1,4 +1,4 @@
-@include('candidature.form.riepilogo-text',['value' => $candidatura->titolo1?->nome,'label' => 'Titolo di studio del genitore 2'])
+@include('candidature.form.riepilogo-text',['value' => $candidatura->titolo1?->nome,'label' => 'Titolo di studio del genitore 1'])
 
 @include('candidature.form.riepilogo-text',['value' => $candidatura->titolo2?->nome,'label' => 'Titolo di studio del genitore 2'])
 

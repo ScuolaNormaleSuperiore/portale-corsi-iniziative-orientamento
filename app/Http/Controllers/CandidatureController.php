@@ -301,6 +301,19 @@ class CandidatureController extends Controller
                 $view = 'candidature.edit';
             }
         } catch (ValidationException $e) {
+            $hasVoti = isset($req['voti-id']) && is_array($req['voti-id']);
+
+            if($hasVoti) {
+                $req['voti'] = $this->buildvoti($req);
+            }
+
+            $scuolaId = Arr::get($req,'scuola_id');
+            if ($scuolaId) {
+                $scuola = Scuola::find($scuolaId);
+                $req['scuola_referred_data'] = $scuola->getScuolaFE();
+                $req['scuola_referred_data_full'] = $scuola->getScuolaFE(true);
+            }
+
             return redirect(route('candidatura.edit', [
                 'candidatura' => $candidatura->getKey(),
                 'step' => $step,
@@ -348,4 +361,16 @@ class CandidatureController extends Controller
 
     }
 
+    protected function buildvoti($req) {
+        $voti = [];
+        foreach ($req['voti-id'] as $key => $votoId) {
+            $voto['id'] = $votoId;
+            $voto['materia_id'] = $req['voti-materia_id'][$key];
+            $voto['voto_anno_2'] = $req['voti-voto_anno_2'][$key];
+            $voto['voto_anno_1'] = $req['voti-voto_anno_1'][$key];
+            $voto['voto_primo_quadrimestre'] = $req['voti-voto_primo_quadrimestre'][$key];
+            $voti[] = $voto;
+        }
+        return $voti;
+    }
 }
