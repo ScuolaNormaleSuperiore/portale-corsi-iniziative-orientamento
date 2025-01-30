@@ -8,10 +8,6 @@ import MessageLoader from './MessageLoader';
 import Avatar from './Avatar';
 
 const Message: React.FC<{ message: MessageType }> = ({ message }) => {
-  if (!message.content) {
-    return null;
-  }
-
   return (
     <article
       className={clsx(
@@ -29,7 +25,7 @@ const Message: React.FC<{ message: MessageType }> = ({ message }) => {
             'text-red-700': message?.error,
           })}
           dangerouslySetInnerHTML={{
-            __html: sanitizeFormattedMessage(formatMessage(message.content)),
+            __html: sanitizeFormattedMessage(formatMessage(message.content)) || '',
           }}
         />
         {message.role === 'assistant' && message.isLoading && <MessageLoader />}
