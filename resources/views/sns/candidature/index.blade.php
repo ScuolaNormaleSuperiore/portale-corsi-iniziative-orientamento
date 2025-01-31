@@ -38,51 +38,80 @@
                                             $candidatura = $candidature->first();
                                         @endphp
                                         <div class="d-flex justify-content-start pb-5">
-                                            @if ($candidatura)
-                                                @if ($candidatura->status == \App\Enums\CandidatoStatuses::BOZZA->value)
-                                                    <a href="/candidatura/edit/{{$candidatura->getKey()}}">
-                                                        <button type="button" class="btn btn-outline-primary">
-                                                            Gestisci la candidatura
-                                                        </button>
-                                                    </a>
+                                            <div class="position-relative">
+                                                @if ($candidatura)
+
+                                                    @if ($candidatura->status == \App\Enums\CandidatoStatuses::BOZZA->value)
+                                                        <a href="/candidatura/edit/{{$candidatura->getKey()}}">
+                                                            <button type="button" class="btn btn-outline-primary">
+                                                                <div style="position:absolute;right:-10px;top:-10px;">
+                                                                    <small><span class="badge rounded-pill bg-primary"
+                                                                                 style="">Bozza</span></small></div>
+                                                                Gestisci la candidatura
+                                                            </button>
+                                                        </a>
+                                                    @else
+                                                        <a href="/candidatura/view/{{$candidatura->getKey()}}">
+                                                            <button type="button" class="btn btn-outline-primary">
+                                                                <div style="position:absolute;right:-10px;top:-10px;">
+
+                                                                    <small><span class="badge rounded-pill
+                                                                        {{$candidatura->status == 'inviata' ? 'bg-primary' : ($candidatura->status == 'approvata' ? 'bg-success' : 'bg-danger')}}
+                                                                    "
+                                                                                 style="">{{\App\Enums\CandidatoStatuses::optionLabel($candidatura->status)}}</span></small>
+                                                                </div>
+
+                                                                Vedi la candidatura
+                                                            </button>
+                                                        </a>
+                                                    @endif
                                                 @else
-                                                    <a href="/candidatura/view/{{$candidatura->getKey()}}">
+                                                    <a href="/candidatura/{{$iniziativa->getKey()}}/new">
                                                         <button type="button" class="btn btn-outline-primary">
-                                                            Vedi la candidatura
+                                                            Inizia la candidatura
                                                         </button>
                                                     </a>
                                                 @endif
-                                            @else
-                                                <a href="/candidatura/{{$iniziativa->getKey()}}/new">
-                                                    <button type="button" class="btn btn-outline-primary">
-                                                        Inizia la candidatura
-                                                    </button>
-                                                </a>
-                                            @endif
+                                            </div>
                                         </div>
                                     @elseif ($ruolo == 'Scuola')
                                         <div class="d-flex justify-content-start pb-5 gap-3">
                                             @foreach ($candidature as $candidatura)
-                                                @if ($candidatura->status == \App\Enums\CandidatoStatuses::BOZZA->value)
-                                                    <a href="/candidatura/edit/{{$candidatura->getKey()}}">
-                                                        <button type="button" class="btn btn-outline-primary">
-                                                            {{$candidatura->fename}}
-                                                        </button>
-                                                    </a>
-                                                @else
-                                                    <a href="/candidatura/view/{{$candidatura->getKey()}}">
-                                                        <button type="button" class="btn btn-outline-primary">
-                                                            {{$candidatura->fename}}
-                                                        </button>
-                                                    </a>
-                                                @endif
+                                                <div class="position-relative">
+                                                    @if ($candidatura->status == \App\Enums\CandidatoStatuses::BOZZA->value)
+                                                        <a href="/candidatura/edit/{{$candidatura->getKey()}}">
+                                                            <button type="button" class="btn btn-outline-primary">
+                                                                <div style="position:absolute;right:-10px;top:-10px;">
+                                                                    <small><span class="badge rounded-pill bg-primary"
+                                                                                 style="">Bozza</span></small></div>
+                                                                {{$candidatura->fename}}
+                                                            </button>
+                                                        </a>
+                                                    @else
+                                                        <a href="/candidatura/view/{{$candidatura->getKey()}}">
+                                                            <button type="button" class="btn btn-outline-primary">
+                                                                <div style="position:absolute;right:-10px;top:-10px;">
+
+                                                                    <small><span class="badge rounded-pill
+                                                                        {{$candidatura->status == 'inviata' ? 'bg-primary' : ($candidatura->status == 'approvata' ? 'bg-success' : 'bg-danger')}}
+                                                                    "
+                                                                                 style="">{{\App\Enums\CandidatoStatuses::optionLabel($candidatura->status)}}</span></small>
+                                                                </div>
+                                                                {{$candidatura->fename}}
+                                                            </button>
+                                                        </a>
+                                                    @endif
+                                                </div>
                                             @endforeach
                                             @if ($candidature->count() < $maxCandidatureScuole)
-                                                <a href="/candidatura/{{$iniziativa->getKey()}}/new">
-                                                    <button type="button" class="btn btn-outline-primary">
-                                                        Nuova candidatura
-                                                    </button>
-                                                </a>
+                                                <div class="position-relative">
+
+                                                    <a href="/candidatura/{{$iniziativa->getKey()}}/new">
+                                                        <button type="button" class="btn btn-outline-primary">
+                                                            Nuova candidatura
+                                                        </button>
+                                                    </a>
+                                                </div>
                                             @endif
                                         </div>
                                     @endif
