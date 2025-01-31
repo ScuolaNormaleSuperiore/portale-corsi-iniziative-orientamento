@@ -13,6 +13,9 @@
             </nav>
 
             <h2 class="h2 py-2">Accesso per referenti scolastici</h2>
+
+            {!! $descrizione->testo_it !!}
+
             <hr/>
 
         </section>
@@ -79,7 +82,7 @@
 
                     <p></p>
                 </div>
-                <p>Se la tua scuola non ha ancor un account, <a href="{{ route('register-scuola') }}">registrala</a>
+                <p>Se la tua scuola non ha ancora un account, <a href="{{ route('register-scuola') }}">registrala</a>
                     adesso.</p>
                 <p>Se invece hai dimenticato la password, puoi <a
                             href="{{ route('password.request') }}">reimpostarla</a>.</p>

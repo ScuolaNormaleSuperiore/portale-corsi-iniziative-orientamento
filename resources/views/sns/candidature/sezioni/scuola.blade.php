@@ -27,7 +27,7 @@
 
 @else
     <p class="pb-2">
-        Digita alcune lettere della scuola e scegli dall'elenco che appare.
+        Digita alcune lettere della scuola e scegli dall'elenco che appare (puoi restringere la ricerca a una provincia):
     </p>
 
     @include('candidature.form.scuole-autocomplete',['field' => 'scuola_id'])

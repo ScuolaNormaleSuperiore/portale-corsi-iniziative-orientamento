@@ -620,6 +620,9 @@ return [
             "provincia_id" => [
                 'options' => 'relation:provincia',
             ],
+            "provincia_scuola_id" => [
+                'options' => 'relation:provincia',
+            ],
             "nazione_id" => [
                 'options' => 'relation:nazione',
                 'default' =>  1,

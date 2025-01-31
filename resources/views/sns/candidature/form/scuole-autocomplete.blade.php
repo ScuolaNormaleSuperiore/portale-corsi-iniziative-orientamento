@@ -5,29 +5,47 @@
     $referredData = old('scuola_referred_data') ?: \Illuminate\Support\Arr::get($fieldData,'referred_data');
     $referredDataFull = old('scuola_referred_data_full') ?:  \Illuminate\Support\Arr::get($fieldData,'referred_data_full');
 @endphp
-<div class="select-wrapper form-group-candidature" id="form-group-candidature-scuola_id">
-    <label for="scuolaAutocomplete">Scuola*</label>
-    <select class="form-control" id="scuolaAutocomplete" title="Scegli una scuola"
-    >
-    </select>
-    <input type="hidden" value="{{$value}}" name="scuola_id" id="scuola_id"/>
-</div>
-<div class="" id="scuola_text">
+<div class="d-flex justify-items-center gap-3">
+    <div class="select-wrapper w-50 form-group-candidature" id="form-group-candidature-scuola_id">
+        <label for="scuolaAutocomplete">Scuola*</label>
+        <select class="form-control" id="scuolaAutocomplete" title="Scegli una scuola"
+        >
+        </select>
+        <input type="hidden" value="{{$value}}" name="scuola_id" id="scuola_id"/>
+    </div>
+    <div class="w-50">
+        @include('candidature.form.select',['field' => 'provincia_scuola_id','label' => 'Provincia scuola'])
+    </div>
 
-    @if($referredDataFull)
-        <div id="scuola_text">
+</div>
+<div class="d-flex align-items-center">
+
+    <div class="" id="scuola_text">
+
+        @if($referredDataFull)
+            <div id="scuola_text">
             <span class="badge bg-primary">
                 {{$referredDataFull->tipologia_grado_istruzione}}
             </span>
-        </div>
-        <p>
-            {{$referredDataFull->denominazione}} (Cod: {{$referredDataFull->codice}})
-            <br/>
-            {{$referredDataFull->indirizzo}}
-            <br/>
-            {{$referredDataFull->cap}} {{$referredDataFull->comune}} ({{$referredDataFull->provincia?->sigla}})
-        </p>
-    @endif
+            </div>
+            <p>
+                {{$referredDataFull->denominazione}} (Cod: {{$referredDataFull->codice}})
+                <br/>
+                {{$referredDataFull->indirizzo}}
+                <br/>
+                {{$referredDataFull->cap}} {{$referredDataFull->comune}} ({{$referredDataFull->provincia?->sigla}})
+            </p>
+        @endif
+    </div>
+    <div>
+        <button type="button" class="btn {{ $referredDataFull ? '' : 'd-none'}}"
+                id="rimuoviScuola"
+        >
+            <svg class="icon icon-danger" aria-hidden="true">
+                <use href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>
+            </svg>
+        </button>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -36,6 +54,8 @@
         let status;
 
         let scuole = {};
+
+        let rimuoviScuolaButton = document.getElementById('rimuoviScuola');
 
         let scuoleToArray = function () {
             console.log("SCUOLE:::", scuole);
@@ -54,6 +74,7 @@
             document.getElementById('scuola_id').value = null;
             return axios.post('/api/scuole-suggest', {
                 value: query,
+                provincia_scuola_id : document.getElementById('provincia_scuola_id').value,
             })
                 .then(function (response) {
                     scuole = {};
@@ -110,15 +131,19 @@
             // shows when a the query gets updated after results have loaded
             populateResults([])
 
-            makeRequest(query)
-                // Only update the results if an actual array of options get returned
-                // allowing for `makeRequest` to avoid making updates to results being
-                // already displayed by resolving to `undefined`, like when we're
-                // aborting requests
-                .then(options => options && populateResults(options))
-                // In case of errors, we need to clear the results so the accessible
-                // autocomplate show its 'No result found'
-                .catch(error => populateResults([]))
+            if (query.length >= 2) {
+
+
+                makeRequest(query)
+                    // Only update the results if an actual array of options get returned
+                    // allowing for `makeRequest` to avoid making updates to results being
+                    // already displayed by resolving to `undefined`, like when we're
+                    // aborting requests
+                    .then(options => options && populateResults(options))
+                    // In case of errors, we need to clear the results so the accessible
+                    // autocomplate show its 'No result found'
+                    .catch(error => populateResults([]))
+            }
         }
 
         // And finally we can set up our accessible autocomplete
@@ -155,22 +180,35 @@
                         scuola['tipologia_grado_istruzione'] +
                         '</span>' +
                         '</div><p>' +
-                        scuola['denominazione'] + '(Cod: ' + scuola['codice'] + ')' +
+                        scuola['denominazione'] + ' (Cod: ' + scuola['codice'] + ')' +
                         '<br/>' +
                         scuola['indirizzo'] +
                         '<br/>' +
                         scuola['cap'] + ' ' + scuola['comune'] + ' (' + scuola['provincia_sigla'] + ')' +
                         '</p>';
+                    rimuoviScuolaButton.classList.remove('d-none');
                 } else {
-                    document.getElementById('scuola_id').value = null;
-                    scuolaText.innerHTML = '';
-
-
+                    rimuoviScuola();
                 }
 
             }
             //tNoResults: tNoResults,
+        });
+
+        rimuoviScuolaButton.addEventListener('click',function () {
+            rimuoviScuola();
         })
+
+        function rimuoviScuola() {
+            var scuolaText = document.getElementById('scuola_text');
+            document.getElementById('scuola_id').value = null;
+            scuolaText.innerHTML = '';
+            rimuoviScuolaButton.classList.add('d-none');
+            document.getElementById('scuolaAutocomplete').value = null;
+            // console.log("ELEEMNTTT::: ",element);
+            // element.value = "";
+            // element.innerText = "";
+        }
 
         let abortController;
 
