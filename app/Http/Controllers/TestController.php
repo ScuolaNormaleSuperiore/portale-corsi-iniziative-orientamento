@@ -8,6 +8,7 @@ use Brevo\Client\ApiException;
 use Brevo\Client\Model\AddContactToList;
 use Carbon\Carbon;
 use Hofmannsven\Brevo\Facades\Brevo;
+use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
@@ -27,7 +28,8 @@ class TestController extends Controller
 //        $this->middleware('auth');
     }
 
-    public function test() {
+    public function test()
+    {
 
 
 //        $response = Http::get("https://sns.idp.pp.cineca.it/idp/shibboleth");
@@ -39,7 +41,7 @@ class TestController extends Controller
 
 //        $f = FeedReader::read('https://normalenews.sns.it/feed-highlights.xml');
 
-        $f = FeedsFacade::make('https://normalenews.sns.it/feed-highlights.xml',3,true);
+        $f = FeedsFacade::make('https://normalenews.sns.it/feed-highlights.xml', 3, true);
 //        $data = array(
 //            'title'     => $feed->get_title(),
 //            'permalink' => $feed->get_permalink(),
@@ -51,20 +53,20 @@ class TestController extends Controller
 //        echo count($f->get_items()) . "<br/>";
 
 
-        $response = Arr::get(Arr::get(Arr::get($f->data,'child',[]),"",[]),'response',[]);
-        $items = Arr::get(Arr::get(Arr::get(Arr::get($response,0,[]),"child",[]),"",[]),'item',[]);
+        $response = Arr::get(Arr::get(Arr::get($f->data, 'child', []), "", []), 'response', []);
+        $items = Arr::get(Arr::get(Arr::get(Arr::get($response, 0, []), "child", []), "", []), 'item', []);
 
         $news = [];
 
         foreach ($items as $item) {
-            $itemData = Arr::get(Arr::get($item,'child',[]),"",[]);
+            $itemData = Arr::get(Arr::get($item, 'child', []), "", []);
 
             $singleNews = [];
 
-            $singleNews['title'] = html_entity_decode(Arr::get(Arr::get(Arr::get($itemData,'title',[]),0,[]),'data'));
-            $singleNews['link'] = Arr::get(Arr::get(Arr::get($itemData,'link',[]),0,[]),'data');
-            $singleNews['date'] = Carbon::parse(Arr::get(Arr::get(Arr::get($itemData,'pubDate',[]),0,[]),'data'))->toDateTimeString();
-            $singleNews['media'] = Arr::get(Arr::get(Arr::get($itemData,'media',[]),0,[]),'data');
+            $singleNews['title'] = html_entity_decode(Arr::get(Arr::get(Arr::get($itemData, 'title', []), 0, []), 'data'));
+            $singleNews['link'] = Arr::get(Arr::get(Arr::get($itemData, 'link', []), 0, []), 'data');
+            $singleNews['date'] = Carbon::parse(Arr::get(Arr::get(Arr::get($itemData, 'pubDate', []), 0, []), 'data'))->toDateTimeString();
+            $singleNews['media'] = Arr::get(Arr::get(Arr::get($itemData, 'media', []), 0, []), 'data');
 
             $news[] = $singleNews;
             if (count($news) >= 3) {
@@ -98,14 +100,12 @@ class TestController extends Controller
 //        }
 
 
-
         echo '</pre>';
 
 
         return;
 
         $brevo = new Brevo();
-
 
 
         $apiInstance = new AccountApi(
@@ -141,9 +141,11 @@ class TestController extends Controller
     }
 
 
-    public function newsletter() {
-        $brevo = new Brevo();
+    public function newsletter(Request $request)
+    {
 
+
+        $brevo = new Brevo();
 
 
         $apiInstance = new AccountApi(
@@ -159,34 +161,78 @@ class TestController extends Controller
             $brevo::getConfiguration()
         );
 
-        echo '<pre>';
-
         $identifier = "giacomo.terreni@gmail.com";
         $list = 63;
+        $templateId = 516;
+
+
+        $action = $request->get("action");
+
+        echo '<pre>';
 
         try {
 
-            $result = $contanctsApiInstance->getContactInfo("giacomo.terreni@gmail.com");
-            print_r($result);
-                        $contanctsApiInstance->deleteContact("giacomo.terreni@gmail.com");
+            $jsonResult = [];
+            switch ($action) {
+                case 'info':
+                    $jsonResult = $contanctsApiInstance->getContactInfo($identifier);
+                    break;
 
-            return;
-//            $result = $apiInstance->getAccount();
-//            print_r($result);
-//            $contactEmails = new \Brevo\Client\Model\AddContactToList(["giacomo.terreni@gmail.com"]);
-//            $result = $contanctsApiInstance->addContactToList(63,$contactEmails);
-//            print_r($result);
+                case 'add':
+                    $contact = new \Brevo\Client\Model\CreateContact();
+                    $contact->setEmail($identifier);
+                    $contact->setListIds([$list]);
+                    $jsonResult = $contanctsApiInstance->createContact($contact);
+                    break;
 
-            $result = $contanctsApiInstance->getContactInfo($identifier);
 
+                case 'doi':
+                    $contact = new \Brevo\Client\Model\CreateDoiContact();
+                    $contact->setEmail($identifier);
+                    $contact->setIncludeListIds([$list]);
+                    $contact->setTemplateId($templateId);
+                    $contact->setRedirectionUrl( route('fe-index').'?newsletterconfirmed=1');
+
+                    $contanctsApiInstance->createDoiContact($contact);
+                    $jsonResult = [];
+
+                    break;
+                case 'deletecontact':
+                    $contanctsApiInstance->deleteContact($identifier);
+                    $jsonResult = [];
+                    break;
+                case 'deletefromlist':
+                    $contactEmails = new \Brevo\Client\Model\RemoveContactFromList(['emails' => [$identifier]]); // \Brevo\Client\Model\RemoveContactFromList | Emails addresses OR IDs of the contacts
+
+                    $jsonResult = $contanctsApiInstance->removeContactFromList($list, $contactEmails);
+                    break;
+                case 'list':
+                    $jsonResult = $contanctsApiInstance->getContactsFromList($list);
+                    break;
+                default:
+                    $jsonResult = ["nessuna azione"];
+                    break;
+            }
+        } catch (\Throwable $e) {
+            echo $e->getMessage();
+        }
+
+            print_r($jsonResult);
+
+
+        echo "<pre/>";
+
+
+        return;
+        try {
             if ($result->getId()) {
                 $lists = $result->getListIds();
-                if (in_array($list,$lists)) {
+                if (in_array($list, $lists)) {
                     echo "Contact already in list";
                 } else {
                     $identifier = $result->getId();
                     $contact = new AddContactToList(['ids' => [$identifier]]);
-                    $result = $contanctsApiInstance->addContactToList(63,$contact);
+                    $result = $contanctsApiInstance->addContactToList(63, $contact);
                     print_r($result);
                 }
             } else {

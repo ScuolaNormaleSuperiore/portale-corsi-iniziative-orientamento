@@ -4,6 +4,14 @@
 
 <script>
 
+    let newsletterAdded = "{{request()->get('newsletterconfirmed')}}";
+
+    document.addEventListener("DOMContentLoaded", function() {
+        if (parseInt(newsletterAdded) === 1) {
+            triggerNotification('not-newsletter-success-doi');
+        }
+    });
+
     window.addEventListener('load', function () {
         document.querySelectorAll('.newsletter-form')
             .forEach(function (node) {

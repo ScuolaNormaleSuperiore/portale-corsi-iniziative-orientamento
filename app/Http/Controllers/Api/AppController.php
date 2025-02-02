@@ -106,6 +106,82 @@ class AppController extends Controller
 
 
         $list = intval(env("BREVO_LIST_ID", -1));
+        $templateId = intval(env("BREVO_TEMPLATE_ID", -1));
+
+        try {
+
+            try {
+                $result = $contanctsApiInstance->getContactInfo($email);
+                $identifier = $result->getId();
+            } catch (ApiException $e) {
+//                Log::info("BREVO CONTACT INFO::: " . $e->getCode());
+                $eBody = json_decode($e->getResponseBody(), true);
+                if (Arr::get($eBody, 'code') != 'document_not_found') {
+                    throw $e;
+                }
+                $contact = new \Brevo\Client\Model\CreateDoiContact();
+                $contact->setEmail($email);
+                $contact->setIncludeListIds([$list]);
+                $contact->setTemplateId($templateId);
+                $contact->setRedirectionUrl( route('fe-index').'?newsletterconfirmed=1');
+
+                $contanctsApiInstance->createDoiContact($contact);
+                return $this->_result(null);
+            }
+
+            $lists = $result->getListIds();
+            if (in_array($list, $lists)) {
+                return $this->_errorAndExit("Indirizzo email già presente", 400);
+            }
+            $contact = new \Brevo\Client\Model\CreateDoiContact();
+            $contact->setEmail($email);
+            $contact->setIncludeListIds([$list]);
+            $contact->setTemplateId($templateId);
+            $contact->setRedirectionUrl( route('fe-index').'?newsletterconfirmed=1');
+
+            $contanctsApiInstance->createDoiContact($contact);
+            return $this->_result(null);
+
+
+        } catch (ApiException $e) {
+            Log::info('BREVO API Exception');
+            Log::info($e->getMessage());
+            Log::info($e->getCode());
+            return $this->_errorAndExit("Problemi ad aggiungere l'indirizzo email. Si prega di riprovare,", 400);
+        } catch (\Throwable $e) {
+            Log::info('BREVO API Exception -- OTHER ERROR');
+            Log::info($e->getMessage());
+            Log::info($e->getTraceAsString());
+            return $this->_errorAndExit("Problemi ad aggiungere l'indirizzo email. Si prega di riprovare,", 400);
+        }
+
+
+        return $this->_result(null);
+
+    }
+
+    public function newsletterStandardAdd(Request $request)
+    {
+
+        $email = $request->get('email');
+
+        if (!$this->validate($request, ['email' => 'required|email'])) {
+            return $this->_errorAndExit("Indirizzo email non valido", 400);
+        }
+
+
+        $brevo = new Brevo();
+
+
+        $contanctsApiInstance = new ContactsApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            null,
+            $brevo::getConfiguration()
+        );
+
+
+        $list = intval(env("BREVO_LIST_ID", -1));
 
         try {
 
@@ -148,5 +224,4 @@ class AppController extends Controller
         return $this->_result(null);
 
     }
-
 }
