@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Events\RichiestaScuola;
 use App\Http\Controllers\Controller;
+use App\Models\Provincia;
 use App\Models\Scuola;
 use App\Models\ScuolaRichiesta;
 use App\Models\User;
@@ -71,7 +72,15 @@ class RegisteredUserController extends Controller
 
     public function createScuola()
     {
-        return view('auth.register-scuola');
+        $province = [];
+        $provinceStdList = (new Provincia())->getForSelectList();
+        foreach ($provinceStdList as $optionValue => $optionLabel) {
+            $province[] = [
+                'value' => $optionValue,
+                'label' => $optionLabel,
+            ];
+        }
+        return view('auth.register-scuola',['province' => $province]);
     }
 
     public function storeScuola(Request $request)
@@ -81,19 +90,19 @@ class RegisteredUserController extends Controller
 
         if ($cambioEmail) {
             $request->validate([
-                'idScuola' => ['required', 'exists:scuole,id'],
+                'scuola_id' => ['required', 'exists:scuole,id'],
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
                 'emailScuolaAggiornato' => ['required', 'string', 'email', 'max:255', 'unique:users,email', 'unique:scuole,email_riferimento'],
             ]);
         } else {
             $request->validate([
-                'idScuola' => ['required', new ScuolaEmailRequired()],
+                'scuola_id' => ['required', new ScuolaEmailRequired()],
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
             ]);
 
         }
 
-        $scuola = Scuola::find($request->get('idScuola'));
+        $scuola = Scuola::find($request->get('scuola_id'));
         if (!$cambioEmail) {
 
             $user = User::create([

@@ -13,6 +13,9 @@
             </nav>
 
             <h2 class="h2 py-2">Registrazione scuola</h2>
+
+            {!! $descrizione->testo_it !!}
+
             <hr/>
 
         </section>
@@ -50,10 +53,10 @@
 
                 <h3 class="pb-5">Scegli la scuola da registrare</h3>
                 <p>
-                    Digita alcune lettere e scegli la scuola che vuoi registrare.
+                    Digita alcune lettere e scegli la scuola che vuoi registrare  (puoi restringere la ricerca a una provincia).
                 </p>
 
-                @include('components.scuole-autocomplete')
+                @include('components.scuole-autocomplete',['province' => $province])
 
                 <p>
 
@@ -124,7 +127,12 @@
                         nuovo indirizzo e-mail lo riceverai dopo la nostra approvazione.
                     </p>
                     <div class="form-check">
-                        <input id="cambiaEmailButton" name="cambiaEmailButton" type="checkbox" value="1">
+                        <input id="cambiaEmailButton" name="cambiaEmailButton" type="checkbox" value="1"
+
+                               @if(old('cambiaEmailButton') == 1)
+                                   checked="checked"
+                            @endif
+                        >
                         <label for="cambiaEmailButton">Utilizza altro indirizzo e-mail</label>
                     </div>
                 </div>
@@ -137,7 +145,7 @@
                 <div class="d-none pt-4" id="cambiaEmailScuola">
                     <div class="form-group">
                         <input type="text" class="form-control" id="emailScuolaAggiornato"
-                               name="emailScuolaAggiornato">
+                               name="emailScuolaAggiornato" value="{{old('emailScuolaAggiornato')}}">
                         <label for="emailScuolaAggiornato" class="" style="width: auto;">Indirizzo E-mail Scuola
                             aggiornato</label>
 
@@ -148,7 +156,9 @@
                     <div class="form-group pt-2">
                         <label for="noteEmailScuola" class="" style="width: auto;">Note/contatti</label>
                         <textarea class="form-control border" id="noteEmailScuola" rows="3"
-                                  name="noteEmailScuola"></textarea>
+                                  name="noteEmailScuola">
+                            {{old('noteEmailScuola')}}
+                        </textarea>
 
 
                     </div>
@@ -169,9 +179,25 @@
 
     <script>
 
+        let emailChecked = "{{old('cambiaEmailButton')}}";
 
         document.addEventListener("DOMContentLoaded", function () {
 
+            function changeEmailScuola(checked) {
+                var divEmail = document.getElementById('cambiaEmailScuola');
+                if (checked) {
+                    divEmail.classList.remove('d-none');
+                    validate.addField('#emailScuolaAggiornato', [
+                        {
+                            rule: 'email',
+                            errorMessage: 'Inserisci una e-mail valida'
+                        },
+                    ]);
+                } else {
+                    divEmail.classList.add('d-none');
+                    validate.removeField('#emailScuolaAggiornato');
+                }
+            }
 
             const errorMessage = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Attenzione</strong> Alcuni campi inseriti sono da controllare.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Chiudi avviso">';
             const errorWrapper = document.querySelector('#errorMsgContainer');
@@ -184,23 +210,14 @@
 
             var button = document.getElementById('cambiaEmailButton');
             button.addEventListener('change', function (e) {
-                var divEmail = document.getElementById('cambiaEmailScuola');
-                if (e.target.checked) {
-                    divEmail.classList.remove('d-none');
-                    validate.addField('#emailScuolaAggiornato', [
-                        {
-                            rule: 'email',
-                            errorMessage: 'Inserisci una e-mail valida'
-                        },
-                    ]);
-                } else {
-                    divEmail.classList.add('d-none');
-                    validate.removeField('#emailScuolaAggiornato');
-                }
-            })
+                changeEmailScuola(e.target.checked);
+            });
+            if (emailChecked) {
+                changeEmailScuola(true);
+            }
 
             validate
-                .addField('#idScuola', [
+                .addField('#scuola_id', [
                     {
                         rule: 'required',
                         errorMessage: 'Questo campo è richiesto'

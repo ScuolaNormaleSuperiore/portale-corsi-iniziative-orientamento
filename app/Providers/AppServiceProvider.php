@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Pagina;
 use App\Models\PaginaOrientamento;
+use App\Models\SezioneLayout;
 use Gecche\Cupparis\App\Foorm\FoormManager;
 use Gecche\Cupparis\Menus\Facades\Menus;
 use Igaster\LaravelTheme\Facades\Theme;
@@ -55,7 +56,7 @@ class AppServiceProvider extends ServiceProvider
 //            ],
             'candidature' => [
                 'path' => '/candidature',
-                'title' => 'Per candidarsi',
+                'title' => 'Partecipa ai corsi',
             ],
         ];
         $headerMenuSecondario = [
@@ -112,6 +113,19 @@ class AppServiceProvider extends ServiceProvider
             }
 
             $view->with('orientamentoFooterArray', $orientamentoFooterArray);
+        });
+
+        View::composer(['auth.login'], function ($view) {
+            $descrizione = SezioneLayout::where('codice', 'login-intro')->firstOrNew();
+            $view->with('descrizione', $descrizione);
+        });
+        View::composer(['auth.login-scuola'], function ($view) {
+            $descrizione = SezioneLayout::where('codice', 'login-scuola-intro')->firstOrNew();
+            $view->with('descrizione', $descrizione);
+        });
+        View::composer(['auth.register-scuola'], function ($view) {
+            $descrizione = SezioneLayout::where('codice', 'registrazione-scuola-intro')->firstOrNew();
+            $view->with('descrizione', $descrizione);
         });
         Validator::extend('username_email', 'App\Validation\Rules@usernameEmail');
 

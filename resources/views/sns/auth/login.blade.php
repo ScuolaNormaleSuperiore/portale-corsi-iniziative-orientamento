@@ -11,7 +11,9 @@
                 </ol>
             </nav>
             <h2 class="h2 py-2">Accedi</h2>
-            <p>Scegli uno dei seguenti metodi di autenticazione per accedere.</p>
+
+            {!! $descrizione->testo_it !!}
+
             <hr/>
         </section>
 
@@ -23,14 +25,13 @@
 
         <section class="mx-5 px-5 mb-4">
 
-
             <div class="row mb-5 pb-5 border-bottom">
                 <div class="col-12">
 
-                    <h2 class="h2 pb-4">Per gli studenti</h2>
+                    <h2 class="h2 pb-4">Candidatura spontanea studenti</h2>
                 </div>
                 <div class="col-6">
-                    <h4 class="h4 pb-3">Per i possessori di SPID o CIE</h4>
+                    <h4 class="h4 pb-3">Studenti in possesso di SPID o CIE</h4>
                     <div class="btn-example">
                         <a href="/saml2/bf441d43-662c-4c96-9451-b7c8a51c21a1/login">
                             <button type="button" class="btn btn-primary">
@@ -40,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <h4 class="h4 pb-3">Per gli studenti stranieri</h4>
+                    <h4 class="h4 pb-3">Studenti stranieri o non in possesso di SPID o CIE</h4>
                     <div class="btn-example">
                         <a href="/login-classic">
                             <button type="button" class="btn btn-primary">

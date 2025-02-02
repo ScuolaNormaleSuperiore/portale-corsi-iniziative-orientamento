@@ -1,12 +1,49 @@
 <div class="row">
-    <div class="col-12 mt-5">
+    <div class="col-12 col-md-6 mt-5">
         <div class="select-wrapper">
             <label for="scuolaAutocomplete">La tua scuola</label>
             <select class="form-control" id="scuolaAutocomplete" title="Scegli una scuola">
             </select>
-            <input type="hidden" value="" name="idScuola" id="idScuola"/>
+            <input type="hidden" value="" name="scuola_id" id="scuola_id"/>
         </div>
     </div>
+    <div class="col-12 col-md-6 mt-5">
+        <div class="select-wrapper">
+            <div class="select-wrapper form-group-candidature last register-scuola" id="register-scuola-provincia_scuola_id">
+                    <label for="provincia_scuola_id">
+                        Provincia della scuola
+                    </label>
+                <select id="provincia_scuola_id" name="provincia_scuola_id">
+                        <option selected="" value="">Scegli un'opzione</option>
+                        @foreach($province as $provincia)
+                            <option value="{{\Illuminate\Support\Arr::get($provincia,'value')}}"
+                                    @if(old('provincia_scuola_id') == \Illuminate\Support\Arr::get($provincia,'value'))
+                                        selected
+                                    @endif
+                            >
+                                {{\Illuminate\Support\Arr::get($provincia,'label')}}
+                            </option>
+                        @endforeach
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex align-items-center mt-3">
+
+        <div class="" id="scuola_text">
+
+        </div>
+        <div>
+            <button type="button" class="btn d-none"
+                    id="rimuoviScuola"
+            >
+                <svg class="icon icon-danger" aria-hidden="true">
+                    <use href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+
     <div class="col-12 mt-5 @if(isset($noEmailScuola)) d-none @endif">
         <div class="form-group" id="emailScuola">
             <input type="email" class="form-control" id="emailScuolaInput" name="emailScuolaInput" disabled>
@@ -18,17 +55,12 @@
 
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
-        // Sending requests to a server means that when the autocomplete has no
-        // result it may not be because there are no results, but because these
-        // results are being fetched, or because an error happened. We can use the
-        // function for internationalising the 'No results found' message to
-        // provide a little more context to users.
-        //
-        // It'll rely on a `status` variable updated by the wrappers of the
-        // function making the request (see thereafter)
+
         let status;
 
         let scuole = {};
+
+        let rimuoviScuolaButton = document.getElementById('rimuoviScuola');
 
         let scuoleToArray = function () {
             console.log("SCUOLE:::", scuole);
@@ -42,18 +74,12 @@
             return sa;
         }
 
-        // The aim being to load suggestions from a server, we'll need a function
-        // that does just that. This one uses `fetch`, but you could also use
-        // XMLHttpRequest or whichever library is the most suitable to your
-        // project
-        //
-        // For lack of a actual server able of doing computation our endpoint will
-        // return the whole list of countries and we'll simulate the work of the
-        // server client-side
         function requestSuggestions(query, fetchArgs = {}) {
             console.log("JSON1::: ", query);
+            document.getElementById('scuola_id').value = null;
             return axios.post('/api/scuole-suggest', {
                 value: query,
+                provincia_scuola_id : document.getElementById('provincia_scuola_id').value,
             })
                 .then(function (response) {
                     scuole = {};
@@ -110,15 +136,18 @@
             // shows when a the query gets updated after results have loaded
             populateResults([])
 
-            makeRequest(query)
-                // Only update the results if an actual array of options get returned
-                // allowing for `makeRequest` to avoid making updates to results being
-                // already displayed by resolving to `undefined`, like when we're
-                // aborting requests
-                .then(options => options && populateResults(options))
-                // In case of errors, we need to clear the results so the accessible
-                // autocomplate show its 'No result found'
-                .catch(error => populateResults([]))
+            if (query.length >= 2) {
+
+                makeRequest(query)
+                    // Only update the results if an actual array of options get returned
+                    // allowing for `makeRequest` to avoid making updates to results being
+                    // already displayed by resolving to `undefined`, like when we're
+                    // aborting requests
+                    .then(options => options && populateResults(options))
+                    // In case of errors, we need to clear the results so the accessible
+                    // autocomplate show its 'No result found'
+                    .catch(error => populateResults([]))
+            }
         }
 
         // And finally we can set up our accessible autocomplete
@@ -128,6 +157,7 @@
 
             name: 'scuolaAutocomplete',
             confirmOnBlur: false,
+            minLength: 2,
             showAllValues: true,
             defaultValue: '',
             autoselect: false,
@@ -143,40 +173,59 @@
 
                 console.log("CONFIRM::: ", val);
 
-                var cod = val.split("Cod:").pop();
+                var cod;
+
+                if (val) {
+                    cod = val.split("Cod:").pop();
+                } else {
+                    return;
+                }
+
+
+                var scuola = scuole[cod];
+                var scuolaText = document.getElementById('scuola_text');
+
+                if (scuola) {
+                    document.getElementById('scuola_id').value = scuola.id;
+                    scuolaText.innerHTML = '<div>' +
+                        '<span class="badge bg-primary">' +
+                        scuola['tipologia_grado_istruzione'] +
+                        '</span>' +
+                        '</div><p>' +
+                        scuola['denominazione'] + ' (Cod: ' + scuola['codice'] + ')' +
+                        '<br/>' +
+                        scuola['indirizzo'] +
+                        '<br/>' +
+                        scuola['cap'] + ' ' + scuola['comune'] + ' (' + scuola['provincia_sigla'] + ')' +
+                        '</p>';
+                    rimuoviScuolaButton.classList.remove('d-none');
+                } else {
+                    rimuoviScuola();
+                }
 
                 document.getElementById('emailScuolaInput').value = scuole[cod] ? scuole[cod].email_riferimento : 'E-mail non trovata';
-                document.getElementById('idScuola').value = scuole[cod] ? scuole[cod].id : null;
+                document.getElementById('scuola_id').value = scuole[cod] ? scuole[cod].id : null;
             }
             //tNoResults: tNoResults,
         })
 
-        ////
-        // INTERNAL DETAILS
-        ////
+        rimuoviScuolaButton.addEventListener('click', function () {
+            rimuoviScuola();
+        })
 
-        // Technically, it'd be the server doing the filtering but for lack of
-        // server, we're requesting the whole list and filter client-side.
-        // Similarly, we'll use a specific query to trigger error for demo
-        // purpose, which will be easier than going in the devtools and making the
-        // request error We'll also simulate that the server takes a little time
-        // to respond to make things more visible in the UI
-        const SERVER_LATENCY = 2500;
+        function rimuoviScuola() {
+            var scuolaText = document.getElementById('scuola_text');
+            document.getElementById('emailScuolaInput').value = null;
+            document.getElementById('scuola_id').value = null;
+            scuolaText.innerHTML = '';
+            rimuoviScuolaButton.classList.add('d-none');
+            document.getElementById('scuolaAutocomplete').value = null;
+            document.getElementById('scuolaAutocomplete').blur();
+            // console.log("ELEEMNTTT::: ",element);
+            // element.value = "";
+            // element.innerText = "";
+        }
 
-        // Debouncing limits the number of requests being sent
-        // but does not guarantee the order in which the responses come in
-        // Due to network and server latency, a response to an earlier request
-        // may come back after a response to a later request
-        // This keeps track of the AbortController of the last request sent
-        // so it can be cancelled before sending a new one
-        //
-        // NOTE: If you're using `XMLHttpRequest`s or a custom library,
-        // they'll have a different mechanism for aborting. You can either:
-        // - adapt this function to store whatever object lets you abort in-flight requests
-        // - or adapt your version of `requestSuggestion` to listen to the `signal`
-        //   that this function passes to the wrapped function and trigger
-        //   whichever API for aborting you have available
-        //   See: https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal#events
         let abortController;
 
         function abortExisting(fn) {

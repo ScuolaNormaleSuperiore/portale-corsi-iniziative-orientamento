@@ -42,12 +42,13 @@ class AppController extends Controller
     public function getScuoleAutocomplete(Request $request)
     {
 
+        $provinciaId = $request->get('provincia_scuola_id') ?: 0;
 
         $nItems = $request->get('nItems', 50);
 
         $value = $request->get('value');
 
-        $searchFields = ['denominazione'];
+        $searchFields = ['denominazione','codice'];
         $resultFields = [
             'denominazione', 'codice', 'email_riferimento',
             'tipologia_grado_istruzione',
@@ -57,8 +58,10 @@ class AppController extends Controller
         ];
         $appends = ['provincia_sigla'];
 
+        $builder = intval($provinciaId) > 0 ? Scuola::where('provincia_id',$provinciaId) : null;
 
-        $autocompleteResult = Scuola::autoComplete($value, $searchFields, $resultFields, $nItems, null, $appends);
+
+        $autocompleteResult = Scuola::autoComplete($value, $searchFields, $resultFields, $nItems, $builder, $appends);
 
 //        $options = [];
 //        foreach ($autocompleteResult as $scuola) {

@@ -117,6 +117,10 @@ return [
                     'code' => 'scuola',
                     'title' => 'Scuola e classe',
                     'fields' => [
+                        'provincia_scuola_id' => [
+                            'validation' => [
+                            ]
+                        ],
                         'scuola_id' => [
                             'validation' => [
                                 'nullable',

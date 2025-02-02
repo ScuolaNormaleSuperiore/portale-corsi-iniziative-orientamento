@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "codice": "login-intro",
+            "nome": "Login generico (descrizione)",
+            "tipo": "w-texthtml",
+            "testo_it": "<p>Scegli uno dei seguenti metodi di autenticazione per accedere.</p>"
+        },
+        {
+            "codice": "login-scuola-intro",
+            "nome": "Login scuola (descrizione)",
+            "tipo": "w-texthtml",
+            "testo_it": null
+        },
+        {
+            "codice": "registrazione-scuola-intro",
+            "nome": "Login scuola (descrizione)",
+            "tipo": "w-texthtml",
+            "testo_it": null
+        }
+    ]
+}
