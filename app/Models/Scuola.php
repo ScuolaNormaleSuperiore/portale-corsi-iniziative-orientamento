@@ -44,6 +44,9 @@ class Scuola extends Breeze
     ];
 
     public static $rules = [
+        'denominazione' => 'required',
+        'codice' => 'required',
+        'provincia_id' => 'required',
 //        'username' => 'required|between:4,255|unique:users,username',
     ];
 
@@ -63,6 +66,10 @@ class Scuola extends Breeze
 
     public function save(array $options = [])
     {
+        if (is_null($this->anno)) {
+            $this->anno = date('Y');
+        }
+        $this->addAnnoToInfo($this->anno);
         if (is_null($this->email_riferimento)) {
             $this->email_riferimento = $this->email;
         }
