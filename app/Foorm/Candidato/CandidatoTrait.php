@@ -155,10 +155,10 @@ trait CandidatoTrait
         Log::info("HERE CORSI " . $this->model->iniziativa_id);
         $corso = new Corso();
         if (!$this->model->iniziativa) {
-            return $corso->getForSelectList();
+            return $corso->getForSelectList(null,null,[],null,'dates');
         }
 
-        return $corso->getForSelectList($corso->where('iniziativa_id',$this->model->iniziativa_id));
+        return $corso->getForSelectList($corso->where('iniziativa_id',$this->model->iniziativa_id),null,[],null,'dates');
 
     }
 

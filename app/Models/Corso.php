@@ -3,7 +3,10 @@
 namespace App\Models;
 
 use App\Services\FormatValues;
+use Carbon\Carbon;
 use Gecche\Cupparis\App\Breeze\Breeze;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Breeze (Eloquent) model for corsi table.
@@ -62,7 +65,7 @@ class Corso extends Breeze
     public $nItemsAutoComplete = 20;
     public $nItemsForSelectList = 100;
     public $itemNoneForSelectList = false;
-    public $fieldsSeparator = ' - ';
+    public $fieldsSeparator = ' | ';
 
     public function getCorsoFE() {
 
@@ -89,5 +92,33 @@ class Corso extends Breeze
             return $foto->getUrl('iniziativaicon');
         }
         return '/imagecache/small/0';
+    }
+
+    public function postFormatSelectListDates($selectList) {
+
+        foreach ($selectList as $key => $el) {
+            $splitEl = explode(" | ",$el);
+            $date1 = Arr::get($splitEl,2);
+            $date2 = Arr::get($splitEl,3);
+            try {
+                $date1Obj = Carbon::createFromFormat('Y-m-d',$date1);
+                $date1 = $date1Obj->format('d/m/Y');
+            } catch (\Throwable $e) {
+
+            }
+            try {
+                $date2Obj = Carbon::createFromFormat('Y-m-d',$date2);
+                $date2 = $date2Obj->format('d/m/Y');
+            } catch (\Throwable $e) {
+
+            }
+            $selectList[$key] = $splitEl[0] . ' - ' . $splitEl[1] . ' dal ' . $date1 . ($date2 ? (' al ' . $date2) : '');
+        }
+
+        asort($selectList);
+
+
+
+        return $selectList;
     }
 }

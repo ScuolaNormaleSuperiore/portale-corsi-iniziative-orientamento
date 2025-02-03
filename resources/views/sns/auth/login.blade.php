@@ -30,7 +30,7 @@
 
                     <h2 class="h2 pb-4">Candidatura spontanea studenti</h2>
                 </div>
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <h4 class="h4 pb-3">Studenti in possesso di SPID o CIE</h4>
                     <div class="btn-example">
                         <a href="/saml2/bf441d43-662c-4c96-9451-b7c8a51c21a1/login">
@@ -40,8 +40,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-6">
-                    <h4 class="h4 pb-3">Studenti stranieri o non in possesso di SPID o CIE</h4>
+                <div class="col-12 col-md-6">
+                    <h4 class="h4 pb-3 mt-4 mt-md-0">Studenti stranieri o non in possesso di SPID o CIE</h4>
                     <div class="btn-example">
                         <a href="/login-classic">
                             <button type="button" class="btn btn-primary">
@@ -52,23 +52,44 @@
 
                 </div>
             </div>
-            <div class="row  pb-5">
-                <div class="col-12">
+            <div class="row  mb-5 pb-5 border-bottom">
+                <div class="col-12 col-md-6">
+                    <div class="col-12">
 
-                    <h2 class="h2 pb-1">Per gli istituti scolastici</h2>
-                    <p class="pb-3">Modalità di accesso per i referenti scolastici</p>
-                </div>
-                <div class="col-6">
-                    <div class="d-flex flex-column">
-                        <div class="btn-example">
-                            <a href="/login-scuola">
-                                <button type="button" class="btn btn-primary">
-                                    Accedi come referente
-                                </button>
-                            </a>
+                        <h2 class="h2 pb-1">Per gli istituti scolastici</h2>
+                        <p class="pb-3">Modalità di accesso per i referenti scolastici</p>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex flex-column">
+                            <div class="btn-example">
+                                <a href="/login-scuola">
+                                    <button type="button" class="btn btn-primary">
+                                        Accedi come referente
+                                    </button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-12 col-md-6">
+                    <div class="col-12">
+
+                        <h2 class="h2 pb-1 mt-4 mt-md-0">Per gli operatori SNS</h2>
+                        <p class="pb-3">Modalità di accesso per gli operatori SNS</p>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex flex-column">
+                            <div class="btn-example">
+                                <a href="/saml2/bf441d43-662c-4c96-9451-b7c8a51c21a1/login">
+                                    <button type="button" class="btn btn-primary">
+                                        Accedi come operatore SNS
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 

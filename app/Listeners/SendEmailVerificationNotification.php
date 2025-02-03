@@ -15,13 +15,14 @@ class SendEmailVerificationNotification
      */
     public function handle(Registered $event)
     {
-        if ($event->user->hasRole('Studente')) {
-            $event->user->sendRegistrazioneStudenteNotification();
-            return;
-        }
 
         if ($event->user instanceof MustVerifyEmail && ! $event->user->hasVerifiedEmail()) {
             $event->user->sendEmailVerificationNotification();
+            return;
+        }
+        if ($event->user->hasRole('Studente')) {
+            $event->user->sendRegistrazioneStudenteNotification();
+            return;
         }
     }
 }

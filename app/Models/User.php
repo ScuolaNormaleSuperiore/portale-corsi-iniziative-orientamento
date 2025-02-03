@@ -77,7 +77,12 @@ class User extends CupparisUser {
 
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new VerifyEmail());
+        if ($this->hasRole('Studente')) {
+            $role = 'Studente';
+        } else {
+            $role = 'Scuola';
+        }
+        $this->notify(new VerifyEmail($role));
     }
 
     public function sendPasswordResetNotification($token)

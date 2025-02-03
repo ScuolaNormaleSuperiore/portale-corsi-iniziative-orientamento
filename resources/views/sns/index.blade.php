@@ -2,8 +2,14 @@
 @section('content-body')
     <div class="container-fluid px-0">
 
-        @if($avvisi->count() > 0)
+
+        @if($avvisi->count() > 0 || request()->get('newsletterconfirmed'))
             <section class="my-2 px-2 bg-white d-flex flex-column gap-2">
+                @if(request()->get('newsletterconfirmed'))
+                    <div class="alert alert-success mb-0" role="alert">
+                        Il tuo indirizzo email è stato aggiunto alla nostra newsletter
+                    </div>
+                @endif
                 @foreach ($avvisi as $avviso)
                     <div class="alert alert-{{$avviso->tipo ?: 'success'}} mb-0" role="alert">
                         {!! $avviso->descrizione !!}
