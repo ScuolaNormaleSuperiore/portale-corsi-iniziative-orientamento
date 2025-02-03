@@ -31,8 +31,7 @@ class SamlSignedInListener
         $attributes = $samlUser->getAttributes();
 
 
-        $externalLoginType = Arr::get($attributes, 'externalIDPLoA', []);
-        Log::info("Login type", $externalLoginType);
+        $externalLoginType = Arr::first(Arr::get($attributes,'externalIDPLoA',[]));
         switch ($externalLoginType) {
 
             case 'LoA2': //ATENEO
