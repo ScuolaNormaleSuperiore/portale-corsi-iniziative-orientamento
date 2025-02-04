@@ -103,7 +103,7 @@
                                                     @endif
                                                 </div>
                                             @endforeach
-                                            @if ($candidature->count() < $maxCandidatureScuole)
+                                            @if (is_null($iniziativa->max_candidature_scuola) || $candidature->count() < $iniziativa->max_candidature_scuola)
                                                 <div class="position-relative">
 
                                                     <a href="/candidatura/{{$iniziativa->getKey()}}/new">
@@ -113,6 +113,10 @@
                                                     </a>
                                                 </div>
                                             @endif
+                                        </div>
+                                        <div>
+                                            Candidature effettuate dalla scuola: <strong>{{$candidature->count()}}</strong><br/>
+                                            Candidature ancora disponibili per la scuola: <strong>{{is_null($iniziativa->max_candidature_scuola)?"Illimitate":(max(0,($iniziativa->max_candidature_scuola - $candidature->count())))}}</strong>
                                         </div>
                                     @endif
                                 </div>

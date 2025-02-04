@@ -155,6 +155,9 @@ return [
             "modalita_candidatura" => [
 
             ],
+            "max_candidature_scuola" => [
+
+            ],
             "attivo" => [
 
             ],
@@ -201,6 +204,9 @@ return [
 
             ],
             "posti_onere" => [
+
+            ],
+            "max_candidature_scuola" => [
 
             ],
             "note" => [

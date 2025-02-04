@@ -85,7 +85,7 @@
         <section style="background-color:#F4FAFB" class="pt-5">
 
             <div class="container">
-                <h2>Partecipa alle nostre attività di orientamento</h2>
+                <h2>Conosci le attività di orientamento</h2>
                 <p class="" style="color:#2F475E;">Scopri le opportunità offerte per partecipare ad eventi di
                     orientamento, visitare i luoghi della Normale e vivere esperienze educative uniche.</p>
                 <div class="row pb-5">
@@ -136,6 +136,7 @@
 
         {{--        News--}}
 
+        @if (count($feeds) > 0)
         <section class="pt-5">
             <div class="container">
                 <h2 class="pb-5">In evidenza</h2>
@@ -192,6 +193,7 @@
                 </div>
             </div>
         </section>
+        @endif
 
 
         {{-- Video --}}
@@ -261,6 +263,7 @@
 
         {{--        Eventi--}}
 
+        @if($eventi->count() > 0)
         <section class="pt-5" style="background-color:#F4FAFB">
             <div class="container">
                 <h2 class="pb-5">Eventi</h2>
@@ -326,6 +329,7 @@
             </div>
         </section>
 
+        @endif
         {{--        Evento speciale --}}
 
         @if($eventoSpeciale)

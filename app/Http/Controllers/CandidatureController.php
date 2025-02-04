@@ -63,10 +63,10 @@ class CandidatureController extends Controller
         $user = Auth::user();
         $nomeCognome = $user->fename;
 
-        $maxCandidatureScuole = config('sns.max_candidature_scuole', 5);
+        //$maxCandidatureScuole = config('sns.max_candidature_scuole', 5);
 
 
-        return view('candidature.index', compact('iniziative', 'nomeCognome', 'maxCandidatureScuole'));
+        return view('candidature.index', compact('iniziative', 'nomeCognome'));
     }
 
     protected function setOptionsInStepData($stepData, $metadata)
@@ -152,15 +152,18 @@ class CandidatureController extends Controller
                 $maxCandidature = 1;
                 break;
             case 'Scuola':
-                $maxCandidature = config('sns.max_candidature_scuole', 5);
+                $maxCandidature = $iniziativa->max_candidature_scuola;
                 break;
             default:
                 return false;
         }
+        if (is_null($maxCandidature)) {
+            return true;
+        }
         $countCandidature = Candidato::where('iniziativa_id', $iniziativa->getKey())
             ->where('user_id', Auth::id())
             ->count();
-        if ($countCandidature < $maxCandidature) {
+         if ($countCandidature < $maxCandidature) {
             return true;
         }
         return false;
