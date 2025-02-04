@@ -22,6 +22,10 @@
                     @csrf
                     <input type="hidden" name="step" value="{{$step}}"/>
 
+                    <input type="hidden" name="iniziativa_id" id="iniziativa_id" value="{{$iniziativa->getKey()}}"/>
+                    <input type="hidden" name="id" id="id" value="{{isset($candidatura) ? $candidatura->id : ''}}"/>
+
+
                     <div class="steppers-content" aria-live="polite">
 
                         @include('candidature.includes.step-data')

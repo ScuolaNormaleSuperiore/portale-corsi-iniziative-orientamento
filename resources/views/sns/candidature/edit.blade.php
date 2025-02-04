@@ -23,6 +23,8 @@
                     @csrf
                     <input type="hidden" name="_method" value="PUT"/>
                     <input type="hidden" name="step" value="{{$step}}"/>
+                    <input type="hidden" name="iniziativa_id" id="iniziativa_id" value="{{$iniziativa->getKey()}}"/>
+                    <input type="hidden" name="id" id="id" value="{{$candidatura->id}}"/>
 
                         {{-- NON E' RIEPILOGO--}}
 

@@ -111,7 +111,9 @@ class Scuola extends Breeze
         }
         $anni = Arr::get($info,'anni',[]);
         $anni[$anno] = $anno;
-        $this->info['anni'] = $anni;
+
+        $info['anni'] = $anni;
+        $this->info = $info;
         return $this->info;
     }
 

@@ -65,7 +65,7 @@ return [
                         ],
                         'comune_estero' => [
                             'validation' => [
-//                                'required',
+                                'required',
                             ]
                         ],
                         'cap' => [
@@ -87,7 +87,7 @@ return [
                         ],
                         'comune_id' => [
                             'validation' => [
-//                                'required',
+                                'required',
                             ]
                         ],
 
