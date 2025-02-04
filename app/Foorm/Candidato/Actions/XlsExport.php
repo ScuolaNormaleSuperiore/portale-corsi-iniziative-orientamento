@@ -345,8 +345,8 @@ class XlsExport extends BaseCsvExport
 
             $itemValue = $this->guessItemValue($key,$itemDotted,$itemArray,$item);
 
-            Log::info("FIELD:::");
-            Log::info($key);
+//            Log::info("FIELD:::");
+//            Log::info($key);
 
             $methodName = 'getCsvField' . Str::studly($methodKey);
             if (method_exists($this, $methodName)) {
@@ -358,13 +358,13 @@ class XlsExport extends BaseCsvExport
                 } else {
                     $row[] = $field;
                 }
-                Log::info("VALUE:::");
-                Log::info($field);
+//                Log::info("VALUE:::");
+//                Log::info($field);
             } else {
                 $row[] = $this->getCsvFieldStandard($key, $itemValue, $itemArray,$item);
             }
-            Log::info("ROW:::");
-            Log::info($row);
+//            Log::info("ROW:::");
+//            Log::info($row);
         }
         return $row;
     }
