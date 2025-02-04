@@ -49,9 +49,9 @@ class CandidatoCodiceFiscale implements Rule
         }
         $candidatura = $candidatura->first();
 
-        Log::info("CAND COD:::");
-        Log::info($value);
-        Log::info($this->data);
+//        Log::info("CAND COD:::");
+//        Log::info($value);
+//        Log::info($this->data);
 
         if ($candidatura && $candidatura->getKey()) {
             Log::info($candidatura->getKey());
