@@ -27,6 +27,7 @@ use Carbon\Carbon;
 use Gecche\Cupparis\App\Foorm\Base\Actions\CsvExport as BaseCsvExport;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
@@ -344,17 +345,26 @@ class XlsExport extends BaseCsvExport
 
             $itemValue = $this->guessItemValue($key,$itemDotted,$itemArray,$item);
 
+            Log::info("FIELD:::");
+            Log::info($key);
+
             $methodName = 'getCsvField' . Str::studly($methodKey);
             if (method_exists($this, $methodName)) {
                 $field =  $this->$methodName($itemValue,$itemArray,$item);
                 if (is_array($field)) {
-                    $row = $row + $field;
+                    foreach ($field as $currfield) {
+                        $row[] = $currfield;
+                    }
                 } else {
                     $row[] = $field;
                 }
+                Log::info("VALUE:::");
+                Log::info($field);
             } else {
                 $row[] = $this->getCsvFieldStandard($key, $itemValue, $itemArray,$item);
             }
+            Log::info("ROW:::");
+            Log::info($row);
         }
         return $row;
     }
@@ -529,6 +539,8 @@ class XlsExport extends BaseCsvExport
             $votiArray[] = $voto->voto_anno_1;
             $votiArray[] = $voto->voto_primo_quadrimestre;
         }
+
+        Log::info("VOTIIII:::",$votiArray);
 
         return $votiArray;
     }
