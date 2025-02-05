@@ -51,8 +51,28 @@ class CandidatureController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+        $deleteId = $request->get('delete');
+
+        $errors = [];
+
+        if ($deleteId) {
+            $candidatura = Candidato::find($deleteId);
+            if ($candidatura && $candidatura->getKey() && $this->checkUserEdit($request,$candidatura)) {
+                try {
+                    $candidatura->delete();
+                } catch (\Throwable $e) {
+                    Log::info("Cancellazione candidatura ERROR");
+                    Log::info($e->getMessage());
+                    Log::info($e->getTraceAsString());
+                    $errors[] = "Problemi nella cancellazione della candidatura";
+                }
+            } else {
+                $errors[] = "Problemi nella cancellazione della candidatura";
+            }
+        }
+
         $iniziative = Iniziativa::where('attivo', 1)
             ->whereDate('data_apertura', '<=', date('Y-m-d'))
             ->whereDate('data_chiusura', '>=', date('Y-m-d'))
@@ -69,7 +89,7 @@ class CandidatureController extends Controller
         //$maxCandidatureScuole = config('sns.max_candidature_scuole', 5);
 
 
-        return view('candidature.index', compact('iniziative', 'nomeCognome'));
+        return view('candidature.index', compact('iniziative', 'nomeCognome', 'errors'));
     }
 
     protected function setOptionsInStepData($stepData, $metadata)
