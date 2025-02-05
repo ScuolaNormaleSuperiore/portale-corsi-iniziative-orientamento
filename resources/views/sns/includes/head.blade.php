@@ -14,6 +14,11 @@
     <link rel="shortcut icon" href="{!! \Igaster\LaravelTheme\Facades\Theme::url('favicon.ico') !!}">
 
     <style>
+
+        .it-header-center-wrapper .it-header-center-content-wrapper .it-brand-wrapper a .icon{
+            width:122px;height:82px;margin-right:16px
+        }
+
         .card-body.card-orientamento,
         .card.card-orientamento,
         .card-orientamento {

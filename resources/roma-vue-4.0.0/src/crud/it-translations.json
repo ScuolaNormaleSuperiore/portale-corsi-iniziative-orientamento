@@ -466,6 +466,7 @@
     "iniziativa.fields.attivo.label": "Attivo",
     "iniziativa.fields.posti.label": "Posti",
     "iniziativa.fields.posti_onere.label": "Posti onere",
+    "iniziativa.fields.max_candidature_scuola.label": "Max candidature x scuola",
     "iniziativa.fields.note.label": "Note",
     "iniziativa.fields.id.label": "Id",
     "iniziativa.fields.dati_statistici.label": "Dati statistici",

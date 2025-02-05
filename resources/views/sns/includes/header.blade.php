@@ -149,7 +149,7 @@
                             <div class="it-brand-wrapper">
                                 <a href="/">
 
-                                    <img class="icon" src="{{Theme::url('svg/logo-primary.svg')}}"
+                                    <img class="icon" src="{{Theme::url('assets/logo_sns.png')}}"
                                          alt="SNS orientamenti"/>
 
                                     {{--                                <svg class="icon" aria-hidden="true">--}}
@@ -245,9 +245,11 @@
                                 </div>
                                 <div class="menu-wrapper">
                                     <a href="#" class="logo-hamburger">
-                                        <svg class="icon" aria-hidden="true">
-                                            <use href="{{Theme::url('svg/logo.svg')}}"></use>
-                                        </svg>
+                                        <img class="" style="width:90px; height:62px; padding-right:10px;" src="{{Theme::url('assets/logo_sns.png')}}"
+                                             alt="SNS orientamenti"/>
+{{--                                        <svg class="icon" aria-hidden="true">--}}
+{{--                                            <use href="{{Theme::url('svg/logo.svg')}}"></use>--}}
+{{--                                        </svg>--}}
                                         <div class="it-brand-text">
                                             <div class="it-brand-title">OrientaMenti</div>
                                         </div>
@@ -280,7 +282,7 @@
                                     </nav>
                                     <div class="it-socials">
                                         <span>Segui la Scuola Normale su</span>
-                                        <ul>
+                                        <ul class="list-unstyled">
                                             <li>
                                                 <a href="https://www.facebook.com/scuolanormale" target="_blank">
                                                     <svg class="icon icon-sm icon-white align-top">

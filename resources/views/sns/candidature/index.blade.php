@@ -42,18 +42,29 @@
                                                 @if ($candidatura)
 
                                                     @if ($candidatura->status == \App\Enums\CandidatoStatuses::BOZZA->value)
+                                                        @if($candidatura->user_id == \Illuminate\Support\Facades\Auth::id())
                                                         <a href="/candidatura/edit/{{$candidatura->getKey()}}">
                                                             <button type="button" class="btn btn-outline-primary">
-                                                                <div style="position:absolute;right:-10px;top:-10px;">
+                                                                <div style="position:absolute;left:-10px;top:-10px;">
                                                                     <small><span class="badge rounded-pill bg-primary"
                                                                                  style="">Bozza</span></small></div>
                                                                 Gestisci la candidatura
                                                             </button>
                                                         </a>
+{{--                                                            <a href="/candidatura/delete/{{$candidatura->getKey()}}">--}}
+{{--                                                                <button class="btn btn-outline-danger btn-xs btn-icon btn-me">--}}
+{{--                                                                    <svg class="icon icon-danger"><use href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use></svg>--}}
+{{--                                                                </button>--}}
+{{--                                                            </a>--}}
+                                                        @else
+                                                            <p>
+                                                                <strong>Il referente della tua scuola sta gestendo la tua candidatura: la potrai visualizzare una volta inviata.</strong>
+                                                            </p>
+                                                        @endif
                                                     @else
                                                         <a href="/candidatura/view/{{$candidatura->getKey()}}">
                                                             <button type="button" class="btn btn-outline-primary">
-                                                                <div style="position:absolute;right:-10px;top:-10px;">
+                                                                <div style="position:absolute;left:-10px;top:-10px;">
 
                                                                     <small><span class="badge rounded-pill
                                                                         {{$candidatura->status == 'inviata' ? 'bg-primary' : ($candidatura->status == 'approvata' ? 'bg-success' : 'bg-danger')}}
@@ -81,7 +92,7 @@
                                                     @if ($candidatura->status == \App\Enums\CandidatoStatuses::BOZZA->value)
                                                         <a href="/candidatura/edit/{{$candidatura->getKey()}}">
                                                             <button type="button" class="btn btn-outline-primary">
-                                                                <div style="position:absolute;right:-10px;top:-10px;">
+                                                                <div style="position:absolute;left:-10px;top:-10px;">
                                                                     <small><span class="badge rounded-pill bg-primary"
                                                                                  style="">Bozza</span></small></div>
                                                                 {{$candidatura->fename}}
@@ -90,7 +101,7 @@
                                                     @else
                                                         <a href="/candidatura/view/{{$candidatura->getKey()}}">
                                                             <button type="button" class="btn btn-outline-primary">
-                                                                <div style="position:absolute;right:-10px;top:-10px;">
+                                                                <div style="position:absolute;left:-10px;top:-10px;">
 
                                                                     <small><span class="badge rounded-pill
                                                                         {{$candidatura->status == 'inviata' ? 'bg-primary' : ($candidatura->status == 'approvata' ? 'bg-success' : 'bg-danger')}}

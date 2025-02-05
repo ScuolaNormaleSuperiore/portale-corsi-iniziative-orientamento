@@ -14,6 +14,7 @@ use App\Models\Scuola;
 use App\Models\SezioneLayout;
 use App\Models\StudenteOrientamento;
 use App\Models\Video;
+use App\Policies\CandidatoPolicy;
 use Gecche\Foorm\Facades\Foorm;
 use Gecche\Foorm\FoormAction;
 use Igaster\LaravelTheme\Facades\Theme;
@@ -52,15 +53,17 @@ class CandidatureController extends Controller
      */
     public function index()
     {
-        $iniziative = Iniziativa::with('authcandidature')
-            ->where('attivo', 1)
+        $iniziative = Iniziativa::where('attivo', 1)
             ->whereDate('data_apertura', '<=', date('Y-m-d'))
             ->whereDate('data_chiusura', '>=', date('Y-m-d'))
             ->orderBy('data_apertura', 'ASC')
             ->get();
 
 
+
+
         $user = Auth::user();
+
         $nomeCognome = $user->fename;
 
         //$maxCandidatureScuole = config('sns.max_candidature_scuole', 5);
@@ -188,7 +191,11 @@ class CandidatureController extends Controller
             case 'Superutente':
                 return true;
             default:
-                return $candidatura->user_id == Auth::id();
+                $candidatoPolicy = new CandidatoPolicy();
+                if ($edit) {
+                    return $candidatoPolicy->update(Auth::user(),$candidatura);
+                }
+                return $candidatoPolicy->view(Auth::user(),$candidatura);
         }
 
     }

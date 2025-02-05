@@ -8,6 +8,7 @@ use App\Notifications\VerifyEmail;
 use Gecche\Cupparis\App\Models\User as CupparisUser;
 
 use App\Notifications\ResetPassword as ResetPasswordNotification;
+use Illuminate\Support\Arr;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends CupparisUser {
@@ -19,6 +20,7 @@ class User extends CupparisUser {
     public $appends = [
         'mainrole',
         'fename',
+        'codice_fiscale',
     ];
 
     protected $casts = [
@@ -103,5 +105,10 @@ class User extends CupparisUser {
     public function sendCandidaturaApprovataNotification($candidato)
     {
 //        $this->notify(new CandidaturaApprovata($candidato));
+    }
+
+    public function getCodiceFiscaleAttribute() {
+        $userInfo = $this->info;
+        return Arr::first(Arr::get($userInfo,'spidFiscalNumber',[]));
     }
 }

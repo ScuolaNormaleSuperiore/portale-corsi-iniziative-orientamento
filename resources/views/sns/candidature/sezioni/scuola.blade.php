@@ -37,6 +37,11 @@
     </p>
 
     @include('candidature.form.input-icon',['field' => 'scuola_estera','label' => 'Scuola Estera'])
+
+    <p class="pb-2">
+        Per continuare la candidatura è necessario indicare la scuola (italiana o estera).
+    </p>
+
 @endif
 
 @include('candidature.form.select',['field' => 'classe','label' => 'Classe'])

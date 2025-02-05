@@ -50,6 +50,7 @@ Route::group([
     Route::post('/candidatura/{iniziativa}/new', [CandidatureController::class, 'store'])->name('candidatura.store');
     Route::put('/candidatura/edit/{candidatura}/{step?}', [CandidatureController::class, 'update'])->name('candidatura.update');
     Route::get('/candidatura/view/{candidatura}', [CandidatureController::class, 'view'])->name('candidatura.view');
+    Route::get('/candidatura/delete/{candidatura}', [CandidatureController::class, 'delete'])->name('candidatura.delete');
 });
 
 Route::get('saml2-error',[\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'saml2Error'])->name('saml2-error');

@@ -89,7 +89,10 @@ export default {
                 type : "w-text",
 			},
             'max_candidature_scuola' : {
-                type : "w-text",
+                type : "w-custom",
+                ready() {
+                    this.value = this.value === null ? 'Illimitate' : this.value;
+                }
             },
 			'attivo' : {
                 type : "w-swap",
