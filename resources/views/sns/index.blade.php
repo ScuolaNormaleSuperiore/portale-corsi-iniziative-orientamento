@@ -125,13 +125,15 @@
                         <div class="col-12 col-lg-6">
                             @include('components/card-img-bottom',['title' => "Parla con noi",
                                     'subtitle' =>  "chiedi al nostro chatbot o consulta le nostre FAQ",
-                                    'img' =>  Theme::url('/assets/img1.png')
+                                    'img' =>  Theme::url('/assets/img1.png'),
+                                    'link' => '/chat',
                                     ])
                         </div>
                         <div class="col-12 col-lg-6">
                             @include('components/card-img-bottom',['title' => "Sportello da Studente a Studente",
                                     'subtitle' =>  "incontra online i nostri studenti Tutor",
-                                    'img' =>  Theme::url('/assets/img2.png')
+                                    'img' =>  Theme::url('/assets/img2.png'),
+                                    'link' => '/sportello-studenti',
                                     ])
                         </div>
                     </div>

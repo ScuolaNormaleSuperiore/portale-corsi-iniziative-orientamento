@@ -23,7 +23,7 @@
             </div>
         @endif
 
-        <section class="mx-5 px-5 mb-4">
+        <section class="container px-5 mb-4">
 
             <div class="row mb-5 pb-5 border-bottom">
                 <div class="col-12">
