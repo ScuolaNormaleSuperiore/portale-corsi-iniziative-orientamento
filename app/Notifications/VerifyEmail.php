@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Lang;
 class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail
 {
 
+
+    public $role;
+
+    public function __construct($role)
+    {
+        $this->role = $role;
+    }
     /**
      * Build the mail representation of the notification.
      *
@@ -17,10 +24,13 @@ class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail
     public function toMail($notifiable)
     {
         if (static::$toMailCallback) {
-            return call_user_func(static::$toMailCallback, $notifiable, $this->token);
+            return call_user_func(static::$toMailCallback, $notifiable);
         }
 
-        $view = 'emails.notifications.verify-email';
+
+        $view = $this->role == 'Scuola'
+            ? 'emails.notifications.verify-email'
+            : 'emails.notifications.verify-email-studente';
         $verificationUrl = $this->verificationUrl($notifiable);
         return (new MailMessage)
             ->subject(Lang::get('Verifica il tuo indirizzo email'))

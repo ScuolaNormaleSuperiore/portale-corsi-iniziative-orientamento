@@ -121,27 +121,31 @@ export default {
         modelName : 'scuola',
         actions : ['action-save','action-save-back','action-back'],
         fields: [
-			'anno',
-			'area_geografica',
-			'provincia_id',
-			'codice_istituto_riferimento',
-			'denominazione_istituto_riferimento',
-			'codice',
+			// 'anno',
 			'denominazione',
+			'codice',
+            'tipo',
+			'tipologia_grado_istruzione',
+			'caratteristica',
+
+			'denominazione_istituto_riferimento',
+			'codice_istituto_riferimento',
+			'sede_scolastica',
+
+            'comune_id',
+			'area_geografica',
+			// 'provincia_id',
 			'indirizzo',
 			'cap',
 			'catastale_comune',
-			'comune',
-			'caratteristica',
-			'tipologia_grado_istruzione',
-			'indicazione_sede_direttivo',
-			'indicazione_sede_omnicomprensivo',
+			// 'comune',
+			// 'indicazione_sede_direttivo',
+			// 'indicazione_sede_omnicomprensivo',
 			'email',
 			'pec',
 			'web',
-			'sede_scolastica',
 			'email_riferimento',
-			'user',
+			// 'user',
 
         ],
         fieldsConfig: {
@@ -179,15 +183,18 @@ export default {
 			},
 			'catastale_comune' : {
                 type : "w-input",
+                extraBind: {
+                    'disabled' : true,
+                }
 			},
 			'comune' : {
                 type : "w-input",
 			},
 			'caratteristica' : {
-                type : "w-input",
+                type : "w-select",
 			},
 			'tipologia_grado_istruzione' : {
-                type : "w-input",
+                type : "w-select",
 			},
 			'indicazione_sede_direttivo' : {
                 type : "w-radio",
@@ -199,6 +206,7 @@ export default {
 			},
 			'email' : {
                 type : "w-input",
+                label: "Email (MIUR)",
 			},
 			'pec' : {
                 type : "w-input",
@@ -217,6 +225,38 @@ export default {
 			'user' : {
                 type : "w-text",
 			},
+            'tipo' : {
+                type : "w-select",
+            },
+            'comune_id': {
+                type: "w-autocomplete",
+                foormName: 'scuola',
+                viewType: 'edit',
+                labelFields: [
+                    'id',
+                    'nome',
+                    'sigla_provincia',
+                    'codice_catastale',
+                ],
+                clearButton: true,
+                extraBind: {
+                    'placeholder': "Digita le iniziali di un comune...",
+                    'dropdown': true,
+                    'option-label': function (obj) {
+                        if (!obj.nome) {
+                            return null;
+                        }
+                        return obj.nome + ' (' + obj.sigla_provincia + ')';
+                    },
+                    'option-value': 'id',
+                },
+                label: 'Comune',
+                change() {
+                    var self = this;
+                    self.view.getWidget('catastale_comune').setValue(this.autocompleteValue.codice_catastale);
+                }
+            },
+
 
         }
 

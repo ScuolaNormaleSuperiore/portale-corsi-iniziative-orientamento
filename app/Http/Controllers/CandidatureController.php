@@ -14,6 +14,7 @@ use App\Models\Scuola;
 use App\Models\SezioneLayout;
 use App\Models\StudenteOrientamento;
 use App\Models\Video;
+use App\Policies\CandidatoPolicy;
 use Gecche\Foorm\Facades\Foorm;
 use Gecche\Foorm\FoormAction;
 use Igaster\LaravelTheme\Facades\Theme;
@@ -50,23 +51,48 @@ class CandidatureController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $iniziative = Iniziativa::with('authcandidature')
-            ->where('attivo', 1)
+        $deleteId = $request->get('delete');
+
+        $errors = [];
+        $success = null;
+
+
+        if ($deleteId) {
+            $candidatura = Candidato::find($deleteId);
+            if ($candidatura && $candidatura->getKey() && $this->checkUserEdit($request,$candidatura)) {
+                try {
+                    $candidatura->delete();
+                    $success = "Candidatura eliminata con successo";
+                } catch (\Throwable $e) {
+                    Log::info("Cancellazione candidatura ERROR");
+                    Log::info($e->getMessage());
+                    Log::info($e->getTraceAsString());
+                    $errors[] = "Problemi nella cancellazione della candidatura";
+                }
+            } else {
+                $errors[] = "Problemi nella cancellazione della candidatura";
+            }
+        }
+
+        $iniziative = Iniziativa::where('attivo', 1)
             ->whereDate('data_apertura', '<=', date('Y-m-d'))
             ->whereDate('data_chiusura', '>=', date('Y-m-d'))
             ->orderBy('data_apertura', 'ASC')
             ->get();
 
 
+
+
         $user = Auth::user();
+
         $nomeCognome = $user->fename;
 
-        $maxCandidatureScuole = config('sns.max_candidature_scuole', 5);
+        //$maxCandidatureScuole = config('sns.max_candidature_scuole', 5);
 
 
-        return view('candidature.index', compact('iniziative', 'nomeCognome', 'maxCandidatureScuole'));
+        return view('candidature.index', compact('iniziative', 'nomeCognome', 'errors', 'success'));
     }
 
     protected function setOptionsInStepData($stepData, $metadata)
@@ -152,15 +178,18 @@ class CandidatureController extends Controller
                 $maxCandidature = 1;
                 break;
             case 'Scuola':
-                $maxCandidature = config('sns.max_candidature_scuole', 5);
+                $maxCandidature = $iniziativa->max_candidature_scuola;
                 break;
             default:
                 return false;
         }
+        if (is_null($maxCandidature)) {
+            return true;
+        }
         $countCandidature = Candidato::where('iniziativa_id', $iniziativa->getKey())
             ->where('user_id', Auth::id())
             ->count();
-        if ($countCandidature < $maxCandidature) {
+         if ($countCandidature < $maxCandidature) {
             return true;
         }
         return false;
@@ -185,7 +214,11 @@ class CandidatureController extends Controller
             case 'Superutente':
                 return true;
             default:
-                return $candidatura->user_id == Auth::id();
+                $candidatoPolicy = new CandidatoPolicy();
+                if ($edit) {
+                    return $candidatoPolicy->update(Auth::user(),$candidatura);
+                }
+                return $candidatoPolicy->view(Auth::user(),$candidatura);
         }
 
     }

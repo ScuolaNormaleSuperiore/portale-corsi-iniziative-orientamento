@@ -62,28 +62,44 @@
 
                     <div class="col-lg-6 col-md-6 pb-2 d-flex flex-column justify-content-end">
                         <div class="pb-2">
-                            <h4><a href="#" title="Vai alla pagina: Seguici su">Seguici su</a></h4>
+                            <h4><a href="#" title="Vai alla pagina: Segui la Scuola Normale su">Segui la Scuola Normale su</a></h4>
                             <ul class="list-inline text-left social">
+
+
                                 <li class="list-inline-item">
-                                    <a class="p-2 text-white" href="#" target="_blank">
+                                    <a class="p-2 text-white" href="https://www.facebook.com/scuolanormale" target="_blank">
                                         <svg class="icon icon-sm icon-white align-top">
                                             <use xlink:href="{{Theme::url('svg/sprites.svg')}}#it-facebook"></use>
                                         </svg>
                                         <span class="visually-hidden">Facebook</span></a>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a class="p-2 text-white" href="#" target="_blank">
+                                    <a class="p-2 text-white" href="https://www.instagram.com/scuolanormale" target="_blank">
                                         <svg class="icon icon-sm icon-white align-top">
                                             <use xlink:href="{{Theme::url('svg/sprites.svg')}}#it-instagram"></use>
                                         </svg>
                                         <span class="visually-hidden">Instagram</span></a>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a class="p-2 text-white" href="#" target="_blank">
+                                    <a class="p-2 text-white" href="https://www.youtube.com/user/ScuolaNormale" target="_blank">
+                                        <svg class="icon icon-sm icon-white align-top">
+                                            <use xlink:href="{{Theme::url('svg/sprites.svg')}}#it-youtube"></use>
+                                        </svg>
+                                        <span class="visually-hidden">Youtube</span></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="p-2 text-white" href="https://www.linkedin.com/school/scuola-normale-superiore/" target="_blank">
+                                        <svg class="icon icon-sm icon-white align-top">
+                                            <use xlink:href="{{Theme::url('svg/sprites.svg')}}#it-linkedin"></use>
+                                        </svg>
+                                        <span class="visually-hidden">LinkedIn</span></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="p-2 text-white" href="https://www.twitter.com/scuolanormale/" target="_blank">
                                         <svg class="icon icon-sm icon-white align-top">
                                             <use xlink:href="{{Theme::url('svg/sprites.svg')}}#it-twitter"></use>
                                         </svg>
-                                        <span class="visually-hidden">Twitter</span></a>
+                                        <span class="visually-hidden">X</span></a>
                                 </li>
                             </ul>
                         </div>

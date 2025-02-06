@@ -31,21 +31,20 @@ class SamlSignedInListener
         $attributes = $samlUser->getAttributes();
 
 
-        $externalLoginType = Arr::get($attributes,'externalIDPLoA',[]);
+        $externalLoginType = Arr::first(Arr::get($attributes,'externalIDPLoA',[]));
         switch ($externalLoginType) {
 
             case 'LoA2': //ATENEO
                 $normalizedAttributes = [
-                    'spidName' => Arr::get($attributes,'urn:oid:2.5.4.42'),
-                    'spidFamilyName' => Arr::get($attributes,'urn:oid:2.5.4.4'),
-                    'spidEmail' => Arr::get($attributes,'urn:oid:0.9.2342.19200300.100.1.1'),
+                    'spidName' => Arr::get($attributes, 'urn:oid:2.5.4.42'),
+                    'spidFamilyName' => Arr::get($attributes, 'urn:oid:2.5.4.4'),
+                    'spidEmail' => Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1'),
                     'externalIDPLoA' => $externalLoginType,
                 ];
                 break;
             default: //SPID (LoA3), CIE (?)
                 $normalizedAttributes = $attributes;
                 break;
-
         }
 
         $userData = [
@@ -62,7 +61,7 @@ class SamlSignedInListener
         if ($user) {
 
             $info = $user->info;
-            $info = array_merge($info,$normalizedAttributes);
+            $info = array_merge($info, $normalizedAttributes);
             $user->info = $info;
             $user->save();
             // Login the user
@@ -76,8 +75,8 @@ class SamlSignedInListener
                 'name' => $userEmail,
                 'email' => $userEmail,
                 'password' => \bcrypt($randomPassword),
-                'nome' => implode(" ",Arr::get($normalizedAttributes, 'spidName')),
-                'cognome' => implode(" ",Arr::get($normalizedAttributes, 'spidFamilyName')),
+                'nome' => implode(" ", Arr::get($normalizedAttributes, 'spidName')),
+                'cognome' => implode(" ", Arr::get($normalizedAttributes, 'spidFamilyName')),
                 'info' => $normalizedAttributes,
                 'email_verified_at' => now()->toDateTimeString(),
             ];

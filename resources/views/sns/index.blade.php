@@ -2,8 +2,14 @@
 @section('content-body')
     <div class="container-fluid px-0">
 
-        @if($avvisi->count() > 0)
+
+        @if($avvisi->count() > 0 || request()->get('newsletterconfirmed'))
             <section class="my-2 px-2 bg-white d-flex flex-column gap-2">
+                @if(request()->get('newsletterconfirmed'))
+                    <div class="alert alert-success mb-0" role="alert">
+                        Il tuo indirizzo email è stato aggiunto alla nostra newsletter
+                    </div>
+                @endif
                 @foreach ($avvisi as $avviso)
                     <div class="alert alert-{{$avviso->tipo ?: 'success'}} mb-0" role="alert">
                         {!! $avviso->descrizione !!}
@@ -45,41 +51,14 @@
         </section>
 
 
-        <section class="evidence-section">
-            <div class=""
-                 {{--                 style="background: linear-gradient(to bottom, #B8D9E2 50%, #FFFFFF 50%);"--}}
-                 style="background-color: #B8D9E2;margin-bottom:-120px;min-height:260px;padding-top:40px;"
-            >
-                <div class="container" style="">
-                    <div class="row">
-                        <h2 class="text-center">Per saperne di più</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="container" style="background-color: transparent">
-                <div class="row">
-                    <div class="col-12 col-lg-6">
-                        @include('components/card-img-bottom',['title' => "Parla con noi",
-                                'subtitle' =>  "chiedi al nostro chatbot o consulta le nostre FAQ",
-                                'img' =>  Theme::url('/assets/img1.png')
-                                ])
-                    </div>
-                    <div class="col-12 col-lg-6">
-                        @include('components/card-img-bottom',['title' => "Sportello da Studente a Studente",
-                                'subtitle' =>  "incontra online i nostri studenti Tutor",
-                                'img' =>  Theme::url('/assets/img2.png')
-                                ])
-                    </div>
-                </div>
-            </div>
-        </section>
+
 
         {{--        Pagine orientamento--}}
 
         <section style="background-color:#F4FAFB" class="pt-5">
 
             <div class="container">
-                <h2>Partecipa alle nostre attività di orientamento</h2>
+                <h2>Conosci le attività di orientamento</h2>
                 <p class="" style="color:#2F475E;">Scopri le opportunità offerte per partecipare ad eventi di
                     orientamento, visitare i luoghi della Normale e vivere esperienze educative uniche.</p>
                 <div class="row pb-5">
@@ -104,32 +83,66 @@
                 </div>
             </div>
         </section>
+            {{--        Corsi--}}
 
-        {{--        Corsi--}}
+            @if ($corsi->count() > 0)
+                <section style="background-color:white;" class="pt-5 border-bottom">
 
-        @if ($corsi->count() > 0)
-            <section style="background-color:white;" class="pt-5 border-bottom">
+                    <div class="container">
+                        <h2>I nostri corsi</h2>
+                        {{--                <p class="" style="color:#2F475E;">Scopri le opportunità offerte per partecipare ad eventi di--}}
+                        {{--                    orientamento, visitare i luoghi della Normale e vivere esperienze educative uniche.</p>--}}
+                        <div class="row pb-5">
+                            <div class="card-wrapper card-teaser-wrapper card-teaser-block-3">
+                                <!--start card-->
+                                @foreach($corsi as $corso)
+                                    @include('components.card-corso',['corso' => $corso])
+                                @endforeach
 
-                <div class="container">
-                    <h2>I nostri corsi</h2>
-                    {{--                <p class="" style="color:#2F475E;">Scopri le opportunità offerte per partecipare ad eventi di--}}
-                    {{--                    orientamento, visitare i luoghi della Normale e vivere esperienze educative uniche.</p>--}}
-                    <div class="row pb-5">
-                        <div class="card-wrapper card-teaser-wrapper card-teaser-block-3">
-                            <!--start card-->
-                            @foreach($corsi as $corso)
-                                @include('components.card-corso',['corso' => $corso])
-                            @endforeach
+                            </div>
+                        </div>
 
+                    </div>
+                </section>
+            @endif
+
+
+            {{-- Per saperne di più --}}
+
+            <section class="evidence-section">
+                <div class=""
+                     {{--                 style="background: linear-gradient(to bottom, #B8D9E2 50%, #FFFFFF 50%);"--}}
+                     style="background-color: #B8D9E2;margin-bottom:-120px;min-height:260px;padding-top:40px;"
+                >
+                    <div class="container" style="">
+                        <div class="row">
+                            <h2 class="text-center">Per saperne di più</h2>
                         </div>
                     </div>
-
+                </div>
+                <div class="container" style="background-color: transparent">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            @include('components/card-img-bottom',['title' => "Parla con noi",
+                                    'subtitle' =>  "chiedi al nostro chatbot o consulta le nostre FAQ",
+                                    'img' =>  Theme::url('/assets/img1.png'),
+                                    'link' => '/chat',
+                                    ])
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            @include('components/card-img-bottom',['title' => "Sportello da Studente a Studente",
+                                    'subtitle' =>  "incontra online i nostri studenti Tutor",
+                                    'img' =>  Theme::url('/assets/img2.png'),
+                                    'link' => '/sportello-studenti',
+                                    ])
+                        </div>
+                    </div>
                 </div>
             </section>
-        @endif
 
         {{--        News--}}
 
+        @if (count($feeds) > 0)
         <section class="pt-5">
             <div class="container">
                 <h2 class="pb-5">In evidenza</h2>
@@ -186,6 +199,7 @@
                 </div>
             </div>
         </section>
+        @endif
 
 
         {{-- Video --}}
@@ -255,6 +269,7 @@
 
         {{--        Eventi--}}
 
+        @if($eventi->count() > 0)
         <section class="pt-5" style="background-color:#F4FAFB">
             <div class="container">
                 <h2 class="pb-5">Eventi</h2>
@@ -320,6 +335,7 @@
             </div>
         </section>
 
+        @endif
         {{--        Evento speciale --}}
 
         @if($eventoSpeciale)

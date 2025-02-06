@@ -149,7 +149,7 @@
                             <div class="it-brand-wrapper">
                                 <a href="/">
 
-                                    <img class="icon" src="{{Theme::url('svg/logo-primary.svg')}}"
+                                    <img class="icon" src="{{Theme::url('assets/logo_sns.png')}}"
                                          alt="SNS orientamenti"/>
 
                                     {{--                                <svg class="icon" aria-hidden="true">--}}
@@ -158,32 +158,45 @@
                                     {{--                                </svg>--}}
                                     <div class="it-brand-text">
                                         <div class="it-brand-title">OrientaMenti</div>
-                                        <div class="it-brand-tagline d-none d-md-block">Corsi di orientamento della
-                                            Scuola Normale Superiore
+                                        <div class="it-brand-tagline d-none d-md-block">Attività di orientamento della Scuola Normale Superiore
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="it-right-zone">
                                 <div class="it-socials d-none d-md-flex">
-                                    <span>Seguici su</span>
+                                    <span>Segui la Scuola Normale su</span>
                                     <ul>
                                         <li>
-                                            <a href="#" aria-label="Facebook" target="_blank">
+                                            <a href="https://www.facebook.com/scuolanormale" aria-label="Facebook" target="_blank">
                                                 <svg class="icon">
                                                     <use href="{{Theme::url('svg/sprites.svg')}}#it-facebook"></use>
                                                 </svg>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#" aria-label="Instagram" target="_blank">
+                                            <a href="https://www.instagram.com/scuolanormale" aria-label="Instagram" target="_blank">
                                                 <svg class="icon">
                                                     <use href="{{Theme::url('svg/sprites.svg')}}#it-instagram"></use>
                                                 </svg>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#" aria-label="Twitter" target="_blank">
+                                            <a href="https://www.youtube.com/user/ScuolaNormale" aria-label="Youtube" target="_blank">
+                                                <svg class="icon">
+                                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-youtube"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.linkedin.com/school/scuola-normale-superiore/" aria-label="LinkedIn" target="_blank">
+                                                <svg class="icon">
+                                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-linkedin"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.twitter.com/scuolanormale/" aria-label="X" target="_blank">
                                                 <svg class="icon">
                                                     <use href="{{Theme::url('svg/sprites.svg')}}#it-twitter"></use>
                                                 </svg>
@@ -232,9 +245,11 @@
                                 </div>
                                 <div class="menu-wrapper">
                                     <a href="#" class="logo-hamburger">
-                                        <svg class="icon" aria-hidden="true">
-                                            <use href="{{Theme::url('svg/logo.svg')}}"></use>
-                                        </svg>
+                                        <img class="" style="width:90px; height:62px; padding-right:10px;" src="{{Theme::url('assets/logo_sns.png')}}"
+                                             alt="SNS orientamenti"/>
+{{--                                        <svg class="icon" aria-hidden="true">--}}
+{{--                                            <use href="{{Theme::url('svg/logo.svg')}}"></use>--}}
+{{--                                        </svg>--}}
                                         <div class="it-brand-text">
                                             <div class="it-brand-title">OrientaMenti</div>
                                         </div>
@@ -266,28 +281,42 @@
                                         </ul>
                                     </nav>
                                     <div class="it-socials">
-                                        <span>Seguici su</span>
-                                        <ul>
+                                        <span>Segui la Scuola Normale su</span>
+                                        <ul class="list-unstyled">
                                             <li>
-                                                <a href="#" target="_blank">
+                                                <a href="https://www.facebook.com/scuolanormale" target="_blank">
                                                     <svg class="icon icon-sm icon-white align-top">
                                                         <use href="{{Theme::url('svg/sprites.svg')}}#it-facebook"></use>
                                                     </svg>
                                                     <span class="visually-hidden">Facebook</span></a>
                                             </li>
                                             <li>
-                                                <a href="#" target="_blank">
+                                                <a href="https://www.instagram.com/scuolanormale" target="_blank">
                                                     <svg class="icon icon-sm icon-white align-top">
                                                         <use href="{{Theme::url('svg/sprites.svg')}}#it-instagram"></use>
                                                     </svg>
                                                     <span class="visually-hidden">Instagram</span></a>
                                             </li>
                                             <li>
-                                                <a href="#" target="_blank">
+                                                <a href="https://www.youtube.com/user/ScuolaNormale" target="_blank">
+                                                    <svg class="icon icon-sm icon-white align-top">
+                                                        <use href="{{Theme::url('svg/sprites.svg')}}#it-youtube"></use>
+                                                    </svg>
+                                                    <span class="visually-hidden">Youtube</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.linkedin.com/school/scuola-normale-superiore/" target="_blank">
+                                                    <svg class="icon icon-sm icon-white align-top">
+                                                        <use href="{{Theme::url('svg/sprites.svg')}}#it-linkedin"></use>
+                                                    </svg>
+                                                    <span class="visually-hidden">LinkedIn</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.twitter.com/scuolanormale/" target="_blank">
                                                     <svg class="icon icon-sm icon-white align-top">
                                                         <use href="{{Theme::url('svg/sprites.svg')}}#it-twitter"></use>
                                                     </svg>
-                                                    <span class="visually-hidden">Twitter</span></a>
+                                                    <span class="visually-hidden">X</span></a>
                                             </li>
                                         </ul>
                                     </div>

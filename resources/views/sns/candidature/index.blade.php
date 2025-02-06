@@ -3,6 +3,27 @@
     <div class="container-fluid">
 
 
+        @if (isset($errors) && count($errors) > 0)
+            <div class="row mt-4">
+                <div class="col-12">
+                    @foreach ($errors as $error)
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {!! $error !!}
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+        @if (isset($success) && $success)
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {!! $success !!}
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <section class="pb-5 mb-1  px-2 ps-4" style="">
             <nav class="breadcrumb-container" aria-label="Percorso di navigazione">
                 <ol class="breadcrumb">
@@ -42,18 +63,40 @@
                                                 @if ($candidatura)
 
                                                     @if ($candidatura->status == \App\Enums\CandidatoStatuses::BOZZA->value)
-                                                        <a href="/candidatura/edit/{{$candidatura->getKey()}}">
-                                                            <button type="button" class="btn btn-outline-primary">
-                                                                <div style="position:absolute;right:-10px;top:-10px;">
-                                                                    <small><span class="badge rounded-pill bg-primary"
-                                                                                 style="">Bozza</span></small></div>
-                                                                Gestisci la candidatura
+                                                        @if($candidatura->user_id == \Illuminate\Support\Facades\Auth::id())
+                                                            <a href="/candidatura/edit/{{$candidatura->getKey()}}">
+                                                                <button type="button" class="btn btn-outline-primary"
+
+                                                                >
+                                                                    <div
+                                                                        style="position:absolute;left:-10px;top:-10px;">
+                                                                        <small><span
+                                                                                class="badge rounded-pill bg-primary"
+                                                                                style="">Bozza</span></small></div>
+                                                                    Gestisci la candidatura
+                                                                </button>
+                                                            </a>
+                                                            <button type="button"
+                                                                    class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura"
+                                                                    data-candidatura="{{$candidatura->getKey()}}"
+                                                            >
+                                                                <svg class="icon icon-danger"
+                                                                     data-candidatura="{{$candidatura->getKey()}}">
+                                                                    <use
+                                                                        href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>
+                                                                </svg>
                                                             </button>
-                                                        </a>
+                                                        @else
+                                                            <p>
+                                                                <strong>Il referente della tua scuola sta gestendo la
+                                                                    tua candidatura: la potrai visualizzare una volta
+                                                                    inviata.</strong>
+                                                            </p>
+                                                        @endif
                                                     @else
                                                         <a href="/candidatura/view/{{$candidatura->getKey()}}">
                                                             <button type="button" class="btn btn-outline-primary">
-                                                                <div style="position:absolute;right:-10px;top:-10px;">
+                                                                <div style="position:absolute;left:-10px;top:-10px;">
 
                                                                     <small><span class="badge rounded-pill
                                                                         {{$candidatura->status == 'inviata' ? 'bg-primary' : ($candidatura->status == 'approvata' ? 'bg-success' : 'bg-danger')}}
@@ -75,22 +118,32 @@
                                             </div>
                                         </div>
                                     @elseif ($ruolo == 'Scuola')
-                                        <div class="d-flex justify-content-start pb-5 gap-3">
+                                        <div class="d-flex flex-wrap justify-content-start pb-5 gap-5">
                                             @foreach ($candidature as $candidatura)
                                                 <div class="position-relative">
                                                     @if ($candidatura->status == \App\Enums\CandidatoStatuses::BOZZA->value)
                                                         <a href="/candidatura/edit/{{$candidatura->getKey()}}">
                                                             <button type="button" class="btn btn-outline-primary">
-                                                                <div style="position:absolute;right:-10px;top:-10px;">
+                                                                <div style="position:absolute;left:-10px;top:-10px;">
                                                                     <small><span class="badge rounded-pill bg-primary"
                                                                                  style="">Bozza</span></small></div>
                                                                 {{$candidatura->fename}}
                                                             </button>
                                                         </a>
+                                                        <button type="button"
+                                                                class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura"
+                                                                data-candidatura="{{$candidatura->getKey()}}"
+                                                        >
+                                                            <svg class="icon icon-danger"
+                                                                 data-candidatura="{{$candidatura->getKey()}}">
+                                                                <use
+                                                                    href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>
+                                                            </svg>
+                                                        </button>
                                                     @else
                                                         <a href="/candidatura/view/{{$candidatura->getKey()}}">
                                                             <button type="button" class="btn btn-outline-primary">
-                                                                <div style="position:absolute;right:-10px;top:-10px;">
+                                                                <div style="position:absolute;left:-10px;top:-10px;">
 
                                                                     <small><span class="badge rounded-pill
                                                                         {{$candidatura->status == 'inviata' ? 'bg-primary' : ($candidatura->status == 'approvata' ? 'bg-success' : 'bg-danger')}}
@@ -103,7 +156,7 @@
                                                     @endif
                                                 </div>
                                             @endforeach
-                                            @if ($candidature->count() < $maxCandidatureScuole)
+                                            @if (is_null($iniziativa->max_candidature_scuola) || $candidature->count() < $iniziativa->max_candidature_scuola)
                                                 <div class="position-relative">
 
                                                     <a href="/candidatura/{{$iniziativa->getKey()}}/new">
@@ -113,6 +166,12 @@
                                                     </a>
                                                 </div>
                                             @endif
+                                        </div>
+                                        <div>
+                                            Candidature effettuate dalla scuola:
+                                            <strong>{{$candidature->count()}}</strong><br/>
+                                            Candidature ancora disponibili per la scuola:
+                                            <strong>{{is_null($iniziativa->max_candidature_scuola)?"Illimitate":(max(0,($iniziativa->max_candidature_scuola - $candidature->count())))}}</strong>
                                         </div>
                                     @endif
                                 </div>
@@ -126,5 +185,56 @@
         </section>
 
     </div>
+
+    <div class="it-example-modal">
+        <div class="container">
+            <div class="modal" tabindex="-1" role="dialog" id="modal-delete-candidatura"
+                 aria-labelledby="modal7Title">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal7Title">Cancellazione candidatura</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>Confermi la cancellazione della candidatura?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary btn-sm" id="delete-candidatura-button-modal" type="button">
+                                Conferma cancellazione
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-dismiss="modal">Torna
+                                indietro
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            let deleteModal = new bootstrap.Modal(document.getElementById('modal-delete-candidatura'), {});
+
+            let buttons = document.getElementsByClassName('delete-candidatura');
+
+            for (var i = 0, len = buttons.length; i < len; i++) {
+                buttons[i].addEventListener('click', function (ev) {
+                    var el = ev.target;
+                    var candidaturaId = el.getAttribute('data-candidatura');
+                    console.log("CAND", candidaturaId, el)
+                    deleteModal.show();
+                    var deleteButton = document.getElementById('delete-candidatura-button-modal');
+                    // deleteButton.removeEventListener('click');
+                    deleteButton.addEventListener('click', function () {
+                        window.location.href = "/candidature?delete=" + candidaturaId;
+                    });
+                }, false);
+            }
+
+        })
+
+    </script>
 @stop
 

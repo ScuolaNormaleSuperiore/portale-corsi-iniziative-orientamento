@@ -306,7 +306,7 @@ return [
 
             ],
             "area_geografica" => [
-                'options' => 'method',
+                'options' => 'enum:'.\App\Enums\ScuolaAreaGeografica::class,
             ],
             "regione_id" => [
 
@@ -335,13 +335,14 @@ return [
             "catastale_comune" => [
 
             ],
-            "comune" => [
+            "comune_id" => [
 
             ],
             "caratteristica" => [
-
+                'options' => 'enum:'.\App\Enums\ScuolaCaratteristica::class,
             ],
             "tipologia_grado_istruzione" => [
+                'options' => 'enum:'.\App\Enums\ScuolaTipologiaGradoIstruzione::class,
 
             ],
             "indicazione_sede_direttivo" => [
@@ -349,6 +350,9 @@ return [
             ],
             "indicazione_sede_omnicomprensivo" => [
 
+            ],
+            "tipo" => [
+                'options' => 'enum:'.\App\Enums\ScuolaTipo::class,
             ],
             "email" => [
 

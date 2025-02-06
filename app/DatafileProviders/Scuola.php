@@ -33,6 +33,7 @@ class Scuola extends BreezeDatafileProvider
      * array del tipo di datafile, ha la seguente forma: array( 'headers' => array( 'header1' => array( 'datatype' => 'string|int|data...', (default string) 'checks' => array( 'checkCallback1' => array(params => paramsArray,type => error|alert), ... 'checkCallbackN' => array(params => paramsArray,type => error|alert), ), (deafult array()) 'transforms' => array( 'transformCallback1' => array(params), ... 'transformCallbackN' => array(params), ), (default array()) 'blocking' => true|false (default false) ) ... 'headerN' => array( 'datatype' => 'string|int|data...', (default string) 'checks' => array( 'checkCallback1' => array(params), ... 'checkCallbackN' => array(params), ), (deafult array()) 'transforms' => array( 'transformCallback1' => array(params), ... 'transformCallbackN' => array(params), ), (default array()) ) 'peremesso' => 'permesso_string' (default 'datafile_upload') 'blocking' => true|false (default false) ) ) I chechCallbacks e transformCallbacks sono dei nomi di funzioni di questo modello (o sottoclassi) dichiarati come protected e con il nome del callback preceduto da _check_ o _transform_ e che accettano i parametri specificati I checkCallbacks hanno anche un campo che specifica se si tratta di errore o di alert I checks servono per verificare se i dati del campo corrispondono ai requisiti richiesti I transforms trasformano i dati in qualcos'altro (es: formato della data da gg/mm/yyyy a yyyy-mm-gg) Vengono eseguiti prima tutti i checks e poi tutti i transforms (nell'ordine specificato dall'array) Blocking invece definisce se un errore nei check di una riga corrisponde al blocco dell'upload datafile o se si può andare avanti saltando quella riga permesso è se il
      */
 
+    protected $comuni;
     protected $province;
     protected $provinceRegioni;
 
@@ -99,6 +100,9 @@ class Scuola extends BreezeDatafileProvider
         $this->provinceRegioni = $province->pluck('regione_id', 'id')->all();
 
         $this->province = array_flip(array_map('strtolower', $this->province));
+
+        $this->comuni = DB::table('comuni')->select(['id','codice_catastale'])
+            ->get()->pluck('id','codice_catastale')->all();
 
     }
 
@@ -194,6 +198,7 @@ class Scuola extends BreezeDatafileProvider
         $values['info'] = $modelTarget->addAnnoToInfo(trim($modelDatafile->ANNOSCOLASTICO));
 
 
+        $values['comune_id'] = Arr::get($this->comuni,$values['catastale_comune']);
         $values['regione_id'] = Arr::get($this->provinceRegioni,$values['provincia_id']);
 
         $values['tipo'] = 'pubblica';

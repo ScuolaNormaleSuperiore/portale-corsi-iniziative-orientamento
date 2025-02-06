@@ -1,6 +1,6 @@
 {{--NOTIFICHE NEWSLETTER--}}
 <div class="container test-desktop">
-    <div class="notification with-icon success" role="alert" aria-labelledby="not-newsletter-success-title"
+    <div class="notification right-fix with-icon success" role="alert" aria-labelledby="not-newsletter-success-title"
          id="not-newsletter-success-doi">
         <h2 id="not-newsletter-success-title" class="h5 ">
             <svg class="icon">

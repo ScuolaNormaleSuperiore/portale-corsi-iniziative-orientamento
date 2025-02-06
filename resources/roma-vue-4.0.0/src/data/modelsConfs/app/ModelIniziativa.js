@@ -68,6 +68,7 @@ export default {
 			'data_apertura',
 			'data_chiusura',
 			'modalita_candidatura',
+            'max_candidature_scuola',
 			'attivo',
 
         ],
@@ -87,6 +88,12 @@ export default {
 			'modalita_candidatura' : {
                 type : "w-text",
 			},
+            'max_candidature_scuola' : {
+                type : "w-custom",
+                ready() {
+                    this.value = this.value === null ? 'Illimitate' : this.value;
+                }
+            },
 			'attivo' : {
                 type : "w-swap",
                 modelName : 'iniziativa',
@@ -117,6 +124,7 @@ export default {
 			'data_apertura',
 			'data_chiusura',
 
+            'max_candidature_scuola',
             'posti',
             'posti_onere',
             'note',
@@ -133,6 +141,10 @@ export default {
 			'titolo' : {
                 type : "w-input",
 			},
+            'max_candidature_scuola' : {
+                type : "w-input",
+                inputType: 'number',
+            },
 			'descrizione' : {
                 type : "w-texthtml",
                 htmlAttributes: {},

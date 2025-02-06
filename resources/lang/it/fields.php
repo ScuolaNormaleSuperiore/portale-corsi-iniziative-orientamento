@@ -126,4 +126,5 @@ return array (
   'nazione_id' => 'nazione',
   'prefisso' => 'prefisso',
     'comune_id' => 'comune',
+    'max_candidature_scuola' => 'Max candidature x scuola',
 );

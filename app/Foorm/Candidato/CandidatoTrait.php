@@ -5,6 +5,7 @@ namespace App\Foorm\Candidato;
 
 use App\Models\Corso;
 use App\Models\Evento;
+use App\Rules\CandidatoCodiceFiscale;
 use App\Rules\CodiceFiscale;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
@@ -67,10 +68,13 @@ trait CandidatoTrait
         $nazione = Arr::get($input,'nazione_id');
         if ($nazione) {
             if ($nazione == 1) {
-                $validationRules['codice_fiscale'] = ['required', new CodiceFiscale()];
+                $validationRules['codice_fiscale'] = ['required', new CodiceFiscale(), new CandidatoCodiceFiscale($input)];
                 $validationRules['comune_id'] = ['required'];
+                $validationRules['comune_estero'] = [];
             } else {
+                $validationRules['codice_fiscale'] = [new CandidatoCodiceFiscale($input)];
                 $validationRules['comune_estero'] = ['required'];
+                $validationRules['comune_id'] = [];
             }
         }
 
@@ -155,10 +159,10 @@ trait CandidatoTrait
         Log::info("HERE CORSI " . $this->model->iniziativa_id);
         $corso = new Corso();
         if (!$this->model->iniziativa) {
-            return $corso->getForSelectList();
+            return $corso->getForSelectList(null,null,[],null,'dates');
         }
 
-        return $corso->getForSelectList($corso->where('iniziativa_id',$this->model->iniziativa_id));
+        return $corso->getForSelectList($corso->where('iniziativa_id',$this->model->iniziativa_id),null,[],null,'dates');
 
     }
 
