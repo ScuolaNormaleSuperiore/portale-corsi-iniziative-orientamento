@@ -168,13 +168,6 @@
                                     <span>Segui la Scuola Normale su</span>
                                     <ul>
                                         <li>
-                                            <a href="https://www.facebook.com/scuolanormale" aria-label="Facebook" target="_blank">
-                                                <svg class="icon">
-                                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-facebook"></use>
-                                                </svg>
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a href="https://www.instagram.com/scuolanormale" aria-label="Instagram" target="_blank">
                                                 <svg class="icon">
                                                     <use href="{{Theme::url('svg/sprites.svg')}}#it-instagram"></use>
@@ -182,9 +175,12 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.youtube.com/user/ScuolaNormale" aria-label="Youtube" target="_blank">
-                                                <svg class="icon">
-                                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-youtube"></use>
+                                            <a href="https://bsky.app/profile/scuolanormale.bsky.social" aria-label="Bluesky" target="_blank">
+                                                <svg class="icon" fill="none" viewBox="0 0 64 57">
+                                                    <path fill="#005a73"
+                                                          d="M13.873 3.805C21.21 9.332 29.103 20.537 32 26.55v15.882c0-.338-.13.044-.41.867-1.512 4.456-7.418 21.847-20.923 7.944-7.111-7.32-3.819-14.64 9.125-16.85-7.405 1.264-15.73-.825-18.014-9.015C1.12 23.022 0 8.51 0 6.55 0-3.268 8.579-.182 13.873 3.805ZM50.127 3.805C42.79 9.332 34.897 20.537 32 26.55v15.882c0-.338.13.044.41.867 1.512 4.456 7.418 21.847 20.923 7.944 7.111-7.32 3.819-14.64-9.125-16.85 7.405 1.264 15.73-.825 18.014-9.015C62.88 23.022 64 8.51 64 6.55c0-9.818-8.578-6.732-13.873-2.745Z">
+
+                                                    </path>
                                                 </svg>
                                             </a>
                                         </li>
@@ -196,9 +192,17 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.twitter.com/scuolanormale/" aria-label="X" target="_blank">
+                                            <a href="https://www.facebook.com/scuolanormale" aria-label="Facebook" target="_blank">
                                                 <svg class="icon">
-                                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-twitter"></use>
+                                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-facebook"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="https://www.youtube.com/user/ScuolaNormale" aria-label="Youtube" target="_blank">
+                                                <svg class="icon">
+                                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-youtube"></use>
                                                 </svg>
                                             </a>
                                         </li>
@@ -284,13 +288,6 @@
                                         <span>Segui la Scuola Normale su</span>
                                         <ul class="list-unstyled">
                                             <li>
-                                                <a href="https://www.facebook.com/scuolanormale" target="_blank">
-                                                    <svg class="icon icon-sm icon-white align-top">
-                                                        <use href="{{Theme::url('svg/sprites.svg')}}#it-facebook"></use>
-                                                    </svg>
-                                                    <span class="visually-hidden">Facebook</span></a>
-                                            </li>
-                                            <li>
                                                 <a href="https://www.instagram.com/scuolanormale" target="_blank">
                                                     <svg class="icon icon-sm icon-white align-top">
                                                         <use href="{{Theme::url('svg/sprites.svg')}}#it-instagram"></use>
@@ -298,11 +295,14 @@
                                                     <span class="visually-hidden">Instagram</span></a>
                                             </li>
                                             <li>
-                                                <a href="https://www.youtube.com/user/ScuolaNormale" target="_blank">
-                                                    <svg class="icon icon-sm icon-white align-top">
-                                                        <use href="{{Theme::url('svg/sprites.svg')}}#it-youtube"></use>
+                                                <a href="https://bsky.app/profile/scuolanormale.bsky.social" target="_blank">
+                                                    <svg class="icon icon-sm icon-white align-top" fill="none" viewBox="0 0 64 57">
+                                                        <path fill="#005a73"
+                                                              d="M13.873 3.805C21.21 9.332 29.103 20.537 32 26.55v15.882c0-.338-.13.044-.41.867-1.512 4.456-7.418 21.847-20.923 7.944-7.111-7.32-3.819-14.64 9.125-16.85-7.405 1.264-15.73-.825-18.014-9.015C1.12 23.022 0 8.51 0 6.55 0-3.268 8.579-.182 13.873 3.805ZM50.127 3.805C42.79 9.332 34.897 20.537 32 26.55v15.882c0-.338.13.044.41.867 1.512 4.456 7.418 21.847 20.923 7.944 7.111-7.32 3.819-14.64-9.125-16.85 7.405 1.264 15.73-.825 18.014-9.015C62.88 23.022 64 8.51 64 6.55c0-9.818-8.578-6.732-13.873-2.745Z">
+
+                                                        </path>
                                                     </svg>
-                                                    <span class="visually-hidden">Youtube</span></a>
+                                                    <span class="visually-hidden">Bluesky</span></a>
                                             </li>
                                             <li>
                                                 <a href="https://www.linkedin.com/school/scuola-normale-superiore/" target="_blank">
@@ -311,12 +311,21 @@
                                                     </svg>
                                                     <span class="visually-hidden">LinkedIn</span></a>
                                             </li>
+
                                             <li>
-                                                <a href="https://www.twitter.com/scuolanormale/" target="_blank">
+                                                <a href="https://www.facebook.com/scuolanormale" target="_blank">
                                                     <svg class="icon icon-sm icon-white align-top">
-                                                        <use href="{{Theme::url('svg/sprites.svg')}}#it-twitter"></use>
+                                                        <use href="{{Theme::url('svg/sprites.svg')}}#it-facebook"></use>
                                                     </svg>
-                                                    <span class="visually-hidden">X</span></a>
+                                                    <span class="visually-hidden">Facebook</span></a>
+                                            </li>
+
+                                            <li>
+                                                <a href="https://www.youtube.com/user/ScuolaNormale" target="_blank">
+                                                    <svg class="icon icon-sm icon-white align-top">
+                                                        <use href="{{Theme::url('svg/sprites.svg')}}#it-youtube"></use>
+                                                    </svg>
+                                                    <span class="visually-hidden">Youtube</span></a>
                                             </li>
                                         </ul>
                                     </div>

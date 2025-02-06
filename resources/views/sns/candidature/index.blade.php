@@ -36,10 +36,11 @@
             <hr/>
         </section>
 
-        <section class="mx-5 px-5 mb-4">
+        <section class="container px-5 mb-4">
 
             <div class="row mb-5 pb-5 border-bottom">
-                @foreach ($iniziative as $iniziativa)
+                @forelse ($iniziative as $iniziativa)
+
                     <div class="col-12">
                         <div class="card-wrapper border border-light rounded shadow-sm">
                             <div class="card no-after rounded">
@@ -179,7 +180,11 @@
 
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <h6>
+                        Al momento non risultano iniziative attive.<br/>La invitiamo a consultare nuovamente questa sezione in futuro o a contattare gli uffici competenti per eventuali ulteriori informazioni.
+                    </h6>
+                @endforelse
 
             </div>
         </section>
