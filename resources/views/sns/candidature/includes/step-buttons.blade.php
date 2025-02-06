@@ -20,17 +20,9 @@
         <div class="d-flex justify-content-end gap-lg-3 gap-5">
 
             @if(array_key_last($steps) == $step)
-                <button type="submit" name="submit-type"
-                        class="btn btn-primary btn-sm steppers-btn-save d-none"
-                        value="invia" id="inviaRealButton"
-                        @if (count($stepsDone) < (count($steps)-1))
-                            disabled="disabled"
-                    @endif
-                >
-                    Conferma ed invia
-                </button>
+                <input type="hidden" name="submit-type" value="invia"/>
                 <button type="button"
-                        class="btn btn-outline-primary btn-me"
+                        class="btn btn-primary btn-me"
                         data-bs-toggle="modal"
                         data-bs-target="#modal-invia-candidatura"
                         id="confermaEdInvia"
@@ -92,10 +84,10 @@
 
         let inviaModal = new bootstrap.Modal(document.getElementById('modal-invia-candidatura'), {});
 
-        var inviaRealButton = document.getElementById('inviaRealButton');
+        var form = document.getElementById('candidaturaForm');
         var inviaButton = document.getElementById('invia-candidatura-button-modal');
         inviaButton.addEventListener('click', function () {
-            inviaRealButton.click();
+            form.submit();
         });
 
 

@@ -56,12 +56,15 @@ class CandidatureController extends Controller
         $deleteId = $request->get('delete');
 
         $errors = [];
+        $success = null;
+
 
         if ($deleteId) {
             $candidatura = Candidato::find($deleteId);
             if ($candidatura && $candidatura->getKey() && $this->checkUserEdit($request,$candidatura)) {
                 try {
                     $candidatura->delete();
+                    $success = "Candidatura eliminata con successo";
                 } catch (\Throwable $e) {
                     Log::info("Cancellazione candidatura ERROR");
                     Log::info($e->getMessage());
@@ -89,7 +92,7 @@ class CandidatureController extends Controller
         //$maxCandidatureScuole = config('sns.max_candidature_scuole', 5);
 
 
-        return view('candidature.index', compact('iniziative', 'nomeCognome', 'errors'));
+        return view('candidature.index', compact('iniziative', 'nomeCognome', 'errors', 'success'));
     }
 
     protected function setOptionsInStepData($stepData, $metadata)

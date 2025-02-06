@@ -63,7 +63,7 @@
         let rimuoviScuolaButton = document.getElementById('rimuoviScuola');
 
         let scuoleToArray = function () {
-            console.log("SCUOLE:::", scuole);
+            console.debug("SCUOLE:::", scuole);
             var sa = [];
 
             for (var i in scuole) {
@@ -75,7 +75,7 @@
         }
 
         function requestSuggestions(query, fetchArgs = {}) {
-            console.log("JSON1::: ", query);
+            console.debug("JSON1::: ", query);
             document.getElementById('scuola_id').value = null;
             return axios.post('/api/scuole-suggest', {
                 value: query,
@@ -89,15 +89,15 @@
 
                     }
 
-                    console.log("JSON::: ", response.data.result);
+                    console.debug("JSON::: ", response.data.result);
 
                     return scuoleToArray();
                 })
                 .catch(function (error) {
                     scuole = {};
-                    console.log("JSONE::: ", error);
+                    console.debug("JSONE::: ", error);
                     var data = error.response.data;
-                    // console.log(error.response.data);
+                    // console.debug(error.response.data);
                 });
         }
 
@@ -171,7 +171,7 @@
             source: source,
             onConfirm(val) {
 
-                console.log("CONFIRM::: ", val);
+                console.debug("CONFIRM::: ", val);
 
                 var cod;
 
@@ -221,7 +221,7 @@
             rimuoviScuolaButton.classList.add('d-none');
             document.getElementById('scuolaAutocomplete').value = null;
             document.getElementById('scuolaAutocomplete').blur();
-            // console.log("ELEEMNTTT::: ",element);
+            // console.debug("ELEEMNTTT::: ",element);
             // element.value = "";
             // element.innerText = "";
         }

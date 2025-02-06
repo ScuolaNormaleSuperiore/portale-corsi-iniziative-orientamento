@@ -14,6 +14,15 @@
                 </div>
             </div>
         @endif
+        @if (isset($success) && $success)
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {!! $success !!}
+                    </div>
+                </div>
+            </div>
+        @endif
 
         <section class="pb-5 mb-1  px-2 ps-4" style="">
             <nav class="breadcrumb-container" aria-label="Percorso di navigazione">
@@ -67,20 +76,16 @@
                                                                     Gestisci la candidatura
                                                                 </button>
                                                             </a>
-                                                            {{--                                                            <a href="/candidatura/delete/{{$candidatura->getKey()}}">--}}
-
-{{--                                                            <button type="button"--}}
-{{--                                                                    class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura"--}}
-{{--                                                                    data-bs-toggle="modal"--}}
-{{--                                                                    data-bs-target="#modal-delete-candidatura"--}}
-{{--                                                                    data-candidatura="{{$candidatura->getKey()}}"--}}
-{{--                                                            >--}}
-{{--                                                                <svg class="icon icon-danger" data-candidatura="{{$candidatura->getKey()}}">--}}
-{{--                                                                    <use--}}
-{{--                                                                        href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>--}}
-{{--                                                                </svg>--}}
-{{--                                                            </button>--}}
-                                                            {{--                                                            </a>--}}
+                                                            <button type="button"
+                                                                    class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura"
+                                                                    data-candidatura="{{$candidatura->getKey()}}"
+                                                            >
+                                                                <svg class="icon icon-danger"
+                                                                     data-candidatura="{{$candidatura->getKey()}}">
+                                                                    <use
+                                                                        href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>
+                                                                </svg>
+                                                            </button>
                                                         @else
                                                             <p>
                                                                 <strong>Il referente della tua scuola sta gestendo la
@@ -125,17 +130,16 @@
                                                                 {{$candidatura->fename}}
                                                             </button>
                                                         </a>
-{{--                                                        <button type="button"--}}
-{{--                                                                class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura"--}}
-{{--                                                                --}}{{--                                                                    data-bs-toggle="modal"--}}
-{{--                                                                --}}{{--                                                                    data-bs-target="#modal-delete-candidatura"--}}
-{{--                                                                data-candidatura="{{$candidatura->getKey()}}"--}}
-{{--                                                        >--}}
-{{--                                                            <svg class="icon icon-danger" data-candidatura="{{$candidatura->getKey()}}">--}}
-{{--                                                                <use--}}
-{{--                                                                    href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>--}}
-{{--                                                            </svg>--}}
-{{--                                                        </button>--}}
+                                                        <button type="button"
+                                                                class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura"
+                                                                data-candidatura="{{$candidatura->getKey()}}"
+                                                        >
+                                                            <svg class="icon icon-danger"
+                                                                 data-candidatura="{{$candidatura->getKey()}}">
+                                                                <use
+                                                                    href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>
+                                                            </svg>
+                                                        </button>
                                                     @else
                                                         <a href="/candidatura/view/{{$candidatura->getKey()}}">
                                                             <button type="button" class="btn btn-outline-primary">
@@ -195,7 +199,9 @@
                             <p>Confermi la cancellazione della candidatura?</p>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary btn-sm" id="delete-candidatura-button-modal" type="button">Conferma cancellazione</button>
+                            <button class="btn btn-primary btn-sm" id="delete-candidatura-button-modal" type="button">
+                                Conferma cancellazione
+                            </button>
                             <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-dismiss="modal">Torna
                                 indietro
                             </button>
@@ -209,9 +215,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
 
-            let deleteModal = new bootstrap.Modal(document.getElementById('modal-delete-candidatura'), {
-
-            });
+            let deleteModal = new bootstrap.Modal(document.getElementById('modal-delete-candidatura'), {});
 
             let buttons = document.getElementsByClassName('delete-candidatura');
 
@@ -219,12 +223,12 @@
                 buttons[i].addEventListener('click', function (ev) {
                     var el = ev.target;
                     var candidaturaId = el.getAttribute('data-candidatura');
-                    console.log("CAND",candidaturaId,el)
+                    console.log("CAND", candidaturaId, el)
                     deleteModal.show();
                     var deleteButton = document.getElementById('delete-candidatura-button-modal');
                     // deleteButton.removeEventListener('click');
-                    deleteButton.addEventListener('click',function() {
-                        window.location.href = "/candidature?delete="+candidaturaId;
+                    deleteButton.addEventListener('click', function () {
+                        window.location.href = "/candidature?delete=" + candidaturaId;
                     });
                 }, false);
             }
