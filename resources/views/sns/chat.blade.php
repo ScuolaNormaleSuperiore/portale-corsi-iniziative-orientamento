@@ -27,7 +27,7 @@
             loader.style.opacity = '0';
             loader.addEventListener('transitionend', () => {
                 loader.classList.add('d-none');
-                chat.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                chat.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, { once: true });
         }, { once: true });
     </script>
