@@ -29,7 +29,7 @@ const Messages: React.FC = () => {
       <AnimatePresence initial={false}>
         {messages.map(
           (message: MessageType) =>
-            message?.content?.length > 0 && (
+              (message?.content?.length > 0 || message.isLoading) && (
               <motion.div
                 key={message.id}
                 initial={

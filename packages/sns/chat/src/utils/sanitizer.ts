@@ -27,6 +27,7 @@ export function sanitizeFormattedMessage(message: string): string {
         'h4',
         'h5',
         'h6',
+          'strong'
       ],
       FORBID_TAGS: ['style', 'script'],
       FORBID_ATTR: ['style', 'script'],
