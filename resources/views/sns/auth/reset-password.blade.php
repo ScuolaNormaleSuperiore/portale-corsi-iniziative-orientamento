@@ -18,15 +18,39 @@
         </section>
 
         <section class="container pt-4 pb-4">
-            <h3>Re-imposta la tua Password</h3>
-{{--            <p>Hai già un account? <a href="/login">Accedi</a>.</p>--}}
+            <h3 class="mb-4">Re-imposta la tua Password</h3>
+
+            @if ($errors->any())
+                <div class="row mb-4">
+                    <div class="col-12">
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {!! $error !!}
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
+            @if (session()->has('status'))
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{session()->get('status')}}
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            {{--            <p>Hai già un account? <a href="/login">Accedi</a>.</p>--}}
 
             <form method="POST" action="{{ route('password.update') }}">
                 @csrf
 
 
                 <div class="form-group">
-                    <input type="email" class="form-control" id="id_email" name="email" value="{{old('email')}}">
+                    <input type="email" class="form-control" id="id_email" name="email" value="{{$request->get('email') ?: old('email')}}">
+                    <input type="hidden" name="token" value="{{$token}}">
                     <label for="id_email" class="" style="width: auto;">Indirizzo E-mail</label>
 
 

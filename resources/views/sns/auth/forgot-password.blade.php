@@ -18,8 +18,29 @@
         </section>
 
         <section class="container pt-4 pb-4">
-            <h3>RE-imposta la Password</h3>
+            <h3 class="mb-4">RE-imposta la Password</h3>
 
+            @if ($errors->any())
+                <div class="row mb-4">
+                    <div class="col-12">
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {!! $error !!}
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
+            @if (session()->has('status'))
+                <div class="row mb-4">
+                    <div class="col-12">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{session()->get('status')}}
+                            </div>
+                    </div>
+                </div>
+            @endif
             <p>
                 Hai dimenticato la tua password? Inserisci qui sotto l'indirizzo e-mail con cui ti sei registrato, ti invieremo una mail con un link per re-impostarla.
             </p>

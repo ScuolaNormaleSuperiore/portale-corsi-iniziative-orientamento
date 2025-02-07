@@ -32,7 +32,15 @@
                     </div>
                     @endforeach
                 @endif
-
+                @if (session()->has('status'))
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{session()->get('status')}}
+                            </div>
+                        </div>
+                    </div>
+                @endif
 
                 <div class="form-group">
                     <label for="email">Indirizzo e-mail</label>
