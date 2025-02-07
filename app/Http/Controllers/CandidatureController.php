@@ -92,7 +92,7 @@ class CandidatureController extends Controller
         //$maxCandidatureScuole = config('sns.max_candidature_scuole', 5);
 
 
-        return view('candidature.index', compact('iniziative', 'nomeCognome', 'errors', 'success'));
+        return view('candidature.index', compact('iniziative', 'nomeCognome', 'errors', 'success','user'));
     }
 
     protected function setOptionsInStepData($stepData, $metadata)
@@ -178,6 +178,10 @@ class CandidatureController extends Controller
                 $maxCandidature = 1;
                 break;
             case 'Scuola':
+                $scuola = (Auth::user())->scuola;
+                if (!$scuola || !$scuola->getKey()) {
+                    return false;
+                }
                 $maxCandidature = $iniziativa->max_candidature_scuola;
                 break;
             default:

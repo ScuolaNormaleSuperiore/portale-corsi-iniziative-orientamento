@@ -108,7 +108,22 @@ class CandidatoPolicy
             case 'Operatore':
                 return PolicyBuilder::all($builder, Candidato::class);
             case 'Scuola':
-                return $builder->where('user_id', $user->getKey());
+                $scuola = $user->scuola;
+                if (!$scuola || !$scuola->getKey()) {
+                    return PolicyBuilder::none($builder, User::class);
+                }
+                return
+                    $builder->where(function ($q) use ($scuola,$user) {
+                       $q->where(function ($q2) use ($scuola) {
+                            $q2->where('tipo', 'scuola')
+                            ->where('scuola_id', $scuola->getKey());
+                       })->orWhere(function ($q2) use ($user) {
+                           $q2->where('tipo', 'scuola')
+                               ->whereNull('scuola_id')
+                           ->where('user_id', $user->getKey());
+                       });
+                    });
+//                return $builder->where('user_id', $user->getKey());
             case 'Studente':
                 return $builder->where(function ($q) use ($user) {
                     return $q->where('user_id', $user->getKey())
@@ -139,7 +154,18 @@ class CandidatoPolicy
                     case 'Operatore':
                         return true;
                     case 'Scuola':
-                        return $model->user_id == $user->getKey();
+                        $scuola = $user->scuola;
+                        if (!$scuola || !$scuola->getKey()) {
+                            return false;
+                        }
+                        if (($model->tipo == 'scuola') && ($model->scuola_id == $scuola->getKey())) {
+                            return true;
+                        };
+                        if (($model->tipo == 'scuola') && is_null($model->scuola_id) && $model->user_id = $user->getKey()) {
+                            return true;
+                        }
+                        return false;
+//                        return $model->user_id == $user->getKey();
                     case 'Studente':
                         if ($model->user_id == $user->getKey()) {
                             return true;
@@ -156,6 +182,16 @@ class CandidatoPolicy
                     case 'Operatore':
                         return true;
                     case 'Scuola':
+                        $scuola = $user->scuola;
+                        if (!$scuola || !$scuola->getKey()) {
+                            return false;
+                        }
+                        if (($model->tipo == 'scuola') && ($model->scuola_id == $scuola->getKey())) {
+                            return true;
+                        };
+                        if (($model->tipo == 'scuola') && is_null($model->scuola_id) && $model->user_id = $user->getKey()) {
+                            return true;
+                        }
                     case 'Studente':
                         return $model->user_id == $user->getKey();
                     default:
