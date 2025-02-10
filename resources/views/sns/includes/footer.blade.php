@@ -77,7 +77,7 @@
                                         <span class="visually-hidden">Instagram</span></a>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a class="p-2 text-white" href="https://bsky.app/profile/scuolanormale.bsky.social"
+                                    <a class="p-2 text-white" href="https://bsky.app/profile/sns.it"
                                        target="_blank">
                                         <svg class="icon icon-sm icon-white align-top" fill="none" viewBox="0 0 64 57"
                                              >
