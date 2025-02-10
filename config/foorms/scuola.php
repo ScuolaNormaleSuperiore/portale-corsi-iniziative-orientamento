@@ -313,7 +313,7 @@ return [
 
             ],
             "area_geografica" => [
-                'options' => 'enum:'.\App\Enums\ScuolaAreaGeografica::class,
+                'options' => 'enum:' . \App\Enums\ScuolaAreaGeografica::class,
             ],
             "regione_id" => [
 
@@ -346,10 +346,10 @@ return [
 
             ],
             "caratteristica" => [
-                'options' => 'enum:'.\App\Enums\ScuolaCaratteristica::class,
+                'options' => 'enum:' . \App\Enums\ScuolaCaratteristica::class,
             ],
             "tipologia_grado_istruzione" => [
-                'options' => 'enum:'.\App\Enums\ScuolaTipologiaGradoIstruzione::class,
+                'options' => 'enum:' . \App\Enums\ScuolaTipologiaGradoIstruzione::class,
 
             ],
             "indicazione_sede_direttivo" => [
@@ -359,7 +359,7 @@ return [
 
             ],
             "tipo" => [
-                'options' => 'enum:'.\App\Enums\ScuolaTipo::class,
+                'options' => 'enum:' . \App\Enums\ScuolaTipo::class,
             ],
             "email" => [
 
@@ -404,11 +404,9 @@ return [
             ],
             "user" => [
                 "fields" => [
-                    "fields" => [
-                        'nome' => [],
-                        'cognome' => [],
-                        'email' => [],
-                    ]
+                    'nome' => [],
+                    'cognome' => [],
+                    'email' => [],
                 ],
                 "savetype" => [
 
