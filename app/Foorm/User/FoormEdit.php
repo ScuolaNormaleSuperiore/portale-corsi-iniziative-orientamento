@@ -3,15 +3,18 @@
 namespace App\Foorm\User;
 
 
+use App\Models\Scuola;
 use Gecche\Cupparis\App\Foorm\Base\FoormEdit as BaseFoormEdit;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FoormEdit extends BaseFoormEdit
 {
 
     protected $isAuth = false;
     protected $hasPasswordCompiled = true;
+    protected $scuolaId;
 
 
     protected function init() {
@@ -42,10 +45,14 @@ class FoormEdit extends BaseFoormEdit
             $this->validationSettings['rules']['mainrole'] = ['required'];
         }
 
+        $this->validationSettings['rules']['name'] = [];
+
     }
 
     protected function setFieldsToModel($model, $configFields, $input)
     {
+        unset($input['mainrole']);
+        unset($input['password_confirmation']);
 
         if (!$this->hasPasswordCompiled) {
             unset($input['password']);
@@ -53,16 +60,34 @@ class FoormEdit extends BaseFoormEdit
             $input['password'] = bcrypt($input['password']);
         }
 
-        unset($input['password_confirmation']);
-        unset($input['mainrole']);
-        parent::setFieldsToModel($model, $configFields, $input);
+        $input['name'] = $input['email'];
 
+        $this->scuolaId = Arr::get($input,'scuola_id');
+        unset($input['scuola_id']);
+
+        parent::setFieldsToModel($model, $configFields, $input);
     }
 
     protected function saveModel($input) {
         parent::saveModel($input);
+        $mainrole = Arr::get($input,'mainrole');
         if (!$this->isAuth) {
-            $this->model->syncRoles(Arr::wrap(Arr::get($input,'mainrole',[])));
+            $this->model->syncRoles(Arr::wrap($mainrole));
+        }
+
+        if ($mainrole == 5 && $this->scuolaId) { //Scuola
+            $scuola = Scuola::find($this->scuolaId);
+            if ($scuola && $scuola->getKey()) {
+                $scuola->user_id = $this->model->getKey();
+                $scuola->email_riferimento = $this->model->email;
+                $scuola->save();
+            }
+            Scuola::where('user_id',$this->model->getKey())
+                ->where('id','!=',$this->scuolaId)
+                ->update(['user_id' => null,'email_riferimento' => DB::raw('email')]);
+        } else {
+            Scuola::where('user_id',$this->model->getKey())
+                ->update(['user_id' => null,'email_riferimento' => DB::raw('email')]);
         }
     }
 

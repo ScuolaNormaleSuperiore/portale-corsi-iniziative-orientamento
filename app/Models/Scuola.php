@@ -12,7 +12,6 @@ class Scuola extends Breeze
 {
     use Relations\ScuolaRelations;
 
-
 //    use ModelWithUploadsTrait;
 
     protected $table = 'scuole';
@@ -36,6 +35,7 @@ class Scuola extends Breeze
         'regione' => [self::BELONGS_TO, 'related' => 'App\Models\Regione', 'table' => 'regioni', 'foreignKey' => 'regione_id'],
         'provincia' => [self::BELONGS_TO, 'related' => 'App\Models\Provincia', 'table' => 'province', 'foreignKey' => 'provincia_id'],
         'user' => [self::BELONGS_TO, 'related' => 'App\Models\User', 'table' => 'users', 'foreignKey' => 'user_id'],
+        'comunesns' => [self::BELONGS_TO, 'related' => 'App\Models\Comune', 'table' => 'comuni', 'foreignKey' => 'comune_id'],
 
 
 //        'belongsto' => array(self::BELONGS_TO, Scuola::class, 'foreignKey' => '<FOREIGNKEYNAME>'),
@@ -73,12 +73,13 @@ class Scuola extends Breeze
         if (is_null($this->email_riferimento)) {
             $this->email_riferimento = $this->email;
         }
-        if ($this->email_riferimento) {
-            $user = User::where('email', $this->email)->first();
-            if ($user) {
-                $this->user_id = $user->getKey();
-            }
-        }
+
+//        if ($this->email_riferimento) {
+//            $user = User::where('email', $this->email_riferimento)->first();
+//            if ($user) {
+//                $this->user_id = $user->getKey();
+//            }
+//        }
 
         if ($this->provincia_id) {
             $provincia = Provincia::where('id',$this->provincia_id)->first();

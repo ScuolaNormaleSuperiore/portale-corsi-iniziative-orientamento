@@ -104,27 +104,37 @@ return [
             'email_verified_at' => [],
             'banned' => [],
             'mainrole' => [],
+            'nome' => [],
+            'cognome' => [],
+
 //            'cliente_id' => [
 //                'nullable' => true,
 //                'options' => 'relation:cliente',
 //            ],
         ],
         'relations' => [
-            'fotos' => [
+            'scuola' => [
                 'fields'  => [
-                    'nome' => [],
-                    'descrizione' => [],
-                    'resource' => []
+                    'denominazione' => [],
+                    'codice' => [],
                 ]
 
             ],
-            'attachments' => [
-                'fields'  => [
-                    'nome' => [],
-                    'descrizione' => [],
-                    'resource' => []
-                ]
-            ],
+//            'fotos' => [
+//                'fields'  => [
+//                    'nome' => [],
+//                    'descrizione' => [],
+//                    'resource' => []
+//                ]
+//
+//            ],
+//            'attachments' => [
+//                'fields'  => [
+//                    'nome' => [],
+//                    'descrizione' => [],
+//                    'resource' => []
+//                ]
+//            ],
         ],
         'params' => [
 
@@ -147,6 +157,19 @@ return [
                             'name',
                         ]
                     ],
+                    'scuola_id' => [
+                        'model' => 'Scuola',
+                        'result_fields' => [
+                            'id',
+                            'denominazione',
+                            'denominazione_istituto_riferimento',
+                            'codice',
+                            'comune',
+                            'comunesns|nome',
+                            'provincia|sigla'
+                        ]
+                    ],
+
                 ]
             ],
         ],
@@ -176,6 +199,15 @@ return [
             ],
             'mainrole' => [
                'options' => 'relation:roles',
+            ],
+            "scuola_id" => [
+                'referred_data' => 'method:model',
+            ],
+            'nome' => [
+
+            ],
+            'cognome' => [
+
             ],
         ],
         'relations' => [

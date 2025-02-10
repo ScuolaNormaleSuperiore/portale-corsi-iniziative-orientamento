@@ -74,7 +74,8 @@ export default {
 			'denominazione',
 			'indirizzo',
 			'comune',
-			'email_riferimento',
+            'user',
+			// 'email_riferimento',
 			'provincia',
 
         ],
@@ -103,7 +104,27 @@ export default {
 					'sigla'
 				],
 			},
+            'user' : {
+                type : "w-custom",
+                ready() {
+                    var html = "<div>";
 
+                    if (this.modelData.user && this.modelData.user.email) {
+                        html += this.modelData.user.email;
+                        html += '<br/>';
+                        if (this.modelData.user.nome) {
+                            html += this.modelData.user.nome + ' ' + this.modelData.user.cognome;
+                        } else {
+
+                        }
+                    } else {
+                        html += "Nessun utente associato";
+                    }
+                    html += "</div>";
+                    this.value = html;
+                },
+                label: 'Utente associato',
+            },
         },
         orderFields : {
 			'anno' : 'anno',
@@ -144,11 +165,12 @@ export default {
 			'email',
 			'pec',
 			'web',
-			'email_riferimento',
-			// 'user',
+			//'email_riferimento',
+			'user',
 
         ],
         fieldsConfig: {
+
 			'anno' : {
                 type : "w-input",
                 inputType: "number",
@@ -223,7 +245,21 @@ export default {
                 type : "w-input",
 			},
 			'user' : {
-                type : "w-text",
+                type : "w-custom",
+                ready() {
+                    var html = "<div>";
+
+                        if (this.modelData.user) {
+                            html += this.modelData.user.nome + ' ' + this.modelData.user.cognome;
+                            html += '<br/>';
+                            html += this.modelData.user.email;
+                        } else {
+                            html += "Nessun utente associato";
+                        }
+                        html += "</div>";
+                        this.value = html;
+                },
+                label: 'Utente associato',
 			},
             'tipo' : {
                 type : "w-select",

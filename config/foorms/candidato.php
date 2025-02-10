@@ -571,6 +571,7 @@ return [
                             'denominazione_istituto_riferimento',
                             'codice',
                             'comune',
+                            'comunesns|nome',
                             'provincia|sigla'
                         ]
                     ],

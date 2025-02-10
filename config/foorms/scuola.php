@@ -292,9 +292,16 @@ return [
             ],
             "user" => [
                 "fields" => [
-
+                    'nome' => [],
+                    'cognome' => [],
+                    'email' => [],
                 ]
-            ]
+            ],
+            "comunesns" => [
+                "fields" => [
+                    'nome' => [],
+                ]
+            ],
         ],
         'params' => [
 
@@ -397,7 +404,11 @@ return [
             ],
             "user" => [
                 "fields" => [
-
+                    "fields" => [
+                        'nome' => [],
+                        'cognome' => [],
+                        'email' => [],
+                    ]
                 ],
                 "savetype" => [
 

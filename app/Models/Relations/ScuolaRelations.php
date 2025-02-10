@@ -23,6 +23,12 @@ trait ScuolaRelations
     
     }
 
+    public function comunesns() {
+
+        return $this->belongsTo('App\Models\Comune', 'comune_id', null, null);
+    
+    }
+
 
 
 }

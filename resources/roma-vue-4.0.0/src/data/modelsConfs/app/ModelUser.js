@@ -49,16 +49,16 @@ export default {
         type : 'v-list',
         //template:'inner',
         modelName : 'user',
-        fields : ['id','email','name',
+        fields : ['id','email','nome','cognome','scuola',
             // 'email_verified_at',
-            'fotos',
+            // 'fotos',
             'banned','mainrole'],
         actions : [
             'action-edit',
             'action-delete',
             'action-insert',
             // 'action-delete-selected',
-            'action-view'
+            // 'action-view'
         ],
         //actions : ['ActionSelect','action-delete-selected'],
         //actions : ['action-delete-selected'],
@@ -80,6 +80,25 @@ export default {
             'name' : 'name'
         },
         fieldsConfig : {
+            scuola : {
+                type: 'w-custom',
+                ready() {
+                    var html = "<div>";
+
+                        if (this.modelData.mainrole === 'Scuola') {
+                            if (this.modelData.scuola && this.modelData.scuola.codice) {
+                                html += this.modelData.scuola.codice + '<br/>'
+                                    + this.modelData.scuola.denominazione;
+                            } else {
+                                html += "Nessuna scuola associata";
+                            }
+                        }
+
+                        html +="</div>"
+
+                    this.value = html;
+                }
+            },
             email_verified_at : {
                 type : 'w-swap',
                 modelName : 'user',
@@ -90,6 +109,7 @@ export default {
                 switchClass: 'form-switch-danger banned',
                 dataSwitched : true,
                 //label: 'bannare tu',
+                label: 'Bloccato',
             },
             fotos : {
                 type : 'w-hasmany',
@@ -122,9 +142,19 @@ export default {
         modelName : 'user',
         type : 'v-edit',
         actions : ['action-save','action-save-back','action-back'],
-        fields : ['info','name','email','password','password_confirmation','mainrole','empty',
-            'fotos','attachments'
+        fields : [//'info',
+            'email',
+            'mainrole',
+            'password','password_confirmation',
+            // 'empty',
+            'nome','cognome',
+            'scuola_id',
+            // 'fotos','attachments'
         ],
+        afterDraw() {
+            this.getWidget('mainrole').change();
+        },
+
         methods : {
             fillData : function (route,json) {
                 var that = this;
@@ -143,6 +173,36 @@ export default {
             }
         },
         fieldsConfig: {
+            'scuola_id': {
+                type: "w-autocomplete",
+                foormName: 'user',
+                viewType: 'edit',
+                labelFields: [
+                    'id',
+                    'denominazione',
+                    'denominazione_istituto_riferimento',
+                    'codice',
+                    'comunesns|nome',
+                    'provincia|sigla',
+                ],
+                clearButton: true,
+                extraBind: {
+                    'placeholder': "Digita le iniziali di una scuola...",
+                    'dropdown': true,
+                    'option-label': function (obj) {
+                        if (!obj.denominazione) {
+                            return null;
+                        }
+                        return obj.denominazione + ' - Cod: ' + obj.codice + ' - ' + obj["comunesns|nome"] + ' (' + obj["provincia|sigla"] + ') ';
+                    },
+                    'option-value': 'id',
+                },
+                label: 'Scuola',
+                divider: 'before',
+                dividerClass: 'text-primary-700 my-5',
+                dividerContentClass: 'font-bold border-1 p-2',
+                dividerContent: 'Scuola associata',
+            },
             info : {
                 type : 'w-custom',
                 ready() {
@@ -161,8 +221,14 @@ export default {
             },
             mainrole : {
                 type:'w-select',
-                change() {
+                change(e) {
                     console.log('mainrole value',this.getValue())
+                    var value = e ? e.value : -1;
+                    if (value === 5) {
+                        this.view.showWidget('scuola_id');
+                    } else {
+                        this.view.hideWidget('scuola_id');
+                    }
                 }
 
             },

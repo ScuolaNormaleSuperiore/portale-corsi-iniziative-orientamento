@@ -15,6 +15,7 @@ class User extends CupparisUser {
 	use Relations\UserRelations;
 
     use HasApiTokens;
+    use ScuolaReferredTrait;
 
 
     public $appends = [
@@ -111,4 +112,6 @@ class User extends CupparisUser {
         $userInfo = $this->info;
         return Arr::first(Arr::get($userInfo,'spidFiscalNumber',[]));
     }
+
+
 }
