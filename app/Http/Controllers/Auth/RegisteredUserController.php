@@ -57,7 +57,7 @@ class RegisteredUserController extends Controller
             'name' => $request->email,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-//            'email_verified_at' => now(),
+            //            'email_verified_at' => now(),
         ]);
         $user->assignRole('Studente');
         $user->save();
@@ -80,7 +80,7 @@ class RegisteredUserController extends Controller
                 'label' => $optionLabel,
             ];
         }
-        return view('auth.register-scuola',['province' => $province]);
+        return view('auth.register-scuola', ['province' => $province]);
     }
 
     public function storeScuola(Request $request)
@@ -98,9 +98,8 @@ class RegisteredUserController extends Controller
             $request->validate([
                 'scuola_id' => ['required', new ScuolaEmailRequired()],
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
-                'emailScuolaInput' => ['required', 'string', 'email', 'max:255', 'unique:users,email', 'unique:scuole,email_riferimento'],
+                'emailScuolaInput' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             ]);
-
         }
 
         $scuola = Scuola::find($request->get('scuola_id'));
@@ -140,6 +139,6 @@ class RegisteredUserController extends Controller
 
 
 
-//
+        //
     }
 }
