@@ -98,6 +98,7 @@ class RegisteredUserController extends Controller
             $request->validate([
                 'scuola_id' => ['required', new ScuolaEmailRequired()],
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                'emailScuolaInput' => ['required', 'string', 'email', 'max:255', 'unique:users,email', 'unique:scuole,email_riferimento'],
             ]);
 
         }

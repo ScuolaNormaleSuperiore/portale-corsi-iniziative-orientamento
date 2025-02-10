@@ -162,6 +162,10 @@ return [
         'corsi-id' => [
             'min' => 'E\' necessario esprimere almeno :min preferenze per i corsi',
         ],
+        'emailScuolaInput' => [
+            'unique' => 'Questo indirizzo email è già utilizzato nel sistema',
+        ] ,
+
     ],
 
     /*

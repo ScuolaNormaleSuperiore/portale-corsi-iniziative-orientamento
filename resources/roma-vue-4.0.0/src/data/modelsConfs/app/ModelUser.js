@@ -221,9 +221,9 @@ export default {
             },
             mainrole : {
                 type:'w-select',
-                change(e) {
+                change() {
                     console.log('mainrole value',this.getValue())
-                    var value = e ? e.value : -1;
+                    var value = this.getValue();
                     if (value === 5) {
                         this.view.showWidget('scuola_id');
                     } else {

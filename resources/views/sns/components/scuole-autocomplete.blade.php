@@ -46,7 +46,8 @@
 
     <div class="col-12 mt-5 @if(isset($noEmailScuola)) d-none @endif">
         <div class="form-group" id="emailScuola">
-            <input type="email" class="form-control" id="emailScuolaInput" name="emailScuolaInput" disabled>
+            <p id="emailScuolaText"></p>
+            <input type="hidden" id="emailScuolaInput" name="emailScuolaInput">
             <label class="active" for="emailScuolaInput">Indirizzo E-mail Scuola</label>
 
         </div>
@@ -203,6 +204,7 @@
                     rimuoviScuola();
                 }
 
+                document.getElementById('emailScuolaText').innerText = scuole[cod] ? scuole[cod].email_riferimento : 'E-mail non trovata';
                 document.getElementById('emailScuolaInput').value = scuole[cod] ? scuole[cod].email_riferimento : 'E-mail non trovata';
                 document.getElementById('scuola_id').value = scuole[cod] ? scuole[cod].id : null;
             }
