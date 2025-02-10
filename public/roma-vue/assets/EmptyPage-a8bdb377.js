@@ -1,0 +1,1 @@
+import{_ as e,o as a,c as o,a as t}from"./index-41f2c48a.js";const c={},r={class:"grid"};function i(l,s,n,p,d,u){return a(),o("div",r,s[0]||(s[0]=[t("div",{class:"col-12"},[t("div",{class:"card"},[t("h5",null,"Empty Page"),t("p",null,"This is your empty page template to start building beautiful applications.")])],-1)]))}const m=e(c,[["render",i]]);export{m as default};
