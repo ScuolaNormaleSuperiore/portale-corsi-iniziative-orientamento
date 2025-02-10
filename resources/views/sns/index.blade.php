@@ -300,11 +300,15 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title h5 ">
-                                            <a href="/dettaglio-evento/{{$evento->id}}">
-                                                {{$evento->titolo_it}}
-                                            </a>
-                                        </h3>
+                                      <a href="/dettaglio-evento/{{$evento->id}}" class="text-decoration-none" data-element="evento-category-link">
+                                          <h3 class="card-title">{{$evento->titolo_it}}</h3>
+                                      </a>
+                                      @if($evento->sottotitolo_it)
+                                      <p class="card-text text-secondary">
+                                          {{$evento->sottotitolo_it}}
+                                      </p>
+                                      @endif
+
                                         {{--                                        <p class="card-text font-serif"></p>--}}
                                         {{--                                        <a class="read-more" href="#">--}}
                                         {{--                                            <span class="text">Leggi di più</span>--}}
