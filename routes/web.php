@@ -45,6 +45,7 @@ Route::group([
     'middleware' => ['auth','verified']
 ], function () {
     Route::get('/candidature', [CandidatureController::class, 'index'])->name('candidature');
+    Route::post('/candidature', [CandidatureController::class, 'index'])->name('candidature-post');
     Route::get('/candidatura/{iniziativa}/new', [CandidatureController::class, 'create'])->name('candidatura.new');
     Route::get('/candidatura/edit/{candidatura}/{step?}', [CandidatureController::class, 'edit'])->name('candidatura.edit');
     Route::post('/candidatura/{iniziativa}/new', [CandidatureController::class, 'store'])->name('candidatura.store');

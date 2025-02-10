@@ -47,7 +47,8 @@
             <div class="row mb-5 pb-5 border-bottom">
                 @if ($ruolo == 'Scuola' && !$user->scuola)
                     <h6>
-                        Al momento risultano dei problemi con il tuo account come referente che non sembra essere associato ad una scuola.
+                        Al momento risultano dei problemi con il tuo account come referente che non sembra essere
+                        associato ad una scuola.
                         <br/>Si prega di contattare gli amministratore del sistema in caso di errore.
                     </h6>
                 @else
@@ -90,16 +91,26 @@
                                                                         Gestisci la candidatura
                                                                     </button>
                                                                 </a>
-                                                                <button type="button"
-                                                                        class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura"
-                                                                        data-candidatura="{{$candidatura->getKey()}}"
-                                                                >
-                                                                    <svg class="icon icon-danger"
-                                                                         data-candidatura="{{$candidatura->getKey()}}">
-                                                                        <use
-                                                                            href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>
-                                                                    </svg>
-                                                                </button>
+                                                                <form class="cancella-candidatura-form d-inline"
+                                                                      id="form-cancella-{{$candidatura->getKey()}}"
+                                                                      method="POST">
+
+                                                                    @csrf
+
+                                                                    <input type="hidden" name="candidatura-delete"
+                                                                           value="{{$candidatura->getKey()}}"/>
+
+                                                                    <button type="button"
+                                                                            class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura"
+                                                                            data-candidatura="{{$candidatura->getKey()}}"
+                                                                    >
+                                                                        <svg class="icon icon-danger"
+                                                                             data-candidatura="{{$candidatura->getKey()}}">
+                                                                            <use
+                                                                                href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>
+                                                                        </svg>
+                                                                    </button>
+                                                                </form>
                                                             @else
                                                                 <p>
                                                                     <strong>Il referente della tua scuola sta gestendo
@@ -149,16 +160,24 @@
                                                                     {{$candidatura->fename}}
                                                                 </button>
                                                             </a>
-                                                            <button type="button"
-                                                                    class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura"
-                                                                    data-candidatura="{{$candidatura->getKey()}}"
-                                                            >
-                                                                <svg class="icon icon-danger"
-                                                                     data-candidatura="{{$candidatura->getKey()}}">
-                                                                    <use
-                                                                        href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>
-                                                                </svg>
-                                                            </button>
+                                                            <form class="cancella-candidatura-form d-inline"
+                                                                  id="form-cancella-{{$candidatura->getKey()}}"
+                                                                  method="POST">
+
+                                                                @csrf
+                                                                <input type="hidden" name="candidatura-delete"
+                                                                       value="{{$candidatura->getKey()}}"/>
+                                                                <button type="button"
+                                                                        class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura"
+                                                                        data-candidatura="{{$candidatura->getKey()}}"
+                                                                >
+                                                                    <svg class="icon icon-danger"
+                                                                         data-candidatura="{{$candidatura->getKey()}}">
+                                                                        <use
+                                                                            href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>
+                                                                    </svg>
+                                                                </button>
+                                                            </form>
                                                         @else
                                                             <a href="/candidatura/view/{{$candidatura->getKey()}}">
                                                                 <button type="button" class="btn btn-outline-primary">
@@ -224,7 +243,7 @@
                         <div class="modal-body">
                             <p>Confermi la cancellazione della candidatura?</p>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer" id="modal-delete-candidatura-footer">
                             <button class="btn btn-primary btn-sm" id="delete-candidatura-button-modal" type="button">
                                 Conferma cancellazione
                             </button>
@@ -243,19 +262,31 @@
 
             let deleteModal = new bootstrap.Modal(document.getElementById('modal-delete-candidatura'), {});
 
+            let modalFooter = document.getElementById('modal-delete-candidatura-footer');
             let buttons = document.getElementsByClassName('delete-candidatura');
 
             for (var i = 0, len = buttons.length; i < len; i++) {
                 buttons[i].addEventListener('click', function (ev) {
                     var el = ev.target;
+                    var form = el.closest('form');
                     var candidaturaId = el.getAttribute('data-candidatura');
+
+                    document.getElementById('delete-candidatura-button-modal').remove();
+                    var deleteButton = document.createElement('button');
+                    deleteButton.classList.add("btn", "btn-primary", "btn-sm");
+                    deleteButton.setAttribute('type', 'button');
+                    deleteButton.setAttribute('id', 'delete-candidatura-button-modal');
+                    deleteButton.innerText = 'Conferma cancellazione';
+
+                    modalFooter.prepend(deleteButton)
+                    deleteButton.addEventListener('click', function () {
+                        form.submit();
+                    });
+
                     console.log("CAND", candidaturaId, el)
                     deleteModal.show();
-                    var deleteButton = document.getElementById('delete-candidatura-button-modal');
+
                     // deleteButton.removeEventListener('click');
-                    deleteButton.addEventListener('click', function () {
-                        window.location.href = "/candidature?delete=" + candidaturaId;
-                    });
                 }, false);
             }
 

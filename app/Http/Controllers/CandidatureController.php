@@ -53,7 +53,7 @@ class CandidatureController extends Controller
      */
     public function index(Request $request)
     {
-        $deleteId = $request->get('delete');
+        $deleteId = $request->get('candidatura-delete');
 
         $errors = [];
         $success = null;
