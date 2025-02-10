@@ -597,7 +597,7 @@ export default {
                         if (!obj.denominazione) {
                             return null;
                         }
-                        return obj.denominazione + ' - Cod: ' + obj.codice + ' - ' + obj.comune + ' (' + obj["provincia|sigla"] + ') ';
+                        return obj.denominazione + ' - Cod: ' + obj.codice + ' - ' + obj["comunesns|nome"] + ' (' + obj["provincia|sigla"] + ') ';
                     },
                     'option-value': 'id',
                 },
