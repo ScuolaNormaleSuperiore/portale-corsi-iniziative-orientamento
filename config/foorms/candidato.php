@@ -589,15 +589,13 @@ return [
 
             ],
             "nome" => [
-                'default' => 'cicci'
 
             ],
             "cognome" => [
-                'default' => 'pasticci'
 
             ],
             "codice_fiscale" => [
-                'default' => 'trrgcm78b07g702'
+
             ],
             "emails" => [
 
@@ -606,11 +604,9 @@ return [
                 'options' => config('enums.sesso'),
             ],
             "luogo_nascita" => [
-                'default' => 'pisa'
 
             ],
             "data_nascita" => [
-                'default' => '1978-02-07'
 
             ],
             "indirizzo" => [
