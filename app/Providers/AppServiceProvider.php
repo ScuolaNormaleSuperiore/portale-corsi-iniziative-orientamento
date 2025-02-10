@@ -76,9 +76,46 @@ class AppServiceProvider extends ServiceProvider
             $headerMenuSecondario[$headerActive]['active'] = true;
         }
 
+        $socialLinks = [
+            [
+                'nome' => 'Instagram',
+                'icona' => 'it-instagram',
+                'link' => 'https://www.instagram.com/scuolanormale',
+                'svg' => null,
+            ],
+            [
+                'nome' => 'Bluesky',
+                'icona' => null,
+                'link' => 'https://bsky.app/profile/sns.it',
+                'svg' => [
+                    'fill' => "none",
+                    'viewBox' => "0 0 64 57",
+                    'path' => "M13.873 3.805C21.21 9.332 29.103 20.537 32 26.55v15.882c0-.338-.13.044-.41.867-1.512 4.456-7.418 21.847-20.923 7.944-7.111-7.32-3.819-14.64 9.125-16.85-7.405 1.264-15.73-.825-18.014-9.015C1.12 23.022 0 8.51 0 6.55 0-3.268 8.579-.182 13.873 3.805ZM50.127 3.805C42.79 9.332 34.897 20.537 32 26.55v15.882c0-.338.13.044.41.867 1.512 4.456 7.418 21.847 20.923 7.944 7.111-7.32 3.819-14.64-9.125-16.85 7.405 1.264 15.73-.825 18.014-9.015C62.88 23.022 64 8.51 64 6.55c0-9.818-8.578-6.732-13.873-2.745Z",
+                ],
+            ],
+            [
+                'nome' => 'LinkedIn',
+                'icona' => 'it-linkedin',
+                'link' => 'https://www.linkedin.com/school/scuola-normale-superiore/',
+                'svg' => null,
+            ],
+            [
+                'nome' => 'Facebook',
+                'icona' => 'it-facebook',
+                'link' => 'https://www.facebook.com/scuolanormale',
+                'svg' => null,
+            ],
+            [
+                'nome' => 'Youtube',
+                'icona' => 'it-youtube',
+                'link' => 'https://www.youtube.com/user/ScuolaNormale',
+                'svg' => null,
+            ],
+
+        ];
 
 
-        View::composer(['*'], function ($view) use ($headerMenuPrincipale,$headerMenuSecondario) {
+        View::composer(['*'], function ($view) use ($headerMenuPrincipale, $headerMenuSecondario) {
             $authRole = Auth::id() ? Auth::user()?->mainrole : null;
             $view->with('headerMenuPrincipale', $headerMenuPrincipale);
             $view->with('headerMenuSecondario', $headerMenuSecondario);
@@ -115,6 +152,9 @@ class AppServiceProvider extends ServiceProvider
             $view->with('orientamentoFooterArray', $orientamentoFooterArray);
         });
 
+        View::composer(['sns.includes.header','sns.includes.footer'], function ($view) use ($socialLinks) {
+            $view->with('socials', $socialLinks);
+        });
         View::composer(['auth.login'], function ($view) {
             $descrizione = SezioneLayout::where('codice', 'login-intro')->firstOrNew();
             $view->with('descrizione', $descrizione);
@@ -131,22 +171,23 @@ class AppServiceProvider extends ServiceProvider
 
     }
 
-    protected function calculateHeaderActive() {
+    protected function calculateHeaderActive()
+    {
 //        if (Theme::get() != 'sns') {
 //            return null;
 //        }
         $uri = request()->getRequestUri();
 
-        if (Str::startsWith($uri,['/orientamento','/pagina-orientamento'])) {
+        if (Str::startsWith($uri, ['/orientamento', '/pagina-orientamento'])) {
             return 'orientamento';
         }
-        if (Str::startsWith($uri, ['/archivio-eventi','/dettaglio-evento'])) {
+        if (Str::startsWith($uri, ['/archivio-eventi', '/dettaglio-evento'])) {
             return 'eventi';
         }
-        if (Str::startsWith($uri, ['/info-corsi','/info-corso'])) {
+        if (Str::startsWith($uri, ['/info-corsi', '/info-corso'])) {
             return 'info-corsi';
         }
-        if (Str::startsWith($uri, ['/candidatura','/candidature'])) {
+        if (Str::startsWith($uri, ['/candidatura', '/candidature'])) {
             return 'candidature';
         }
         if (Str::startsWith($uri, ['/sportello-studenti'])) {
