@@ -101,9 +101,10 @@
                                                                            value="{{$candidatura->getKey()}}"/>
 
                                                                     <button type="button"
-                                                                            class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura"
+                                                                            class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura mt-2 mt-sm-0 d-block d-sm-inline"
                                                                             data-candidatura="{{$candidatura->getKey()}}"
                                                                     >
+                                                                        Rimuovi
                                                                         <svg class="icon icon-danger"
                                                                              data-candidatura="{{$candidatura->getKey()}}">
                                                                             <use
@@ -168,9 +169,10 @@
                                                                 <input type="hidden" name="candidatura-delete"
                                                                        value="{{$candidatura->getKey()}}"/>
                                                                 <button type="button"
-                                                                        class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura"
+                                                                        class="btn btn-outline-danger btn-xs btn-icon btn-me delete-candidatura mt-2 mt-sm-0 d-block d-sm-inline"
                                                                         data-candidatura="{{$candidatura->getKey()}}"
                                                                 >
+                                                                    Rimuovi
                                                                     <svg class="icon icon-danger"
                                                                          data-candidatura="{{$candidatura->getKey()}}">
                                                                         <use

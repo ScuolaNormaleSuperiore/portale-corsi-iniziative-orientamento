@@ -23,14 +23,15 @@
 @endphp
 {{--@dump($fieldData)--}}
 
+<div class="table-responsive">
 
-<table class="table table-striped table-responsive">
+<table class="table table-striped">
     <thead>
     <tr>
         <th scope="col">
 
         </th>
-        <th scope="col">
+        <th scope="col" style="min-width:120px;">
             Materia
         </th>
         <th scope="col">
@@ -48,11 +49,12 @@
 
     @foreach($value as $votoKey => $voto)
         <tr @if($loop->first) id="voto-row-first" @endif>
-            <th scope="row">
-                <button type="button" class="btn remove-voto">
-                    <svg class="icon icon-danger" aria-hidden="true">
-                        <use href="{{Theme::url('svg/sprites.svg')}}#it-close-circle"></use>
-                    </svg>
+            <th scope="row" class="vertical-align-middle">
+                <button type="button" class="btn remove-voto btn-xs btn-outline-danger mt-2">
+                    Rimuovi
+{{--                    <svg class="icon icon-danger" aria-hidden="true">--}}
+{{--                        <use href="{{Theme::url('svg/sprites.svg')}}#it-close-circle"></use>--}}
+{{--                    </svg>--}}
                 </button>
             </th>
             <td class="select-wrapper form-group-candidature-voti vertical-align-middle pt-2">
@@ -99,19 +101,21 @@
     <tr>
 
         <th scope="col" colspan="5" class="text-center">
-            <button type="button" class="btn add-voto" id="add_voto">
-                <svg class="icon icon-success" aria-hidden="true">
-                    <use href="{{Theme::url('svg/sprites.svg')}}#it-plus-circle"></use>
-                </svg>
+            <button type="button" class="btn add-voto text-success btn-outline-success" id="add_voto">
+                Aggiungi
+{{--                <svg class="icon icon-success" aria-hidden="true">--}}
+{{--                    <use href="{{Theme::url('svg/sprites.svg')}}#it-plus-circle"></use>--}}
+{{--                </svg>--}}
             </button>
         </th>
     </tr>
     <tr id="voto-row-tpl" class="d-none">
         <th scope="row">
-            <button type="button" class="btn remove-voto">
-                <svg class="icon icon-danger" aria-hidden="true">
-                    <use href="{{Theme::url('svg/sprites.svg')}}#it-close-circle"></use>
-                </svg>
+            <button type="button" class="btn remove-voto btn-xs btn-outline-danger mt-2">
+                Rimuovi
+{{--                <svg class="icon icon-danger" aria-hidden="true">--}}
+{{--                    <use href="{{Theme::url('svg/sprites.svg')}}#it-close-circle"></use>--}}
+{{--                </svg>--}}
             </button>
         </th>
         <td class="select-wrapper form-group-candidature-voti vertical-align-middle pt-2">
@@ -152,6 +156,7 @@
     </tr>
     </tfoot>
 </table>
+</div>
 
 <script>
 

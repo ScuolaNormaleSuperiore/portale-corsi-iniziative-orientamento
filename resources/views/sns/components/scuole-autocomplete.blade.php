@@ -28,18 +28,19 @@
             </div>
         </div>
     </div>
-    <div class="d-flex align-items-center mt-3">
+    <div class="d-flex align-items-center mt-3 gap-2">
 
         <div class="" id="scuola_text">
 
         </div>
         <div>
-            <button type="button" class="btn d-none"
+            <button type="button" class="btn d-none btn-outline-danger ml-2 btn-xs"
                     id="rimuoviScuola"
             >
-                <svg class="icon icon-danger" aria-hidden="true">
-                    <use href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>
-                </svg>
+                Rimuovi
+{{--                <svg class="icon icon-danger" aria-hidden="true">--}}
+{{--                    <use href="{{Theme::url('svg/sprites.svg')}}#it-delete"></use>--}}
+{{--                </svg>--}}
             </button>
         </div>
     </div>
