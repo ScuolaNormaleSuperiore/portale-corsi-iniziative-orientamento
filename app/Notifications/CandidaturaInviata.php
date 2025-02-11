@@ -56,10 +56,10 @@ class CandidaturaInviata extends Notification
 
         if ($this->candidato->tipo == 'scuola') {
             $view = 'emails.notifications.candidatura-inviata-scuola';
-            $subject = 'Canidatura inviata';
+            $subject = 'Candidatura inviata';
         } elseif ($this->candidato->tipo == 'studente') {
             $view = 'emails.notifications.candidatura-inviata-studente';
-            $subject = 'Canidatura inviata';
+            $subject = 'Candidatura inviata';
         }
         return (new MailMessage)
             ->subject(Lang::get($subject))

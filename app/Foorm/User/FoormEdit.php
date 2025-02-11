@@ -29,6 +29,9 @@ class FoormEdit extends BaseFoormEdit
         if (is_array($this->formData['mainrole'])) {
             $this->formData['mainrole'] = $this->formData['mainrole']['id'];
         }
+        if ($this->model->scuola) {
+            $this->formData['scuola_id'] = $this->model->scuola->getKey();
+        }
     }
 
     public function setValidationSettings($input,$rules = null)
