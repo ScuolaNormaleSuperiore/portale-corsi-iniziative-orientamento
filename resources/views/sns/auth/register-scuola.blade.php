@@ -22,7 +22,7 @@
 
         <section class="container pt-4 pb-4">
             <h3>Inserisci i dati di accesso della scuola</h3>
-            <p>La scuola ha già un account? <a href="/login-scuola">Accedi</a>.</p>
+            <p>La scuola ha già un account? <a class="text-decoration-underline" href="/login-scuola">Accedi</a>.</p>
 
             <form class="needsValidation" method="post" id="registerScuolaForm"
                   method="post"
@@ -169,7 +169,7 @@
 
                 </div>
 
-                <p>Registrandoti, accetti la nostra <a href="/privacy-policy/">privacy policy</a>.</p>
+                <p>Registrandoti, accetti la nostra <a class="text-decoration-underline" href="/privacy-policy/">privacy policy</a>.</p>
 
 
             </form>

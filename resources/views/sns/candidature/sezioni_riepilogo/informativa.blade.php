@@ -6,7 +6,7 @@
 </p>
 
 <p class="mb-3">
-    Per i dettagli sul trattamento dei dati personali consulta l'<a href="/pagina/privacy-policy">informativa sulla privacy</a>.
+    Per i dettagli sul trattamento dei dati personali consulta l'<a class="text-decoration-underline" href="/pagina/privacy-policy">informativa sulla privacy</a>.
 </p>
 
 <div class="row">

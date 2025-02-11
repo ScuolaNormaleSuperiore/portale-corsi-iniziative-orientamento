@@ -25,7 +25,9 @@
                     <div class="img-responsive-wrapper">
                         <div class="img-responsive img-responsive-panoramic">
                             <figure class="img-wrapper">
-                                <img src="{{$pagina->picture}}">
+                                <img src="{{$pagina->picture}}"
+                                     title="{{$pagina->titolo_it ?: "Pagina orientamento" }}"
+                                     alt="{{$pagina->titolo_it ?: "Pagina orientamento" }}">
                             </figure>
                         </div>
                     </div>

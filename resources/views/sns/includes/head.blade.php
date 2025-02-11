@@ -15,6 +15,25 @@
 
     <style>
 
+        @media (min-width: 1200px) {
+            h1, .h1 {
+                font-size: 2rem;
+            }
+        }
+
+        h1, .h1 {
+            font-size: 2rem;
+            line-height: 2.5rem;
+            letter-spacing: 0;
+        }
+        @media (min-width: 576px) {
+            h1, .h1 {
+                font-size: 2.5rem;
+                line-height: 3rem;
+            }
+        }
+
+
         .it-header-center-wrapper .it-header-center-content-wrapper .it-brand-wrapper a .icon{
             width:122px;height:82px;margin-right:16px
         }

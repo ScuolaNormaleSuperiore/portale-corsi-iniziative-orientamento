@@ -19,7 +19,7 @@
 
         <section class="container pt-4 pb-4">
             <h3>Inserisci i tuoi dati</h3>
-            <p>Hai già un account? <a href="/login-classic">Accedi</a>.</p>
+            <p>Hai già un account? <a class="text-decoration-underline" href="/login-classic">Accedi</a>.</p>
 
             <form class="needsValidation" method="post" id="registerForm"
                   action="{{ route('register') }}">
@@ -123,7 +123,7 @@
 
                 </div>
 
-                <p>Registrandoti, accetti la nostra <a href="/pagina/privacy-policy/">privacy policy</a>.</p>
+                <p>Registrandoti, accetti la nostra <a class="text-decoration-underline" href="/pagina/privacy-policy/">privacy policy</a>.</p>
             </form>
         </section>
 

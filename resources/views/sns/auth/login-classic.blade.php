@@ -76,8 +76,8 @@
 
                     <p></p>
                 </div>
-                <p>Se non hai ancora creato un account, <a href="{{ route('register') }}">registrati</a> adesso.</p>
-                <p>Se invece hai dimenticato la password, puoi <a
+                <p>Se non hai ancora creato un account, <a class="text-decoration-underline" href="{{ route('register') }}">registrati</a> adesso.</p>
+                <p>Se invece hai dimenticato la password, puoi <a class="text-decoration-underline"
                             href="{{ route('password.request') }}">reimpostarla</a>.</p>
             </form>
             <div class="row mt-4">

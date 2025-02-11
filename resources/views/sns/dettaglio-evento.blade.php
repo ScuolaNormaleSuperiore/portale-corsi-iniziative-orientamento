@@ -25,7 +25,9 @@
                         <div class="img-responsive-wrapper">
                             <div class="img-responsive img-responsive-panoramic">
                                 <figure class="img-wrapper">
-                                    <img src="{{$evento->picture}}">
+                                    <img src="{{$evento->picture}}"
+                                         title="{{$evento->titolo_it ?: "Evento orientamento" }}"
+                                         alt="{{$evento->titolo_it ?: "Evento orientamento" }}">
                                 </figure>
                             </div>
                         </div>

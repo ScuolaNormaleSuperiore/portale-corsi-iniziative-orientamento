@@ -6,11 +6,11 @@
                 <svg class="icon icon-sm" aria-hidden="true">
                     <use href="{{Theme::url('svg/sprites.svg')}}#it-file"></use>
                 </svg>
+                <p class="d-inline">
+                    <span class="visually-hidden">File caricato:</span>
+                    {{$attachment->nome}} <span class="upload-file-weight">{{$attachment->dim}}</span>
+                </p>
             </a>
-            <p>
-                <span class="visually-hidden">File caricato:</span>
-                {{$attachment->nome}} <span class="upload-file-weight">{{$attachment->dim}}</span>
-            </p>
         </li>
     @endforeach
 </ul>

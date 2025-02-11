@@ -82,9 +82,9 @@
 
                     <p></p>
                 </div>
-                <p>Se la tua scuola non ha ancora un account, <a href="{{ route('register-scuola') }}">registrala</a>
+                <p>Se la tua scuola non ha ancora un account, <a class="text-decoration-underline" href="{{ route('register-scuola') }}">registrala</a>
                     adesso.</p>
-                <p>Se invece hai dimenticato la password, puoi <a
+                <p>Se invece hai dimenticato la password, puoi <a class="text-decoration-underline"
                             href="{{ route('password.request') }}">reimpostarla</a>.</p>
             </form>
 
