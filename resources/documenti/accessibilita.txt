@@ -1,0 +1,18 @@
+H2: il titolo delle sezioni
+H3: il resto (ossia le card)
+
+Nelle pagine non HP l’h1 dovrebbe essere il titolo
+attenzione che i link sono di default con underline. E’ stata sovrascritta (!)
+nelle pagine di ricerca mettere un h2 nascosto con “risultati di ricerca”
+nella pagina sportello da studente a studente mettere un h2 nascosto “futuro universitario”
+orientamento: h2 nascosto anche lì con scritto “pagine orientamento”
+
+#H1 in HP: mettere un h1 nascosto con valore homepage (classe “visually-hidden”) nel div container-fluid px-0
+#input sottoscrivi newsletter: è definito un aria-describedby “basic-addon2” che non ha un riferimentio (l’id dell’elemento). Se non c’è la descrizione togliere.
+#attenzione che manca il main nel dom
+#mancano gli skiplinks (vedere modello comuni) header, main e footer
+
+--attenzione che il testo deve essere dentro il bottone
+
+il problema sulla X è un problema del modello di Designers Italia. Lo devono risolvere loro
+sul bottone del chatbot si può usare un aria-label o una label visually-hidden

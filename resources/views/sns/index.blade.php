@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content-body')
     <div class="container-fluid px-0">
+        <h1 class="visually-hidden">Homepage</h1>
 
 
         @if($avvisi->count() > 0 || request()->get('newsletterconfirmed'))
@@ -254,7 +255,7 @@
                             <div class="input-group mb-3 newsletter-form">
                                 <input type="email" required class="form-control"
                                        placeholder="Inserisci la tua email"
-                                       aria-label="Inserisci la tua email" aria-describedby="basic-addon2">
+                                       aria-label="Inserisci la tua email">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="button" id="button-3">Iscriviti</button>
                                 </div>

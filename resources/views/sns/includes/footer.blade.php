@@ -1,4 +1,4 @@
-<footer class="it-footer">
+<footer class="it-footer" id="footer">
     <div class="it-footer-main">
         <div class="container-fluid">
             <section>
@@ -97,7 +97,7 @@
                                         <div class="input-group mb-3 newsletter-form">
                                             <input type="email" required class="form-control"
                                                    placeholder="Inserisci la tua email"
-                                                   aria-label="Inserisci la tua email" aria-describedby="basic-addon2">
+                                                   aria-label="Inserisci la tua email">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary" type="button" id="button-3">Iscriviti
                                                 </button>
