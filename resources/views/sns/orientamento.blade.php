@@ -6,6 +6,8 @@
         @include('sections.breadcrumbs-standard')
         <div class="container">
 
+            <h2 class="visually-hidden">Pagine orientamento</h2>
+
             <section class="pb-4">
                 {!! $descrizione->testo_it !!}
             </section>

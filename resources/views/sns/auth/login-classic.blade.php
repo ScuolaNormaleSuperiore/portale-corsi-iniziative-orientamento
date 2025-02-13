@@ -12,13 +12,13 @@
                 </ol>
             </nav>
 
-            <h2 class="h2 py-2">Accesso per studenti stranieri o non in possesso di SPID o CIE</h2>
+            <h1 class="h2 py-2">Accesso per studenti stranieri o non in possesso di SPID o CIE</h1>
             <hr/>
 
         </section>
 
         <section class="container pt-4 pb-4">
-            <h3 class="pb-5">I tuoi dati di accesso</h3>
+            <h2 class="h3 pb-5">I tuoi dati di accesso</h2>
             <form class="needsValidation" method="post" id="loginForm"
                   action="{{ route('login') }}"
             >

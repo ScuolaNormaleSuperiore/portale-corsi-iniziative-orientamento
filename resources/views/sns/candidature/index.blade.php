@@ -31,7 +31,7 @@
                     <li class="breadcrumb-item active">Candidature</li>
                 </ol>
             </nav>
-            <h2 class="h2 py-2">{{$nomeCognome}}</h2>
+            <h1 class="h2 py-2">{{$nomeCognome}}</h1>
 
             @if ($ruolo == 'Scuola')
                 <p>Da questa pagina puoi candidare gli studenti della tua scuola alle nostre iniziative di

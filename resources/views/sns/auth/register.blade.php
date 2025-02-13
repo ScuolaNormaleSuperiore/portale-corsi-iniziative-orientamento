@@ -12,13 +12,13 @@
                 </ol>
             </nav>
 
-            <h2 class="h2 py-2">Registrazione studente</h2>
+            <h1 class="h2 py-2">Registrazione studente</h1>
             <hr/>
 
         </section>
 
         <section class="container pt-4 pb-4">
-            <h3>Inserisci i tuoi dati</h3>
+            <h2 class="h3">Inserisci i tuoi dati</h2>
             <p>Hai già un account? <a class="text-decoration-underline" href="/login-classic">Accedi</a>.</p>
 
             <form class="needsValidation" method="post" id="registerForm"

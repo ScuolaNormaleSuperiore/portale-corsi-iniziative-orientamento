@@ -12,7 +12,7 @@
                 </ol>
             </nav>
 
-            <h2 class="h2 py-2">Registrazione scuola</h2>
+            <h1 class="h2 py-2">Registrazione scuola</h1>
 
             {!! $descrizione->testo_it !!}
 
@@ -21,7 +21,7 @@
         </section>
 
         <section class="container pt-4 pb-4">
-            <h3>Inserisci i dati di accesso della scuola</h3>
+            <h2 class="h3">Inserisci i dati di accesso della scuola</h2>
             <p>La scuola ha già un account? <a class="text-decoration-underline" href="/login-scuola">Accedi</a>.</p>
 
             <form class="needsValidation" method="post" id="registerScuolaForm"

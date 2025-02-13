@@ -12,13 +12,13 @@
         </nav>
 
         <section>
-            <h2 class="pb-5">Password dimenticata</h2>
+            <h1 class="h2 pb-5">Password dimenticata</h1>
             <hr/>
 
         </section>
 
         <section class="container pt-4 pb-4">
-            <h3 class="mb-4">RE-imposta la Password</h3>
+            <h2 class="h3 mb-4">RE-imposta la Password</h2>
 
             @if ($errors->any())
                 <div class="row mb-4">

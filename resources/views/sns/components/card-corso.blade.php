@@ -1,7 +1,7 @@
 <div class="card card-bg rounded card-teaser bg-white card-orientamento"
      style="border-top: 3px solid #005A74;">
     <div class="card-body">
-        <h5 class="card-title h5 text-primary">{{$corso->titolo}}</h5>
+        <h3 class="card-title h5 text-primary">{{$corso->titolo}}</h3>
         <p class="card-text font-sans-serif">
             <a href="/{{$baselink ?? 'info-corso'}}/{{$corso->getKey()}}" class="fw-semibold">
                 Scopri di più

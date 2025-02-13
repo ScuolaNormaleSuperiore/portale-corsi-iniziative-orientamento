@@ -6,6 +6,8 @@
         @include('sections.breadcrumbs-standard')
         <div class="container">
 
+            <h2 class="visually-hidden">Futuro universitario</h2>
+
             <section class="pt-5">
                 <div class="container">
 

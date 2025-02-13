@@ -10,7 +10,7 @@
                     <li class="breadcrumb-item active">Accesso</li>
                 </ol>
             </nav>
-            <h2 class="h2 py-2">Accedi</h2>
+            <h1 class="h2 py-2">Accedi</h1>
 
             {!! $descrizione->testo_it !!}
 
@@ -31,7 +31,7 @@
                     <h2 class="h2 pb-4">Candidatura spontanea studenti</h2>
                 </div>
                 <div class="col-12 col-md-6">
-                    <h4 class="h4 pb-3">Studenti in possesso di SPID o CIE</h4>
+                    <h3 class="h4 pb-3">Studenti in possesso di SPID o CIE</h3>
                     <div class="btn-example">
                         <a href="/saml2/bf441d43-662c-4c96-9451-b7c8a51c21a1/login">
                             <button type="button" class="btn btn-primary">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <h4 class="h4 pb-3 mt-4 mt-md-0">Studenti stranieri o non in possesso di SPID o CIE</h4>
+                    <h3 class="h4 pb-3 mt-4 mt-md-0">Studenti stranieri o non in possesso di SPID o CIE</h3>
                     <div class="btn-example">
                         <a href="/login-classic">
                             <button type="button" class="btn btn-primary">

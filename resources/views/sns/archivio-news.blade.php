@@ -23,10 +23,10 @@
                             </div>
 
                             <span class="autocomplete-icon" aria-hidden="true">
-                  <svg class="icon icon-sm icon-primary">
-                    <use href="{{Theme::url('svg/sprites.svg')}}#it-search"></use>
-                  </svg>
-                </span>
+                                  <svg class="icon icon-sm icon-primary">
+                                    <use href="{{Theme::url('svg/sprites.svg')}}#it-search"></use>
+                                  </svg>
+                            </span>
                         </div>
                         <p id="autocomplete-label" class="u-grey-light text-paragraph-card mt-2 mb-30 mt-lg-3 mb-lg-40">
                             {{$items->total()}}
@@ -34,6 +34,9 @@
                     </div>
                 </div>
             </form>
+
+            <h2 class="visually-hidden">Risultati della ricerca</h2>
+
             <div class="row g-4 pt-4">
                 @foreach ($items as $item)
                     <div class="col-md-6 col-xl-4">

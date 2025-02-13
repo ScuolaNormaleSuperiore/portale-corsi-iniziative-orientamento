@@ -64,6 +64,7 @@
 
             </form>
 
+            <h2 class="visually-hidden">Risultati della ricerca</h2>
 
             <div class="row g-4 pt-4">
                 <script>

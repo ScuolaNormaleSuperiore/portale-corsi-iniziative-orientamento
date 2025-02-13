@@ -12,7 +12,7 @@
         </nav>
 
         <section>
-            <h2 class="pb-5">La tua richiesta è stata presa in carico</h2>
+            <h1 class="h2 pb-5">La tua richiesta è stata presa in carico</h1>
             <hr/>
 
         </section>

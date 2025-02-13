@@ -7,7 +7,7 @@
             <li class="breadcrumb-item active">Candidatura {{$candidaturaTitle}}</li>
         </ol>
     </nav>
-    <h2 class="h2 py-2">Candidatura {{$candidaturaTitle}}</h2>
+    <h1 class="h2 py-2">Candidatura {{$candidaturaTitle}}</h1>
     <p>Inserisci le informazioni necessarie, potrai ricontrollare tutti i dati nel riepilogo, prima di inviare
         la candidatura.</p>
     <div>Hai bisogno di assistenza? Contattaci</div>

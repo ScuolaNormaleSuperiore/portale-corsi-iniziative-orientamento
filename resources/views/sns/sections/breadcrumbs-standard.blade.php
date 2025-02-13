@@ -12,5 +12,5 @@
         </ol>
     </nav>
 
-    <h2 class="h2 text-primary">{{$pTitle}}</h2>
+    <h1 class="h2 text-primary">{{$pTitle}}</h1>
 </section>

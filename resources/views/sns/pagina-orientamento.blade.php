@@ -34,7 +34,7 @@
                     @endif
                         @foreach ($pagina->sezioni as $section)
                             <div class="pt-4" id="sezione_{{$loop->index}}">
-                                <h3 class="h3">{{$section->nome_it}}</h3>
+                                <h2 class="h3">{{$section->nome_it}}</h2>
                                 <p>{!! $section->contenuto_it !!}</p>
                             </div>
                         @endforeach

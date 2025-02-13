@@ -12,7 +12,7 @@
                 </ol>
             </nav>
 
-            <h2 class="h2 py-2">Verifica il tuo indirizzo e-mail</h2>
+            <h1 class="h2 py-2">Verifica il tuo indirizzo e-mail</h1>
             <hr/>
 
         </section>
