@@ -49,7 +49,7 @@ class SamlSignedInListener
             case 'LoA3': //
                 $externalIDPType = Arr::first(Arr::get($attributes, 'externalIDPType', []));
                 $normalizedAttributes = $attributes;
-                if ($externalIDPType == 'cie') {
+                if (Arr::get($externalIDPType,0) == 'cie') {
                     $normalizedAttributes['spidEmail'] = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3',[]);
                 }
                 break;
