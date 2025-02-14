@@ -17,7 +17,7 @@ class SamlSignedInListener
     /**
      * Handle the event.
      *
-     * @param  SignedIn  $event
+     * @param SignedIn $event
      * @return void
      */
     public function handle(SignedIn $event)
@@ -31,16 +31,27 @@ class SamlSignedInListener
         $attributes = $samlUser->getAttributes();
 
 
-        $externalLoginType = Arr::first(Arr::get($attributes,'externalIDPLoA',[]));
+        $externalLoginType = Arr::first(Arr::get($attributes, 'externalIDPLoA', []));
         switch ($externalLoginType) {
 
             case 'LoA2': //ATENEO
+                $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3',[]);
+                if (!filter_var(Arr::get($spidEmail,0),FILTER_VALIDATE_EMAIL)) {
+                    $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1',[]);
+                }
                 $normalizedAttributes = [
                     'spidName' => Arr::get($attributes, 'urn:oid:2.5.4.42'),
                     'spidFamilyName' => Arr::get($attributes, 'urn:oid:2.5.4.4'),
-                    'spidEmail' => Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1'),
+                    'spidEmail' => $spidEmail,
                     'externalIDPLoA' => $externalLoginType,
                 ];
+                break;
+            case 'LoA3': //
+                $externalIDPType = Arr::first(Arr::get($attributes, 'externalIDPType', []));
+                $normalizedAttributes = $attributes;
+                if ($externalIDPType == 'cie') {
+                    $normalizedAttributes['spidEmail'] = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3',[]);
+                }
                 break;
             default: //SPID (LoA3), CIE (?)
                 $normalizedAttributes = $attributes;
