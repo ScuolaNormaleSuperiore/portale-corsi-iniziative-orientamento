@@ -15,23 +15,6 @@
 
     <style>
 
-        @media (min-width: 1200px) {
-            h1, .h1 {
-                font-size: 2rem;
-            }
-        }
-
-        h1, .h1 {
-            font-size: 2rem;
-            line-height: 2.5rem;
-            letter-spacing: 0;
-        }
-        @media (min-width: 576px) {
-            h1, .h1 {
-                font-size: 2.5rem;
-                line-height: 3rem;
-            }
-        }
 
 
         .it-header-center-wrapper .it-header-center-content-wrapper .it-brand-wrapper a .icon{
@@ -126,6 +109,11 @@
 
         p.riepilogo-value {
             font-weight: 600;
+        }
+
+        li.ql-indent-1 {
+            margin-left: 30px;
+            list-style: circle;
         }
     </style>
 </head>
