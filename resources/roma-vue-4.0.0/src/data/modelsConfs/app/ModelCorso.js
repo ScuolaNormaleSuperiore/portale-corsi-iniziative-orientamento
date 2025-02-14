@@ -166,7 +166,7 @@ export default {
                 type : "w-input",
 			},
 			'descrizione' : {
-                type : "w-texthtml",
+                type : "w-editor",
                 htmlAttributes: {},
 				layout : {
 					colClass : 'col-12',

@@ -145,7 +145,7 @@ export default {
                 type: "w-input",
             },
             'descrizione_it': {
-                type: "w-texthtml",
+                type: "w-editor",
                 layout: {
                     colClass: 'w-12'
                 }

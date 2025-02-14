@@ -146,7 +146,7 @@ export default {
                 inputType: 'number',
             },
 			'descrizione' : {
-                type : "w-texthtml",
+                type : "w-editor",
                 htmlAttributes: {},
                 layout: {
                     colClass : "col-12"

@@ -9,9 +9,9 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome' : { 
+			'nome' : {
                 type : "w-input",
-			}, 
+			},
 
         },
         searchType: 'basic',
@@ -41,9 +41,9 @@ export default {
 
         ],
         fieldsConfig: {
-			'nome' : { 
+			'nome' : {
                 type : "w-text",
-			}, 
+			},
 
         },
         orderFields : {
@@ -64,20 +64,20 @@ export default {
 
         ],
         fieldsConfig: {
-			'codice' : { 
+			'codice' : {
                 type : "w-hidden",
                 htmlAttributes: {},
-			}, 
-			'nome' : { 
+			},
+			'nome' : {
                 type : "w-text",
                 label: '',
-			}, 
-			'tipo' : { 
+			},
+			'tipo' : {
                 type : "w-hidden",
                 htmlAttributes: {},
-			}, 
-			'testo_it' : { 
-                type : "w-texthtml",
+			},
+			'testo_it' : {
+                type : "w-editor",
                 label: '',
                 layout: {
                     colClass : 'col-12'
