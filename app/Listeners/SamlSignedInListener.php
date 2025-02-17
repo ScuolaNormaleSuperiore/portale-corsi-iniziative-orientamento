@@ -113,7 +113,7 @@ class SamlSignedInListener
         } else {
             //Bisogna andare a una form utente con i campi prepopolati chiedendo una mail all'utente
             //Cerco lo user per codice fiscale e non per mail
-            $cf = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1', []);
+            $cf = Arr::first(Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1', []));
 
             $user = User::where('name', $cf)->first();
             if ($user) {
