@@ -35,9 +35,9 @@ class SamlSignedInListener
         switch ($externalLoginType) {
 
             case 'LoA2': //ATENEO
-                $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3',[]);
-                if (!filter_var(Arr::get($spidEmail,0),FILTER_VALIDATE_EMAIL)) {
-                    $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1',[]);
+                $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3', []);
+                if (!filter_var(Arr::get($spidEmail, 0), FILTER_VALIDATE_EMAIL)) {
+                    $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1', []);
                 }
                 $normalizedAttributes = [
                     'spidName' => Arr::get($attributes, 'urn:oid:2.5.4.42'),
@@ -49,8 +49,12 @@ class SamlSignedInListener
             case 'LoA3': //
                 $externalIDPType = Arr::first(Arr::get($attributes, 'externalIDPType', []));
                 $normalizedAttributes = $attributes;
-                if (Arr::get($externalIDPType,0) == 'cie') {
-                    $normalizedAttributes['spidEmail'] = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3',[]);
+                if (Arr::get($externalIDPType, 0) == 'cie') {
+                    $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3', []);
+                    if (!filter_var(Arr::get($spidEmail, 0), FILTER_VALIDATE_EMAIL)) {
+                        $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1', []);
+                    }
+                    $normalizedAttributes['spidEmail'] = $spidEmail;
                 }
                 break;
             default: //SPID (LoA3), CIE (?)
