@@ -29,20 +29,23 @@ class SamlSignedInListener
         // Prevent replay attacks (implement your own logic if needed)
 
         $samlUser = $event->getSaml2User();
-        $attributes = $samlUser->getAttributes();
+        $attributes = $samlUser->getAttributesWithFriendlyName();
+
+        Log::info($samlUser->getAttributesWithFriendlyName());
 
 
         $externalLoginType = Arr::first(Arr::get($attributes, 'externalIDPLoA', []));
         switch ($externalLoginType) {
 
             case 'LoA2': //ATENEO
-                $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3', []);
+                //{"cn":["Massimiliano Pardini"],"uid":["massimiliano.pardini@sns.it"],"externalIDPLoA":["LoA2"],"sn":["Pardini"],"givenName":["Massimiliano"]}
+                $spidEmail = Arr::get($attributes, 'uid', []);
                 if (!filter_var(Arr::get($spidEmail, 0), FILTER_VALIDATE_EMAIL)) {
                     $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1', []);
                 }
                 $normalizedAttributes = [
-                    'spidName' => Arr::get($attributes, 'urn:oid:2.5.4.42'),
-                    'spidFamilyName' => Arr::get($attributes, 'urn:oid:2.5.4.4'),
+                    'spidName' => Arr::get($attributes, 'cn'),
+                    'spidFamilyName' => Arr::get($attributes, 'sn'),
                     'spidEmail' => $spidEmail,
                     'externalIDPLoA' => $externalLoginType,
                 ];
@@ -54,8 +57,6 @@ class SamlSignedInListener
                 $normalizedAttributes = $attributes;
                 if ($externalIDPType == 'cie') {
                     Log::info('cie');
-                    return redirect(RouteServiceProvider::LOGIN)
-                        ->withErrors(["Al momento non è possibile effettuare il login con CIE"]);
 
 
                     $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3', []);
@@ -106,6 +107,7 @@ class SamlSignedInListener
                 'cognome' => implode(" ", Arr::get($normalizedAttributes, 'spidFamilyName')),
                 'info' => $normalizedAttributes,
                 'email_verified_at' => now()->toDateTimeString(),
+                'codice_fiscale' =>
             ];
             Log::info('Utente creato', $userData);
             $user = User::create($userData);
@@ -116,6 +118,12 @@ class SamlSignedInListener
         } else {
             //Bisogna andare a una form utente con i campi prepopolati chiedendo una mail all'utente
             //Cerco lo user per codice fiscale e non per mail
+
+            /*
+             {"spidFiscalNumber":["ZNDNDR85L44G687L"],"uid":["ZNDNDR85L44G687L"],"spidDateOfBirth":["1985-07-04"],"spidName":["ANDREA"],"externalIDPType":["cie"],"externalIDPLoA":["LoA3"],"spidFamilyName":["ZANDOMENEGHI"],"externalIDP":["https://idserver.servizicie.interno.gov.it/idp/profile/SAML2/POST/SSO"]}
+             */
+            $userFriendlyDataCie = $samlUser->getAttributesWithFriendlyName();
+
             $cf = Arr::first(Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1', []));
 
             $user = User::where('name', $cf)->first();
