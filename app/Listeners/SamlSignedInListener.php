@@ -10,6 +10,7 @@ use Illuminate\Support\Arr;
 use Slides\Saml2\Events\SignedIn;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class SamlSignedInListener
@@ -112,6 +113,8 @@ class SamlSignedInListener
             return $this->login($user);
         } else {
             //Bisogna andare a una form utente con i campi prepopolati chiedendo una mail all'utente
+            Session::put('normalized_attributes', $normalizedAttributes);
+
             return redirect()->intended(RouteServiceProvider::COMPLETE_PROFILE);
             //NO EMAIL DA GESTIRE
 

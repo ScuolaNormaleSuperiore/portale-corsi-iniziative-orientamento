@@ -45,6 +45,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        $userData = [];
         if ($request->isExternalRegistration) {
             //creo una password vuota
             $randomPassword = Str::random(12);
@@ -52,6 +53,7 @@ class RegisteredUserController extends Controller
                 'password' => $randomPassword,
                 'password_confirmation' => $randomPassword,
             ]);
+            $userData = session()->pull('normalized_attributes', []);
         }
         $request->validate([
             'nome' => ['required', 'string', 'max:255'],
@@ -66,6 +68,7 @@ class RegisteredUserController extends Controller
             'name' => $request->email,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'info' => $userData,
             //            'email_verified_at' => now(),
         ]);
         $user->assignRole('Studente');
@@ -84,8 +87,7 @@ class RegisteredUserController extends Controller
     {
         //Prendo i dati che mi arrivano da CIE e fillo la form di registrazione
         //disattivo però il campo password
-        $userData['nome'] = request('nome');
-        $userData['cognome'] = \request('cognome');
+        $userData = session('normalized_attributes', []);
         $isExternalRegistration = true;
         return view('auth.register', compact('userData', 'isExternalRegistration'));
     }
