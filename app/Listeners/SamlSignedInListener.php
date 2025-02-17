@@ -51,7 +51,7 @@ class SamlSignedInListener
 
                 $externalIDPType = Arr::first(Arr::get($attributes, 'externalIDPType', []));
                 $normalizedAttributes = $attributes;
-                if (Arr::get($externalIDPType, 0) == 'cie') {
+                if ($externalIDPType == 'cie') {
                     Log::info('cie');
 
                     $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3', []);
