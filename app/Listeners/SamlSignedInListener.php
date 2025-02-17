@@ -47,9 +47,13 @@ class SamlSignedInListener
                 ];
                 break;
             case 'LoA3': //
+                Log::info('LoA3');
+
                 $externalIDPType = Arr::first(Arr::get($attributes, 'externalIDPType', []));
                 $normalizedAttributes = $attributes;
                 if (Arr::get($externalIDPType, 0) == 'cie') {
+                    Log::info('cie');
+
                     $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3', []);
                     if (!filter_var(Arr::get($spidEmail, 0), FILTER_VALIDATE_EMAIL)) {
                         $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1', []);
@@ -82,6 +86,7 @@ class SamlSignedInListener
             // Login the user
             return $this->login($user);
         } elseif ($userEmail) {
+            Log::info('Devo creare un nuovo user');
             // Generate a random password
             $randomPassword = Str::random(12);
             // Create a new user in your database
@@ -95,9 +100,11 @@ class SamlSignedInListener
                 'info' => $normalizedAttributes,
                 'email_verified_at' => now()->toDateTimeString(),
             ];
+            Log::info('Utente creato', $userData);
             $user = User::create($userData);
             $user->assignRole('Studente');
             event(new Registered($user));
+            Log::info('Provo ad effettuare il login...');
             return $this->login($user);
         } else {
             return redirect()->intended(RouteServiceProvider::HOME);
@@ -108,16 +115,27 @@ class SamlSignedInListener
     protected function login(User $user)
     {
         Auth::login($user);
+        Log::info('Login fatto');
         $token = $user->createToken('auth_token')->plainTextToken;
+        Log::info('Token creato', $token);
+
         request()->session()->regenerate();
+        Log::info('sessione rigenerata');
+
         request()->session()->put('sanctum_token', $token);
+        Log::info('Token messo in sessione...');
+
         if (!Auth::user()->hasVerifiedEmail()) {
+            Log::info('Mail non verificata??');
+
             return redirect()->intended(route('verification.notice'));
         }
 
         if (auth_is_admin()) {
             return redirect()->intended('/dashboard');
         }
+        Log::info('Redirect...');
+
         return redirect()->intended(RouteServiceProvider::CANDIDATURE);
     }
 }
