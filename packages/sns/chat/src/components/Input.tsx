@@ -6,27 +6,22 @@ import {
   fetchMessageAtom,
   isMessageLoadingAtom,
 } from '@atoms/messages';
-import { isPanelOpenAtom, isLeftColumnCollapsedAtom } from '@atoms/layout';
 import { useIsMounted } from 'usehooks-ts';
 import { delay } from '@utils/stuff';
 
 const Input: React.FC = () => {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const setCurrentUserMessage = useSetAtom(currentUserMessageAtom);
   const currentUserMessage = useAtomValue(currentUserMessageAtom);
   const setFetchMessage = useSetAtom(fetchMessageAtom);
   const isMessageLoading = useAtomValue(isMessageLoadingAtom);
-  const isPanelOpen = useAtomValue(isPanelOpenAtom);
-  const isLeftColumnCollapsed = useAtomValue(isLeftColumnCollapsedAtom);
   const isMounted = useIsMounted();
   const { t } = useTranslation();
 
-  const handleSetCurrentMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length > 0) {
-      setCurrentUserMessage(e.target.value);
-    } else {
-      setCurrentUserMessage('');
-    }
+  const handleSetCurrentMessage = (
+    e: React.ChangeEvent<HTMLTextAreaElement>,
+  ) => {
+    setCurrentUserMessage(e.target.value);
   };
 
   const handleSendMessage = () => {
@@ -35,35 +30,48 @@ const Input: React.FC = () => {
     }
   };
 
+  const autoResize = () => {
+    if (textAreaRef.current) {
+      textAreaRef.current.style.height = '40px';
+      textAreaRef.current.style.height =
+        textAreaRef.current.scrollHeight + 'px';
+      if (textAreaRef.current.scrollHeight > 40) {
+        textAreaRef.current.style.overflowY = 'auto';
+      } else {
+        textAreaRef.current.style.overflowY = 'hidden';
+      }
+    }
+  };
+
+  useEffect(() => {
+    autoResize();
+  }, [currentUserMessage]);
+
   useEffect(() => {
     void delay(1600).then(() => {
       if (isMounted()) focusInput();
     });
   }, [isMounted]);
 
-  useEffect(() => {
-    if (
-      inputRef.current &&
-      (!isMessageLoading || !isPanelOpen || isLeftColumnCollapsed)
-    ) {
-      focusInput();
-    }
-  }, [isMessageLoading, isPanelOpen, isLeftColumnCollapsed]);
-
   const focusInput = () => {
-    if (inputRef.current) {
-      inputRef.current.focus();
+    if (textAreaRef.current) {
+      textAreaRef.current.focus();
     }
   };
 
   return (
-    <input
-      ref={inputRef}
-      className="w-full min-h-10 px-4 py-2"
-      type="text"
+    <textarea
+      ref={textAreaRef}
+      className="w-full px-4 py-2 resize-none overflow-x-hidden min-h-10 caret-primary max-h-40 border border-gray"
       value={currentUserMessage}
       onChange={handleSetCurrentMessage}
-      onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          handleSendMessage();
+        }
+      }}
+      inputMode="text"
       placeholder={t('chat.inputPlaceholder')}
       disabled={isMessageLoading}
       autoFocus

@@ -11,7 +11,7 @@ import {
 import { rootAttributesAtom } from '@atoms/rootAttributes';
 import Panel from '@components/Panel';
 import ButtonToggleColumn from '@components/ButtonToggleColumn';
-import Messages from '@components/Messages';
+import MessagesContainer from '@components/MessagesContainer';
 import Input from '@components/Input';
 import Send from '@components/Send';
 import Title from '@components/Title';
@@ -92,12 +92,10 @@ const App = () => {
                   )}
                 <Title />
               </div>
-              <div className="flex flex-col px-3 md:px-12 w-full lg:h-[525px] lg:min-h-96 h-[350px] min-h-64 pb-2 lg:pb-4 flex-grow">
-                <Messages />
-              </div>
+              <MessagesContainer />
             </div>
             <div className="px-3 py-3 md:px-12 md:py-6 bg-primary-lighter sticky bottom-0">
-              <div className="flex relative items-center border border-gray rounded overflow-hidden container mx-auto max-w-screen-xl">
+              <div className="flex relative items-center container mx-auto max-w-screen-xl">
                 <Input />
                 <Send />
               </div>

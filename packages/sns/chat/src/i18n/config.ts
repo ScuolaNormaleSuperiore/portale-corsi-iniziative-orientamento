@@ -27,6 +27,14 @@ i18n.use(initReactI18next).init({
             alt: 'avatar assistente',
           },
         },
+        sidebar: {
+          mobile: {
+            faq: {
+              open: 'Apri FAQ',
+              close: 'Chiudi FAQ',
+            },
+          },
+        },
       },
     },
     en: {
@@ -45,6 +53,14 @@ i18n.use(initReactI18next).init({
           },
           assistant: {
             alt: 'assistant avatar',
+          },
+        },
+        sidebar: {
+          mobile: {
+            faq: {
+              open: 'Open FAQ',
+              close: 'Close FAQ',
+            },
           },
         },
       },

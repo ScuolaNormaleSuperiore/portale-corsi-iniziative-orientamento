@@ -1,6 +1,6 @@
 # Rsbuild Project
 
-## Setup
+## 1 - Setup
 
 Switch node version with nvm:
 
@@ -14,7 +14,15 @@ Install the dependencies:
 bun install
 ```
 
-## Get Started
+## 2 - ENV
+
+```bash
+cp .env.example .env
+```
+
+set PUBLIC_CHAT_API_ENDPOINT to your chat api endpoint
+
+## 3 - Get Started
 
 Start the dev server:
 
@@ -26,10 +34,4 @@ Build the app for production:
 
 ```bash
 bun build
-```
-
-Preview the production build locally:
-
-```bash
-bun preview
 ```

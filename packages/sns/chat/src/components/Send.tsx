@@ -23,7 +23,8 @@ const Send: React.FC = () => {
     <button
       onClick={handleSendMessage}
       disabled={!currentUserMessage?.trim() || isMessageLoading}
-      className="bg-primary text-white text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 h-10 px-4 flex items-center justify-center hover:bg-primary-hover"
+      className="bg-primary text-white text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 min-h-10 px-4 flex items-center justify-center hover:bg-primary-hover self-end rounded-r-[4px] relative -left-px"
+      aria-label={t('chat.send')}
     >
       {t('chat.send')}
     </button>

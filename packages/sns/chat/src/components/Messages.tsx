@@ -1,21 +1,26 @@
 import React, { useEffect, useRef } from 'react';
+import { animateScroll } from 'react-scroll';
 import { useAtomValue } from 'jotai';
 import { MessageType } from '../types/message';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useScrollToBottom } from '@hooks/useScrollToBottom';
-import Message from './Message';
 import { messagesAtom } from '@atoms/messages';
+import Message from './Message';
 
-const Messages: React.FC = () => {
+const Messages: React.FC<{ visibleHeight: number | null }> = ({
+  visibleHeight,
+}) => {
   const messages = useAtomValue(messagesAtom);
-  const { elementRef, scrollToBottom } = useScrollToBottom();
-  const isFirstRender = useRef(true);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    if (elementRef.current && !isFirstRender.current) {
-      scrollToBottom();
+    if (messages.length > 0 && messagesContainerRef.current) {
+      animateScroll.scrollToBottom({
+        containerId: messagesContainerRef.current.id,
+        duration: 50,
+        smooth: true,
+      });
     }
-    isFirstRender.current = false;
-  }, [messages, elementRef, scrollToBottom]);
+  }, [messages]);
 
   if (messages.length === 0) {
     return null;
@@ -24,12 +29,14 @@ const Messages: React.FC = () => {
   return (
     <div
       className="flex flex-col gap-2 lg:gap-4 w-full overflow-y-auto overflow-x-hidden messages-container md:pr-2"
-      ref={elementRef}
+      id="messages-container"
+      ref={messagesContainerRef}
+      style={{ height: visibleHeight ? `${visibleHeight}px` : 'auto' }}
     >
       <AnimatePresence initial={false}>
         {messages.map(
           (message: MessageType) =>
-              (message?.content?.length > 0 || message.isLoading) && (
+            (message?.content?.length > 0 || message.isLoading) && (
               <motion.div
                 key={message.id}
                 initial={
