@@ -79,7 +79,7 @@ class SamlSignedInListener
         $userEmail = Arr::get(Arr::get($normalizedAttributes, 'spidEmail'), 0);
 
         $user = $userEmail ? User::where('email', $userEmail)->first() : null;
-        Log::info('User found? ', $user ? $user : '');
+        Log::info('User found? ', $user ? $user : []);
 
         if ($user) {
 
@@ -111,8 +111,10 @@ class SamlSignedInListener
             Log::info('Provo ad effettuare il login...');
             return $this->login($user);
         } else {
-            return redirect()->intended(RouteServiceProvider::HOME);
+            //Bisogna andare a una form utente con i campi prepopolati chiedendo una mail all'utente
+            return redirect()->intended(RouteServiceProvider::COMPLETE_PROFILE);
             //NO EMAIL DA GESTIRE
+
         }
     }
 

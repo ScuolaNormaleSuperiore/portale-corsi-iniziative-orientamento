@@ -11,11 +11,11 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
-                ->middleware('guest')
-                ->name('register');
+    ->middleware('guest')
+    ->name('register');
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
-                ->middleware('guest');
+    ->middleware('guest');
 
 Route::get('/register-scuola', [RegisteredUserController::class, 'createScuola'])
     ->middleware('guest')
@@ -29,8 +29,8 @@ Route::get('/login', [AuthenticatedSessionController::class, 'meta'])
     ->name('meta-login');
 
 Route::get('/login-studenti', [AuthenticatedSessionController::class, 'create'])
-                ->middleware('guest')
-                ->name('login');
+    ->middleware('guest')
+    ->name('login');
 Route::get('/login-classic', [AuthenticatedSessionController::class, 'create'])
     ->middleware('guest')
     ->name('login');
@@ -39,45 +39,51 @@ Route::get('/login-scuola', [AuthenticatedSessionController::class, 'createScuol
     ->name('login-scuola');
 
 Route::post('/login-studenti', [AuthenticatedSessionController::class, 'store'])
-                ->middleware('guest');
+    ->middleware('guest');
 Route::post('/login-classic', [AuthenticatedSessionController::class, 'store'])
     ->middleware('guest');
 
 Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
-                ->middleware('guest')
-                ->name('password.request');
+    ->middleware('guest')
+    ->name('password.request');
 
 Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
-                ->middleware('guest')
-                ->name('password.email');
+    ->middleware('guest')
+    ->name('password.email');
 
 Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
-                ->middleware('guest')
-                ->name('password.reset');
+    ->middleware('guest')
+    ->name('password.reset');
 
 Route::post('/reset-password', [NewPasswordController::class, 'store'])
-                ->middleware('guest')
-                ->name('password.update');
+    ->middleware('guest')
+    ->name('password.update');
 
 Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])
-                ->middleware('auth')
-                ->name('verification.notice');
+    ->middleware('auth')
+    ->name('verification.notice');
 
 Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-                ->middleware(['auth', 'signed', 'throttle:6,1'])
-                ->name('verification.verify');
+    ->middleware(['auth', 'signed', 'throttle:6,1'])
+    ->name('verification.verify');
 
 Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-                ->middleware(['auth', 'throttle:6,1'])
-                ->name('verification.send');
+    ->middleware(['auth', 'throttle:6,1'])
+    ->name('verification.send');
 
 Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])
-                ->middleware('auth')
-                ->name('password.confirm');
+    ->middleware('auth')
+    ->name('password.confirm');
 
 Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store'])
-                ->middleware('auth');
+    ->middleware('auth');
 
 Route::any('/logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->middleware('auth')
-                ->name('logout');
+    ->middleware('auth')
+    ->name('logout');
+
+
+//Rotte per gestione completamento profilo (caso CIE, no mail)
+Route::get('/complete-profile', [RegisteredUserController::class, 'completeProfile'])
+    ->middleware('guest')
+    ->name('password.request');

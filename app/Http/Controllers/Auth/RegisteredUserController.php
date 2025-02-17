@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -44,6 +45,14 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->isExternalRegistration) {
+            //creo una password vuota
+            $randomPassword = Str::random(12);
+            $request->merge([
+                'password' => $randomPassword,
+                'password_confirmation' => $randomPassword,
+            ]);
+        }
         $request->validate([
             'nome' => ['required', 'string', 'max:255'],
             'cognome' => ['required', 'string', 'max:255'],
@@ -68,6 +77,17 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::CANDIDATURE);
+    }
+
+
+    public function completeProfile()
+    {
+        //Prendo i dati che mi arrivano da CIE e fillo la form di registrazione
+        //disattivo però il campo password
+        $userData['nome'] = request('nome');
+        $userData['cognome'] = \request('cognome');
+        $isExternalRegistration = true;
+        return view('auth.register', compact('userData', 'isExternalRegistration'));
     }
 
     public function createScuola()
