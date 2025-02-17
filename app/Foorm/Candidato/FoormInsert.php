@@ -37,7 +37,6 @@ class FoormInsert extends BaseFoormInsert
                     "spidDateOfBirth" => 'data_nascita',
                     "spidPlaceOfBirth" => 'luogo_nascita',
                     "spidGender" => 'sesso',
-                    'spidEmail' => 'emails',
                 ];
                 foreach ($mapping as $spidField => $dbField) {
                     $spidValue = Arr::get(Arr::get($info, $spidField, []), 0);
