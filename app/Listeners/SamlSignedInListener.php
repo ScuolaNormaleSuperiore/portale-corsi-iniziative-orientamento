@@ -54,6 +54,9 @@ class SamlSignedInListener
                 $normalizedAttributes = $attributes;
                 if ($externalIDPType == 'cie') {
                     Log::info('cie');
+                    return redirect(RouteServiceProvider::LOGIN)
+                        ->withErrors(["Al momento non è possibile effettuare il login con CIE"]);
+
 
                     $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3', []);
                     if (!filter_var(Arr::get($spidEmail, 0), FILTER_VALIDATE_EMAIL)) {

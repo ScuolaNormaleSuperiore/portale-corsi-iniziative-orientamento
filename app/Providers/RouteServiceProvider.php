@@ -20,6 +20,7 @@ class RouteServiceProvider extends ServiceProvider
     public const HOME = '/';
     public const CANDIDATURE = '/candidature';
     public const COMPLETE_PROFILE = '/complete-profile';
+    public const LOGIN = '/login';
 
     /**
      * The controller namespace for the application.
