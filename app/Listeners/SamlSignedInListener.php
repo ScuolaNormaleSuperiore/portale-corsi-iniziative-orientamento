@@ -77,8 +77,10 @@ class SamlSignedInListener
         Log::info('SAML User authenticated', $userData);
 
         $userEmail = Arr::get(Arr::get($normalizedAttributes, 'spidEmail'), 0);
+        Log::info('User email? ', $userEmail);
 
         $user = $userEmail ? User::where('email', $userEmail)->first() : null;
+        Log::info('User found? ', $user);
 
         if ($user) {
 
