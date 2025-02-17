@@ -1,11 +1,13 @@
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Questions from '@components/Questions';
+import { useTranslation } from 'react-i18next';
 
 const Panel: React.FC<{
   isOpen: boolean;
   onClose: () => void;
 }> = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
   return (
     <AnimatePresence mode="wait">
       {isOpen && (
@@ -18,9 +20,19 @@ const Panel: React.FC<{
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4"
-            tabIndex={-1}
+            type="button"
+            aria-label={
+              isOpen
+                ? t('sidebar.mobile.faq.close')
+                : t('sidebar.mobile.faq.open')
+            }
+            className="absolute top-4 right-4 flex items-center gap-2"
           >
+            <span className="text-md uppercase font-semibold text-primary">
+              {isOpen
+                ? t('sidebar.mobile.faq.close')
+                : t('sidebar.mobile.faq.open')}
+            </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

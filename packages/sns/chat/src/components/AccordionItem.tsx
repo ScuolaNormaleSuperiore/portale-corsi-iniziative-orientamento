@@ -31,6 +31,8 @@ const AccordionItem: React.FC<{ text: string; isOpen: boolean }> = ({
         }}
         disabled={isMessageLoading}
         tabIndex={isOpen ? 0 : -1}
+        aria-expanded={isOpen}
+        aria-label={text}
       >
         <h6 className="text-base duration-300 font-semibold group-hover/button:text-primary-active">
           <span className="bg-[linear-gradient(transparent_calc(100%_-_1.5px),black_1.5px)] bg-no-repeat bg-[length:0%_100%] duration-300 transition-[background-size] group-hover/button:bg-[length:100%_100%]">

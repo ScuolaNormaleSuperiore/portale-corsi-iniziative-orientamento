@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { useAtomValue } from 'jotai';
 import { isLeftColumnCollapsedAtom, isPanelOpenAtom } from '@atoms/layout';
+import { useTranslation } from 'react-i18next';
 
 const ButtonToggleColumn: React.FC<{
   className?: string;
@@ -10,13 +11,17 @@ const ButtonToggleColumn: React.FC<{
 }> = ({ className, handler }) => {
   const isLeftColumnCollapsed = useAtomValue(isLeftColumnCollapsedAtom);
   const isPanelOpen = useAtomValue(isPanelOpenAtom);
+  const { t } = useTranslation();
+
   return (
     <button
       onClick={handler}
-      className={clsx(
-        'w-6 h-6 hover:drop-shadow-lg flex items-center justify-center',
-        className,
-      )}
+      className={clsx('hover:drop-shadow-lg flex items-center', className)}
+      aria-label={
+        isPanelOpen
+          ? t('sidebar.mobile.faq.close')
+          : t('sidebar.mobile.faq.open')
+      }
     >
       <motion.svg
         animate={{ rotate: isLeftColumnCollapsed || isPanelOpen ? 180 : 0 }}
@@ -30,10 +35,15 @@ const ButtonToggleColumn: React.FC<{
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="text-primary"
+        className="text-primary w-5 h-5"
       >
         <polyline points="15 18 9 12 15 6" />
       </motion.svg>
+      <span className="uppercase text-primary font-semibold lg:hidden">
+        {isPanelOpen
+          ? t('sidebar.mobile.faq.close')
+          : t('sidebar.mobile.faq.open')}
+      </span>
     </button>
   );
 };

@@ -1,12 +1,13 @@
 import { atom } from 'jotai';
 import { v4 as uuidv4 } from 'uuid';
-import {API_PASSWORD, API_USERNAME, CHAT_API_ENDPOINT} from '@utils/api';
+import { API_BASIC_AUTH, CHAT_API_ENDPOINT } from '@utils/api';
 import { sanitize } from '@utils/sanitizer';
 import { MessageType } from '../types/message';
 import { UpdateMessageParams, UpdateMessageChunkParams } from '../types/atoms';
 import { RoleType } from '../types/message';
-import i18n from '../i18n/config';
+import { conversationIdAtom } from './conversation';
 
+import i18n from '../i18n/config';
 export const messagesAtom = atom<MessageType[]>([]);
 export const currentUserMessageAtom = atom<string>('');
 export const isMessageLoadingAtom = atom<boolean>(false);
@@ -98,8 +99,8 @@ export const fetchMessageAtom = atom(
       const response = await fetch(CHAT_API_ENDPOINT, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Basic ${btoa(`${API_USERNAME}:${API_PASSWORD}`)}`
+          'Content-Type': 'application/json',
+          Authorization: API_BASIC_AUTH,
         },
         body: JSON.stringify({
           messages: get(messagesAtom)
@@ -108,6 +109,7 @@ export const fetchMessageAtom = atom(
               role: msg.role,
               content: msg.content,
             })),
+          conversationId: get(conversationIdAtom),
         }),
         signal: AbortSignal.timeout(30000),
       });

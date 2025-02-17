@@ -95,7 +95,7 @@ const App = () => {
               <MessagesContainer />
             </div>
             <div className="px-3 py-3 md:px-12 md:py-6 bg-primary-lighter sticky bottom-0">
-              <div className="flex relative items-center border border-gray rounded overflow-hidden container mx-auto max-w-screen-xl">
+              <div className="flex relative items-center container mx-auto max-w-screen-xl">
                 <Input />
                 <Send />
               </div>
