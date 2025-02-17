@@ -1,6 +1,6 @@
 import { atom } from 'jotai';
 import { v4 as uuidv4 } from 'uuid';
-import { API_BASIC_AUTH, CHAT_API_ENDPOINT } from '@utils/api';
+import { CHAT_API_ENDPOINT } from '@utils/api';
 import { sanitize } from '@utils/sanitizer';
 import { MessageType } from '../types/message';
 import { UpdateMessageParams, UpdateMessageChunkParams } from '../types/atoms';
@@ -100,7 +100,6 @@ export const fetchMessageAtom = atom(
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: API_BASIC_AUTH,
         },
         body: JSON.stringify({
           messages: get(messagesAtom)
