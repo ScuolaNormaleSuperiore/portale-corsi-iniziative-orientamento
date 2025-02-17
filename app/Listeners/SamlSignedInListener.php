@@ -57,6 +57,9 @@ class SamlSignedInListener
                     $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3', []);
                     if (!filter_var(Arr::get($spidEmail, 0), FILTER_VALIDATE_EMAIL)) {
                         $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1', []);
+                        if (!filter_var(Arr::get($spidEmail, 0), FILTER_VALIDATE_EMAIL)) {
+                            $spidEmail = null;
+                        }
                     }
                     $normalizedAttributes['spidEmail'] = $spidEmail;
                 }
