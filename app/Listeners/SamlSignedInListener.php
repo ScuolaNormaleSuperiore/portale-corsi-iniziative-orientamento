@@ -125,7 +125,6 @@ class SamlSignedInListener
         Auth::login($user);
         Log::info('Login fatto');
         $token = $user->createToken('auth_token')->plainTextToken;
-        Log::info('Token creato', $token);
 
         request()->session()->regenerate();
         Log::info('sessione rigenerata');
