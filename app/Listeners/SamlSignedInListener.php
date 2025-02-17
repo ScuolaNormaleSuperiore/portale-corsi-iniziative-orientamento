@@ -112,12 +112,34 @@ class SamlSignedInListener
             return $this->login($user);
         } else {
             //Bisogna andare a una form utente con i campi prepopolati chiedendo una mail all'utente
-            Log::info('Metto in sessione gli attributi normalizzati...', $normalizedAttributes);
-            Session::put('normalized_attributes', $normalizedAttributes);
-            Log::info('...e faccio redirect');
-            return redirect()->intended(RouteServiceProvider::COMPLETE_PROFILE);
-            //NO EMAIL DA GESTIRE
+            //Cerco lo user per codice fiscale e non per mail
+            $cf = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1', []);
 
+            $user = User::where('name', $cf)->first();
+            if ($user) {
+                return $this->login($user);
+            } else {
+                Log::info('Devo creare un nuovo user');
+                // Generate a random password
+                $randomPassword = Str::random(12);
+                // Create a new user in your database
+
+                $userData = [
+                    'name' => $cf,
+                    'email' => $cf . '@fakemail.it',
+                    'password' => \bcrypt($randomPassword),
+                    'nome' => implode(" ", Arr::get($normalizedAttributes, 'spidName')),
+                    'cognome' => implode(" ", Arr::get($normalizedAttributes, 'spidFamilyName')),
+                    'info' => $normalizedAttributes,
+                    'email_verified_at' => now()->toDateTimeString(),
+                ];
+                Log::info('Utente creato', $userData);
+                $user = User::create($userData);
+                $user->assignRole('Studente');
+                event(new Registered($user));
+                Log::info('Provo ad effettuare il login...');
+                return $this->login($user);
+            }
         }
     }
 

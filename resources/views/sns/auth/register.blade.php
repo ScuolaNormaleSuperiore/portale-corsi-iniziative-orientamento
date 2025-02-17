@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="nome" name="nome" value="{{ old('name', $userData['nome'] ?? '') }}" @if (isset($isExternalRegistration) && $userData['nome']) readonly @endif>
+                    <input type="text" class="form-control" id="nome" name="nome" value="{{ old('name', $userData['nome'] ?? '') }}" @if (isset($isExternalRegistration) && isset($userData['nome'])) readonly @endif>
 
 
 
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="cognome" name="cognome" value="{{ old('cognome', $userData['cognome'] ?? '') }}" @if (isset($isExternalRegistration) && $userData['cognome']) readonly @endif>
+                    <input type="text" class="form-control" id="cognome" name="cognome" value="{{ old('cognome', $userData['cognome'] ?? '') }}" @if (isset($isExternalRegistration) && isset($userData['cognome'])) readonly @endif>
 
 
 

@@ -86,4 +86,4 @@ Route::any('/logout', [AuthenticatedSessionController::class, 'destroy'])
 //Rotte per gestione completamento profilo (caso CIE, no mail)
 Route::get('/complete-profile', [RegisteredUserController::class, 'completeProfile'])
     ->middleware('guest')
-    ->name('password.request');
+    ->name('complete.profile');
