@@ -80,7 +80,6 @@ class SamlSignedInListener
         $userEmail = Arr::get(Arr::get($normalizedAttributes, 'spidEmail'), 0);
 
         $user = $userEmail ? User::where('email', $userEmail)->first() : null;
-        Log::info('User found? ', $user ? $user : []);
 
         if ($user) {
 
