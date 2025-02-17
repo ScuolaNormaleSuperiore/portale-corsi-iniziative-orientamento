@@ -37,30 +37,30 @@ class FoormInsert extends BaseFoormInsert
                     "spidDateOfBirth" => 'data_nascita',
                     "spidPlaceOfBirth" => 'luogo_nascita',
                     "spidGender" => 'sesso',
+                    'spidEmail' => 'emails',
                 ];
                 foreach ($mapping as $spidField => $dbField) {
-                    $spidValue = Arr::get(Arr::get($info,$spidField,[]),0);
+                    $spidValue = Arr::get(Arr::get($info, $spidField, []), 0);
                     if (!$spidValue) {
                         continue;
                     }
 
                     if ($spidField == 'spidPlaceOfBirth') {
-                        $comune = Comune::where('codice_catastale',$spidValue)->first();
+                        $comune = Comune::where('codice_catastale', $spidValue)->first();
                         if ($comune) {
-                            $spidValue = $comune->nome .' (' . $comune->sigla_provincia . ')';
+                            $spidValue = $comune->nome . ' (' . $comune->sigla_provincia . ')';
                         }
                     }
                     $this->extraDefaults[$dbField] = $spidValue;
-
                 }
             default:
                 break;
         }
 
-        if (env('TEST_INSERT',false)) {
+        if (env('TEST_INSERT', false)) {
             $data = [
-                'codice_fiscale' => 'TRRGCM78B07G'.str_pad(rand(0,999),3,"0",STR_PAD_LEFT).Str::random(1),
-                'emails' => Str::random(6).'@'.Str::random(6).'.it',
+                'codice_fiscale' => 'TRRGCM78B07G' . str_pad(rand(0, 999), 3, "0", STR_PAD_LEFT) . Str::random(1),
+                'emails' => Str::random(6) . '@' . Str::random(6) . '.it',
                 'sesso' => 'M',
                 'data_nascita' => '1978-02-07',
                 'luogo_nascita' => 'Pisa',
@@ -76,10 +76,10 @@ class FoormInsert extends BaseFoormInsert
                 'profilo' => 'aslkdlsk asldkals dkalkd laskdl asd lsakdlas kdlaskdl aksld klak d dmas dsl dkasldk aslkd laks aslkdlsk asldkals dkalkd laskdl asd lsakdlas kdlaskdl aksld klak d dmas dsl dkasldk aslkd laks aslkdlsk asldkals dkalkd laskdl asd lsakdlas kdlaskdl aksld klak d dmas dsl dkasldk aslkd laks aslkdlsk asldkals dkalkd laskdl asd lsakdlas kdlaskdl aksld klak d dmas dsl dkasldk aslkd laks aslkdlsk asldkals dkalkd laskdl asd lsakdlas kdlaskdl aksld klak d dmas dsl dkasldk aslkd laks aslkdlsk asldkals dkalkd laskdl asd lsakdlas kdlaskdl aksld klak d dmas dsl dkasldk aslkd laks',
                 'motivazioni' => 'rrrr aslkdlsk asldkals dkalkd laskdl asd lsakdlas kdlaskdl aksld klak d dmas dsl dkasldk aslkd laks aslkdlsk asldkals dkalkd laskdl asd lsakdlas kdlaskdl aksld klak d dmas dsl dkasldk aslkd laks aslkdlsk asldkals dkalkd laskdl asd lsakdlas kdlaskdl aksld klak d dmas dsl dkasldk aslkd laks aslkdlsk asldkals dkalkd laskdl asd lsakdlas kdlaskdl aksld klak d dmas dsl dkasldk aslkd laks aslkdlsk asldkals dkalkd laskdl asd lsakdlas kdlaskdl aksld klak d dmas dsl dkasldk aslkd laks aslkdlsk asldkals dkalkd laskdl asd lsakdlas kdlaskdl aksld klak d dmas dsl dkasldk aslkd laks',
 
-             ];
+            ];
 
             foreach ($data as $field => $datum) {
-                if (!Arr::get($this->extraDefaults,$field)) {
+                if (!Arr::get($this->extraDefaults, $field)) {
                     $this->extraDefaults[$field] = $datum;
                 }
             }
@@ -87,6 +87,4 @@ class FoormInsert extends BaseFoormInsert
 
         return $this->extraDefaults;
     }
-
-
 }
