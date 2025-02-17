@@ -112,8 +112,9 @@ class SamlSignedInListener
             return $this->login($user);
         } else {
             //Bisogna andare a una form utente con i campi prepopolati chiedendo una mail all'utente
+            Log::info('Metto in sessione gli attributi normalizzati...', $normalizedAttributes);
             Session::put('normalized_attributes', $normalizedAttributes);
-
+            Log::info('...e faccio redirect');
             return redirect()->intended(RouteServiceProvider::COMPLETE_PROFILE);
             //NO EMAIL DA GESTIRE
 
