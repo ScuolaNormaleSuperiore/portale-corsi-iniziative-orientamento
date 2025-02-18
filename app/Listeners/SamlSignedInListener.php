@@ -94,6 +94,7 @@ class SamlSignedInListener
             $user->save();
             // Login the user
             $this->login($user);
+            return;
         }
 
         //UTENTE NON TROVATO MA HO TROVATO LA EMAIL
@@ -119,6 +120,7 @@ class SamlSignedInListener
             event(new Registered($user));
             Log::info('Provo ad effettuare il login...');
             $this->login($user);
+            return;
         }
 
         //NON HO EMAIL, MA DOVREI ALMENO AVERE IL CODICE FISCALE
