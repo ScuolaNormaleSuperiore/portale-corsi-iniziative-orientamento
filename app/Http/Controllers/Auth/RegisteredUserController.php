@@ -36,9 +36,19 @@ class RegisteredUserController extends Controller
     }
 
     /**
+     * Display the registration view.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function createCie()
+    {
+        return view('auth.register-cie');
+    }
+
+    /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -82,15 +92,57 @@ class RegisteredUserController extends Controller
         return redirect(RouteServiceProvider::CANDIDATURE);
     }
 
-
-    public function completeProfile()
+    /**
+     * Handle an incoming registration request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function storeCie(Request $request)
     {
-        //Prendo i dati che mi arrivano da CIE e fillo la form di registrazione
-        //disattivo però il campo password
-        $userData = session('normalized_attributes', []);
-        $isExternalRegistration = true;
-        return view('auth.register', compact('userData', 'isExternalRegistration'));
+
+        //creo una password vuota
+        $randomPassword = Str::random(12);
+        $request->merge([
+            'password' => $randomPassword,
+            'password_confirmation' => $randomPassword,
+        ]);
+        $request->validate([
+            'nome' => ['required', 'string', 'max:255'],
+            'cognome' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'unique:scuole,email_riferimento'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $info = $request->get('samlAttributes');
+        if ($info) {
+            $info = json_decode($info,true);
+        }
+        $codiceFiscale = $request->get('codice_fiscale');
+
+        $user = User::create([
+            'nome' => $request->nome,
+            'cognome' => $request->cognome,
+            'name' => $request->email,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'info' => $info,
+            'codice_fiscale' => $codiceFiscale,
+            //            'email_verified_at' => now(),
+        ]);
+        $user->assignRole('Studente');
+        $user->save();
+
+
+        event(new Registered($user));
+
+        Auth::login($user);
+
+        return redirect(RouteServiceProvider::CANDIDATURE);
     }
+
 
     public function createScuola()
     {
@@ -157,8 +209,6 @@ class RegisteredUserController extends Controller
 
             return redirect(route('cortesia-scuola-richiesta'));
         }
-
-
 
 
         //

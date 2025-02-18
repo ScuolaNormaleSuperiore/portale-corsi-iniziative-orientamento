@@ -8,22 +8,26 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a><span class="separator">/</span></li>
                     <li class="breadcrumb-item"><a href="/login">Accesso</a><span class="separator">/</span></li>
-                    <li class="breadcrumb-item active">Registrazione studente da CIE</li>
+                    <li class="breadcrumb-item active">Registrazione studente da SPID/CIE</li>
                 </ol>
             </nav>
 
-            <h1 class="h2 py-2">Registrazione studente da CIE</h1>
+            <h1 class="h2 py-2">Registrazione studente da SPID/CIE</h1>
             <hr/>
 
         </section>
 
         <section class="container pt-4 pb-4">
-            <h2 class="h3">Inserisci i tuoi dati</h2>
+            <h2 class="h3">Completa i tuoi dati</h2>
+            <h3 class="h6">Per utilizzare le funzionalità del portale è necessario indicare un indirizzo e-mail.</h3>
             <p>Hai già un account? <a class="text-decoration-underline" href="/login-classic">Accedi</a>.</p>
 
             <form class="needsValidation" method="post" id="registerForm"
-                  action="{{ route('register') }}">
+                  action="{{ route('register-cie') }}">
                 @csrf
+
+                <input type="hidden" name="codice_fiscale" value="{{ old('codice_fiscale', session()->get('codice_fiscale') ?? '') }}">
+                <input type="hidden" name="samlAttributes" value="{{ old('samlAttributes', session()->get('samlAttributes') ?? '') }}">
 
                 @if ($errors->any())
                     <div class="row mb-4">
@@ -46,9 +50,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="nome" name="nome" value="{{ old('name', $userData['nome'] ?? '') }}" @if (isset($isExternalRegistration) && isset($userData['nome'])) readonly @endif>
-
-
+                    <input type="text" class="form-control" id="nome" name="nome" value="{{ old('nome', session()->get('nome') ?? '') }}" readonly>
 
 
 
@@ -58,7 +60,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="cognome" name="cognome" value="{{ old('cognome', $userData['cognome'] ?? '') }}" @if (isset($isExternalRegistration) && isset($userData['cognome'])) readonly @endif>
+                    <input type="text" class="form-control" id="cognome" name="cognome" value="{{ old('cognome', session()->get('cognome') ?? '') }}" readonly>
 
 
 
@@ -73,65 +75,7 @@
                 <div class="form-group">
                     <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
                     <label for="email" class="" style="width: auto;">Indirizzo E-mail</label>
-
-
                 </div>
-                @if(!isset($isExternalRegistration))
-
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" data-bs-input class="form-control input-password" id="password"
-                           name="password">
-                    <button type="button" class="password-icon btn" role="switch" aria-checked="false">
-                        <span class="visually-hidden">Mostra/Nascondi Password</span>
-                        <svg class="password-icon-visible icon icon-sm" aria-hidden="true">
-                            <use href="{{Theme::url('svg/sprites.svg')}}#it-password-visible"></use>
-                        </svg>
-                        <svg class="password-icon-invisible icon icon-sm d-none" aria-hidden="true">
-                            <use href="{{Theme::url('svg/sprites.svg')}}#it-password-invisible"></use>
-                        </svg>
-                    </button>
-                    <p id="infoPassword3" class="form-text text-muted d-block small pb-0">Inserisci almeno 8 caratteri,
-                        combinando maiuscole, numeri e caratteri speciali.</p>
-                    <div class="password-strength-meter">
-                        <p id="strengthMeterInfo3" class="strength-meter-info small form-text text-muted pt-0"
-                           aria-live="polite"
-                           data-bs-short-pass="Password troppo breve."
-                           data-bs-bad-pas="Password debole."
-                           data-bs-good-pass="Password abbastanza sicura."
-                           data-bs-strong-pass="Password sicura."
-                        ></p>
-                        <div class="password-meter progress rounded-0 position-absolute">
-                            <div class="row position-absolute w-100 m-0">
-                                <div class="col-3 border-start border-end border-white"></div>
-                                <div class="col-3 border-start border-end border-white"></div>
-                                <div class="col-3 border-start border-end border-white"></div>
-                                <div class="col-3 border-start border-end border-white"></div>
-                            </div>
-                            <div class="progress-bar bg-muted" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                                 aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="password_confirmation">Password (di nuovo)</label>
-                    <input type="password" data-bs-input class="form-control input-password" id="password_confirmation"
-                           name="password_confirmation">
-                    <button type="button" class="password-icon btn" role="switch" aria-checked="false">
-                        <span class="visually-hidden">Mostra/Nascondi Password</span>
-                        <svg class="password-icon-visible icon icon-sm" aria-hidden="true">
-                            <use href="{{Theme::url('svg/sprites.svg')}}#it-password-visible"></use>
-                        </svg>
-                        <svg class="password-icon-invisible icon icon-sm d-none" aria-hidden="true">
-                            <use href="{{Theme::url('svg/sprites.svg')}}#it-password-invisible"></use>
-                        </svg>
-                    </button>
-                </div>
-                @else
-                    <input type="hidden" name="isExternalRegistration" value="true">
-                @endif
 
                 <div class="py-4 signup_buttons">
                     <button class="btn btn-primary" type="submit">Iscriviti</button>
@@ -146,7 +90,6 @@
     </div>
 
     <script>
-        let isExternalRegistration = @if(isset($isExternalRegistration)) 'true' @else 'false' @endif;
         document.addEventListener("DOMContentLoaded", function () {
             const errorMessage = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Attenzione</strong> Alcuni campi inseriti sono da controllare.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Chiudi avviso">';
             const errorWrapper = document.querySelector('#errorMsgContainer');
@@ -157,18 +100,6 @@
                 focusInvalidField: false,
             })
             validate
-                .addField('#nome', [
-                    {
-                        rule: 'required',
-                        errorMessage: 'Questo campo è richiesto'
-                    }
-                ])
-                .addField('#cognome', [
-                    {
-                        rule: 'required',
-                        errorMessage: 'Questo campo è richiesto'
-                    }
-                ])
                 .addField('#email', [
                     {
                         rule: 'required',
@@ -179,43 +110,6 @@
                         errorMessage: 'Inserisci un e-mail valida'
                     },
                 ]);
-                if (isExternalRegistration === "false")
-                {
-                    validate.addField('#password', [
-                        {
-                            rule: 'required',
-                            errorMessage: 'Questo campo è richiesto'
-                        },
-                        // {
-                        //     rule: 'strongPassword',
-                        //     errorMessage: 'Inserisci almeno 8 caratteri, con almeno una minuscola, una maiuscola, un numero e un carattere speciale.'
-                        // },
-
-                    ])
-                    .addField('#password_confirmation', [
-                        {
-                            rule: 'required',
-                            errorMessage: 'Questo campo è richiesto'
-                        },
-                        {
-                            validator: (value, fields) => {
-                                if (
-                                    fields[4] &&
-                                    fields[4].elem
-                                ) {
-                                    console.log("RP:::",value,fields[4].elem.value);
-                                    const repeatPasswordValue =
-                                        fields[4].elem.value;
-                                    return value === repeatPasswordValue;
-                                }
-
-                                return true;
-                            },
-                            errorMessage: 'Le password non coincidono',
-                        }
-
-                    ]);
-                }
                 validate.onSuccess(() => {
                     document.forms['registerForm'].submit()
                 })
