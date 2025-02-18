@@ -70,8 +70,9 @@ class SamlSignedInListener
 
                 break;
             default: //SPID (LoA3), CIE (?)
-                return redirect(RouteServiceProvider::LOGIN)
-                    ->withErrors(["Metodo di atutenticazione non previsto"]);
+                Session::flash('redirect_url',RouteServiceProvider::LOGIN);
+                Session::put('errors',["Metodo di atutenticazione non previsto"]);
+                return;
         }
 
         $userData = [
@@ -92,7 +93,7 @@ class SamlSignedInListener
             $user->info = $info;
             $user->save();
             // Login the user
-            return $this->login($user);
+            $this->login($user);
         }
 
         //UTENTE NON TROVATO MA HO TROVATO LA EMAIL
@@ -117,7 +118,7 @@ class SamlSignedInListener
             $user->assignRole('Studente');
             event(new Registered($user));
             Log::info('Provo ad effettuare il login...');
-            return $this->login($user);
+            $this->login($user);
         }
 
         //NON HO EMAIL, MA DOVREI ALMENO AVERE IL CODICE FISCALE
@@ -125,9 +126,9 @@ class SamlSignedInListener
         $nome = Arr::first(Arr::get($normalizedAttributes, 'spidName'));
         $cognome = Arr::first(Arr::get($normalizedAttributes, 'spidFamilyName'));
 
-
-        return redirect(RouteServiceProvider::REGISTER_CIE)
-            ->with(['samlAttributes' => json_encode($normalizedAttributes),'nome' => $nome,'cognome' => $cognome,'codice_fiscale' => $userCf]);
+        Session::flash('redirect_url',RouteServiceProvider::REGISTER_CIE);
+        Session::put(['samlAttributes' => json_encode($normalizedAttributes),'nome' => $nome,'cognome' => $cognome,'codice_fiscale' => $userCf]);
+        return;
 
     }
 
@@ -155,14 +156,17 @@ class SamlSignedInListener
         if (!Auth::user()->hasVerifiedEmail()) {
             Log::info('Mail non verificata??');
 
-            return redirect(route('verification.notice'));
+            Session::flash('redirect_url',route('verification.notice'));
+            return ;
         }
 
         if (auth_is_admin()) {
-            return redirect('/dashboard');
+            Session::flash('redirect_url','/dashboard');
+            return ;
         }
         Log::info('Redirect...');
 
-        return redirect(RouteServiceProvider::CANDIDATURE);
+        Session::flash('redirect_url',RouteServiceProvider::CANDIDATURE);
+        return;
     }
 }
