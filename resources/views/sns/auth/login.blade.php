@@ -46,7 +46,7 @@
                             </button>
                         </a>
                     </div>
-                    <h4 class="h6 pt-3 text-danger">Attenzione! Al momento non è possibile effetutare il login tramite CIE</h4>
+{{--                    <h4 class="h6 pt-3 text-danger">Attenzione! Al momento non è possibile effetutare il login tramite CIE</h4>--}}
                 </div>
                 <div class="col-12 col-md-6">
                     <h3 class="h4 pb-3 mt-4 mt-md-0">Studenti stranieri o non in possesso di SPID o CIE</h3>
