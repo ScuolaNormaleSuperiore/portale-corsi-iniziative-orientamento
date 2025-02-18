@@ -29,48 +29,49 @@ class SamlSignedInListener
         // Prevent replay attacks (implement your own logic if needed)
 
         $samlUser = $event->getSaml2User();
-        $attributes = $samlUser->getAttributes();
+        $attributes = $samlUser->getAttributesWithFriendlyName();
+
+        Log::info($samlUser->getAttributesWithFriendlyName());
 
 
         $externalLoginType = Arr::first(Arr::get($attributes, 'externalIDPLoA', []));
         switch ($externalLoginType) {
 
             case 'LoA2': //ATENEO
-                $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3', []);
-                if (!filter_var(Arr::get($spidEmail, 0), FILTER_VALIDATE_EMAIL)) {
-                    $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1', []);
+                //{"cn":["Massimiliano Pardini"],"uid":["massimiliano.pardini@sns.it"],"externalIDPLoA":["LoA2"],"sn":["Pardini"],"givenName":["Massimiliano"]}
+
+                $spidUid = Arr::get($attributes, 'uid', []);
+                $userEmail = $this->getEmailFromField($spidUid);
+                $userCf = null;
+                if ($userEmail) {
+                    $spidEmail = $spidUid;
+                    $spidFiscalNumber = [];
+                } else {
+                    $spidFiscalNumber = $spidUid;
+                    $spidEmail = [];
+                    $userCf = Arr::first($spidUid);
                 }
+
                 $normalizedAttributes = [
-                    'spidName' => Arr::get($attributes, 'urn:oid:2.5.4.42'),
-                    'spidFamilyName' => Arr::get($attributes, 'urn:oid:2.5.4.4'),
+                    'spidName' => Arr::get($attributes, 'cn'),
+                    'spidFamilyName' => Arr::get($attributes, 'sn'),
                     'spidEmail' => $spidEmail,
+                    'spidFiscalNumber' => $spidFiscalNumber,
                     'externalIDPLoA' => $externalLoginType,
                 ];
                 break;
             case 'LoA3': //
                 Log::info('LoA3');
 
-                $externalIDPType = Arr::first(Arr::get($attributes, 'externalIDPType', []));
+                $spidUid = Arr::get($attributes, 'uid', []);
+                $userEmail = $this->getEmailFromField($spidUid);
+                $userCf = Arr::first(Arr::get($attributes, 'spidFiscalNumber'));
                 $normalizedAttributes = $attributes;
-                if ($externalIDPType == 'cie') {
-                    Log::info('cie');
-                    return redirect(RouteServiceProvider::LOGIN)
-                        ->withErrors(["Al momento non è possibile effettuare il login con CIE"]);
 
-
-                    $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.3', []);
-                    if (!filter_var(Arr::get($spidEmail, 0), FILTER_VALIDATE_EMAIL)) {
-                        $spidEmail = Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1', []);
-                        if (!filter_var(Arr::get($spidEmail, 0), FILTER_VALIDATE_EMAIL)) {
-                            $spidEmail = null;
-                        }
-                    }
-                    $normalizedAttributes['spidEmail'] = $spidEmail;
-                }
                 break;
             default: //SPID (LoA3), CIE (?)
-                $normalizedAttributes = $attributes;
-                break;
+                return redirect(RouteServiceProvider::LOGIN)
+                    ->withErrors(["Metodo di atutenticazione non previsto"]);
         }
 
         $userData = [
@@ -80,19 +81,22 @@ class SamlSignedInListener
         ];
         Log::info('SAML User authenticated', $userData);
 
-        $userEmail = Arr::get(Arr::get($normalizedAttributes, 'spidEmail'), 0);
 
-        $user = $userEmail ? User::where('email', $userEmail)->first() : null;
+        $user = $userEmail ? User::where('email', $userEmail)->first() :
+            ($userCf ? User::where('codice_fiscale', $userCf)->first() : null);
 
         if ($user) {
-
+            //UTENTE RICONCILIATO: faccio il merge dei nuovi dati nelle info
             $info = $user->info;
             $info = array_merge($info, $normalizedAttributes);
             $user->info = $info;
             $user->save();
             // Login the user
             return $this->login($user);
-        } elseif ($userEmail) {
+        }
+
+        //UTENTE NON TROVATO MA HO TROVATO LA EMAIL
+        if ($userEmail) {
             Log::info('Devo creare un nuovo user');
             // Generate a random password
             $randomPassword = Str::random(12);
@@ -106,6 +110,7 @@ class SamlSignedInListener
                 'cognome' => implode(" ", Arr::get($normalizedAttributes, 'spidFamilyName')),
                 'info' => $normalizedAttributes,
                 'email_verified_at' => now()->toDateTimeString(),
+                'codice_fiscale' => $userCf,
             ];
             Log::info('Utente creato', $userData);
             $user = User::create($userData);
@@ -113,37 +118,26 @@ class SamlSignedInListener
             event(new Registered($user));
             Log::info('Provo ad effettuare il login...');
             return $this->login($user);
-        } else {
-            //Bisogna andare a una form utente con i campi prepopolati chiedendo una mail all'utente
-            //Cerco lo user per codice fiscale e non per mail
-            $cf = Arr::first(Arr::get($attributes, 'urn:oid:0.9.2342.19200300.100.1.1', []));
-
-            $user = User::where('name', $cf)->first();
-            if ($user) {
-                return $this->login($user);
-            } else {
-                Log::info('Devo creare un nuovo user');
-                // Generate a random password
-                $randomPassword = Str::random(12);
-                // Create a new user in your database
-
-                $userData = [
-                    'name' => $cf,
-                    'email' => $cf . '@fakemail.it',
-                    'password' => \bcrypt($randomPassword),
-                    'nome' => implode(" ", Arr::get($normalizedAttributes, 'spidName')),
-                    'cognome' => implode(" ", Arr::get($normalizedAttributes, 'spidFamilyName')),
-                    'info' => $normalizedAttributes,
-                    'email_verified_at' => now()->toDateTimeString(),
-                ];
-                Log::info('Utente creato', $userData);
-                $user = User::create($userData);
-                $user->assignRole('Studente');
-                event(new Registered($user));
-                Log::info('Provo ad effettuare il login...');
-                return $this->login($user);
-            }
         }
+
+        //NON HO EMAIL, MA DOVREI ALMENO AVERE IL CODICE FISCALE
+
+        $nome = Arr::first(Arr::get($normalizedAttributes, 'spidName'));
+        $cognome = Arr::first(Arr::get($normalizedAttributes, 'spidFamilyName'));
+
+
+        return redirect(RouteServiceProvider::REGISTER_CIE)
+            ->with(['samlAttributes' => json_encode($normalizedAttributes),'nome' => $nome,'cognome' => $cognome,'codice_fiscale' => $userCf]);
+
+    }
+
+    protected function getEmailFromField($field)
+    {
+        $email = Arr::first(Arr::wrap($field));
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return false;
+        }
+        return $email;
     }
 
     protected function login(User $user)
@@ -161,14 +155,14 @@ class SamlSignedInListener
         if (!Auth::user()->hasVerifiedEmail()) {
             Log::info('Mail non verificata??');
 
-            return redirect()->intended(route('verification.notice'));
+            return redirect(route('verification.notice'));
         }
 
         if (auth_is_admin()) {
-            return redirect()->intended('/dashboard');
+            return redirect('/dashboard');
         }
         Log::info('Redirect...');
 
-        return redirect()->intended(RouteServiceProvider::CANDIDATURE);
+        return redirect(RouteServiceProvider::CANDIDATURE);
     }
 }

@@ -46,25 +46,14 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="nome" name="nome" value="{{ old('name', $userData['nome'] ?? '') }}" @if (isset($isExternalRegistration) && isset($userData['nome'])) readonly @endif>
-
-
-
-
-
+                    <input type="text" class="form-control" id="nome" name="nome" value="{{old('nome')}}">
                     <label for="nome" style="width: auto;">Nome</label>
 
 
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="cognome" name="cognome" value="{{ old('cognome', $userData['cognome'] ?? '') }}" @if (isset($isExternalRegistration) && isset($userData['cognome'])) readonly @endif>
-
-
-
-
-
-
+                    <input type="text" class="form-control" id="cognome" name="cognome" value="{{old('cognome')}}">
                     <label for="cognome" style="width: auto;">Cognome</label>
 
 
@@ -76,8 +65,6 @@
 
 
                 </div>
-                @if(!isset($isExternalRegistration))
-
 
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -129,9 +116,7 @@
                         </svg>
                     </button>
                 </div>
-                @else
-                    <input type="hidden" name="isExternalRegistration" value="true">
-                @endif
+
 
                 <div class="py-4 signup_buttons">
                     <button class="btn btn-primary" type="submit">Iscriviti</button>
@@ -146,7 +131,6 @@
     </div>
 
     <script>
-        let isExternalRegistration = @if(isset($isExternalRegistration)) 'true' @else 'false' @endif;
         document.addEventListener("DOMContentLoaded", function () {
             const errorMessage = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Attenzione</strong> Alcuni campi inseriti sono da controllare.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Chiudi avviso">';
             const errorWrapper = document.querySelector('#errorMsgContainer');
@@ -178,10 +162,8 @@
                         rule: 'email',
                         errorMessage: 'Inserisci un e-mail valida'
                     },
-                ]);
-                if (isExternalRegistration === "false")
-                {
-                    validate.addField('#password', [
+                ])
+                .addField('#password', [
                         {
                             rule: 'required',
                             errorMessage: 'Questo campo è richiesto'
@@ -214,9 +196,8 @@
                             errorMessage: 'Le password non coincidono',
                         }
 
-                    ]);
-                }
-                validate.onSuccess(() => {
+                ])
+                .onSuccess(() => {
                     document.forms['registerForm'].submit()
                 })
                 .onFail((fields) => {

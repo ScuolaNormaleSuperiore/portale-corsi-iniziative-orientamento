@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Brevo\Client\Api\AccountApi;
 use Brevo\Client\Api\ContactsApi;
 use Brevo\Client\ApiException;
@@ -30,7 +32,8 @@ class TestController extends Controller
 
     public function test()
     {
-
+        return redirect(RouteServiceProvider::REGISTER_CIE)
+            ->with(['samlAttributes' => json_encode(['cn' => 'fjkdsfjkds']),'nome' => 'Giacomo','cognome' => 'Terreni','codice_fiscale' => 'TRRGCM78B07G702C']);
 
 //        $response = Http::get("https://sns.idp.pp.cineca.it/idp/shibboleth");
 //

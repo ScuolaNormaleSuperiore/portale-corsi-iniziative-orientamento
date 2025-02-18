@@ -19,7 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/';
     public const CANDIDATURE = '/candidature';
-    public const COMPLETE_PROFILE = '/complete-profile';
+    public const REGISTER_CIE = '/register-cie';
     public const LOGIN = '/login';
 
     /**
