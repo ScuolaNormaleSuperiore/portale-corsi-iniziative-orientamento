@@ -66,7 +66,7 @@ class AppServiceProvider extends ServiceProvider
             ],
             'sportello-studenti' => [
                 'path' => '/sportello-studenti',
-                'title' => 'Sportello da studente a Studente',
+                'title' => 'Sportello da studente a studente',
             ],
         ];
         if ($headerActive && isset($headerMenuPrincipale[$headerActive])) {

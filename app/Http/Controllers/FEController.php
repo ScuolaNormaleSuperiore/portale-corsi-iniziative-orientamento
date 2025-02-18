@@ -171,7 +171,7 @@ class FEController extends Controller
         $classi      = Classe::all();
         $breadcrumbs = [
             'Home'                             => '/',
-            'Sportello Da Studente a Studente' => '#',
+            'Sportello da studente a studente' => '#',
         ];
         return view('sportello-studenti', compact('descrizione', 'classi', 'breadcrumbs'));
     }
@@ -266,7 +266,7 @@ class FEController extends Controller
         $classi      = Classe::all();
         $breadcrumbs = [
             'Home'                             => '/',
-            'Sportello Da Studente a Studente' => '/sportello-studenti',
+            'Sportello da studente a studente' => '/sportello-studenti',
             'Tutor ' . $classe->nome_it => '/sportello-studenti/' . $classe->id,
         ];
         return view('sportello-studenti-classe', compact('studenti', 'breadcrumbs'));
@@ -470,10 +470,10 @@ class FEController extends Controller
         ];
         $pageTitle              = 'Parla con noi';
         $firstAnswer = <<<EOT
-        Benvenuti al chatbot informativo dei Corsi di Orientamento della Scuola Normale Superiore!
+        Benvenute e benvenuti al chatbot informativo dei Corsi di Orientamento della Scuola Normale Superiore!
         Siamo felici di fornirvi assistenza e informazioni per supportarvi nelle vostre scelte di studio e nel vostro percorso di orientamento. Qui potrete parlare con un sistema automatico progettato per rispondere alle vostre domande in modo rapido e pratico.
 
-        Se preferite interagire con un operatore o avete esigenze specifiche, vi invitiamo a contattarci direttamente ai seguenti recapiti, durante gli orari di ufficio:
+        Se preferite interagire con un operatore o operatrice o avete esigenze specifiche, vi invitiamo a contattarci direttamente ai seguenti recapiti, durante gli orari di ufficio:
 
         **Orari uffici**
         - Lunedì - Venerdì: 9.30 - 12.30

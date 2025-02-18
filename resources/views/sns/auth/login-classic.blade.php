@@ -8,11 +8,11 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a><span class="separator">/</span></li>
                     <li class="breadcrumb-item"><a href="/login">Accesso</a><span class="separator">/</span></li>
-                    <li class="breadcrumb-item active">Accesso per studenti stranieri o non in possesso di SPID o CIE</li>
+                    <li class="breadcrumb-item active">Accesso per studentesse e studenti stranieri o senza SPID o CIE</li>
                 </ol>
             </nav>
 
-            <h1 class="h2 py-2">Accesso per studenti stranieri o non in possesso di SPID o CIE</h1>
+            <h1 class="h2 py-2">Accesso per studentesse e studenti stranieri o senza SPID o CIE</h1>
             <hr/>
 
         </section>

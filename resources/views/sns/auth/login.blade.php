@@ -28,7 +28,7 @@
             <div class="row mb-5 pb-5 border-bottom">
                 <div class="col-12">
 
-                    <h2 class="h2 pb-4">Candidatura spontanea studenti</h2>
+                    <h2 class="h2 pb-4">Candidatura spontanea</h2>
                     @if(isset($errors) && $errors->any())
                         @foreach ($errors->all() as $error)
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -38,7 +38,7 @@
                     @endif
                 </div>
                 <div class="col-12 col-md-6">
-                    <h3 class="h4 pb-3">Studenti in possesso di SPID o CIE</h3>
+                    <h3 class="h4 pb-3">Studentesse e studenti con SPID e CIE</h3>
                     <div class="btn-example">
                         <a href="/saml2/bf441d43-662c-4c96-9451-b7c8a51c21a1/login">
                             <button type="button" class="btn btn-primary">
@@ -49,7 +49,7 @@
 {{--                    <h4 class="h6 pt-3 text-danger">Attenzione! Al momento non è possibile effetutare il login tramite CIE</h4>--}}
                 </div>
                 <div class="col-12 col-md-6">
-                    <h3 class="h4 pb-3 mt-4 mt-md-0">Studenti stranieri o non in possesso di SPID o CIE</h3>
+                    <h3 class="h4 pb-3 mt-4 mt-md-0">Studentesse e studenti stranieri o senza SPID o CIE</h3>
                     <div class="btn-example">
                         <a href="/login-classic">
                             <button type="button" class="btn btn-primary">
@@ -65,7 +65,7 @@
                     <div class="col-12">
 
                         <h2 class="h2 pb-1">Per gli istituti scolastici</h2>
-                        <p class="pb-3">Modalità di accesso per i referenti scolastici</p>
+                        <p class="pb-3">Modalità di accesso per referenti scolastici</p>
                     </div>
                     <div class="col-12">
                         <div class="d-flex flex-column">
@@ -82,15 +82,15 @@
                 <div class="col-12 col-md-6">
                     <div class="col-12">
 
-                        <h2 class="h2 pb-1 mt-4 mt-md-0">Per gli operatori SNS</h2>
-                        <p class="pb-3">Modalità di accesso per gli operatori SNS</p>
+                        <h2 class="h2 pb-1 mt-4 mt-md-0">Per operatori e operatrici SNS</h2>
+                        <p class="pb-3">Modalità di accesso personale SNS</p>
                     </div>
                     <div class="col-12">
                         <div class="d-flex flex-column">
                             <div class="btn-example">
                                 <a href="/saml2/bf441d43-662c-4c96-9451-b7c8a51c21a1/login">
                                     <button type="button" class="btn btn-primary">
-                                        Accedi come operatore SNS
+                                        Accedi come personale SNS
                                     </button>
                                 </a>
                             </div>

@@ -131,8 +131,8 @@
                                     ])
                         </div>
                         <div class="col-12 col-lg-6">
-                            @include('components/card-img-bottom',['title' => "Sportello da Studente a Studente",
-                                    'subtitle' =>  "incontra online i nostri studenti Tutor",
+                            @include('components/card-img-bottom',['title' => "Sportello da studente a studente",
+                                    'subtitle' =>  "incontra online studenti e studentesse Tutor",
                                     'img' =>  Theme::url('/assets/img2.png'),
                                     'link' => '/sportello-studenti',
                                     ])
