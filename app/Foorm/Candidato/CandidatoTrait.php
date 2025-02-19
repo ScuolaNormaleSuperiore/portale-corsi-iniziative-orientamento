@@ -57,7 +57,7 @@ trait CandidatoTrait
             $minCorsi = 2;
             $iniziativa = $this->model->iniziativa;
             if ($iniziativa) {
-                $nCorsi = $iniziativa->corsi->count();
+                $nCorsi = $iniziativa->corsi()->where('attivo',1)->get()->count();
                 if ($nCorsi < 2) {
                     $minCorsi = 1;
                 }
@@ -171,7 +171,7 @@ trait CandidatoTrait
             return $corso->getForSelectList(null,null,[],null,'dates');
         }
 
-        return $corso->getForSelectList($corso->where('iniziativa_id',$this->model->iniziativa_id),null,[],null,'dates');
+        return $corso->getForSelectList($corso->where('iniziativa_id',$this->model->iniziativa_id)->where('attivo',1),null,[],null,'dates');
 
     }
 

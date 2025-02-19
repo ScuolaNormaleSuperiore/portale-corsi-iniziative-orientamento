@@ -41,7 +41,13 @@ export default {
             // 'action-delete-selected',
             //'action-view2',
         ],
+
         actionsConfig : {
+            'action-delete' : {
+                visible() {
+                    return this.modelData.candidati.length <= 0;
+                }
+            },
             'action-view2': {
                 type: 'record',
                 title: 'app.vista',

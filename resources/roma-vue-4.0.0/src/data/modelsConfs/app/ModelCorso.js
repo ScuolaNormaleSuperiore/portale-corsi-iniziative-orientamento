@@ -46,6 +46,13 @@ export default {
             'action-delete',
             // 'action-delete-selected',
         ],
+		actionsConfig : {
+			'action-delete' : {
+				visible() {
+					return this.modelData.candidati.length <= 0;
+				}
+			}
+		},
         fields: [
 			'picture',
 			'titolo',

@@ -122,6 +122,7 @@ return [
 
             ],
         ],
+
     ],
     'list' => [
 
@@ -188,7 +189,7 @@ return [
 
         ],
         'appends' => [
-          "picture",
+            "picture",
         ],
         'relations' => [
             'provincia' => [
@@ -199,6 +200,11 @@ return [
             'iniziativa' => [
                 'fields' => [
                     'titolo' => [],
+                ]
+            ],
+            'candidati' => [
+                'fields' => [
+                    'id' => [],
                 ]
             ]
         ],

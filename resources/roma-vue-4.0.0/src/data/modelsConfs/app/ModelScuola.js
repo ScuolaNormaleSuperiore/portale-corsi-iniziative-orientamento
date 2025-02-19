@@ -250,8 +250,10 @@ export default {
                     var html = "<div>";
 
                         if (this.modelData.user) {
-                            html += this.modelData.user.nome + ' ' + this.modelData.user.cognome;
-                            html += '<br/>';
+                            if (this.modelData.user.nome) {
+                                html += this.modelData.user.nome + ' ' + (this.modelData.user.cognome || '') ;
+                                html += '<br/>';
+                            }
                             html += this.modelData.user.email;
                         } else {
                             html += "Nessun utente associato";

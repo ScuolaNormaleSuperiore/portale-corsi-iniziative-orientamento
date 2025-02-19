@@ -169,7 +169,11 @@ return [
 
         ],
         'relations' => [
-
+            'candidati' => [
+                'fields' => [
+                    'id' => [],
+                ]
+            ]
         ],
         'params' => [
 
