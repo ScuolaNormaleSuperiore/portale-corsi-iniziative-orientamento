@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use App\Mail\RichiestaScuolaAdminEmail;
 use App\Notifications\RichiestaScuola;
 use App\Notifications\RichiestaScuolaAccettata;
 use Gecche\Cupparis\App\Breeze\Breeze;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Breeze (Eloquent) model for scuole_richieste table.
@@ -62,6 +66,7 @@ class ScuolaRichiesta extends Breeze
     public function sendNuovaRichiestaNotification()
     {
         $this->notify(new RichiestaScuola());
+        Mail::to(config('mail.admin-to.address'))->send(new RichiestaScuolaAdminEmail());
     }
 
     public function sendAccettataNotification()

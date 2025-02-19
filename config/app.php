@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel 9 - Cupparis App'),
+    'name' => env('APP_NAME', 'Orientamento Scuola Normale Superiore'),
 
     /*
     |--------------------------------------------------------------------------

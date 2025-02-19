@@ -5,6 +5,8 @@ namespace App\Listeners;
 use App\Enums\CandidatoStatuses;
 use App\Enums\ProfileDocumentStatuses;
 use App\Enums\ProfileStatuses;
+use App\Mail\NuovaCandidaturaScuolaAdmin;
+use App\Mail\NuovaCandidaturaStudenteAdmin;
 use App\Models\Alert;
 use App\Models\Profile;
 use App\Models\ProfileAlert;
@@ -63,6 +65,11 @@ class HandleCandidatoStatusTransition
         switch ($this->statusCode) {
             case CandidatoStatuses::INVIATA->value:
                 $user->sendCandidaturaInviataNotification($this->model);
+                if ($this->model->tipo == 'studente') {
+                    Mail::to(config('mail.admin-to.address'))->send(new NuovaCandidaturaStudenteAdmin($this->model));
+                } else {
+                    Mail::to(config('mail.admin-to.address'))->send(new NuovaCandidaturaScuolaAdmin($this->model));
+                }
                 break;
             case CandidatoStatuses::APPROVATA->value:
                 $user->sendCandidaturaApprovataNotification($this->model);
