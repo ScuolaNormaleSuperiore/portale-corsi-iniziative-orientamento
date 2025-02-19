@@ -2,7 +2,7 @@
 
 <meta name=bearer-token content={{Session::get('sanctum_token')}}>
 
-
+<head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="icon" href="/roma-vue/favicon.ico">
@@ -15,8 +15,8 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 
-  <script type="module" crossorigin src="/roma-vue/assets/index-2f57eb48.js"></script>
-  <link rel="stylesheet" href="/roma-vue/assets/index-864f4493.css">
-
+  <script type="module" crossorigin src="/roma-vue/assets/index-dcb3a6d2.js"></script>
+  <link rel="stylesheet" href="/roma-vue/assets/index-9205b65e.css">
+</head>
 </head>
 

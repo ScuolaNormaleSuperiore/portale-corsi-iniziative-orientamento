@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+<body>
 <div id="app">
 	<ul class="loader">
 		<li class="dot-a"></li>
@@ -17,6 +17,6 @@
 	</ul>
 </div>
 
-
+</body>
 @endsection
 
