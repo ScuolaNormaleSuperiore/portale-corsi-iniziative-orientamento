@@ -5,6 +5,7 @@ namespace App\Foorm\Candidato;
 
 use App\Models\Corso;
 use App\Models\Evento;
+use App\Models\Iniziativa;
 use App\Rules\CandidatoCodiceFiscale;
 use App\Rules\CodiceFiscale;
 use Illuminate\Support\Arr;
@@ -53,7 +54,15 @@ trait CandidatoTrait
 
         if (array_key_exists('corsi',$validationRules)) {
             unset($validationRules['corsi']);
-            $validationRules['corsi-id'] = ['array','min:2'];
+            $minCorsi = 2;
+            $iniziativa = $this->model->iniziativa;
+            if ($iniziativa) {
+                $nCorsi = $iniziativa->corsi->count();
+                if ($nCorsi < 2) {
+                    $minCorsi = 1;
+                }
+            }
+            $validationRules['corsi-id'] = ['array','min:'.$minCorsi];
         }
 
         if (array_key_exists('voti',$validationRules)) {

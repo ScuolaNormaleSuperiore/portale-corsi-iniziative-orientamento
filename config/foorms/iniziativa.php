@@ -198,6 +198,7 @@ return [
             ],
             "attivo" => [
                 'options' => 'boolean',
+                'nulloption' => false,
 
             ],
             "posti" => [

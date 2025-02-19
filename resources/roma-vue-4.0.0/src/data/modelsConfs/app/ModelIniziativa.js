@@ -184,7 +184,7 @@ export default {
 
 
             'attivo' : {
-                type : "w-select",
+                type : "w-radio",
                 //domainValues : [],
                 //domainValuesOrder : [],
 			},

@@ -105,6 +105,10 @@ Route::group([
 
 });
 
+Route::get('/data/dynamic-conf.json', function (\Illuminate\Http\Request $request) {
+    return [];
+});
+
 //Route::get('logout', 'Auth\LoginController@logout')->name('get-logout');
 
 require __DIR__.'/auth.php';

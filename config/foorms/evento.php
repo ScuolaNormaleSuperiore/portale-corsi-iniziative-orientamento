@@ -231,6 +231,8 @@ return [
             ],
             "attivo" => [
                 "options" => "boolean",
+                'nulloption' => false,
+
             ],
             "evidenza" => [
                 "options" => "method",

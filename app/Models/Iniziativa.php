@@ -57,6 +57,7 @@ class Iniziativa extends Breeze
         'data_apertura' => 'required|date',
         'data_chiusura' => 'required|date',
         'modalita_candidatura' => 'required',
+        'attivo' => 'required',
 
 //        'username' => 'required|between:4,255|unique:users,username',
     ];

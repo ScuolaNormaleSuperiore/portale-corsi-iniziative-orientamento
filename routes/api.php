@@ -25,7 +25,7 @@ Route::post('/login',  [LoginController::class, 'login']);
 Route::post('/newsletter/add',  [\App\Http\Controllers\Api\AppController::class, 'newsletterAdd'])->name('newsletter-add');
 
 Route::middleware('auth:sanctum')->get('/me', function (Request $request) {
-    return $request->user();
+    return $request->user()->toJson();
 });
 Route::middleware('auth:sanctum')->get('/app-menu',[FoormController::class,'getAppMenu']);
 
