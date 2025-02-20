@@ -254,7 +254,7 @@ class FEController extends Controller
         if ($pagine->count() > 0) {
             $breadcrumbs['Info corsi'] = '/info-corsi';
         }
-        $breadcrumbs = [$corso->titolo] = '#';
+        $breadcrumbs[$corso->titolo] = '#';
         return view('info-corso', compact('descrizione', 'navleftInfo', 'pagine', 'breadcrumbs', 'corso', 'navleft', 'iniziative', 'corsi'));
     }
 
