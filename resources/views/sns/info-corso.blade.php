@@ -14,8 +14,8 @@
 
                             @include('sections.navleft',['navTitle' => null])
 {{--                            @include('sections.navleft-pagine-info')--}}
-                        @include('sections.navleft-pagine-info-corsi-attivi',
-                            ['corsi' => $corsi])
+                        {{-- @include('sections.navleft-pagine-info-corsi-attivi',
+                            ['corsi' => $corsi]) --}}
                     </div>
                     <div class="col-12 col-lg-8">
 {{--                        <section class="pb-4">--}}
