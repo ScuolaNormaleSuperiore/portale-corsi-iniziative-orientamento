@@ -169,7 +169,7 @@ class FEController extends Controller
 
         $descrizione = SezioneLayout::where('codice', 'sportello-studenti-intro')->firstOrNew();
         $classi      = Classe::all();
-        $studentiTotali = StudenteOrientamento::count();
+        $studentiTotali = StudenteOrientamento::where('attivo', 1)->count();
         if ($studentiTotali == 0) {
             $classi = [];
         }
