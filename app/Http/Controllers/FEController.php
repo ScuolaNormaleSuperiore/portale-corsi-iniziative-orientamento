@@ -249,12 +249,12 @@ class FEController extends Controller
         $navleftInfo = [
             'pagine' => $pagine->pluck('slug_it', 'id')->all(),
         ];
-        $breadcrumbs = [
-            'Home'         => '/',
-            'Info corsi'   => '/info-corsi',
-            $corso->titolo => '#',
-        ];
-
+        $breadcrumbs = [];
+        $breadcrumbs['Home'] = '/';
+        if ($pagine->count() > 0) {
+            $breadcrumbs['Info corsi'] = '/info-corsi';
+        }
+        $breadcrumbs = [$corso->titolo] = '#';
         return view('info-corso', compact('descrizione', 'navleftInfo', 'pagine', 'breadcrumbs', 'corso', 'navleft', 'iniziative', 'corsi'));
     }
 
