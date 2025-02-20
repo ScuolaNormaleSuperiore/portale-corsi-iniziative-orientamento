@@ -12,6 +12,7 @@
                 {!! $descrizione->testo_it !!}
             </section>
 
+            @if(!empty($classi))
             <section class="pb-4">
                 <div class="card-wrapper card-teaser-wrapper card-teaser-block-3">
                     <!--start card-->
@@ -20,6 +21,7 @@
                     @endforeach
                 </div>
             </section>
+            @endif
         </div>
 
     </div>

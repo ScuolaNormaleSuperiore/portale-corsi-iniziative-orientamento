@@ -169,6 +169,10 @@ class FEController extends Controller
 
         $descrizione = SezioneLayout::where('codice', 'sportello-studenti-intro')->firstOrNew();
         $classi      = Classe::all();
+        $studentiTotali = StudenteOrientamento::count();
+        if ($studentiTotali == 0) {
+            $classi = [];
+        }
         $breadcrumbs = [
             'Home'                             => '/',
             'Sportello da studente a studente' => '#',
