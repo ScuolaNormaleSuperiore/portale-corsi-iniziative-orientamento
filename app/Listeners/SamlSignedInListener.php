@@ -31,7 +31,7 @@ class SamlSignedInListener
         $samlUser = $event->getSaml2User();
         $attributes = $samlUser->getAttributesWithFriendlyName();
 
-        Log::info($samlUser->getAttributesWithFriendlyName());
+        Log::info($samlUser->getAttributes());
 
 
         $externalLoginType = Arr::first(Arr::get($attributes, 'externalIDPLoA', []));
@@ -70,8 +70,8 @@ class SamlSignedInListener
 
                 break;
             default: //SPID (LoA3), CIE (?)
-                Session::flash('redirect_url',RouteServiceProvider::LOGIN);
-                Session::put('errors',["Metodo di atutenticazione non previsto"]);
+                Session::flash('redirect_url', RouteServiceProvider::LOGIN);
+                Session::put('errors', ["Metodo di atutenticazione non previsto"]);
                 return;
         }
 
@@ -83,8 +83,7 @@ class SamlSignedInListener
         Log::info('SAML User authenticated', $userData);
 
 
-        $user = $userEmail ? User::where('email', $userEmail)->first() :
-            ($userCf ? User::where('codice_fiscale', $userCf)->first() : null);
+        $user = $userEmail ? User::where('email', $userEmail)->first() : ($userCf ? User::where('codice_fiscale', $userCf)->first() : null);
 
         if ($user) {
             //UTENTE RICONCILIATO: faccio il merge dei nuovi dati nelle info
@@ -128,10 +127,9 @@ class SamlSignedInListener
         $nome = Arr::first(Arr::get($normalizedAttributes, 'spidName'));
         $cognome = Arr::first(Arr::get($normalizedAttributes, 'spidFamilyName'));
 
-        Session::flash('redirect_url',RouteServiceProvider::REGISTER_CIE);
-        Session::put(['samlAttributes' => json_encode($normalizedAttributes),'nome' => $nome,'cognome' => $cognome,'codice_fiscale' => $userCf]);
+        Session::flash('redirect_url', RouteServiceProvider::REGISTER_CIE);
+        Session::put(['samlAttributes' => json_encode($normalizedAttributes), 'nome' => $nome, 'cognome' => $cognome, 'codice_fiscale' => $userCf]);
         return;
-
     }
 
     protected function getEmailFromField($field)
@@ -158,17 +156,17 @@ class SamlSignedInListener
         if (!Auth::user()->hasVerifiedEmail()) {
             Log::info('Mail non verificata??');
 
-            Session::flash('redirect_url',route('verification.notice'));
-            return ;
+            Session::flash('redirect_url', route('verification.notice'));
+            return;
         }
 
         if (auth_is_admin()) {
-            Session::flash('redirect_url','/dashboard');
-            return ;
+            Session::flash('redirect_url', '/dashboard');
+            return;
         }
         Log::info('Redirect...');
 
-        Session::flash('redirect_url',RouteServiceProvider::CANDIDATURE);
+        Session::flash('redirect_url', RouteServiceProvider::CANDIDATURE);
         return;
     }
 }
