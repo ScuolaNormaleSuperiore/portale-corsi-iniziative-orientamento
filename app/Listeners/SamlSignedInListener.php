@@ -62,8 +62,11 @@ class SamlSignedInListener
                 break;
             case 'LoA3': //
                 Log::info('LoA3');
-
-                $spidUid = Arr::get($attributes, 'uid', []);
+                $externalIdpType = Arr::first(Arr::get($attributes, 'externalIDPType', []));
+                $spidUid = Arr::get($attributes, 'spidEmail', []);
+                if ($externalIdpType != 'spid') {
+                    $spidUid = Arr::get($attributes, 'uid', []);
+                }
                 $userEmail = $this->getEmailFromField($spidUid);
                 $userCf = Arr::first(Arr::get($attributes, 'spidFiscalNumber'));
                 $normalizedAttributes = $attributes;
