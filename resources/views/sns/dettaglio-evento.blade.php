@@ -26,8 +26,8 @@
                             <div class="img-responsive img-responsive-panoramic">
                                 <figure class="img-wrapper">
                                     <img src="{{$evento->picture}}"
-                                         title="{{$evento->titolo_it ?: "Evento orientamento" }}"
-                                         alt="{{$evento->titolo_it ?: "Evento orientamento" }}">
+                                         title="{{$evento->picture_alt}}"
+                                         alt="{{$evento->picture_alt}}">
                                 </figure>
                             </div>
                         </div>

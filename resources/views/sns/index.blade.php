@@ -33,7 +33,9 @@
                 <div class="img-responsive">
                     <div class="img-wrapper"><img
                             src="{{$copertina->picture ?: Theme::url('/assets/bg-hero-index.png')}}"
-                            title="{{$heroText}}" alt="{{$heroText}}"></div>
+                            title="{{$copertina->picture_alt}}"
+                            alt="{{$copertina->picture_alt}}">
+                    </div>
                 </div>
             </div>
             <!-- - texts-->
@@ -287,7 +289,8 @@
                                         <div class="img-responsive img-responsive">
                                             <figure class="img-wrapper">
                                                 <img src="{{$evento->picture}}"
-                                                     title="{{$evento->titolo_it}}" alt="{{$evento->titolo_it}}">
+                                                     title="{{$evento->picture_alt}}"
+                                                     alt="{{$evento->picture_alt}}">
                                             </figure>
                                             @if ($evento->data)
                                                 @php
@@ -351,7 +354,8 @@
                     <div class="img-responsive">
                         <div class="img-wrapper">
                             <img src="{{$eventoSpeciale->picture}}"
-                                 title="{{$eventoSpeciale->titolo_it}}" alt="{{$eventoSpeciale->titolo_it}}">
+                                 title="{{$eventoSpeciale->picture_alt}}"
+                                 alt="{{$eventoSpeciale->picture_alt}}">
                         </div>
                     </div>
                 </div>

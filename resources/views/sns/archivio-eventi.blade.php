@@ -48,7 +48,8 @@
                                         <div class="img-responsive img-responsive-panoramic">
                                             <figure class="img-wrapper">
                                                 <img src="{{$item->picture}}"
-                                                     title="{{$item->titolo_it}}" alt="{{$item->titolo_it}}">
+                                                     title="{{$item->picture_alt}}"
+                                                     alt="{{$item->picture_alt}}">
                                             </figure>
                                             @if ($item->data)
                                                 @php

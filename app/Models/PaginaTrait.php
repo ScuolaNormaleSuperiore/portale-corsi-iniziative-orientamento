@@ -85,6 +85,17 @@ trait PaginaTrait
         return null;
     }
 
+    public function getPictureAltAttribute()
+    {
+        $foto = $this->fotos->first();
+        $alt = $this->titolo_it ?: "Foto principale";
+//        Log::info(print_r($foto,true));
+        if ($foto) {
+            $alt = $foto->nome ?: $alt;
+        }
+        return $alt;
+    }
+
     public function getRouteKeyName()
     {
         return 'slug_it';

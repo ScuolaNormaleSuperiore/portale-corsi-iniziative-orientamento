@@ -28,7 +28,9 @@
                                     <div class="img-responsive-wrapper">
                                         <div class="img-responsive img-responsive-panoramic">
                                             <figure class="img-wrapper">
-                                                <img src="{{$corso->picture}}">
+                                                <img src="{{$corso->picture}}"
+                                                     title="{{$corso->picture_alt}}"
+                                                     alt="{{$corso->picture_alt}}">
                                             </figure>
                                         </div>
                                     </div>

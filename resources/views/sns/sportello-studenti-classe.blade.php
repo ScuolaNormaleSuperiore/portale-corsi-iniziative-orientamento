@@ -22,8 +22,8 @@
                                             <div class="img-responsive">
                                                 <figure class="img-wrapper">
                                                     <img src="{{$studente->picture}}"
-                                                         title="{{$studente->nome}} {{$studente->cognome}}"
-                                                         alt="{{$studente->nome}} {{$studente->cognome}}">
+                                                         title="{{$studente->picture_alt}}"
+                                                         alt="{{$studente->picture_alt}}">
                                                 </figure>
                                             </div>
                                         </div>

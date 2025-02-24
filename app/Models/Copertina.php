@@ -79,4 +79,15 @@ class Copertina extends Breeze
         return null;
     }
 
+    public function getPictureAltAttribute()
+    {
+        $foto = $this->fotos->first();
+        $alt = $this->titolo_it ?: "Foto principale";
+//        Log::info(print_r($foto,true));
+        if ($foto) {
+            $alt = $foto->nome ?: $alt;
+        }
+        return $alt;
+    }
+
 }

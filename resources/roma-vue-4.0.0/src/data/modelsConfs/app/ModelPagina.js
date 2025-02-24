@@ -165,7 +165,10 @@ export default {
                         },
                         status : 'w-hidden',
                         id : 'w-hidden',
-                        nome : 'w-hidden',
+                        nome : {
+                            type: 'w-input',
+                            label: 'Alt text'
+                        }
                     }
                 },
                 limit: 1

@@ -12,7 +12,7 @@ class StudenteOrientamento extends Breeze
 	use Relations\StudenteOrientamentoRelations;
 
 
-    
+
 //    use ModelWithUploadsTrait;
 
     protected $table = 'studenti_orientamento';
@@ -65,6 +65,18 @@ class StudenteOrientamento extends Breeze
             return $foto->getUrl('orig');
         }
         return null;
+    }
+
+    public function getPictureAltAttribute()
+    {
+        $foto = $this->fotos->first();
+        $alt = $this->nome . ' ' . $this->cognome;
+        $alt = $alt ?: "Foto principale";
+//        Log::info(print_r($foto,true));
+        if ($foto) {
+            $alt = $foto->nome ?: $alt;
+        }
+        return $alt;
     }
 
     public function getPictureIconAttribute()

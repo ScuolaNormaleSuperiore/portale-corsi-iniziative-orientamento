@@ -174,7 +174,10 @@ return [
             ],
             "id" => [
 
-            ]
+            ],
+            "picture" => [
+
+            ],
         ],
         'relations' => [
             "categoria" => [

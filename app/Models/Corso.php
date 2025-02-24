@@ -84,6 +84,17 @@ class Corso extends Breeze
         return null;
     }
 
+    public function getPictureAltAttribute()
+    {
+        $foto = $this->fotos->first();
+        $alt = $this->titolo ?: "Foto principale";
+//        Log::info(print_r($foto,true));
+        if ($foto) {
+            $alt = $foto->nome ?: $alt;
+        }
+        return $alt;
+    }
+
     public function getPictureIconAttribute()
     {
         $foto = $this->fotos->first();

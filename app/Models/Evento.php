@@ -94,4 +94,15 @@ class Evento extends Breeze
         }
         return '/imagecache/orig/0';
     }
+
+    public function getPictureAltAttribute()
+    {
+        $foto = $this->fotos->first();
+        $alt = $this->titolo_it ?: "Foto principale";
+//        Log::info(print_r($foto,true));
+        if ($foto) {
+            $alt = $foto->nome ?: $alt;
+        }
+        return $alt;
+    }
 }
