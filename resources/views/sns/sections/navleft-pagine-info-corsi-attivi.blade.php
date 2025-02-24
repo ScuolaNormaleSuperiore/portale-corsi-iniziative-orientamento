@@ -16,7 +16,7 @@
 
                         @foreach ($corsi as $corso)
                             <li>
-                                <a class="list-item" href="/info-corso/{{$corso->getKey()}}">
+                                <a class="list-item" href="/info-corso/{{$corso->slug_it}}">
                                                     <span>
                                                         {{$corso->titolo}}
                                                     </span>

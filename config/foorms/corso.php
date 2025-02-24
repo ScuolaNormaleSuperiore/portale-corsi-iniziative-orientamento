@@ -272,6 +272,9 @@ return [
             "id" => [
 
             ],
+            "slug_it" => [
+
+            ],
             "homepage" => [
                 "options" => "boolean",
                 "nulloption" => false,
