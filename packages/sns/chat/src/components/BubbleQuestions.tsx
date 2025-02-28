@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSetAtom, useAtomValue } from 'jotai';
-import { fetchMessageAtom } from '@atoms/messages';
+import { fetchMessageAtom, isMessageLoadingAtom } from '@atoms/messages';
 import { useTranslation } from 'react-i18next';
 import { QUESTIONS_API_ENDPOINT } from '@utils/api';
 import { Question } from '../types/question';
 import { rootAttributesAtom } from '@atoms/rootAttributes';
 
 const variantsContainer = {
-	hidden: { opacity: 0 },
-	visible: { opacity: 1 },
-	exit: { opacity: 0 },
+	hidden: { opacity: 0, height: 0 },
+	visible: { opacity: 1, height: 'auto' },
+	exit: { opacity: 0, height: 0 },
 };
 
 const variantsQuestion = {
@@ -21,7 +21,9 @@ const variantsQuestion = {
 
 const BubbleQuestions: React.FC = () => {
 	const [questions, setQuestions] = useState<Question[]>([]);
+    const [isHidden, setIsHidden] = useState(false);
 	const setFetchMessage = useSetAtom(fetchMessageAtom);
+    const isMessageLoading = useAtomValue(isMessageLoadingAtom);
 	const { questionsTitle } = useAtomValue(rootAttributesAtom);
 	const { t } = useTranslation();
 
@@ -45,7 +47,7 @@ const BubbleQuestions: React.FC = () => {
 
 	return (
 		<AnimatePresence>
-			{questions.length > 0 ? (
+			{questions.length > 0 && !isHidden ? (
 				<motion.div
 					initial="hidden"
 					animate="visible"
@@ -53,7 +55,7 @@ const BubbleQuestions: React.FC = () => {
 					variants={variantsContainer}
 					className="flex flex-col gap-3 pb-1"
 				>
-					<h3 className="text-sm md:text-lg font-semibold">
+					<h3 className="md:text-lg font-semibold">
 						{questionsTitle || t('questions.title')}
 					</h3>
 
@@ -68,10 +70,12 @@ const BubbleQuestions: React.FC = () => {
 								transition={{ delay: index * 0.1 }}
 							>
 								<button
-									className="px-3 md:px-6 py-1 text-primary font-semibold text-sm md:text-lg border border-primary rounded-full hover:bg-primary hover:text-white transition-colors duration-200 hover:shadow-lg bg-white"
+									className="px-3 md:px-6 py-1 text-primary font-semibold md:text-lg border border-primary rounded-full hover:bg-primary hover:text-white transition-colors duration-200 hover:shadow-lg bg-white disabled:opacity-50 disabled:cursor-not-allowed"
 									onClick={() => {
 										setFetchMessage(question.text);
+										setIsHidden(true);
 									}}
+									disabled={isMessageLoading}
 								>
 									{question.text}
 								</button>

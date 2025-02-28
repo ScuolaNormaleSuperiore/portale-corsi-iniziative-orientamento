@@ -474,26 +474,50 @@ class FEController extends Controller
         ];
         $questionsTitle = 'Prova a farmi queste domande...';
         $pageTitle              = 'Parla con noi';
-        $firstAnswer = <<<EOT
-        Benvenute e benvenuti al chatbot informativo dei Corsi di Orientamento della Scuola Normale Superiore!
-        Siamo felici di fornirvi assistenza e informazioni per supportarvi nelle vostre scelte di studio e nel vostro percorso di orientamento. Qui potrete parlare con un sistema automatico progettato per rispondere alle vostre domande in modo rapido e pratico.
-
-        Se preferite interagire con un operatore o operatrice o avete esigenze specifiche, vi invitiamo a contattarci direttamente ai seguenti recapiti, durante gli orari di ufficio:
-
-        **Orari uffici**
-        - Lunedì - Venerdì: 9.30 - 12.30
-        - Lunedì, Martedì, Mercoledì, Giovedì: 14.30 - 16.30
-
-        **Contatti**
-
-        📧 Email: orientamento@sns.it
-
-        📞 Telefono: +39 050 50 9307 / 9670 / 9057 / 9493
-
-        📱 Cellulare: +39 331 6990724 / +39 347 1092201
-
-        Siamo a vostra disposizione per qualsiasi ulteriore informazione! Vi auguriamo una piacevole esperienza di consultazione e un buon percorso di orientamento presso la Scuola Normale Superiore.
-        EOT;
+        $info = [
+            'items' => [
+                [
+                    'bsIcon' => 'info-circle',
+                    'title' => 'Info utili',
+                    'text' => 'Se preferite interagire con un operatore o operatrice o avete esigenze specifiche, vi invitiamo a contattarci direttamente ai seguenti recapiti, durante gli orari di ufficio:',
+                ],
+                [
+                    'bsIcon' => 'clock',
+                    'title' => 'Orari ufficio',
+                    'list' => [
+                        [
+                            'key' => 'Lunedì - Venerdì:',
+                            'value' => '09:30 - 12:30',
+                        ],
+                        [
+                            'key' => 'Lunedì, Martedì, Mercoledì, Giovedì:',
+                            'value' => '14:30 - 16:30',
+                        ],
+                    ],
+                ],
+                [
+                    'bsIcon' => 'ear',
+                    'title' => 'Contatti',
+                    'list' => [
+                        [
+                            'key' => 'Email:',
+                            'value' => 'orientamento@sns.it',
+                            'valueType' => 'email',
+                        ],
+                        [
+                            'key' => 'Telefono:',
+                            'value' => '+39 050 50 9307 / 9670 / 9057 / 9493',
+                        ],
+                        [
+                            'key' => 'Cellulare:',
+                            'value' => '+39 331 6990724 / +39 347 1092201',
+                        ],
+                    ],
+                    'text' => 'Siamo a vostra disposizione per qualsiasi ulteriore informazione! Vi auguriamo una piacevole esperienza di consultazione e un buon percorso di orientamento presso la Scuola Normale Superiore.',
+                ],
+            ],
+        ];
+        $firstAnswer = 'Benvenute e benvenuti al chatbot informativo dei Corsi di Orientamento della Scuola Normale Superiore! Siamo felici di fornirvi assistenza e informazioni per supportarvi nelle vostre scelte di studio e nel vostro percorso di orientamento. Qui potrete parlare con un sistema automatico progettato per rispondere alle vostre domande in modo rapido e pratico.';
 
         return view('sns.chat', [
             'assets'                 => [
@@ -505,6 +529,7 @@ class FEController extends Controller
             'pageTitle'              => $pageTitle,
             'firstAnswer'            => $firstAnswer,
             'questionsTitle'         => $questionsTitle,
+            'info'                   => collect($info),
         ]);
     }
 }
