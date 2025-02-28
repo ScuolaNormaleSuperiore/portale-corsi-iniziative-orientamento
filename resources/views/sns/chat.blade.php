@@ -1,6 +1,6 @@
 @extends('sns.layouts.app')
 @section('content-body')
-    <div class="d-none" id="chat" data-page-title="{{ $pageTitle }}" data-user-avatar="{{ $userAvatar }}" data-faqs="{{ $faqs->toJson() }}" data-first-answer="{{ $firstAnswer }}"></div>
+    <div class="d-none" id="chat" data-page-title="{{ $pageTitle }}" data-user-avatar="{{ $userAvatar }}" data-faqs="{{ $faqs->toJson() }}" data-first-answer="{{ $firstAnswer }}" data-questions-title="{{ $questionsTitle }}"></div>
     <div id="chat-loader" style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; background-color: white;">
         <div class="spinner-border text-primary" role="status">
             <span style="visibility: hidden;">Loading...</span>

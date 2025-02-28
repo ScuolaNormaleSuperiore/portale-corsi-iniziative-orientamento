@@ -472,6 +472,7 @@ class FEController extends Controller
                 ],
             ],
         ];
+        $questionsTitle = 'Prova a farmi queste domande...';
         $pageTitle              = 'Parla con noi';
         $firstAnswer = <<<EOT
         Benvenute e benvenuti al chatbot informativo dei Corsi di Orientamento della Scuola Normale Superiore!
@@ -503,6 +504,7 @@ class FEController extends Controller
             'faqs'              => collect($faqs),
             'pageTitle'              => $pageTitle,
             'firstAnswer'            => $firstAnswer,
+            'questionsTitle'         => $questionsTitle,
         ]);
     }
 }
