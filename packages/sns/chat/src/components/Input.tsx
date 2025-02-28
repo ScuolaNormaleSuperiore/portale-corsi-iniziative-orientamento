@@ -53,6 +53,12 @@ const Input: React.FC = () => {
 		});
 	}, [isMounted]);
 
+	useEffect(() => {
+		if (!isMessageLoading && isMounted()) {
+			focusInput();
+		}
+	}, [isMessageLoading, isMounted]);
+
 	const focusInput = () => {
 		if (textAreaRef.current) {
 			textAreaRef.current.focus();

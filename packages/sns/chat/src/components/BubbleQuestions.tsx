@@ -21,9 +21,9 @@ const variantsQuestion = {
 
 const BubbleQuestions: React.FC = () => {
 	const [questions, setQuestions] = useState<Question[]>([]);
-    const [isHidden, setIsHidden] = useState(false);
+	const [isHidden, setIsHidden] = useState(false);
 	const setFetchMessage = useSetAtom(fetchMessageAtom);
-    const isMessageLoading = useAtomValue(isMessageLoadingAtom);
+	const isMessageLoading = useAtomValue(isMessageLoadingAtom);
 	const { questionsTitle } = useAtomValue(rootAttributesAtom);
 	const { t } = useTranslation();
 
@@ -53,9 +53,9 @@ const BubbleQuestions: React.FC = () => {
 					animate="visible"
 					exit="exit"
 					variants={variantsContainer}
-					className="flex flex-col gap-3 pb-1"
+					className="flex flex-col gap-3"
 				>
-					<h3 className="md:text-lg font-semibold">
+					<h3 className="md:text-lg font-semibold mt-2">
 						{questionsTitle || t('questions.title')}
 					</h3>
 

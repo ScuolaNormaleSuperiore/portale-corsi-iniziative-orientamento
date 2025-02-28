@@ -5,7 +5,7 @@ const MessageLoader: React.FC = () => {
 	return (
 		<AnimatePresence>
 			<motion.div
-				className="flex gap-1 items-center overflow-hidden py-1"
+				className="flex gap-1 items-center overflow-hidden py-1 mt-1"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				exit={{ opacity: 0, transition: { duration: 0.3 } }}

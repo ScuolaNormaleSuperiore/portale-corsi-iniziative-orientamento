@@ -23,7 +23,7 @@ const Message = ({ message }: { message: MessageType }) => {
 		>
 			{!error && <Avatar role={role} />}
 			{error && <Exclamation />}
-			<div className="flex flex-col gap-2 w-full overflow-hidden">
+			<div className="flex flex-col w-full overflow-hidden">
 				<Markdown
 					components={{
 						p: ({ children }) => (
