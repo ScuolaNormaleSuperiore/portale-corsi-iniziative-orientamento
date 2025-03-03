@@ -1,0 +1,71 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.4.0'
+applicationSuite: WordPress
+softwareVersion: 1.0.0
+categories:
+  - website-builder
+description:
+  it:
+    documentation: >-
+      https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento/blob/main/README.md
+    features:
+      - feature 1
+      - feature 2
+      - feature 3
+    localisedName: Portale dei corsi  e iniziative di orientamento della Scuola Normale Superiore 
+    longDescription: >
+      Portale dei corsi  e iniziative di orientamento della Scuola Normale Superiore è  un portale...
+      xxxxxx yyyyy ....
+      dfggfsdfg.....
+      dgsdfgsdfgsfgsfdgdsfgs..
+    screenshots:
+      - assets/screenshots/homepage.png
+    shortDescription: >-
+        Portale dei corsi  e iniziative di orientamento della Scuola Normale Superiore... short description.
+developmentStatus: stable 
+intendedAudience:
+  countries:
+    - it
+  scope:
+    - education
+usedBy:
+  - Portale dell'Orientamento - Scuola Normale Superiore - https://orientamento.sns.it
+it:
+  countryExtensionVersion: '0.2'
+  riuso:
+    codiceIPA: sns_pi
+  conforme:
+    gdpr: false
+    lineeGuidaDesign: true
+    misureMinimeSicurezza: false
+  piattaforme:
+    anpr: false
+    cie: false
+    pagopa: false
+    spid: false
+legal:
+  license: GPL-3.0-only
+localisation:
+  availableLanguages:
+    - it
+    - en
+  localisationReady: true
+dependsOn:
+  open:
+    - name: PHP
+      optional: false
+maintenance:
+  contacts:
+    - email: servizi.informativi@sns.it
+      name: Servizi Informativi SNS
+  type: community
+name: Design Laboratori Italia
+platforms:
+  - web
+releaseDate: '2025-03-03'
+softwareType: addon
+url: 'https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento'
+logo: assets/img/logo_sns.png
