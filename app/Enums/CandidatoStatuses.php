@@ -4,6 +4,7 @@ namespace App\Enums;
 
 use Gecche\FSM\Contracts\FSMConfigInterface;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Config;
 
 enum CandidatoStatuses: string implements FSMConfigInterface
 {
@@ -15,6 +16,7 @@ enum CandidatoStatuses: string implements FSMConfigInterface
     case INVIATA = 'inviata';
     case APPROVATA = 'approvata';
     case RIFIUTATA = 'rifiutata';
+    case LISTA_ATTESA = 'lista_attesa';
 
     public static function getLangKey($case)
     {
@@ -68,15 +70,28 @@ enum CandidatoStatuses: string implements FSMConfigInterface
                 self::APPROVATA->value,
                 self::RIFIUTATA->value,
                 self::BOZZA->value,
+                self::LISTA_ATTESA->value,
             ],
             self::RIFIUTATA->value => [
                 self::INVIATA->value,
+                self::LISTA_ATTESA->value,
             ],
             self::APPROVATA->value => [
+                self::INVIATA->value,
+                self::LISTA_ATTESA->value,
+            ],
+            self::LISTA_ATTESA->value => [
+                self::APPROVATA->value,
+                self::RIFIUTATA->value,
                 self::INVIATA->value,
             ],
 
         ];
+    }
+
+    public static function getColor($value)
+    {
+        return Config::get('enums.candidato.statuses.colors.'.$value);
     }
 
 }

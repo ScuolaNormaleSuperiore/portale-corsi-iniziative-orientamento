@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CandidatoStatuses;
 use App\Enums\TipoCandidatura;
 use App\Services\FormatValues;
 use Carbon\Carbon;
@@ -39,6 +40,7 @@ class Candidato extends Breeze
     public $appends = [
         'fename',
         'tipo_text',
+        'color',
     ];
 
     protected $casts = [
@@ -256,5 +258,9 @@ class Candidato extends Breeze
             }
         }
         return $deleted;
+    }
+
+    public function getColorAttribute() {
+        return $this->status ? CandidatoStatuses::getColor($this->status) : null;
     }
 }

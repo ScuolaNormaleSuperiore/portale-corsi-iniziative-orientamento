@@ -293,7 +293,7 @@ function getFormattedDateValue(date) {
 
           <p class="text-left text-xl">
             Status attuale:
-            <strong>{{ getStandardField('status', 'select', null, true) }}</strong>
+            <strong :style="'color:'+candidato.color">{{ getStandardField('status', 'select', null, true) }}</strong>
             <br/>
             <span v-if="candidato.data_candidatura" class="">
                       Data invio candidatura:
@@ -354,7 +354,7 @@ function getFormattedDateValue(date) {
                   Scuola
                 </div>
                 <div class="col-9 border-left-1">
-                  <div v-if="candidato.scuola_id">
+                  <div v-if="candidato.scuola && candidato.scuola.denominazione">
                     {{ candidato.scuola.denominazione }} ({{ candidato.scuola.codice }})
                     <br/>
                     {{ candidato.scuola.tipologia_grado_istruzione }}

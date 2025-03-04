@@ -257,6 +257,12 @@ return [
             "comune_estero" => [
 
             ],
+            "color" => [
+
+            ],
+        ],
+        'appends' => [
+          'color',
         ],
         "relations" => [
 
@@ -341,6 +347,10 @@ return [
             "provincia_id" => [
                 "operator" => "=",
                 "options" => "relation:provincia"
+            ],
+            "regione_id" => [
+                "operator" => "=",
+                "options" => "relation:regione"
             ],
             "scuola_id" => [
                 "operator" => "=",
@@ -482,9 +492,15 @@ return [
             "media" => [
 
             ],
+            "color" => [
 
+            ],
+            "scuola_estera" => [
+
+            ],
         ],
         'appends' => [
+            'color',
             'tipo_text',
         ],
         'relations' => [
@@ -495,6 +511,7 @@ return [
             ],
             "scuola" => [
                 "fields" => [
+                    "codice" => [],
                     "denominazione" => [],
                     "comune" => [],
                     "provincia_sigla" => [],
@@ -517,7 +534,12 @@ return [
             ],
             "provincia" => [
                 "fields" => [
-
+                    'sigla' => [],
+                ]
+            ],
+            "regione" => [
+                "fields" => [
+                    'nome' => [],
                 ]
             ],
             "corsi" => [

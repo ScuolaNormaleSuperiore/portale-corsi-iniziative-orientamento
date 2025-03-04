@@ -128,7 +128,7 @@
                                                                         style="position:absolute;left:-10px;top:-10px;">
 
                                                                         <small><span class="badge rounded-pill
-                                                                            {{$candidatura->status == 'inviata' ? 'bg-primary' : ($candidatura->status == 'approvata' ? 'bg-success' : 'bg-danger')}}
+                                                                            {{\App\Enums\CandidatoStatuses::getColor($candidatura->status) ?: ''}}
                                                                         "
                                                                                      style="">{{\App\Enums\CandidatoStatuses::optionLabel($candidatura->status)}}</span></small>
                                                                     </div>

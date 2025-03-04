@@ -14,11 +14,13 @@ export default {
         modelName: 'candidato',
         fields: [
             'iniziativa_id',
-            'status',
+            'codice_fiscale',
             'nome',
             'cognome',
-            'provincia_id',
+            'status',
             'tipo',
+            'provincia_id',
+            'regione_id',
             // 'scuola_id',
             // 'tipo',
 
@@ -39,12 +41,20 @@ export default {
             'cognome': {
                 type: "w-input",
             },
+            'codice_fiscale': {
+                type: "w-input",
+            },
+            'scuola_id': {
+                type: "w-select",
+                //domainValues : [],
+                //domainValuesOrder : [],
+            },
             'provincia_id': {
                 type: "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
             },
-            'scuola_id': {
+            'regione_id': {
                 type: "w-select",
                 //domainValues : [],
                 //domainValuesOrder : [],
@@ -78,7 +88,7 @@ export default {
             'action-export-media',
             'action-view2',
         ],
-        actionsConfig : {
+        actionsConfig: {
 
             'action-view2': {
                 type: 'record',
@@ -98,12 +108,12 @@ export default {
                 },
                 target: '',
             },
-            'action-export-xls' : {
-                execute (event) {
+            'action-export-xls': {
+                execute(event) {
                     let tA = this;
-                    return new Promise(function (resolve,reject) {
+                    return new Promise(function (resolve, reject) {
                         tA._exportCsv(function (esito) {
-                            console.log('save back Event',event,esito);
+                            console.log('save back Event', event, esito);
                             if (esito) {
                                 resolve();
                             } else {
@@ -114,7 +124,7 @@ export default {
                     })
                     //this._save(callback)
                 },
-                _exportCsv (callback) {
+                _exportCsv(callback) {
                     var that = this
                     var r = that.view.createRoute(that.routeName)
                     r.setValues({
@@ -134,12 +144,12 @@ export default {
                         //let prefix = CrudVars.useApi?'/api':'';
                         //document.location.href = prefix + json.result.link
                         if (that.blob) {
-                            let filename = json.result[that.nameField]?json.result[that.nameField]:'file.pdf';
-                            CrudHelpers.createRuntimeDownload(json.result[that.contentField],json.result[that.mimeField],filename);
+                            let filename = json.result[that.nameField] ? json.result[that.nameField] : 'file.pdf';
+                            CrudHelpers.createRuntimeDownload(json.result[that.contentField], json.result[that.mimeField], filename);
                         } else {
                             var anchor = document.createElement('a');
                             anchor.href = json.result.link;
-                            anchor.target="_blank";
+                            anchor.target = "_blank";
                             anchor.click();
                         }
                         callback(true)
@@ -162,16 +172,16 @@ export default {
             },
 
 
-            'action-export-media' : {
+            'action-export-media': {
                 visible() {
-                    console.log("CICCIO",this.modelData);
-                  return this.modelData.attachments.length > 0;
+                    console.log("CICCIO", this.modelData);
+                    return this.modelData.attachments.length > 0;
                 },
-                execute (event) {
+                execute(event) {
                     let tA = this;
-                    return new Promise(function (resolve,reject) {
+                    return new Promise(function (resolve, reject) {
                         tA._exportPdf(function (esito) {
-                            console.log('save back Event',event,esito);
+                            console.log('save back Event', event, esito);
                             if (esito) {
                                 resolve();
                             } else {
@@ -182,14 +192,14 @@ export default {
                     })
                     //this._save(callback)
                 },
-                _exportPdf (callback) {
+                _exportPdf(callback) {
                     var that = this
                     var r = that.view.createRoute(that.routeName)
                     let foormPk = that.modelData[that.view.primaryKey];
                     r.setValues({
                         'foorm': that.view.modelName,
                         'foormtype': 'list',
-                        'foormpk' : foormPk
+                        'foormpk': foormPk
                     })
                     // r.setParams(that.view.getParams());
                     // r.setParam('relation', that.pdfType)
@@ -202,10 +212,10 @@ export default {
                             return
                         }
                         if (that.blob) {
-                            let filename = json.result[that.nameField]?json.result[that.nameField]:'file.zip';
-                            CrudHelpers.createRuntimeDownload(json.result[that.contentField],json.result[that.mimeField],filename);
+                            let filename = json.result[that.nameField] ? json.result[that.nameField] : 'file.zip';
+                            CrudHelpers.createRuntimeDownload(json.result[that.contentField], json.result[that.mimeField], filename);
                         } else {
-                            let prefix = CrudVars.useApi?'/api':'';
+                            let prefix = CrudVars.useApi ? '/api' : '';
                             document.location.href = prefix + json.result.link
                         }
                         callback(true);
@@ -230,6 +240,7 @@ export default {
 
         },
         fields: [
+            'color',
             'status',
             'iniziativa',
             'nome',
@@ -239,12 +250,29 @@ export default {
             // 'tipo',
             'scuola',
             'data_candidatura',
+            'luogo',
 
         ],
         fieldsConfig: {
+            'luogo': {
+                type: "w-custom",
+                ready() {
+                    this.value = (this.modelData.provincia && this.modelData.provincia.sigla)
+                        ? this.modelData.provincia.sigla + ' - ' + this.modelData.regione.nome
+                        : 'N.D.';
+                },
+                label: 'Area geografica',
+            },
+            'color': {
+                type: "w-custom",
+                ready() {
+                    this.value = "<i class='fa fa-circle' style='color:" + this.modelData.color + "'></i>";
+                },
+                label: '',
+            },
             'data_candidatura': {
                 type: 'w-date-text',
-                invalidDateString : "N.D.",
+                invalidDateString: "N.D.",
             },
             'iniziativa': {
                 type: "w-custom",
@@ -271,8 +299,13 @@ export default {
             'scuola': {
                 type: "w-custom",
                 ready() {
-                    this.value = this.value.denominazione + ' - ' + this.value.comune + ' ('
-                        + this.value.provincia_sigla + ')';
+                    if (this.modelData.scuola && this.modelData.scuola.denominazione) {
+
+                        this.value = this.value.denominazione + ' - Cod: ' + this.value.codice
+                            + '<br/>' + this.value.comune + ' (' + this.value.provincia_sigla + ')';
+                        return;
+                    }
+                    this.value = this.modelData.scuola_estera ? this.modelData.scuola_estera : "Nessuna scuola selezionata";
                 }
 
 
@@ -296,7 +329,7 @@ export default {
             this.getWidget('iniziativa_id').change();
             this.getWidget('nazione_id').change();
         },
-        actions : ['action-save','action-save-back','action-back'],
+        actions: ['action-save', 'action-save-back', 'action-back'],
         fields: [
             'iniziativa_id',
 
@@ -396,13 +429,13 @@ export default {
                 },
                 label: 'Comune',
             },
-            'codice_fiscale' : {
+            'codice_fiscale': {
                 type: 'w-input',
                 layout: {
                     lastInRow: true,
                 }
             },
-            'nazione_id' : {
+            'nazione_id': {
                 type: 'w-select',
                 layout: {
                     // lastInRow: true,
@@ -505,8 +538,8 @@ export default {
                         corsi.options = [];
                         for (var i in dvo) {
                             corsi.options.push({
-                                code : ""+dvo[i],
-                                name : dv[dvo[i]],
+                                code: "" + dvo[i],
+                                name: dv[dvo[i]],
                             })
                         }
                         that.view.showWidget('corsi');

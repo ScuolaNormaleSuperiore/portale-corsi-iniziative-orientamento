@@ -13,6 +13,7 @@ return [
             'inviata' => 'Inviata',
             'approvata' => 'Approvata',
             'rifiutata' => 'Rifiutata',
+            'lista_attesa' => 'In lista di attesa',
         ],
         'olimpiadi_matematica' => [
             'nessuna_partecipazione' => 'nessuna partecipazione',
