@@ -1,27 +1,48 @@
-# This repository adheres to the publiccode.yml standard by including this 
-# metadata file that makes public software easily discoverable.
-# More info at https://github.com/italia/publiccode.yml
-
-publiccodeYmlVersion: '0.4.0'
-applicationSuite: 
-softwareVersion: '1.0.0'
+publiccodeYmlVersion: "0.4"
+name: Piattaforma per la gestione dei corsi e delle iniziative di orientamento
+  universitario
+url: https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento
+softwareVersion: 1.0.0
+releaseDate: 2025-03-03
+logo: https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento/blob/main/publiccode_img/sns-logo.png
+platforms:
+  - web
 categories:
-  - education
-  - e-government
-  - cms
-  - data-management
   - collaboration
+  - design-system
+  - educational-content
+  - event-management
+  - service-desk
+usedBy:
+  - sns_pi
+developmentStatus: stable
+softwareType: standalone/web
 description:
   it:
-    documentation: >-
-      https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento/blob/main/README.md
+    localisedName: Piattaforma per la gestione dei corsi e delle iniziative di
+      orientamento universitario
+    shortDescription: Gestione dei contenuti informativi e raccolta delle
+      candidature per corsi e iniziative di orientamento universitario
+    longDescription: >-
+      La piattaforma è stata realizzata per la gestione delle pagine informative
+      e delle candidature dei corsi e delle iniziative di orientamento della
+      Scuola Normale Superiore di Pisa. La piattaforma offre un'interfaccia web
+      responsive intuitiva e user-friendly, progettata adottando un approccio
+      “accessibility by design” e “mobile ﬁrst” per guidare i referenti delle
+      scuole secondarie di secondo grado e i candidati (iscrizione spontanea),
+      passo dopo passo, dalla registrazione alla presentazione della domanda. 
+
+
+      Per il design dell’interfaccia, sono stati utilizzati gli strumenti di
+      sviluppo messi a disposizione da Designers Italia, adottando Bootstrap
+      Italia.
     features:
       - Gestione candidature studenti
       - Gestione candidature referenti scolastici
       - Gestione scuole
       - Gestione iniziative
       - Gestione corsi
-      - Gestione pagine informative 
+      - Gestione pagine informative
       - Gestione eventi
       - Gestione contenuti multimediali
       - Gestione sportello studenti
@@ -29,58 +50,19 @@ description:
       - Gestione hero home page
       - Gestione utenti
       - Gestione tabelle tassonomie
-    localisedName: Piattaforma per la gestione dei corsi e delle iniziative di orientamento universitario 
-    longDescription: >
-      La piattaforma è stata realizzata per la gestione delle pagine informative e delle candidature dei corsi e delle iniziative di orientamento della Scuola Normale Superiore di Pisa.
-      La piattaforma offre un'interfaccia web responsive intuitiva e user-friendly, progettata adottando un approccio “accessibility by design” e “mobile ﬁrst” per guidare i referenti delle scuole secondarie di secondo grado e i candidati (iscrizione spontanea), passo dopo passo, dalla registrazione alla presentazione della domanda. Per il design dell’interfaccia, sono stati utilizzati gli strumenti di sviluppo messi a disposizione da Designers Italia, adottando Bootstrap Italia.
+      - Integrazioni con Gateway SSO Cineca, Brevo, database scuole MIM
     screenshots:
-      - publiccode_img/home-page-orientamento.png
-    shortDescription: >-
-        Piattaforma per la gestione dei corsi e delle iniziative di orientamento universitario 
-developmentStatus: stable 
-intendedAudience:
-  countries:
-    - it
-  scope:
-    - education
-usedBy:
-  - Portale Orienteamento della Scuola Normale Superiore - https://orientamento.sns.it
-it:
-  countryExtensionVersion: '0.2'
-  riuso:
-    codiceIPA: sns_pi
-  conforme:
-    gdpr: true
-    lineeGuidaDesign: true
-    misureMinimeSicurezza: true
-  piattaforme:
-    anpr: false
-    cie: true
-    pagopa: false
-    spid: true
+      - https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento/blob/main/publiccode_img/home-page-orientamento.png
 legal:
-  license: GPL-3.0-only
+  license: LGPL-3.0-only
+maintenance:
+  type: contract
+  contractors:
+    - name: Net7 srl
+      until: 2028-03-03
+      email: i@netseven.it
+      website: https://www.netseven.it/
 localisation:
+  localisationReady: false
   availableLanguages:
     - it
-  localisationReady: true
-dependsOn:
-  open:
-    - name: PHP
-      optional: false
-    - name: Laravel
-      optional: false
-    - name: Vue.js
-      optional: false
-maintenance:
-  contacts:
-    - email: servizi.informativi@sns.it
-      name: Servizio Sistemi Informativi SNS
-  type: community
-name: Piattaforma per la gestione dei corsi e delle iniziative di orientamento universitario
-platforms:
-  - web
-releaseDate: '2025-03-03'
-softwareType: web application
-url: 'https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento'
-logo: publiccode_img/logo_sns.png
