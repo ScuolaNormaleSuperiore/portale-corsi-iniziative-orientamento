@@ -4,7 +4,7 @@ name: Piattaforma per la gestione dei corsi e delle iniziative di orientamento
 url: https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento
 softwareVersion: 1.0.0
 releaseDate: 2025-03-03
-logo: https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento/blob/main/publiccode_img/sns-logo2.png
+logo: publiccode_img/sns-logo2.png
 platforms:
   - web
 categories:
