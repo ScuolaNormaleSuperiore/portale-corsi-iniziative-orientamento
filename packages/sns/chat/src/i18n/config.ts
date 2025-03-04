@@ -36,8 +36,8 @@ i18n.use(initReactI18next).init({
 							close: 'Chiudi FAQ',
 						},
 						info: {
-							open: 'Apri Info',
-							close: 'Chiudi Info',
+							open: 'Scrivi o chiama',
+							close: 'Chiedi al chatbot',
 						},
 					},
 				},

@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import tailwindScrollbar from 'tailwind-scrollbar';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
@@ -21,5 +22,5 @@ export default {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [tailwindScrollbar],
 } satisfies Config;

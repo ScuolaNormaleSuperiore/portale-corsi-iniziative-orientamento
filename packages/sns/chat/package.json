@@ -11,16 +11,17 @@
 		"preview": "rsbuild preview"
 	},
 	"dependencies": {
+		"babel-plugin-react-compiler": "^19.0.0-beta-e552027-20250112",
 		"bootstrap-icons": "^1.11.3",
 		"clsx": "^2.1.1",
 		"i18next": "^24.2.2",
 		"isomorphic-dompurify": "^2.22.0",
 		"jotai": "^2.12.1",
 		"motion": "^11.18.2",
-		"react": "^18.3.1",
-		"react-dom": "^18.3.1",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
 		"react-i18next": "^15.4.1",
-		"react-markdown": "^10.0.0",
+		"react-markdown": "^10.0.1",
 		"usehooks-ts": "^3.1.1",
 		"uuid": "^11.1.0"
 	},
@@ -28,17 +29,19 @@
 		"@biomejs/biome": "^1.9.4",
 		"@eslint/compat": "^1.2.7",
 		"@eslint/js": "^9.21.0",
-		"@rsbuild/core": "^1.2.13",
+		"@rsbuild/core": "^1.2.15",
+		"@rsbuild/plugin-babel": "^1.0.4",
 		"@rsbuild/plugin-react": "^1.1.1",
-		"@types/react": "^18.3.18",
-		"@types/react-dom": "^18.3.5",
+		"@types/react": "^19.0.10",
+		"@types/react-dom": "^19.0.4",
 		"eslint": "^9.21.0",
 		"eslint-plugin-react": "^7.37.4",
 		"eslint-plugin-react-hooks": "^5.2.0",
 		"globals": "^15.15.0",
-		"prettier": "^3.5.2",
+		"prettier": "^3.5.3",
+		"tailwind-scrollbar": "3.1.0",
 		"tailwindcss": "^3.4.17",
-		"typescript": "^5.7.3",
-		"typescript-eslint": "^8.25.0"
+		"typescript": "^5.8.2",
+		"typescript-eslint": "^8.26.0"
 	}
 }

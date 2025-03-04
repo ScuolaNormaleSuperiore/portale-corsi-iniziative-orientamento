@@ -24,31 +24,33 @@ const Message = ({ message }: { message: MessageType }) => {
 			{!error && <Avatar role={role} />}
 			{error && <Exclamation />}
 			<div className="flex flex-col w-full overflow-hidden">
-				<Markdown
-					components={{
-						p: ({ children }) => (
-							<p
-								className={clsx('message-content w-full', {
-									'text-red-700': error,
-								})}
-							>
-								{children}
-							</p>
-						),
-						a: ({ children, href }) => (
-							<a
-								href={href}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="text-primary underline font-bold"
-							>
-								{children}
-							</a>
-						),
-					}}
-				>
-					{content}
-				</Markdown>
+				<div className="message-content">
+					<Markdown
+						components={{
+							p: ({ children }) => (
+								<p
+									className={clsx({
+										'text-red-700': error,
+									})}
+								>
+									{children}
+								</p>
+							),
+							a: ({ children, href }) => (
+								<a
+									href={href}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-primary underline font-bold"
+								>
+									{children}
+								</a>
+							),
+						}}
+					>
+						{content}
+					</Markdown>
+				</div>
 				{isFirstMessage && <BubbleQuestions />}
 				{isAssistantLoading && <MessageLoader />}
 			</div>

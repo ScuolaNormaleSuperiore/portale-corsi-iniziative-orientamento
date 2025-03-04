@@ -32,7 +32,10 @@ const Info: FC = () => {
 					{item?.list && item?.list?.length > 0 && (
 						<ul className="flex flex-col gap-2">
 							{item.list.map((listItem) => (
-								<li key={listItem.id} className="flex gap-2">
+								<li
+									key={listItem.id}
+									className="flex flex-wrap gap-x-2"
+								>
 									<strong>{listItem.key}</strong>
 									{listItem.valueType === 'phone' && (
 										<a

@@ -39,7 +39,7 @@ const LeftColumn: FC<{ isCollapsed: boolean; onToggle: () => void }> = ({
 }) => (
 	<div
 		className={clsx(
-			'bg-primary-lighter border-r border-subtle hidden lg:flex flex-col py-8',
+			'bg-primary-lighter border-r border-subtle hidden overflow-y-auto lg:flex flex-col py-8 scrollbar-thin scrollbar-thumb-primary scrollbar-track-primary-lighter',
 			{
 				'px-6': !isCollapsed,
 			},

@@ -473,7 +473,7 @@ class FEController extends Controller
             ],
         ];
         $questionsTitle = 'Prova a farmi queste domande...';
-        $pageTitle              = 'Parla con noi';
+        $pageTitle              = 'Chiedi al nostro chatbot!';
         $info = [
             'items' => [
                 [
@@ -497,7 +497,7 @@ class FEController extends Controller
                 ],
                 [
                     'bsIcon' => 'ear',
-                    'title' => 'Contatti',
+                    'title' => 'Scrivi o chiama',
                     'list' => [
                         [
                             'key' => 'Email:',
@@ -517,7 +517,7 @@ class FEController extends Controller
                 ],
             ],
         ];
-        $firstAnswer = 'Benvenute e benvenuti al chatbot informativo dei Corsi di Orientamento della Scuola Normale Superiore! Siamo felici di fornirvi assistenza e informazioni per supportarvi nelle vostre scelte di studio e nel vostro percorso di orientamento. Qui potrete parlare con un sistema automatico progettato per rispondere alle vostre domande in modo rapido e pratico.';
+        $firstAnswer = 'Ciao e benvenuti e benvenute nel chatbot informativo dei Corsi di Orientamento della Scuola Normale Superiore! Sono qui per darti una mano con tutte le informazioni di cui hai bisogno per orientarti nelle tue scelte di studio. Fai pure le tue domande, e cercherò di risponderti in modo veloce e chiaro.';
 
         return view('sns.chat', [
             'assets'                 => [
