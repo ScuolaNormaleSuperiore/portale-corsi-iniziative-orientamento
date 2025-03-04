@@ -15,7 +15,7 @@ const Message = ({ message }: { message: MessageType }) => {
 	return (
 		<article
 			className={clsx(
-				'md:pt-2 md:pl-2 pb-2 lg:pl-4 lg:pb-4 lg:pt-4 flex gap-3 md:gap-4 items-center w-full',
+				'p-1 md:pt-2 md:pl-2 md:pb-2 lg:pl-4 lg:pb-4 lg:pt-4 flex gap-3 md:gap-4 items-center w-full',
 				{
 					'bg-primary-lighter': isUserMessage,
 				},
