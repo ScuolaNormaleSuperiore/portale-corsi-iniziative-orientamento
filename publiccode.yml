@@ -3,8 +3,8 @@
 # More info at https://github.com/italia/publiccode.yml
 
 publiccodeYmlVersion: '0.4.0'
-applicationSuite: Laravel
-softwareVersion: 1.0.0
+applicationSuite: 
+softwareVersion: '1.0.0'
 categories:
   - education
   - e-government
@@ -31,12 +31,12 @@ description:
       - Gestione tabelle tassonomie
     localisedName: Piattaforma per la gestione dei corsi e delle iniziative di orientamento universitario 
     longDescription: >
-      La piattaforma è stata realizzata per la gestione delle candidature dei corsi e delle iniziative di orientamento della Scuola Normale Superiore di Pisa
+      La piattaforma è stata realizzata per la gestione delle pagine informative e delle candidature dei corsi e delle iniziative di orientamento della Scuola Normale Superiore di Pisa.
       La piattaforma offre un'interfaccia web responsive intuitiva e user-friendly, progettata adottando un approccio “accessibility by design” e “mobile ﬁrst” per guidare i referenti delle scuole secondarie di secondo grado e i candidati (iscrizione spontanea), passo dopo passo, dalla registrazione alla presentazione della domanda. Per il design dell’interfaccia, sono stati utilizzati gli strumenti di sviluppo messi a disposizione da Designers Italia, adottando Bootstrap Italia.
     screenshots:
       - assets/screenshots/homepage.png
     shortDescription: >-
-        Portale dei corsi  e iniziative di orientamento della Scuola Normale Superiore... short description.
+        Piattaforma per la gestione dei corsi e delle iniziative di orientamento universitario 
 developmentStatus: stable 
 intendedAudience:
   countries:
@@ -44,30 +44,33 @@ intendedAudience:
   scope:
     - education
 usedBy:
-  - Portale dell'Orientamento - Scuola Normale Superiore - https://orientamento.sns.it
+  - Portale Orienteamento della Scuola Normale Superiore - https://orientamento.sns.it
 it:
   countryExtensionVersion: '0.2'
   riuso:
     codiceIPA: sns_pi
   conforme:
-    gdpr: false
+    gdpr: true
     lineeGuidaDesign: true
-    misureMinimeSicurezza: false
+    misureMinimeSicurezza: true
   piattaforme:
     anpr: false
-    cie: false
+    cie: true
     pagopa: false
-    spid: false
+    spid: true
 legal:
   license: GPL-3.0-only
 localisation:
   availableLanguages:
     - it
-    - en
   localisationReady: true
 dependsOn:
   open:
     - name: PHP
+      optional: false
+    - name: Laravel
+      optional: false
+    - name: Vue.js
       optional: false
 maintenance:
   contacts:
@@ -78,6 +81,6 @@ name: Piattaforma per la gestione dei corsi e delle iniziative di orientamento u
 platforms:
   - web
 releaseDate: '2025-03-03'
-softwareType: addon
+softwareType: web application
 url: 'https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento'
 logo: assets/img/logo_sns.png
