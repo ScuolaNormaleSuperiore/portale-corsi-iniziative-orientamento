@@ -34,7 +34,7 @@ description:
       La piattaforma è stata realizzata per la gestione delle pagine informative e delle candidature dei corsi e delle iniziative di orientamento della Scuola Normale Superiore di Pisa.
       La piattaforma offre un'interfaccia web responsive intuitiva e user-friendly, progettata adottando un approccio “accessibility by design” e “mobile ﬁrst” per guidare i referenti delle scuole secondarie di secondo grado e i candidati (iscrizione spontanea), passo dopo passo, dalla registrazione alla presentazione della domanda. Per il design dell’interfaccia, sono stati utilizzati gli strumenti di sviluppo messi a disposizione da Designers Italia, adottando Bootstrap Italia.
     screenshots:
-      - assets/screenshots/homepage.png
+      - publiccode_img/home-page-orientamento.png
     shortDescription: >-
         Piattaforma per la gestione dei corsi e delle iniziative di orientamento universitario 
 developmentStatus: stable 
@@ -83,4 +83,4 @@ platforms:
 releaseDate: '2025-03-03'
 softwareType: web application
 url: 'https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento'
-logo: assets/img/logo_sns.png
+logo: publiccode_img/logo_sns.png
