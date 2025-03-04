@@ -478,7 +478,7 @@ class FEController extends Controller
             'items' => [
                 [
                     'bsIcon' => 'info-circle',
-                    'title' => 'Info utili',
+                    'title' => 'Parla con noi',
                     'text' => 'Se preferite interagire con un operatore o operatrice o avete esigenze specifiche, vi invitiamo a contattarci direttamente ai seguenti recapiti, durante gli orari di ufficio:',
                 ],
                 [
