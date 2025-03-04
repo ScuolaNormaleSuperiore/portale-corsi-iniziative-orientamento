@@ -21,11 +21,11 @@ const Info: FC = () => {
 							},
 						)}
 					>
-						<i className={`bi bi-${item.bsIcon}`} />
+						<i className={`bi bi-${item.bsIcon}`}/>
 						{index === 0 ? (
-							<h4>{item.title}</h4>
+							<h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">{item.title}</h2>
 						) : (
-							<h5>{item.title}</h5>
+							<h3 className="text-xl md:text-2xl lg:text-3xl font-bold">{item.title}</h3>
 						)}
 					</div>
 
