@@ -9,25 +9,25 @@ import App from './App';
 import './i18n/config';
 
 const initializeApp = async () => {
-  const rootEl = document.getElementById('chat');
+	const rootEl = document.getElementById('chat');
 
-  if (!rootEl) return;
+	if (!rootEl) return;
 
-  const root = isProduction
-    ? await initializeShadowRoot(rootEl)
-    : ReactDOM.createRoot(rootEl);
+	const root = isProduction
+		? await initializeShadowRoot(rootEl)
+		: ReactDOM.createRoot(rootEl);
 
-  if (!root) return;
+	if (!root) return;
 
-  boot({ rootElement: rootEl });
+	boot({ rootElement: rootEl });
 
-  root.render(
-    <Provider store={store}>
-      <AppProvider>
-        <App />
-      </AppProvider>
-    </Provider>,
-  );
+	root.render(
+		<Provider store={store}>
+			<AppProvider>
+				<App />
+			</AppProvider>
+		</Provider>,
+	);
 };
 
 initializeApp().catch(console.error);

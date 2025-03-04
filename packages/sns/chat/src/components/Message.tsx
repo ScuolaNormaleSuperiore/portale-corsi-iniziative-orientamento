@@ -5,31 +5,57 @@ import { MessageType } from '../types/message';
 import Exclamation from './icons/Exclamation';
 import MessageLoader from './MessageLoader';
 import Avatar from './Avatar';
+import BubbleQuestions from './BubbleQuestions';
+const Message = ({ message }: { message: MessageType }) => {
+	const { role, error, content, isLoading, isFirstMessage = false } = message;
 
-const Message: React.FC<{ message: MessageType }> = ({ message }) => {
-  return (
-    <article
-      className={clsx(
-        'pt-2 pl-2 pb-2 lg:pl-4 lg:pb-4 lg:pt-4 flex gap-4 items-center w-full',
-        {
-          'bg-primary-lighter': message.role === 'user',
-        },
-      )}
-    >
-      {!message?.error && <Avatar role={message.role} />}
-      {message?.error && <Exclamation />}
-      <div className="flex flex-col gap-2 w-full overflow-hidden">
-        <Markdown
-          className={clsx('message-content w-full', {
-            'text-red-700': message?.error,
-          })}
-        >
-          {message.content}
-        </Markdown>
-        {message.role === 'assistant' && message.isLoading && <MessageLoader />}
-      </div>
-    </article>
-  );
+	const isUserMessage = role === 'user';
+	const isAssistantLoading = role === 'assistant' && isLoading;
+
+	return (
+		<article
+			className={clsx(
+				'md:pt-2 md:pl-2 pb-2 lg:pl-4 lg:pb-4 lg:pt-4 flex gap-3 md:gap-4 items-center w-full',
+				{
+					'bg-primary-lighter': isUserMessage,
+				},
+			)}
+		>
+			{!error && <Avatar role={role} />}
+			{error && <Exclamation />}
+			<div className="flex flex-col w-full overflow-hidden">
+				<div className="message-content">
+					<Markdown
+						components={{
+							p: ({ children }) => (
+								<p
+									className={clsx({
+										'text-red-700': error,
+									})}
+								>
+									{children}
+								</p>
+							),
+							a: ({ children, href }) => (
+								<a
+									href={href}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-primary underline font-bold"
+								>
+									{children}
+								</a>
+							),
+						}}
+					>
+						{content}
+					</Markdown>
+				</div>
+				{isFirstMessage && <BubbleQuestions />}
+				{isAssistantLoading && <MessageLoader />}
+			</div>
+		</article>
+	);
 };
 
 export default React.memo(Message);
