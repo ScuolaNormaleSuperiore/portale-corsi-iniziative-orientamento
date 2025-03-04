@@ -3,10 +3,14 @@
 # More info at https://github.com/italia/publiccode.yml
 
 publiccodeYmlVersion: '0.4.0'
-applicationSuite: WordPress
+applicationSuite: Laravel
 softwareVersion: 1.0.0
 categories:
-  - website-builder
+  - education
+  - e-government
+  - cms
+  - data-management
+  - collaboration
 description:
   it:
     documentation: >-
@@ -68,9 +72,9 @@ dependsOn:
 maintenance:
   contacts:
     - email: servizi.informativi@sns.it
-      name: Servizi Informativi SNS
+      name: Servizio Sistemi Informativi SNS
   type: community
-name: Design Laboratori Italia
+name: Piattaforma per la gestione dei corsi e delle iniziative di orientamento universitario
 platforms:
   - web
 releaseDate: '2025-03-03'
