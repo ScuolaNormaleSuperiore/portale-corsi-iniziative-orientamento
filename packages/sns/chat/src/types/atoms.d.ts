@@ -1,12 +1,12 @@
 type UpdateMessageParams = {
-  messageId: string;
-  content?: string;
-  isLoading?: boolean;
-  error?: boolean;
+	messageId: string;
+	content?: string;
+	isLoading?: boolean;
+	error?: boolean;
 };
 
 type UpdateMessageChunkParams = UpdateMessageParams & {
-  content: string;
+	content: string;
 };
 
 export type { UpdateMessageParams, UpdateMessageChunkParams };
