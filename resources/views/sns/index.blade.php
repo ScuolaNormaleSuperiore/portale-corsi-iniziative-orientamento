@@ -119,7 +119,7 @@
                 >
                     <div class="container" style="">
                         <div class="row">
-                            <h2 class="text-center">Per saperne di più</h2>
+                            <h2 class="text-center">Parla con noi</h2>
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                     <div class="row">
                         <div class="col-12 col-lg-6">
                             @include('components/card-img-bottom',['title' => "Parla con noi",
-                                    'subtitle' =>  "chiedi al nostro chatbot o consulta le nostre FAQ",
+                                    'subtitle' =>  "chiedi al nostro chatbot o contatta direttamente i nostri operatori",
                                     'img' =>  Theme::url('/assets/img1.png'),
                                     'link' => '/chat',
                                     ])
