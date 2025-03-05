@@ -127,10 +127,12 @@
                                                                     <div
                                                                         style="position:absolute;left:-10px;top:-10px;">
 
-                                                                        <small><span class="badge rounded-pill
-                                                                            {{\App\Enums\CandidatoStatuses::getColor($candidatura->status) ?: ''}}
-                                                                        "
-                                                                                     style="">{{\App\Enums\CandidatoStatuses::optionLabel($candidatura->status)}}</span></small>
+                                                                        <small>
+                                                                            <span class="badge rounded-pill"
+                                                                                     style="color:{{\App\Enums\CandidatoStatuses::getColor($candidatura->status) ?: ''}}">
+                                                                                {{\App\Enums\CandidatoStatuses::optionLabel($candidatura->status)}}
+                                                                            </span>
+                                                                        </small>
                                                                     </div>
 
                                                                     Vedi la candidatura
