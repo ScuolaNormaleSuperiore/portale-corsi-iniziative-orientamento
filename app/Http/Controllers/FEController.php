@@ -86,7 +86,8 @@ class FEController extends Controller
         $pagine = PaginaOrientamento::where('attivo', 1)
             ->where('homepage', 1)
             ->orderBy('ordine', 'ASC')
-            ->limit(6)
+            //Rimuovo il limit
+            //->limit(6)
             ->get();
 
         $news = News::where('attivo', 1)
