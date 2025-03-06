@@ -53,16 +53,37 @@ description:
       - Integrazioni con Gateway SSO Cineca, Brevo, database scuole MIM
     screenshots:
       - https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento/blob/main/publiccode_img/home-page-orientamento.png
+it:
+  countryExtensionVersion: '0.2'
+  riuso:
+    codiceIPA: sns_pi
+  conforme:
+    gdpr: true
+    lineeGuidaDesign: true
+    misureMinimeSicurezza: true
+  piattaforme:
+    anpr: false
+    cie: true
+    pagopa: false
+    spid: true
 legal:
-  license: LGPL-3.0-only
+  license: GPL-3.0-only
 maintenance:
   type: contract
   contractors:
     - name: Net7 srl
       until: 2028-03-03
-      email: i@netseven.it
+      email: info@netseven.it
       website: https://www.netseven.it/
 localisation:
   localisationReady: false
   availableLanguages:
     - it
+dependsOn:
+  open:
+    - name: PHP
+      optional: false
+    - name: Laravel
+      optional: false
+    - name: Vue.js
+      optional: false
