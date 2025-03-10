@@ -33,7 +33,12 @@ class TestController extends Controller
     public function test()
     {
         return redirect(RouteServiceProvider::REGISTER_CIE)
-            ->with(['samlAttributes' => json_encode(['cn' => 'fjkdsfjkds']),'nome' => 'Giacomo','cognome' => 'Terreni','codice_fiscale' => 'TRRGCM78B07G702C']);
+            ->with([
+                'samlAttributes' => json_encode([
+                    'cn' => 'fjkdsfjkds']),
+                'nome' => 'GG','cognome' => 'TT',
+                'codice_fiscale' => 'TRIETERO545'
+            ]);
 
 //        $response = Http::get("https://sns.idp.pp.cineca.it/idp/shibboleth");
 //
