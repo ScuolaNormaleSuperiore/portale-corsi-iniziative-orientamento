@@ -58,7 +58,7 @@ class FoormInsert extends BaseFoormInsert
 
         if (env('TEST_INSERT', false)) {
             $data = [
-                'codice_fiscale' => 'TRRGCM78B07G' . str_pad(rand(0, 999), 3, "0", STR_PAD_LEFT) . Str::random(1),
+                'codice_fiscale' => 'TRBGBC76C17G' . str_pad(rand(0, 999), 3, "0", STR_PAD_LEFT) . Str::random(1),
                 'emails' => Str::random(6) . '@' . Str::random(6) . '.it',
                 'sesso' => 'M',
                 'data_nascita' => '1978-02-07',
