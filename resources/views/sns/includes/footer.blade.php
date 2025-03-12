@@ -1,3 +1,46 @@
+<section>
+    <div class="container-fluid d-flex flex-wrap justify-content-center align-items-center bg-white gap-1">
+        <div class="my-4 px-4">
+            <img src="{{Theme::url('/assets/logo_fin_ngeneu.png')}}"
+                 alt="Logo 'Finanziato da NextGen EU'"
+                 class="img-fluid"
+                 style="height:70px;"
+            >
+        </div>
+        <div class="my-4 px-4">
+            <img src="{{Theme::url('/assets/logo_miur.jpg')}}"
+                 alt="Logo MIUR"
+                 class="img-fluid"
+                 style="height:80px;"
+            >
+        </div>
+        <div class="my-4 px-4">
+            <img src="{{Theme::url('/assets/logo_italia_domani.jpg')}}"
+                 alt="Logo Italia Domani Piano Nazionale di Ripresa e Resilienza"
+                 class="img-fluid"
+                 style="height:90px;"
+            >
+        </div>
+        <div class="my-4 px-4">
+            <img src="{{Theme::url('/assets/logo_sns.png')}}"
+                 alt="Logo SNS"
+                 class="img-fluid"
+                 style="height:110px;width:200px;"
+            >
+        </div>
+
+
+        <div class="my-4 ps-4">
+            <img src="{{Theme::url('/assets/logo_merita_def.png')}}"
+                 alt="Logo SNS"
+                 class="img-fluid"
+                 style="height:60px;"
+            >
+        </div>
+
+
+    </div>
+</section>
 <footer class="it-footer" id="footer">
     <div class="it-footer-main">
         <div class="container-fluid">
