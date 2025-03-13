@@ -1,0 +1,89 @@
+publiccodeYmlVersion: "0.4"
+name: Piattaforma per la gestione dei corsi e delle iniziative di orientamento
+  universitario
+url: https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento
+softwareVersion: 1.0.0
+releaseDate: 2025-03-03
+logo: publiccode_img/sns-logo2.png
+platforms:
+  - web
+categories:
+  - collaboration
+  - design-system
+  - educational-content
+  - event-management
+  - service-desk
+usedBy:
+  - sns_pi
+developmentStatus: stable
+softwareType: standalone/web
+description:
+  it:
+    localisedName: Piattaforma per la gestione dei corsi e delle iniziative di
+      orientamento universitario
+    shortDescription: Gestione dei contenuti informativi e raccolta delle
+      candidature per corsi e iniziative di orientamento universitario
+    longDescription: >-
+      La piattaforma è stata realizzata per la gestione delle pagine informative
+      e delle candidature dei corsi e delle iniziative di orientamento della
+      Scuola Normale Superiore di Pisa. La piattaforma offre un'interfaccia web
+      responsive intuitiva e user-friendly, progettata adottando un approccio
+      “accessibility by design” e “mobile ﬁrst” per guidare i referenti delle
+      scuole secondarie di secondo grado e i candidati (iscrizione spontanea),
+      passo dopo passo, dalla registrazione alla presentazione della domanda.
+
+
+      Per il design dell’interfaccia, sono stati utilizzati gli strumenti di
+      sviluppo messi a disposizione da Designers Italia, adottando Bootstrap
+      Italia.
+    features:
+      - Gestione candidature studenti
+      - Gestione candidature referenti scolastici
+      - Gestione scuole
+      - Gestione iniziative
+      - Gestione corsi
+      - Gestione pagine informative
+      - Gestione eventi
+      - Gestione contenuti multimediali
+      - Gestione sportello studenti
+      - Gestione avvisi
+      - Gestione hero home page
+      - Gestione utenti
+      - Gestione tabelle tassonomie
+      - Integrazioni con Gateway SSO Cineca, Brevo, database scuole MIM
+    screenshots:
+      - https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento/blob/main/publiccode_img/home-page-orientamento.png
+it:
+  countryExtensionVersion: "0.2"
+  riuso:
+    codiceIPA: sns_pi
+  conforme:
+    gdpr: true
+    lineeGuidaDesign: true
+    misureMinimeSicurezza: true
+  piattaforme:
+    anpr: false
+    cie: true
+    pagopa: false
+    spid: true
+legal:
+  license: GPL-3.0-only
+maintenance:
+  type: contract
+  contractors:
+    - name: Net7 srl
+      until: 2028-03-03
+      email: info@netseven.it
+      website: https://www.netseven.it/
+localisation:
+  localisationReady: false
+  availableLanguages:
+    - it
+dependsOn:
+  open:
+    - name: PHP
+      optional: false
+    - name: Laravel
+      optional: false
+    - name: Vue.js
+      optional: false
