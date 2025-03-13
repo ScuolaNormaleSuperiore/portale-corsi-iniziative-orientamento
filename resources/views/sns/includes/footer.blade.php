@@ -21,13 +21,7 @@
                  style="height:90px;"
             >
         </div>
-        <div class="my-4 px-4">
-            <img src="{{Theme::url('/assets/logo_sns.png')}}"
-                 alt="Logo SNS"
-                 class="img-fluid"
-                 style="height:110px;width:200px;"
-            >
-        </div>
+
 
 
         <div class="my-4 ps-4">
@@ -38,6 +32,13 @@
             >
         </div>
 
+        <div class="my-4 px-4">
+            <img src="{{Theme::url('/assets/logo_sns.png')}}"
+                 alt="Logo SNS"
+                 class="img-fluid"
+                 style="height:110px;width:200px;"
+            >
+        </div>
 
     </div>
 </section>
