@@ -36,7 +36,7 @@
             <img src="{{Theme::url('/assets/logo_sns.png')}}"
                  alt="Logo SNS"
                  class="img-fluid"
-                 style="height:110px;width:200px;"
+                 style="width:200px;"
             >
         </div>
 
