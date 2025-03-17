@@ -162,7 +162,6 @@
             <!-- <h3 class="visually-hidden">Sezione Link Utili</h3> -->
             <ul class="it-footer-small-prints-list list-inline mb-0 d-flex flex-column flex-md-row">
                 <li class="list-inline-item"><a href="/pagina/media-policy" title="Media Policy">Media policy</a></li>
-                <li class="list-inline-item"><a href="/pagina/note-legali" title="Note Legali">Note legali</a></li>
                 <li class="list-inline-item"><a href="/pagina/privacy-policy" title="Privacy Policy">Privacy policy</a>
                 </li>
                 <li class="list-inline-item" data-cc="show-preferencesModal"><a href="#">Manage cookie preferences</a>

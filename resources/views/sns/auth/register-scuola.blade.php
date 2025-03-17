@@ -169,7 +169,7 @@
 
                 </div>
 
-                <p>Registrandoti, accetti la nostra <a class="text-decoration-underline" href="/privacy-policy/">privacy policy</a>.</p>
+                <p>Registrandoti, accetti la nostra <a class="text-decoration-underline" href="/pagina/privacy-policy/">privacy policy</a>.</p>
 
 
             </form>
