@@ -11,16 +11,12 @@ return new class extends Migration {
 
         Schema::table('scuole', function (Blueprint $table) {
 
-            $table->dropForeign('regione_id');
+            // $table->dropForeign('regione_id');
             $table->unsignedBigInteger('regione_id')->nullable(true)->change();
-            $table->foreign('regione_id')->references('id')->on('regioni')->onDelete('restrict')->onUpdate('cascade');
+            //$table->foreign('regione_id')->references('id')->on('regioni')->onDelete('restrict')->onUpdate('cascade');
 
         });
-
     }
 
-    public function down()
-    {
-
-    }
+    public function down() {}
 };
