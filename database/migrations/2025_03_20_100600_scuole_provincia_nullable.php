@@ -13,7 +13,7 @@ return new class extends Migration {
 
             //$table->dropForeign('provincia_id');
             $table->unsignedBigInteger('provincia_id')->nullable(true)->change();
-            $table->foreign('provincia_id')->references('id')->on('province')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('provincia_id')->references('id')->on('province')->onDelete('restrict')->onUpdate('cascade')->change();
         });
     }
 
