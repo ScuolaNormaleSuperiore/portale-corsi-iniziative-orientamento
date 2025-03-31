@@ -21,7 +21,7 @@
         </section>
 
         <section class="container pt-4 pb-4">
-            <h2 class="h3">Inserisci i dati di accesso della scuola</h2>
+            <h2 class="h3">Inserisca i dati di accesso della scuola</h2>
             <p>La scuola ha già un account? <a class="text-decoration-underline" href="/login-scuola">Accedi</a>.</p>
 
             <form class="needsValidation" method="post" id="registerScuolaForm"
