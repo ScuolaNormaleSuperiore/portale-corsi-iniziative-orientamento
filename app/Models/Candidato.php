@@ -263,4 +263,16 @@ class Candidato extends Breeze
     public function getColorAttribute() {
         return $this->status ? CandidatoStatuses::getColor($this->status) : null;
     }
+
+    public function checkPosto() {
+        $maxPosti = $this->tipo == 'studente' ? $this->iniziativa->posti_onere : $this->iniziativa->posti;
+        if (is_null($maxPosti)) {
+            return true;
+        }
+        $postiOccupati = static::where('iniziativa_id',$this->iniziativa_id)
+            ->where('status',CandidatoStatuses::APPROVATA->value)
+            ->count();
+
+        return ($postiOccupati < $maxPosti);
+    }
 }
