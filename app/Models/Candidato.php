@@ -223,21 +223,34 @@ class Candidato extends Breeze
 
     public function calculateMedia($save = false)
     {
-        $media = 0;
+        $sommaVoti = 0;
 
         $nMaterie = 0;
         foreach ($this->voti()->with('materia')->get() as $voto) {
             if ($voto->materia->moltiplicatore <= 0) {
                 continue;
             }
-            $media += ($voto->voto_anno_2 + $voto->voto_anno_1
-                + $voto->voto_primo_quadrimestre) / 3 * $voto->materia->moltiplicatore;
-            $nMaterie++;
+
+//            $media += ($voto->voto_anno_2 + $voto->voto_anno_1
+//                + $voto->voto_primo_quadrimestre) / 3 * $voto->materia->moltiplicatore;
+
+
+            //TOLGO PRIMO QUADRIMESTRE E VOTI A 0
+            if ($voto->voto_anno_2 > 1) {
+                $sommaVoti += ($voto->voto_anno_2 * $voto->materia->moltiplicatore);
+                $nMaterie++;
+            }
+            if ($voto->voto_anno_1 > 1) {
+                $sommaVoti += ($voto->voto_anno_1 * $voto->materia->moltiplicatore);
+                $nMaterie++;
+            }
+
         }
-        if ($nMaterie > 0) {
-            $media = $media / $nMaterie;
+        if ($nMaterie == 0) {
+            return FormatValues::formatNumber0(0,2);
         }
 
+        $media = $sommaVoti / $nMaterie;
         $media = FormatValues::formatNumber0($media, 2);
         $this->media = $media;
         if ($save) {
