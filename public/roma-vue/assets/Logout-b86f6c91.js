@@ -1,0 +1,1 @@
+import{_ as r,p as o,r as s,o as t,l as c}from"./index-e35bfe49.js";o.Server.post("/api/logout",{},function(e){o.CrudCore.setCache("token",""),document.location.href="/"});const a={};function p(e,_,i,u,f,l){const n=s("ProgressSpinner");return t(),c(n)}const m=r(a,[["render",p]]);export{m as default};
