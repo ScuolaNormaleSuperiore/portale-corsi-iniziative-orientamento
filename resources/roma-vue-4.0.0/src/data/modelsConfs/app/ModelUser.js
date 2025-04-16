@@ -50,9 +50,10 @@ export default {
         //template:'inner',
         modelName : 'user',
         fields : ['id','email','nome','cognome','scuola',
-            // 'email_verified_at',
+            'email_verified_at',
             // 'fotos',
-            'banned','mainrole'],
+            'banned',
+            'mainrole'],
         actions : [
             'action-edit',
             'action-delete',
