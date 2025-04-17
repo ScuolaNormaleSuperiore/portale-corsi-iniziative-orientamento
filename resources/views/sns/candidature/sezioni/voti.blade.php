@@ -73,21 +73,21 @@
             </td>
             <td class="form-group form-group-candidature-voti vertical-align-middle">
                 <div class="input-group input-group-candidature-voti pt-2">
-                    <input type="number" class="form-control" name="voti-voto_anno_2[]"
+                    <input type="number" step=".5" class="form-control" name="voti-voto_anno_2[]"
                            value="{{$voto['voto_anno_2']}}"
                     >
                 </div>
             </td>
             <td class="form-group form-group-candidature-voti vertical-align-middle">
                 <div class="input-group input-group-candidature-voti pt-2">
-                    <input type="number" class="form-control" name="voti-voto_anno_1[]"
+                    <input type="number" step=".5" class="form-control" name="voti-voto_anno_1[]"
                            value="{{$voto['voto_anno_1']}}"
                     >
                 </div>
             </td>
             <td class="form-group form-group-candidature-voti vertical-align-middle">
                 <div class="input-group input-group-candidature-voti pt-2">
-                    <input type="number" class="form-control" name="voti-voto_primo_quadrimestre[]"
+                    <input type="number" step=".5" class="form-control" name="voti-voto_primo_quadrimestre[]"
                            value="{{$voto['voto_primo_quadrimestre']}}"
                     >
                 </div>
