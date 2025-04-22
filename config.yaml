@@ -1,0 +1,22 @@
+name: sns-piattaforma-gestione-bandi
+type: laravel
+docroot: public
+php_version: "8.3"
+webserver_type: nginx-fpm
+router_http_port: "80"
+router_https_port: "443"
+xdebug_enabled: false
+additional_hostnames: []
+additional_fqdns: []
+use_dns_when_possible: true
+composer_version: ""
+web_environment:
+  - NODE_VERSION=18
+  - VITE_PORT=5173
+omit_containers: [dba]
+webimage_extra_packages:
+  - nodejs
+  - npm
+  - curl
+  - gnupg
+timezone: "Europe/Rome"
