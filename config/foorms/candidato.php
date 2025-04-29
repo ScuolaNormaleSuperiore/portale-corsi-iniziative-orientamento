@@ -406,6 +406,7 @@ return [
 
                         "scuola|biennio",
                         "scuola|denominazione",
+                        "scuola_estera",
                         "scuola|email_riferimento",
                         "profilo",
 

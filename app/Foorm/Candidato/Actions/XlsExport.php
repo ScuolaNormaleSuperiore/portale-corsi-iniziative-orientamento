@@ -89,10 +89,11 @@ class XlsExport extends BaseCsvExport
             'Titolo di studio del padre',
             'Titolo di studio della madre',
             'Tipo di scuola',
-            'classe',
+            'Classe',
             'Regione della scuola',
             'Candidati selezionati nella scuola nel biennio precedente',
             'Denominazione scuola',
+            'Scuola (estera)',
             'Email scuola',
             'Profilo',
 
