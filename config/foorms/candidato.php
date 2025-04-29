@@ -384,6 +384,7 @@ return [
                         "cognome",
                         "nome",
                         "codice_fiscale",
+                        "data_candidatura",
                         "sesso",
                         "luogo_nascita",
                         "data_nascita",

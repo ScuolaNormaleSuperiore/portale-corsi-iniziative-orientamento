@@ -74,6 +74,7 @@ class XlsExport extends BaseCsvExport
             'Cognome',
             'Nome',
             'Codice fiscale',
+            'Data candidatura',
             'Genere',
             'Luogo di nascita',
             'Data di nascita',
@@ -413,6 +414,10 @@ class XlsExport extends BaseCsvExport
         return Date::dateTimeToExcel(\DateTime::createFromFormat("Y-m-d",$value));
     }
 
+    protected function getCsvFieldDataCandidatura($value)
+    {
+        return Date::dateTimeToExcel(\DateTime::createFromFormat("Y-m-d",$value));
+    }
     protected function getCsvFieldGen1TitoloStudioId($value)
     {
         return $this->getFromArray($value, $this->titoliStudio);
