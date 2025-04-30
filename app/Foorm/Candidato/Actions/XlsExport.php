@@ -411,12 +411,21 @@ class XlsExport extends BaseCsvExport
 
     protected function getCsvFieldDataNascita($value)
     {
-        return Date::dateTimeToExcel(\DateTime::createFromFormat("Y-m-d",$value));
+        if ($value && Str::length($value) == 10) {
+            return Date::dateTimeToExcel(\DateTime::createFromFormat("Y-m-d",$value));
+        } else {
+            return null;
+        }
     }
 
-    protected function getCsvFieldDataCandidatura($value)
-    {
-        return Date::dateTimeToExcel(\DateTime::createFromFormat("Y-m-d",$value));
+    protected function getCsvFieldDataCandidatura($value) {
+
+        if ($value && Str::length($value) == 10) {
+            return Date::dateTimeToExcel(\DateTime::createFromFormat("Y-m-d",$value));
+        } else {
+            return null;
+        }
+
     }
     protected function getCsvFieldGen1TitoloStudioId($value)
     {
