@@ -276,8 +276,9 @@ class XlsExport extends BaseCsvExport
         }
 
         $columnsFormats = [
-            'F' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'H' => NumberFormat::FORMAT_TEXT,
+            'D' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'G' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'I' => NumberFormat::FORMAT_TEXT,
         ];
         Excel::store(new ModelArrayExport($dataArray,$columnsFormats), $storageFilename);
 
