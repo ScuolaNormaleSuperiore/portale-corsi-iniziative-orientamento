@@ -77,12 +77,12 @@ return [
                         ],
                         'nazione_id' => [
                             'validation' => [
-//                                'required',
+                                //                                'required',
                             ]
                         ],
                         'provincia_id' => [
                             'validation' => [
-//                                'required',
+                                //                                'required',
                             ]
                         ],
                         'comune_id' => [
@@ -118,8 +118,7 @@ return [
                     'title' => 'Scuola e classe',
                     'fields' => [
                         'provincia_scuola_id' => [
-                            'validation' => [
-                            ]
+                            'validation' => []
                         ],
                         'scuola_id' => [
                             'validation' => [
@@ -149,20 +148,16 @@ return [
                     'code' => 'voti',
                     'title' => 'Voti scolastici',
                     'fields' => [
-                        'voti' => [
-
-                        ],
+                        'voti' => [],
                     ],
                 ],
                 [
                     'code' => 'allegati',
-                    'title' => 'Allegati',
+                    'title' => 'Allegati (FACOLTATIVO)',
                     'subtitle' => ' In questa sezione, puoi caricare le pagelle scolastiche degli ultimi tre anni. Assicurati che i documenti siano chiari e completi, includendo tutti i voti finali per ciascun anno scolastico richiesto.',
                     'fields' => [
                         'attachments' => [
-                            'validation' => [
-
-                            ],
+                            'validation' => [],
                             'exts' => 'pdf,png,jpg',
                         ]
                     ],
@@ -196,32 +191,32 @@ return [
                     'fields' => [
                         'inglese_livello_linguistico_id' => [
                             'validation' => [
-//                                'required'
+                                //                                'required'
                             ],
                         ],
                         'francese_livello_linguistico_id' => [
                             'validation' => [
-//                                'required'
+                                //                                'required'
                             ],
                         ],
                         'spagnolo_livello_linguistico_id' => [
                             'validation' => [
-//                                'required'
+                                //                                'required'
                             ],
                         ],
                         'tedesco_livello_linguistico_id' => [
                             'validation' => [
-//                                'required'
+                                //                                'required'
                             ],
                         ],
                         'cinese_livello_linguistico_id' => [
                             'validation' => [
-//                                'required'
+                                //                                'required'
                             ],
                         ],
                         'altre_competenze_linguistiche' => [
                             'validation' => [
-//                                'required'
+                                //                                'required'
                             ],
                         ],
 
@@ -273,26 +268,26 @@ return [
                         ],
                         'stages' => [
                             'validation' => [
-//                                'required',
+                                //                                'required',
                             ]
                         ],
                         'gare_internazionali' => [
                             'validation' => [
-//                                'required',
+                                //                                'required',
                             ]
                         ],
                         'gare_umanistiche' => [
                             'validation' => [
-//                                'required',
+                                //                                'required',
                             ]
                         ],
                         'partecipazione_concorsi' => [
                             'validation' => [
                                 'max:' . env('MAX_LENGTH_TEXTAREA', 1500),
-//                                'min:' . env('MIN_LENGTH_TEXTAREA', 400)
+                                //                                'min:' . env('MIN_LENGTH_TEXTAREA', 400)
                             ],
                             'maxLength' => env('MAX_LENGTH_TEXTAREA', 1500),
-//                            'minLength' => env('MIN_LENGTH_TEXTAREA', 400),
+                            //                            'minLength' => env('MIN_LENGTH_TEXTAREA', 400),
                         ],
 
                     ]
@@ -304,10 +299,10 @@ return [
                         'esperienze_estere' => [
                             'validation' => [
                                 'max:' . env('MAX_LENGTH_TEXTAREA', 1500),
-//                                'min:' . env('MIN_LENGTH_TEXTAREA', 400)
+                                //                                'min:' . env('MIN_LENGTH_TEXTAREA', 400)
                             ],
                             'maxLength' => env('MAX_LENGTH_TEXTAREA', 1500),
-//                            'minLength' => env('MIN_LENGTH_TEXTAREA', 400),
+                            //                            'minLength' => env('MIN_LENGTH_TEXTAREA', 400),
                         ]
 
                     ]
@@ -323,12 +318,8 @@ return [
                     'code' => 'materie_settori',
                     'title' => 'Materie e settori preferiti',
                     'fields' => [
-                        'materie_preferite' => [
-
-                        ],
-                        'settore_professionale' => [
-
-                        ]
+                        'materie_preferite' => [],
+                        'settore_professionale' => []
                     ]
                 ],
                 [
@@ -356,7 +347,7 @@ return [
                         'corsi' => [
                             'validation' => [
                                 'required',
-//                                'max:500'
+                                //                                'max:500'
                             ],
                         ]
 
@@ -394,10 +385,7 @@ return [
         ],
         6 => [
             'title' => 'Riepilogo',
-            'sections' => [
-
-            ]
+            'sections' => []
         ],
     ],
 ];
-

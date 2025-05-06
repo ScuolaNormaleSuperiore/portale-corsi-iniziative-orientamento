@@ -22,7 +22,7 @@
 
 @endphp
 {{--@dump($fieldData)--}}
-<p>Qualora una materia non sia presente in tutti gli anni scolastici per i quali si richiede la votazione conseguita, il valore da inserire nell'anno o negli mancanti è zero "0" (che non verrà conteggiato nella media calcolata nel sistema)</p>
+<p><strong>È OBBLIGATORIO</strong> procedere con l'inserimento dei voti relativi a TUTTE le materie anche in caso di caricamento di pagelle. In caso di materia presente solo in alcuni ma non tutti gli anni scolastici, ove non presente si prega di inserire il valore "0" (zero).</p>
 <div class="table-responsive">
 
 <table class="table table-striped">
