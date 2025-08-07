@@ -4,7 +4,7 @@ name: Piattaforma per la gestione dei corsi e delle iniziative di orientamento
 url: https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento
 softwareVersion: 1.0.0
 releaseDate: 2025-03-03
-logo: publiccode_img/sns-logo2.png
+logo: publiccode_img/logo-orientamento.png
 platforms:
   - web
 categories:
@@ -33,7 +33,7 @@ description:
       passo dopo passo, dalla registrazione alla presentazione della domanda.
 
 
-      Per il design dell’interfaccia, sono stati utilizzati gli strumenti di
+      Per il design dell'interfaccia, sono stati utilizzati gli strumenti di
       sviluppo messi a disposizione da Designers Italia, adottando Bootstrap
       Italia.
     features:
@@ -53,6 +53,9 @@ description:
       - Integrazioni con Gateway SSO Cineca, Brevo, database scuole MIM
     screenshots:
       - https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento/blob/main/publiccode_img/home-page-orientamento.png
+      - https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento/blob/main/publiccode_img/Attivita.png
+      - https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento/blob/main/publiccode_img/Chatbot.png
+      - https://github.com/ScuolaNormaleSuperiore/portale-corsi-iniziative-orientamento/blob/main/publiccode_img/Sportello
 it:
   countryExtensionVersion: "0.2"
   riuso:
