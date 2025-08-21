@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 
 const Message = ({ message }: { message: MessageType }) => {
 	const { role, error, content, isLoading, isFirstMessage = false } = message;
+	const plainMessageContent = sanitizeFormattedMessage(content) || '';
 	const { t } = useTranslation();
 	const isUserMessage = role === 'user';
 	const isAssistantLoading = role === 'assistant' && isLoading;
@@ -27,7 +28,7 @@ const Message = ({ message }: { message: MessageType }) => {
 			aria-labelledby={`message-${role}-${message.id}`}
 		>
 			<span id={`message-${role}-${message.id}`} className="sr-only">
-				{`${isUserMessage ? t('chat.user.sr') : t('chat.assistant.sr')} ${new Date(message.date).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' })}: ${sanitizeFormattedMessage(content).slice(0, 150)}${content.length > 150 ? '...' : ''}`}
+				{`${isUserMessage ? t('chat.user.sr') : t('chat.assistant.sr')} ${new Date(message.date).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' })}: ${plainMessageContent.slice(0, 150)}${plainMessageContent.length > 150 ? '...' : ''}`}
 			</span>
 			{!error && <Avatar role={role} />}
 			{error && <Exclamation />}
