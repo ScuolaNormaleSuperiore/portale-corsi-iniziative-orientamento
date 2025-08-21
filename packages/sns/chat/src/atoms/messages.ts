@@ -169,7 +169,9 @@ export const fetchMessageAtom = atom(
 			});
 			set(isMessageLoadingAtom, false);
 			if (inputElement && !isPanelOpen) {
-				inputElement.focus();
+				setTimeout(() => {
+					inputElement.focus();
+				}, 100);
 			}
 		}
 	},

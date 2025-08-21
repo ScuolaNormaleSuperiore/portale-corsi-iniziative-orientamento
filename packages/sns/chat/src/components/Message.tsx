@@ -19,7 +19,7 @@ const Message = ({ message }: { message: MessageType }) => {
 	return (
 		<section
 			className={clsx(
-				'p-1 md:pt-2 md:pl-2 md:pb-2 lg:pl-4 lg:pb-4 lg:pt-4 flex gap-3 md:gap-4 items-center w-full',
+				'm-1 md:mt-2 md:ml-2 md:mb-2 lg:ml-4 lg:mb-4 lg:mt-4 flex gap-3 md:gap-4 items-center w-full',
 				{
 					'bg-primary-lighter': isUserMessage,
 				},
