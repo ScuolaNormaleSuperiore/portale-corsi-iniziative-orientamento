@@ -125,7 +125,10 @@ button,
 a,
 input,
 textarea,
-select {
+select,
+[tabindex]:not([tabindex="-1"]):not(button):not(a):not(input):not(textarea):not(
+		select
+	) {
 	&:focus {
 		@apply outline-none ring-4 ring-indigo-600 rounded-md;
 	}

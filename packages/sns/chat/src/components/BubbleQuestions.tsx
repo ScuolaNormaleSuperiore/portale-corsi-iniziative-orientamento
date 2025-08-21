@@ -55,7 +55,7 @@ const BubbleQuestions: React.FC = () => {
 					variants={variantsContainer}
 					className="flex flex-col gap-3"
 				>
-					<h3 className="md:text-lg font-semibold mt-2">
+					<h3 className="md:text-lg font-semibold mt-2 pl-2">
 						{questionsTitle || t('questions.title')}
 					</h3>
 

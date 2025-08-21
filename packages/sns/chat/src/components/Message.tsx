@@ -6,30 +6,38 @@ import Exclamation from './icons/Exclamation';
 import MessageLoader from './MessageLoader';
 import Avatar from './Avatar';
 import BubbleQuestions from './BubbleQuestions';
+import { sanitizeFormattedMessage } from '@utils/sanitizer';
+import { useTranslation } from 'react-i18next';
+
 const Message = ({ message }: { message: MessageType }) => {
 	const { role, error, content, isLoading, isFirstMessage = false } = message;
-
+	const { t } = useTranslation();
 	const isUserMessage = role === 'user';
 	const isAssistantLoading = role === 'assistant' && isLoading;
 
 	return (
-		<article
+		<section
 			className={clsx(
 				'p-1 md:pt-2 md:pl-2 md:pb-2 lg:pl-4 lg:pb-4 lg:pt-4 flex gap-3 md:gap-4 items-center w-full',
 				{
 					'bg-primary-lighter': isUserMessage,
 				},
 			)}
+			tabIndex={0}
+			aria-labelledby={`message-${message.id}`}
 		>
 			{!error && <Avatar role={role} />}
 			{error && <Exclamation />}
+			<span id={`message-${message.id}`} className="sr-only">
+				{`${isUserMessage ? t('chat.user.sr') : t('chat.assistant.sr')} ${new Date(message.date).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' })}: ${sanitizeFormattedMessage(content).slice(0, 150)}${content.length > 150 ? '...' : ''}`}
+			</span>
 			<div className="flex flex-col w-full overflow-hidden">
 				<div className="message-content">
 					<Markdown
 						components={{
 							p: ({ children }) => (
 								<p
-									className={clsx({
+									className={clsx('p-2', {
 										'text-red-700': error,
 									})}
 								>
@@ -54,7 +62,7 @@ const Message = ({ message }: { message: MessageType }) => {
 				{isFirstMessage && <BubbleQuestions />}
 				{isAssistantLoading && <MessageLoader />}
 			</div>
-		</article>
+		</section>
 	);
 };
 

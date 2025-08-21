@@ -69,23 +69,29 @@ const Input: React.FC = () => {
 	};
 
 	return (
-		<textarea
-			ref={textAreaRef}
-			className="w-full px-4 py-2 resize-none overflow-x-hidden min-h-10 caret-primary max-h-40 border border-gray"
-			value={currentUserMessage}
-			onChange={handleSetCurrentMessage}
-			onKeyDown={(e) => {
-				if (e.key === 'Enter' && !e.shiftKey) {
-					e.preventDefault();
-					handleSendMessage();
-				}
-			}}
-			inputMode="text"
-			placeholder={t('chat.inputPlaceholder')}
-			disabled={isMessageLoading}
-			autoFocus
-			spellCheck={false}
-		/>
+		<>
+			<label className="sr-only" htmlFor="chat-input">
+				{t('chat.input.sr')}
+			</label>
+			<textarea
+				id="chat-input"
+				ref={textAreaRef}
+				className="w-full px-4 py-2 resize-none overflow-x-hidden min-h-10 caret-primary max-h-40 border border-gray"
+				value={currentUserMessage}
+				onChange={handleSetCurrentMessage}
+				onKeyDown={(e) => {
+					if (e.key === 'Enter' && !e.shiftKey) {
+						e.preventDefault();
+						handleSendMessage();
+					}
+				}}
+				inputMode="text"
+				placeholder={t('chat.input.placeholder')}
+				disabled={isMessageLoading}
+				autoFocus
+				spellCheck={false}
+			/>
+		</>
 	);
 };
 
