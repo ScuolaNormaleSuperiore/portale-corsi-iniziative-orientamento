@@ -66,13 +66,14 @@
 
     #chat-container {
         outline: none !important;
-        border: none !important;
-        height: 520px;
+        border-bottom: 1px solid #dee2e6 !important;
+        border-top: 1px solid #dee2e6 !important;
+        height: 524px;
         width: 100%;
         position: relative;
 
         @media (width > 768px) {
-            height: 725px;
+            height: 727px;
         }
     }
 </style>

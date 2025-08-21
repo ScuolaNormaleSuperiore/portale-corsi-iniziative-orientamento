@@ -113,27 +113,24 @@ const App: FC = () => {
 	return (
 		<>
 			{isDevelopment && <DevHeader />}
-			<section className="w-full h-full text-black flex flex-col border-t border-b border-subtle">
-				<div
-					className={clsx('w-full h-full', {
-						'lg:grid-cols-[50px_1fr]':
-							isLeftColumnCollapsed && hasInfo,
-						'grid auto-cols-[1fr] lg:grid-cols-[30%_1fr] grid-rows-[1fr]':
-							hasInfo,
-					})}
-				>
-					{hasInfo && (
-						<LeftColumn
-							isCollapsed={isLeftColumnCollapsed}
-							onToggle={toggleLeftColumn}
-						/>
-					)}
-					<ChatArea
-						hasInfo={hasInfo}
-						isPanelOpen={isPanelOpen}
-						togglePanel={togglePanel}
+			<section
+				className={clsx('w-full h-full text-black', {
+					'lg:grid-cols-[50px_1fr]': isLeftColumnCollapsed && hasInfo,
+					'grid auto-cols-[1fr] lg:grid-cols-[30%_1fr] grid-rows-[1fr]':
+						hasInfo,
+				})}
+			>
+				{hasInfo && (
+					<LeftColumn
+						isCollapsed={isLeftColumnCollapsed}
+						onToggle={toggleLeftColumn}
 					/>
-				</div>
+				)}
+				<ChatArea
+					hasInfo={hasInfo}
+					isPanelOpen={isPanelOpen}
+					togglePanel={togglePanel}
+				/>
 			</section>
 			{isDevelopment && <DevFooter />}
 		</>
