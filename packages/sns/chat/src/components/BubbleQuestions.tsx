@@ -59,7 +59,7 @@ const BubbleQuestions: React.FC = () => {
 						{questionsTitle || t('questions.title')}
 					</h3>
 
-					<motion.ul className="list-none flex flex-col gap-3">
+					<motion.ul className="list-none flex flex-col gap-3 p-2">
 						{questions.map((question, index) => (
 							<motion.li
 								key={question.id}

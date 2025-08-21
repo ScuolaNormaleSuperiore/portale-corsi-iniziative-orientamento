@@ -58,6 +58,7 @@ const LeftColumn: FC<{ isCollapsed: boolean; onToggle: () => void }> = ({
 			<ButtonToggleColumn
 				className="hidden lg:flex self-end"
 				handler={onToggle}
+				ariaControlId="chat-contacts-sidebar"
 			/>
 			{!isCollapsed && <Info />}
 		</motion.div>
@@ -77,6 +78,10 @@ const ChatArea: FC<{
 						<ButtonToggleColumn
 							className="lg:hidden self-start"
 							handler={togglePanel}
+							ariaTags={{
+								'aria-haspopup': 'dialog' as const,
+							}}
+							ariaControlId="chat-contacts-sidebar-mobile"
 						/>
 						<Panel isOpen={isPanelOpen} onClose={togglePanel} />
 					</>

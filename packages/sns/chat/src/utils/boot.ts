@@ -43,6 +43,10 @@ export const boot = ({
 
 	store.set(rootAttributesAtom, {
 		userAvatar,
+		faqs: {
+			title: '',
+			questions: [],
+		},
 		info: {
 			...info,
 			items: info.items?.map((item: InfoItem) => ({
@@ -89,6 +93,10 @@ const pushFirstAssistantAnswer = (firstAnswer: string) => {
 
 const developmentRootAttributes: RootAttributes = {
 	userAvatar: 'https://i.imgur.com/Z6BfEFC.jpeg',
+	faqs: {
+		title: '',
+		questions: [],
+	},
 	pageChatTitle: 'Parla con noi',
 	questionsTitle: 'Prova a farmi queste domande...',
 	firstAnswer:

@@ -9,7 +9,9 @@ import { useMediaQuery } from 'usehooks-ts';
 const ButtonToggleColumn: React.FC<{
 	className?: string;
 	handler?: () => void;
-}> = ({ className, handler }) => {
+	ariaTags?: Record<string, string>;
+	ariaControlId?: string;
+}> = ({ className, handler, ariaTags, ariaControlId }) => {
 	const isLeftColumnCollapsed = useAtomValue(isLeftColumnCollapsedAtom);
 	const isPanelOpen = useAtomValue(isPanelOpenAtom);
 	const isMobile = useMediaQuery('(max-width: 1024px)');
@@ -23,7 +25,8 @@ const ButtonToggleColumn: React.FC<{
 				className,
 			)}
 			aria-expanded={isMobile ? isPanelOpen : !isLeftColumnCollapsed}
-			aria-controls={isMobile ? 'chat-contacts-sidebar' : 'chat-contacts-sidebar-mobile'}
+			aria-controls={ariaControlId}
+			{...ariaTags}
 		>
 			<motion.svg
 				animate={{
