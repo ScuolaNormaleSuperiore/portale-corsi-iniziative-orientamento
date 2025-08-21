@@ -51,9 +51,7 @@ const ButtonToggleColumn: React.FC<{
 					? t('sidebar.mobile.info.close')
 					: t('sidebar.mobile.info.open')}
 			</span>
-			<span className="sr-only">
-				{t('sidebar.sr')}
-			</span>
+			<span className="sr-only">{t('sidebar.sr')}</span>
 		</button>
 	);
 };

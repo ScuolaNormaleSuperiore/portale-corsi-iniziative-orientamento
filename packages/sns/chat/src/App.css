@@ -121,7 +121,11 @@
 	}
 }
 
-button, a, input, textarea, select {
+button,
+a,
+input,
+textarea,
+select {
 	&:focus {
 		@apply outline-none ring-4 ring-indigo-600 rounded-md;
 	}
