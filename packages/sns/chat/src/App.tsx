@@ -44,6 +44,7 @@ const LeftColumn: FC<{ isCollapsed: boolean; onToggle: () => void }> = ({
 				'px-6': !isCollapsed,
 			},
 		)}
+		id="chat-contacts-sidebar"
 	>
 		<motion.div
 			className="flex flex-col gap-6 w-full"
@@ -107,7 +108,7 @@ const App: FC = () => {
 	return (
 		<>
 			{isDevelopment && <DevHeader />}
-			<section className="w-full h-full text-black flex flex-col border-t border-subtle">
+			<section className="w-full h-[100%_+_1px] text-black flex flex-col border-t border-b border-subtle">
 				<div
 					className={clsx('w-full h-full', {
 						'lg:grid-cols-[50px_1fr]':

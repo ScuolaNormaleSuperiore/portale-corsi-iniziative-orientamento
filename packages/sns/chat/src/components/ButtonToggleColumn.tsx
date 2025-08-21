@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useAtomValue } from 'jotai';
 import { isLeftColumnCollapsedAtom, isPanelOpenAtom } from '@atoms/layout';
 import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from 'usehooks-ts';
 
 const ButtonToggleColumn: React.FC<{
 	className?: string;
@@ -11,6 +12,7 @@ const ButtonToggleColumn: React.FC<{
 }> = ({ className, handler }) => {
 	const isLeftColumnCollapsed = useAtomValue(isLeftColumnCollapsedAtom);
 	const isPanelOpen = useAtomValue(isPanelOpenAtom);
+	const isMobile = useMediaQuery('(max-width: 1024px)');
 	const { t } = useTranslation();
 
 	return (
@@ -20,11 +22,8 @@ const ButtonToggleColumn: React.FC<{
 				'hover:drop-shadow-lg flex items-center',
 				className,
 			)}
-			aria-label={
-				isPanelOpen
-					? t('sidebar.mobile.info.close')
-					: t('sidebar.mobile.info.open')
-			}
+			aria-expanded={isMobile ? isPanelOpen : !isLeftColumnCollapsed}
+			aria-controls={isMobile ? 'chat-contacts-sidebar' : 'chat-contacts-sidebar-mobile'}
 		>
 			<motion.svg
 				animate={{
@@ -48,6 +47,9 @@ const ButtonToggleColumn: React.FC<{
 				{isPanelOpen
 					? t('sidebar.mobile.info.close')
 					: t('sidebar.mobile.info.open')}
+			</span>
+			<span className="sr-only">
+				{t('sidebar.sr')}
 			</span>
 		</button>
 	);

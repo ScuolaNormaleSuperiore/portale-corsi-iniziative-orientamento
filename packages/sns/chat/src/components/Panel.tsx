@@ -18,6 +18,7 @@ const Panel: React.FC<{
 					exit={{ opacity: 0, x: -300 }}
 					transition={{ duration: 0.3 }}
 					className="bg-primary-lighter flex flex-col p-4 pt-14 fixed top-0 left-0 w-full h-full z-50 overflow-y-auto overflow-x-hidden"
+					id="chat-contacts-sidebar-mobile"
 				>
 					<button
 						onClick={onClose}
