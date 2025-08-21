@@ -6,6 +6,8 @@ import { MessageType } from '../types/message';
 import { UpdateMessageParams, UpdateMessageChunkParams } from '../types/atoms';
 import { RoleType } from '../types/message';
 import { conversationIdAtom } from './conversation';
+import { inputElementAtom } from './input';
+import { isPanelOpenAtom } from './layout';
 
 import i18n from '../i18n/config';
 export const messagesAtom = atom<MessageType[]>([]);
@@ -83,6 +85,8 @@ const createMessage = (
 export const fetchMessageAtom = atom(
 	null,
 	async (get, set, message: string = '') => {
+		const isPanelOpen = get(isPanelOpenAtom);
+		const inputElement = get(inputElementAtom);
 		const userMessage = message || get(currentUserMessageAtom);
 		const newUserMessage = createMessage('user', sanitize(userMessage));
 		if (!userMessage.trim()) {
@@ -164,6 +168,9 @@ export const fetchMessageAtom = atom(
 				isLoading: false,
 			});
 			set(isMessageLoadingAtom, false);
+			if (inputElement && !isPanelOpen) {
+				inputElement.focus();
+			}
 		}
 	},
 );

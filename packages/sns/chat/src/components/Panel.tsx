@@ -13,11 +13,14 @@ const Panel: React.FC<{
 	const panelRef = useRef<HTMLDialogElement>(null);
 	const focusIndexRef = useRef<number>(0);
 	const elementFocusBeforeOpenRef = useRef<HTMLElement | null>(null);
-	const [activeElement] = useAtom(activeElementAtom);
+	const [activeElement, setActiveElement] = useAtom(activeElementAtom);
 
 	const closePanel = () => {
 		onClose?.();
-		elementFocusBeforeOpenRef.current?.focus();
+		if (elementFocusBeforeOpenRef.current) {
+			elementFocusBeforeOpenRef.current?.focus();
+			setActiveElement(elementFocusBeforeOpenRef.current);
+		}
 	};
 
 	// Focus trap implementation

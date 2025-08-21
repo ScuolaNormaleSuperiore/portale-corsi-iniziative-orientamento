@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSetAtom, useAtomValue } from 'jotai';
+import { useSetAtom, useAtomValue, useAtom } from 'jotai';
 import {
 	currentUserMessageAtom,
 	fetchMessageAtom,
@@ -9,6 +9,8 @@ import {
 import { isPanelOpenAtom } from '@atoms/layout';
 import { useIsMounted } from 'usehooks-ts';
 import { delay } from '@utils/stuff';
+import { activeElementPreventFocusAtom } from '@atoms/activeElement';
+import { inputElementAtom } from '@atoms/input';
 
 const Input: React.FC = () => {
 	const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -19,11 +21,15 @@ const Input: React.FC = () => {
 	const isMounted = useIsMounted();
 	const { t } = useTranslation();
 	const isPanelOpen = useAtomValue(isPanelOpenAtom);
+	const activeElementPreventFocus = useAtomValue(
+		activeElementPreventFocusAtom,
+	);
 	const handleSetCurrentMessage = (
 		e: React.ChangeEvent<HTMLTextAreaElement>,
 	) => {
 		setCurrentUserMessage(e.target.value);
 	};
+	const [_, setInputElement] = useAtom(inputElementAtom);
 
 	const handleSendMessage = () => {
 		if (currentUserMessage?.trim()) {
@@ -49,16 +55,12 @@ const Input: React.FC = () => {
 	}, [currentUserMessage]);
 
 	useEffect(() => {
+		setInputElement(textAreaRef.current);
 		void delay(1600).then(() => {
-			if (isMounted() && !isPanelOpen) focusInput();
+			if (isMounted() && !isPanelOpen && !activeElementPreventFocus)
+				focusInput();
 		});
-	}, [isMounted, isPanelOpen]);
-
-	useEffect(() => {
-		if (!isMessageLoading && isMounted() && !isPanelOpen) {
-			focusInput();
-		}
-	}, [isMessageLoading, isMounted, isPanelOpen]);
+	}, []);
 
 	const focusInput = () => {
 		if (textAreaRef.current) {

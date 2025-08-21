@@ -26,6 +26,7 @@ const ButtonToggleColumn: React.FC<{
 			)}
 			aria-expanded={isMobile ? isPanelOpen : !isLeftColumnCollapsed}
 			aria-controls={ariaControlId}
+			data-prevent-focus="true"
 			{...ariaTags}
 		>
 			<motion.svg

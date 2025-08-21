@@ -23,7 +23,7 @@ const AppProvider: React.FC<{
 	}, [isMounted]);
 
 	useEffect(() => {
-		if (!isMobile && isPanelOpen) {
+		if (!isMobile) {
 			setIsPanelOpen(false);
 		}
 		if (isPanelOpen) {
