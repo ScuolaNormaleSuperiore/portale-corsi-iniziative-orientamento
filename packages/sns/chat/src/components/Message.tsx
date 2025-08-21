@@ -26,11 +26,11 @@ const Message = ({ message }: { message: MessageType }) => {
 			tabIndex={0}
 			aria-labelledby={`message-${role}-${message.id}`}
 		>
-			{!error && <Avatar role={role} />}
-			{error && <Exclamation />}
 			<span id={`message-${role}-${message.id}`} className="sr-only">
 				{`${isUserMessage ? t('chat.user.sr') : t('chat.assistant.sr')} ${new Date(message.date).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' })}: ${sanitizeFormattedMessage(content).slice(0, 150)}${content.length > 150 ? '...' : ''}`}
 			</span>
+			{!error && <Avatar role={role} />}
+			{error && <Exclamation />}
 			<div className="flex flex-col w-full overflow-hidden">
 				<div className="message-content">
 					<Markdown
