@@ -11,7 +11,7 @@ interface ShadowRootOptions {
 const defaultOptions: ShadowRootOptions = {
 	mode: 'open',
 	styleSelector: 'link[data-chat-styles]',
-	// containerStyles: { height: '100%' },
+	containerStyles: { height: '100%' },
 	containerId: 'react-shadow-container',
 	delegatesFocus: false,
 };
