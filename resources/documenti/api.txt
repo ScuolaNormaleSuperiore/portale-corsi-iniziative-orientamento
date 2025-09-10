@@ -1,0 +1,37 @@
+API PER LOGIN
+route: '/api/ext/login'
+method: 'post'
+body: {
+    email : string
+    password: string
+}
+result: {
+    "access_token" : <TOKEN>
+}
+
+API PER CANDIDATI
+route: '/api/ext/candidato'
+method: 'post'
+body: {
+    s_nome : string
+    s_cognome: string
+    s_data_nascita: yyyy-mm-dd
+    s_codice_fiscale: string
+}
+headers: {
+    "Authorization": "Bearer <TOKEN>"
+}
+result: {
+    "error" : 0|1
+    "msg" : string
+    "result" : {
+        [
+            <CANDIDATO_DATA_1>
+        ],
+        ...
+        [
+            <CANDIDATO_DATA_N>
+        ],
+    }
+
+}

@@ -147,6 +147,7 @@ return [
                 'Operatore',
                 'Scuola',
                 'Studente',
+                'ApiUser',
             ]
         ],
 

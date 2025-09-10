@@ -21,6 +21,14 @@ use App\Http\Controllers\Api\DownloadController;
 //    return $request->user();
 //});
 
+Route::post('/ext/login',  [\App\Http\Controllers\ExternalApi\LoginController::class, 'login']);
+Route::group([
+    'prefix' => 'ext',
+    'middleware' => []
+], function () {
+    Route::post('candidato', [\App\Http\Controllers\ExternalApi\FoormController::class,'candidatoList']);
+});
+
 Route::post('/login',  [LoginController::class, 'login']);
 Route::post('/newsletter/add',  [\App\Http\Controllers\Api\AppController::class, 'newsletterAdd'])->name('newsletter-add');
 
