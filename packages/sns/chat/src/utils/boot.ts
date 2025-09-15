@@ -19,7 +19,7 @@ export const boot = ({
 	let info: Info;
 	let firstAnswer: string;
 	let userAvatar: string;
-	let pageTitle: string;
+	let pageChatTitle: string;
 	let questionsTitle: string;
 	if (isDevelopment) {
 		// faqs = developmentRootAttributes.faqs;
@@ -27,14 +27,14 @@ export const boot = ({
 		firstAnswer = developmentRootAttributes.firstAnswer;
 		questionsTitle = developmentRootAttributes.questionsTitle;
 		userAvatar = developmentRootAttributes.userAvatar;
-		pageTitle = developmentRootAttributes.pageTitle;
+		pageChatTitle = developmentRootAttributes.pageChatTitle;
 	} else {
 		// faqs = JSON.parse(rootElement?.getAttribute('data-faqs') || '{}');
 		info = JSON.parse(rootElement?.getAttribute('data-info') || '{}');
 		firstAnswer = rootElement.getAttribute('data-first-answer') || '';
 		questionsTitle = rootElement.getAttribute('data-questions-title') || '';
 		userAvatar = rootElement.getAttribute('data-user-avatar') || '';
-		pageTitle = rootElement.getAttribute('data-page-title') || '';
+		pageChatTitle = rootElement.getAttribute('data-page-chat-title') || '';
 	}
 
 	if (firstAnswer) {
@@ -43,6 +43,10 @@ export const boot = ({
 
 	store.set(rootAttributesAtom, {
 		userAvatar,
+		faqs: {
+			title: '',
+			questions: [],
+		},
 		info: {
 			...info,
 			items: info.items?.map((item: InfoItem) => ({
@@ -67,7 +71,7 @@ export const boot = ({
 		// 				})) || [],
 		// 		})) || [],
 		// },
-		pageTitle,
+		pageChatTitle,
 		firstAnswer,
 		questionsTitle,
 	});
@@ -89,7 +93,11 @@ const pushFirstAssistantAnswer = (firstAnswer: string) => {
 
 const developmentRootAttributes: RootAttributes = {
 	userAvatar: 'https://i.imgur.com/Z6BfEFC.jpeg',
-	pageTitle: 'Parla con noi',
+	faqs: {
+		title: '',
+		questions: [],
+	},
+	pageChatTitle: 'Parla con noi',
 	questionsTitle: 'Prova a farmi queste domande...',
 	firstAnswer:
 		'Benvenute e benvenuti al chatbot informativo dei Corsi di Orientamento della Scuola Normale Superiore! Siamo felici di fornirvi assistenza e informazioni per supportarvi nelle vostre scelte di studio e nel vostro percorso di orientamento. Qui potrete parlare con un sistema automatico progettato per rispondere alle vostre domande in modo rapido e pratico.',

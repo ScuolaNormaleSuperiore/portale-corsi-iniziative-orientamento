@@ -474,7 +474,8 @@ class FEController extends Controller
             ],
         ];
         $questionsTitle = 'Prova a farmi queste domande...';
-        $pageTitle              = 'Chiedi al nostro chatbot!';
+        $pageTitle              = 'Parla con noi';
+        $chatTitle = 'Chiedi al nostro chatbot!';
         $info = [
             'items' => [
                 [
@@ -531,6 +532,7 @@ class FEController extends Controller
             'firstAnswer'            => $firstAnswer,
             'questionsTitle'         => $questionsTitle,
             'info'                   => collect($info),
+            'chatTitle'              => $chatTitle,
         ]);
     }
 }

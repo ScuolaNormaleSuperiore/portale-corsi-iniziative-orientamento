@@ -44,6 +44,7 @@ const LeftColumn: FC<{ isCollapsed: boolean; onToggle: () => void }> = ({
 				'px-6': !isCollapsed,
 			},
 		)}
+		id="chat-contacts-sidebar"
 	>
 		<motion.div
 			className="flex flex-col gap-6 w-full"
@@ -57,6 +58,7 @@ const LeftColumn: FC<{ isCollapsed: boolean; onToggle: () => void }> = ({
 			<ButtonToggleColumn
 				className="hidden lg:flex self-end"
 				handler={onToggle}
+				ariaControlId="chat-contacts-sidebar"
 			/>
 			{!isCollapsed && <Info />}
 		</motion.div>
@@ -76,6 +78,10 @@ const ChatArea: FC<{
 						<ButtonToggleColumn
 							className="lg:hidden self-start"
 							handler={togglePanel}
+							ariaTags={{
+								'aria-haspopup': 'dialog' as const,
+							}}
+							ariaControlId="chat-contacts-sidebar-mobile"
 						/>
 						<Panel isOpen={isPanelOpen} onClose={togglePanel} />
 					</>
@@ -107,27 +113,24 @@ const App: FC = () => {
 	return (
 		<>
 			{isDevelopment && <DevHeader />}
-			<section className="w-full h-full text-black flex flex-col border-t border-subtle">
-				<div
-					className={clsx('w-full h-full', {
-						'lg:grid-cols-[50px_1fr]':
-							isLeftColumnCollapsed && hasInfo,
-						'grid auto-cols-[1fr] lg:grid-cols-[30%_1fr] grid-rows-[1fr]':
-							hasInfo,
-					})}
-				>
-					{hasInfo && (
-						<LeftColumn
-							isCollapsed={isLeftColumnCollapsed}
-							onToggle={toggleLeftColumn}
-						/>
-					)}
-					<ChatArea
-						hasInfo={hasInfo}
-						isPanelOpen={isPanelOpen}
-						togglePanel={togglePanel}
+			<section
+				className={clsx('w-full h-full text-black', {
+					'lg:grid-cols-[50px_1fr]': isLeftColumnCollapsed && hasInfo,
+					'grid auto-cols-[1fr] lg:grid-cols-[30%_1fr] grid-rows-[1fr]':
+						hasInfo,
+				})}
+			>
+				{hasInfo && (
+					<LeftColumn
+						isCollapsed={isLeftColumnCollapsed}
+						onToggle={toggleLeftColumn}
 					/>
-				</div>
+				)}
+				<ChatArea
+					hasInfo={hasInfo}
+					isPanelOpen={isPanelOpen}
+					togglePanel={togglePanel}
+				/>
 			</section>
 			{isDevelopment && <DevFooter />}
 		</>
