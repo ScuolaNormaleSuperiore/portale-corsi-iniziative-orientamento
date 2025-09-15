@@ -13,7 +13,22 @@ i18n.use(initReactI18next).init({
 			translation: {
 				chat: {
 					send: 'Invia',
-					inputPlaceholder: 'Scrivi un messaggio',
+					input: {
+						sr: 'Chiedi al nostro chatbot',
+						placeholder: 'Scrivi un messaggio',
+					},
+					loading: {
+						sr: 'Il chatbot sta rispondendo...',
+					},
+					heading: {
+						sr: 'Contenuto chat',
+					},
+					user: {
+						sr: "Messaggio dell'utente alle",
+					},
+					assistant: {
+						sr: "Messaggio dell'assistente alle",
+					},
 				},
 				message: {
 					error: 'Mi dispiace, sembra che ci sia stato un problema. Prova a ricaricare la pagina o riprova più tardi.',
@@ -40,6 +55,7 @@ i18n.use(initReactI18next).init({
 							close: 'Chiedi al chatbot',
 						},
 					},
+					sr: 'Collassa o espandi la sidebar dei contatti',
 				},
 			},
 		},
@@ -47,7 +63,22 @@ i18n.use(initReactI18next).init({
 			translation: {
 				chat: {
 					send: 'Send',
-					inputPlaceholder: 'Write a message',
+					input: {
+						sr: 'Ask our chatbot',
+						placeholder: 'Write a message',
+					},
+					loading: {
+						sr: 'The chatbot is responding...',
+					},
+					heading: {
+						sr: 'Chat content',
+					},
+					user: {
+						sr: 'User message at',
+					},
+					assistant: {
+						sr: 'Assistant message at',
+					},
 				},
 				message: {
 					error: "I'm sorry, it seems there was an issue. Please try reloading the page or try again later.",
@@ -74,6 +105,7 @@ i18n.use(initReactI18next).init({
 							close: 'Close Info',
 						},
 					},
+					sr: 'Collapse or expand the contacts sidebar',
 				},
 			},
 		},

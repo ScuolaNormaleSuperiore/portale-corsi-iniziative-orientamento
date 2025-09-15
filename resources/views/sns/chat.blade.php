@@ -1,23 +1,27 @@
 @extends('sns.layouts.app')
 @section('content-body')
-    <div id="chat-container">
-        <div class="d-none" id="chat" data-page-title="{{ $pageTitle }}" data-user-avatar="{{ $userAvatar }}" data-faqs="{{ $faqs->toJson() }}" data-first-answer="{{ $firstAnswer }}" data-questions-title="{{ $questionsTitle }}" data-info="{{ $info->toJson() }}"></div>
-        <div id="chat-loader" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background-color: white; position: absolute; top: 0; left: 0; z-index: 10;">
-            <div class="spinner-border text-primary" role="status">
-                <span style="visibility: hidden;">Loading...</span>
-            </div>
+<h1 class="visually-hidden">{{ $pageTitle }}</h1>
+<div id="chat-container">
+    <div class="d-none" id="chat" data-page-chat-title="{{ $chatTitle }}" data-user-avatar="{{ $userAvatar }}"
+        data-faqs="{{ $faqs->toJson() }}" data-first-answer="{{ $firstAnswer }}"
+        data-questions-title="{{ $questionsTitle }}" data-info="{{ $info->toJson() }}"></div>
+    <div id="chat-loader"
+        style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background-color: white; position: absolute; top: 0; left: 0; z-index: 10;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
         </div>
     </div>
+</div>
 @endsection
 @section('extra-scripts')
-    @foreach ($assets['js'] as $asset)
-        <script src="{{ $asset }}" defer></script>
-    @endforeach
-    @foreach ($assets['css'] as $asset)
-        <link data-chat-styles rel="stylesheet" href="{{ $asset }}">
-    @endforeach
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+@foreach ($assets['js'] as $asset)
+<script src="{{ $asset }}" defer></script>
+@endforeach
+@foreach ($assets['css'] as $asset)
+<link data-chat-styles rel="stylesheet" href="{{ $asset }}">
+@endforeach
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
             const chat = document.getElementById('chat');
 
             // Pre-position the chat component in the container
@@ -52,22 +56,25 @@
                 loader.style.display = 'none';
             }, { once: true });
         }, { once: true });
-    </script>
-    <style>
-        /* Additional CSS to prevent any focus outlines or borders */
-        #chat {
-            outline: none !important;
-            box-shadow: none !important;
+</script>
+<style>
+    /* Additional CSS to prevent any focus outlines or borders */
+    #chat {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    #chat-container {
+        outline: none !important;
+        border-bottom: 1px solid #dee2e6 !important;
+        border-top: 1px solid #dee2e6 !important;
+        height: 524px;
+        width: 100%;
+        position: relative;
+
+        @media (width > 768px) {
+            height: 727px;
         }
-        #chat-container {
-            outline: none !important;
-            border: none !important;
-            height: 520px;
-            width: 100%;
-            position: relative;
-            @media (width > 768px) {
-                height: 725px;
-            }
-        }
-    </style>
+    }
+</style>
 @endsection
