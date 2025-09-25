@@ -25,7 +25,8 @@
 
 @endphp
 {{--@dump($fieldData)--}}
-<p><strong>È OBBLIGATORIO</strong> procedere con l'inserimento dei voti relativi a TUTTE le materie anche in caso di caricamento di pagelle. In caso di materia presente solo in alcuni ma non tutti gli anni scolastici, ove non presente si prega di inserire il valore "0" (zero).</p>
+<p><strong>È OBBLIGATORIO</strong> procedere con l'inserimento dei voti relativi a TUTTE le materie.
+    In caso di materia presente solo in alcuni ma non tutti gli anni scolastici, ove non presente si prega di selezionare il valore "N.P." (Non Presente).</p>
 <div class="table-responsive">
 
 <table class="table table-striped">
