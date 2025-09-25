@@ -1,6 +1,19 @@
 <?php
 
 return [
+    'voti' => [
+        0 => "N.P.",
+        "6" => 6,
+        "6.5" => 6.5,
+        "7" => 7,
+        "7.5" => 7.5,
+        "8" => 8,
+        "8.5" => 8.5,
+        "9" => 9,
+        "9.5" => 9.5,
+        "10" => 10,
+
+    ],
     'steps' => [
         1 => [
             'riepilogo' => true,
@@ -151,17 +164,17 @@ return [
                         'voti' => [],
                     ],
                 ],
-                [
-                    'code' => 'allegati',
-                    'title' => 'Allegati (FACOLTATIVO)',
-                    'subtitle' => ' In questa sezione, puoi caricare le pagelle scolastiche degli ultimi tre anni. Assicurati che i documenti siano chiari e completi, includendo tutti i voti finali per ciascun anno scolastico richiesto.',
-                    'fields' => [
-                        'attachments' => [
-                            'validation' => [],
-                            'exts' => 'pdf,png,jpg',
-                        ]
-                    ],
-                ],
+//                [
+//                    'code' => 'allegati',
+//                    'title' => 'Allegati (FACOLTATIVO)',
+//                    'subtitle' => ' In questa sezione, puoi caricare le pagelle scolastiche degli ultimi tre anni. Assicurati che i documenti siano chiari e completi, includendo tutti i voti finali per ciascun anno scolastico richiesto.',
+//                    'fields' => [
+//                        'attachments' => [
+//                            'validation' => [],
+//                            'exts' => 'pdf,png,jpg',
+//                        ]
+//                    ],
+//                ],
             ]
         ],
         3 => [

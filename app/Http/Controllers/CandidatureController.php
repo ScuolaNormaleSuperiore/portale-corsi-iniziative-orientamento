@@ -106,6 +106,17 @@ class CandidatureController extends Controller
 //                    Log::info("VOTI::::");
 //                    Log::info($metadata['relations']);
                     $options = Arr::get(Arr::get(Arr::get(Arr::get($metadata['relations'], 'voti', []), 'fields', []), 'materia_id', []), 'options', []);
+                    //Aggiungo anche le opzioni dei voti
+
+                    $votiOptions = Config::get('fe.candidatura.voti',[]);
+                    $stepData['sections'][$section]['fields'][$fieldName]['voti_options'] = [];
+                    foreach ($votiOptions as $optionValue => $optionLabel) {
+                        $stepData['sections'][$section]['fields'][$fieldName]['voti_options'][] = [
+                            'value' => $optionValue,
+                            'label' => $optionLabel,
+                        ];
+                    }
+
                 } elseif ($fieldName == 'corsi') {
                     $options = Arr::get(Arr::get($metadata['relations'], 'corsi', []), 'options', []);
                 } else {
