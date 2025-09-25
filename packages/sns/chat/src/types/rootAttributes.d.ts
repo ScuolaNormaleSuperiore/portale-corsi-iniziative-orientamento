@@ -2,9 +2,9 @@ import { bsIcon } from '@components/icons/bootstrap/icons';
 
 export type RootAttributes = {
 	userAvatar: string;
-	// faqs: Faqs;
+	faqs: Faqs;
 	info: Info;
-	pageTitle: string;
+	pageChatTitle: string;
 	firstAnswer: string;
 	questionsTitle: string;
 };
