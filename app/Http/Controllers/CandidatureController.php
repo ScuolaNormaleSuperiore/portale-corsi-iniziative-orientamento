@@ -31,6 +31,8 @@ use Illuminate\Validation\ValidationException;
 class CandidatureController extends Controller
 {
 
+    use JsonControllerTrait;
+
     protected $steps = [];
 
     protected $role;
@@ -61,7 +63,7 @@ class CandidatureController extends Controller
 
         if ($deleteId) {
             $candidatura = Candidato::find($deleteId);
-            if ($candidatura && $candidatura->getKey() && $this->checkUserEdit($request,$candidatura)) {
+            if ($candidatura && $candidatura->getKey() && $this->checkUserEdit($request, $candidatura)) {
                 try {
                     $candidatura->delete();
                     $success = "Candidatura eliminata con successo";
@@ -83,8 +85,6 @@ class CandidatureController extends Controller
             ->get();
 
 
-
-
         $user = Auth::user();
 
         $nomeCognome = $user->fename;
@@ -92,7 +92,7 @@ class CandidatureController extends Controller
         //$maxCandidatureScuole = config('sns.max_candidature_scuole', 5);
 
 
-        return view('candidature.index', compact('iniziative', 'nomeCognome', 'errors', 'success','user'));
+        return view('candidature.index', compact('iniziative', 'nomeCognome', 'errors', 'success', 'user'));
     }
 
     protected function setOptionsInStepData($stepData, $metadata)
@@ -108,7 +108,7 @@ class CandidatureController extends Controller
                     $options = Arr::get(Arr::get(Arr::get(Arr::get($metadata['relations'], 'voti', []), 'fields', []), 'materia_id', []), 'options', []);
                     //Aggiungo anche le opzioni dei voti
 
-                    $votiOptions = Config::get('fe.candidatura.voti',[]);
+                    $votiOptions = Config::get('fe.candidatura.voti', []);
                     $stepData['sections'][$section]['fields'][$fieldName]['voti_options'] = [];
                     foreach ($votiOptions as $optionValue => $optionLabel) {
                         $stepData['sections'][$section]['fields'][$fieldName]['voti_options'][] = [
@@ -204,7 +204,7 @@ class CandidatureController extends Controller
         $countCandidature = Candidato::where('iniziativa_id', $iniziativa->getKey())
             ->where('user_id', Auth::id())
             ->count();
-         if ($countCandidature < $maxCandidature) {
+        if ($countCandidature < $maxCandidature) {
             return true;
         }
         return false;
@@ -231,9 +231,9 @@ class CandidatureController extends Controller
             default:
                 $candidatoPolicy = new CandidatoPolicy();
                 if ($edit) {
-                    return $candidatoPolicy->update(Auth::user(),$candidatura);
+                    return $candidatoPolicy->update(Auth::user(), $candidatura);
                 }
-                return $candidatoPolicy->view(Auth::user(),$candidatura);
+                return $candidatoPolicy->view(Auth::user(), $candidatura);
         }
 
     }
@@ -375,6 +375,37 @@ class CandidatureController extends Controller
 
     }
 
+    public function updateAuto(Request $request, Candidato $candidatura)
+    {
+        if (!$this->checkUserEdit($request, $candidatura)) {
+            return redirect()->route('candidature');
+        }
+
+        $this->steps = Config::get('fe.candidatura.steps', []);
+
+//        $step = $request->get('step');
+//        $iniziativa = $candidatura->iniziativa;
+//
+//        $steps = $this->steps;
+//        $req = $request->all();
+//        $submitType = 'autosave';
+
+
+        $foorm = Foorm::getFoorm('candidato.edit', $request, ['id' => $candidatura->getKey()]);
+        $errors = new MessageBag();
+        try {
+            $foorm->setAutosave(true);
+            $foorm->save(null, false);
+        } catch (ValidationException $e) {
+            return $this->_errorAndExit($errors->toJson());
+        }
+
+
+        $candidatura = $candidatura->fresh();
+
+        return $this->_result($candidatura);
+    }
+
     public function view(Request $request, Candidato $candidatura)
     {
         if (!$this->checkUserEdit($request, $candidatura, false)) {
@@ -399,14 +430,15 @@ class CandidatureController extends Controller
 
     }
 
-    protected function manageReqOnError($req) {
+    protected function manageReqOnError($req)
+    {
         $hasVoti = isset($req['voti-id']) && is_array($req['voti-id']);
 
-        if($hasVoti) {
+        if ($hasVoti) {
             $req['voti'] = $this->buildVoti($req);
         }
 
-        $scuolaId = Arr::get($req,'scuola_id');
+        $scuolaId = Arr::get($req, 'scuola_id');
         if ($scuolaId) {
             $scuola = Scuola::find($scuolaId);
             if ($scuola) {
@@ -417,7 +449,9 @@ class CandidatureController extends Controller
 
         return $req;
     }
-    protected function buildVoti($req) {
+
+    protected function buildVoti($req)
+    {
         $voti = [];
         foreach ($req['voti-id'] as $key => $votoId) {
             $voto['id'] = $votoId;

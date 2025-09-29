@@ -10,6 +10,7 @@ use Gecche\Cupparis\Menus\Facades\Menus;
 use Igaster\LaravelTheme\Facades\Theme;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -150,6 +151,7 @@ class AppServiceProvider extends ServiceProvider
             }
 
             $view->with('orientamentoFooterArray', $orientamentoFooterArray);
+                    $view->with('validBt',Session::get('sanctum_token'));
         });
 
         View::composer(['sns.includes.header','sns.includes.footer'], function ($view) use ($socialLinks) {

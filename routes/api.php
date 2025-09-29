@@ -88,6 +88,8 @@ Route::group([
 
     Route::get('downloadrelation/{model}/{pk}/{relation?}', [DownloadController::class, 'downloadRelation']);
 
+
+    Route::put('/candidatura/edit/{candidatura}/{step?}', [\App\Http\Controllers\CandidatureController::class, 'updateAuto'])->name('candidatura.update-auto');
 });
 
 Route::get('/iniziativa-corsi/{iniziativa}',[\App\Http\Controllers\Api\AppController::class,'getIniziativaCorsi'])->name('iniziativa-corsi');
