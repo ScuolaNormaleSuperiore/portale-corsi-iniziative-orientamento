@@ -81,7 +81,8 @@
                 let data = new FormData(form);
                 let config = {
                     headers: {
-                        'Authorization': 'Bearer ' + '{{$validBt}}'
+                        'Authorization': 'Basic ' + '{{$basicAuth}}' + ', Bearer ' + '{{$validBt}}',
+                        'Authbt': 'Bearer ' + '{{$validBt}}'
                     },
                 }
                 // console.log("JSON1::: ", query);
@@ -97,10 +98,10 @@
 
                         console.log("JSON::: ", response.data.result);
 
-                        return comuni;
+                        return;
                     })
                     .catch(function (error) {
-                        comuni = {};
+                        //comuni = {};
                         console.log("JSONE::: ", error);
                         var data = error.response.data;
                         // console.log(error.response.data);
@@ -118,7 +119,7 @@
         }
 
         // Esegui la funzione autoSave ogni 30 secondi
-        setInterval(autoSave, 30000);
+        setInterval(autoSave, 10000);
     </script>
 
 @endif
