@@ -119,7 +119,7 @@
         }
 
         // Esegui la funzione autoSave ogni 30 secondi
-        setInterval(autoSave, 10000);
+        setInterval(autoSave, 30000);
     </script>
 
 @endif
