@@ -1,3 +1,5 @@
+L'ACCESSO ALLE API RICHIEDE UN UTENTE CON RUOLO "API_USER"
+
 API PER LOGIN
 route: '/api/ext/login'
 method: 'post'
