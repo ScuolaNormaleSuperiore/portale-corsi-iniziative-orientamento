@@ -90,6 +90,14 @@ class FoormList extends BaseFoormList
 
     ];
 
+    protected $iniziativaId;
+
+    protected function init()
+    {
+        $this->iniziativaId = Arr::get($this->params,'iniziativa_id',false);
+    }
+
+
     protected function applyListBuilder()
     {
         $modelClass = get_class($this->model);
@@ -98,6 +106,13 @@ class FoormList extends BaseFoormList
 
     public function getDataFromBuilder($params = [])
     {
+
+
+        if ($this->iniziativaId !== false) {
+            parent::getDataFromBuilder($params);
+            return;
+        }
+
 
 
         $items = $this->formBuilder->get();

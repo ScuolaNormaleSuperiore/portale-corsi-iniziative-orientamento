@@ -453,6 +453,51 @@ return [
 
         ],
     ],
+    'list_iniziativa' => [
+        'form_type' => 'list',
+        'model' => 'candidato',
+        'actions' => [
+        ],
+        'allowed_actions' => [
+        ],
+        'dependencies' => [
+        ],
+
+        'pagination' => [
+            'per_page' => -1,
+            'pagination_steps' => [10, 20, 50],
+        ],
+
+        'fields' => [
+            'id' => [
+
+            ],
+            "nome" => [
+
+            ],
+            "cognome" => [
+
+            ],
+            "status" => [
+                "options" => 'enum:App\\Enums\\CandidatoStatuses',
+            ],
+            "data_nascita" => [
+
+            ],
+            "codice_fiscale" => [
+
+            ],
+        ],
+        'appends' => [
+        ],
+        'relations' => [
+
+
+        ],
+        'params' => [
+
+        ],
+    ],
 //    'insert' => [
 //
 //    ],

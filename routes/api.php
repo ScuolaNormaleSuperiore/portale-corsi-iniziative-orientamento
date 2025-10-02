@@ -27,6 +27,7 @@ Route::group([
     'middleware' => ['auth:sanctum','role:ApiUser']
 ], function () {
     Route::post('candidato', [\App\Http\Controllers\ExternalApi\FoormController::class,'candidatoList']);
+    Route::post('candidato/{iniziativaId}', [\App\Http\Controllers\ExternalApi\FoormController::class,'candidatoIniziativaList']);
     Route::post('iniziativa', [\App\Http\Controllers\ExternalApi\FoormController::class,'iniziativaList']);
 });
 

@@ -49,17 +49,33 @@ class FoormController extends Controller
     public function candidatoList(Request $request)
     {
         $searchFields = array_filter($request->only(['s_nome','s_cognome','s_data_nascita']));
-//        if (count($searchFields) < 3) {
-//            $this->_error("Cognome, Nome e Data di nascita sono obbligatori");
-//            return $this->_json();
-//        }
-//        foreach ($searchFields as $searchField => $value) {
-//            if (!$value) {
-//                $this->_error("Cognome, Nome e Data di nascita sono obbligatori");
-//                return $this->_json();
-//            }
-//        }
+        if (count($searchFields) < 3) {
+            $this->_error("Cognome, Nome e Data di nascita sono obbligatori");
+            return $this->_json();
+        }
+        foreach ($searchFields as $searchField => $value) {
+            if (!$value) {
+                $this->_error("Cognome, Nome e Data di nascita sono obbligatori");
+                return $this->_json();
+            }
+        }
         $this->buildAndGetFoormResult('api_candidato', 'list');
+        return $this->_json();
+    }
+
+    public function candidatoIniziativaList(Request $request,$iniziativaId)
+    {
+        $params = [
+          'fixed_constraints' => [
+              [
+                  'field' => 'iniziativa_id',
+                  'value' => $iniziativaId,
+                  'op' => '='
+              ]
+          ],
+            'iniziativa_id' => $iniziativaId,
+        ];
+        $this->buildAndGetFoormResult('api_candidato', 'list_iniziativa',null,$params);
         return $this->_json();
     }
 

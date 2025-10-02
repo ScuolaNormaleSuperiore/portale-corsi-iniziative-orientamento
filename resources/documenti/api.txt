@@ -9,7 +9,34 @@ result: {
     "access_token" : <TOKEN>
 }
 
-API PER CANDIDATI
+API PER CANDIDATI E INZIATIVE
+
+LISTA INIZIATIVE
+route: '/api/ext/iniziativa'
+method: 'post'
+body: {
+    s_anno : int OPZIONALE
+}
+headers: {
+    "Authorization": "Bearer <TOKEN>"
+}
+result: {
+    "error" : 0|1
+    "msg" : string
+    "result" : {
+        [
+            <INIZIATIVA_DATA_1>
+        ],
+        ...
+        [
+            <INIZIATIVA_DATA_N>
+        ],
+    }
+
+}
+
+
+DETTAGLIO CANDIDATO
 route: '/api/ext/candidato'
 method: 'post'
 body: {
@@ -17,6 +44,31 @@ body: {
     s_cognome: string
     s_data_nascita: yyyy-mm-dd
     s_codice_fiscale: string
+}
+headers: {
+    "Authorization": "Bearer <TOKEN>"
+}
+result: {
+    "error" : 0|1
+    "msg" : string
+    "result" : {
+        [
+            <CANDIDATO_DATA_1>
+        ],
+        ...
+        [
+            <CANDIDATO_DATA_N>
+        ],
+    }
+
+}
+
+CANDIDATI X INIZIATIVA
+
+route: '/api/ext/candidato/<IniziativaId>'
+method: 'post'
+body: {
+
 }
 headers: {
     "Authorization": "Bearer <TOKEN>"

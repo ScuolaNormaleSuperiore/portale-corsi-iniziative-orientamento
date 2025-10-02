@@ -125,7 +125,7 @@ return [
         ],
 
         'pagination' => [
-            'per_page' => 20,
+            'per_page' => -1,
             'pagination_steps' => [10, 20, 50],
         ],
 
@@ -159,9 +159,9 @@ return [
             "max_candidature_scuola" => [
 
             ],
-            "attivo" => [
-
-            ],
+//            "attivo" => [
+//
+//            ],
             "id" => [
 
             ],
