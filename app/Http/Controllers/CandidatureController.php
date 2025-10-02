@@ -92,7 +92,8 @@ class CandidatureController extends Controller
         //$maxCandidatureScuole = config('sns.max_candidature_scuole', 5);
 
 
-        return view('candidature.index', compact('iniziative', 'nomeCognome', 'errors', 'success', 'user'));
+        $headTitle = 'Gestione candidature';
+        return view('candidature.index', compact('iniziative', 'nomeCognome', 'errors', 'success', 'user','headTitle'));
     }
 
     protected function setOptionsInStepData($stepData, $metadata)
@@ -259,7 +260,8 @@ class CandidatureController extends Controller
 
         $steps[$step] = $this->setOptionsInStepData($steps[$step], $metadata);
         $steps[$step] = $this->setValuesInStepData($steps[$step], $data);
-        return view('candidature.create', compact('iniziativa', 'candidaturaTitle', 'steps', 'step', 'req'));
+        $headTitle = 'Gestione candidature - Nuova candidatura';
+        return view('candidature.create', compact('iniziativa', 'candidaturaTitle', 'steps', 'step', 'req','headTitle'));
     }
 
     public function store(Request $request, Iniziativa $iniziativa)
@@ -318,7 +320,8 @@ class CandidatureController extends Controller
 
         $candidatura = $candidatura->fresh();
 
-        return view('candidature.edit', compact('candidatura', 'iniziativa', 'candidaturaTitle', 'steps', 'step', 'req'));
+        $headTitle = 'Gestione candidature - Modifica - Step ' .$step.' - ';
+        return view('candidature.edit', compact('candidatura', 'iniziativa', 'candidaturaTitle', 'steps', 'step', 'req','headTitle'));
     }
 
     public function update(Request $request, Candidato $candidatura)

@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <title>{{config('app.name',"SNS - Orientamenti")}}</title>
+    <title>{{isset($headTitle) ? ($headTitle . ' - ') : ''}}{{config('app.name',"SNS - Orientamenti")}}</title>
     <meta name="description" content="...">
 
     <meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">

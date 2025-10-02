@@ -24,9 +24,10 @@ use App\Http\Controllers\Api\DownloadController;
 Route::post('/ext/login',  [\App\Http\Controllers\ExternalApi\LoginController::class, 'login']);
 Route::group([
     'prefix' => 'ext',
-    'middleware' => []
+    'middleware' => ['auth:sanctum','role:ApiUser']
 ], function () {
     Route::post('candidato', [\App\Http\Controllers\ExternalApi\FoormController::class,'candidatoList']);
+    Route::post('iniziativa', [\App\Http\Controllers\ExternalApi\FoormController::class,'iniziativaList']);
 });
 
 Route::post('/login',  [LoginController::class, 'login']);
