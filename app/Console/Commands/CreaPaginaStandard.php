@@ -27,7 +27,10 @@ class CreaPaginaStandard extends Command
             'ordine' => Pagina::count() + 1,
             'tipo' => 'standard',
         ];
-        Pagina::create($data);
+        $pagina = Pagina::create($data);
+
+        $this->comment("URL della nuova pagina:");
+        $this->comment("/pagina/".$pagina->slug_it);
     }
 
 }
