@@ -25,8 +25,11 @@
 
 @endphp
 {{--@dump($fieldData)--}}
-<p><strong>È OBBLIGATORIO</strong> procedere con l'inserimento dei voti relativi a TUTTE le materie.
-    In caso di materia presente solo in alcuni ma non tutti gli anni scolastici, ove non presente si prega di selezionare il valore "N.P." (Non Presente).</p>
+<p>
+    Per ciascun anno scolastico seleziona materia e voti;
+    se un voto non è disponibile scegli <strong>N.P.</strong>,
+    se una materia manca contatta la segreteria per richiederne l’inserimento.
+</p>
 <div class="table-responsive">
 
 <table class="table table-striped">

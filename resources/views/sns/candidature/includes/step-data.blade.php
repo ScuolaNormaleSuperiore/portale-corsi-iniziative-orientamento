@@ -19,7 +19,7 @@
                             <h3 class="card-title h3">{{$sectionData['title']}}</h3>
                             @if(\Illuminate\Support\Arr::get($sectionData,'subtitle'))
                                 <p class="card-text text-secondary">
-                                    {{$sectionData['subtitle']}}
+                                    {!! $sectionData['subtitle']  !!}
                                 </p>
                             @endif
                             <div class="card no-after rounded bg-white">
@@ -45,7 +45,7 @@
                             <h3 class="card-title h3">{{$sectionData['title']}}</h3>
                             @if(\Illuminate\Support\Arr::get($sectionData,'subtitle'))
                                 <p class="card-text text-secondary">
-                                    {{$sectionData['subtitle']}}
+                                    {!! $sectionData['subtitle']  !!}
                                 </p>
                             @endif
                             <div class="card rounded bg-white">

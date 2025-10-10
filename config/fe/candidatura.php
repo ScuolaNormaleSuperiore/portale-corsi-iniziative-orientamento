@@ -185,6 +185,7 @@ return [
                 [
                     'code' => 'profilo',
                     'title' => 'Profilo personale',
+                    'subtitle' => 'Scrivi una breve presentazione con interessi, competenze ed esperienze; il testo deve essere tra <strong>400 e 1500 caratteri</strong>.',
                     'fields' => [
                         'profilo' => [
                             'validation' => [
@@ -338,7 +339,7 @@ return [
                 [
                     'code' => 'motivazioni',
                     'title' => 'Motivazioni',
-                    'subtitle' => 'Motivazioni che spingono a partecipare ai corsi della SNS',
+                    'subtitle' => 'Scrivi le motivazioni della tua candidatura; il testo deve essere tra <strong>400 e 1500 caratteri</strong>.',
                     'fields' => [
                         'motivazioni' => [
                             'validation' => [
@@ -355,7 +356,7 @@ return [
                 [
                     'code' => 'corsi',
                     'title' => 'Preferenze per i corsi',
-                    'subtitle' => 'Seleziona uno o più corsi presenti nell\'elenco',
+                    'subtitle' => 'Seleziona uno o più corsi presenti nell\'elenco (almeno due in caso di più di un corso disponibile)',
                     'fields' => [
                         'corsi' => [
                             'validation' => [
@@ -368,7 +369,7 @@ return [
                 ],
                 [
                     'code' => 'conoscenza_sns',
-                    'title' => 'Come ha scoperto i corsi SNS?',
+                    'title' => 'Come hai scoperto i corsi SNS?',
                     'fields' => [
                         'modalita_conoscenza_sns_id' => [
                             'validation' => [
