@@ -21,6 +21,16 @@ use App\Http\Controllers\Api\DownloadController;
 //    return $request->user();
 //});
 
+Route::post('/ext/login',  [\App\Http\Controllers\ExternalApi\LoginController::class, 'login']);
+Route::group([
+    'prefix' => 'ext',
+    'middleware' => ['auth:sanctum','role:ApiUser']
+], function () {
+    Route::post('candidato', [\App\Http\Controllers\ExternalApi\FoormController::class,'candidatoList']);
+    Route::post('candidato/{iniziativaId}', [\App\Http\Controllers\ExternalApi\FoormController::class,'candidatoIniziativaList']);
+    Route::post('iniziativa', [\App\Http\Controllers\ExternalApi\FoormController::class,'iniziativaList']);
+});
+
 Route::post('/login',  [LoginController::class, 'login']);
 Route::post('/newsletter/add',  [\App\Http\Controllers\Api\AppController::class, 'newsletterAdd'])->name('newsletter-add');
 
@@ -80,6 +90,8 @@ Route::group([
 
     Route::get('downloadrelation/{model}/{pk}/{relation?}', [DownloadController::class, 'downloadRelation']);
 
+
+    Route::put('/candidatura/edit/{candidatura}/{step?}', [\App\Http\Controllers\CandidatureController::class, 'updateAuto'])->name('candidatura.update-auto');
 });
 
 Route::get('/iniziativa-corsi/{iniziativa}',[\App\Http\Controllers\Api\AppController::class,'getIniziativaCorsi'])->name('iniziativa-corsi');

@@ -1,0 +1,91 @@
+L'ACCESSO ALLE API RICHIEDE UN UTENTE CON RUOLO "API_USER"
+
+API PER LOGIN
+route: '/api/ext/login'
+method: 'post'
+body: {
+    email : string
+    password: string
+}
+result: {
+    "access_token" : <TOKEN>
+}
+
+API PER CANDIDATI E INZIATIVE
+
+LISTA INIZIATIVE
+route: '/api/ext/iniziativa'
+method: 'post'
+body: {
+    s_anno : int OPZIONALE
+}
+headers: {
+    "Authorization": "Bearer <TOKEN>"
+}
+result: {
+    "error" : 0|1
+    "msg" : string
+    "result" : {
+        [
+            <INIZIATIVA_DATA_1>
+        ],
+        ...
+        [
+            <INIZIATIVA_DATA_N>
+        ],
+    }
+
+}
+
+
+DETTAGLIO CANDIDATO
+route: '/api/ext/candidato'
+method: 'post'
+body: {
+    s_nome : string
+    s_cognome: string
+    s_data_nascita: yyyy-mm-dd
+    s_codice_fiscale: string
+}
+headers: {
+    "Authorization": "Bearer <TOKEN>"
+}
+result: {
+    "error" : 0|1
+    "msg" : string
+    "result" : {
+        [
+            <CANDIDATO_DATA_1>
+        ],
+        ...
+        [
+            <CANDIDATO_DATA_N>
+        ],
+    }
+
+}
+
+CANDIDATI X INIZIATIVA
+
+route: '/api/ext/candidato/<IniziativaId>'
+method: 'post'
+body: {
+
+}
+headers: {
+    "Authorization": "Bearer <TOKEN>"
+}
+result: {
+    "error" : 0|1
+    "msg" : string
+    "result" : {
+        [
+            <CANDIDATO_DATA_1>
+        ],
+        ...
+        [
+            <CANDIDATO_DATA_N>
+        ],
+    }
+
+}

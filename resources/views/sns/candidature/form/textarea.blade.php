@@ -8,7 +8,9 @@
     <label for="{{$field}}">
         {{$label ?? $field}}{{in_array('required',$validation)?'*':''}}
     </label>
-    <textarea class="form-control" id="{{$field}}" name="{{$field}}" rows="{{$rows ?? 5}}">
+    <textarea class="form-control" id="{{$field}}" name="{{$field}}" rows="{{$rows ?? 5}}"
+        placeholder="{{$placeholder ?? ' '}}"
+    >
         {{$value}}
     </textarea>
     <div class="text-end">

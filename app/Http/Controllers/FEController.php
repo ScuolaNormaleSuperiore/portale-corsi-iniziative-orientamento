@@ -23,6 +23,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 use willvincent\Feeds\Facades\FeedsFacade;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -148,7 +149,8 @@ class FEController extends Controller
             'Orientamento'     => '/orientamento',
             $pagina->titolo_it => '#',
         ];
-        return view('pagina-orientamento', compact('pagina', 'navleft', 'breadcrumbs'));
+        $headTitle = $pagina->titolo_it;
+        return view('pagina-orientamento', compact('pagina', 'navleft', 'breadcrumbs','headTitle'));
     }
 
     public function pagina(Request $request, Pagina $pagina)
@@ -162,7 +164,8 @@ class FEController extends Controller
             'Home'             => '/',
             $pagina->titolo_it => '#',
         ];
-        return view('pagina', compact('pagina', 'navleft', 'breadcrumbs'));
+        $headTitle = $pagina->titolo_it;
+        return view('pagina', compact('pagina', 'navleft', 'breadcrumbs','headTitle'));
     }
 
     public function sportelloStudenti(Request $request)
@@ -178,7 +181,9 @@ class FEController extends Controller
             'Home'                             => '/',
             'Sportello da studente a studente' => '#',
         ];
-        return view('sportello-studenti', compact('descrizione', 'classi', 'breadcrumbs'));
+        $headTitle = 'Sportello da studente a studente';
+
+        return view('sportello-studenti', compact('descrizione', 'classi', 'breadcrumbs','headTitle'));
     }
 
     public function orientamento(Request $request)
@@ -190,7 +195,8 @@ class FEController extends Controller
             'Home'         => '/',
             'Orientamento' => '#',
         ];
-        return view('orientamento', compact('descrizione', 'pagine', 'breadcrumbs'));
+        $headTitle = 'Orientamento';
+        return view('orientamento', compact('descrizione', 'pagine', 'breadcrumbs','headTitle'));
     }
 
     public function infoCorsi(Request $request, PaginaInfo $pagina = null)
@@ -219,8 +225,9 @@ class FEController extends Controller
             'Home'       => '/',
             'Info corsi' => '#',
         ];
+        $headTitle = "Info corsi";
 
-        return view('info-corsi', compact('descrizione', 'navleftInfo', 'pagine', 'breadcrumbs', 'pagina', 'navleft', 'iniziative'));
+        return view('info-corsi', compact('descrizione', 'navleftInfo', 'pagine', 'breadcrumbs', 'pagina', 'navleft', 'iniziative','headTitle'));
     }
 
     public function infoCorso(Request $request, Corso $corso)
@@ -256,7 +263,8 @@ class FEController extends Controller
             $breadcrumbs['Info corsi'] = '/info-corsi';
         }
         $breadcrumbs[$corso->titolo] = '#';
-        return view('info-corso', compact('descrizione', 'navleftInfo', 'pagine', 'breadcrumbs', 'corso', 'navleft', 'iniziative', 'corsi'));
+        $headTitle = "Info corso " . $corso->titolo;
+        return view('info-corso', compact('descrizione', 'navleftInfo', 'pagine', 'breadcrumbs', 'corso', 'navleft', 'iniziative', 'corsi','headTitle'));
     }
 
     public function sportelloStudentiClasse(Request $request, Classe $classe)
@@ -274,7 +282,8 @@ class FEController extends Controller
             'Sportello da studente a studente' => '/sportello-studenti',
             'Tutor ' . $classe->nome_it => '/sportello-studenti/' . $classe->id,
         ];
-        return view('sportello-studenti-classe', compact('studenti', 'breadcrumbs'));
+        $headTitle = 'Tutor ' . $classe->nome_it . ' - ' . 'Sportello da studente a studente';
+        return view('sportello-studenti-classe', compact('studenti', 'breadcrumbs','headTitle'));
     }
 
 
@@ -328,7 +337,8 @@ class FEController extends Controller
             'Home'    => '/',
             'Notizie' => '#',
         ];
-        return view('archivio-news', compact('items', 'filter', 'breadcrumbs'));
+        $headTitle = "Notizie";
+        return view('archivio-news', compact('items', 'filter', 'breadcrumbs','headTitle'));
     }
 
     public
@@ -344,7 +354,8 @@ class FEController extends Controller
             'Home'   => '/',
             'Eventi' => '#',
         ];
-        return view('archivio-eventi', compact('items', 'filter', 'breadcrumbs'));
+        $headTitle = "Eventi";
+        return view('archivio-eventi', compact('items', 'filter', 'breadcrumbs','headTitle'));
     }
 
 
@@ -368,7 +379,8 @@ class FEController extends Controller
             'Home'  => '/',
             'Video' => '#',
         ];
-        return view('archivio-video', compact('items', 'filter', 'descrizione', 'breadcrumbs', 'categoriaSelected', 'categorie'));
+        $headTitle = "Video";
+        return view('archivio-video', compact('items', 'filter', 'descrizione', 'breadcrumbs', 'categoriaSelected', 'categorie','headTitle'));
     }
 
     public
@@ -533,6 +545,7 @@ class FEController extends Controller
             'questionsTitle'         => $questionsTitle,
             'info'                   => collect($info),
             'chatTitle'              => $chatTitle,
+            'headTitle'              => "Parla con noi",
         ]);
     }
 }

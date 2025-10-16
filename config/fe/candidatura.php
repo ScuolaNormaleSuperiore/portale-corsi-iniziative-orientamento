@@ -1,6 +1,19 @@
 <?php
 
 return [
+    'voti' => [
+        0 => "N.P.",
+        "6" => 6,
+        "6.5" => 6.5,
+        "7" => 7,
+        "7.5" => 7.5,
+        "8" => 8,
+        "8.5" => 8.5,
+        "9" => 9,
+        "9.5" => 9.5,
+        "10" => 10,
+
+    ],
     'steps' => [
         1 => [
             'riepilogo' => true,
@@ -151,17 +164,17 @@ return [
                         'voti' => [],
                     ],
                 ],
-                [
-                    'code' => 'allegati',
-                    'title' => 'Allegati (FACOLTATIVO)',
-                    'subtitle' => ' In questa sezione, puoi caricare le pagelle scolastiche degli ultimi tre anni. Assicurati che i documenti siano chiari e completi, includendo tutti i voti finali per ciascun anno scolastico richiesto.',
-                    'fields' => [
-                        'attachments' => [
-                            'validation' => [],
-                            'exts' => 'pdf,png,jpg',
-                        ]
-                    ],
-                ],
+//                [
+//                    'code' => 'allegati',
+//                    'title' => 'Allegati (FACOLTATIVO)',
+//                    'subtitle' => ' In questa sezione, puoi caricare le pagelle scolastiche degli ultimi tre anni. Assicurati che i documenti siano chiari e completi, includendo tutti i voti finali per ciascun anno scolastico richiesto.',
+//                    'fields' => [
+//                        'attachments' => [
+//                            'validation' => [],
+//                            'exts' => 'pdf,png,jpg',
+//                        ]
+//                    ],
+//                ],
             ]
         ],
         3 => [
@@ -172,6 +185,7 @@ return [
                 [
                     'code' => 'profilo',
                     'title' => 'Profilo personale',
+                    'subtitle' => 'Scrivi una breve presentazione con interessi, competenze ed esperienze; il testo deve essere tra <strong>400 e 1500 caratteri</strong>.',
                     'fields' => [
                         'profilo' => [
                             'validation' => [
@@ -325,7 +339,7 @@ return [
                 [
                     'code' => 'motivazioni',
                     'title' => 'Motivazioni',
-                    'subtitle' => 'Motivazioni che spingono a partecipare ai corsi della SNS',
+                    'subtitle' => 'Scrivi le motivazioni della tua candidatura; il testo deve essere tra <strong>400 e 1500 caratteri</strong>.',
                     'fields' => [
                         'motivazioni' => [
                             'validation' => [
@@ -342,7 +356,7 @@ return [
                 [
                     'code' => 'corsi',
                     'title' => 'Preferenze per i corsi',
-                    'subtitle' => 'Seleziona uno o più corsi presenti nell\'elenco',
+                    'subtitle' => 'Seleziona uno o più corsi presenti nell\'elenco (almeno due in caso di più di un corso disponibile)',
                     'fields' => [
                         'corsi' => [
                             'validation' => [
@@ -355,7 +369,7 @@ return [
                 ],
                 [
                     'code' => 'conoscenza_sns',
-                    'title' => 'Come ha scoperto i corsi SNS?',
+                    'title' => 'Come hai scoperto i corsi SNS?',
                     'fields' => [
                         'modalita_conoscenza_sns_id' => [
                             'validation' => [

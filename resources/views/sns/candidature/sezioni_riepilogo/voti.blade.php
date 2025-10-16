@@ -5,13 +5,13 @@
             Materia
         </th>
         <th scope="col">
-            Voto finale 22/23
+            {{ \Illuminate\Support\Arr::get($iniziativa->votiLabels,'voto_anno_2',"Voto finale 22/23") }}
         </th>
         <th scope="col">
-            Voto finale 23/24
+            {{ \Illuminate\Support\Arr::get($iniziativa->votiLabels,'voto_anno_1',"Voto finale 23/24") }}
         </th>
         <th scope="col">
-            Voto 1° Quad. 24/25
+            {{ \Illuminate\Support\Arr::get($iniziativa->votiLabels,'voto_primo_quadrimestre',"Voto 1° Quad. 24/25") }}
         </th>
     </tr>
     </thead>
