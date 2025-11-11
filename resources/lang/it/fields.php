@@ -125,6 +125,8 @@ return array (
   'sigla_provincia' => 'sigla provincia',
   'nazione_id' => 'nazione',
   'prefisso' => 'prefisso',
-    'comune_id' => 'comune',
-    'max_candidature_scuola' => 'Max candidature x scuola',
+  'comune_id' => 'comune',
+  'max_candidature_scuola' => 'Max candidature x scuola',
+  'domanda' => 'domanda',
+  'risposta' => 'risposta',
 );

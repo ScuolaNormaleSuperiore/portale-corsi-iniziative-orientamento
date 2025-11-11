@@ -185,6 +185,8 @@ return [
             'copertina',
             'comune',
             'nazione',
+            'faq_categoria',
+            'faq',
 
         ],
 
