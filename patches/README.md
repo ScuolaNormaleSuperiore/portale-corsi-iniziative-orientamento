@@ -52,36 +52,39 @@ Nel file `config/saml2.php`, assicurati di avere configurato:
 
 ### Come applicare manualmente la patch
 
-Se dopo un `composer update` la patch viene persa, puoi riapplicarla con:
+La patch viene applicata automaticamente dopo ogni `composer install` e `composer update` tramite lo script `patches/apply-patch.php` configurato in `composer.json`.
+
+Se per qualche motivo la patch non viene applicata automaticamente, puoi eseguire manualmente:
 
 ```bash
-cd /path/to/project
-patch -p0 < patches/onelogin-php-saml-add-attribute-consuming-service-index.patch
+# Con DDEV
+ddev exec php patches/apply-patch.php
+
+# Senza DDEV
+php patches/apply-patch.php
 ```
 
-Oppure modificare manualmente il file `vendor/onelogin/php-saml/src/Saml2/AuthnRequest.php` seguendo le indicazioni nella patch.
+Lo script verifica se la patch è già applicata e la applica solo se necessario.
 
-### Automazione con composer-patches
+### Configurazione automatica
 
-Per applicare automaticamente la patch dopo ogni `composer install/update`, installa il pacchetto `cweagans/composer-patches`:
-
-```bash
-composer require cweagans/composer-patches
-```
-
-E aggiungi in `composer.json`:
+Lo script è già configurato in `composer.json` nella sezione `scripts`:
 
 ```json
 {
-    "extra": {
-        "patches": {
-            "onelogin/php-saml": {
-                "Add AttributeConsumingServiceIndex to AuthnRequest": "patches/onelogin-php-saml-add-attribute-consuming-service-index.patch"
-            }
-        }
+    "scripts": {
+        "post-install-cmd": [
+            "@php patches/apply-patch.php"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php patches/apply-patch.php"
+        ]
     }
 }
 ```
+
+Questo garantisce che la patch venga applicata automaticamente dopo ogni `composer install` o `composer update`.
 
 ### Verifica
 

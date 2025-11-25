@@ -1,14 +1,5 @@
-Add AttributeConsumingServiceIndex to SAML AuthnRequest
-
-This patch adds support for AttributeConsumingServiceIndex in SAML AuthnRequest.
-When attributeConsumingService is configured in the SP settings, the AuthnRequest
-will include the AttributeConsumingServiceIndex attribute to tell the IdP which
-set of requested attributes to use (matching the one defined in the SP metadata).
-
-diff --git a/vendor/onelogin/php-saml/src/Saml2/AuthnRequest.php b/vendor/onelogin/php-saml/src/Saml2/AuthnRequest.php
-index original..patched 100644
---- a/vendor/onelogin/php-saml/src/Saml2/AuthnRequest.php
-+++ b/vendor/onelogin/php-saml/src/Saml2/AuthnRequest.php
+--- a/src/Saml2/AuthnRequest.php
++++ b/src/Saml2/AuthnRequest.php
 @@ -146,6 +146,18 @@ class AuthnRequest
              }
          }
