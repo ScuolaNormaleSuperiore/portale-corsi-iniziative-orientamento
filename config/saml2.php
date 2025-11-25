@@ -223,8 +223,8 @@ return [
 
 
         "attributeConsumingService" => [
-            "serviceName" => "SP test",
-            "serviceDescription" => "Test Service",
+            "serviceName" => "Service Provider SPID",
+            "serviceDescription" => "Service Provider per autenticazione SPID",
             "requestedAttributes" => [
                 [
                     "name" => "spidName",
