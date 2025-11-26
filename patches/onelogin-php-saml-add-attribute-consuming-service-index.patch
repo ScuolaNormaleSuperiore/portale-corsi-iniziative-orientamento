@@ -1,0 +1,31 @@
+--- a/src/Saml2/AuthnRequest.php
++++ b/src/Saml2/AuthnRequest.php
+@@ -146,6 +146,18 @@ class AuthnRequest
+             }
+         }
+
++        // Add AttributeConsumingServiceIndex if attributeConsumingService is configured
++        $attributeConsumingServiceIndexStr = '';
++        if (isset($spData['attributeConsumingService'])) {
++            // Check if index is explicitly set, otherwise use 1 as default (matching Metadata.php)
++            $acsIndex = isset($spData['attributeConsumingService']['index'])
++                ? $spData['attributeConsumingService']['index']
++                : 1;
++            $attributeConsumingServiceIndexStr = <<<ACSINDEX
++
++    AttributeConsumingServiceIndex="$acsIndex"
++ACSINDEX;
++        }
++
+         $spEntityId = htmlspecialchars($spData['entityId'], ENT_QUOTES);
+         $acsUrl = htmlspecialchars($spData['assertionConsumerService']['url'], ENT_QUOTES);
+         $destination = $this->_settings->getIdPSSOUrl();
+@@ -155,7 +167,7 @@ class AuthnRequest
+     xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+     ID="$id"
+     Version="2.0"
+-{$providerNameStr}{$forceAuthnStr}{$isPassiveStr}
++{$providerNameStr}{$forceAuthnStr}{$isPassiveStr}{$attributeConsumingServiceIndexStr}
+     IssueInstant="{$issueInstant}"
+     Destination="{$destination}"
+     ProtocolBinding="{$spData['assertionConsumerService']['binding']}"

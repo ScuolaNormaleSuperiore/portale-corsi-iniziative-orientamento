@@ -96,6 +96,8 @@ return [
         'comune',
 //        'foto',
 //        'attachment',
+        'faq_categoria',
+        'faq',
     ],
 
     'types_fallbacks' => [

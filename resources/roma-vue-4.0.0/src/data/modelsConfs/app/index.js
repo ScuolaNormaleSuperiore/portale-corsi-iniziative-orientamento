@@ -1,5 +1,7 @@
 import cs from 'cupparis-primevue';
 //IMPORT START
+import ModelFaq from './ModelFaq.js';
+import ModelFaqCategoria from './ModelFaqCategoria.js';
 import ModelComune from './ModelComune.js';
 import ModelNazione from './ModelNazione.js';
 import ModelCopertina from './ModelCopertina.js';
@@ -43,6 +45,8 @@ import DCupGeoComune from './DCupGeoComune.js';
 export default {
     install() {
         //INSTALL START
+		cs.CrudVars.modelConfs.ModelFaq = ModelFaq;
+		cs.CrudVars.modelConfs.ModelFaqCategoria = ModelFaqCategoria;
 		cs.CrudVars.modelConfs.ModelComune = ModelComune;
 		cs.CrudVars.modelConfs.ModelNazione = ModelNazione;
 		cs.CrudVars.modelConfs.ModelCopertina = ModelCopertina;

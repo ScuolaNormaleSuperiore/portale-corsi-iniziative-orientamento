@@ -29,6 +29,7 @@ Route::group([
     Route::post('candidato', [\App\Http\Controllers\ExternalApi\FoormController::class,'candidatoList']);
     Route::post('candidato/{iniziativaId}', [\App\Http\Controllers\ExternalApi\FoormController::class,'candidatoIniziativaList']);
     Route::post('iniziativa', [\App\Http\Controllers\ExternalApi\FoormController::class,'iniziativaList']);
+    Route::post('faq', [\App\Http\Controllers\ExternalApi\FoormController::class,'faqList']);
 });
 
 Route::post('/login',  [LoginController::class, 'login']);

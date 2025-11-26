@@ -89,3 +89,28 @@ result: {
     }
 
 }
+
+FAQS
+
+route: '/api/ext/faq'
+method: 'post'
+body: {
+
+}
+headers: {
+    "Authorization": "Bearer <TOKEN>"
+}
+result: {
+    "error" : 0|1
+    "msg" : string
+    "result" : {
+        [
+            <FAQ1>
+        ],
+        ...
+        [
+            <FAQN>
+        ],
+    }
+
+}

@@ -43,7 +43,10 @@ class FEController extends Controller
     protected function getFeeds()
     {
 
-        $f = FeedsFacade::make(Config::get('feeds.url'), 3, true);
+        $url = Config::get('feeds.url');
+//        Log::info("URL:");
+//        Log::info($url);
+        $f = FeedsFacade::make($url, 3, true);
         //        $data = array(
         //            'title'     => $feed->get_title(),
         //            'permalink' => $feed->get_permalink(),
@@ -52,6 +55,11 @@ class FEController extends Controller
 
         //        echo count($f->get_items()) . "<br/>";
 
+//        Log:info("MURL::");Log::info($f->multifeed_url);
+//
+//
+//        Log::info("ERROR:::");
+//        Log::info($f->error());
 
         $response = Arr::get(Arr::get(Arr::get($f->data, 'child', []), "", []), 'response', []);
         $items    = Arr::get(Arr::get(Arr::get(Arr::get($response, 0, []), "child", []), "", []), 'item', []);

@@ -96,6 +96,23 @@ class FoormController extends Controller
         return $this->_json();
     }
 
+    public function faqList(Request $request)
+    {
+//        $searchFields = array_filter($request->only(['s_anno']));
+//        if (count($searchFields) < 3) {
+//            $this->_error("Cognome, Nome e Data di nascita sono obbligatori");
+//            return $this->_json();
+//        }
+//        foreach ($searchFields as $searchField => $value) {
+//            if (!$value) {
+//                $this->_error("Cognome, Nome e Data di nascita sono obbligatori");
+//                return $this->_json();
+//            }
+//        }
+        $this->buildAndGetFoormResult('api_faq', 'list');
+        return $this->_json();
+    }
+
     protected function buildAndGetFoormResult($foormName, $type, $pk = null, $params = [], $furtherActions = [])
     {
 

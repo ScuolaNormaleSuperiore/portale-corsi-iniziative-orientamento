@@ -85,6 +85,12 @@ class FoormController extends Controller
                     [
                         "label" => 'Copertina', "icon" => 'fa fa-star', "to" => '/manage/ModelCopertina/edit/1'
                     ],
+                    [
+                        "label" => 'Categorie FAQ', "icon" => 'fa fa-question-circle', "to" => '/manage/ModelFaqCategoria'
+                    ],
+                    [
+                        "label" => 'FAQs', "icon" => 'fa fa-question', "to" => '/manage/ModelFaq'
+                    ],
                 ],
             ],
         ];

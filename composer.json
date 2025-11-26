@@ -71,6 +71,7 @@
         "24slides/laravel-saml2": "^2.4",
         "barryvdh/laravel-ide-helper": "^2.13",
         "barryvdh/laravel-snappy": "^1.0",
+        "cweagans/composer-patches": "^2.0",
         "endroid/qr-code": "^4.5",
         "gecche/laravel-cupparis-app": "v10.x-dev",
         "gecche/laravel-cupparis-appvars": "^10.0",
@@ -113,8 +114,12 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
+        "post-install-cmd": [
+            "@php patches/apply-patch.php"
+        ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php patches/apply-patch.php"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -126,6 +131,16 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "patches": {
+            "onelogin/php-saml": {
+                "Add AttributeConsumingServiceIndex to AuthnRequest": "patches/onelogin-php-saml-add-attribute-consuming-service-index.patch"
+            }
+        },
+        "composer-patches": {
+            "patch-levels": {
+                "onelogin/php-saml": "-p1"
+            }
         }
     },
     "config": {
@@ -133,6 +148,7 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
+            "cweagans/composer-patches": true,
             "joshbrw/laravel-module-installer": true
         }
     },
