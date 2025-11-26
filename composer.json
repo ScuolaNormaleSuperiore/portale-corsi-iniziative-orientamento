@@ -132,11 +132,6 @@
         "laravel": {
             "dont-discover": []
         },
-        "patches": {
-            "onelogin/php-saml": {
-                "Add AttributeConsumingServiceIndex to AuthnRequest": "patches/onelogin-php-saml-add-attribute-consuming-service-index.patch"
-            }
-        },
         "composer-patches": {
             "patch-levels": {
                 "onelogin/php-saml": "-p1"
