@@ -13,7 +13,9 @@
 <p class="mb-3">
     Per i dettagli sul trattamento dei dati personali consulta l'<a class="text-decoration-underline" href="/pagina/privacy-policy">informativa sulla privacy</a>.
 </p>
+<p class="mb-3">Ai sensi degli artt. 46 e 47 del DPR 445/2000, nella consapevolezza delle sanzioni civili e penali nel caso di dichiarazioni non veritiere, di formazione o uso di atti falsi, richiamate dall’art. 76 del DPR 445/2000, dichiaro che tutte le informazioni e dichiarazione, corrispondono al vero.
 
+</p>
 <div class="row">
     <div class="col-12">
         <div class="form-check form-check-inline">
@@ -25,7 +27,7 @@
                 @endif
             >
             <label for="informativa">
-                Ho letto e compreso l'informativa sulla privacy
+                Ho letto e compreso l'informativa sulla privacy e assumo le dichiarazioni rese ex artt. 46-47 DPR 445/2000.
             </label>
         </div>
     </div>
