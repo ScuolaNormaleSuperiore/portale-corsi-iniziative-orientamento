@@ -203,6 +203,13 @@ class Iniziativa extends Breeze
 
     public function getVotiLabelsAttribute() {
         $year = date('y');
+
+        // Dal 15 settembre al 31 dicembre aggiungo +1 all'anno
+        $currentDate = date('m-d');
+        if ($currentDate >= '09-15' && $currentDate <= '12-31') {
+            $year = intval($year) + 1;
+        }
+
         if (Str::length($this->anno) == 4) {
             $year = substr($this->anno,2,2);
         }
