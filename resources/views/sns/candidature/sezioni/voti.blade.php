@@ -26,12 +26,13 @@
 @endphp
 {{--@dump($fieldData)--}}
 <p>
-    Per ciascun anno scolastico seleziona materia e voti;
-    se un voto non è disponibile scegli <strong>N.P.</strong>,
-    se una materia manca contatta la segreteria per richiederne l’inserimento.
+Per ciascun anno scolastico seleziona materia e voti; 
+se un voto non è disponibile scegli <strong>N.P.</strong>, 
+se una materia manca contatta la segreteria per richiederne l’inserimento. 
+È obbligatorio inserire tutte le materie di studio (ad eccezione di condotta, religione ed educazione fisica). 
 </p>
-<p>Le prime quattro materie per le quali inserire i voti devono essere obbligatoriamente (come tali contrassegnate nell'elenco a tendina)
-</p>
+<p><strong>Le prime materie per le quali inserire i voti devono essere obbligatoriamente (come tali contrassegnate nell'elenco a tendina) Fisica, Matematica e Scienze oltre a una quarta di ambito scientifico a scelta della candidata</strong></p>
+
 <div class="table-responsive">
 
 <table class="table table-striped">

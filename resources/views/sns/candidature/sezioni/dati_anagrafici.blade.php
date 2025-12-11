@@ -8,4 +8,4 @@
 
 @include('candidature.form.input-icon',['type' => 'date','field' => 'data_nascita','label' => 'Data di nascita'])
 
-@include('candidature.form.select',['field' => 'sesso','label' => 'Genere', 'cssForm' => 'last'])
+@include('candidature.form.select',['field' => 'sesso','label' => 'In che genere ti identifichi?', 'cssForm' => 'last'])
