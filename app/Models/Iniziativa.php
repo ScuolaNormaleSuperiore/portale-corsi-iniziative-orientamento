@@ -205,8 +205,9 @@ class Iniziativa extends Breeze
         $year = date('y');
 
         // Dal 15 settembre al 31 dicembre aggiungo +1 all'anno
-        $currentDate = date('m-d');
-        if ($currentDate >= '09-15' && $currentDate <= '12-31') {
+        $month = intval(date('m'));
+        $day = intval(date('d'));
+        if ($month > 9 || ($month == 9 && $day >= 15)) {
             $year = intval($year) + 1;
         }
 
