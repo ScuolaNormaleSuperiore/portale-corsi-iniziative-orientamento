@@ -23,10 +23,10 @@ class IniziativaTest extends TestCase
         $labels = $iniziativa->voti_labels;
 
         // Anno 2024 -> year = 24
-        // year3 = 21, year2 = 22, year1 = 23
-        $this->assertEquals("Voto finale 21/22", $labels['voto_anno_2']);
-        $this->assertEquals("Voto finale 22/23", $labels['voto_anno_1']);
-        $this->assertEquals("Voto 1° Quad. 23/24", $labels['voto_primo_quadrimestre']);
+        // year2 = 22, year1 = 23
+        $this->assertEquals("Voto finale 22/23", $labels['voto_anno_2']);
+        $this->assertEquals("Voto finale 23/24", $labels['voto_anno_1']);
+        $this->assertEquals("Voto 1° Quad. 24/25", $labels['voto_primo_quadrimestre']);
     }
 
     /**
@@ -54,9 +54,9 @@ class IniziativaTest extends TestCase
 
         // Verifica che usi l'anno corrente
         $year = intval(substr((string)$currentYear, 2, 2));
-        $this->assertEquals("Voto finale " . ($year - 3) . '/' . ($year - 2), $labels['voto_anno_2']);
-        $this->assertEquals("Voto finale " . ($year - 2) . '/' . ($year - 1), $labels['voto_anno_1']);
-        $this->assertEquals("Voto 1° Quad. " . ($year - 1) . '/' . $year, $labels['voto_primo_quadrimestre']);
+        $this->assertEquals("Voto finale " . ($year - 2) . '/' . ($year - 1), $labels['voto_anno_2']);
+        $this->assertEquals("Voto finale " . ($year - 1) . '/' . $year, $labels['voto_anno_1']);
+        $this->assertEquals("Voto 1° Quad. " . $year . '/' . ($year + 1), $labels['voto_primo_quadrimestre']);
     }
 
     /**
@@ -97,10 +97,10 @@ class IniziativaTest extends TestCase
         $labels = $iniziativa->voti_labels;
 
         // Anno 2023 -> year = 23
-        // year3 = 20, year2 = 21, year1 = 22
-        $this->assertEquals("Voto finale 20/21", $labels['voto_anno_2']);
-        $this->assertEquals("Voto finale 21/22", $labels['voto_anno_1']);
-        $this->assertEquals("Voto 1° Quad. 22/23", $labels['voto_primo_quadrimestre']);
+        // year2 = 21, year1 = 22
+        $this->assertEquals("Voto finale 21/22", $labels['voto_anno_2']);
+        $this->assertEquals("Voto finale 22/23", $labels['voto_anno_1']);
+        $this->assertEquals("Voto 1° Quad. 23/24", $labels['voto_primo_quadrimestre']);
     }
 
     /**
@@ -131,9 +131,9 @@ class IniziativaTest extends TestCase
         $labels = $iniziativa->voti_labels;
 
         // Anno 2022 -> year = 22
-        // year3 = 19, year2 = 20, year1 = 21
-        $this->assertEquals("Voto finale 19/20", $labels['voto_anno_2']);
-        $this->assertEquals("Voto finale 20/21", $labels['voto_anno_1']);
-        $this->assertEquals("Voto 1° Quad. 21/22", $labels['voto_primo_quadrimestre']);
+        // year2 = 20, year1 = 21
+        $this->assertEquals("Voto finale 20/21", $labels['voto_anno_2']);
+        $this->assertEquals("Voto finale 21/22", $labels['voto_anno_1']);
+        $this->assertEquals("Voto 1° Quad. 22/23", $labels['voto_primo_quadrimestre']);
     }
 }

@@ -23,7 +23,30 @@
         ];
     }
 
+
+    // Debug per capire il calcolo
+    $currentYear = date('Y');
+    $month = intval(date('m'));
+    $day = intval(date('d'));
+    if ($month > 9 || ($month == 9 && $day >= 15)) {
+        $currentYear = intval($currentYear) + 1;
+    }
 @endphp
+
+@dump([
+    'iniziativa_anno' => $iniziativa->anno,
+    'anno_corrente_calcolato' => $currentYear,
+    'oggi' => date('Y-m-d'),
+    'dopo_15_settembre' => ($month > 9 || ($month == 9 && $day >= 15)),
+])
+
+@php
+    // Forza il ricalcolo dell'attributo
+    $votiLabelsCalcolate = $iniziativa->getVotiLabelsAttribute();
+@endphp
+
+@dump($votiLabelsCalcolate)
+
 {{--@dump($fieldData)--}}
 <p>
 Per ciascun anno scolastico seleziona materia e voti; 
@@ -45,13 +68,13 @@ se una materia manca contatta la segreteria per richiederne l’inserimento.
             Materia
         </th>
         <th scope="col">
-            {{ \Illuminate\Support\Arr::get($iniziativa->voti_labels,'voto_anno_2',"Voto finale 23/24") }}
+            {{ \Illuminate\Support\Arr::get($votiLabelsCalcolate,'voto_anno_2',"Voto finale 23/24") }}
         </th>
         <th scope="col">
-            {{ \Illuminate\Support\Arr::get($iniziativa->voti_labels,'voto_anno_1',"Voto finale 24/25") }}
+            {{ \Illuminate\Support\Arr::get($votiLabelsCalcolate,'voto_anno_1',"Voto finale 24/25") }}
         </th>
         <th scope="col">
-            {{ \Illuminate\Support\Arr::get($iniziativa->voti_labels,'voto_primo_quadrimestre',"Voto 1° Quad. 25/26") }}
+            {{ \Illuminate\Support\Arr::get($votiLabelsCalcolate,'voto_primo_quadrimestre',"Voto 1° Quad. 25/26") }}
         </th>
     </tr>
     </thead>

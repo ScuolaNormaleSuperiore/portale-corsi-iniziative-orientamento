@@ -221,13 +221,12 @@ class Iniziativa extends Breeze
 
         $year = intval($year);
 
-        $year3 = $year - 3;
         $year2 = $year - 2;
         $year1 = $year - 1;
         return [
-            'voto_anno_2' => "Voto finale " . $year3 . '/' . $year2,
-            'voto_anno_1' => "Voto finale " . $year2 . '/' . $year1,
-            'voto_primo_quadrimestre' => "Voto 1° Quad. " . $year1 . '/' . $year,
+            'voto_anno_2' => "Voto finale " . $year2 . '/' . $year1,
+            'voto_anno_1' => "Voto finale " . $year1 . '/' . $year,
+            'voto_primo_quadrimestre' => "Voto 1° Quad. " . $year . '/' . ($year + 1),
         ];
     }
 }
