@@ -202,20 +202,23 @@ class Iniziativa extends Breeze
     }
 
     public function getVotiLabelsAttribute() {
-        $year = date('Y');
-       
+        // Calcola l'anno corrente
+        $currentYear = date('Y');
+
         // Dal 15 settembre al 31 dicembre aggiungo +1 all'anno
         $month = intval(date('m'));
         $day = intval(date('d'));
         if ($month > 9 || ($month == 9 && $day >= 15)) {
-            $year = intval($year) + 1;
+            $currentYear = intval($currentYear) + 1;
         }
-        if($year == intval($this->anno)){
-            $this->anno = $year;
+
+        // Usa l'anno corrente, tranne se l'iniziativa ha un anno diverso
+        if ($this->anno && Str::length($this->anno) == 4 && intval($this->anno) != $currentYear) {
+            $year = substr($this->anno, 2, 2);
+        } else {
+            $year = substr((string)$currentYear, 2, 2);
         }
-        if (Str::length($this->anno) == 4) {
-            $year = substr($this->anno,2,2);
-        }
+
         $year = intval($year);
 
         $year3 = $year - 3;
