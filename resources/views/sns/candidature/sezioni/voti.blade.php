@@ -45,13 +45,13 @@ se una materia manca contatta la segreteria per richiederne l’inserimento.
             Materia
         </th>
         <th scope="col">
-            {{ \Illuminate\Support\Arr::get($iniziativa->votiLabels,'voto_anno_2',"Voto finale 22/23") }}
+            {{ \Illuminate\Support\Arr::get($iniziativa->votiLabels,'voto_anno_2',"Voto finale 23/24") }}
         </th>
         <th scope="col">
-            {{ \Illuminate\Support\Arr::get($iniziativa->votiLabels,'voto_anno_1',"Voto finale 23/24") }}
+            {{ \Illuminate\Support\Arr::get($iniziativa->votiLabels,'voto_anno_1',"Voto finale 24/25") }}
         </th>
         <th scope="col">
-            {{ \Illuminate\Support\Arr::get($iniziativa->votiLabels,'voto_primo_quadrimestre',"Voto 1° Quad. 24/25") }}
+            {{ \Illuminate\Support\Arr::get($iniziativa->votiLabels,'voto_primo_quadrimestre',"Voto 1° Quad. 25/26") }}
         </th>
     </tr>
     </thead>
