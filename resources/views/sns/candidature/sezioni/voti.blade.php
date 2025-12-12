@@ -24,29 +24,9 @@
     }
 
 
-    // Debug per capire il calcolo
-    $currentYear = date('Y');
-    $month = intval(date('m'));
-    $day = intval(date('d'));
-    if ($month > 9 || ($month == 9 && $day >= 15)) {
-        $currentYear = intval($currentYear) + 1;
-    }
-@endphp
-
-@dump([
-    'iniziativa_anno' => $iniziativa->anno,
-    'anno_corrente_calcolato' => $currentYear,
-    'oggi' => date('Y-m-d'),
-    'dopo_15_settembre' => ($month > 9 || ($month == 9 && $day >= 15)),
-])
-
-@php
-    // Forza il ricalcolo dell'attributo
+    // Forza il ricalcolo dell'attributo voti_labels
     $votiLabelsCalcolate = $iniziativa->getVotiLabelsAttribute();
 @endphp
-
-@dump($votiLabelsCalcolate)
-
 {{--@dump($fieldData)--}}
 <p>
 Per ciascun anno scolastico seleziona materia e voti; 
