@@ -210,7 +210,7 @@ class Iniziativa extends Breeze
         if ($month > 9 || ($month == 9 && $day >= 15)) {
             $year = intval($year) + 1;
         }
-        if($year == $this->anno){
+        if($year == intval($this->anno)){
             $this->anno = $year;
         }
         if (Str::length($this->anno) == 4) {
