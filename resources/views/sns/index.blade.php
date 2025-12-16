@@ -92,7 +92,7 @@
                 <section style="background-color:white;" class="pt-5 border-bottom">
 
                     <div class="container">
-                        <h2>I nostri corsi</h2>
+                        <h2>Attività in corso</h2>
                         {{--                <p class="" style="color:#2F475E;">Scopri le opportunità offerte per partecipare ad eventi di--}}
                         {{--                    orientamento, visitare i luoghi della Normale e vivere esperienze educative uniche.</p>--}}
                         <div class="row pb-5">
