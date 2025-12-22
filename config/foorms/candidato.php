@@ -401,6 +401,12 @@ return [
                         "gen1_titolo_studio_id",
                         "gen2_titolo_studio_id",
 
+                        "gen1_professione_id",
+                        "gen1_professione_altro",
+                        "gen2_professione_id",
+                        "gen2_professione_altro",
+
+
                         "scuola|tipologia_grado_istruzione",
                         "classe",
                         "scuola|regione_id",
@@ -439,6 +445,7 @@ return [
                         'settore_professionale',
                         'motivazioni',
 
+                        'modalita_conoscenza_sns_id',
                         'corsi',
 
                         'media',

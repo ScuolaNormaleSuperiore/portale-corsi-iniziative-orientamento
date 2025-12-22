@@ -89,6 +89,12 @@ trait XlsExportTrait
             'Email',
             'Titolo di studio del padre',
             'Titolo di studio della madre',
+
+            'Professione del padre',
+            'Professione del padre (altro)',
+            'Professione della madre',
+            'Professione della madre (altro)',
+
             'Tipo di scuola',
             'Classe',
             'Regione della scuola',
@@ -122,6 +128,7 @@ trait XlsExportTrait
             'Materie di studio',
             'Settore professionale',
             'Motivazioni',
+            'Modalità di conoscenza SNS',
             'Preferenze per i corsi',
             'Media',
             'Status',
@@ -468,5 +475,20 @@ trait XlsExportTrait
 //        return "Cap: " . $value;
 //
 //    }
+
+    protected function getCsvFieldGen1ProfessioneId($value)
+    {
+        return $this->getFromArray($value, $this->professioni);
+    }
+
+    protected function getCsvFieldGen2ProfessioneId($value)
+    {
+        return $this->getFromArray($value, $this->professioni);
+    }
+
+    protected function getCsvFieldModalitaConoscenzaSnsId($value)
+    {
+        return $this->getFromArray($value, $this->modalita);
+    }
 
 }
