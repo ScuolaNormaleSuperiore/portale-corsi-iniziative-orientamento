@@ -76,12 +76,18 @@ trait CandidatoTrait
 
         $nazione = Arr::get($input,'nazione_id');
         if ($nazione) {
+            // Assicuriamo che l'id del modello sia presente nell'input per la validazione del CF in edit
+            $inputWithId = $input;
+            if ($this->model && $this->model->exists) {
+                $inputWithId['id'] = $this->model->getKey();
+            }
+
             if ($nazione == 1) {
-                $validationRules['codice_fiscale'] = ['required', new CodiceFiscale(), new CandidatoCodiceFiscale($input)];
+                $validationRules['codice_fiscale'] = ['required', new CodiceFiscale(), new CandidatoCodiceFiscale($inputWithId)];
                 $validationRules['comune_id'] = ['required'];
                 $validationRules['comune_estero'] = [];
             } else {
-                $validationRules['codice_fiscale'] = [new CandidatoCodiceFiscale($input)];
+                $validationRules['codice_fiscale'] = [new CandidatoCodiceFiscale($inputWithId)];
                 $validationRules['comune_estero'] = ['required'];
                 $validationRules['comune_id'] = [];
             }
