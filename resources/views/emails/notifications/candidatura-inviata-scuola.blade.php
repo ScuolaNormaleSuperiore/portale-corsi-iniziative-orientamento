@@ -23,7 +23,7 @@
                 La ringraziamo per l’invio della candidatura da parte del Suo Istituto scolastico.
             </p>
             <p class="mt-2">
-                Gli esiti delle selezioni saranno pubblicati su questo sito entro il mese di maggio.
+            Gli esiti delle selezioni saranno pubblicati su questo sito entro due settimane dal termine per la presentazione delle domande.
             </p>
             <p class="mt-2">
                 Un cordiale saluto
