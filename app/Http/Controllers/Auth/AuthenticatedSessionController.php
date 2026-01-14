@@ -23,7 +23,7 @@ class AuthenticatedSessionController extends Controller
 
     public function meta()
     {
-        return view('auth.login');
+        return view('auth.login',['headTitle' => 'Login']);
     }
     public function saml2Error(Request $request) {
 
@@ -38,12 +38,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login-classic');
+        return view('auth.login-classic',['headTitle' => 'Login senza SPID/CIE']);
     }
 
     public function createScuola()
     {
-        return view('auth.login-scuola');
+        return view('auth.login-scuola',['headTitle' => 'Login per le scuole']);
     }
 
     /**

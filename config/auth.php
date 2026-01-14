@@ -48,6 +48,10 @@ return [
         ],
     ],
 
+    'verification' => [
+        'expire' => env('VERIFICATION_EXPIRE', 60),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | User Providers

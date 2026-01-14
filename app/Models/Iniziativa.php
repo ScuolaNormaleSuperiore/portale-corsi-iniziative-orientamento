@@ -202,19 +202,31 @@ class Iniziativa extends Breeze
     }
 
     public function getVotiLabelsAttribute() {
-        $year = date('y');
-        if (Str::length($this->anno) == 4) {
-            $year = substr($this->anno,2,2);
+        // Calcola l'anno corrente
+        $currentYear = date('Y');
+
+        // Dal 15 settembre al 31 dicembre aggiungo +1 all'anno
+        $month = intval(date('m'));
+        $day = intval(date('d'));
+        if ($month > 9 || ($month == 9 && $day >= 15)) {
+            $currentYear = intval($currentYear) + 1;
         }
+
+        // Usa l'anno corrente, tranne se l'iniziativa ha un anno diverso
+        if ($this->anno && Str::length($this->anno) == 4 && intval($this->anno) != $currentYear) {
+            $year = substr($this->anno, 2, 2);
+        } else {
+            $year = substr((string)$currentYear, 2, 2);
+        }
+
         $year = intval($year);
 
-        $year3 = $year - 3;
         $year2 = $year - 2;
         $year1 = $year - 1;
         return [
-            'voto_anno_2' => "Voto finale " . $year3 . '/' . $year2,
-            'voto_anno_1' => "Voto finale " . $year2 . '/' . $year1,
-            'voto_primo_quadrimestre' => "Voto 1° Quad. " . $year1 . '/' . $year,
+            'voto_anno_2' => "Voto finale " . $year2 . '/' . $year1,
+            'voto_anno_1' => "Voto finale " . $year1 . '/' . $year,
+            'voto_primo_quadrimestre' => "Voto 1° Quad. " . $year . '/' . ($year + 1),
         ];
     }
 }

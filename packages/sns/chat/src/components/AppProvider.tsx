@@ -4,8 +4,12 @@ import { useAtomValue, useSetAtom } from 'jotai';
 import { isPanelOpenAtom } from '@atoms/layout';
 import { useIsMounted } from 'usehooks-ts';
 import { delay } from '@utils/stuff';
+import { useShadowRootActiveElement } from '@hooks/useShadowRootActiveElement';
 
-const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const AppProvider: React.FC<{
+	children: React.ReactNode;
+	shadowRoot: ShadowRoot | null;
+}> = ({ children, shadowRoot }) => {
 	const isMobile = useMediaQuery('(max-width: 1024px)');
 	const setIsPanelOpen = useSetAtom(isPanelOpenAtom);
 	const isPanelOpen = useAtomValue(isPanelOpenAtom);
@@ -19,7 +23,7 @@ const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	}, [isMounted]);
 
 	useEffect(() => {
-		if (!isMobile && isPanelOpen) {
+		if (!isMobile) {
 			setIsPanelOpen(false);
 		}
 		if (isPanelOpen) {
@@ -28,6 +32,9 @@ const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 			document.body.style.overflow = 'auto';
 		}
 	}, [isMobile, isPanelOpen, setIsPanelOpen]);
+
+	// Register activeElement tracking inside ShadowRoot (only does work in production)
+	useShadowRootActiveElement(shadowRoot);
 
 	return <>{children}</>;
 };

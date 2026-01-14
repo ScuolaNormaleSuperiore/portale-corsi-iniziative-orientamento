@@ -147,6 +147,7 @@ return [
                 'Operatore',
                 'Scuola',
                 'Studente',
+                'ApiUser',
             ]
         ],
 
@@ -184,6 +185,8 @@ return [
             'copertina',
             'comune',
             'nazione',
+            'faq_categoria',
+            'faq',
 
         ],
 

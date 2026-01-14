@@ -343,7 +343,7 @@ return [
 
             ],
             "comune_id" => [
-
+                'referred_data' => 'relation:comunesns',
             ],
             "caratteristica" => [
                 'options' => 'enum:' . \App\Enums\ScuolaCaratteristica::class,

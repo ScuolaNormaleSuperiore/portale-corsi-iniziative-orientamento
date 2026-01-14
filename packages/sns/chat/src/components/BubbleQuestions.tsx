@@ -55,11 +55,11 @@ const BubbleQuestions: React.FC = () => {
 					variants={variantsContainer}
 					className="flex flex-col gap-3"
 				>
-					<h3 className="md:text-lg font-semibold mt-2">
+					<h3 className="md:text-lg font-semibold mt-2 pl-2">
 						{questionsTitle || t('questions.title')}
 					</h3>
 
-					<motion.ul className="list-none flex flex-col gap-3">
+					<motion.ul className="list-none flex flex-col gap-3 p-2">
 						{questions.map((question, index) => (
 							<motion.li
 								key={question.id}
@@ -70,7 +70,7 @@ const BubbleQuestions: React.FC = () => {
 								transition={{ delay: index * 0.1 }}
 							>
 								<button
-									className="px-3 md:px-6 py-1 text-primary font-semibold md:text-lg border border-primary rounded-full hover:bg-primary hover:text-white transition-colors duration-200 hover:shadow-lg bg-white disabled:opacity-50 disabled:cursor-not-allowed"
+									className="px-3 md:px-6 py-1 text-primary font-semibold md:text-lg border border-primary rounded-xl hover:bg-primary hover:text-white transition-colors duration-200 hover:shadow-lg bg-white disabled:opacity-50 disabled:cursor-not-allowed focus:bg-primary focus:text-white focus:shadow-lg"
 									onClick={() => {
 										setFetchMessage(question.text);
 										setIsHidden(true);

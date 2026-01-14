@@ -37,21 +37,22 @@
                                                 {!! $studente->descrizione_it !!}
                                             </p>
 
+                                            @if(!empty($studente->link))
+                                                <p class="pt-5 d-flex justify-content-end">
 
-                                            <p class="pt-5 d-flex justify-content-end">
-
-                                            <a class="read-more" target="_blank" href="{{$studente->link}}">
-                                                <span class="text">
-                                                    <button type="button" class="btn btn-outline-primary">
-                                                    Per parlare con me
-                                                    <svg class="icon icon-primary">
-                                                        <use href="{{Theme::url('svg/sprites.svg')}}#it-arrow-right"></use>
-                                                    </svg>
-                                                    </button>
-                                                </span>
-                                                <span class="visually-hidden">Per parlare con me</span>
-                                            </a>
-                                            </p>
+                                                <a class="read-more" target="_blank" href="{{$studente->link}}">
+                                                    <span class="text">
+                                                        <button type="button" class="btn btn-outline-primary">
+                                                        Per parlare con me
+                                                        <svg class="icon icon-primary">
+                                                            <use href="{{Theme::url('svg/sprites.svg')}}#it-arrow-right"></use>
+                                                        </svg>
+                                                        </button>
+                                                    </span>
+                                                    <span class="visually-hidden">Per parlare con me</span>
+                                                </a>
+                                                </p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

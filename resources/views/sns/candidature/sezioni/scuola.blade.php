@@ -27,19 +27,19 @@
 
 @else
     <p class="pb-2">
-        Digita alcune lettere della scuola e scegli dall'elenco che appare (puoi restringere la ricerca a una provincia):
+        Digita alcune lettere del nome della scuola e scegli dall'elenco che appare (puoi restringere la ricerca a una provincia).
     </p>
 
     @include('candidature.form.scuole-autocomplete',['field' => 'scuola_id'])
 
     <p class="pb-2">
-        In caso di scuola straniera, compilare manualmente il campo sottostante.
+        In caso di scuola straniera, compila manualmente il campo sottostante.
     </p>
 
     @include('candidature.form.input-icon',['field' => 'scuola_estera','label' => 'Scuola Estera'])
 
     <p class="pb-2">
-        Per continuare la candidatura è necessario indicare la scuola (italiana o estera).
+        Per continuare la candidatura, indica la classe e la sezione.
     </p>
 
 @endif

@@ -4,7 +4,7 @@ use App\Enums\CandidatoStatuses;
 
 return [
 
-    'sesso' => ['M' => 'M','F' => 'F','A' => 'A'],
+    'sesso' => ['M' => 'Uomo','F' => 'Donna','A' => 'Non binario' ,'N'=>'Preferisco non rispondere'],
 
     'candidato' => [
         'statuses' => [

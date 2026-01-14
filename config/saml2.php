@@ -220,6 +220,40 @@ return [
         'singleSignOnService' => [
             'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', // Verifica che il binding sia POST
         ],
+
+
+        "attributeConsumingService" => [
+            "serviceName" => "Service Provider SPID",
+            "serviceDescription" => "Service Provider per autenticazione SPID",
+            "requestedAttributes" => [
+                [
+                    "name" => "spidName",
+                    'isRequired' => false,
+                    'friendlyName' => 'spidName',
+                ],
+                [
+                    "name" => "spidFamilyName",
+                    'isRequired' => false,
+                    'friendlyName' => 'spidFamilyName',
+                ],
+                [
+                    "name" => "spidEmail",
+                    'isRequired' => false,
+                    'friendlyName' => 'spidEmail',
+                ],
+                [
+                    "name" => "spidFiscalNumber",
+                    'isRequired' => false,
+                    'friendlyName' => 'spidFiscalNumber',
+                ],
+                [
+                    "name" => "externalIDPLoA",
+                    'isRequired' => false,
+                    'friendlyName' => 'externalIDPLoA',
+                ],
+            ],
+        ],
+
     ],
 
     /*
@@ -358,15 +392,7 @@ return [
             'urn:oasis:names:tc:SAML:2.0:ac:classes:Kerberos',
             'urn:oasis:names:tc:SAML:2.0:ac:classes:SPIDExtended',
         ],
-//        'requestedAuthnContext' => [
-//            'urn:oasis:names:tc:SAML:2.0:ac:classes:SPIDOnly',
-//            'urn:oasis:names:tc:SAML:2.0:ac:classes:Kerberos',
-//            'urn:federation:authentication:windows',
-//            'urn:oasis:names:tc:SAML:2.0:ac:classes:X509',
-//            'urn:oasis:names:tc:SAML:2.0:ac:classes:TLSClient',
-//            'urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport',
-//            'urn:oasis:names:tc:SAML:2.0:ac:classes:Password'
-//        ],
+
     ],
 
     /*

@@ -1,6 +1,19 @@
 <?php
 
 return [
+    'voti' => [
+        0 => "N.P.",
+        "6" => 6,
+        "6.5" => 6.5,
+        "7" => 7,
+        "7.5" => 7.5,
+        "8" => 8,
+        "8.5" => 8.5,
+        "9" => 9,
+        "9.5" => 9.5,
+        "10" => 10,
+
+    ],
     'steps' => [
         1 => [
             'riepilogo' => true,
@@ -77,12 +90,12 @@ return [
                         ],
                         'nazione_id' => [
                             'validation' => [
-//                                'required',
+                                //                                'required',
                             ]
                         ],
                         'provincia_id' => [
                             'validation' => [
-//                                'required',
+                                //                                'required',
                             ]
                         ],
                         'comune_id' => [
@@ -118,8 +131,7 @@ return [
                     'title' => 'Scuola e classe',
                     'fields' => [
                         'provincia_scuola_id' => [
-                            'validation' => [
-                            ]
+                            'validation' => []
                         ],
                         'scuola_id' => [
                             'validation' => [
@@ -149,24 +161,20 @@ return [
                     'code' => 'voti',
                     'title' => 'Voti scolastici',
                     'fields' => [
-                        'voti' => [
-
-                        ],
+                        'voti' => [],
                     ],
                 ],
-                [
-                    'code' => 'allegati',
-                    'title' => 'Allegati',
-                    'subtitle' => ' In questa sezione, puoi caricare le pagelle scolastiche degli ultimi tre anni. Assicurati che i documenti siano chiari e completi, includendo tutti i voti finali per ciascun anno scolastico richiesto.',
-                    'fields' => [
-                        'attachments' => [
-                            'validation' => [
-
-                            ],
-                            'exts' => 'pdf,png,jpg',
-                        ]
-                    ],
-                ],
+//                [
+//                    'code' => 'allegati',
+//                    'title' => 'Allegati (FACOLTATIVO)',
+//                    'subtitle' => ' In questa sezione, puoi caricare le pagelle scolastiche degli ultimi tre anni. Assicurati che i documenti siano chiari e completi, includendo tutti i voti finali per ciascun anno scolastico richiesto.',
+//                    'fields' => [
+//                        'attachments' => [
+//                            'validation' => [],
+//                            'exts' => 'pdf,png,jpg',
+//                        ]
+//                    ],
+//                ],
             ]
         ],
         3 => [
@@ -177,6 +185,7 @@ return [
                 [
                     'code' => 'profilo',
                     'title' => 'Profilo personale',
+                    'subtitle' => 'Scrivi una breve presentazione con interessi, competenze ed esperienze; il testo deve essere tra <strong>400 e 1500 caratteri</strong>.',
                     'fields' => [
                         'profilo' => [
                             'validation' => [
@@ -196,32 +205,32 @@ return [
                     'fields' => [
                         'inglese_livello_linguistico_id' => [
                             'validation' => [
-//                                'required'
+                                //                                'required'
                             ],
                         ],
                         'francese_livello_linguistico_id' => [
                             'validation' => [
-//                                'required'
+                                //                                'required'
                             ],
                         ],
                         'spagnolo_livello_linguistico_id' => [
                             'validation' => [
-//                                'required'
+                                //                                'required'
                             ],
                         ],
                         'tedesco_livello_linguistico_id' => [
                             'validation' => [
-//                                'required'
+                                //                                'required'
                             ],
                         ],
                         'cinese_livello_linguistico_id' => [
                             'validation' => [
-//                                'required'
+                                //                                'required'
                             ],
                         ],
                         'altre_competenze_linguistiche' => [
                             'validation' => [
-//                                'required'
+                                //                                'required'
                             ],
                         ],
 
@@ -273,26 +282,26 @@ return [
                         ],
                         'stages' => [
                             'validation' => [
-//                                'required',
+                                //                                'required',
                             ]
                         ],
                         'gare_internazionali' => [
                             'validation' => [
-//                                'required',
+                                //                                'required',
                             ]
                         ],
                         'gare_umanistiche' => [
                             'validation' => [
-//                                'required',
+                                //                                'required',
                             ]
                         ],
                         'partecipazione_concorsi' => [
                             'validation' => [
                                 'max:' . env('MAX_LENGTH_TEXTAREA', 1500),
-//                                'min:' . env('MIN_LENGTH_TEXTAREA', 400)
+                                //                                'min:' . env('MIN_LENGTH_TEXTAREA', 400)
                             ],
                             'maxLength' => env('MAX_LENGTH_TEXTAREA', 1500),
-//                            'minLength' => env('MIN_LENGTH_TEXTAREA', 400),
+                            //                            'minLength' => env('MIN_LENGTH_TEXTAREA', 400),
                         ],
 
                     ]
@@ -304,10 +313,10 @@ return [
                         'esperienze_estere' => [
                             'validation' => [
                                 'max:' . env('MAX_LENGTH_TEXTAREA', 1500),
-//                                'min:' . env('MIN_LENGTH_TEXTAREA', 400)
+                                //                                'min:' . env('MIN_LENGTH_TEXTAREA', 400)
                             ],
                             'maxLength' => env('MAX_LENGTH_TEXTAREA', 1500),
-//                            'minLength' => env('MIN_LENGTH_TEXTAREA', 400),
+                            //                            'minLength' => env('MIN_LENGTH_TEXTAREA', 400),
                         ]
 
                     ]
@@ -323,18 +332,14 @@ return [
                     'code' => 'materie_settori',
                     'title' => 'Materie e settori preferiti',
                     'fields' => [
-                        'materie_preferite' => [
-
-                        ],
-                        'settore_professionale' => [
-
-                        ]
+                        'materie_preferite' => [],
+                        'settore_professionale' => []
                     ]
                 ],
                 [
                     'code' => 'motivazioni',
                     'title' => 'Motivazioni',
-                    'subtitle' => 'Motivazioni che spingono a partecipare ai corsi della SNS',
+                    'subtitle' => 'Scrivi le motivazioni della tua candidatura; il testo deve essere tra <strong>400 e 1500 caratteri</strong>.',
                     'fields' => [
                         'motivazioni' => [
                             'validation' => [
@@ -351,12 +356,12 @@ return [
                 [
                     'code' => 'corsi',
                     'title' => 'Preferenze per i corsi',
-                    'subtitle' => 'Seleziona uno o più corsi presenti nell\'elenco',
+                    'subtitle' => 'Seleziona uno o più corsi presenti nell\'elenco (almeno due in caso di più di un corso disponibile)',
                     'fields' => [
                         'corsi' => [
                             'validation' => [
                                 'required',
-//                                'max:500'
+                                //                                'max:500'
                             ],
                         ]
 
@@ -364,7 +369,7 @@ return [
                 ],
                 [
                     'code' => 'conoscenza_sns',
-                    'title' => 'Come ha scoperto i corsi SNS?',
+                    'title' => 'Come hai scoperto i corsi SNS?',
                     'fields' => [
                         'modalita_conoscenza_sns_id' => [
                             'validation' => [
@@ -394,10 +399,7 @@ return [
         ],
         6 => [
             'title' => 'Riepilogo',
-            'sections' => [
-
-            ]
+            'sections' => []
         ],
     ],
 ];
-

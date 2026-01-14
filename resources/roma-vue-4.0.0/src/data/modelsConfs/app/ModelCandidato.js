@@ -236,8 +236,13 @@ export default {
                 contentField: 'content',
                 mimeField: 'mime',
                 nameField: 'name',
-            }
+            },
 
+            'action-delete' : {
+                visible : function () {
+                    return this.modelData.status === 'bozza';
+                }
+            }
         },
         fields: [
             'color',

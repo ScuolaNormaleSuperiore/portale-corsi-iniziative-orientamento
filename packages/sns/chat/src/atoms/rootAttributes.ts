@@ -7,6 +7,10 @@ export const rootAttributesAtom = atom<RootAttributes>({
 		title: '',
 		questions: [],
 	},
-	pageTitle: '',
+	info: {
+		items: [],
+	},
+	questionsTitle: '',
+	pageChatTitle: '',
 	firstAnswer: '',
 });
