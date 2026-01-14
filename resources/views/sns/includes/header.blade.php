@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="it-header-slim-wrapper-content">
-                        <a class="d-lg-block navbar-brand" href="/">Scuola Normale Superiore</a>
+                        <a class="d-lg-block navbar-brand" href="https://www.sns.it">Scuola Normale Superiore</a>
                         <div class="it-header-slim-right-zone">
                             <div class="nav-item dropdown">
                                 {{--                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"--}}

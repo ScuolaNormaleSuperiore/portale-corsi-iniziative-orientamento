@@ -217,6 +217,8 @@
     "model.corsi": "Corso|corsi",
     "model.nazione": "Nazione|nazioni",
     "model.comune": "Comune|comuni",
+    "model.faq_categoria": "Categoria FAQ|categorie FAQ",
+    "model.faq": "Faq|faqs",
     "pagination.previous": "\u0026laquo; Previous",
     "pagination.next": "Next \u0026raquo;",
     "validation.accepted": "Il campo :attribute deve essere accettato.",
@@ -954,5 +956,16 @@
     "comune.fields.nazione.nome.label": "Nome",
     "comune.relations.provincia.label": "provincia|province",
     "comune.relations.regione.label": "regione|regioni",
-    "comune.relations.nazione.label": "nazione|nazioni"
+    "comune.relations.nazione.label": "nazione|nazioni",
+    "faq_categoria.label": "categoria FAQ|categorie FAQ",
+    "faq_categoria.fields.nome.label": "Nome",
+    "faq_categoria.fields.id.label": "Id",
+    "faq.label": "faq|faqs",
+    "faq.fields.domanda.label": "Domanda",
+    "faq.fields.risposta.label": "Risposta",
+    "faq.fields.categoria_id.label": "Categoria id",
+    "faq.fields.id.label": "Id",
+    "faq.fields.categoria.label": "model.categoria",
+    "faq.fields.categoria.nome.label": "Nome",
+    "faq.relations.categoria.label": "model.categoria"
 }

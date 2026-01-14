@@ -8,8 +8,15 @@
         </ol>
     </nav>
     <h1 class="h2 py-2">Candidatura {{$candidaturaTitle}}</h1>
-    <p>Inserisci le informazioni necessarie, potrai ricontrollare tutti i dati nel riepilogo, prima di inviare
-        la candidatura.</p>
-    <div>Hai bisogno di assistenza? Contattaci</div>
+
+    <p>
+        Compila con attenzione tutti i campi richiesti.<br/>
+        Prima di inviare la candidatura potrai verificare e correggere i dati nella pagina di riepilogo.
+    </p>
+    <p>
+        Per assistenza, contatta la segreteria tramite i riferimenti
+        nella sezione <strong>scrivi o chiama</strong> della pagina
+        <a href="/chat">Parla con noi.</a>
+    </p>
     <hr/>
 </section>

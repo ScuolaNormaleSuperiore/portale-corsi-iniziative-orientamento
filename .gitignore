@@ -38,4 +38,6 @@ comp-update.sh
 
 token.json
 
+.ddev
+
 prod_logs

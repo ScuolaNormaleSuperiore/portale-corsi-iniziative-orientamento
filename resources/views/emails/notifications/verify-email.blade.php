@@ -36,6 +36,10 @@
                 Potrà quindi procedere con l’inserimento delle candidature utilizzando come username l’indirizzo istituzionale della sua scuola e come password quella da voi impostata.
             </p>
 
+            <br/>
+            <p>
+                <strong>Attenzione</strong>: il link scadrà il {{$timestamp->format('d/m/Y')}} alle {{$timestamp->format('H:i:s')}}.
+            </p>
 
             <p class="mt-5">
                 <strong>

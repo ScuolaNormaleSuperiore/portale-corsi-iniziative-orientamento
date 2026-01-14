@@ -12,5 +12,13 @@ class FoormEdit extends BaseFoormEdit
 
     protected $step;
 
+    protected $autosave = false;
+
+    public function setAutosave(bool $autosave) {
+        $this->autosave = $autosave;
+    }
+
     use CandidatoTrait;
+
+
 }

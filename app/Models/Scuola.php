@@ -46,7 +46,7 @@ class Scuola extends Breeze
     public static $rules = [
         'denominazione' => 'required',
         'codice' => 'required',
-        'provincia_id' => 'required',
+//        'provincia_id' => 'required',
 //        'username' => 'required|between:4,255|unique:users,username',
     ];
 
@@ -80,6 +80,13 @@ class Scuola extends Breeze
 //                $this->user_id = $user->getKey();
 //            }
 //        }
+
+        if ($this->comune_id) {
+            $comune = Comune::where('id',$this->comune_id)->first();
+            $this->provincia_id = $comune->provincia_id;
+        } else {
+            $this->provincia_id = null;
+        }
 
         if ($this->provincia_id) {
             $provincia = Provincia::where('id',$this->provincia_id)->first();

@@ -1,0 +1,17 @@
+{
+    "_hash": "0f6a5c62ec6a4f25b95713d6c5b849977253c9d1881a6beb7e774bbd603e694d",
+    "patches": {
+        "onelogin/php-saml": [
+            {
+                "package": "onelogin/php-saml",
+                "description": "Add AttributeConsumingServiceIndex to AuthnRequest",
+                "url": "patches/onelogin-php-saml-add-attribute-consuming-service-index.patch",
+                "sha256": "31edf719ab8c64889129f796844868b329fc7af367c5d821899f15ea2ecda039",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}

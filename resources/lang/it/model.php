@@ -39,4 +39,6 @@ return array (
   'corsi' => 'corso|corsi',
   'nazione' => 'nazione|nazioni',
   'comune' => 'comune|comuni',
+  'faq_categoria' => 'categoria FAQ|categorie FAQ',
+  'faq' => 'faq|faqs',
 );

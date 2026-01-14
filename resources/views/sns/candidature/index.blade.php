@@ -37,7 +37,19 @@
                 <p>Da questa pagina puoi candidare gli studenti della tua scuola alle nostre iniziative di
                     orientamento</p>
             @else
-                <p>Da questa pagina puoi candidarti alle nostre iniziative di orientamento</p>
+                <p>
+                    Per ogni corso è disponibile un pulsante per avviare la candidatura.<br/>
+                    <strong>Il modulo è unico per tutti i corsi.</strong>
+                </p>
+                <p>
+                    Durante la compilazione vengono richieste informazioni personali e dati sul corso scelto.
+                    <br/>
+                    Prima di iniziare, consulta <a href="/pagina-orientamento/guida-alla-compilazione-della-candidatura-1">la guida alla compilazione della domanda</a>
+                    per sapere quali dati ti serviranno.
+                </p>
+                <p>
+                    Con il pulsante <strong>Salva</strong> puoi salvare la candidatura in bozza e completarla in seguito.
+                </p>
             @endif
             <hr/>
         </section>

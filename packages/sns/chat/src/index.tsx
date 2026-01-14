@@ -23,7 +23,7 @@ const initializeApp = async () => {
 
 	root.render(
 		<Provider store={store}>
-			<AppProvider>
+			<AppProvider shadowRoot={rootEl?.shadowRoot as ShadowRoot | null}>
 				<App />
 			</AppProvider>
 		</Provider>,

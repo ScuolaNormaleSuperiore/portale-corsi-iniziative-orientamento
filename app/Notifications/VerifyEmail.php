@@ -3,7 +3,10 @@
 namespace App\Notifications;
 
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\URL;
 
 class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail
 {
@@ -11,10 +14,14 @@ class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail
 
     public $role;
 
+    public $timestamp;
+
+
     public function __construct($role)
     {
         $this->role = $role;
     }
+
     /**
      * Build the mail representation of the notification.
      *
@@ -38,9 +45,28 @@ class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail
                 [
                     'url' => config('app.url'),
                     'link' => $verificationUrl,
+                    'timestamp' => $this->timestamp,
 //                    'minuti' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire'),
 //                    'data_iscrizione' => $dataIscrizione,
 //                    'tipo_iscrizione' => Arr::get($this->attachData,'tipo','normale'),
                 ]);
+    }
+
+    protected function verificationUrl($notifiable)
+    {
+        if (static::$createUrlCallback) {
+            return call_user_func(static::$createUrlCallback, $notifiable);
+        }
+
+        $this->timestamp = Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60));
+
+        return URL::temporarySignedRoute(
+            'verification.verify',
+            $this->timestamp,
+            [
+                'id' => $notifiable->getKey(),
+                'hash' => sha1($notifiable->getEmailForVerification()),
+            ]
+        );
     }
 }

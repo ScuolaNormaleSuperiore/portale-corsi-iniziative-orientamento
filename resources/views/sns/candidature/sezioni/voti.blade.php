@@ -7,6 +7,9 @@
     if (!isset($options)) {
         $options = \Illuminate\Support\Arr::get($fieldData,'options',[]);
     }
+    if (!isset($votiOptions)) {
+        $votiOptions = \Illuminate\Support\Arr::get($fieldData,'voti_options',[]);
+    }
     if (!is_array($value)) {
         $value = [];
     }
@@ -20,8 +23,18 @@
         ];
     }
 
+
+    // Forza il ricalcolo dell'attributo voti_labels
+    $votiLabelsCalcolate = $iniziativa->getVotiLabelsAttribute();
 @endphp
 {{--@dump($fieldData)--}}
+<p>
+Per ciascun anno scolastico seleziona materia e voti; 
+se un voto non è disponibile scegli <strong>N.P.</strong>, 
+se una materia manca contatta la segreteria per richiederne l’inserimento. 
+È obbligatorio inserire tutte le materie di studio (ad eccezione di condotta, religione ed educazione fisica). 
+</p>
+<p><strong>Le prime materie per le quali inserire i voti devono essere obbligatoriamente (come tali contrassegnate nell'elenco a tendina) Fisica, Matematica e Scienze oltre a una quarta di ambito scientifico a scelta della candidata</strong></p>
 
 <div class="table-responsive">
 
@@ -35,13 +48,13 @@
             Materia
         </th>
         <th scope="col">
-            {{ \Illuminate\Support\Arr::get($iniziativa->votiLabels,'voto_anno_2',"Voto finale 22/23") }}
+            {{ \Illuminate\Support\Arr::get($votiLabelsCalcolate,'voto_anno_2',"Voto finale 23/24") }}
         </th>
         <th scope="col">
-            {{ \Illuminate\Support\Arr::get($iniziativa->votiLabels,'voto_anno_1',"Voto finale 23/24") }}
+            {{ \Illuminate\Support\Arr::get($votiLabelsCalcolate,'voto_anno_1',"Voto finale 24/25") }}
         </th>
         <th scope="col">
-            {{ \Illuminate\Support\Arr::get($iniziativa->votiLabels,'voto_primo_quadrimestre',"Voto 1° Quad. 24/25") }}
+            {{ \Illuminate\Support\Arr::get($votiLabelsCalcolate,'voto_primo_quadrimestre',"Voto 1° Quad. 25/26") }}
         </th>
     </tr>
     </thead>
@@ -71,25 +84,49 @@
                     @endforeach
                 </select>
             </td>
-            <td class="form-group form-group-candidature-voti vertical-align-middle">
+            <td class="select-wrapper form-group-candidature-voti vertical-align-middle pt-2">
                 <div class="input-group input-group-candidature-voti pt-2">
-                    <input type="number" class="form-control" name="voti-voto_anno_2[]"
-                           value="{{$voto['voto_anno_2']}}"
-                    >
+                    <select name="voti-voto_anno_2[]" class="">
+                        @foreach($votiOptions as $votoOption)
+                            <option value="{{\Illuminate\Support\Arr::get($votoOption,'value')}}"
+                                    @if(\Illuminate\Support\Arr::get($votoOption,'value') == $voto['voto_anno_2'])
+                                        selected
+                                    @endif
+                            >
+                                {{\Illuminate\Support\Arr::get($votoOption,'label')}}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
             </td>
-            <td class="form-group form-group-candidature-voti vertical-align-middle">
+            <td class="select-wrapper form-group-candidature-voti vertical-align-middle pt-2">
                 <div class="input-group input-group-candidature-voti pt-2">
-                    <input type="number" class="form-control" name="voti-voto_anno_1[]"
-                           value="{{$voto['voto_anno_1']}}"
-                    >
+                    <select name="voti-voto_anno_1[]" class="">
+                        @foreach($votiOptions as $votoOption)
+                            <option value="{{\Illuminate\Support\Arr::get($votoOption,'value')}}"
+                                    @if(\Illuminate\Support\Arr::get($votoOption,'value') == $voto['voto_anno_1'])
+                                        selected
+                                    @endif
+                            >
+                                {{\Illuminate\Support\Arr::get($votoOption,'label')}}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
             </td>
-            <td class="form-group form-group-candidature-voti vertical-align-middle">
+            <td class="select-wrapper form-group-candidature-voti vertical-align-middle pt-2">
                 <div class="input-group input-group-candidature-voti pt-2">
-                    <input type="number" class="form-control" name="voti-voto_primo_quadrimestre[]"
-                           value="{{$voto['voto_primo_quadrimestre']}}"
-                    >
+                    <select name="voti-voto_primo_quadrimestre[]" class="">
+                        @foreach($votiOptions as $votoOption)
+                            <option value="{{\Illuminate\Support\Arr::get($votoOption,'value')}}"
+                                    @if(\Illuminate\Support\Arr::get($votoOption,'value') == $voto['voto_primo_quadrimestre'])
+                                        selected
+                                    @endif
+                            >
+                                {{\Illuminate\Support\Arr::get($votoOption,'label')}}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
             </td>
         </tr>
@@ -132,26 +169,45 @@
                 @endforeach
             </select>
         </td>
-        <td class="form-group form-group-candidature-voti vertical-align-middle">
-            <div class="input-group input-group-candidature-voti pt-2">
-                <input type="number" class="form-control voti-tpl" name="tpl-voti-voto_anno_2[]"
-                       value=""
-                >
-            </div>
+        <td class="select-wrapper form-group-candidature-voti vertical-align-middle pt-2">
+            <select name="tpl-voti-voto_anno_2[]" class="mt-2 voti-tpl">
+                @foreach($votiOptions as $votoOption)
+                    <option value="{{\Illuminate\Support\Arr::get($votoOption,'value')}}"
+                            @if(\Illuminate\Support\Arr::get($votoOption,'value') <= 0)
+                                selected
+                            @endif
+                    >
+                        {{\Illuminate\Support\Arr::get($votoOption,'label')}}
+                    </option>
+                @endforeach
+            </select>
         </td>
-        <td class="form-group form-group-candidature-voti vertical-align-middle">
-            <div class="input-group input-group-candidature-voti pt-2">
-                <input type="number" class="form-control voti-tpl" name="tpl-voti-voto_anno_1[]"
-                       value=""
-                >
-            </div>
+        <td class="select-wrapper form-group-candidature-voti vertical-align-middle pt-2">
+            <select name="tpl-voti-voto_anno_1[]" class="mt-2 voti-tpl">
+                @foreach($votiOptions as $votoOption)
+                    <option value="{{\Illuminate\Support\Arr::get($votoOption,'value')}}"
+                            @if(\Illuminate\Support\Arr::get($votoOption,'value') <= 0)
+                                selected
+                            @endif
+                    >
+                        {{\Illuminate\Support\Arr::get($votoOption,'label')}}
+                    </option>
+                @endforeach
+            </select>
+
         </td>
-        <td class="form-group form-group-candidature-voti vertical-align-middle">
-            <div class="input-group input-group-candidature-voti pt-2">
-                <input type="number" class="form-control voti-tpl" name="tpl-voti-voto_primo_quadrimestre[]"
-                       value=""
-                >
-            </div>
+        <td class="select-wrapper form-group-candidature-voti vertical-align-middle pt-2">
+                <select name="tpl-voti-voto_primo_quadrimestre[]" class="mt-2 voti-tpl">
+                    @foreach($votiOptions as $votoOption)
+                        <option value="{{\Illuminate\Support\Arr::get($votoOption,'value')}}"
+                                @if(\Illuminate\Support\Arr::get($votoOption,'value') <= 0)
+                                    selected
+                                @endif
+                        >
+                            {{\Illuminate\Support\Arr::get($votoOption,'label')}}
+                        </option>
+                    @endforeach
+                </select>
         </td>
     </tr>
     </tfoot>
